@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             theme: MainData.defaultThem,
-            title: "Base Flutter",
+            title: "Business Wallet",
             supportedLocales: [
               Locale('en', 'US'),
               Locale('ar', 'EG')

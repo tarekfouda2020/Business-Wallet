@@ -14,6 +14,10 @@ class MainData {
     textTheme: TextTheme(
       subtitle1:GoogleFonts.cairo(fontSize: 14,),
     ),
+    pageTransitionsTheme: PageTransitionsTheme(builders: {
+      TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+    }),
   );
 
   static List<BlocProvider>  providers(BuildContext context)=>[
