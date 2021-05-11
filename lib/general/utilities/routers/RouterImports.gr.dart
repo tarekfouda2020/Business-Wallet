@@ -5,6 +5,8 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
+    as _i18;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i12;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i8;
@@ -30,7 +32,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i11;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i18;
+import 'package:flutter/cupertino.dart' as _i19;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -116,6 +118,10 @@ class AppRouter extends _i1.RootStackRouter {
       final args = routeData.argsAs<ImageZoomRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i17.ImageZoom(images: args.images));
+    },
+    RegisterRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i18.Register());
     }
   };
 
@@ -136,12 +142,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SelectUserRoute.name, path: '/select-user'),
         _i1.RouteConfig(ConfirmPasswordRoute.name, path: '/confirm-password'),
         _i1.RouteConfig(ChangePasswordRoute.name, path: '/change-password'),
-        _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom')
+        _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom'),
+        _i1.RouteConfig(RegisterRoute.name, path: '/Register')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i18.GlobalKey<_i18.NavigatorState> navigatorKey})
+  SplashRoute({required _i19.GlobalKey<_i19.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -151,7 +158,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i18.GlobalKey<_i18.NavigatorState> navigatorKey;
+  final _i19.GlobalKey<_i19.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -263,4 +270,10 @@ class ImageZoomRouteArgs {
   const ImageZoomRouteArgs({required this.images});
 
   final List<dynamic> images;
+}
+
+class RegisterRoute extends _i1.PageRouteInfo {
+  const RegisterRoute() : super(name, path: '/Register');
+
+  static const String name = 'RegisterRoute';
 }

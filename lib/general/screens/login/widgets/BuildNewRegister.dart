@@ -17,7 +17,7 @@ class BuildNewRegister extends StatelessWidget {
                 color: MyColors.grey,
               ),
               MyText(
-                title: "اضغط هنا",
+                title: "  اضغط هنا",
                 size: 12,
                 alien: TextAlign.center,
                 color: MyColors.primary,

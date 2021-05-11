@@ -23,6 +23,9 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: ChangePassword),
     AdaptiveRoute(page: ImageZoom),
 
+    // customer routes
+    AdaptiveRoute(page: Register)
+
   ],
 )
 class $AppRouter {}

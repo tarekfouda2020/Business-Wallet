@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart';

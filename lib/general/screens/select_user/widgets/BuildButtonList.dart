@@ -14,7 +14,7 @@ class BuildButtonList extends StatelessWidget {
           DefaultButton(
             title: "فرد",
             onTap: () => AutoRouter.of(context).push(WelcomePageRoute()),
-            margin: const EdgeInsets.symmetric(vertical: 20),
+            margin: const EdgeInsets.all(20),
             borderRadius: BorderRadius.circular(20),
             color: MyColors.white,
             textColor: MyColors.black,
@@ -22,7 +22,7 @@ class BuildButtonList extends StatelessWidget {
           DefaultButton(
             title: "منشأة تجارية",
             onTap: () => AutoRouter.of(context).push(WelcomePageRoute()),
-            margin: EdgeInsets.zero,
+            margin: EdgeInsets.symmetric(horizontal: 20),
             borderRadius: BorderRadius.circular(20),
             color: MyColors.white,
             borderColor: MyColors.white,
