@@ -12,7 +12,7 @@ class BuildChangeForm extends StatelessWidget {
       child: Column(
         children: [
           LabelTextField(
-            label: 'كلمة المرور القديمة',
+            hint: 'كلمة المرور القديمة',
             controller: changePasswordData.oldPassword,
             margin: const EdgeInsets.symmetric(vertical: 5),
             type: TextInputType.name,
@@ -21,7 +21,7 @@ class BuildChangeForm extends StatelessWidget {
             action: TextInputAction.next,
           ),
           LabelTextField(
-            label: 'كلمة المرور الجديدة',
+            hint: 'كلمة المرور الجديدة',
             controller: changePasswordData.newPassword,
             margin: const EdgeInsets.symmetric(vertical: 5),
             type: TextInputType.name,
@@ -30,7 +30,7 @@ class BuildChangeForm extends StatelessWidget {
             action: TextInputAction.next,
           ),
           LabelTextField(
-            label: 'تأكيد كلمة المرور الجديدة',
+            hint: 'تأكيد كلمة المرور الجديدة',
             controller: changePasswordData.confirmNewPassword,
             margin: const EdgeInsets.symmetric(vertical: 5),
             type: TextInputType.name,

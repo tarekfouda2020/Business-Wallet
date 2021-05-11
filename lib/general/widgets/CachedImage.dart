@@ -65,11 +65,11 @@ class CachedImage extends StatelessWidget{
             borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
             border: Border.all(color: borderColor??Colors.transparent,width: 1),
             shape: boxShape??BoxShape.rectangle,
-            image: DecorationImage(
-                image: AssetImage(Res.placeholder),
-                fit: BoxFit.contain,
-                colorFilter: ColorFilter.mode(Colors.black12, BlendMode.darken)
-            ),
+            // image: DecorationImage(
+            //     image: AssetImage(Res.placeholder),
+            //     fit: BoxFit.contain,
+            //     colorFilter: ColorFilter.mode(Colors.black12, BlendMode.darken)
+            // ),
             color: bgColor??Colors.transparent
         ),
         child: SpinKitFadingCircle(
@@ -85,10 +85,10 @@ class CachedImage extends StatelessWidget{
             borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
             border: Border.all(color: borderColor??Colors.transparent,width: 1),
             shape: boxShape??BoxShape.rectangle,
-            image: DecorationImage(
-              image: AssetImage(Res.placeholder),
-              fit: BoxFit.contain,
-            )
+            // image: DecorationImage(
+            //   image: AssetImage(Res.placeholder),
+            //   fit: BoxFit.contain,
+            // )
         ),
       ),
     );

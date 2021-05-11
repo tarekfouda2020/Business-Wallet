@@ -19,6 +19,6 @@ class CustomInputTextStyle extends TextStyle{
 
   @override
   // TODO: implement color
-  Color get color => MyColors.black;
+  Color get color => MyColors.white;
 
 }

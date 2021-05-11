@@ -22,7 +22,7 @@ class DefaultButton extends StatelessWidget{
     Color border=color??MyColors.primary;
     return Container(
         width: width?? MediaQuery.of(context).size.width,
-        height: 45,
+        height: 50,
       margin: margin?? EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: ElevatedButton(
         onPressed: onTap,

@@ -24,13 +24,13 @@ class MyText extends StatelessWidget {
 //      overflow: TextOverflow.ellipsis,
       style: context.read<LangCubit>().state.locale.languageCode=="ar"?
       GoogleFonts.cairo(
-          color: color??Colors.black,
+          color: color??Colors.white,
           fontSize: size??16,
           decoration: decoration??TextDecoration.none,
           fontWeight: fontWeight
       ):
       GoogleFonts.roboto(
-          color: color??Colors.black,
+          color: color??Colors.white,
           fontSize: size??16,
           decoration: decoration??TextDecoration.none,
           fontWeight: fontWeight

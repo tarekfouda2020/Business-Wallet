@@ -1,6 +1,6 @@
-part of 'ForgetPasswordImports.dart';
+part of 'ForgetPassEmailImports.dart';
 
-class ForgerPasswordData {
+class ForgetPassEmailData {
   final GlobalKey<ScaffoldState> scaffold = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<CustomButtonState> btnKey =

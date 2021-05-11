@@ -7,7 +7,7 @@ import 'CustomInputTextStyle.dart';
 
 class LabelTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String label;
+  final String hint;
   final EdgeInsets? margin;
   final bool isPassword;
   final TextInputType? type;
@@ -17,15 +17,15 @@ class LabelTextField extends StatefulWidget {
   final TextInputAction? action;
 
   LabelTextField(
-      {required this.label,
-        required this.controller,
-        this.onChange,
-        this.margin,
-        this.isPassword = false,
-        this.action,
-        this.onSubmit,
-        this.type,
-        required this.validate});
+      {required this.hint,
+      required this.controller,
+      this.onChange,
+      this.margin,
+      this.isPassword = false,
+      this.action,
+      this.onSubmit,
+      this.type,
+      required this.validate});
 
   @override
   _LabelTextFieldState createState() => _LabelTextFieldState();
@@ -54,7 +54,7 @@ class _LabelTextFieldState extends State<LabelTextField> {
           textInputAction: widget.action ?? TextInputAction.next,
           validator: (value) => widget.validate(value),
           style: CustomInputTextStyle(lang: lang),
-          decoration: CustomInputDecoration(lang: lang,label: widget.label),
+          decoration: CustomInputDecoration(lang: lang, hint: widget.hint),
         ),
       ),
     );

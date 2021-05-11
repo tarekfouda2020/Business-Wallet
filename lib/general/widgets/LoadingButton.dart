@@ -5,9 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'MyText.dart';
 
-
-class LoadingButton extends StatelessWidget{
-
+class LoadingButton extends StatelessWidget {
   final GlobalKey<CustomButtonState> btnKey;
   final String title;
   final Function() onTap;
@@ -18,42 +16,49 @@ class LoadingButton extends StatelessWidget{
   final EdgeInsets? margin;
   final double? width;
 
-  LoadingButton({required this.title,required this.onTap,
-    this.color,this.textColor,this.borderRadius,this.margin,this.borderColor,this.width,required this.btnKey});
+  LoadingButton(
+      {required this.title,
+      required this.onTap,
+      this.color,
+      this.textColor,
+      this.borderRadius,
+      this.margin,
+      this.borderColor,
+      this.width,
+      required this.btnKey});
 
   @override
   Widget build(BuildContext context) {
-    Color border=color??MyColors.primary;
+    Color border = color ?? MyColors.primary;
     return Container(
-      margin: margin?? const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin:
+          margin ?? const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Column(
         children: [
           CustomButtonAnimation(
             key: btnKey,
             onTap: onTap,
-            width: width?? MediaQuery.of(context).size.width,
+            width: width ?? MediaQuery.of(context).size.width,
             minWidth: 45,
-            height: 45,
-            color: color??MyColors.primary,
-            borderRadius: borderRadius?? 10,
-            borderSide: BorderSide(color: borderColor??border,width: 1),
+            height: 50,
+            color: color ?? MyColors.primary,
+            borderRadius: borderRadius ?? 10,
+            borderSide: BorderSide(color: borderColor ?? border, width: 1),
             child: MyText(
               title: "$title",
               size: 11,
-              color: textColor??MyColors.white,
+              color: textColor ?? MyColors.white,
             ),
             loader: Container(
               padding: EdgeInsets.all(10),
               child: SpinKitRotatingCircle(
                 color: Colors.white,
-                size: 20 ,
+                size: 20,
               ),
             ),
-
           ),
         ],
       ),
     );
   }
-
 }

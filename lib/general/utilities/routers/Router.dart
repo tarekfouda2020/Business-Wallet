@@ -7,6 +7,7 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Splash, initial: true,),
     CustomRoute(page: Login,),
     AdaptiveRoute(page: ForgetPassword),
+    AdaptiveRoute(page: ForgetPasswordEmail),
     AdaptiveRoute(page: ActiveAccount),
     AdaptiveRoute(page: ResetPassword),
     AdaptiveRoute(page: SelectLang),

@@ -12,7 +12,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return AuthScaffold(
       child: GestureDetector(
-        onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           physics: BouncingScrollPhysics(
@@ -25,7 +25,6 @@ class _LoginState extends State<Login> {
             BuildForgetText(),
             BuildLoginButton(loginData: loginData),
             BuildNewRegister(),
-            BuildRegisterButton(),
           ],
         ),
       ),

@@ -7,8 +7,8 @@ import 'CustomInputTextStyle.dart';
 
 class InkWellTextField extends StatelessWidget {
   final TextEditingController controller;
-  final String label;
   final EdgeInsets? margin;
+  final String hint;
   final TextInputType? type;
   final Widget? icon;
   final Function() onTab;
@@ -17,15 +17,15 @@ class InkWellTextField extends StatelessWidget {
   final Function(String? value) validate;
 
   InkWellTextField(
-      {required this.label,
-        required this.controller,
-        this.margin,
-        this.type,
-        required this.onTab,
-        this.icon,
-        this.prefix,
-        this.borderColor,
-        required this.validate});
+      {required this.controller,
+      this.margin,
+      required this.hint,
+      this.type,
+      required this.onTab,
+      this.icon,
+      this.prefix,
+      this.borderColor,
+      required this.validate});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,8 @@ class InkWellTextField extends StatelessWidget {
               enabled: true,
               validator: (value) => validate(value),
               style: CustomInputTextStyle(lang: lang),
-              decoration: CustomInputDecoration(lang: lang,label: label,prefixIcon: prefix,suffixIcon: icon),
+              decoration: CustomInputDecoration(
+                  lang: lang, prefixIcon: prefix, suffixIcon: icon, hint: hint),
             ),
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:base_flutter/general/screens/change_password/ChangePasswordImpor
 import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart';
 import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart';
 import 'package:base_flutter/general/screens/forget_password/ForgetPasswordImports.dart';
+import 'package:base_flutter/general/screens/forget_password_email/ForgetPassEmailImports.dart';
 import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart';
 import 'package:base_flutter/general/screens/login/LoginImports.dart';
 import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports.dart';

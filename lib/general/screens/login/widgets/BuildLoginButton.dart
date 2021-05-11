@@ -9,10 +9,10 @@ class BuildLoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoadingButton(
       btnKey: loginData.btnKey,
-      title: tr(context,"continue"),
+      title: tr(context, "login"),
       onTap: () => loginData.userLogin(context),
-      color: MyColors.primary,
-      textColor: MyColors.white,
+      color: MyColors.white,
+      textColor: MyColors.black,
       margin: const EdgeInsets.symmetric(vertical: 10),
     );
   }

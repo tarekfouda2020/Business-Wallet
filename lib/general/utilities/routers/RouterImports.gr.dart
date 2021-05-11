@@ -5,28 +5,30 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i10;
+import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i11;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
-    as _i6;
+    as _i7;
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart'
-    as _i14;
+    as _i15;
 import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart'
-    as _i13;
+    as _i14;
 import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart'
-    as _i11;
+    as _i12;
 import 'package:base_flutter/general/screens/forget_password/ForgetPasswordImports.dart'
     as _i5;
-import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i15;
+import 'package:base_flutter/general/screens/forget_password_email/ForgetPassEmailImports.dart'
+    as _i6;
+import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i16;
 import 'package:base_flutter/general/screens/login/LoginImports.dart' as _i4;
 import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports.dart'
-    as _i7;
-import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
     as _i8;
+import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
+    as _i9;
 import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart'
-    as _i12;
+    as _i13;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
-import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i9;
-import 'package:flutter/cupertino.dart' as _i16;
+import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i10;
+import 'package:flutter/cupertino.dart' as _i17;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -52,36 +54,40 @@ class AppRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i5.ForgetPassword());
     },
+    ForgetPasswordEmailRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i6.ForgetPasswordEmail());
+    },
     ActiveAccountRoute.name: (routeData) {
       final args = routeData.argsAs<ActiveAccountRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i6.ActiveAccount(userId: args.userId));
+          routeData: routeData, child: _i7.ActiveAccount(userId: args.userId));
     },
     ResetPasswordRoute.name: (routeData) {
       final args = routeData.argsAs<ResetPasswordRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i7.ResetPassword(userId: args.userId));
+          routeData: routeData, child: _i8.ResetPassword(userId: args.userId));
     },
     SelectLangRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i8.SelectLang());
+          routeData: routeData, child: _i9.SelectLang());
     },
     TermsRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i9.Terms());
+          routeData: routeData, child: _i10.Terms());
     },
     AboutRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i10.About());
+          routeData: routeData, child: _i11.About());
     },
     ContactUsRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i11.ContactUs());
+          routeData: routeData, child: _i12.ContactUs());
     },
     SelectUserRoute.name: (routeData) {
       return _i1.CustomPage<dynamic>(
           routeData: routeData,
-          child: _i12.SelectUser(),
+          child: _i13.SelectUser(),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           durationInMilliseconds: 1500,
           opaque: true,
@@ -89,16 +95,16 @@ class AppRouter extends _i1.RootStackRouter {
     },
     ConfirmPasswordRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i13.ConfirmPassword());
+          routeData: routeData, child: _i14.ConfirmPassword());
     },
     ChangePasswordRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i14.ChangePassword());
+          routeData: routeData, child: _i15.ChangePassword());
     },
     ImageZoomRoute.name: (routeData) {
       final args = routeData.argsAs<ImageZoomRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i15.ImageZoom(images: args.images));
+          routeData: routeData, child: _i16.ImageZoom(images: args.images));
     }
   };
 
@@ -107,6 +113,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SplashRoute.name, path: '/'),
         _i1.RouteConfig(LoginRoute.name, path: '/Login'),
         _i1.RouteConfig(ForgetPasswordRoute.name, path: '/forget-password'),
+        _i1.RouteConfig(ForgetPasswordEmailRoute.name,
+            path: '/forget-password-email'),
         _i1.RouteConfig(ActiveAccountRoute.name, path: '/active-account'),
         _i1.RouteConfig(ResetPasswordRoute.name, path: '/reset-password'),
         _i1.RouteConfig(SelectLangRoute.name, path: '/select-lang'),
@@ -121,7 +129,7 @@ class AppRouter extends _i1.RootStackRouter {
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i16.GlobalKey<_i16.NavigatorState> navigatorKey})
+  SplashRoute({required _i17.GlobalKey<_i17.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -131,7 +139,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i16.GlobalKey<_i16.NavigatorState> navigatorKey;
+  final _i17.GlobalKey<_i17.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -144,6 +152,13 @@ class ForgetPasswordRoute extends _i1.PageRouteInfo {
   const ForgetPasswordRoute() : super(name, path: '/forget-password');
 
   static const String name = 'ForgetPasswordRoute';
+}
+
+class ForgetPasswordEmailRoute extends _i1.PageRouteInfo {
+  const ForgetPasswordEmailRoute()
+      : super(name, path: '/forget-password-email');
+
+  static const String name = 'ForgetPasswordEmailRoute';
 }
 
 class ActiveAccountRoute extends _i1.PageRouteInfo<ActiveAccountRouteArgs> {

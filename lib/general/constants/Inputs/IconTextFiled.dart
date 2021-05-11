@@ -7,7 +7,7 @@ import 'CustomInputTextStyle.dart';
 
 class IconTextFiled extends StatelessWidget {
   final TextEditingController controller;
-  final String label;
+  final String hint;
   final EdgeInsets? margin;
   final TextInputType? type;
   final Widget? suffixIcon;
@@ -21,19 +21,19 @@ class IconTextFiled extends StatelessWidget {
   final Function(String)? onChange;
 
   IconTextFiled(
-      {required this.label,
-        required this.controller,
-        this.margin,
-        this.type,
-        this.action,
-        this.submit,
-        this.prefixText,
-        this.suffixIcon,
-        this.isPassword = false,
-        this.prefixIcon,
-        this.filledColor,
-        required this.validate,
-        this.onChange});
+      {required this.hint,
+      required this.controller,
+      this.margin,
+      this.type,
+      this.action,
+      this.submit,
+      this.prefixText,
+      this.suffixIcon,
+      this.isPassword = false,
+      this.prefixIcon,
+      this.filledColor,
+      required this.validate,
+      this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,12 @@ class IconTextFiled extends StatelessWidget {
           onChanged: onChange,
           validator: (value) => validate(value),
           style: CustomInputTextStyle(lang: lang),
-          decoration: CustomInputDecoration(lang: lang,label: label,prefixIcon: prefixIcon,suffixIcon: suffixIcon,),
+          decoration: CustomInputDecoration(
+            lang: lang,
+            hint: hint,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+          ),
         ),
       ),
     );

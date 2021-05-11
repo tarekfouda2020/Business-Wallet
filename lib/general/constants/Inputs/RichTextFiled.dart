@@ -10,7 +10,8 @@ import 'CustomInputTextStyle.dart';
 
 class RichTextFiled extends StatelessWidget {
   final TextEditingController controller;
-  final String label;
+  final String hint;
+
   final EdgeInsets margin;
   final TextInputType type;
   final max;
@@ -21,16 +22,16 @@ class RichTextFiled extends StatelessWidget {
   final Function(String value)? submit;
 
   RichTextFiled(
-      { required this.label,
-        required this.controller,
-        this.margin = const EdgeInsets.all(0),
-        this.type = TextInputType.text,
-        required this.max,
-        required this.validate,
-        this.fillColor,
-        this.readOnly = false,
-        this.action,
-        this.submit});
+      {required this.hint,
+      required this.controller,
+      this.margin = const EdgeInsets.all(0),
+      this.type = TextInputType.text,
+      required this.max,
+      required this.validate,
+      this.fillColor,
+      this.readOnly = false,
+      this.action,
+      this.submit});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class RichTextFiled extends StatelessWidget {
         readOnly: readOnly,
         validator: (value) => validate(value),
         style: CustomInputTextStyle(lang: lang),
-        decoration: CustomInputDecoration(lang: lang,label: label),
+        decoration: CustomInputDecoration(lang: lang,  hint: hint),
       ),
     );
   }

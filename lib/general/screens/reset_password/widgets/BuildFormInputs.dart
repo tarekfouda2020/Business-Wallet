@@ -14,7 +14,7 @@ class BuildFormInputs extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           LabelTextField(
-            label: tr(context,"code"),
+            hint: tr(context,"code"),
             controller: resetPasswordData.code,
             action: TextInputAction.next,
             type: TextInputType.number,
@@ -22,7 +22,7 @@ class BuildFormInputs extends StatelessWidget {
             margin: const EdgeInsets.symmetric( vertical: 10),
           ),
           LabelTextField(
-            label: tr(context,"newPass"),
+            hint: tr(context,"newPass"),
             controller: resetPasswordData.newPassword,
             action: TextInputAction.next,
             type: TextInputType.text,
@@ -31,7 +31,7 @@ class BuildFormInputs extends StatelessWidget {
             margin: const EdgeInsets.symmetric( vertical: 10),
           ),
           LabelTextField(
-            label: tr(context,"confirmPassword"),
+            hint: tr(context,"confirmPassword"),
             controller: resetPasswordData.confirmNewPassword,
             action: TextInputAction.done,
             type: TextInputType.text,

@@ -13,41 +13,41 @@ class CustomInputDecoration extends InputDecoration {
   final double? borderRaduis;
   final EdgeInsets? padding;
 
-  CustomInputDecoration({
-    required this.lang,
-    this.hint,
-    this.label,
-    this.prefixIcon,
-    this.suffixIcon,
-    this.enableColor,
-    this.focusColor,
-    this.borderRaduis,
-    this.padding
-  }) : super();
+  CustomInputDecoration(
+      {required this.lang,
+      this.hint,
+      this.label,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.enableColor,
+      this.focusColor,
+      this.borderRaduis,
+      this.padding})
+      : super();
 
   @override
   // TODO: implement enabledBorder
   InputBorder get enabledBorder => OutlineInputBorder(
-    borderSide: BorderSide(color: enableColor ?? MyColors.white, width: .5),
-    borderRadius: BorderRadius.circular(borderRaduis??10),
-  );
+        borderSide: BorderSide(color: enableColor ?? MyColors.black, width: 2),
+        borderRadius: BorderRadius.circular(borderRaduis ?? 30),
+      );
 
   @override
   // TODO: implement focusedBorder
   InputBorder get focusedBorder => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRaduis??10),
-      borderSide: BorderSide(color: focusColor ?? MyColors.white, width: 1));
+      borderRadius: BorderRadius.circular(borderRaduis ?? 30),
+      borderSide: BorderSide(color: focusColor ?? MyColors.primary, width: 2));
 
   @override
   // TODO: implement errorBorder
   InputBorder get errorBorder => OutlineInputBorder(
-      borderSide: BorderSide(color: enableColor ?? MyColors.white, width: .5),
-      borderRadius: BorderRadius.circular(borderRaduis??10));
+      borderSide: BorderSide(color: enableColor ?? MyColors.white, width: 2),
+      borderRadius: BorderRadius.circular(borderRaduis ?? 30));
 
   @override
   // TODO: implement focusedErrorBorder
   InputBorder get focusedErrorBorder => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRaduis??10),
+      borderRadius: BorderRadius.circular(borderRaduis ?? 30),
       borderSide: BorderSide(color: Colors.red, width: 2));
 
   @override
@@ -76,10 +76,11 @@ class CustomInputDecoration extends InputDecoration {
       ? GoogleFonts.roboto(fontSize: 16)
       : GoogleFonts.cairo(fontSize: 14);
 
+
   @override
   // TODO: implement contentPadding
   EdgeInsetsGeometry get contentPadding =>
-      padding?? EdgeInsets.symmetric(horizontal: 10, vertical: 18);
+      padding ?? EdgeInsets.symmetric(horizontal: 10, vertical: 14);
 
   @override
   // TODO: implement filled
@@ -87,7 +88,7 @@ class CustomInputDecoration extends InputDecoration {
 
   @override
   // TODO: implement fillColor
-  Color get fillColor => MyColors.white;
+  Color get fillColor => MyColors.black;
 
   @override
   // TODO: implement alignLabelWithHint
