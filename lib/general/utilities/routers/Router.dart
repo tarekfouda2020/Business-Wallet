@@ -6,6 +6,10 @@ part of 'RouterImports.dart';
     //general routes
     AdaptiveRoute(page: Splash, initial: true,),
     CustomRoute(page: Login,),
+    CustomRoute(
+        page: WelcomePage,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1500),
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ForgetPasswordEmail),
     AdaptiveRoute(page: ActiveAccount),

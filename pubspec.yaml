@@ -102,6 +102,8 @@ flutter:
     - assets/images/on1.png
     - assets/images/on2.png
     - assets/images/on3.png
+    - assets/images/onProv1.png
+    - assets/images/onProv2.png
     - assets/images/onUser4.png
     - assets/images/vedioImg.png
     - assets/lang/ar.json

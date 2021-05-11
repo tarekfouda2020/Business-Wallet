@@ -7,6 +7,8 @@ class Res {
   static const String on1 = "assets/images/on1.png";
   static const String on2 = "assets/images/on2.png";
   static const String on3 = "assets/images/on3.png";
+  static const String onProv1 = "assets/images/onProv1.png";
+  static const String onProv2 = "assets/images/onProv2.png";
   static const String onUser4 = "assets/images/onUser4.png";
   static const String vedioImg = "assets/images/vedioImg.png";
 }

@@ -4,7 +4,9 @@ class Utils {
   static Future<void> manipulateSplashData(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // await GeneralRepository(context).getHomeConstData();
-
+    precacheImage(AssetImage(Res.on1), context);
+    precacheImage(AssetImage(Res.on2), context);
+    precacheImage(AssetImage(Res.on3), context);
     var strUser = prefs.get("user");
     if (strUser != null) {
       UserModel data = UserModel.fromJson(json.decode("$strUser"));
