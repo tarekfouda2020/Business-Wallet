@@ -1,4 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/favorites/FavoritesImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/followers/FollowersImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/invitations/InvitationsImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
