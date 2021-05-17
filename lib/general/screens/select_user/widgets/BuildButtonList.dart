@@ -13,7 +13,7 @@ class BuildButtonList extends StatelessWidget {
           ),
           DefaultButton(
             title: "فرد",
-            onTap: () => AutoRouter.of(context).push(WelcomePageRoute()),
+            onTap: () => AutoRouter.of(context).push(CustomerWelcomeRoute()),
             margin: const EdgeInsets.all(20),
             borderRadius: BorderRadius.circular(20),
             color: MyColors.white,

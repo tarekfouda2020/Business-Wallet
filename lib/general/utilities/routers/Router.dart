@@ -10,6 +10,10 @@ part of 'RouterImports.dart';
         page: WelcomePage,
         transitionsBuilder: TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500),
+    CustomRoute(
+        page: CustomerWelcome,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1500),
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ForgetPasswordEmail),
     AdaptiveRoute(page: ActiveAccount),

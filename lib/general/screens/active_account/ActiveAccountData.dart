@@ -17,6 +17,7 @@ class ActiveAccountData {
       // if(result){
       //   ExtendedNavigator.of(context).popUntilPath(Routes.login);
       // }
+      AutoRouter.of(context).popUntilRouteWithName(LoginRoute.name);
     }
   }
 

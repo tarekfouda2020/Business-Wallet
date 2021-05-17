@@ -13,7 +13,7 @@ class MyText extends StatelessWidget {
   final TextOverflow? overflow;
   final FontWeight? fontWeight;
 
-  MyText({required this.title,required this.color,required this.size, this.alien,this.decoration,this.overflow,this.fontWeight=FontWeight.bold});
+  MyText({required this.title,this.color,this.size, this.alien,this.decoration,this.overflow,this.fontWeight=FontWeight.bold});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,13 @@ class MyText extends StatelessWidget {
       style: context.read<LangCubit>().state.locale.languageCode=="ar"?
       GoogleFonts.cairo(
           color: color??Colors.white,
-          fontSize: size??16,
+          fontSize: size??12,
           decoration: decoration??TextDecoration.none,
           fontWeight: fontWeight
       ):
       GoogleFonts.roboto(
           color: color??Colors.white,
-          fontSize: size??16,
+          fontSize: size??12,
           decoration: decoration??TextDecoration.none,
           fontWeight: fontWeight
       ),

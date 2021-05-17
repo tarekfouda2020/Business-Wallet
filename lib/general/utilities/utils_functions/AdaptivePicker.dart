@@ -48,7 +48,8 @@ class AdaptivePicker {
     );
   }
 
-  static Widget cupertinoDatePicker(BuildContext context,Function(DateTime? date) onConfirm,String title,
+  static Widget cupertinoDatePicker(BuildContext context,
+      Function(DateTime? date) onConfirm,String title,
       {DateTime? initial, DateTime? minDate}) {
     DateTime _date=DateTime.now();
     return Column(

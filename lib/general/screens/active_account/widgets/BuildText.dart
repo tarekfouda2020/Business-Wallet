@@ -9,15 +9,15 @@ class BuildText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
-            title:tr(context,"activeAccount"),
-            size: 18,
-            color: MyColors.primary,
+            // title:tr(context,"activeAccount"),
+            title: "كود التفعيل",
+            color: MyColors.white,
           ),
-          MyText(
-            title: tr(context,"codeSendToPhone"),
-            size: 13,
-            color: MyColors.black.withOpacity(.6),
-          ),
+          // MyText(
+          //   title: tr(context,"codeSendToPhone"),
+          //   // size: 13,
+          //   color: MyColors.white,
+          // ),
         ],
       ),
     );
