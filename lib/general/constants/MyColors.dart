@@ -10,7 +10,7 @@ class MyColors{
   static Color gold=Color(0xffe4aa69);
   static Color grey=Colors.grey;
   static Color greyWhite=Colors.grey.withOpacity(.2);
-  static Color black=Color(0xff191919);
+  static Color black=Color(0xff2d2d2d).withOpacity(.9);
   static Color blackOpacity=Colors.black54;
   static Color white=Colors.white;
   static Color notifyColor=Colors.black54;

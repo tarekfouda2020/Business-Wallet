@@ -5,6 +5,10 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
+    as _i27;
+import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
+    as _i26;
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/FavoritesImports.dart'
     as _i21;
@@ -45,7 +49,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i26;
+import 'package:flutter/cupertino.dart' as _i28;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -168,6 +172,14 @@ class AppRouter extends _i1.RootStackRouter {
     ProfileRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i25.Profile());
+    },
+    CompanyRegisterRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i26.CompanyRegister());
+    },
+    CompanyHomeRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i27.CompanyHome());
     }
   };
 
@@ -196,12 +208,14 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(InvitationsRoute.name, path: '/Invitations'),
         _i1.RouteConfig(FollowersRoute.name, path: '/Followers'),
         _i1.RouteConfig(MainPageRoute.name, path: '/main-page'),
-        _i1.RouteConfig(ProfileRoute.name, path: '/Profile')
+        _i1.RouteConfig(ProfileRoute.name, path: '/Profile'),
+        _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
+        _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i26.GlobalKey<_i26.NavigatorState> navigatorKey})
+  SplashRoute({required _i28.GlobalKey<_i28.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -211,7 +225,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i26.GlobalKey<_i26.NavigatorState> navigatorKey;
+  final _i28.GlobalKey<_i28.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -371,4 +385,16 @@ class ProfileRoute extends _i1.PageRouteInfo {
   const ProfileRoute() : super(name, path: '/Profile');
 
   static const String name = 'ProfileRoute';
+}
+
+class CompanyRegisterRoute extends _i1.PageRouteInfo {
+  const CompanyRegisterRoute() : super(name, path: '/company-register');
+
+  static const String name = 'CompanyRegisterRoute';
+}
+
+class CompanyHomeRoute extends _i1.PageRouteInfo {
+  const CompanyHomeRoute() : super(name, path: '/company-home');
+
+  static const String name = 'CompanyHomeRoute';
 }

@@ -64,7 +64,7 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   flutter_html: ^1.3.0
   pin_code_fields: ^7.0.0
-
+  dots_indicator: ^1.2.0
 
 
 
@@ -104,6 +104,7 @@ flutter:
     - assets/images/on3.png
     - assets/images/onProv1.png
     - assets/images/onProv2.png
+    - assets/images/onProv3.png
     - assets/images/onUser4.png
     - assets/images/vedioImg.png
     - assets/lang/ar.json

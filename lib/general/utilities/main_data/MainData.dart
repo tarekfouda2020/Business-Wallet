@@ -14,6 +14,7 @@ class MainData {
     textTheme: TextTheme(
       subtitle1:GoogleFonts.cairo(fontSize: 14,),
     ),
+    brightness: Brightness.dark,
     pageTransitionsTheme: PageTransitionsTheme(builders: {
       TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),

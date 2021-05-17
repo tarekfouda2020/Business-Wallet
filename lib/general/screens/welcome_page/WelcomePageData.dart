@@ -3,7 +3,6 @@ part of 'WelcomePageImports.dart';
 class WelcomePageData {
   GenericCubit<int> pagesCubit = new GenericCubit(0);
   List<Widget> data = [];
-  late PageController pgController;
 
   initPagesData() {
     data = [
@@ -45,10 +44,18 @@ class WelcomePageData {
         model: WelcomeModel(
             desc: "introModel.introThree",
             image: Res.onProv2,
-            last: true,
             index: 4,
             pageCubit: pagesCubit),
-      )
+      ),
+      BuildPageView(
+        key: Key("6"),
+        model: WelcomeModel(
+            desc: "introModel.introThree",
+            image: Res.onProv3,
+            last: true,
+            index: 5,
+            pageCubit: pagesCubit),
+      ),
     ];
   }
 }

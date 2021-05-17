@@ -38,7 +38,7 @@ class BuildFormInputs extends StatelessWidget {
               validate: (value) => value!.validateEmpty(context),
               isPassword: true,
               action: TextInputAction.done,
-              suffixIcon: Icon(Icons.remove_red_eye, color: MyColors.white),
+              suffixIcon: Icon(Icons.remove_red_eye),
             ),
           ],
         ),

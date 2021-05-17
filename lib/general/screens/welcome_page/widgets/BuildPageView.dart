@@ -19,15 +19,19 @@ class BuildPageView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spacer(
-            flex: 2,
+            flex: 1,
           ),
           Image.asset(
             model.image!,
             fit: BoxFit.contain,
-            height: 330,
+            height: 350,
           ),
           Spacer(
-            flex: 3,
+            flex: 2,
+          ),
+          IndicatorDots(pagesCubit: model.pageCubit),
+          SizedBox(
+            height: 30,
           ),
           MyText(
             title: model.desc!,
@@ -37,17 +41,27 @@ class BuildPageView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(30),
-            child: FloatingActionButton(
-              onPressed: () => model.last
-                  ? AutoRouter.of(context).push(LoginRoute())
-                  : model.pageCubit!.onUpdateData(model.index! + 1),
-              backgroundColor: MyColors.primary,
-              child: Icon(
-                Icons.arrow_forward_ios_outlined,
-                size: 25,
-                color: MyColors.secondary,
-              ),
-            ),
+            child: model.last
+                ? DefaultButton(
+                    title: "تسجيل",
+                    onTap: () =>
+                        AutoRouter.of(context).push(CompanyRegisterRoute()),
+                    margin: EdgeInsets.zero,
+                    borderRadius: BorderRadius.circular(30),
+                    color: MyColors.primary,
+                    textColor: MyColors.black,
+                  )
+                : FloatingActionButton(
+                    onPressed: () => model.last
+                        ? AutoRouter.of(context).push(LoginRoute())
+                        : model.pageCubit!.onUpdateData(model.index! + 1),
+                    backgroundColor: MyColors.primary,
+                    child: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      size: 25,
+                      color: MyColors.secondary,
+                    ),
+                  ),
           )
         ],
       ),

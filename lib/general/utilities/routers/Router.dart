@@ -35,6 +35,9 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Followers),
     AdaptiveRoute(page: MainPage),
     AdaptiveRoute(page: Profile),
+    //company routes
+    AdaptiveRoute(page: CompanyRegister),
+    AdaptiveRoute(page: CompanyHome)
 
   ],
 )

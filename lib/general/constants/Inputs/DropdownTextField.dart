@@ -100,7 +100,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
         dropdownSearchDecoration: CustomInputDecoration(
             lang: lang,
             hint: widget.hint,
-            enableColor: Colors.black,
+            enableColor: Colors.transparent,
             focusColor: MyColors.primary,
             borderRaduis: 2,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 17)
