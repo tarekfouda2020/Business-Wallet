@@ -18,10 +18,10 @@ class BuildFloatingButton extends StatelessWidget {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                  color: MyColors.blackOpacity,
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: Offset(0, 2)
+                  color: MyColors.darken,
+                  spreadRadius: 3,
+                  blurRadius: 10,
+                  // offset: Offset(0, 2)
               )
             ]
         ),

@@ -15,7 +15,7 @@ class LoginData {
       btnKey.currentState!.animateForward();
       String phoneEn = Utils.convertDigitsToLatin(email.text);
       String passEn = Utils.convertDigitsToLatin(password.text);
-      AutoRouter.of(context).push(HomeRoute());
+      AutoRouter.of(context).push(HomeRoute(index: 2));
       // await GeneralRepository(context).setUserLogin(phoneEn, passEn);
       btnKey.currentState!.animateReverse();
     }

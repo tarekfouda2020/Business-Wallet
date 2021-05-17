@@ -150,8 +150,9 @@ class AppRouter extends _i1.RootStackRouter {
           routeData: routeData, child: _i19.Register());
     },
     HomeRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i20.Home());
+          routeData: routeData, child: _i20.Home(args.index));
     },
     FavoritesRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
@@ -351,10 +352,17 @@ class RegisterRoute extends _i1.PageRouteInfo {
   static const String name = 'RegisterRoute';
 }
 
-class HomeRoute extends _i1.PageRouteInfo {
-  const HomeRoute() : super(name, path: '/Home');
+class HomeRoute extends _i1.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({required int index})
+      : super(name, path: '/Home', args: HomeRouteArgs(index: index));
 
   static const String name = 'HomeRoute';
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({required this.index});
+
+  final int index;
 }
 
 class FavoritesRoute extends _i1.PageRouteInfo {
