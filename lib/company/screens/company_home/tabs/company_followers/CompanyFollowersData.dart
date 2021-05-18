@@ -1,4 +1,4 @@
 part of 'CompanyFollowersImports.dart';
-class CompanyFollowersData{
+class CompanyFollowersData {
 
 }

@@ -40,8 +40,8 @@ class BuildTopHeader extends StatelessWidget {
             ),
           ),
           Container(
-            height: 40,
-            width: 90,
+            height: 50,
+            width: 100,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(Res.logo),

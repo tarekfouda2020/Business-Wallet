@@ -9,4 +9,3 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 part 'BuildAppBar.dart';
 part 'BuildMenuView.dart';
 part 'BuildSelectedTabView.dart';
-part 'BuildMainItem.dart';

@@ -1,4 +1,8 @@
-part of 'FavMenuWidgetsImports.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/widgets/CachedImage.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BuildFavItem extends StatelessWidget {
   @override
@@ -7,26 +11,23 @@ class BuildFavItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: CachedImage(
         url:
-        "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
+            "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
         height: 200,
         alignment: Alignment.bottomCenter,
         borderRadius: BorderRadius.circular(20),
         fit: BoxFit.fill,
         child: Container(
           height: 70,
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.zero,
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(20),
               bottomLeft: Radius.circular(20),
             ),
-            color: MyColors.darken,
-
+            color: MyColors.black,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,6 +70,7 @@ class BuildFavItem extends StatelessWidget {
                   ),
                 ],
               ),
+
             ],
           ),
         ),

@@ -15,7 +15,7 @@ class _CompanyHomeState extends State<CompanyHome>
 
   @override
   void initState() {
-    companyHomeData.pageController = new TabController(length: 5, vsync: this);
+    companyHomeData.initController(this, widget.index);
     super.initState();
   }
 

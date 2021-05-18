@@ -6,11 +6,26 @@ class CompanyInvitation extends StatefulWidget {
 }
 
 class _CompanyInvitationState extends State<CompanyInvitation> {
+  final CompanyInvitationData companyInvitationData =
+      new CompanyInvitationData();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: MyColors.primary,
-
+    return DefaultTabController(
+      length: 2,
+      initialIndex: 0,
+      child: Scaffold(
+        backgroundColor: MyColors.darken,
+        appBar: BuildAppBar(
+          companyInvitationData: companyInvitationData,
+        ),
+        body: TabBarView(
+          children: [
+            InvitationMenu(),
+            InvitationMenu(),
+          ],
+        ),
+      ),
     );
   }
 }

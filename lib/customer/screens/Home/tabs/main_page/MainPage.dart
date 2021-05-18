@@ -11,20 +11,21 @@ class _MainPageState extends State<MainPage> {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
-          search: BuildMainSearch(),
-          body: Column(
-            children: [
-              BuildChangeView(),
-              Flexible(
-                child: TabBarView(
-                  children: [
-                    BuildMainPageView(),
-                    BuildMainPageView(),
-                  ],
-                ),
+        search: BuildMainSearch(),
+        body: Column(
+          children: [
+            BuildChangeView(),
+            Flexible(
+              child: TabBarView(
+                children: [
+                  BuildMainPageView(),
+                  BuildMainPageView(),
+                ],
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

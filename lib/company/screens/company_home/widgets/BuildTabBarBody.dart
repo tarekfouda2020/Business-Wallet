@@ -23,9 +23,11 @@ class BuildTabBarBody extends StatelessWidget {
         indicator: BoxDecoration(
           color: MyColors.black,
         ),
-        onTap: companyHomeData.onChangePage,
+        // onTap: companyHomeData.onChangePage,
         unselectedLabelColor: Colors.grey,
         indicatorSize: TabBarIndicatorSize.tab,
+        controller: companyHomeData.pageController,
+
         labelPadding: EdgeInsets.symmetric(vertical: 10),
         labelStyle: context.read<LangCubit>().state.locale.languageCode != "en"
             ? GoogleFonts.cairo(fontSize: 13)

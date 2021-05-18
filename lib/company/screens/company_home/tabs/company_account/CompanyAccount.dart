@@ -6,10 +6,31 @@ class CompanyAccount extends StatefulWidget {
 }
 
 class _CompanyAccountState extends State<CompanyAccount> {
+  final CompanyAccountData companyAccountData = new CompanyAccountData();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: MyColors.black,
+    return Scaffold(
+      backgroundColor: MyColors.darken,
+      appBar: BuildAppBar(
+        companyAccountData: companyAccountData,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.only(bottom: 50),
+        children: [
+          BuildAccountDrop(
+            companyAccountData: companyAccountData,
+          ),
+          BuildPublicDrop(
+            companyAccountData: companyAccountData,
+          ),
+          BuildAccountItem(
+            title: "تواصل معنا",
+            iconData: Icons.phone_in_talk_outlined,
+          ),
+          BuildLogout()
+        ],
+      ),
     );
   }
 }
