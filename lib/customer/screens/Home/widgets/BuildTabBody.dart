@@ -33,7 +33,7 @@ class BuildTabBody extends StatelessWidget {
               Icons.favorite,
               size: 25,
             ),
-            text: tr(context, "main"), //"الرئيسية",
+            text: "مفضلتي"
           ),
           Tab(
               icon: Icon(
