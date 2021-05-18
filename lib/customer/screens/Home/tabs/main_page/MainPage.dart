@@ -12,6 +12,10 @@ class _MainPageState extends State<MainPage> {
       length: 2,
       child: HomeScaffold(
           search: BuildMainSearch(),
+          searchOnTap: () {
+            print("search");
+            AutoRouter.of(context).push(SearchRoute());
+          },
           body: Column(
             children: [
               BuildChangeView(),

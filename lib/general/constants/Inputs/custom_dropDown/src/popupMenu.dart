@@ -531,7 +531,7 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
 /// The positioning of the `initialValue` at the `position` is implemented by
 /// iterating over the `items` to find the first whose
 /// [CustomPopupMenuEntry.represents] method returns true for `initialValue`, and then
-/// summing the values of [CustomPopupMenuEntry.height] for all the preceding widgets
+/// summing the values of [CustomPopupMenuEntry.maxHeight] for all the preceding widgets
 /// in the list.
 ///
 /// The `elevation` argument specifies the z-coordinate at which to place the

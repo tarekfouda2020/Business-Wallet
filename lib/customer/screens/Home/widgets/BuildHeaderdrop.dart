@@ -48,7 +48,7 @@ class BuildHeaderDrop extends StatelessWidget {
           children: [
             MyText(
               title: title?? "",
-              size: 7,
+              size: 9,
               color: MyColors.white,
             ),
             SizedBox(

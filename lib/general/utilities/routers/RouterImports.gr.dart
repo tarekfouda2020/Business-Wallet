@@ -6,22 +6,16 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
-    as _i27;
-import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
-    as _i26;
-import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
-import 'package:base_flutter/customer/screens/Home/tabs/favorites/FavoritesImports.dart'
-    as _i21;
-import 'package:base_flutter/customer/screens/Home/tabs/followers/FollowersImports.dart'
-    as _i23;
-import 'package:base_flutter/customer/screens/Home/tabs/invitations/InvitationsImports.dart'
-    as _i22;
-import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart'
     as _i24;
+import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
+    as _i23;
+import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart'
-    as _i25;
+    as _i21;
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
     as _i19;
+import 'package:base_flutter/customer/screens/search/SearchImports.dart'
+    as _i22;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i13;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i9;
@@ -49,7 +43,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i28;
+import 'package:flutter/cupertino.dart' as _i25;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -154,34 +148,27 @@ class AppRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i20.Home(args.index));
     },
-    FavoritesRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i21.Favorites());
-    },
-    InvitationsRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i22.Invitations());
-    },
-    FollowersRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i23.Followers());
-    },
-    MainPageRoute.name: (routeData) {
-      return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i24.MainPage());
-    },
     ProfileRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i25.Profile());
+          routeData: routeData, child: _i21.Profile());
+    },
+    SearchRoute.name: (routeData) {
+      return _i1.CustomPage<dynamic>(
+          routeData: routeData,
+          child: _i22.Search(),
+          transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 50,
+          opaque: true,
+          barrierDismissible: false);
     },
     CompanyRegisterRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i26.CompanyRegister());
+          routeData: routeData, child: _i23.CompanyRegister());
     },
     CompanyHomeRoute.name: (routeData) {
       final args = routeData.argsAs<CompanyHomeRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i27.CompanyHome(args.index));
+          routeData: routeData, child: _i24.CompanyHome(args.index));
     }
   };
 
@@ -206,18 +193,15 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ImageZoomRoute.name, path: '/image-zoom'),
         _i1.RouteConfig(RegisterRoute.name, path: '/Register'),
         _i1.RouteConfig(HomeRoute.name, path: '/Home'),
-        _i1.RouteConfig(FavoritesRoute.name, path: '/Favorites'),
-        _i1.RouteConfig(InvitationsRoute.name, path: '/Invitations'),
-        _i1.RouteConfig(FollowersRoute.name, path: '/Followers'),
-        _i1.RouteConfig(MainPageRoute.name, path: '/main-page'),
         _i1.RouteConfig(ProfileRoute.name, path: '/Profile'),
+        _i1.RouteConfig(SearchRoute.name, path: '/Search'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
         _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i28.GlobalKey<_i28.NavigatorState> navigatorKey})
+  SplashRoute({required _i25.GlobalKey<_i25.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -227,7 +211,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i28.GlobalKey<_i28.NavigatorState> navigatorKey;
+  final _i25.GlobalKey<_i25.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -366,34 +350,16 @@ class HomeRouteArgs {
   final int index;
 }
 
-class FavoritesRoute extends _i1.PageRouteInfo {
-  const FavoritesRoute() : super(name, path: '/Favorites');
-
-  static const String name = 'FavoritesRoute';
-}
-
-class InvitationsRoute extends _i1.PageRouteInfo {
-  const InvitationsRoute() : super(name, path: '/Invitations');
-
-  static const String name = 'InvitationsRoute';
-}
-
-class FollowersRoute extends _i1.PageRouteInfo {
-  const FollowersRoute() : super(name, path: '/Followers');
-
-  static const String name = 'FollowersRoute';
-}
-
-class MainPageRoute extends _i1.PageRouteInfo {
-  const MainPageRoute() : super(name, path: '/main-page');
-
-  static const String name = 'MainPageRoute';
-}
-
 class ProfileRoute extends _i1.PageRouteInfo {
   const ProfileRoute() : super(name, path: '/Profile');
 
   static const String name = 'ProfileRoute';
+}
+
+class SearchRoute extends _i1.PageRouteInfo {
+  const SearchRoute() : super(name, path: '/Search');
+
+  static const String name = 'SearchRoute';
 }
 
 class CompanyRegisterRoute extends _i1.PageRouteInfo {
