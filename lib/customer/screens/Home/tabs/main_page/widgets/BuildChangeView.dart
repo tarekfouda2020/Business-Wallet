@@ -3,30 +3,34 @@ part of 'MainPageWidgetsImports.dart';
 class BuildChangeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Image.asset(
-            Res.noun_men,
-            height: 10,
-            color: MyColors.white,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          height: 15,
+          width: 90,
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          child: TabBar(
+            indicatorColor: MyColors.secondary,
+            tabs: [
+              Tab(
+                child: Image.asset(
+                  Res.noun_men,
+                  height: 10,
+                  color: MyColors.white,
+                ),
+              ),
+              Tab(
+                child: Image.asset(
+                  Res.noun_mapp,
+                  height: 13,
+                  color: MyColors.white,
+                ),
+              ),
+            ],
           ),
-          SizedBox(
-              height: 15,
-              child: VerticalDivider(
-                thickness: 1,
-                color: MyColors.white,
-              )),
-          Image.asset(
-            Res.noun_mapp,
-            height: 13,
-            color: MyColors.white,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

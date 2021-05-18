@@ -1,6 +1,9 @@
-part of 'MainPageWidgetsImports.dart';
+part of 'HomeWidgetsImports.dart';
 
 class BuildMainHeader extends StatelessWidget {
+  final String ?title;
+  final Widget ?search;
+  const BuildMainHeader({this.title, this.search});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,9 +21,13 @@ class BuildMainHeader extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
+                title == null ? Icon(
                   Icons.search,
                   size: 30,
+                  color: MyColors.white,
+                ): MyText(
+                  title: title??"",
+                  size: 11,
                   color: MyColors.white,
                 ),
                 Image.asset(
@@ -48,28 +55,7 @@ class BuildMainHeader extends StatelessWidget {
               ),
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                 BuildHeaderDrop(title: "المنطقة",),
-                 BuildHeaderDrop(title: "الاهتمامات",),
-                 BuildHeaderDrop(title: "أخرى",),
-
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: MyColors.primary,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 5),
-                    child: MyText(
-                      title: "البحث",
-                      size: 10,
-                      color: Colors.black,
-                    ),
-                  )
-                ],
-              ),
+              child: search
             ),
           )
         ],

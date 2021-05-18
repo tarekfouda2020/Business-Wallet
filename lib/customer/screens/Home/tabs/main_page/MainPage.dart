@@ -8,18 +8,23 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.darken,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200),
-        child: BuildMainHeader(),
-      ),
-      body: Column(
-        children: [
-          BuildChangeView(),
-          BuildMainPageView()
-        ],
-      ),
+    return DefaultTabController(
+      length: 2,
+      child: HomeScaffold(
+          search: BuildMainSearch(),
+          body: Column(
+            children: [
+              BuildChangeView(),
+              Flexible(
+                child: TabBarView(
+                  children: [
+                    BuildMainPageView(),
+                    BuildMainPageView(),
+                  ],
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
