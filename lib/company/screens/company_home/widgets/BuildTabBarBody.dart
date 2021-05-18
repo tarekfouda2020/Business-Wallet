@@ -23,29 +23,32 @@ class BuildTabBarBody extends StatelessWidget {
         indicator: BoxDecoration(
           color: MyColors.black,
         ),
+        onTap: companyHomeData.onChangePage,
         unselectedLabelColor: Colors.grey,
         indicatorSize: TabBarIndicatorSize.tab,
-        controller: companyHomeData.tabController,
         labelPadding: EdgeInsets.symmetric(vertical: 10),
+        labelStyle: context.read<LangCubit>().state.locale.languageCode != "en"
+            ? GoogleFonts.cairo(fontSize: 13)
+            : GoogleFonts.roboto(fontSize: 13),
         tabs: [
           Tab(
             icon: Icon(
               MdiIcons.heart,
-              size: 20,
+              size: 25,
             ),
             text: "المفضلة",
           ),
           Tab(
             icon: Icon(
               MdiIcons.store,
-              size: 20,
+              size: 25,
             ),
             text: "متابعتي",
           ),
           Tab(
             icon: Icon(
               MdiIcons.home,
-              size: 20,
+              size: 25,
               color: Colors.transparent,
             ),
             text: "",
@@ -53,13 +56,13 @@ class BuildTabBarBody extends StatelessWidget {
           Tab(
             icon: Icon(
               MdiIcons.bullhorn,
-              size: 20,
+              size: 25,
             ),
             text: "دعوة تجارية",
           ),
           Tab(
             icon: Icon(
-              MdiIcons.vectorSquare,
+              MdiIcons.viewDashboard,
               size: 20,
             ),
             text: "حسابي",

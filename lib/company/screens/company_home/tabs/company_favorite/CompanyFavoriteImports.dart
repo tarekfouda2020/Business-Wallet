@@ -1,8 +1,13 @@
+import 'package:base_flutter/company/screens/company_home/tabs/company_favorite/tabs/favorite_map/FavoriteMapImports.dart';
+import 'package:base_flutter/company/screens/company_home/tabs/company_favorite/tabs/favorite_menu/FavoriteMenuImports.dart';
+import 'package:base_flutter/company/screens/company_home/tabs/company_favorite/widgets/CompFavoriteWidgetsImports.dart';
 import 'package:base_flutter/company/widgets/BuildTopHeader.dart';
 import 'package:base_flutter/general/constants/Inputs/DropdownTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/InkWellTextField.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 part 'CompanyFavorite.dart';
 part 'CompanyFavoriteData.dart';

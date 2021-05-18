@@ -179,8 +179,9 @@ class AppRouter extends _i1.RootStackRouter {
           routeData: routeData, child: _i26.CompanyRegister());
     },
     CompanyHomeRoute.name: (routeData) {
+      final args = routeData.argsAs<CompanyHomeRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i27.CompanyHome());
+          routeData: routeData, child: _i27.CompanyHome(args.index));
     }
   };
 
@@ -401,8 +402,16 @@ class CompanyRegisterRoute extends _i1.PageRouteInfo {
   static const String name = 'CompanyRegisterRoute';
 }
 
-class CompanyHomeRoute extends _i1.PageRouteInfo {
-  const CompanyHomeRoute() : super(name, path: '/company-home');
+class CompanyHomeRoute extends _i1.PageRouteInfo<CompanyHomeRouteArgs> {
+  CompanyHomeRoute({required int index})
+      : super(name,
+            path: '/company-home', args: CompanyHomeRouteArgs(index: index));
 
   static const String name = 'CompanyHomeRoute';
+}
+
+class CompanyHomeRouteArgs {
+  const CompanyHomeRouteArgs({required this.index});
+
+  final int index;
 }

@@ -1,17 +1,21 @@
 part of 'CompanyHomeImports.dart';
 
 class CompanyHome extends StatefulWidget {
+  final int index;
+
+  const CompanyHome(this.index);
+
   @override
   _CompanyHomeState createState() => _CompanyHomeState();
 }
 
 class _CompanyHomeState extends State<CompanyHome>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   final CompanyHomeData companyHomeData = new CompanyHomeData();
 
   @override
   void initState() {
-    companyHomeData.initController(this);
+    companyHomeData.pageController = new TabController(length: 5, vsync: this);
     super.initState();
   }
 
@@ -19,7 +23,7 @@ class _CompanyHomeState extends State<CompanyHome>
   Widget build(BuildContext context) {
     return WillPopScope(
       child: DefaultTabController(
-        initialIndex: 0,
+        initialIndex: widget.index,
         length: 5,
         child: Scaffold(
           key: companyHomeData.scaffold,

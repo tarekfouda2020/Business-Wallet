@@ -1,0 +1,9 @@
+import 'package:base_flutter/company/screens/company_home/tabs/company_favorite/CompanyFavoriteImports.dart';
+import 'package:base_flutter/company/widgets/BuildTopHeader.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:base_flutter/res.dart';
+import 'package:flutter/material.dart';
+part 'BuildSelectedTabView.dart';
+part 'BuildMenuView.dart';
+part 'BuildAppBar.dart';

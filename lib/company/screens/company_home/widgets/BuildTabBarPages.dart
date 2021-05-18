@@ -8,7 +8,6 @@ class BuildTabBarPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBarView(
-      controller: companyHomeData.tabController,
       physics: NeverScrollableScrollPhysics(),
       children: [
         CompanyFavorite(),

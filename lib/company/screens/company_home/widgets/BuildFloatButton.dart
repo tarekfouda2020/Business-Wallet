@@ -8,7 +8,7 @@ class BuildFloatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => companyHomeData.tabController.animateTo(2),
+      onTap: () => companyHomeData.onChangePage(2),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

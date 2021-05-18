@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class BuildTopHeader extends StatelessWidget {
   final String title;
+  final bool search;
 
-  BuildTopHeader({required this.title});
+  BuildTopHeader(this.title, this.search);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,21 @@ class BuildTopHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          MyText(
-            title: title,
-            size: 16,
-            color: MyColors.white,
+          Visibility(
+            visible: search,
+            child: MyText(
+              title: title,
+              size: 16,
+              color: MyColors.white,
+            ),
+            replacement: IconButton(
+              icon: Icon(
+                Icons.search,
+                color: MyColors.white,
+                size: 25,
+              ),
+              onPressed: () {},
+            ),
           ),
           Container(
             height: 40,
