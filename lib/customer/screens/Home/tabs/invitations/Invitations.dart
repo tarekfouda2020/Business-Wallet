@@ -8,6 +8,10 @@ class Invitations extends StatefulWidget {
 class _InvitationsState extends State<Invitations> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return HomeScaffold(
+      title: "دعوة الإستثمار",
+      search: BuildInvSearch(),
+      body: Container(),
+    );
   }
 }

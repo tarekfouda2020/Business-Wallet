@@ -3,7 +3,8 @@ part of 'HomeWidgetsImports.dart';
 class BuildMainHeader extends StatelessWidget {
   final String ?title;
   final Widget ?search;
-  const BuildMainHeader({this.title, this.search});
+  final Function() ?searchOnTap;
+  const BuildMainHeader({this.title, this.search, this.searchOnTap});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,10 +22,13 @@ class BuildMainHeader extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                title == null ? Icon(
-                  Icons.search,
-                  size: 30,
-                  color: MyColors.white,
+                title == null ? IconButton(
+                  onPressed: searchOnTap,
+                  icon: Icon(
+                    Icons.search,
+                    size: 30,
+                    color: MyColors.white,
+                  ),
                 ): MyText(
                   title: title??"",
                   size: 11,

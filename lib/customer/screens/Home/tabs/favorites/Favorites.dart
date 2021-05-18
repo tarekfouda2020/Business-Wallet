@@ -8,6 +8,10 @@ class Favorites extends StatefulWidget {
 class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return HomeScaffold(
+      title: "مفضلتي",
+      search: BuildFavSearch(),
+      body: Container(),
+    );
   }
 }

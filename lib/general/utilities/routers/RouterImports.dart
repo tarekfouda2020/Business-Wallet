@@ -8,6 +8,7 @@ import 'package:base_flutter/customer/screens/Home/tabs/invitations/InvitationsI
 import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
+import 'package:base_flutter/customer/screens/search/SearchImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart';

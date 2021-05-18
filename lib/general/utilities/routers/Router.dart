@@ -22,7 +22,9 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Terms),
     AdaptiveRoute(page: About),
     AdaptiveRoute(page: ContactUs),
-    CustomRoute(page: SelectUser,transitionsBuilder: TransitionsBuilders.fadeIn,durationInMilliseconds: 1500),
+    CustomRoute(page: SelectUser,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 1500),
     AdaptiveRoute(page: ConfirmPassword),
     AdaptiveRoute(page: ChangePassword),
     AdaptiveRoute(page: ImageZoom),
@@ -30,11 +32,11 @@ part of 'RouterImports.dart';
     // customer routes
     AdaptiveRoute(page: Register),
     AdaptiveRoute(page: Home),
-    AdaptiveRoute(page: Favorites),
-    AdaptiveRoute(page: Invitations),
-    AdaptiveRoute(page: Followers),
-    AdaptiveRoute(page: MainPage),
     AdaptiveRoute(page: Profile),
+    CustomRoute(page: Search,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 50),
+
     //company routes
     AdaptiveRoute(page: CompanyRegister),
     AdaptiveRoute(page: CompanyHome)

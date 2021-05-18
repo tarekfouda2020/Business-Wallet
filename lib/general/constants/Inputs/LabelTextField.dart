@@ -1,4 +1,5 @@
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,9 @@ class LabelTextField extends StatefulWidget {
   final Function()? onSubmit;
   final Function(String)? onChange;
   final TextInputAction? action;
+  final double? maxHeight;
+  final double? minHeight;
+  final Color? borderColor;
 
   LabelTextField(
       {required this.hint,
@@ -25,6 +29,9 @@ class LabelTextField extends StatefulWidget {
       this.action,
       this.onSubmit,
       this.type,
+      this.maxHeight,
+      this.minHeight,
+      this.borderColor,
       required this.validate});
 
   @override
@@ -37,10 +44,14 @@ class _LabelTextFieldState extends State<LabelTextField> {
     var lang = context.watch<LangCubit>().state.locale.languageCode;
     return Container(
       margin: widget.margin ?? EdgeInsets.all(0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: widget.borderColor?? Colors.transparent)
+      ),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 50,
-            maxHeight: 80,
+            minHeight: widget.minHeight?? 50,
+            maxHeight: widget.maxHeight?? 80,
             minWidth: double.infinity,
             maxWidth: double.infinity),
         child: TextFormField(
