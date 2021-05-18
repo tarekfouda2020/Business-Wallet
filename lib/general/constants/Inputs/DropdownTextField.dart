@@ -103,7 +103,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
             enableColor: Colors.transparent,
             focusColor: MyColors.primary,
             borderRaduis: 2,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 17)
+            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0)
         ),
       ),
     );

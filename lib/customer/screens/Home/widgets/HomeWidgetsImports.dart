@@ -6,10 +6,17 @@ import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImport
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 part 'BuildFloatingButton.dart';
 part 'BuildTabBarPages.dart';
 part 'BuildTabBody.dart';
+part 'BuildMainHeader.dart';
+part 'BuildHeaderdrop.dart';
+part 'HomeScaffold.dart';
+part 'BuildProviderItem.dart';
