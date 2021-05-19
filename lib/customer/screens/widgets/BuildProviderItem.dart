@@ -8,7 +8,7 @@ class BuildProviderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.18,
+      height: MediaQuery.of(context).size.height * 0.165,
       width: MediaQuery.of(context).size.width * 0.44,
       decoration: BoxDecoration(
           color: MyColors.white,

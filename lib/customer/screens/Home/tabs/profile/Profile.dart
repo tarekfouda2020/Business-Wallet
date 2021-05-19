@@ -16,7 +16,10 @@ class _ProfileState extends State<Profile> {
       ),
       body: Column(
         children: [
-          BuildProfileHeader(),
+          BuildProfileHeader(
+            buttonText: "الصفحة الشخصية",
+            onTap: ()=> AutoRouter.of(context).push(ProfilePageRoute()),
+          ),
           BuildProfileView()
         ],
       ),

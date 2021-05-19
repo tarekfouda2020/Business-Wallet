@@ -6,7 +6,8 @@ class BuildMainPageView extends StatelessWidget {
     return Container(
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
-        child: Wrap(
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                child: Wrap(
           spacing: 20,
           runSpacing: 20,
           children: List.generate(10, (index) => BuildProviderItem()),

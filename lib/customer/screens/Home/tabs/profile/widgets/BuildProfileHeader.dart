@@ -1,6 +1,10 @@
 part of 'ProfileWidgetsImports.dart';
 
 class BuildProfileHeader extends StatelessWidget {
+  final Function() ?onTap;
+  final String buttonText;
+  const BuildProfileHeader({this.onTap, required this.buttonText});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +22,7 @@ class BuildProfileHeader extends StatelessWidget {
             ),
           ),
           InkWell(
-            // onTap: ,
+            onTap: onTap,
             child: Container(
               padding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
@@ -27,9 +31,9 @@ class BuildProfileHeader extends StatelessWidget {
                   color: MyColors.primary),
               alignment: Alignment.center,
               child: MyText(
-                title: "الصفحة الشخصية",
+                title: buttonText,
                 color: MyColors.blackOpacity,
-                size: 9.5,
+                size: 9,
               ),
             ),
           )
