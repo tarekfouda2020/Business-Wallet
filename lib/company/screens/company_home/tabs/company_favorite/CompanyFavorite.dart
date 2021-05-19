@@ -23,14 +23,10 @@ class _CompanyFavoriteState extends State<CompanyFavorite>
       initialIndex: 0,
       child: Scaffold(
         backgroundColor: MyColors.darken,
-        appBar: BuildAppBar(
-          companyFavoriteData: companyFavoriteData,
-        ),
+        appBar: BuildAppBar(companyFavoriteData: companyFavoriteData),
         body: Column(
           children: [
-            BuildMenuView(
-              companyFavoriteData: companyFavoriteData,
-            ),
+            BuildMenuView(companyFavoriteData: companyFavoriteData),
             Flexible(
               child: TabBarView(
                 children: [

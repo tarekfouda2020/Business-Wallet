@@ -18,11 +18,9 @@ class BuildAppBar extends PreferredSize {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            BuildTopHeader("مفضلتي", true),
-            Positioned(
-              top: 100,
-              child: BuildSelectedTabView(),
-            ),
+            BuildTopHeader(search: true,title: "مفضلتي",),
+
+            BuildSelectedTabView(),
           ],
         ),
       ),

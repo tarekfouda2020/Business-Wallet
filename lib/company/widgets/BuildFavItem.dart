@@ -16,16 +16,10 @@ class BuildFavItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         borderRadius: BorderRadius.circular(20),
         fit: BoxFit.fill,
+        colorFilter:
+            ColorFilter.mode(Colors.black26, BlendMode.darken),
         child: Container(
-          height: 70,
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(20),
-              bottomLeft: Radius.circular(20),
-            ),
-            color: MyColors.black,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -70,10 +64,67 @@ class BuildFavItem extends StatelessWidget {
                   ),
                 ],
               ),
-
             ],
           ),
         ),
+        // child: Container(
+        //   height: 70,
+        //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        //   decoration: BoxDecoration(
+        //     borderRadius: BorderRadius.only(
+        //       bottomRight: Radius.circular(20),
+        //       bottomLeft: Radius.circular(20),
+        //     ),
+        //     color: MyColors.black,
+        //   ),
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.end,
+        //     children: <Widget>[
+        //       Row(
+        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //         children: <Widget>[
+        //           MyText(
+        //             title: "اسم الاعلان",
+        //             size: 9,
+        //             color: MyColors.white,
+        //           ),
+        //           RatingBar.builder(
+        //             itemCount: 5,
+        //             allowHalfRating: true,
+        //             ignoreGestures: true,
+        //             onRatingUpdate: (double val) {},
+        //             unratedColor: MyColors.white,
+        //             itemSize: 12,
+        //             itemPadding: const EdgeInsets.symmetric(vertical: 7),
+        //             initialRating: 3,
+        //             itemBuilder: (_, index) {
+        //               return Icon(
+        //                 Icons.star,
+        //                 color: MyColors.primary,
+        //               );
+        //             },
+        //           ),
+        //         ],
+        //       ),
+        //       Row(
+        //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //         children: <Widget>[
+        //           MyText(
+        //             title: "التصنيف : شركات",
+        //             size: 9,
+        //             color: MyColors.white,
+        //           ),
+        //           MyText(
+        //             title: "التاريخ : 10/20/1020",
+        //             size: 9,
+        //             color: MyColors.white,
+        //           ),
+        //         ],
+        //       ),
+        //
+        //     ],
+        //   ),
+        // ),
       ),
     );
   }

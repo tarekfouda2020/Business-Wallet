@@ -5,24 +5,22 @@ class BuildAppBar extends PreferredSize {
   final CompanyFollowersData companyFollowersData;
 
   BuildAppBar(
-      {this.preferredSize = const Size.fromHeight(kToolbarHeight + 170),
+      {this.preferredSize = const Size.fromHeight(kToolbarHeight + 200),
       required this.companyFollowersData})
       : super(child: Container(), preferredSize: preferredSize);
 
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: preferredSize,
+      preferredSize: Size.fromHeight(200),
       child: Container(
         height: 150,
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            BuildTopHeader("متابعتي", true),
-            Positioned(
-              top: 100,
-              child: BuildSelectedTabView(),
-            ),
+            BuildTopHeader(search: true,title: "متابعتي",),
+
+            BuildSelectedTabView(),
           ],
         ),
       ),

@@ -9,6 +9,8 @@ import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dar
     as _i25;
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
     as _i24;
+import 'package:base_flutter/company/screens/company_search/CompanySearchImports.dart'
+    as _i26;
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart'
     as _i21;
@@ -45,7 +47,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i26;
+import 'package:flutter/cupertino.dart' as _i27;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -175,6 +177,15 @@ class AppRouter extends _i1.RootStackRouter {
       final args = routeData.argsAs<CompanyHomeRouteArgs>();
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i25.CompanyHome(args.index));
+    },
+    CompanySearchRoute.name: (routeData) {
+      return _i1.CustomPage<dynamic>(
+          routeData: routeData,
+          child: _i26.CompanySearch(),
+          transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 50,
+          opaque: true,
+          barrierDismissible: false);
     }
   };
 
@@ -203,12 +214,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SearchRoute.name, path: '/Search'),
         _i1.RouteConfig(ProfilePageRoute.name, path: '/profile-page'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
-        _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home')
+        _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home'),
+        _i1.RouteConfig(CompanySearchRoute.name, path: '/company-search')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i26.GlobalKey<_i26.NavigatorState> navigatorKey})
+  SplashRoute({required _i27.GlobalKey<_i27.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -218,7 +230,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i26.GlobalKey<_i26.NavigatorState> navigatorKey;
+  final _i27.GlobalKey<_i27.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -393,4 +405,10 @@ class CompanyHomeRouteArgs {
   const CompanyHomeRouteArgs({required this.index});
 
   final int index;
+}
+
+class CompanySearchRoute extends _i1.PageRouteInfo {
+  const CompanySearchRoute() : super(name, path: '/company-search');
+
+  static const String name = 'CompanySearchRoute';
 }

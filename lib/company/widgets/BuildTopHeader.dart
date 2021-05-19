@@ -4,10 +4,11 @@ import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
 
 class BuildTopHeader extends StatelessWidget {
-  final String title;
+  final String ?title;
   final bool search;
+  final Function() ?onTap;
 
-  BuildTopHeader(this.title, this.search);
+  BuildTopHeader({this.title,required this.search, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class BuildTopHeader extends StatelessWidget {
           Visibility(
             visible: search,
             child: MyText(
-              title: title,
+              title: title??"",
               size: 16,
               color: MyColors.white,
             ),
@@ -36,7 +37,7 @@ class BuildTopHeader extends StatelessWidget {
                 color: MyColors.white,
                 size: 25,
               ),
-              onPressed: () {},
+              onPressed: onTap!,
             ),
           ),
           Container(

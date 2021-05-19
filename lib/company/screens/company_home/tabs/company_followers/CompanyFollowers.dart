@@ -16,12 +16,12 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
         companyFollowersData: companyFollowersData,
       ),
       body: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
         itemCount: 4,
         itemBuilder: (_, index) {

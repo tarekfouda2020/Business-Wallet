@@ -1,4 +1,4 @@
-part of 'CompMainWidgetsImports.dart';
+part of 'CompSearchWidgetsImports.dart';
 
 class BuildSelectedTabView extends StatelessWidget {
   @override
@@ -30,7 +30,7 @@ class BuildSelectedTabView extends StatelessWidget {
                 child: Row(
                   children: [
                     MyText(
-                      title: "المنطقة",
+                      title: "الكل",
                       size: 10,
                       color: MyColors.white,
                     ),
@@ -47,24 +47,7 @@ class BuildSelectedTabView extends StatelessWidget {
                 child: Row(
                   children: [
                     MyText(
-                      title: "الاهتمامات",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "اخري",
+                      title: "ملف حسب",
                       size: 10,
                       color: MyColors.white,
                     ),

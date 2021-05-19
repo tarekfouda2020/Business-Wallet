@@ -18,7 +18,10 @@ class BuildAppBar extends PreferredSize {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            BuildTopHeader("حسابي", true),
+            BuildTopHeader(
+              search: true,
+              title: "حسابي",
+            ),
             Positioned(
               top: 110,
               child: BuildProfileCard(),

@@ -1,11 +1,11 @@
-part of 'MainMenuImports.dart';
+part of 'CompSearchMenuImports.dart';
 
-class MainMenu extends StatefulWidget {
+class CompSearchMenu extends StatefulWidget {
   @override
-  _MainMenuState createState() => _MainMenuState();
+  _CompSearchMenuState createState() => _CompSearchMenuState();
 }
 
-class _MainMenuState extends State<MainMenu> {
+class _CompSearchMenuState extends State<CompSearchMenu> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(

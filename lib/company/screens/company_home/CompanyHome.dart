@@ -26,6 +26,7 @@ class _CompanyHomeState extends State<CompanyHome>
         initialIndex: widget.index,
         length: 5,
         child: Scaffold(
+          extendBody: true,
           key: companyHomeData.scaffold,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
@@ -33,8 +34,10 @@ class _CompanyHomeState extends State<CompanyHome>
             companyHomeData: companyHomeData,
           ),
           body: BuildTabBarPages(companyHomeData: companyHomeData),
-          bottomNavigationBar:
-              BuildTabBarBody(companyHomeData: companyHomeData),
+          bottomNavigationBar: BuildTabBarBody(
+            companyHomeData: companyHomeData,
+            index: widget.index,
+          ),
         ),
       ),
       onWillPop: companyHomeData.onBackPressed,

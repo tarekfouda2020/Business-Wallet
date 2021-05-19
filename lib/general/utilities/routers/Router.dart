@@ -41,7 +41,10 @@ part of 'RouterImports.dart';
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),
-    AdaptiveRoute(page: CompanyHome)
+    AdaptiveRoute(page: CompanyHome),
+    CustomRoute(page: CompanySearch,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 50),
 
   ],
 )

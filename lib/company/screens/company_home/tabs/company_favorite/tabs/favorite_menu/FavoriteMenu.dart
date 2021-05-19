@@ -9,6 +9,7 @@ class _FavoriteMenuState extends State<FavoriteMenu> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 10,),
       itemCount: 2,
       itemBuilder: (_, index) {
         return BuildFavItem();

@@ -18,12 +18,9 @@ class BuildAppBar extends PreferredSize {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            BuildTopHeader("دعوة تجارية", true),
-            Positioned(
-              top: 100,
-              child: BuildMenuView(
-                companyInvitationData: companyInvitationData,
-              ),
+            BuildTopHeader(search: true,title: "دعوة تجارية",),
+            BuildMenuView(
+              companyInvitationData: companyInvitationData,
             ),
           ],
         ),

@@ -7,28 +7,11 @@ class BuildFloatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        print("________________");
-        companyHomeData.pageController.animateTo(2);
-      },
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: MyColors.primary,
-          shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: MyColors.black,
-              blurRadius: 8,
-              spreadRadius: 2,
-            ),
-          ],
-        ),
-        child: Icon(
-          MdiIcons.home,
-          color: MyColors.white,
-        ),
+    return FloatingActionButton(
+      onPressed: () => companyHomeData.homeClick(context),
+      child: Icon(
+        Icons.home,
+        color: MyColors.white,
       ),
     );
   }
