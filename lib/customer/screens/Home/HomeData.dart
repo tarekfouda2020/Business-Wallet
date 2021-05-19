@@ -2,7 +2,7 @@ part of 'HomeImports.dart';
 
 class HomeData {
 
-  final GenericCubit<int> homeTabCubit = GenericCubit(2);
+  final GenericCubit<int> homeTabCubit = GenericCubit(4);
   Animation<double> ?animation;
   late AnimationController animationController;
   late CurvedAnimation curve;
