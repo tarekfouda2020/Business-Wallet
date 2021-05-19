@@ -21,10 +21,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin{
           initialIndex: widget.index,
           length: 5,
           child: Scaffold(
+            extendBody: true,
             floatingActionButton: BuildFloatingButton(homeData),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             body: BuildTabBarPages(homeData),
-            bottomNavigationBar: BuildTabBody(homeData),
+            bottomNavigationBar: BuildTabBarBody(
+              homeData: homeData,index: widget.index,)
+            // bottomNavigationBar: BuildTabBody(homeData)
           ),
         ),
 

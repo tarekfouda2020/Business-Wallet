@@ -12,9 +12,9 @@ class BuildTabBarPages extends StatelessWidget {
       children: [
         Favorites(),
         Followers(),
-        MainPage(),
         Invitations(),
         Profile(),
+        MainPage(),
       ],
     );
   }

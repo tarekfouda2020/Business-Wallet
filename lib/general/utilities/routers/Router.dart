@@ -36,6 +36,8 @@ part of 'RouterImports.dart';
     CustomRoute(page: Search,
         transitionsBuilder: TransitionsBuilders.fadeIn,
         durationInMilliseconds: 50),
+    AdaptiveRoute(page: ProfilePage),
+
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),

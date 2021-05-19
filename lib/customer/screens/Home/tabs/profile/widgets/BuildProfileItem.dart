@@ -32,7 +32,7 @@ class BuildProfileItem extends StatelessWidget {
                 MyText(
                   title: title,
                   color: MyColors.grey,
-                  size: 12,
+                  size: 11.5,
                 )
               ],
             ),

@@ -7,6 +7,7 @@ import 'package:base_flutter/customer/screens/Home/tabs/followers/FollowersImpor
 import 'package:base_flutter/customer/screens/Home/tabs/invitations/InvitationsImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
+import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
 import 'package:base_flutter/customer/screens/search/SearchImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
