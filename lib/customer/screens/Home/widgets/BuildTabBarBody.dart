@@ -15,10 +15,12 @@ class BuildTabBarBody extends StatelessWidget {
           itemCount: 4,
           tabBuilder: (int index, bool isActive) {
             return BuildTabBarItem(
-              index: index, homeData: homeData, active: isActive,
+              index: index,
+              homeData: homeData,
+              active: isActive,
             );
           },
-          backgroundColor: MyColors.darken.withOpacity(0.85),
+          backgroundColor: MyColors.secondary.withOpacity(0.85),
           activeIndex: state.data,
           notchAndCornersAnimation: homeData.animation,
           splashSpeedInMilliseconds: 300,

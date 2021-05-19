@@ -9,9 +9,7 @@ class BuildMainPageView extends StatelessWidget {
         child: Wrap(
           spacing: 20,
           runSpacing: 20,
-          children: List.generate(
-              10,
-                  (index) => BuildProviderItem()),
+          children: List.generate(10, (index) => BuildProviderItem()),
         ),
       ),
     );
