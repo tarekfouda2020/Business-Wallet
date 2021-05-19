@@ -9,10 +9,10 @@ class BuildSearchChangeView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          flex: 7,
+          flex: 6,
           child: LabelTextField(
-              hint: "ابحث عمّا تريد",
-              controller: searchData.search,
+            hint: "ابحث عمّا تريد",
+            controller: searchData.search,
             validate: (value) => value!.validateEmpty(context),
             minHeight: 30,
             maxHeight: 35,

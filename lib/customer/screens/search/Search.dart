@@ -13,12 +13,15 @@ class _SearchState extends State<Search> {
       length: 2,
       child: HomeScaffold(
         search: BuildSearchDrops(),
-        searchOnTap: ()=> AutoRouter.of(context).pop(),
+        searchOnTap: () => AutoRouter.of(context).pop(),
         body: Column(
           children: [
-            BuildSearchChangeView(searchData: searchData,),
+            BuildSearchChangeView(
+              searchData: searchData,
+            ),
             Flexible(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   BuildSearchView(),
                   BuildSearchView(),
