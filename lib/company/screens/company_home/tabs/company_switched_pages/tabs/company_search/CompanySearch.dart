@@ -1,6 +1,10 @@
 part of 'CompanySearchImports.dart';
 
 class CompanySearch extends StatefulWidget {
+  final Function()? onTap;
+
+  CompanySearch({this.onTap});
+
   @override
   _CompanySearchState createState() => _CompanySearchState();
 }
@@ -16,6 +20,7 @@ class _CompanySearchState extends State<CompanySearch> {
         backgroundColor: MyColors.darken,
         appBar: BuildAppBar(
           companySearchData: companySearchData,
+          onTap: widget.onTap,
         ),
         body: Column(
           children: [

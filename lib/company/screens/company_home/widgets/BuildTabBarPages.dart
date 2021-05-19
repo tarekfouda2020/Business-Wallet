@@ -15,8 +15,7 @@ class BuildTabBarPages extends StatelessWidget {
         CompanyFollowers(),
         CompanyInvitation(),
         CompanyAccount(),
-        CompanyMain(),
-
+        CompSwitchedPage(),
       ],
     );
   }

@@ -1,6 +1,10 @@
 part of 'CompanyMainImports.dart';
 
 class CompanyMain extends StatefulWidget {
+  final Function()? onTap;
+
+  CompanyMain({this.onTap});
+
   @override
   _CompanyMainState createState() => _CompanyMainState();
 }
@@ -24,6 +28,7 @@ class _CompanyMainState extends State<CompanyMain>
         backgroundColor: MyColors.darken,
         appBar: BuildAppBar(
           companyMainData: companyMainData,
+          onTap: widget.onTap,
         ),
         body: Column(
           children: [

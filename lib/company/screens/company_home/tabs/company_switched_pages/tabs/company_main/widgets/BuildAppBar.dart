@@ -1,12 +1,14 @@
-part of 'CompSearchWidgetsImports.dart';
+part of 'CompMainWidgetsImports.dart';
 
 class BuildAppBar extends PreferredSize {
   final Size preferredSize;
-  final CompanySearchData companySearchData;
+  final CompanyMainData companyMainData;
+  final Function()? onTap;
 
   BuildAppBar(
       {this.preferredSize = const Size.fromHeight(kToolbarHeight + 200),
-      required this.companySearchData})
+      required this.companyMainData,
+      this.onTap})
       : super(child: Container(), preferredSize: preferredSize);
 
   @override
@@ -20,7 +22,7 @@ class BuildAppBar extends PreferredSize {
           children: [
             BuildTopHeader(
               search: false,
-              onTap: () => AutoRouter.of(context).pop(),
+              onTap: onTap,
             ),
             BuildSelectedTabView(),
           ],

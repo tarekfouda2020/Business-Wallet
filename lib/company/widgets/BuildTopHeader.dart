@@ -37,7 +37,7 @@ class BuildTopHeader extends StatelessWidget {
                 color: MyColors.white,
                 size: 25,
               ),
-              onPressed: onTap!,
+              onPressed: onTap,
             ),
           ),
           Container(

@@ -4,7 +4,7 @@ import 'package:base_flutter/company/screens/company_home/tabs/company_account/C
 import 'package:base_flutter/company/screens/company_home/tabs/company_favorite/CompanyFavoriteImports.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_followers/CompanyFollowersImports.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_invitation/CompanyInvitationImports.dart';
-import 'package:base_flutter/company/screens/company_home/tabs/company_main/CompanyMainImports.dart';
+import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/CompSwitchedPageImports.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';

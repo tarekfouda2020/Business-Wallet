@@ -7,10 +7,10 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
     as _i25;
+import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart'
+    as _i26;
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
     as _i24;
-import 'package:base_flutter/company/screens/company_search/CompanySearchImports.dart'
-    as _i26;
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart'
     as _i21;
@@ -179,9 +179,11 @@ class AppRouter extends _i1.RootStackRouter {
           routeData: routeData, child: _i25.CompanyHome(args.index));
     },
     CompanySearchRoute.name: (routeData) {
+      final args = routeData.argsAs<CompanySearchRouteArgs>(
+          orElse: () => const CompanySearchRouteArgs());
       return _i1.CustomPage<dynamic>(
           routeData: routeData,
-          child: _i26.CompanySearch(),
+          child: _i26.CompanySearch(onTap: args.onTap),
           transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
           durationInMilliseconds: 50,
           opaque: true,
@@ -407,8 +409,17 @@ class CompanyHomeRouteArgs {
   final int index;
 }
 
-class CompanySearchRoute extends _i1.PageRouteInfo {
-  const CompanySearchRoute() : super(name, path: '/company-search');
+class CompanySearchRoute extends _i1.PageRouteInfo<CompanySearchRouteArgs> {
+  CompanySearchRoute({dynamic Function()? onTap})
+      : super(name,
+            path: '/company-search',
+            args: CompanySearchRouteArgs(onTap: onTap));
 
   static const String name = 'CompanySearchRoute';
+}
+
+class CompanySearchRouteArgs {
+  const CompanySearchRouteArgs({this.onTap});
+
+  final dynamic Function()? onTap;
 }
