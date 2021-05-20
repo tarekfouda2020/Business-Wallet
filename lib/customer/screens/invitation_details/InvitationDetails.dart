@@ -49,7 +49,13 @@ class _InvitationDetailsState extends State<InvitationDetails>
                 selectedColor: MyColors.primary,
                 unselectedColor: MyColors.secondary,
                 width: 100,
+                padding: 0,
                 roundedCap: (_, isSelected) => isSelected,
+                child: Center(
+                  child: MyText(
+                    title: "10",
+                  ),
+                )
               ),
             ],
           ),
