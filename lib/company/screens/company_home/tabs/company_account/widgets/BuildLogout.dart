@@ -5,6 +5,7 @@ class BuildLogout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.only(bottom: 100),
       color: MyColors.greyWhite,
       alignment: Alignment.center,
       child: Row(
