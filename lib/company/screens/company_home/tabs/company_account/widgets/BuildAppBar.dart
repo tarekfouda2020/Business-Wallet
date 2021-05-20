@@ -22,10 +22,7 @@ class BuildAppBar extends PreferredSize {
               search: true,
               title: "حسابي",
             ),
-            Positioned(
-              top: 110,
-              child: BuildProfileCard(),
-            ),
+            BuildProfileCard(),
           ],
         ),
       ),

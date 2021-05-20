@@ -27,6 +27,9 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
           BuildCommentsDrop(companyMainDetailsData: companyMainDetailsData)
         ],
       ),
+      bottomNavigationBar: BuildCommentButton(
+        companyMainDetailsData: companyMainDetailsData,
+      ),
     );
   }
 }

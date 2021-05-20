@@ -1,4 +1,4 @@
-part of 'DetailsWidgetsImports.dart';
+part of 'CompProfileWidgetsImports.dart';
 
 class BuildImagesData extends StatelessWidget {
   @override

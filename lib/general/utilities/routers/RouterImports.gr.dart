@@ -5,11 +5,13 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
+    as _i28;
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
     as _i25;
-import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart'
-    as _i26;
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
+    as _i26;
+import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
     as _i27;
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
     as _i24;
@@ -49,7 +51,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i28;
+import 'package:flutter/cupertino.dart' as _i29;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -175,20 +177,17 @@ class AppRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i25.CompanyHome(args.index));
     },
-    CompanySearchRoute.name: (routeData) {
-      final args = routeData.argsAs<CompanySearchRouteArgs>(
-          orElse: () => const CompanySearchRouteArgs());
-      return _i1.CustomPage<dynamic>(
-          routeData: routeData,
-          child: _i26.CompanySearch(onTap: args.onTap),
-          transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
-          durationInMilliseconds: 50,
-          opaque: true,
-          barrierDismissible: false);
-    },
     CompanyMainDetailsRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i27.CompanyMainDetails());
+          routeData: routeData, child: _i26.CompanyMainDetails());
+    },
+    CompanyProfileRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i27.CompanyProfile());
+    },
+    CompanyEditProfileRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i28.CompanyEditProfile());
     }
   };
 
@@ -218,14 +217,16 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(ProviderDetailsRoute.name, path: '/provider-details'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
         _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home'),
-        _i1.RouteConfig(CompanySearchRoute.name, path: '/company-search'),
         _i1.RouteConfig(CompanyMainDetailsRoute.name,
-            path: '/company-main-details')
+            path: '/company-main-details'),
+        _i1.RouteConfig(CompanyProfileRoute.name, path: '/company-profile'),
+        _i1.RouteConfig(CompanyEditProfileRoute.name,
+            path: '/company-edit-profile')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i28.GlobalKey<_i28.NavigatorState> navigatorKey})
+  SplashRoute({required _i29.GlobalKey<_i29.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -235,7 +236,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i28.GlobalKey<_i28.NavigatorState> navigatorKey;
+  final _i29.GlobalKey<_i29.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -412,23 +413,20 @@ class CompanyHomeRouteArgs {
   final int index;
 }
 
-class CompanySearchRoute extends _i1.PageRouteInfo<CompanySearchRouteArgs> {
-  CompanySearchRoute({dynamic Function()? onTap})
-      : super(name,
-            path: '/company-search',
-            args: CompanySearchRouteArgs(onTap: onTap));
-
-  static const String name = 'CompanySearchRoute';
-}
-
-class CompanySearchRouteArgs {
-  const CompanySearchRouteArgs({this.onTap});
-
-  final dynamic Function()? onTap;
-}
-
 class CompanyMainDetailsRoute extends _i1.PageRouteInfo {
   const CompanyMainDetailsRoute() : super(name, path: '/company-main-details');
 
   static const String name = 'CompanyMainDetailsRoute';
+}
+
+class CompanyProfileRoute extends _i1.PageRouteInfo {
+  const CompanyProfileRoute() : super(name, path: '/company-profile');
+
+  static const String name = 'CompanyProfileRoute';
+}
+
+class CompanyEditProfileRoute extends _i1.PageRouteInfo {
+  const CompanyEditProfileRoute() : super(name, path: '/company-edit-profile');
+
+  static const String name = 'CompanyEditProfileRoute';
 }

@@ -1,33 +1,35 @@
-part of 'DetailsWidgetsImports.dart';
+part of 'CompProfileWidgetsImports.dart';
 
 class BuildCommentsDrop extends StatelessWidget {
-  final CompanyMainDetailsData companyMainDetailsData;
+  final CompanyProfileData companyProfileData;
 
-  BuildCommentsDrop({required this.companyMainDetailsData});
+  BuildCommentsDrop({required this.companyProfileData});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
-      bloc: companyMainDetailsData.commentsDropCubit,
+      bloc: companyProfileData.commentsDropCubit,
       builder: (_, state) {
         return Column(
           children: [
             BuildDropItem(
-                title: "معلومات التواصل",
-                onTap: () => companyMainDetailsData.commentsDropCubit
+                title: "التعليقات",
+                onTap: () => companyProfileData.commentsDropCubit
                     .onUpdateData(!state.data),
-                genericCubit: companyMainDetailsData.commentsDropCubit),
+                genericCubit: companyProfileData.commentsDropCubit),
             Visibility(
               visible: state.data,
               child: Container(
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 3,
+                  itemCount: 13,
                   itemBuilder: (_, index) => BuildCommentItem(),
                 ),
               ),
-              replacement: Container(),
+              replacement: Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+              ),
             ),
           ],
         );

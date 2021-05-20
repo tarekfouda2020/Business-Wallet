@@ -5,4 +5,6 @@ class CompanyMainDetailsData {
   final GenericCubit<bool> socialDropCubit = new GenericCubit(false);
   final GenericCubit<bool> imagesDropCubit = new GenericCubit(false);
   final GenericCubit<bool> commentsDropCubit = new GenericCubit(false);
+  final TextEditingController comment = TextEditingController();
+
 }

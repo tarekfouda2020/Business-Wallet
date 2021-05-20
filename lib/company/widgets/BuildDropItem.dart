@@ -1,4 +1,8 @@
-part of 'DetailsWidgetsImports.dart';
+
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:flutter/material.dart';
 
 class BuildDropItem extends StatelessWidget {
   final String title;
