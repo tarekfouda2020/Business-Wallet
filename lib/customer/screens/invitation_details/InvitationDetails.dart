@@ -24,7 +24,7 @@ class _InvitationDetailsState extends State<InvitationDetails>
     _animation = Tween<double>(
       begin: 0,
       end: 10000,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut))
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.bounceIn))
       ..addListener(() {
         setState(() {});
       });
