@@ -1,5 +1,5 @@
+import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
-import 'package:base_flutter/customer/screens/search/SearchImports.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';

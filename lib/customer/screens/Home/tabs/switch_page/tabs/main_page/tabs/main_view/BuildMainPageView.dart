@@ -1,4 +1,4 @@
-part of "MainViewImports.dart";
+part of 'MainViewImports.dart';
 
 class BuildMainPageView extends StatelessWidget {
   @override

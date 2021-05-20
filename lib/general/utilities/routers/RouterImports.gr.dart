@@ -15,11 +15,11 @@ import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i20;
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart'
     as _i21;
 import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart'
+    as _i22;
+import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart'
     as _i23;
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
     as _i19;
-import 'package:base_flutter/customer/screens/search/SearchImports.dart'
-    as _i22;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i13;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i9;
@@ -156,18 +156,13 @@ class AppRouter extends _i1.RootStackRouter {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i21.Profile());
     },
-    SearchRoute.name: (routeData) {
-      return _i1.CustomPage<dynamic>(
-          routeData: routeData,
-          child: _i22.Search(),
-          transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
-          durationInMilliseconds: 50,
-          opaque: true,
-          barrierDismissible: false);
-    },
     ProfilePageRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
-          routeData: routeData, child: _i23.ProfilePage());
+          routeData: routeData, child: _i22.ProfilePage());
+    },
+    ProviderDetailsRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i23.ProviderDetails());
     },
     CompanyRegisterRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
@@ -213,8 +208,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(RegisterRoute.name, path: '/Register'),
         _i1.RouteConfig(HomeRoute.name, path: '/Home'),
         _i1.RouteConfig(ProfileRoute.name, path: '/Profile'),
-        _i1.RouteConfig(SearchRoute.name, path: '/Search'),
         _i1.RouteConfig(ProfilePageRoute.name, path: '/profile-page'),
+        _i1.RouteConfig(ProviderDetailsRoute.name, path: '/provider-details'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
         _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home'),
         _i1.RouteConfig(CompanySearchRoute.name, path: '/company-search')
@@ -377,16 +372,16 @@ class ProfileRoute extends _i1.PageRouteInfo {
   static const String name = 'ProfileRoute';
 }
 
-class SearchRoute extends _i1.PageRouteInfo {
-  const SearchRoute() : super(name, path: '/Search');
-
-  static const String name = 'SearchRoute';
-}
-
 class ProfilePageRoute extends _i1.PageRouteInfo {
   const ProfilePageRoute() : super(name, path: '/profile-page');
 
   static const String name = 'ProfilePageRoute';
+}
+
+class ProviderDetailsRoute extends _i1.PageRouteInfo {
+  const ProviderDetailsRoute() : super(name, path: '/provider-details');
+
+  static const String name = 'ProviderDetailsRoute';
 }
 
 class CompanyRegisterRoute extends _i1.PageRouteInfo {

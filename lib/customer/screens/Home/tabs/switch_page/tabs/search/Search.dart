@@ -1,6 +1,9 @@
 part of 'SearchImports.dart';
 
 class Search extends StatefulWidget {
+  final Function()? onTap;
+  const Search({this.onTap});
+
   @override
   _SearchState createState() => _SearchState();
 }
@@ -13,7 +16,8 @@ class _SearchState extends State<Search> {
       length: 2,
       child: HomeScaffold(
         search: BuildSearchDrops(),
-        searchOnTap: () => AutoRouter.of(context).pop(),
+        searchOnTap: widget.onTap,
+        // searchOnTap: () => AutoRouter.of(context).pop(),
         body: Column(
           children: [
             BuildSearchChangeView(

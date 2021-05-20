@@ -14,7 +14,7 @@ class BuildTabBarPages extends StatelessWidget {
         Followers(),
         Invitations(),
         Profile(),
-        MainPage(),
+        SwitchPage()
       ],
     );
   }

@@ -33,10 +33,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Register),
     AdaptiveRoute(page: Home),
     AdaptiveRoute(page: Profile),
-    CustomRoute(page: Search,
-        transitionsBuilder: TransitionsBuilders.fadeIn,
-        durationInMilliseconds: 50),
     AdaptiveRoute(page: ProfilePage),
+    AdaptiveRoute(page: ProviderDetails),
 
 
     //company routes

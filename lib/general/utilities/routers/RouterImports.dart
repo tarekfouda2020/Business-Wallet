@@ -4,9 +4,10 @@ import 'package:base_flutter/company/screens/company_home/tabs/company_switched_
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
 import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart';
+import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
-import 'package:base_flutter/customer/screens/search/SearchImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart';

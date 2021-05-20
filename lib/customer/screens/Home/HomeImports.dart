@@ -1,7 +1,6 @@
 import 'package:base_flutter/customer/models/Dtos/BottomTabModel.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/FavoritesImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/followers/FollowersImports.dart';
-import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';

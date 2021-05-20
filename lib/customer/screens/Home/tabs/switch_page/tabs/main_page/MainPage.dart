@@ -1,6 +1,9 @@
 part of 'MainPageImports.dart';
 
 class MainPage extends StatefulWidget {
+  final Function()? onTap;
+  const MainPage({this.onTap});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -12,10 +15,11 @@ class _MainPageState extends State<MainPage> {
       length: 2,
       child: HomeScaffold(
           search: BuildMainSearch(),
-          searchOnTap: () {
-            print("search");
-            AutoRouter.of(context).push(SearchRoute());
-          },
+          searchOnTap: widget.onTap,
+          // searchOnTap: () {
+          //   print("search");
+          //   AutoRouter.of(context).push(SearchRoute());
+          // },
           body: Column(
             children: [
               BuildChangeView(),

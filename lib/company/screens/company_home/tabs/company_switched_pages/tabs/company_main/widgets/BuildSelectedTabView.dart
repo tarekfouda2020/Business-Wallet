@@ -26,6 +26,7 @@ class BuildSelectedTabView extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
+              flex: 2,
               child: InkWell(
                 child: Row(
                   children: [
@@ -43,6 +44,8 @@ class BuildSelectedTabView extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 2,
+
               child: InkWell(
                 child: Row(
                   children: [
@@ -60,6 +63,8 @@ class BuildSelectedTabView extends StatelessWidget {
               ),
             ),
             Expanded(
+              flex: 2,
+
               child: InkWell(
                 child: Row(
                   children: [
@@ -88,7 +93,7 @@ class BuildSelectedTabView extends StatelessWidget {
               alignment: Alignment.center,
               child: MyText(
                 title: "تأكيد",
-                size: 10,
+                size: 9,
                 color: MyColors.black,
               ),
             ),

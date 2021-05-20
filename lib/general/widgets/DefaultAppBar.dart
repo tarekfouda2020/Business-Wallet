@@ -45,6 +45,7 @@ class DefaultAppBar extends PreferredSize {
       backgroundColor: MyColors.darken,
       elevation: 0,
       leadingWidth: leading == null ? 10 : 55,
+      leading: leading,
       // leading: leading ??
       //     IconButton(
       //       icon: Icon(

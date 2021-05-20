@@ -1,23 +1,16 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/FavoritesImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/followers/FollowersImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/invitations/InvitationsImports.dart';
-import 'package:base_flutter/customer/screens/Home/tabs/main_page/MainPageImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/switch_page/SwitchPageImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
-import 'package:base_flutter/general/utilities/localization/LocalizationMethods.dart';
-import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/res.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 part 'BuildFloatingButton.dart';
 part 'BuildTabBarPages.dart';
