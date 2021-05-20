@@ -53,7 +53,7 @@ class CachedImage extends StatelessWidget{
           ),
           borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
           shape: boxShape??BoxShape.rectangle,
-          border: Border.all(color: borderColor??Colors.transparent,width: 1),
+          // border: Border.all(color: borderColor??Colors.transparent,width: 1),
         ),
         alignment: alignment??Alignment.center,
         child: child,

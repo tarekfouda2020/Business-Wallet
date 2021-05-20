@@ -13,8 +13,9 @@ class _FollowersState extends State<Followers> {
       search: BuildFollowersSearch(),
       body: Container(
         alignment: Alignment.topCenter,
-        margin: const EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(top: 10 ,bottom: 60),
+          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           child: Wrap(
             spacing: 20,
             runSpacing: 20,

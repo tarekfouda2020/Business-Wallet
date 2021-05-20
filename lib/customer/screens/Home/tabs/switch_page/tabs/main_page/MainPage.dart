@@ -16,10 +16,6 @@ class _MainPageState extends State<MainPage> {
       child: HomeScaffold(
           search: BuildMainSearch(),
           searchOnTap: widget.onTap,
-          // searchOnTap: () {
-          //   print("search");
-          //   AutoRouter.of(context).push(SearchRoute());
-          // },
           body: Column(
             children: [
               BuildChangeView(),

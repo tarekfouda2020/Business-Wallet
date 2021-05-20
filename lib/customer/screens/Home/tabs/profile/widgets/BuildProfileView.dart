@@ -5,7 +5,7 @@ class BuildProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: ListView(
-        padding: const EdgeInsets.only(top: 15),
+        padding: const EdgeInsets.only(top: 15, bottom: 60),
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           BuildProfileItem(

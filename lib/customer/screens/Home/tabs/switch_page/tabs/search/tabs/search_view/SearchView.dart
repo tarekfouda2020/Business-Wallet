@@ -6,6 +6,7 @@ class BuildSearchView extends StatelessWidget {
     return Container(
       alignment: Alignment.topCenter,
       child: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 60),
         child: Wrap(
           spacing: 20,
           runSpacing: 20,

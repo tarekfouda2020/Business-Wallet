@@ -20,7 +20,7 @@ class BuildTabBarBody extends StatelessWidget {
               companyHomeData: companyHomeData,
             );
           },
-          backgroundColor: MyColors.secondary.withOpacity(.85),
+          backgroundColor: MyColors.black.withOpacity(0.95),
           activeIndex: state.data,
           notchAndCornersAnimation: companyHomeData.animation,
           splashSpeedInMilliseconds: 300,
