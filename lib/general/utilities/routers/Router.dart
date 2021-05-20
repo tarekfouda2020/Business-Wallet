@@ -43,6 +43,8 @@ part of 'RouterImports.dart';
     CustomRoute(page: CompanySearch,
         transitionsBuilder: TransitionsBuilders.fadeIn,
         durationInMilliseconds: 50),
+    AdaptiveRoute(page: CompanyMainDetails),
+
 
   ],
 )

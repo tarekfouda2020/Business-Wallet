@@ -4,14 +4,14 @@ import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 
 class DefaultAppBar extends PreferredSize {
-  final String title;
+  final String ?title;
   final Widget? leading;
   final List<Widget> ?actions;
   final Size preferredSize;
   final bool showLeading;
 
   DefaultAppBar({
-    required this.title,
+     this.title,
     this.actions,
     this.leading,
     this.showLeading = true,
@@ -21,11 +21,12 @@ class DefaultAppBar extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MyText(
-            title: "$title",
+            title: title??"",
             size: 12,
             color: MyColors.white,
           ),

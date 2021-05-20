@@ -28,7 +28,7 @@ class BuildTabBarBody extends StatelessWidget {
           gapLocation: GapLocation.center,
           leftCornerRadius: 0,
           rightCornerRadius: 0,
-          height: 55,
+          height: 75,
           onTap: (index) => companyHomeData.animateTabsPages(index, context),
         );
       },
