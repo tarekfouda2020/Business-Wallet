@@ -48,8 +48,10 @@ class _InvitationDetailsState extends State<InvitationDetails>
                 currentStep: _animation.value.toInt(),
                 selectedColor: MyColors.primary,
                 unselectedColor: MyColors.secondary,
-                width: 100,
+                width: 70,
+                height: 70,
                 padding: 0,
+                stepSize: 5,
                 roundedCap: (_, isSelected) => isSelected,
                 child: Center(
                   child: MyText(
