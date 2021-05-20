@@ -27,6 +27,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
         children: [
           BuildPicture(),
           BuildInformations(),
+          BuildProviderDescription(providerDetailsData: providerDetailsData,),
           BuildContactInfo(
             providerDetailsData: providerDetailsData,
           ),

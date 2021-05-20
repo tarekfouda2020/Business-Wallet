@@ -9,10 +9,10 @@ class HomeData {
   int currentIndex=0;
 
   List<BottomTabModel> tabs = [
-    BottomTabModel(iconData: Icons.favorite,),
-    BottomTabModel(iconData: Icons.store_mall_directory),
-    BottomTabModel(iconData: MdiIcons.bullhorn),
-    BottomTabModel(iconData: Icons.person),
+    BottomTabModel(iconData: Icons.favorite,title: "مفضلتي"),
+    BottomTabModel(iconData: Icons.store_mall_directory,title: "متابعتي"),
+    BottomTabModel(iconData: MdiIcons.bullhorn,title: "دعوة تجارية"),
+    BottomTabModel(iconData: Icons.person,title: "حسابي"),
   ];
 
   void initBottomNavigation(TickerProvider ticker){

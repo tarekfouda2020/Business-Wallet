@@ -22,3 +22,4 @@ part 'BuildSocialInfo.dart';
 part 'BuildPhotosInfo.dart';
 part 'BuildCommentsInfo.dart';
 part 'BuildCommentField.dart';
+part 'BuildProviderDescription.dart';

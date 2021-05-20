@@ -61,7 +61,7 @@ class IconTextFiled extends StatelessWidget {
             lang: lang,
             hint: hint,
             prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,enableColor: MyColors.grey, focusColor: MyColors.primary
+            suffixIcon: suffixIcon, focusColor: MyColors.primary
           ),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:base_flutter/company/screens/company_register/CompanyRegisterImp
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
+import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart';
 import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart';
 import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';

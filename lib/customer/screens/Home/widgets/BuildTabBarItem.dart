@@ -16,10 +16,15 @@ class BuildTabBarItem extends StatelessWidget {
     Color color = active ? MyColors.primary : MyColors.grey;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5),
-      child: Icon(
-        homeData.tabs[index].iconData,
-        color: color,
-        size: 25,
+      child: Column(
+        children: [
+          Icon(
+            homeData.tabs[index].iconData,
+            color: color,
+            size: 25,
+          ),
+          MyText(title: homeData.tabs[index].title??"", size: 8, color: color,)
+        ],
       )
     );
   }

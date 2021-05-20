@@ -17,9 +17,10 @@ class BuildTitle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            MyText(title: title),
+            MyText(title: title, color: open==true? MyColors.primary: MyColors.white,),
             Icon(
-                open==false? Icons.keyboard_arrow_down_sharp: Icons.keyboard_arrow_up)
+                open==false? Icons.keyboard_arrow_down_sharp:
+                Icons.keyboard_arrow_up, color: open==true? MyColors.primary: MyColors.white,)
           ],
         ),
       ),

@@ -67,6 +67,7 @@ dependencies:
   dots_indicator: ^1.2.0
   curved_navigation_bar:
   animated_bottom_navigation_bar: ^0.2.1
+  step_progress_indicator: ^1.0.0
 
 
 
