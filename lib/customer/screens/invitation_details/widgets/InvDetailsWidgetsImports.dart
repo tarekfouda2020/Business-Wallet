@@ -1,0 +1,28 @@
+import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart';
+import 'package:base_flutter/customer/screens/provider_details/widgets/ProviderDetailsWidgetsImports.dart';
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/widgets/CachedImage.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:base_flutter/res.dart';
+import 'package:flutter/material.dart';
+import 'dart:math' as math;
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:base_flutter/general/utilities/validator/Validator.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
+
+part 'BuildInvTitle.dart';
+part 'BuildInvPic.dart';
+part 'BuildAdOwner.dart';
+part 'BuildInvAnimation.dart';
+part 'BuildInvComments.dart';
+part 'BuildInvDescription.dart';
+part 'BuildInvSwiper.dart';
+part 'BuildInvAppBar.dart';
+part 'BuildAnimationDetails.dart';
+part 'BuildInvInfo.dart';
+part 'BuildAddComment.dart';

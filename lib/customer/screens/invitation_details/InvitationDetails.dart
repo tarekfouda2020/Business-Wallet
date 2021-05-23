@@ -7,62 +7,92 @@ class InvitationDetails extends StatefulWidget {
 
 class _InvitationDetailsState extends State<InvitationDetails>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
   @override
   void initState() {
     super.initState();
-
-    _controller = AnimationController(
+    invitationDetailsData.controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 6000,
+        milliseconds: 5000,
       ),
     );
 
-    _animation = Tween<double>(
+    invitationDetailsData.animation = Tween<double>(
       begin: 0,
-      end: 10000,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.bounceIn))
+      end: 40,
+    ).animate(CurvedAnimation(
+        parent: invitationDetailsData.controller, curve: Curves.easeOut))
       ..addListener(() {
         setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          invitationDetailsData.expandCubit.onUpdateData(220);
+          Future.delayed(Duration(milliseconds: 500), () {
+            invitationDetailsData.showExpandCubit.onUpdateData(true);
+          });
+        }
       });
-
-    _controller.forward();
+    invitationDetailsData.controller.forward();
   }
+
+  InvitationDetailsData invitationDetailsData = InvitationDetailsData();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(
-        title: "",
-      ),
-      body: ListView(
+      backgroundColor: MyColors.darken,
+      body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              CircularStepProgressIndicator(
-                totalSteps: 10000,
-                currentStep: _animation.value.toInt(),
-                selectedColor: MyColors.primary,
-                unselectedColor: MyColors.secondary,
-                width: 70,
-                height: 70,
-                padding: 0,
-                stepSize: 5,
-                roundedCap: (_, isSelected) => isSelected,
-                child: Center(
-                  child: MyText(
-                    title: "10",
-                  ),
+          Container(
+            height: 180,
+            child: Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                BuildInvAppBar(),
+                BuildInvAnimation(
+                  invitationDetailsData: invitationDetailsData,
+                ),
+                BuildAnimationDetails(
+                  invitationDetailsData: invitationDetailsData,
                 )
-              ),
-            ],
+              ],
+            ),
+          ),
+          Flexible(
+            child: ListView(
+              padding: const EdgeInsets.only(top: 10),
+              physics: BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              children: [
+                BuildInvInfo(),
+                BuildInvTitle(
+                  title: "وصف الاعلان",
+                ),
+                BuildInvDescription(),
+                BuildInvTitle(
+                  title: "الصور",
+                ),
+                BuildInvSwiper(),
+                BuildInvTitle(
+                  title: "صاحب الإعلان",
+                ),
+                BuildAdOwner(),
+                BuildInvComments(invitationDetailsData: invitationDetailsData)
+              ],
+            ),
           ),
         ],
       ),
+      bottomNavigationBar: BuildAddComment(
+        invitationDetailsData: invitationDetailsData,
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    invitationDetailsData.controller.dispose();
+    super.dispose();
   }
 }
