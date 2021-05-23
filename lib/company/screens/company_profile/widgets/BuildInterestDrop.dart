@@ -20,6 +20,7 @@ class BuildInterestDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   BuildInterestItem(
                     title: "اعلام وتسويق",

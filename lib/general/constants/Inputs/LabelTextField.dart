@@ -19,6 +19,7 @@ class LabelTextField extends StatefulWidget {
   final double? maxHeight;
   final double? minHeight;
   final Color? borderColor;
+  final Color? enabledColor;
 
   LabelTextField(
       {required this.hint,
@@ -32,6 +33,7 @@ class LabelTextField extends StatefulWidget {
       this.maxHeight,
       this.minHeight,
       this.borderColor,
+      this.enabledColor,
       required this.validate});
 
   @override
@@ -45,13 +47,12 @@ class _LabelTextFieldState extends State<LabelTextField> {
     return Container(
       margin: widget.margin ?? EdgeInsets.all(0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: widget.borderColor?? Colors.transparent)
-      ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: widget.borderColor ?? Colors.transparent)),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: widget.minHeight?? 50,
-            maxHeight: widget.maxHeight?? 80,
+            minHeight: widget.minHeight ?? 50,
+            maxHeight: widget.maxHeight ?? 80,
             minWidth: double.infinity,
             maxWidth: double.infinity),
         child: TextFormField(
@@ -65,7 +66,8 @@ class _LabelTextFieldState extends State<LabelTextField> {
           textInputAction: widget.action ?? TextInputAction.next,
           validator: (value) => widget.validate(value),
           style: CustomInputTextStyle(lang: lang),
-          decoration: CustomInputDecoration(lang: lang, hint: widget.hint),
+          decoration: CustomInputDecoration(
+              lang: lang, hint: widget.hint, enableColor: widget.enabledColor),
         ),
       ),
     );

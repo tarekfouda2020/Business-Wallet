@@ -23,7 +23,7 @@ class BuildCommentsDrop extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 13,
+                  itemCount: 3,
                   itemBuilder: (_, index) => BuildCommentItem(),
                 ),
               ),

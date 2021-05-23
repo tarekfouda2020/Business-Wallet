@@ -7,21 +7,19 @@ class BuildInterestItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: MyColors.black,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: MyText(
-          title: title,
-          size: 10,
-          alien: TextAlign.center,
-          color: MyColors.greyWhite.withOpacity(.9),
-        ),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 10),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: MyColors.black,
+        borderRadius: BorderRadius.circular(40),
+      ),
+      child: MyText(
+        title: title,
+        size: 10,
+        alien: TextAlign.center,
+        color: MyColors.greyWhite.withOpacity(.9),
       ),
     );
   }
