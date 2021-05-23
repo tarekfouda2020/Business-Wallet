@@ -17,19 +17,19 @@ class BuildTabBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = active ? MyColors.primary : MyColors.grey;
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10,),
+      padding: EdgeInsets.symmetric(vertical: 5,),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Icon(
             companyHomeData.tabs[index].iconData,
             color: color,
-            size: 25,
+            size: 20,
           ),
           MyText(
             title: companyHomeData.tabs[index].title ?? "",
             color: color,
-            size: 11,
+            size: 9,
           )
         ],
       ),

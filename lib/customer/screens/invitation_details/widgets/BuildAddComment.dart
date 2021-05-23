@@ -1,8 +1,8 @@
-part of 'ProviderDetailsWidgetsImports.dart';
+part of 'InvDetailsWidgetsImports.dart';
 
-class BuildCommentField extends StatelessWidget {
-  final ProviderDetailsData providerDetailsData;
-  const BuildCommentField({required this.providerDetailsData});
+class BuildAddComment extends StatelessWidget {
+  final InvitationDetailsData invitationDetailsData;
+  const BuildAddComment({required this.invitationDetailsData});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +15,7 @@ class BuildCommentField extends StatelessWidget {
           Expanded(
             child: LabelTextField(
               hint: "تعليق",
-              controller: providerDetailsData.comment,
+              controller: invitationDetailsData.comment,
               validate: (value) => value!.validateEmpty(context),
               margin: const EdgeInsets.symmetric(horizontal: 15),
               minHeight: 30,
@@ -23,7 +23,10 @@ class BuildCommentField extends StatelessWidget {
               borderColor: MyColors.grey,
             ),
           ),
-          Icon(Icons.send, color: MyColors.primary,)
+          Icon(
+            Icons.send,
+            color: MyColors.primary,
+          )
         ],
       ),
     );

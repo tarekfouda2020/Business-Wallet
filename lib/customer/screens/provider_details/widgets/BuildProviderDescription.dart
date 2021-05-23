@@ -12,13 +12,14 @@ class BuildProviderDescription extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            BuildTitle(
-              title: "وصف الكيان",
-              open: state.data,
-              onTap: ()=> providerDetailsData.descCubit.onUpdateData(!state.data),
-            ),
+            // BuildTitle(
+            //   title: "وصف الكيان",
+            //   open: state.data,
+            //   onTap: ()=> providerDetailsData.descCubit.onUpdateData(!state.data),
+            // ),
             Visibility(
-              visible: state.data,
+              // visible: state.data,
+              visible: true,
               child: Container(
                 margin:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
