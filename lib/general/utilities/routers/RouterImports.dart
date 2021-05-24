@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart';
 import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart';
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart';
 import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';

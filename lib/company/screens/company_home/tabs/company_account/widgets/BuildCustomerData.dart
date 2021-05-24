@@ -35,6 +35,7 @@ class BuildCustomerData extends StatelessWidget {
         BuildAccountItem(
           title: "التعليقات",
           iconData: Icons.chat,
+          onTap: () => AutoRouter.of(context).push(CompanyCommentsRoute()),
         ),
         BuildAccountItem(
           title: "الاهتمامات",
