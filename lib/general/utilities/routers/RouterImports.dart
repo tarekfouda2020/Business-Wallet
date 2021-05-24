@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart';
+import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart';
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart';
+import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart';
 import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart';
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart';
 import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';
@@ -7,8 +10,12 @@ import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dar
 import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart';
 import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart';
+import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart';
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart';
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';
+import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart';
+import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';
+import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';

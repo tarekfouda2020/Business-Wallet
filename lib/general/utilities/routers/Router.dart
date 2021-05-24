@@ -48,6 +48,14 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyFavDetails),
     AdaptiveRoute(page: CompanyComments),
     AdaptiveRoute(page: CompanyInterests),
+    AdaptiveRoute(page: CompanyWalletNumb),
+    AdaptiveRoute(page: CompanyStatistics),
+
+    AdaptiveRoute(page: CompanyWallet),
+    AdaptiveRoute(page: CompanyPackages),
+    AdaptiveRoute(page: CompanyConversations),
+    AdaptiveRoute(page: CompanyBrochure),
+    AdaptiveRoute(page: CompanyBarcode),
 
 
   ],
