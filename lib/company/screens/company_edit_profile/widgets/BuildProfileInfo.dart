@@ -15,7 +15,9 @@ class BuildProfileInfo extends StatelessWidget {
             height: 150,
           ),
         ),
-        Row(
+      Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        child:   Row(
           children: [
             Container(
               decoration: BoxDecoration(
@@ -24,7 +26,7 @@ class BuildProfileInfo extends StatelessWidget {
               padding: const EdgeInsets.all(5),
               child: CachedImage(
                 url:
-                    "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
+                "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
                 boxShape: BoxShape.circle,
                 haveRadius: false,
                 width: 60,
@@ -47,14 +49,15 @@ class BuildProfileInfo extends StatelessWidget {
             ),
             Spacer(),
             InkWell(
-              onTap: () => AutoRouter.of(context).push(CompanyProfileRoute()),
+              onTap: () =>
+                  AutoRouter.of(context).push(CompanyEditActivityRoute()),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: MyColors.primary,
                 ),
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Row(
                   children: [
                     Icon(
@@ -73,6 +76,7 @@ class BuildProfileInfo extends StatelessWidget {
             )
           ],
         ),
+      )
       ],
     );
   }

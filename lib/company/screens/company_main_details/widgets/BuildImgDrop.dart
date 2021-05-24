@@ -20,7 +20,9 @@ class BuildImgDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: BuildImagesData(),
-              replacement: Container(),
+              replacement: Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+              ),
             ),
           ],
         );

@@ -5,6 +5,8 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
+    as _i30;
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
     as _i29;
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
@@ -53,7 +55,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i30;
+import 'package:flutter/cupertino.dart' as _i31;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -194,6 +196,10 @@ class AppRouter extends _i1.RootStackRouter {
     CompanyEditProfileRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i29.CompanyEditProfile());
+    },
+    CompanyEditActivityRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i30.CompanyEditActivity());
     }
   };
 
@@ -229,12 +235,14 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/company-main-details'),
         _i1.RouteConfig(CompanyProfileRoute.name, path: '/company-profile'),
         _i1.RouteConfig(CompanyEditProfileRoute.name,
-            path: '/company-edit-profile')
+            path: '/company-edit-profile'),
+        _i1.RouteConfig(CompanyEditActivityRoute.name,
+            path: '/company-edit-activity')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i30.GlobalKey<_i30.NavigatorState> navigatorKey})
+  SplashRoute({required _i31.GlobalKey<_i31.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -244,7 +252,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i30.GlobalKey<_i30.NavigatorState> navigatorKey;
+  final _i31.GlobalKey<_i31.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -443,4 +451,11 @@ class CompanyEditProfileRoute extends _i1.PageRouteInfo {
   const CompanyEditProfileRoute() : super(name, path: '/company-edit-profile');
 
   static const String name = 'CompanyEditProfileRoute';
+}
+
+class CompanyEditActivityRoute extends _i1.PageRouteInfo {
+  const CompanyEditActivityRoute()
+      : super(name, path: '/company-edit-activity');
+
+  static const String name = 'CompanyEditActivityRoute';
 }

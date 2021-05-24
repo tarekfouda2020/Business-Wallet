@@ -22,22 +22,24 @@ class DropdownTextField<DataType> extends StatefulWidget {
   final dynamic finData;
   final EdgeInsets? downIconPadding;
   final bool useName;
+  final double? borderRadius;
 
   DropdownTextField(
       {this.label,
-        this.hint,
-        this.margin,
-        this.validate,
-        this.downIconPadding,
-        this.useName = true,
-        this.onChange,
-        this.fontSize,
-        this.labelSize,
-        this.finData,
-        this.dropKey,
-        this.data,
-        this.selectedItem,
-        this.showSelectedItem = false});
+      this.hint,
+      this.margin,
+      this.validate,
+      this.downIconPadding,
+      this.useName = true,
+      this.onChange,
+      this.fontSize,
+      this.labelSize,
+      this.finData,
+      this.dropKey,
+      this.data,
+      this.selectedItem,
+      this.showSelectedItem = false,
+      this.borderRadius});
 
   @override
   _DropdownTextFieldState<DataType> createState() =>
@@ -72,8 +74,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
             enableColor: Colors.black,
             focusColor: MyColors.primary,
             borderRaduis: 5,
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)
-        ),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
         popupTitle: Container(
           height: 50,
           decoration: BoxDecoration(
@@ -85,7 +86,7 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
           ),
           child: Center(
             child: MyText(
-              title: widget.label!=null?widget.label!:widget.hint!,
+              title: widget.label != null ? widget.label! : widget.hint!,
               size: 16,
               color: MyColors.white,
             ),
@@ -102,9 +103,8 @@ class _DropdownTextFieldState<DataType> extends State<DropdownTextField> {
             hint: widget.hint,
             enableColor: Colors.transparent,
             focusColor: MyColors.primary,
-            borderRaduis: 2,
-            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0)
-        ),
+            borderRaduis: widget.borderRadius,
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0)),
       ),
     );
   }

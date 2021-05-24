@@ -27,7 +27,9 @@ class BuildCommentsDrop extends StatelessWidget {
                   itemBuilder: (_, index) => BuildCommentItem(),
                 ),
               ),
-              replacement: Container(),
+              replacement: Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+              ),
             ),
           ],
         );

@@ -20,7 +20,9 @@ class BuildContactDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: BuildContactData(),
-              replacement: Container(),
+              replacement: Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+              ),
             ),
           ],
         );

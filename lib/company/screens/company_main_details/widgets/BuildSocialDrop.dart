@@ -35,7 +35,10 @@ class BuildSocialDrop extends StatelessWidget {
                   )
                 ),
               ),
-              replacement: Container(),
+              replacement: Container(
+                margin: const EdgeInsets.symmetric(vertical: 5),
+
+              ),
             ),
           ],
         );

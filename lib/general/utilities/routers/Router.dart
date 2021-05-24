@@ -44,6 +44,7 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyMainDetails),
     AdaptiveRoute(page: CompanyProfile),
     AdaptiveRoute(page: CompanyEditProfile),
+    AdaptiveRoute(page: CompanyEditActivity),
 
 
   ],
