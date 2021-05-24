@@ -15,6 +15,8 @@ import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetai
     as _i31;
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
     as _i26;
+import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
+    as _i33;
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
     as _i27;
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
@@ -59,7 +61,7 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i12;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i33;
+import 'package:flutter/cupertino.dart' as _i34;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -212,6 +214,10 @@ class AppRouter extends _i1.RootStackRouter {
     CompanyCommentsRoute.name: (routeData) {
       return _i1.AdaptivePage<dynamic>(
           routeData: routeData, child: _i32.CompanyComments());
+    },
+    CompanyInterestsRoute.name: (routeData) {
+      return _i1.AdaptivePage<dynamic>(
+          routeData: routeData, child: _i33.CompanyInterests());
     }
   };
 
@@ -252,12 +258,13 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/company-edit-activity'),
         _i1.RouteConfig(CompanyFavDetailsRoute.name,
             path: '/company-fav-details'),
-        _i1.RouteConfig(CompanyCommentsRoute.name, path: '/company-comments')
+        _i1.RouteConfig(CompanyCommentsRoute.name, path: '/company-comments'),
+        _i1.RouteConfig(CompanyInterestsRoute.name, path: '/company-interests')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i33.GlobalKey<_i33.NavigatorState> navigatorKey})
+  SplashRoute({required _i34.GlobalKey<_i34.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -267,7 +274,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i33.GlobalKey<_i33.NavigatorState> navigatorKey;
+  final _i34.GlobalKey<_i34.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -485,4 +492,10 @@ class CompanyCommentsRoute extends _i1.PageRouteInfo {
   const CompanyCommentsRoute() : super(name, path: '/company-comments');
 
   static const String name = 'CompanyCommentsRoute';
+}
+
+class CompanyInterestsRoute extends _i1.PageRouteInfo {
+  const CompanyInterestsRoute() : super(name, path: '/company-interests');
+
+  static const String name = 'CompanyInterestsRoute';
 }

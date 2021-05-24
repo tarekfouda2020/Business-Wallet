@@ -5,6 +5,7 @@ import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditPro
 import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart';
+import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart';
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';

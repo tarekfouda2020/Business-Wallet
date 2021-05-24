@@ -40,6 +40,7 @@ class BuildCustomerData extends StatelessWidget {
         BuildAccountItem(
           title: "الاهتمامات",
           iconData: MdiIcons.accountGroup,
+          onTap: () => AutoRouter.of(context).push(CompanyInterestsRoute()),
         ),
         BuildAccountItem(
           title: "بيانات البروشور",
