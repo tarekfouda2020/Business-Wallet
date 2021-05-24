@@ -42,7 +42,7 @@ class LoadingButton extends StatelessWidget {
             minWidth: 45,
             height: 50,
             color: color ?? MyColors.primary,
-            borderRadius: borderRadius ?? 10,
+            borderRadius: borderRadius ?? 30,
             borderSide: BorderSide(color: borderColor ?? border, width: 1),
             child: MyText(
               title: "$title",

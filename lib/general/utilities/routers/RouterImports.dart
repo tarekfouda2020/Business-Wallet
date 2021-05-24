@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart';
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart';
+import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart';
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart';

@@ -13,13 +13,19 @@ class BuildProfileCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CachedImage(
-              url:
-                  "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-              haveRadius: false,
-              boxShape: BoxShape.circle,
-              width: 70,
-              height: 70,
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: MyColors.primary)),
+              child: CachedImage(
+                url:
+                    "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
+                haveRadius: false,
+                boxShape: BoxShape.circle,
+                width: 50,
+                height: 50,
+              ),
             ),
             SizedBox(
               width: 10,

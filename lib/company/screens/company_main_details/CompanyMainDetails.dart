@@ -24,7 +24,8 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
           BuildContactDrop(companyMainDetailsData: companyMainDetailsData),
           BuildSocialDrop(companyMainDetailsData: companyMainDetailsData),
           BuildImgDrop(companyMainDetailsData: companyMainDetailsData),
-          BuildCommentsDrop(companyMainDetailsData: companyMainDetailsData)
+          BuildCommentsDrop(companyMainDetailsData: companyMainDetailsData),
+          BuildRateCompany()
         ],
       ),
       bottomNavigationBar: BuildCommentButton(

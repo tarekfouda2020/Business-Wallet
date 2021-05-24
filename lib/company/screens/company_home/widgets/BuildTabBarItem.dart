@@ -17,7 +17,9 @@ class BuildTabBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = active ? MyColors.primary : MyColors.grey;
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 5,),
+      padding: EdgeInsets.symmetric(
+        vertical: 10,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

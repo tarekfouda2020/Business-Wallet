@@ -13,7 +13,7 @@ class BuildSocialDrop extends StatelessWidget {
         return Column(
           children: [
             BuildDropItem(
-                title: "معلومات التواصل",
+                title: " روابط التواصل الاجتماعي",
                 onTap: () => companyMainDetailsData.socialDropCubit
                     .onUpdateData(!state.data),
                 genericCubit: companyMainDetailsData.socialDropCubit),

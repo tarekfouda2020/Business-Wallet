@@ -50,7 +50,7 @@ class RichTextFiled extends StatelessWidget {
         validator: (value) => validate(value),
         style: CustomInputTextStyle(lang: lang),
         decoration: CustomInputDecoration(
-            lang: lang, hint: hint, suffixIcon: suffixIcon),
+            lang: lang, hint: hint, suffixIcon: suffixIcon, borderRaduis: 15),
       ),
     );
   }

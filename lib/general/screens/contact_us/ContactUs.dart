@@ -6,8 +6,31 @@ class ContactUs extends StatefulWidget {
 }
 
 class _ContactUsState extends State<ContactUs> {
+  final ContactUsData contactUsData = new ContactUsData();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: MyColors.darken,
+      appBar: DefaultAppBar(
+        title: "تواصل معنا",
+      ),
+      body: ListView(
+        children: [
+          HeaderLogo(),
+          BuildContactUsForm(
+            contactUsData: contactUsData,
+          ),
+          LoadingButton(
+            btnKey: contactUsData.btnKey,
+            title: "ارسال",
+            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            color: MyColors.primary,
+            onTap: () {},
+          ),
+          BuildSocialView(),
+        ],
+      ),
+    );
   }
 }

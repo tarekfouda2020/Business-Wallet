@@ -15,10 +15,11 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';
 
+part 'BuildRateCompany.dart';
+
 part 'BuildProductImg.dart';
 
 part 'BuildProductDetails.dart';
-
 
 part 'BuildContactDrop.dart';
 
@@ -27,7 +28,6 @@ part 'BuildCommentsDrop.dart';
 part 'BuildImgDrop.dart';
 
 part 'BuildSocialDrop.dart';
-
 
 part 'BuildContactData.dart';
 

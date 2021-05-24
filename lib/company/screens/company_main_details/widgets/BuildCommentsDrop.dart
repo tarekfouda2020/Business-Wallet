@@ -13,7 +13,7 @@ class BuildCommentsDrop extends StatelessWidget {
         return Column(
           children: [
             BuildDropItem(
-                title: "معلومات التواصل",
+                title: "التعليقات",
                 onTap: () => companyMainDetailsData.commentsDropCubit
                     .onUpdateData(!state.data),
                 genericCubit: companyMainDetailsData.commentsDropCubit),

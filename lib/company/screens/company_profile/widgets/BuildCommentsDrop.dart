@@ -21,6 +21,7 @@ class BuildCommentsDrop extends StatelessWidget {
               visible: state.data,
               child: Container(
                 child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 3,
