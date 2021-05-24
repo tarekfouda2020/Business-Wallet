@@ -8,7 +8,7 @@ class BuildProfilePageView extends StatelessWidget {
       children: [
         BuildProfileHeader(
           buttonText: "تعديل الصفحة الشخصية",
-          // onTap: ()=> AutoRouter.of(context).push(ProfilePageRoute()),
+          onTap: ()=> AutoRouter.of(context).push(EditProfileRoute()),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 15),

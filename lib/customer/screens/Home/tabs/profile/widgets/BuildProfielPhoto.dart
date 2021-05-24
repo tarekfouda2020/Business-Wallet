@@ -7,10 +7,11 @@ class BuildProfilePhoto extends StatelessWidget {
       height: 60,
       width: 60,
       decoration: BoxDecoration(
-          border: Border.all(
-            color: MyColors.primary,
-          ),
-          shape: BoxShape.circle),
+        border: Border.all(
+          color: MyColors.primary,
+        ),
+        shape: BoxShape.circle,
+      ),
       padding: const EdgeInsets.all(6),
       child: Container(
         height: 50,

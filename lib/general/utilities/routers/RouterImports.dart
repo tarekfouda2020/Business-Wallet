@@ -19,10 +19,13 @@ import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNu
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
+import 'package:base_flutter/customer/screens/edit_profile/EditProfileImports.dart';
 import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart';
+import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.dart';
 import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart';
 import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
+import 'package:base_flutter/customer/screens/wallet/WalletImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart';

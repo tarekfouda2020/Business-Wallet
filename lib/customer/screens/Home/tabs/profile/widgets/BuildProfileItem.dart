@@ -3,13 +3,14 @@ part of 'ProfileWidgetsImports.dart';
 class BuildProfileItem extends StatelessWidget {
   final IconData icon;
   final String title;
+  final Function() ?onTap;
 
-  const BuildProfileItem({required this.icon, required this.title});
+  const BuildProfileItem({required this.icon, required this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      // onTap: ,
+      onTap: onTap,
       child: Container(
         child: Column(
           children: [

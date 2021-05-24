@@ -18,6 +18,7 @@ class RegisterData {
   void getDatePicker(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
     AdaptivePicker.datePicker(
+      title: "",
         context: context,
         onConfirm: (date) {
           if (date != null) {
@@ -25,7 +26,6 @@ class RegisterData {
             dateCubit.onUpdateData(dateStr);
           }
         },
-    title: ""
     );
   }
 

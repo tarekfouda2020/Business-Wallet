@@ -36,6 +36,9 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: ProfilePage),
     AdaptiveRoute(page: ProviderDetails),
     AdaptiveRoute(page: InvitationDetails),
+    AdaptiveRoute(page: EditProfile),
+    AdaptiveRoute(page: NumberWallet),
+    AdaptiveRoute(page: Wallet),
 
 
     //company routes

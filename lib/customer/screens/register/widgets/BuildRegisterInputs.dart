@@ -2,6 +2,7 @@ part of 'RegisterWidgetsImports.dart';
 
 class BuildRegisterInputs extends StatelessWidget {
   final RegisterData registerData;
+
   const BuildRegisterInputs(this.registerData);
 
   @override
@@ -62,12 +63,10 @@ class BuildRegisterInputs extends StatelessWidget {
                           minHeight: 55,
                           maxHeight: 80,
                           minWidth: double.infinity,
-                          maxWidth: double.infinity
-                      ),
+                          maxWidth: double.infinity),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: MyColors.black
-                      ),
+                          color: MyColors.black),
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +83,6 @@ class BuildRegisterInputs extends StatelessWidget {
                 ],
               ),
             ),
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
@@ -96,46 +94,39 @@ class BuildRegisterInputs extends StatelessWidget {
                   minHeight: 55,
                   maxHeight: 80,
                   minWidth: double.infinity,
-                  maxWidth: double.infinity
-              ),
+                  maxWidth: double.infinity),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: MyColors.black
-              ),
+                  color: MyColors.black),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: MyText(title: "السعودية"),
             ),
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
                 title: "المنطقة",
               ),
             ),
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
                 title: "الجنس",
               ),
             ),
-
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
                 title: "تاريخ الميلاد",
               ),
             ),
-
             BlocBuilder<GenericCubit<String>, GenericState<String>>(
               bloc: registerData.dateCubit,
-              builder: (context, state){
+              builder: (context, state) {
                 if (state is GenericInitialState) {
                   return InkWellTextField(
                     controller: registerData.birthDate,
                     hint: "تاريخ الميلاد",
-                    onTab: ()=> registerData.getDatePicker(context),
+                    onTab: () => registerData.getDatePicker(context),
                     // onTab: (){},
                     validate: (value) => value!.validatePhone(context),
                     icon: Icon(
@@ -143,12 +134,11 @@ class BuildRegisterInputs extends StatelessWidget {
                       color: MyColors.white,
                     ),
                   );
-                }
-                else {
+                } else {
                   return InkWellTextField(
                     controller: registerData.birthDate,
                     hint: state.data,
-                    onTab: ()=> registerData.getDatePicker(context),
+                    onTab: () => registerData.getDatePicker(context),
                     // onTab: (){},
                     validate: (value) => value!.validatePhone(context),
                     icon: Icon(
@@ -159,7 +149,6 @@ class BuildRegisterInputs extends StatelessWidget {
                 }
               },
             ),
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
@@ -178,7 +167,6 @@ class BuildRegisterInputs extends StatelessWidget {
                 color: MyColors.white,
               ),
             ),
-
             Container(
               margin: const EdgeInsets.only(top: 10),
               child: MyText(
@@ -197,10 +185,7 @@ class BuildRegisterInputs extends StatelessWidget {
                 color: MyColors.white,
               ),
             ),
-
-
           ],
-        )
-    );
+        ));
   }
 }

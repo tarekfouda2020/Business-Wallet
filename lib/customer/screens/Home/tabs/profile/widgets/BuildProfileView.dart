@@ -11,10 +11,12 @@ class BuildProfileView extends StatelessWidget {
           BuildProfileItem(
             title: "رقم المحفظة",
             icon: Icons.code,
+            onTap: () => AutoRouter.of(context).push(NumberWalletRoute()),
           ),
           BuildProfileItem(
             title: "المحفظة",
             icon: Icons.monetization_on,
+            onTap: () => AutoRouter.of(context).push(WalletRoute()),
           ),
           BuildProfileItem(
             title: "الاهتمامات",
