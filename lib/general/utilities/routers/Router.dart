@@ -53,6 +53,7 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyInterests),
     AdaptiveRoute(page: CompanyWalletNumb),
     AdaptiveRoute(page: CompanyStatistics),
+    AdaptiveRoute(page: CompanyPoints),
 
     AdaptiveRoute(page: CompanyWallet),
     AdaptiveRoute(page: CompanyPackages),

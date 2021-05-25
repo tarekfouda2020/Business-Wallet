@@ -26,7 +26,6 @@ class BuildSelectedTabView extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
-              flex: 2,
               child: InkWell(
                 child: Row(
                   children: [
@@ -35,17 +34,12 @@ class BuildSelectedTabView extends StatelessWidget {
                       size: 10,
                       color: MyColors.white,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Icon(Icons.arrow_drop_down)
                   ],
                 ),
               ),
             ),
             Expanded(
-              flex: 2,
-
               child: InkWell(
                 child: Row(
                   children: [
@@ -54,17 +48,12 @@ class BuildSelectedTabView extends StatelessWidget {
                       size: 10,
                       color: MyColors.white,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Icon(Icons.arrow_drop_down)
                   ],
                 ),
               ),
             ),
             Expanded(
-              flex: 2,
-
               child: InkWell(
                 child: Row(
                   children: [
@@ -72,9 +61,6 @@ class BuildSelectedTabView extends StatelessWidget {
                       title: "اخري",
                       size: 10,
                       color: MyColors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
                     ),
                     Icon(Icons.arrow_drop_down)
                   ],

@@ -13,12 +13,12 @@ class BuildBenefitsText extends StatelessWidget {
         ),
         SizedBox(height: 5,),
         MyText(
-          title: "يمكنك الاستفادة من المحفظة باحدي الطرق التالية:",
+          title: "يمكنك الاستفادة من المحفظة باحدي الطرق التالية :",
           size: 12,
           color: MyColors.white,
         ),
         ListView(
-          padding: const EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 10),
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           children: [

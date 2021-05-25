@@ -13,6 +13,29 @@ class _CompanyStatisticsState extends State<CompanyStatistics> {
       appBar: DefaultAppBar(
         title: "احصائيات وتقارير",
       ),
+      body: Column(
+        children: [
+          BuildStatisticsText(),
+          Flexible(
+            child: Row(
+              children: [
+                BuildStatisticsItem(
+                  title: "الزيارات",
+                  numb: "34",
+                ),
+                BuildStatisticsItem(
+                  title: "مشاركة الصفحة",
+                  numb: "34",
+                ),
+                BuildStatisticsItem(
+                  title: "عدد المتابعين",
+                  numb: "34",
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

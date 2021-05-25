@@ -18,7 +18,7 @@ class _CompanyWalletNumbState extends State<CompanyWalletNumb> {
         title: "رقم المحفظة",
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         children: [
           BuildBenefitsText(),
           BuildCopyText(companyWalletNumbData: companyWalletNumbData),
