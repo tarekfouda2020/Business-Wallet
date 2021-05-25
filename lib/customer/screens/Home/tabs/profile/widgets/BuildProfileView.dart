@@ -21,14 +21,17 @@ class BuildProfileView extends StatelessWidget {
           BuildProfileItem(
             title: "الاهتمامات",
             icon: MdiIcons.accountGroup,
+            onTap: () => AutoRouter.of(context).push(ImportantRoute()),
           ),
           BuildProfileItem(
             title: "المراسلات",
             icon: MdiIcons.chatProcessingOutline,
+            onTap: () => AutoRouter.of(context).push(ConversationRoute()),
           ),
           BuildProfileItem(
             title: "التعليقات",
             icon: Icons.message,
+            onTap: () => AutoRouter.of(context).push(CommentsRoute()),
           ),
           BuildProfileItem(
             title: "مشاركة التطبيق",
@@ -37,10 +40,12 @@ class BuildProfileView extends StatelessWidget {
           BuildProfileItem(
             title: "معلومات التطبيق",
             icon: Icons.settings,
+            onTap: () => AutoRouter.of(context).push(AppInfoRoute()),
           ),
           BuildProfileItem(
             title: "تواصل معنا",
             icon: Icons.phone_in_talk,
+            onTap: () => AutoRouter.of(context).push(ContactUsRoute()),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),

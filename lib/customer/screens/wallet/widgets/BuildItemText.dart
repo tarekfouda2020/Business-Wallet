@@ -35,19 +35,22 @@ class BuildItemText extends StatelessWidget {
                       SizedBox(width: 10,),
                       Visibility(
                         visible: showButton,
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 50,
-                          height: 25,
-                          decoration: BoxDecoration(
-                            color: MyColors.primary,
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                          child: MyText(
-                            title: "التفاصيل",
-                            size: 7,
-                            color: MyColors.black,
-                            alien: TextAlign.center,
+                        child: InkWell(
+                          onTap: () => AutoRouter.of(context).push(DetailsRoute()),
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 50,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: MyColors.primary,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            child: MyText(
+                              title: "التفاصيل",
+                              size: 7,
+                              color: MyColors.black,
+                              alien: TextAlign.center,
+                            ),
                           ),
                         ),
                         replacement: Container(),

@@ -39,6 +39,11 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: EditProfile),
     AdaptiveRoute(page: NumberWallet),
     AdaptiveRoute(page: Wallet),
+    AdaptiveRoute(page: Details),
+    AdaptiveRoute(page: Important),
+    AdaptiveRoute(page: Conversation),
+    AdaptiveRoute(page: Comments),
+    AdaptiveRoute(page: AppInfo),
 
 
     //company routes

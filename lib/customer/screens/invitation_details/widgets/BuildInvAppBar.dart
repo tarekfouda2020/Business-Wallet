@@ -15,6 +15,7 @@ class BuildInvAppBar extends StatelessWidget {
       backgroundColor: MyColors.darken,
       elevation: 0,
       leadingWidth: 10,
+      centerTitle: false,
       actions: [
         IconButton(
           icon: Icon(
