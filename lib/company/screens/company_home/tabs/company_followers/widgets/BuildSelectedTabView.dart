@@ -8,9 +8,9 @@ class BuildSelectedTabView extends StatelessWidget {
       right: 0,
       left: 0,
       child: Container(
-        height: 50,
+        height: 55,
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         margin: const EdgeInsets.symmetric(horizontal: 15),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           color: MyColors.secondary,
           borderRadius: BorderRadius.circular(25),
@@ -33,9 +33,6 @@ class BuildSelectedTabView extends StatelessWidget {
                       size: 10,
                       color: MyColors.white,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Icon(Icons.arrow_drop_down)
                   ],
                 ),
@@ -49,9 +46,6 @@ class BuildSelectedTabView extends StatelessWidget {
                       title: "الاهتمامات",
                       size: 10,
                       color: MyColors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
                     ),
                     Icon(Icons.arrow_drop_down)
                   ],
@@ -67,17 +61,14 @@ class BuildSelectedTabView extends StatelessWidget {
                       size: 10,
                       color: MyColors.white,
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Icon(Icons.arrow_drop_down)
                   ],
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              margin: EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              margin: EdgeInsets.symmetric(vertical: 12),
               decoration: BoxDecoration(
                 color: MyColors.primary,
                 borderRadius: BorderRadius.all(

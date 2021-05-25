@@ -62,7 +62,7 @@ class BuildPointsItem extends StatelessWidget {
                     child: MyText(
                       title: "التفاصيل",
                       size: 9,
-                      color: MyColors.black,
+                      color: MyColors.blackOpacity,
                       alien: TextAlign.center,
                     ),
                   ),

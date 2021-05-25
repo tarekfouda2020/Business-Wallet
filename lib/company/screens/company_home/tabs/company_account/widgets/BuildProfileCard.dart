@@ -47,7 +47,7 @@ class BuildProfileCard extends StatelessWidget {
                 ),
                 child: MyText(
                   title: "الصفحة الشخصية",
-                  color: MyColors.black,
+                  color: MyColors.blackOpacity,
                   size: 10,
                 ),
               ),

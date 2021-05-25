@@ -42,7 +42,7 @@ class BuildPublicDrop extends StatelessWidget {
             ),
             Visibility(
               visible: state.data,
-              child: BuildPublicData(),
+              child: BuildPublicData(companyAccountData: companyAccountData,),
               replacement: Container(),
             ),
           ],

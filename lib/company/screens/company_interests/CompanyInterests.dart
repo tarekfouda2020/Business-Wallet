@@ -18,29 +18,14 @@ class _CompanyInterestsState extends State<CompanyInterests> {
       body: Column(
         children: [
           BuildInterestText(),
-          Flexible(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: BlocBuilder<GenericCubit, GenericState>(
-                bloc: companyInterestData.interestCubit,
-                builder: (context, state) {
-                  return Wrap(
-                    spacing: 5,
-                    runSpacing: 5,
-                    children: List.generate(
-                      3,
-                      (index) => BuildInterestItem(
-                        title: "مصانع",
-                        onChange:
-                            companyInterestData.interestCubit.onUpdateData,
-                        selected: state.data,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
+          BuildInterestList(companyInterestData: companyInterestData),
+          DefaultButton(
+            title: "تأكيد",
+            onTap: () {},
+            color: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            textColor: MyColors.blackOpacity,
+          )
         ],
       ),
     );

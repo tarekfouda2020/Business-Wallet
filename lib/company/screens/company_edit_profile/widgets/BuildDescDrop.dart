@@ -28,7 +28,7 @@ class BuildDescDrop extends StatelessWidget {
                 children: [
                   Container(
                     margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                        const EdgeInsets.symmetric(horizontal: 20),
                     child: MyText(
                       title: "الوصف",
                       size: 11,
@@ -40,7 +40,7 @@ class BuildDescDrop extends StatelessWidget {
                     controller: companyEditProfileData.desc,
                     action: TextInputAction.next,
                     type: TextInputType.multiline,
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
                     validate: (value) => value!.validateEmpty(context),
                     max: 3,
                   ),

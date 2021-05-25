@@ -9,6 +9,7 @@ class BuildSelectedTabView extends StatelessWidget {
       left: 0,
       child: Container(
         height: 55,
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
           color: MyColors.secondary,
@@ -22,7 +23,6 @@ class BuildSelectedTabView extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           children: <Widget>[
             Expanded(

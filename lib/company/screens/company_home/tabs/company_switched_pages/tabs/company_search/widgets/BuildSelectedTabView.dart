@@ -22,7 +22,7 @@ class BuildSelectedTabView extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
         ),
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           children: <Widget>[
             Expanded(

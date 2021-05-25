@@ -4,7 +4,7 @@ class BuildProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
       child: Row(
         children: [
           Container(
@@ -22,6 +22,7 @@ class BuildProfileInfo extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 3,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(

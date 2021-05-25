@@ -17,7 +17,7 @@ class BuildRateCompany extends StatelessWidget {
             initialRating: 1,
             minRating: 0,
             direction: Axis.horizontal,
-            allowHalfRating: true,
+            allowHalfRating: false,
             updateOnDrag: false,
             itemCount: 5,
             itemSize: 25,

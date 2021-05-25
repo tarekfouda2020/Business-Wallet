@@ -22,6 +22,7 @@ class BuildProductDetails extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 3,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(

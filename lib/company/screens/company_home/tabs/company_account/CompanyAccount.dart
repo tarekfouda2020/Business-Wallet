@@ -18,16 +18,12 @@ class _CompanyAccountState extends State<CompanyAccount> {
       body: ListView(
         padding: const EdgeInsets.only(bottom: 20),
         children: [
-          BuildAccountDrop(
-            companyAccountData: companyAccountData,
-          ),
-          BuildPublicDrop(
-            companyAccountData: companyAccountData,
-          ),
+          BuildAccountDrop(companyAccountData: companyAccountData),
+          BuildPublicDrop(companyAccountData: companyAccountData),
           BuildAccountItem(
             title: "تواصل معنا",
             iconData: Icons.phone_in_talk_outlined,
-            onTap: ()=>AutoRouter.of(context).push(ContactUsRoute()),
+            onTap: () => AutoRouter.of(context).push(ContactUsRoute()),
           ),
           BuildLogout()
         ],

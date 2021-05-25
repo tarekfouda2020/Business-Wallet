@@ -31,7 +31,6 @@ class BuildPackagesItem extends StatelessWidget {
           ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 15),
             itemCount: 3,
-
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (_, index) => BuildTextItem(),
@@ -45,7 +44,7 @@ class BuildPackagesItem extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: 3),
-            margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 3),
+            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
             decoration: BoxDecoration(
               border: Border.all(color: MyColors.primary),
               borderRadius: BorderRadius.circular(20),

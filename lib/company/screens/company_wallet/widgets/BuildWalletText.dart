@@ -6,6 +6,7 @@ class BuildWalletText extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       color: MyColors.black,
       child: MyText(
         title: "تفاصيل النقاط",

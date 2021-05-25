@@ -4,14 +4,14 @@ import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 
 class DefaultAppBar extends PreferredSize {
-  final String ?title;
+  final String? title;
   final Widget? leading;
-  final List<Widget> ?actions;
+  final List<Widget>? actions;
   final Size preferredSize;
   final bool showLeading;
 
   DefaultAppBar({
-     this.title,
+    this.title,
     this.actions,
     this.leading,
     this.showLeading = true,
@@ -26,8 +26,8 @@ class DefaultAppBar extends PreferredSize {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MyText(
-            title: title??"",
-            size: 12,
+            title: title ?? "",
+            size: 14,
             color: MyColors.white,
           ),
           showLeading == false
@@ -56,16 +56,19 @@ class DefaultAppBar extends PreferredSize {
       //       ),
       //       onPressed: () => Navigator.of(context).pop(),
       //     ),
-      actions: actions ?? [
-        showLeading== true? IconButton(
-          icon: Icon(
-            Icons.arrow_forward_ios_sharp,
-            size: 25,
-            color: MyColors.white,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ) : Container(),
-      ],
+      actions: actions ??
+          [
+            showLeading == true
+                ? IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios_sharp,
+                      size: 25,
+                      color: MyColors.white,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                : Container(),
+          ],
     );
   }
 }

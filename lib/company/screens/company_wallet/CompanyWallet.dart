@@ -30,6 +30,7 @@ class _CompanyWalletState extends State<CompanyWallet> {
             title: "تصفية المحفظة",
             onTap: () {},
             color: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
             textColor: MyColors.blackOpacity,
           )
         ],

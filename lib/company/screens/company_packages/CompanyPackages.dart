@@ -14,14 +14,14 @@ class _CompanyPackagesState extends State<CompanyPackages> {
         title: "الباقات الاعلانية",
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
         child: Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          runAlignment: WrapAlignment.center,
+          spacing: 12,
+          runSpacing: 12,
+          runAlignment: WrapAlignment.start,
           alignment: WrapAlignment.start,
           children: List.generate(
-            3,
+            5,
             (index) => BuildPackagesItem(),
           ),
         ),
