@@ -1,4 +1,13 @@
+import 'package:base_flutter/company/models/dots/drop_down_model.dart';
+import 'package:base_flutter/company/screens/company_subscribe/tabs/second_step/widgets/SecondStepWidgetsImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/widgets/CompanySubscribeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/Inputs/custom_dropDown/CustomDropDown.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/utils_functions/AdaptivePicker.dart';
+import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
+import 'package:base_flutter/general/widgets/DefaultButton.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 part 'SecondStep.dart';
 part 'SecondStepData.dart';

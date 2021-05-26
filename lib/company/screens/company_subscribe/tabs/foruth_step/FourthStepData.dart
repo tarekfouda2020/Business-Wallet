@@ -1,4 +1,5 @@
 part of 'FourthStepImports.dart';
-class FourthStepData{
 
+class FourthStepData {
+  final GenericCubit<Object?> paymentCubit = new GenericCubit(0);
 }

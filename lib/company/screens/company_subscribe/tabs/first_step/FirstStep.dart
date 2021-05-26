@@ -23,17 +23,21 @@ class _FirstStepState extends State<FirstStep> {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: [
-          BuildStepper(step1: true),
+          BuildStepper(
+            step1: true,
+            movePage: widget.movePage,
+          ),
           BuildHelp(),
           BuildForm(firstStepData: firstStepData),
-          BuildAddFile(),
-          BuildAddImage(),
+          BuildAddFile(firstStepData: firstStepData),
+          BuildAddImage(firstStepData: firstStepData),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(2),
+            onTap: () => widget.movePage(1),
           )
         ],
       ),

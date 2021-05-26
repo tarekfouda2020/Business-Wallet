@@ -13,7 +13,7 @@ class BuildFormText extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: MyText(
         title: text,
-        size: 12,
+        size: 11,
         color: MyColors.white,
       ),
     );

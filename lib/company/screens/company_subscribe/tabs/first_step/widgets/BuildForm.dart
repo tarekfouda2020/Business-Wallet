@@ -8,6 +8,7 @@ class BuildForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BuildFormText(text: "اسم الاعلان"),
         LabelTextField(
@@ -19,9 +20,10 @@ class BuildForm extends StatelessWidget {
           validate: (value) => value!.validateEmpty(context),
         ),
         BuildFormText(text: "نص اختياري"),
-        LabelTextField(
+        RichTextFiled(
           hint: "اسم الاعلان",
-          controller: firstStepData.name,
+          max: 2,
+          controller: firstStepData.msg,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           type: TextInputType.emailAddress,
