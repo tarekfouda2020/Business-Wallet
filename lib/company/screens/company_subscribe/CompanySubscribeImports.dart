@@ -1,0 +1,9 @@
+import 'package:base_flutter/company/screens/company_subscribe/tabs/first_step/FirstStepImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/tabs/foruth_step/FourthStepImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/tabs/second_step/SecondStepImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/tabs/third_step/ThirdStepImports.dart';
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:flutter/material.dart';
+part 'CompanySubscribe.dart';
+part 'CompanySubscribeData.dart';

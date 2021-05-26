@@ -40,19 +40,22 @@ class BuildPackagesItem extends StatelessWidget {
             size: 9.5,
             color: MyColors.offWhite,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 3),
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
-            decoration: BoxDecoration(
-              border: Border.all(color: MyColors.primary),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: MyText(
-              title: "اشترك الان",
-              size: 10,
-              color: MyColors.primary,
+          InkWell(
+            onTap: () => AutoRouter.of(context).push(CompanySubscribeRoute()),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 3),
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
+              decoration: BoxDecoration(
+                border: Border.all(color: MyColors.primary),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: MyText(
+                title: "اشترك الان",
+                size: 10,
+                color: MyColors.primary,
+              ),
             ),
           )
         ],
