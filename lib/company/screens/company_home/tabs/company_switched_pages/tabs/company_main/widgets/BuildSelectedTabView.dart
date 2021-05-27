@@ -9,13 +9,13 @@ class BuildSelectedTabView extends StatelessWidget {
       left: 0,
       child: Container(
         height: 55,
-        padding: const EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
-          color: MyColors.secondary,
+          color: MyColors.black.withOpacity(0.95),
           boxShadow: [
             BoxShadow(
-              color: MyColors.black,
+              color: MyColors.greyWhite,
               spreadRadius: 1,
               blurRadius: 1,
             )
@@ -25,48 +25,9 @@ class BuildSelectedTabView extends StatelessWidget {
         alignment: Alignment.center,
         child: Row(
           children: <Widget>[
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "المنطقة",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "الاهتمامات",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "اخري",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
+            BuildHeaderDrop(title: "المنطقة"),
+            BuildHeaderDrop(title: "الاهتمامات"),
+            BuildHeaderDrop(title: "اخري"),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: EdgeInsets.symmetric(vertical: 12),

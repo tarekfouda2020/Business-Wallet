@@ -56,7 +56,7 @@ class BuildCompRegisterForm extends StatelessWidget {
               flex: 4,
               child: LabelTextField(
                 hint: "رقم الجوال",
-                controller: companyRegisterData.email,
+                controller: companyRegisterData.phone,
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 action: TextInputAction.next,
                 type: TextInputType.emailAddress,
@@ -95,7 +95,7 @@ class BuildCompRegisterForm extends StatelessWidget {
         ),
         LabelTextField(
           hint: "اسم المنشأة",
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.companyName,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           type: TextInputType.emailAddress,
@@ -120,7 +120,7 @@ class BuildCompRegisterForm extends StatelessWidget {
         ),
         LabelTextField(
           hint: "البريد الالكتروني",
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.companyEmail,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           type: TextInputType.emailAddress,
@@ -149,7 +149,7 @@ class BuildCompRegisterForm extends StatelessWidget {
               flex: 4,
               child: LabelTextField(
                 hint: "رقم الهاتف",
-                controller: companyRegisterData.email,
+                controller: companyRegisterData.companyPhone,
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 action: TextInputAction.next,
                 type: TextInputType.emailAddress,
@@ -187,7 +187,7 @@ class BuildCompRegisterForm extends StatelessWidget {
           text: "الدولة",
         ),
         InkWellTextField(
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.country,
           hint: "السعودية",
           onTab: () {},
           margin: const EdgeInsets.symmetric(vertical: 10),
@@ -196,20 +196,21 @@ class BuildCompRegisterForm extends StatelessWidget {
         BuildFormText(
           text: "المنطقة",
         ),
-        LabelTextField(
+        DropdownTextField<DropDownModel>(
+          dropKey: companyRegisterData.region,
           hint: "المنطقة",
-          controller: companyRegisterData.email,
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          action: TextInputAction.next,
-          type: TextInputType.emailAddress,
-          validate: (value) => value!.validateEmpty(context),
+          borderRadius: 80,
+          validate: (DropDownModel value) => value.validateDropDown(context),
+          margin: EdgeInsets.symmetric(vertical: 10),
+          onChange: companyRegisterData.changeRegion,
+          // data: ,
         ),
         BuildFormText(
           text: "كلمة المرور",
         ),
         IconTextFiled(
           hint: "كلمة المرور",
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.password,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           isPassword: true,
@@ -225,7 +226,7 @@ class BuildCompRegisterForm extends StatelessWidget {
         ),
         IconTextFiled(
           hint: "تأكيد كلمة المرور",
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.confirmPassword,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           isPassword: true,
@@ -254,7 +255,7 @@ class BuildCompRegisterForm extends StatelessWidget {
             )),
         LabelTextField(
           hint: "رقم المحفظة",
-          controller: companyRegisterData.email,
+          controller: companyRegisterData.walletNumb,
           margin: const EdgeInsets.symmetric(vertical: 10),
           action: TextInputAction.next,
           type: TextInputType.emailAddress,
