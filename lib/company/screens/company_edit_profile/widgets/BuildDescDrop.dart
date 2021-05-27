@@ -26,21 +26,14 @@ class BuildDescDrop extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20),
-                    child: MyText(
-                      title: "الوصف",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "الوصف"),
                   RichTextFiled(
                     hint: "الوصف",
                     controller: companyEditProfileData.desc,
                     action: TextInputAction.next,
                     type: TextInputType.multiline,
-                    margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
                     validate: (value) => value!.validateEmpty(context),
                     max: 3,
                   ),

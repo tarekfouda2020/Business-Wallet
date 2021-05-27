@@ -26,6 +26,7 @@ class _ContactUsState extends State<ContactUs> {
             title: "ارسال",
             margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             color: MyColors.primary,
+            borderRadius: 30,
             onTap: () {},
           ),
           BuildSocialView(),

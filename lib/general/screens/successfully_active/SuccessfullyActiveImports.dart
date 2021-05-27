@@ -1,0 +1,10 @@
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/screens/successfully_active/widgets/SuccessActiveWidgetsImports.dart';
+import 'package:base_flutter/general/widgets/AuthScaffold.dart';
+import 'package:base_flutter/general/widgets/DefaultButton.dart';
+import 'package:base_flutter/general/widgets/HeaderLogo.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:flutter/material.dart';
+part 'SuccessfullyActive.dart';
+part 'SuccessfullyActiveData.dart';

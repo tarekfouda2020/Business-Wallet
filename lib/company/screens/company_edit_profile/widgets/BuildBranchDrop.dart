@@ -27,15 +27,7 @@ class BuildBranchDrop extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                    child: MyText(
-                      title: "الموقع",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "الموقع"),
                   IconTextFiled(
                     hint: " من فضلك ادخل الموقع",
                     controller: companyEditProfileData.branchLocation,
@@ -45,18 +37,10 @@ class BuildBranchDrop extends StatelessWidget {
                       Icons.edit,
                       size: 20,
                     ),
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     validate: (value) => value!.validateEmpty(context),
                   ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: MyText(
-                      title: "رقم الهاتف",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "رقم الهاتف"),
                   Row(
                     children: [
                       Expanded(
@@ -79,7 +63,7 @@ class BuildBranchDrop extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 15),
-                          margin: const EdgeInsets.symmetric(horizontal: 5),
+                          margin: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
                             color: MyColors.black,
                             borderRadius: BorderRadius.circular(30),
@@ -101,15 +85,7 @@ class BuildBranchDrop extends StatelessWidget {
                       )
                     ],
                   ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: MyText(
-                      title: "ساعات العمل من",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "ساعات العمل من"),
                   IconTextFiled(
                     hint: "ساعات العمل من",
                     controller: companyEditProfileData.workHoursFrom,
@@ -119,18 +95,10 @@ class BuildBranchDrop extends StatelessWidget {
                       Icons.edit,
                       size: 20,
                     ),
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     validate: (value) => value!.validateEmpty(context),
                   ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: MyText(
-                      title: "ساعات العمل الي",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "ساعات العمل الي"),
                   IconTextFiled(
                     hint: "ساعات العمل الي",
                     controller: companyEditProfileData.workHoursTo,
@@ -140,25 +108,17 @@ class BuildBranchDrop extends StatelessWidget {
                       Icons.edit,
                       size: 20,
                     ),
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     validate: (value) => value!.validateEmpty(context),
                   ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: MyText(
-                      title: "الحالة",
-                      size: 11,
-                      color: MyColors.white,
-                    ),
-                  ),
+                  BuildFormText(text: "الحالة"),
                   IconTextFiled(
                     hint: "الحالة",
                     controller: companyEditProfileData.branchStatus,
                     action: TextInputAction.next,
                     type: TextInputType.emailAddress,
                     suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     validate: (value) => value!.validateEmpty(context),
                   ),
                   SizedBox(

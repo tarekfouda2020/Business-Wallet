@@ -16,7 +16,7 @@ class _CompanyAccountState extends State<CompanyAccount> {
         companyAccountData: companyAccountData,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         children: [
           BuildAccountDrop(companyAccountData: companyAccountData),
           BuildPublicDrop(companyAccountData: companyAccountData),

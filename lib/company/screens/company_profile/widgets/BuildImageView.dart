@@ -10,7 +10,7 @@ class BuildImageView extends StatelessWidget {
         "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
         borderRadius: BorderRadius.circular(10),
         width: MediaQuery.of(context).size.width,
-        height: 170,
+        height: 150,
       ),
     );
   }

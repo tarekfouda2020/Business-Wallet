@@ -47,6 +47,7 @@ import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports
 import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart';
 import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart';
 import 'package:base_flutter/general/screens/splash/SplashImports.dart';
+import 'package:base_flutter/general/screens/successfully_active/SuccessfullyActiveImports.dart';
 import 'package:base_flutter/general/screens/terms/TermsImports.dart';
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart';
 import 'package:flutter/cupertino.dart';

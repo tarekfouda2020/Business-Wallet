@@ -14,8 +14,6 @@ class BuildImgDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "الصور",
-                onTap: () => companyMainDetailsData.imagesDropCubit
-                    .onUpdateData(!state.data),
                 genericCubit: companyMainDetailsData.imagesDropCubit),
             Visibility(
               visible: state.data,

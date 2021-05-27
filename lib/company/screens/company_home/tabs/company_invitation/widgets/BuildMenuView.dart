@@ -16,7 +16,7 @@ class BuildMenuView extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: MyColors.secondary,
+        color: MyColors.black.withOpacity(.95),
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(

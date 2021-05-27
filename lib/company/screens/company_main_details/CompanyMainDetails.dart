@@ -14,6 +14,7 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
     return Scaffold(
       backgroundColor: MyColors.darken,
       appBar: DefaultAppBar(
+        title: "التفاصيل",
         showLeading: true,
       ),
       body: ListView(

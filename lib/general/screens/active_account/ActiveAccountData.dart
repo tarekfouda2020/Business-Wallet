@@ -1,13 +1,12 @@
 part of 'ActiveAccountImports.dart';
 
 class ActiveAccountData {
-
   GlobalKey<ScaffoldState> scaffold = new GlobalKey<ScaffoldState>();
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
-  final GlobalKey<CustomButtonState> btnKey = new GlobalKey<CustomButtonState>();
+  final GlobalKey<CustomButtonState> btnKey =
+      new GlobalKey<CustomButtonState>();
 
   final TextEditingController code = new TextEditingController();
-
 
   void onActiveAccount(BuildContext context, String userId) async {
     if (formKey.currentState!.validate()) {
@@ -17,7 +16,9 @@ class ActiveAccountData {
       // if(result){
       //   ExtendedNavigator.of(context).popUntilPath(Routes.login);
       // }
-      AutoRouter.of(context).popUntilRouteWithName(LoginRoute.name);
+
+      AutoRouter.of(context)
+          .popUntilRouteWithName(SuccessfullyActiveRoute.name);
     }
   }
 

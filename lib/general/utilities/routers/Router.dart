@@ -17,6 +17,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ForgetPasswordEmail),
     AdaptiveRoute(page: ActiveAccount),
+    AdaptiveRoute(page: SuccessfullyActive),
+
     AdaptiveRoute(page: ResetPassword),
     AdaptiveRoute(page: SelectLang),
     AdaptiveRoute(page: Terms),

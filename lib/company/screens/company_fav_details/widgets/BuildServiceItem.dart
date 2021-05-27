@@ -13,6 +13,7 @@ class BuildServiceItem extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyText(
                 title: title ??"",

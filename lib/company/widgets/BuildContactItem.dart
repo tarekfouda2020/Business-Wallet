@@ -51,7 +51,7 @@ class BuildContactItem extends StatelessWidget {
                   replacement: MyText(
                     title: "(مشاهدة جميع المواقع)",
                     size: 11,
-                    color: MyColors.primary.withOpacity(.7),
+                    color: MyColors.primary,
                     decoration: TextDecoration.underline,
                   ),
                 )

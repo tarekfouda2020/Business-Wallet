@@ -14,8 +14,6 @@ class BuildContactDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "معلومات التواصل",
-                onTap: () => companyProfileData.contactDropCubit
-                    .onUpdateData(!state.data),
                 genericCubit: companyProfileData.contactDropCubit),
             Visibility(
               visible: state.data,

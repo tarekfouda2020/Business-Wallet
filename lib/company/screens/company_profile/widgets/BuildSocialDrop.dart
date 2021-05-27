@@ -14,8 +14,6 @@ class BuildSocialDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "روابط التواصل الاجتماعي",
-                onTap: () => companyProfileData.socialDropCubit
-                    .onUpdateData(!state.data),
                 genericCubit: companyProfileData.socialDropCubit),
             Visibility(
               visible: state.data,

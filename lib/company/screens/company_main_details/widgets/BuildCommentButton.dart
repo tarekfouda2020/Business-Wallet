@@ -2,13 +2,15 @@ part of 'DetailsWidgetsImports.dart';
 
 class BuildCommentButton extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
+
   const BuildCommentButton({required this.companyMainDetailsData});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       color: MyColors.black,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         children: [
           Icon(Icons.camera_alt),
@@ -20,10 +22,12 @@ class BuildCommentButton extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 15),
               minHeight: 30,
               maxHeight: 50,
-              borderColor: MyColors.grey,
             ),
           ),
-          Icon(Icons.send, color: MyColors.primary,)
+          Icon(
+            Icons.send,
+            color: MyColors.primary,
+          )
         ],
       ),
     );

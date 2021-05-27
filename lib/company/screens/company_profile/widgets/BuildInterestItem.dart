@@ -8,8 +8,8 @@ class BuildInterestItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 12),
-      padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 12,horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: MyColors.black,

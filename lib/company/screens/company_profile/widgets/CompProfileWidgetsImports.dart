@@ -18,7 +18,6 @@ part 'BuildCommentsDrop.dart';
 
 part 'BuildContactDrop.dart';
 
-part 'BuildDescription.dart';
 
 part 'BuildImageView.dart';
 
