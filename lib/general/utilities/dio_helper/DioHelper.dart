@@ -15,7 +15,7 @@ class DioHelper {
           contentType: "application/x-www-form-urlencoded; charset=utf-8"),
     )
       ..interceptors.add(_getCacheManager().interceptor)
-      ..interceptors.add(LogInterceptor(responseBody: true));
+      ..interceptors.add(LogInterceptor(responseBody: true,requestBody: true));
   }
 
   DioCacheManager _getCacheManager() {
