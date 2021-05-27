@@ -23,33 +23,55 @@ class BuildPartnerDrop extends StatelessWidget {
             ),
             Visibility(
               visible: state.data,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: IconButton(
-                      icon: Icon(
-                        MdiIcons.plusCircle,
-                        color: MyColors.primary,
-                        size: 45,
+              child: BlocBuilder<GenericCubit<File?>, GenericState<File?>>(
+                bloc: companyEditProfileData.partnerCubit,
+                builder: (_, state) {
+                  if (state is GenericUpdateState) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: IconButton(
+                            icon: Icon(
+                              MdiIcons.plusCircle,
+                              color: MyColors.primary,
+                              size: 45,
+                            ),
+                            onPressed: () =>
+                                companyEditProfileData.setPartner(),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 10),
+                          child: Wrap(
+                            spacing: 10,
+                            runSpacing: 10,
+                            alignment: WrapAlignment.start,
+                            children: List.generate(
+                              3,
+                              (index) => BuildCertificateItem(
+                                genericCubit:
+                                    companyEditProfileData.partnerCubit,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    );
+                  } else {
+                    return Center(
+                      child: IconButton(
+                        icon: Icon(
+                          MdiIcons.plusCircle,
+                          color: MyColors.primary,
+                          size: 45,
+                        ),
+                        onPressed: () => companyEditProfileData.setPartner(),
                       ),
-                      onPressed: () {},
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 10),
-                    child: Wrap(
-                      spacing: 10,
-                      runSpacing: 10,
-                      alignment: WrapAlignment.start,
-                      children: List.generate(
-                        3,
-                        (index) => BuildCertificateItem(),
-                      ),
-                    ),
-                  )
-                ],
+                    );
+                  }
+                },
               ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),

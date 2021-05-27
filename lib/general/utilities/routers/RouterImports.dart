@@ -14,6 +14,8 @@ import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImp
 import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart';
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart';
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';
+import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart';
+import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart';
 import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';
@@ -47,6 +49,7 @@ import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports
 import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart';
 import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart';
 import 'package:base_flutter/general/screens/splash/SplashImports.dart';
+import 'package:base_flutter/general/screens/successfully_active/SuccessfullyActiveImports.dart';
 import 'package:base_flutter/general/screens/terms/TermsImports.dart';
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart';
 import 'package:flutter/cupertino.dart';

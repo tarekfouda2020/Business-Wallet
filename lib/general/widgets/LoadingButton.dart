@@ -41,6 +41,7 @@ class LoadingButton extends StatelessWidget {
             width: width ?? MediaQuery.of(context).size.width,
             minWidth: 45,
             height: 50,
+            roundLoadingShape: true,
             color: color ?? MyColors.primary,
             borderRadius: borderRadius ?? 30,
             borderSide: BorderSide(color: borderColor ?? border, width: 1),

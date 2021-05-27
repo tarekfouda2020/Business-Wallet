@@ -15,8 +15,6 @@ class BuildInterestDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "اهتمامات العملاء التي ترغب بالظهور بها",
-                onTap: () => companyEditProfileData.interestDropCubit
-                    .onUpdateData(!state.data),
                 genericCubit: companyEditProfileData.interestDropCubit),
             Visibility(
               visible: state.data,

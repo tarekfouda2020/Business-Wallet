@@ -10,7 +10,7 @@ class BuildRateCompany extends StatelessWidget {
         children: [
           MyText(
             title: "قيم المنشأة",
-            size: 13,
+            size: 14,
           ),
           SizedBox(width: 10,),
           RatingBar.builder(

@@ -22,7 +22,6 @@ class CompanyEditProfileData {
 
   final GenericCubit<Object?> interestCubit = new GenericCubit(true);
 
-
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
@@ -31,7 +30,8 @@ class CompanyEditProfileData {
   final TextEditingController phone = new TextEditingController();
   final TextEditingController email = new TextEditingController();
   final TextEditingController city = new TextEditingController();
-  final TextEditingController country = new TextEditingController();
+  final TextEditingController countryId = new TextEditingController();
+  final GlobalKey<DropdownSearchState> country = new GlobalKey();
 
   final TextEditingController compName = new TextEditingController();
   final TextEditingController compPhone = new TextEditingController();
@@ -53,10 +53,41 @@ class CompanyEditProfileData {
   final TextEditingController workHoursTo = new TextEditingController();
   final TextEditingController branchStatus = new TextEditingController();
 
-
   final TextEditingController image = new TextEditingController();
   final TextEditingController file = new TextEditingController();
 
+  void changeRegion(DropDownModel model) {
+    countryId.text = model.id.toString();
+  }
 
+  final GenericCubit<File?> imageCubit = new GenericCubit(null);
+  final GenericCubit<File?> fileCubit = new GenericCubit(null);
+  final GenericCubit<File?> certificateCubit = new GenericCubit(null);
+  final GenericCubit<File?> partnerCubit = new GenericCubit(null);
 
+  setImage() async {
+    var image = await Utils.getImage();
+    if (image != null) {
+      imageCubit.onUpdateData(image);
+    }
+  }
+
+  setFile() async {
+    var image = await Utils.getImage();
+    if (image != null) {
+      fileCubit.onUpdateData(image);
+    }
+  }
+  setCertificate() async {
+    var image = await Utils.getImage();
+    if (image != null) {
+      certificateCubit.onUpdateData(image);
+    }
+  }
+  setPartner() async {
+    var image = await Utils.getImage();
+    if (image != null) {
+      partnerCubit.onUpdateData(image);
+    }
+  }
 }

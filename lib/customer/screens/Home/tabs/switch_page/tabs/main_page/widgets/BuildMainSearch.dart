@@ -6,17 +6,15 @@ class BuildMainSearch extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BuildHeaderDrop(title: "المنطقة",),
-        BuildHeaderDrop(title: "الاهتمامات",),
-        BuildHeaderDrop(title: "أخرى",),
-
+        BuildHeaderDrop(title: "المنطقة"),
+        BuildHeaderDrop(title: "الاهتمامات"),
+        BuildHeaderDrop(title: "أخرى"),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: MyColors.primary,
           ),
-          padding: const EdgeInsets.symmetric(
-              horizontal: 10, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: MyText(
             title: "البحث",
             size: 10,

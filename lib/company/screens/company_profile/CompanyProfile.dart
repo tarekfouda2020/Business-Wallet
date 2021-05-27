@@ -15,18 +15,19 @@ class _CompanyProfileState extends State<CompanyProfile> {
       appBar: DefaultAppBar(
         title: "الصفحة الشخصية",
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 20),
-        children: [
-          BuildImageView(),
-          BuildProfileInfo(),
-          BuildDescription(),
-          BuildInterestDrop(companyProfileData: companyProfileData),
-          BuildContactDrop(companyProfileData: companyProfileData),
-          BuildSocialDrop(companyProfileData: companyProfileData),
-          BuildImgDrop(companyProfileData: companyProfileData),
-          BuildCommentsDrop(companyProfileData: companyProfileData),
-        ],
+        child: Column(
+          children: [
+            BuildImageView(),
+            BuildProfileInfo(),
+            BuildInterestDrop(companyProfileData: companyProfileData),
+            BuildContactDrop(companyProfileData: companyProfileData),
+            BuildSocialDrop(companyProfileData: companyProfileData),
+            BuildImgDrop(companyProfileData: companyProfileData),
+            BuildCommentsDrop(companyProfileData: companyProfileData),
+          ],
+        ),
       ),
     );
   }

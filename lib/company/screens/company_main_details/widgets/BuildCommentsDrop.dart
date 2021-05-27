@@ -14,8 +14,6 @@ class BuildCommentsDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "التعليقات",
-                onTap: () => companyMainDetailsData.commentsDropCubit
-                    .onUpdateData(!state.data),
                 genericCubit: companyMainDetailsData.commentsDropCubit),
             Visibility(
               visible: state.data,

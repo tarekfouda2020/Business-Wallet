@@ -13,7 +13,7 @@ class BuildMenuView extends StatelessWidget {
         Container(
           width: 100,
           child: TabBar(
-            indicatorColor: MyColors.secondary,
+            indicatorColor: MyColors.darken.withOpacity(.1),
             tabs: [
               Tab(
                 icon: Image.asset(
@@ -29,5 +29,6 @@ class BuildMenuView extends StatelessWidget {
           ),
         ),
       ],
-    );  }
+    );
+  }
 }

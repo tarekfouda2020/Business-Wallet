@@ -14,24 +14,20 @@ class BuildInterestDrop extends StatelessWidget {
           children: [
             BuildDropItem(
                 title: "اهتمامات العملاء التي ترغب بالظهور بها",
-                onTap: () => companyProfileData.interestDropCubit
-                    .onUpdateData(!state.data),
-                genericCubit: companyProfileData.interestDropCubit),
+                genericCubit: companyProfileData.interestDropCubit,
+            ),
             Visibility(
               visible: state.data,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  BuildInterestItem(
+              child: Container(
+                height: 65,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (_, index) => BuildInterestItem(
                     title: "اعلام وتسويق",
                   ),
-                  BuildInterestItem(
-                    title: "خدمات ادارية وكوادر بشرية",
-                  ),
-                  BuildInterestItem(
-                    title: "استشارات",
-                  ),
-                ],
+                ),
               ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),

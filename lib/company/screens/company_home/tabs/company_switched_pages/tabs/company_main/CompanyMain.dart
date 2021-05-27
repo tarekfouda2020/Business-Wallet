@@ -32,9 +32,7 @@ class _CompanyMainState extends State<CompanyMain>
         ),
         body: Column(
           children: [
-            BuildMenuView(
-              companyMainData: companyMainData,
-            ),
+            BuildMenuView(companyMainData: companyMainData),
             Flexible(
               child: TabBarView(
                 children: [

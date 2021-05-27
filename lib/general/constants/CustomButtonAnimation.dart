@@ -167,6 +167,13 @@ class CustomButtonState extends State<CustomButtonAnimation>
             primary: widget.color,
             elevation: widget.elevation,
             padding: widget.padding,
+            shape: RoundedRectangleBorder(
+              side: widget.borderSide,
+              borderRadius: BorderRadius.circular(widget.roundLoadingShape
+                  ? lerpDouble(
+                  widget.borderRadius, widget.height / 2, _animation.value)!
+                  : widget.borderRadius),
+            ),
           ),
             clipBehavior: widget.clipBehavior,
             focusNode: widget.focusNode,

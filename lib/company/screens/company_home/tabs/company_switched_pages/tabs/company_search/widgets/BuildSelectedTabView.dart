@@ -11,10 +11,10 @@ class BuildSelectedTabView extends StatelessWidget {
         height: 55,
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
-          color: MyColors.secondary,
+          color: MyColors.black.withOpacity(0.95),
           boxShadow: [
             BoxShadow(
-              color: MyColors.black,
+              color: MyColors.greyWhite,
               spreadRadius: 1,
               blurRadius: 1,
             )
@@ -25,40 +25,8 @@ class BuildSelectedTabView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           children: <Widget>[
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "الكل",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              child: InkWell(
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "ملف حسب",
-                      size: 10,
-                      color: MyColors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(Icons.arrow_drop_down)
-                  ],
-                ),
-              ),
-            ),
+            BuildHeaderDrop(title: "الكل"),
+            BuildHeaderDrop(title: "ملف حسب"),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               margin: EdgeInsets.symmetric(vertical: 12),

@@ -24,9 +24,7 @@ class _CompanySearchState extends State<CompanySearch> {
         ),
         body: Column(
           children: [
-            BuildSearchText(
-              companySearchData: companySearchData,
-            ),
+            BuildSearchText(companySearchData: companySearchData),
             Flexible(
               child: TabBarView(
                 children: [

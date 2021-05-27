@@ -17,6 +17,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: ForgetPassword),
     AdaptiveRoute(page: ForgetPasswordEmail),
     AdaptiveRoute(page: ActiveAccount),
+    AdaptiveRoute(page: SuccessfullyActive),
+
     AdaptiveRoute(page: ResetPassword),
     AdaptiveRoute(page: SelectLang),
     AdaptiveRoute(page: Terms),
@@ -48,6 +50,9 @@ part of 'RouterImports.dart';
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),
+    AdaptiveRoute(page: CompanyRegisterCommercial),
+    AdaptiveRoute(page: CompanyRegisterInterests),
+
     AdaptiveRoute(page: CompanyHome),
     AdaptiveRoute(page: CompanyMainDetails),
     AdaptiveRoute(page: CompanyProfile),
