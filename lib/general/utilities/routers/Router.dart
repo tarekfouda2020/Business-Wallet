@@ -50,6 +50,9 @@ part of 'RouterImports.dart';
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),
+    AdaptiveRoute(page: CompanyRegisterCommercial),
+    AdaptiveRoute(page: CompanyRegisterInterests),
+
     AdaptiveRoute(page: CompanyHome),
     AdaptiveRoute(page: CompanyMainDetails),
     AdaptiveRoute(page: CompanyProfile),

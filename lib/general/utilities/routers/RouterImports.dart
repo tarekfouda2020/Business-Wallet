@@ -14,6 +14,8 @@ import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImp
 import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart';
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart';
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';
+import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart';
+import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart';
 import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';

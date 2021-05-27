@@ -10,14 +10,7 @@ class BuildSecondaryBranch extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-          child: MyText(
-            title: "النشاط الفرعي",
-            size: 11,
-            color: MyColors.white,
-          ),
-        ),
+        BuildFormText(text: "النشاط الفرعي"),
         DropdownTextField<DropDownModel>(
           dropKey: companyEditActivityData.secondaryBranch,
           hint: "النشاط الفرعي",

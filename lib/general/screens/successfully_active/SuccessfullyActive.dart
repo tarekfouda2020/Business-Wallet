@@ -6,7 +6,9 @@ class SuccessfullyActive extends StatefulWidget {
 }
 
 class _SuccessfullyActiveState extends State<SuccessfullyActive> {
-  final SuccessfullyActiveData successfullyActiveData= new SuccessfullyActiveData();
+  final SuccessfullyActiveData successfullyActiveData =
+      new SuccessfullyActiveData();
+
   @override
   Widget build(BuildContext context) {
     return AuthScaffold(
@@ -18,10 +20,13 @@ class _SuccessfullyActiveState extends State<SuccessfullyActive> {
         children: [
           HeaderLogo(),
           BuildText(),
-          BuildConfirmPay(successfullyActiveData: successfullyActiveData,),
+          BuildConfirmPay(
+            successfullyActiveData: successfullyActiveData,
+          ),
           DefaultButton(
             title: "الدفع ماستر كارد/ فيزا",
-            onTap: () {},
+            onTap: () =>
+                AutoRouter.of(context).push(CompanyRegisterCommercialRoute()),
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
           ),

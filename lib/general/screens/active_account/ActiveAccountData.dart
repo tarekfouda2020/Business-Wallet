@@ -18,7 +18,7 @@ class ActiveAccountData {
       // }
 
       AutoRouter.of(context)
-          .popUntilRouteWithName(SuccessfullyActiveRoute.name);
+          .push(SuccessfullyActiveRoute());
     }
   }
 

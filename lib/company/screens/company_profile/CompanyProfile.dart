@@ -28,7 +28,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
             BuildCommentsDrop(companyProfileData: companyProfileData),
           ],
         ),
-      )
+      ),
     );
   }
 }

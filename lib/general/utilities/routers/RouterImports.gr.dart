@@ -6,41 +6,45 @@
 
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart'
-    as _i51;
+    as _i53;
 import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart'
-    as _i50;
+    as _i52;
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart'
-    as _i41;
+    as _i43;
 import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
-    as _i49;
+    as _i51;
 import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
-    as _i39;
+    as _i41;
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
-    as _i38;
-import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
     as _i40;
-import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
-    as _i35;
-import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
+import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
     as _i42;
-import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
-    as _i36;
-import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
-    as _i48;
-import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
-    as _i45;
-import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
+import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
     as _i37;
+import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
+    as _i44;
+import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
+    as _i38;
+import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
+    as _i50;
+import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
+    as _i47;
+import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
+    as _i39;
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
     as _i34;
+import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart'
+    as _i35;
+import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
+    as _i36;
 import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
-    as _i44;
-import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
     as _i46;
+import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
+    as _i48;
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
-    as _i47;
+    as _i49;
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
-    as _i43;
+    as _i45;
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart'
     as _i33;
 import 'package:base_flutter/customer/screens/comments/CommentsImports.dart'
@@ -97,7 +101,7 @@ import 'package:base_flutter/general/screens/successfully_active/SuccessfullyAct
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i13;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i52;
+import 'package:flutter/cupertino.dart' as _i54;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -285,91 +289,103 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i34.CompanyRegister();
         }),
+    CompanyRegisterCommercialRoute.name: (routeData) =>
+        _i1.AdaptivePage<dynamic>(
+            routeData: routeData,
+            builder: (_) {
+              return _i35.CompanyRegisterCommercial();
+            }),
+    CompanyRegisterInterestsRoute.name: (routeData) =>
+        _i1.AdaptivePage<dynamic>(
+            routeData: routeData,
+            builder: (_) {
+              return _i36.CompanyRegisterInterests();
+            }),
     CompanyHomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanyHomeRouteArgs>();
-          return _i35.CompanyHome(args.index);
+          return _i37.CompanyHome(args.index);
         }),
     CompanyMainDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i36.CompanyMainDetails();
+          return _i38.CompanyMainDetails();
         }),
     CompanyProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i37.CompanyProfile();
+          return _i39.CompanyProfile();
         }),
     CompanyEditProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i38.CompanyEditProfile();
+          return _i40.CompanyEditProfile();
         }),
     CompanyEditActivityRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i39.CompanyEditActivity();
+          return _i41.CompanyEditActivity();
         }),
     CompanyFavDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i40.CompanyFavDetails();
+          return _i42.CompanyFavDetails();
         }),
     CompanyCommentsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i41.CompanyComments();
+          return _i43.CompanyComments();
         }),
     CompanyInterestsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i42.CompanyInterests();
+          return _i44.CompanyInterests();
         }),
     CompanyWalletNumbRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i43.CompanyWalletNumb();
+          return _i45.CompanyWalletNumb();
         }),
     CompanyStatisticsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i44.CompanyStatistics();
+          return _i46.CompanyStatistics();
         }),
     CompanyPointsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i45.CompanyPoints();
+          return _i47.CompanyPoints();
         }),
     CompanySubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i46.CompanySubscribe();
+          return _i48.CompanySubscribe();
         }),
     CompanyWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i47.CompanyWallet();
+          return _i49.CompanyWallet();
         }),
     CompanyPackagesRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i48.CompanyPackages();
+          return _i50.CompanyPackages();
         }),
     CompanyConversationsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i49.CompanyConversations();
+          return _i51.CompanyConversations();
         }),
     CompanyBrochureRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i50.CompanyBrochure();
+          return _i52.CompanyBrochure();
         }),
     CompanyBarcodeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i51.CompanyBarcode();
+          return _i53.CompanyBarcode();
         })
   };
 
@@ -410,6 +426,10 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(CommentsRoute.name, path: '/Comments'),
         _i1.RouteConfig(AppInfoRoute.name, path: '/app-info'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
+        _i1.RouteConfig(CompanyRegisterCommercialRoute.name,
+            path: '/company-register-commercial'),
+        _i1.RouteConfig(CompanyRegisterInterestsRoute.name,
+            path: '/company-register-interests'),
         _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home'),
         _i1.RouteConfig(CompanyMainDetailsRoute.name,
             path: '/company-main-details'),
@@ -438,7 +458,7 @@ class AppRouter extends _i1.RootStackRouter {
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i52.GlobalKey<_i52.NavigatorState> navigatorKey})
+  SplashRoute({required _i54.GlobalKey<_i54.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -448,7 +468,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i52.GlobalKey<_i52.NavigatorState> navigatorKey;
+  final _i54.GlobalKey<_i54.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
@@ -669,6 +689,20 @@ class CompanyRegisterRoute extends _i1.PageRouteInfo {
   const CompanyRegisterRoute() : super(name, path: '/company-register');
 
   static const String name = 'CompanyRegisterRoute';
+}
+
+class CompanyRegisterCommercialRoute extends _i1.PageRouteInfo {
+  const CompanyRegisterCommercialRoute()
+      : super(name, path: '/company-register-commercial');
+
+  static const String name = 'CompanyRegisterCommercialRoute';
+}
+
+class CompanyRegisterInterestsRoute extends _i1.PageRouteInfo {
+  const CompanyRegisterInterestsRoute()
+      : super(name, path: '/company-register-interests');
+
+  static const String name = 'CompanyRegisterInterestsRoute';
 }
 
 class CompanyHomeRoute extends _i1.PageRouteInfo<CompanyHomeRouteArgs> {

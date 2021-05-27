@@ -10,14 +10,7 @@ class BuildPrimaryBranch extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-          child: MyText(
-            title: "النشاط الرئيسي في السجل التجاري",
-            size: 11,
-            color: MyColors.white,
-          ),
-        ),
+        BuildFormText(text: "النشاط الرئيسي في السجل التجاري"),
         DropdownTextField<DropDownModel>(
           dropKey: companyEditActivityData.primaryBranch,
           hint: "النشاط الرئيسي",
