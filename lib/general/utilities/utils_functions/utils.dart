@@ -3,7 +3,7 @@ part of 'UtilsImports.dart';
 class Utils {
   static Future<void> manipulateSplashData(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await GeneralRepository(context).getHomeConstData();
+    await GeneralRepository(context).getHomeConstData();
     precacheImage(AssetImage(Res.on1), context);
     precacheImage(AssetImage(Res.on2), context);
     precacheImage(AssetImage(Res.on3), context);
