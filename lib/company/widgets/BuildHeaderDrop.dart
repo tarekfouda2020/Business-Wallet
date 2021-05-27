@@ -3,9 +3,9 @@ import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:flutter/material.dart';
 
 class BuildHeaderDrop extends StatelessWidget {
-  final String? title;
+  final String title;
 
-  const BuildHeaderDrop({this.title});
+  const BuildHeaderDrop({required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,12 @@ class BuildHeaderDrop extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
           child: Row(
             children: [
-              MyText(
-                title: title ?? "",
-                size: 10,
-                color: MyColors.white,
+              Flexible(
+                child: MyText(
+                  title: title,
+                  size: 8,
+                  color: MyColors.white,
+                ),
               ),
               SizedBox(
                 width: 5,

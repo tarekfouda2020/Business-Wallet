@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyColors{
   static Color primary =  Color(0xfff3d065);
-  static Color secondary =  Color(0xff202020).withOpacity(.9);
+  static Color secondary =  Color(0xff2d2d2d).withOpacity(.95);
   static Color headerColor =  Color(0xff6e7c87);
   static Color bg=Color(0xfffffafa);
   static Color offWhite=Color(0xffF2F2F2);

@@ -9,7 +9,7 @@ class BuildSelectedTabView extends StatelessWidget {
       left: 0,
       child: Container(
         height: 55,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         margin: const EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
           color: MyColors.black.withOpacity(0.95),

@@ -20,7 +20,7 @@ class BuildTabBarBody extends StatelessWidget {
               companyHomeData: companyHomeData,
             );
           },
-          backgroundColor: MyColors.black.withOpacity(0.95),
+          backgroundColor: MyColors.secondary,
           activeIndex: state.data,
           notchAndCornersAnimation: companyHomeData.animation,
           splashSpeedInMilliseconds: 300,
@@ -28,7 +28,8 @@ class BuildTabBarBody extends StatelessWidget {
           gapLocation: GapLocation.center,
           leftCornerRadius: 0,
           rightCornerRadius: 0,
-          height: Platform.isIOS? 75 :  65,
+          height: 65,
+          splashColor: MyColors.primary,
           onTap: (index) => companyHomeData.animateTabsPages(index, context),
         );
       },
