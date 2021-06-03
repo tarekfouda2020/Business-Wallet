@@ -5,13 +5,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/res.dart';
 
-
-
-class CachedImage extends StatelessWidget{
-
+class CachedImage extends StatelessWidget {
   final String url;
   final BoxFit? fit;
-  final double? height,width;
+  final double? height, width;
   final BorderRadius? borderRadius;
   final ColorFilter? colorFilter;
   final Alignment? alignment;
@@ -20,20 +17,20 @@ class CachedImage extends StatelessWidget{
   final Color? bgColor;
   final BoxShape? boxShape;
   final bool haveRadius;
-  CachedImage({
-    required this.url,
-    this.fit,
-    this.width,
-    this.height,
-    this.borderRadius,
-    this.colorFilter,
-    this.alignment,
-    this.child,
-    this.boxShape,
-    this.borderColor,
-    this.bgColor,
-    this.haveRadius=true
-  });
+
+  CachedImage(
+      {required this.url,
+      this.fit,
+      this.width,
+      this.height,
+      this.borderRadius,
+      this.colorFilter,
+      this.alignment,
+      this.child,
+      this.boxShape,
+      this.borderColor,
+      this.bgColor,
+      this.haveRadius = true});
 
   @override
   Widget build(BuildContext context) {
@@ -48,51 +45,55 @@ class CachedImage extends StatelessWidget{
         decoration: BoxDecoration(
           image: DecorationImage(
               image: imageProvider,
-              fit: fit??BoxFit.fill,
-              colorFilter: colorFilter
-          ),
-          borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
-          shape: boxShape??BoxShape.rectangle,
+              fit: fit ?? BoxFit.fill,
+              colorFilter: colorFilter),
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          shape: boxShape ?? BoxShape.rectangle,
 
           // border: Border.all(width: 1,color: borderColor??Colors.transparent,),
         ),
-        alignment: alignment??Alignment.center,
+        alignment: alignment ?? Alignment.center,
         child: child,
       ),
       placeholder: (context, url) => Container(
-        width: width,height: height,
+        width: width,
+        height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
-            border: Border.all(color: borderColor??Colors.transparent,width: 1),
-            shape: boxShape??BoxShape.rectangle,
+            borderRadius:
+                haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+            border:
+                Border.all(color: borderColor ?? Colors.transparent, width: 1),
+            shape: boxShape ?? BoxShape.rectangle,
             // image: DecorationImage(
             //     image: AssetImage(Res.placeholder),
             //     fit: BoxFit.contain,
             //     colorFilter: ColorFilter.mode(Colors.black12, BlendMode.darken)
             // ),
-            color: bgColor??Colors.transparent
-        ),
+            color: bgColor ?? Colors.transparent),
         child: SpinKitFadingCircle(
           color: MyColors.primary,
           size: 30.0,
         ),
       ),
       errorWidget: (context, url, error) => Container(
-        width: width,height: height,
+        width: width,
+        height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: bgColor??Colors.transparent,
-            borderRadius: haveRadius? borderRadius??BorderRadius.circular(0):null,
-            border: Border.all(color: borderColor??Colors.transparent,width: 1),
-            shape: boxShape??BoxShape.rectangle,
-            // image: DecorationImage(
-            //   image: AssetImage(Res.placeholder),
-            //   fit: BoxFit.contain,
-            // )
+          color: bgColor ?? Colors.transparent,
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          border:
+              Border.all(color: borderColor ?? Colors.transparent, width: 1),
+          shape: boxShape ?? BoxShape.rectangle,
+          // image: DecorationImage(
+          //   image: AssetImage(Res.placeholder),
+          //   fit: BoxFit.contain,
+          // )
         ),
       ),
     );
   }
-
 }

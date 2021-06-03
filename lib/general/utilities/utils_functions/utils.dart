@@ -3,25 +3,57 @@ part of 'UtilsImports.dart';
 class Utils {
   static Future<void> manipulateSplashData(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // await GeneralRepository(context).getHomeConstData();
-    precacheImage(AssetImage(Res.on1), context);
-    precacheImage(AssetImage(Res.on2), context);
-    precacheImage(AssetImage(Res.on3), context);
-    var strUser = prefs.get("user");
+    setCachedImage(context);
+    var strUser = prefs.getString("user");
+
     if (strUser != null) {
-      UserModel data = UserModel.fromJson(json.decode("$strUser"));
-      GlobalState.instance.set("token", data.token);
-      changeLanguage(data.lang, context);
-      setCurrentUserData(data, context);
+      UserModel data = UserModel.fromJson(json.decode(strUser));
+      changeLanguage(data.lang ?? "ar", context);
+      setCurrentUserData(data,data.step, context, fromWhere: "splash");
     } else {
+      IntroModel? response = await GeneralRepository(context).getIntro();
       changeLanguage("ar", context);
-      context.router.push(LoginRoute());
+      AutoRouter.of(context).push(LoginRoute(introModel: response));
     }
   }
 
-  static void setCurrentUserData(UserModel model, BuildContext context) async {
-    // context.read<UserCubit>().onUpdateUserData(model);
-    // ExtendedNavigator.of(context).push(Routes.home,arguments: HomeArguments(parentCount: parentCount));
+  static void setCachedImage(BuildContext context) {
+    precacheImage(AssetImage(Res.on1), context);
+    precacheImage(AssetImage(Res.on2), context);
+    precacheImage(AssetImage(Res.on3), context);
+    precacheImage(AssetImage(Res.onProv1), context);
+    precacheImage(AssetImage(Res.onProv2), context);
+    precacheImage(AssetImage(Res.onProv3), context);
+    precacheImage(AssetImage(Res.onUser4), context);
+  }
+
+  static void setCurrentUserData(
+      UserModel model, int? step, BuildContext context,
+      {String fromWhere = "login"}) async {
+    context.read<UserCubit>().onUpdateUserData(model);
+    if (model.typeUser == 1) {
+      if (step == 0) {
+        context.router
+            .push(CompActiveAccountRoute(userId: model.companyModel!.userId));
+      } else if (step == 1) {
+        context.router
+            .push(SuccessfullyActiveRoute(userId: model.companyModel!.userId));
+      } else if (step == 2) {
+        context.router.push(
+            CompanyRegisterCommercialRoute(userId: model.companyModel!.userId));
+      } else if (step == 3) {
+        context.router.push(
+            CompanyRegisterInterestsRoute(userId: model.companyModel!.userId));
+      } else {
+        AutoRouter.of(context).push(CompanyHomeRoute(index: 4));
+      }
+    } else {
+      if (model.interest == true) {
+        AutoRouter.of(context).push(HomeRoute(index: 4));
+      } else {
+        AutoRouter.of(context).push(ImportantRoute(fromWhere: fromWhere));
+      }
+    }
   }
 
   static Future<void> saveUserData(UserModel model) async {
@@ -93,10 +125,10 @@ class Utils {
   //   changeLanguage(lang,context);
   // }
 
-  static String getCurrentUserId({required BuildContext context}) {
-    var provider = context.watch<UserCubit>().state.model;
-    return provider.id;
-  }
+  // static String getCurrentUserId({required BuildContext context}) {
+  //   var provider = context.watch<UserCubit>().state.model;
+  //   return provider.userId;
+  // }
 
   // static void setSelectUser({@required int type, @required BuildContext context}) async {
   //   setCurrentUserType(context: context,type: type);

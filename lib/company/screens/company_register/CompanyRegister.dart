@@ -17,12 +17,12 @@ class _CompanyRegisterState extends State<CompanyRegister> {
           HeaderLogo(),
           BuildCompRegisterForm(companyRegisterData: companyRegisterData),
           BuildTermsView(companyRegisterData: companyRegisterData),
-          DefaultButton(
+          LoadingButton(
+            btnKey: companyRegisterData.btnKey,
             title: "انشاء حساب",
             color: MyColors.white,
             textColor: MyColors.black,
-            onTap: ()=>AutoRouter.of(context).push(ActiveAccountRoute(userId: "userId")),
-            borderRadius: BorderRadius.circular(20),
+            onTap: () => companyRegisterData.setCompRegister(context),
             margin: const EdgeInsets.symmetric(vertical: 30),
           ),
           BuildLoginText()

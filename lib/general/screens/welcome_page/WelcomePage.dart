@@ -1,9 +1,9 @@
 part of 'WelcomePageImports.dart';
 
 class WelcomePage extends StatefulWidget {
-  // final IntroModel introModel;
-  //
-  // WelcomePage({@required this.introModel});
+  final IntroModel? introModel;
+
+  WelcomePage({this.introModel});
 
   @override
   _WelcomePageState createState() => _WelcomePageState();
@@ -14,7 +14,10 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   void initState() {
-    welcomePageData.initPagesData();
+    print("____________${widget.introModel?.kayanFour}");
+
+    welcomePageData.initPagesData(widget.introModel);
+
     super.initState();
   }
 

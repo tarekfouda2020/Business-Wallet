@@ -15,10 +15,12 @@ part of 'RouterImports.dart';
         transitionsBuilder: TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500),
     AdaptiveRoute(page: ForgetPassword),
-    AdaptiveRoute(page: ForgetPasswordEmail),
+    AdaptiveRoute(page: ForgetPasswordCode),
+    AdaptiveRoute<LocationModel>(page: LocationAddress),
     AdaptiveRoute(page: ActiveAccount),
-    AdaptiveRoute(page: SuccessfullyActive),
+    AdaptiveRoute(page: CompActiveAccount),
 
+    AdaptiveRoute(page: SuccessfullyActive),
     AdaptiveRoute(page: ResetPassword),
     AdaptiveRoute(page: SelectLang),
     AdaptiveRoute(page: Terms),
@@ -52,6 +54,7 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyRegister),
     AdaptiveRoute(page: CompanyRegisterCommercial),
     AdaptiveRoute(page: CompanyRegisterInterests),
+    AdaptiveRoute(page: CompanyPayment),
 
     AdaptiveRoute(page: CompanyHome),
     AdaptiveRoute(page: CompanyMainDetails),

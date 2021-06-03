@@ -15,7 +15,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         children: [
           HeaderLogo(),
-          // BuildText(),
           BuildFormInputs(forgerPasswordData: forgerPasswordData),
           BuildButton(forgerPasswordData: forgerPasswordData),
         ],

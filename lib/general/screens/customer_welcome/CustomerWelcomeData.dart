@@ -5,13 +5,12 @@ class CustomerWelcomeData {
   List<Widget> data = [];
   late PageController pgController;
 
-  initPagesData() {
+  initPagesData({required IntroModel introModel}) {
     data = [
       BuildCustomerPageView(
         key: Key("1"),
         model: WelcomeModel(
-            desc:
-                "introModel.introOneintroModel.introOneintroModel.introOne introModel.introOne ",
+            desc: introModel.textStepOneUser,
             image: Res.on1,
             index: 0,
             pageCubit: pagesCubit),
@@ -19,7 +18,7 @@ class CustomerWelcomeData {
       BuildCustomerPageView(
         key: Key("2"),
         model: WelcomeModel(
-            desc: "introModel.introTwo",
+            desc: introModel.textStepTwoUser,
             image: Res.on2,
             index: 1,
             pageCubit: pagesCubit),
@@ -27,7 +26,7 @@ class CustomerWelcomeData {
       BuildCustomerPageView(
         key: Key("3"),
         model: WelcomeModel(
-            desc: "introModel.introThree",
+            desc: introModel.textStepThreeUser,
             image: Res.on3,
             index: 2,
             pageCubit: pagesCubit),
@@ -35,7 +34,7 @@ class CustomerWelcomeData {
       BuildCustomerPageView(
         key: Key("4"),
         model: WelcomeModel(
-            desc: "introModel.introThree",
+            desc: introModel.textStepFourUser,
             image: Res.onUser4,
             index: 3,
             last: true,

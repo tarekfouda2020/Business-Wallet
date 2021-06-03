@@ -15,7 +15,8 @@ class BuildLoginText extends StatelessWidget {
           width: 5,
         ),
         InkWell(
-          onTap: () => AutoRouter.of(context).push(LoginRoute()),
+          onTap: () =>
+              AutoRouter.of(context).popUntilRouteWithName(LoginRoute.name),
           child: MyText(
             title: tr(context, "login"),
             size: 14,

@@ -1,7 +1,8 @@
-part of'ImportantWidgetsImports.dart';
+part of 'ImportantWidgetsImports.dart';
+
 class BuildImportantItem extends StatelessWidget {
   final String title;
-  final Function(Object?) onChange;
+  final Function(bool?) onChange;
   final bool selected;
 
   const BuildImportantItem({
@@ -9,6 +10,7 @@ class BuildImportantItem extends StatelessWidget {
     required this.selected,
     required this.onChange,
   });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,11 +19,13 @@ class BuildImportantItem extends StatelessWidget {
         children: [
           Checkbox(
             value: selected,
-            onChanged: (val) => onChange(val),
+            onChanged: onChange,
             checkColor: MyColors.white,
             activeColor: MyColors.primary,
           ),
-          MyText(title: title, size: 11, color: MyColors.white),
+          Expanded(
+            child: MyText(title: title, size: 11, color: MyColors.white),
+          )
         ],
       ),
     );

@@ -6,8 +6,10 @@ import 'package:dots_indicator/dots_indicator.dart';
 
 class IndicatorDots extends StatelessWidget {
   final GenericCubit<int>? pagesCubit;
+  final int dots;
 
-  IndicatorDots({this.pagesCubit});
+  IndicatorDots({this.pagesCubit,required this.dots});
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class IndicatorDots extends StatelessWidget {
       builder: (_, state) {
         return DotsIndicator(
           position: state.data.toDouble(),
-          dotsCount: 6,
+          dotsCount: dots,
           decorator: DotsDecorator(
             activeColor: MyColors.white,
             color: MyColors.primary,

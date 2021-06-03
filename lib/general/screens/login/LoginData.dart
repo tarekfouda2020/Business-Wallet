@@ -6,18 +6,20 @@ class LoginData {
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
 
-  final TextEditingController password = new TextEditingController();
   final TextEditingController email = new TextEditingController();
+  final TextEditingController password = new TextEditingController();
 
   void userLogin(BuildContext context) async {
     FocusScope.of(context).requestFocus(FocusNode());
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
-      // String phoneEn = Utils.convertDigitsToLatin(email.text);
-      // String passEn = Utils.convertDigitsToLatin(password.text);
-      // AutoRouter.of(context).push(HomeRoute(index: 4));
-      //  await GeneralRepository(context).setUserLogin(phoneEn, passEn);
+      await GeneralRepository(context).setUserLogin(email.text, password.text);
       btnKey.currentState!.animateReverse();
     }
+  }
+
+  Future<bool> onBackPressed() async {
+    SystemNavigator.pop();
+    return true;
   }
 }

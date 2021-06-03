@@ -21,7 +21,8 @@ class BuildProfileView extends StatelessWidget {
           BuildProfileItem(
             title: "الاهتمامات",
             icon: MdiIcons.accountGroup,
-            onTap: () => AutoRouter.of(context).push(ImportantRoute()),
+            onTap: () =>
+                AutoRouter.of(context).push(ImportantRoute()),
           ),
           BuildProfileItem(
             title: "المراسلات",
@@ -47,27 +48,31 @@ class BuildProfileView extends StatelessWidget {
             icon: Icons.phone_in_talk,
             onTap: () => AutoRouter.of(context).push(ContactUsRoute()),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            color: MyColors.black,
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.logout,
-                  size: 30,
-                  color: MyColors.primary,
-                ),
-                Container(
+          InkWell(
+            onTap: () => GeneralRepository(context).customerLogout(),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              color: MyColors.black,
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.logout,
+                    size: 30,
+                    color: MyColors.primary,
+                  ),
+                  Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: MyText(
                       title: "تسجيل الخروج",
                       size: 14,
                       color: MyColors.primary,
-                    ))
-              ],
+                    ),
+                  )
+                ],
+              ),
             ),
           )
         ],

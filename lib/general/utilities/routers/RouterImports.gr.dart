@@ -5,103 +5,111 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/company/models/dots/LocationModel.dart' as _i9;
 import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart'
-    as _i53;
+    as _i57;
 import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart'
-    as _i52;
+    as _i56;
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart'
-    as _i43;
-import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
-    as _i51;
-import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
-    as _i41;
-import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
-    as _i40;
-import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
-    as _i42;
-import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
-    as _i37;
-import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
-    as _i44;
-import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
-    as _i38;
-import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
-    as _i50;
-import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
     as _i47;
-import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
-    as _i39;
-import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
-    as _i34;
-import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart'
-    as _i35;
-import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
-    as _i36;
-import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
-    as _i46;
-import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
-    as _i48;
-import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
-    as _i49;
-import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
+import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
+    as _i55;
+import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
     as _i45;
+import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
+    as _i44;
+import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
+    as _i46;
+import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
+    as _i41;
+import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
+    as _i48;
+import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
+    as _i42;
+import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
+    as _i54;
+import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImports.dart'
+    as _i40;
+import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
+    as _i51;
+import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
+    as _i43;
+import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
+    as _i37;
+import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart'
+    as _i38;
+import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
+    as _i39;
+import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
+    as _i50;
+import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
+    as _i52;
+import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
+    as _i53;
+import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
+    as _i49;
+import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart'
+    as _i10;
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart'
-    as _i33;
+    as _i36;
 import 'package:base_flutter/customer/screens/comments/CommentsImports.dart'
-    as _i32;
+    as _i35;
 import 'package:base_flutter/customer/screens/conversation/ConversationImports.dart'
-    as _i31;
+    as _i34;
 import 'package:base_flutter/customer/screens/details/DetailsImports.dart'
-    as _i29;
+    as _i32;
 import 'package:base_flutter/customer/screens/edit_profile/EditProfileImports.dart'
-    as _i26;
-import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i21;
+    as _i29;
+import 'package:base_flutter/customer/screens/Home/HomeImports.dart' as _i24;
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart'
-    as _i22;
-import 'package:base_flutter/customer/screens/important/ImportantWidgets.dart'
-    as _i30;
-import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart'
     as _i25;
-import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.dart'
-    as _i27;
-import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart'
-    as _i23;
-import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart'
-    as _i24;
-import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
-    as _i20;
-import 'package:base_flutter/customer/screens/wallet/WalletImports.dart'
+import 'package:base_flutter/customer/screens/important/ImportantWidgets.dart'
+    as _i33;
+import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart'
     as _i28;
-import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i14;
+import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.dart'
+    as _i30;
+import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart'
+    as _i26;
+import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart'
+    as _i27;
+import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
+    as _i23;
+import 'package:base_flutter/customer/screens/wallet/WalletImports.dart'
+    as _i31;
+import 'package:base_flutter/general/models/intro_model.dart' as _i59;
+import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i17;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
-    as _i9;
+    as _i11;
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart'
-    as _i18;
+    as _i21;
+import 'package:base_flutter/general/screens/comp_active_account/CompActiveAccountImports.dart'
+    as _i12;
 import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart'
-    as _i17;
+    as _i20;
 import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart'
-    as _i15;
+    as _i18;
 import 'package:base_flutter/general/screens/customer_welcome/CustomerWelcomeImports.dart'
     as _i6;
 import 'package:base_flutter/general/screens/forget_password/ForgetPasswordImports.dart'
     as _i7;
-import 'package:base_flutter/general/screens/forget_password_email/ForgetPassEmailImports.dart'
+import 'package:base_flutter/general/screens/forget_password_code/ForgetPasswordCodeImports.dart'
     as _i8;
-import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i19;
+import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart' as _i22;
 import 'package:base_flutter/general/screens/login/LoginImports.dart' as _i4;
 import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports.dart'
-    as _i11;
+    as _i14;
 import 'package:base_flutter/general/screens/select_lang/SelectLangImports.dart'
-    as _i12;
+    as _i15;
 import 'package:base_flutter/general/screens/select_user/SelectUserImports.dart'
-    as _i16;
+    as _i19;
 import 'package:base_flutter/general/screens/splash/SplashImports.dart' as _i3;
 import 'package:base_flutter/general/screens/successfully_active/SuccessfullyActiveImports.dart'
-    as _i10;
-import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i13;
+    as _i13;
+import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i16;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i54;
+import 'package:flutter/cupertino.dart' as _i58;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -118,15 +126,19 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     LoginRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i4.Login();
+        builder: (data) {
+          final args =
+              data.argsAs<LoginRouteArgs>(orElse: () => const LoginRouteArgs());
+          return _i4.Login(introModel: args.introModel);
         },
         opaque: true,
         barrierDismissible: false),
     WelcomePageRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i5.WelcomePage();
+        builder: (data) {
+          final args = data.argsAs<WelcomePageRouteArgs>(
+              orElse: () => const WelcomePageRouteArgs());
+          return _i5.WelcomePage(introModel: args.introModel);
         },
         transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500,
@@ -134,8 +146,10 @@ class AppRouter extends _i1.RootStackRouter {
         barrierDismissible: false),
     CustomerWelcomeRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i6.CustomerWelcome();
+        builder: (data) {
+          final args = data.argsAs<CustomerWelcomeRouteArgs>(
+              orElse: () => const CustomerWelcomeRouteArgs());
+          return _i6.CustomerWelcome(introModel: args.introModel);
         },
         transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500,
@@ -146,52 +160,69 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i7.ForgetPassword();
         }),
-    ForgetPasswordEmailRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    ForgetPasswordCodeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i8.ForgetPasswordEmail();
+        builder: (data) {
+          final args = data.argsAs<ForgetPasswordCodeRouteArgs>();
+          return _i8.ForgetPasswordCode(phone: args.phone);
         }),
+    LocationAddressRoute.name: (routeData) =>
+        _i1.AdaptivePage<_i9.LocationModel>(
+            routeData: routeData,
+            builder: (data) {
+              final args = data.argsAs<LocationAddressRouteArgs>();
+              return _i10.LocationAddress(lat: args.lat, lng: args.lng);
+            }),
     ActiveAccountRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ActiveAccountRouteArgs>();
-          return _i9.ActiveAccount(userId: args.userId);
+          return _i11.ActiveAccount(userId: args.userId);
+        }),
+    CompActiveAccountRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<CompActiveAccountRouteArgs>();
+          return _i12.CompActiveAccount(userId: args.userId);
         }),
     SuccessfullyActiveRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i10.SuccessfullyActive();
+        builder: (data) {
+          final args = data.argsAs<SuccessfullyActiveRouteArgs>();
+          return _i13.SuccessfullyActive(userId: args.userId);
         }),
     ResetPasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ResetPasswordRouteArgs>();
-          return _i11.ResetPassword(userId: args.userId);
+          return _i14.ResetPassword(userId: args.userId);
         }),
     SelectLangRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i12.SelectLang();
+          return _i15.SelectLang();
         }),
     TermsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i13.Terms();
+          return _i16.Terms();
         }),
     AboutRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i14.About();
+          return _i17.About();
         }),
     ContactUsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i15.ContactUs();
+          return _i18.ContactUs();
         }),
     SelectUserRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i16.SelectUser();
+        builder: (data) {
+          final args = data.argsAs<SelectUserRouteArgs>(
+              orElse: () => const SelectUserRouteArgs());
+          return _i19.SelectUser(introModel: args.introModel);
         },
         transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500,
@@ -200,192 +231,202 @@ class AppRouter extends _i1.RootStackRouter {
     ConfirmPasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i17.ConfirmPassword();
+          return _i20.ConfirmPassword();
         }),
     ChangePasswordRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i18.ChangePassword();
+          return _i21.ChangePassword();
         }),
     ImageZoomRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ImageZoomRouteArgs>();
-          return _i19.ImageZoom(images: args.images);
+          return _i22.ImageZoom(images: args.images);
         }),
     RegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i20.Register();
+          return _i23.Register();
         }),
     HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<HomeRouteArgs>();
-          return _i21.Home(args.index);
+          return _i24.Home(args.index);
         }),
     ProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i22.Profile();
+          return _i25.Profile();
         }),
     ProfilePageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i23.ProfilePage();
+          return _i26.ProfilePage();
         }),
     ProviderDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i24.ProviderDetails();
+          return _i27.ProviderDetails();
         }),
     InvitationDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i25.InvitationDetails();
+          return _i28.InvitationDetails();
         }),
     EditProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i26.EditProfile();
+          return _i29.EditProfile();
         }),
     NumberWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i27.NumberWallet();
+          return _i30.NumberWallet();
         }),
     WalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i28.Wallet();
+          return _i31.Wallet();
         }),
     DetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i29.Details();
+          return _i32.Details();
         }),
     ImportantRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i30.Important();
+        builder: (data) {
+          final args = data.argsAs<ImportantRouteArgs>(
+              orElse: () => const ImportantRouteArgs());
+          return _i33.Important(fromWhere: args.fromWhere);
         }),
     ConversationRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i31.Conversation();
+          return _i34.Conversation();
         }),
     CommentsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i32.Comments();
+          return _i35.Comments();
         }),
     AppInfoRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i33.AppInfo();
+          return _i36.AppInfo();
         }),
     CompanyRegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i34.CompanyRegister();
+          return _i37.CompanyRegister();
         }),
     CompanyRegisterCommercialRoute.name: (routeData) =>
         _i1.AdaptivePage<dynamic>(
             routeData: routeData,
-            builder: (_) {
-              return _i35.CompanyRegisterCommercial();
+            builder: (data) {
+              final args = data.argsAs<CompanyRegisterCommercialRouteArgs>();
+              return _i38.CompanyRegisterCommercial(userId: args.userId);
             }),
     CompanyRegisterInterestsRoute.name: (routeData) =>
         _i1.AdaptivePage<dynamic>(
             routeData: routeData,
-            builder: (_) {
-              return _i36.CompanyRegisterInterests();
+            builder: (data) {
+              final args = data.argsAs<CompanyRegisterInterestsRouteArgs>();
+              return _i39.CompanyRegisterInterests(userId: args.userId);
             }),
+    CompanyPaymentRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<CompanyPaymentRouteArgs>();
+          return _i40.CompanyPayment(userId: args.userId, id: args.id);
+        }),
     CompanyHomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanyHomeRouteArgs>();
-          return _i37.CompanyHome(args.index);
+          return _i41.CompanyHome(args.index);
         }),
     CompanyMainDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i38.CompanyMainDetails();
+          return _i42.CompanyMainDetails();
         }),
     CompanyProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i39.CompanyProfile();
+          return _i43.CompanyProfile();
         }),
     CompanyEditProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i40.CompanyEditProfile();
+          return _i44.CompanyEditProfile();
         }),
     CompanyEditActivityRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i41.CompanyEditActivity();
+          return _i45.CompanyEditActivity();
         }),
     CompanyFavDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i42.CompanyFavDetails();
+          return _i46.CompanyFavDetails();
         }),
     CompanyCommentsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i43.CompanyComments();
+          return _i47.CompanyComments();
         }),
     CompanyInterestsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i44.CompanyInterests();
+          return _i48.CompanyInterests();
         }),
     CompanyWalletNumbRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i45.CompanyWalletNumb();
+          return _i49.CompanyWalletNumb();
         }),
     CompanyStatisticsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i46.CompanyStatistics();
+          return _i50.CompanyStatistics();
         }),
     CompanyPointsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i47.CompanyPoints();
+          return _i51.CompanyPoints();
         }),
     CompanySubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i48.CompanySubscribe();
+          return _i52.CompanySubscribe();
         }),
     CompanyWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i49.CompanyWallet();
+          return _i53.CompanyWallet();
         }),
     CompanyPackagesRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i50.CompanyPackages();
+          return _i54.CompanyPackages();
         }),
     CompanyConversationsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i51.CompanyConversations();
+          return _i55.CompanyConversations();
         }),
     CompanyBrochureRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i52.CompanyBrochure();
+          return _i56.CompanyBrochure();
         }),
     CompanyBarcodeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i53.CompanyBarcode();
+          return _i57.CompanyBarcode();
         })
   };
 
@@ -396,9 +437,12 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(WelcomePageRoute.name, path: '/welcome-page'),
         _i1.RouteConfig(CustomerWelcomeRoute.name, path: '/customer-welcome'),
         _i1.RouteConfig(ForgetPasswordRoute.name, path: '/forget-password'),
-        _i1.RouteConfig(ForgetPasswordEmailRoute.name,
-            path: '/forget-password-email'),
+        _i1.RouteConfig(ForgetPasswordCodeRoute.name,
+            path: '/forget-password-code'),
+        _i1.RouteConfig(LocationAddressRoute.name, path: '/location-address'),
         _i1.RouteConfig(ActiveAccountRoute.name, path: '/active-account'),
+        _i1.RouteConfig(CompActiveAccountRoute.name,
+            path: '/comp-active-account'),
         _i1.RouteConfig(SuccessfullyActiveRoute.name,
             path: '/successfully-active'),
         _i1.RouteConfig(ResetPasswordRoute.name, path: '/reset-password'),
@@ -430,6 +474,7 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/company-register-commercial'),
         _i1.RouteConfig(CompanyRegisterInterestsRoute.name,
             path: '/company-register-interests'),
+        _i1.RouteConfig(CompanyPaymentRoute.name, path: '/company-payment'),
         _i1.RouteConfig(CompanyHomeRoute.name, path: '/company-home'),
         _i1.RouteConfig(CompanyMainDetailsRoute.name,
             path: '/company-main-details'),
@@ -458,7 +503,7 @@ class AppRouter extends _i1.RootStackRouter {
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i54.GlobalKey<_i54.NavigatorState> navigatorKey})
+  SplashRoute({required _i58.GlobalKey<_i58.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -468,25 +513,51 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i54.GlobalKey<_i54.NavigatorState> navigatorKey;
+  final _i58.GlobalKey<_i58.NavigatorState> navigatorKey;
 }
 
-class LoginRoute extends _i1.PageRouteInfo {
-  const LoginRoute() : super(name, path: '/Login');
+class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i59.IntroModel? introModel})
+      : super(name,
+            path: '/Login', args: LoginRouteArgs(introModel: introModel));
 
   static const String name = 'LoginRoute';
 }
 
-class WelcomePageRoute extends _i1.PageRouteInfo {
-  const WelcomePageRoute() : super(name, path: '/welcome-page');
+class LoginRouteArgs {
+  const LoginRouteArgs({this.introModel});
+
+  final _i59.IntroModel? introModel;
+}
+
+class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
+  WelcomePageRoute({_i59.IntroModel? introModel})
+      : super(name,
+            path: '/welcome-page',
+            args: WelcomePageRouteArgs(introModel: introModel));
 
   static const String name = 'WelcomePageRoute';
 }
 
-class CustomerWelcomeRoute extends _i1.PageRouteInfo {
-  const CustomerWelcomeRoute() : super(name, path: '/customer-welcome');
+class WelcomePageRouteArgs {
+  const WelcomePageRouteArgs({this.introModel});
+
+  final _i59.IntroModel? introModel;
+}
+
+class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
+  CustomerWelcomeRoute({_i59.IntroModel? introModel})
+      : super(name,
+            path: '/customer-welcome',
+            args: CustomerWelcomeRouteArgs(introModel: introModel));
 
   static const String name = 'CustomerWelcomeRoute';
+}
+
+class CustomerWelcomeRouteArgs {
+  const CustomerWelcomeRouteArgs({this.introModel});
+
+  final _i59.IntroModel? introModel;
 }
 
 class ForgetPasswordRoute extends _i1.PageRouteInfo {
@@ -495,11 +566,37 @@ class ForgetPasswordRoute extends _i1.PageRouteInfo {
   static const String name = 'ForgetPasswordRoute';
 }
 
-class ForgetPasswordEmailRoute extends _i1.PageRouteInfo {
-  const ForgetPasswordEmailRoute()
-      : super(name, path: '/forget-password-email');
+class ForgetPasswordCodeRoute
+    extends _i1.PageRouteInfo<ForgetPasswordCodeRouteArgs> {
+  ForgetPasswordCodeRoute({required String phone})
+      : super(name,
+            path: '/forget-password-code',
+            args: ForgetPasswordCodeRouteArgs(phone: phone));
 
-  static const String name = 'ForgetPasswordEmailRoute';
+  static const String name = 'ForgetPasswordCodeRoute';
+}
+
+class ForgetPasswordCodeRouteArgs {
+  const ForgetPasswordCodeRouteArgs({required this.phone});
+
+  final String phone;
+}
+
+class LocationAddressRoute extends _i1.PageRouteInfo<LocationAddressRouteArgs> {
+  LocationAddressRoute({required double lat, required double lng})
+      : super(name,
+            path: '/location-address',
+            args: LocationAddressRouteArgs(lat: lat, lng: lng));
+
+  static const String name = 'LocationAddressRoute';
+}
+
+class LocationAddressRouteArgs {
+  const LocationAddressRouteArgs({required this.lat, required this.lng});
+
+  final double lat;
+
+  final double lng;
 }
 
 class ActiveAccountRoute extends _i1.PageRouteInfo<ActiveAccountRouteArgs> {
@@ -517,10 +614,36 @@ class ActiveAccountRouteArgs {
   final String userId;
 }
 
-class SuccessfullyActiveRoute extends _i1.PageRouteInfo {
-  const SuccessfullyActiveRoute() : super(name, path: '/successfully-active');
+class CompActiveAccountRoute
+    extends _i1.PageRouteInfo<CompActiveAccountRouteArgs> {
+  CompActiveAccountRoute({required String userId})
+      : super(name,
+            path: '/comp-active-account',
+            args: CompActiveAccountRouteArgs(userId: userId));
+
+  static const String name = 'CompActiveAccountRoute';
+}
+
+class CompActiveAccountRouteArgs {
+  const CompActiveAccountRouteArgs({required this.userId});
+
+  final String userId;
+}
+
+class SuccessfullyActiveRoute
+    extends _i1.PageRouteInfo<SuccessfullyActiveRouteArgs> {
+  SuccessfullyActiveRoute({required String userId})
+      : super(name,
+            path: '/successfully-active',
+            args: SuccessfullyActiveRouteArgs(userId: userId));
 
   static const String name = 'SuccessfullyActiveRoute';
+}
+
+class SuccessfullyActiveRouteArgs {
+  const SuccessfullyActiveRouteArgs({required this.userId});
+
+  final String userId;
 }
 
 class ResetPasswordRoute extends _i1.PageRouteInfo<ResetPasswordRouteArgs> {
@@ -562,10 +685,19 @@ class ContactUsRoute extends _i1.PageRouteInfo {
   static const String name = 'ContactUsRoute';
 }
 
-class SelectUserRoute extends _i1.PageRouteInfo {
-  const SelectUserRoute() : super(name, path: '/select-user');
+class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
+  SelectUserRoute({_i59.IntroModel? introModel})
+      : super(name,
+            path: '/select-user',
+            args: SelectUserRouteArgs(introModel: introModel));
 
   static const String name = 'SelectUserRoute';
+}
+
+class SelectUserRouteArgs {
+  const SelectUserRouteArgs({this.introModel});
+
+  final _i59.IntroModel? introModel;
 }
 
 class ConfirmPasswordRoute extends _i1.PageRouteInfo {
@@ -661,10 +793,18 @@ class DetailsRoute extends _i1.PageRouteInfo {
   static const String name = 'DetailsRoute';
 }
 
-class ImportantRoute extends _i1.PageRouteInfo {
-  const ImportantRoute() : super(name, path: '/Important');
+class ImportantRoute extends _i1.PageRouteInfo<ImportantRouteArgs> {
+  ImportantRoute({String fromWhere = "login"})
+      : super(name,
+            path: '/Important', args: ImportantRouteArgs(fromWhere: fromWhere));
 
   static const String name = 'ImportantRoute';
+}
+
+class ImportantRouteArgs {
+  const ImportantRouteArgs({this.fromWhere = "login"});
+
+  final String fromWhere;
 }
 
 class ConversationRoute extends _i1.PageRouteInfo {
@@ -691,18 +831,53 @@ class CompanyRegisterRoute extends _i1.PageRouteInfo {
   static const String name = 'CompanyRegisterRoute';
 }
 
-class CompanyRegisterCommercialRoute extends _i1.PageRouteInfo {
-  const CompanyRegisterCommercialRoute()
-      : super(name, path: '/company-register-commercial');
+class CompanyRegisterCommercialRoute
+    extends _i1.PageRouteInfo<CompanyRegisterCommercialRouteArgs> {
+  CompanyRegisterCommercialRoute({required String userId})
+      : super(name,
+            path: '/company-register-commercial',
+            args: CompanyRegisterCommercialRouteArgs(userId: userId));
 
   static const String name = 'CompanyRegisterCommercialRoute';
 }
 
-class CompanyRegisterInterestsRoute extends _i1.PageRouteInfo {
-  const CompanyRegisterInterestsRoute()
-      : super(name, path: '/company-register-interests');
+class CompanyRegisterCommercialRouteArgs {
+  const CompanyRegisterCommercialRouteArgs({required this.userId});
+
+  final String userId;
+}
+
+class CompanyRegisterInterestsRoute
+    extends _i1.PageRouteInfo<CompanyRegisterInterestsRouteArgs> {
+  CompanyRegisterInterestsRoute({required String userId})
+      : super(name,
+            path: '/company-register-interests',
+            args: CompanyRegisterInterestsRouteArgs(userId: userId));
 
   static const String name = 'CompanyRegisterInterestsRoute';
+}
+
+class CompanyRegisterInterestsRouteArgs {
+  const CompanyRegisterInterestsRouteArgs({required this.userId});
+
+  final String userId;
+}
+
+class CompanyPaymentRoute extends _i1.PageRouteInfo<CompanyPaymentRouteArgs> {
+  CompanyPaymentRoute({required String userId, required int id})
+      : super(name,
+            path: '/company-payment',
+            args: CompanyPaymentRouteArgs(userId: userId, id: id));
+
+  static const String name = 'CompanyPaymentRoute';
+}
+
+class CompanyPaymentRouteArgs {
+  const CompanyPaymentRouteArgs({required this.userId, required this.id});
+
+  final String userId;
+
+  final int id;
 }
 
 class CompanyHomeRoute extends _i1.PageRouteInfo<CompanyHomeRouteArgs> {

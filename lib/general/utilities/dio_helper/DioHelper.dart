@@ -5,7 +5,7 @@ class DioHelper {
   late DioCacheManager _manager;
   BuildContext context;
   final bool forceRefresh;
-  final baseUrl = "https://hiraj.ip4s.com";
+  final baseUrl = "https://trainingbus.ip4s.com";
   final String _branch = "6";
 
   DioHelper({this.forceRefresh = true,required this.context}){
@@ -60,12 +60,12 @@ class DioHelper {
 
   Future<dynamic> post({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
-    body.addAll({"branchId": _branch});
+    // body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
     try {
       var response =
-          await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
+      await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
       LoadingDialog.showToastNotification(response.data["msg"].toString());
@@ -82,6 +82,28 @@ class DioHelper {
     return null;
   }
 
+  Future<dynamic> externalPost({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
+    if (showLoader) LoadingDialog.showLoadingDialog();
+    body.addAll({"branchId": _branch});
+    _printRequestBody(body);
+    _dio.options.headers = await _getHeader();
+    try {
+      var response =
+      await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
+      print("response ${response.statusCode}");
+      if (showLoader) EasyLoading.dismiss();
+      return response.data;
+    } on DioError catch (e) {
+      if (showLoader) EasyLoading.dismiss();
+      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+        logout();
+      } else {
+        LoadingDialog.showToastNotification(tr(context, "chickNet"));
+      }
+    }
+
+    return null;
+  }
   Future<dynamic> uploadFile(
       {required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();

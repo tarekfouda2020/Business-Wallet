@@ -64,7 +64,7 @@ class _LabelTextFieldState extends State<LabelTextField> {
           enableSuggestions: false,
           autocorrect: false,
           textInputAction: widget.action ?? TextInputAction.next,
-          validator: (value) => widget.validate(value),
+          validator: (value) => widget.validate(value)??null,
           style: CustomInputTextStyle(lang: lang),
           decoration: CustomInputDecoration(
               lang: lang, hint: widget.hint, enableColor: widget.enabledColor),

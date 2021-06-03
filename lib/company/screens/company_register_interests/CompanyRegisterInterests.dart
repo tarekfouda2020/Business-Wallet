@@ -1,6 +1,10 @@
 part of 'CompanyRegisterInterestsImports.dart';
 
 class CompanyRegisterInterests extends StatefulWidget {
+  final String userId;
+
+  CompanyRegisterInterests({required this.userId});
+
   @override
   _CompanyRegisterInterestsState createState() =>
       _CompanyRegisterInterestsState();
@@ -9,6 +13,12 @@ class CompanyRegisterInterests extends StatefulWidget {
 class _CompanyRegisterInterestsState extends State<CompanyRegisterInterests> {
   final CompanyRegisterInterestsData companyRegisterInterestsData =
       new CompanyRegisterInterestsData();
+
+  @override
+  void initState() {
+    print("_____${widget.userId}");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +38,11 @@ class _CompanyRegisterInterestsState extends State<CompanyRegisterInterests> {
           BuildInterestForm(
             companyRegisterInterestsData: companyRegisterInterestsData,
           ),
-          DefaultButton(
+          LoadingButton(
+            btnKey: companyRegisterInterestsData.btnKey,
             title: "تأكيد",
-            onTap: () => AutoRouter.of(context).push(LoginRoute()),
+            onTap: () => companyRegisterInterestsData.saveImportantData(
+                context, widget.userId),
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
           ),

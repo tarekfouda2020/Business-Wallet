@@ -16,6 +16,7 @@ class BuildConfirmPay extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Checkbox(
+                activeColor: MyColors.primary,
                 value: state.data,
                 onChanged: (val) =>
                     successfullyActiveData.termCubit.onUpdateData(!state.data),

@@ -1,9 +1,9 @@
 part of 'CustomerWelcomeImports.dart';
 
 class CustomerWelcome extends StatefulWidget {
-  // final IntroModel introModel;
-  //
-  // WelcomePage({@required this.introModel});
+  final IntroModel? introModel;
+
+  CustomerWelcome({ this.introModel});
 
   @override
   _CustomerWelcomeState createState() => _CustomerWelcomeState();
@@ -14,7 +14,9 @@ class _CustomerWelcomeState extends State<CustomerWelcome> {
 
   @override
   void initState() {
-    welcomePageData.initPagesData();
+    print("__________###__${widget.introModel!.textStepOneUser}");
+
+    welcomePageData.initPagesData(introModel: widget.introModel!);
     super.initState();
   }
 

@@ -1,6 +1,10 @@
 part of 'SelectUserWidgetsImports.dart';
 
 class BuildButtonList extends StatelessWidget {
+  final IntroModel? introModel;
+
+  BuildButtonList({this.introModel});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -13,7 +17,8 @@ class BuildButtonList extends StatelessWidget {
           ),
           DefaultButton(
             title: "فرد",
-            onTap: () => AutoRouter.of(context).push(CustomerWelcomeRoute()),
+            onTap: () => AutoRouter.of(context)
+                .push(CustomerWelcomeRoute(introModel: introModel)),
             margin: const EdgeInsets.all(20),
             borderRadius: BorderRadius.circular(20),
             color: MyColors.white,
@@ -21,7 +26,8 @@ class BuildButtonList extends StatelessWidget {
           ),
           DefaultButton(
             title: "منشأة تجارية",
-            onTap: () => AutoRouter.of(context).push(WelcomePageRoute()),
+            onTap: () => AutoRouter.of(context)
+                .push(WelcomePageRoute(introModel: introModel)),
             margin: EdgeInsets.symmetric(horizontal: 20),
             borderRadius: BorderRadius.circular(20),
             color: MyColors.white,

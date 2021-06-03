@@ -15,7 +15,7 @@ class BuildHaveAccount extends StatelessWidget {
           SizedBox(width: 10,),
           InkWell(
             onTap: ()=> AutoRouter.of(context)
-                .popUntilRouteWithName(LoginRoute.name),
+                .push(LoginRoute()),
             child: MyText(
               title: "تسجيل دخول",
               color: MyColors.primary,

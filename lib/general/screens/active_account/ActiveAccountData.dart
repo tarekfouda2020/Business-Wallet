@@ -10,19 +10,21 @@ class ActiveAccountData {
 
   void onActiveAccount(BuildContext context, String userId) async {
     if (formKey.currentState!.validate()) {
-      // btnKey.currentState.animateForward();
-      // var result =  await GeneralRepository(context).sendCode(code.text, userId);
-      // btnKey.currentState.animateReverse();
-      // if(result){
-      //   ExtendedNavigator.of(context).popUntilPath(Routes.login);
-      // }
-
-      AutoRouter.of(context)
-          .push(SuccessfullyActiveRoute());
+      btnKey.currentState!.animateForward();
+      var result = await GeneralRepository(context).sendCode(code.text, userId);
+      btnKey.currentState!.animateReverse();
+      if (result) {
+        AutoRouter.of(context).push(ImportantRoute(fromWhere: "splash"));
+      }
     }
   }
 
   void onResendCode(BuildContext context, String userId) async {
     await GeneralRepository(context).resendCode(userId);
+  }
+
+  Future<bool> onBackPressed() async {
+    SystemNavigator.pop();
+    return true;
   }
 }

@@ -1,6 +1,10 @@
 part of 'SuccessfullyActiveImports.dart';
 
 class SuccessfullyActive extends StatefulWidget {
+  final String userId;
+
+  SuccessfullyActive({required this.userId});
+
   @override
   _SuccessfullyActiveState createState() => _SuccessfullyActiveState();
 }
@@ -20,22 +24,8 @@ class _SuccessfullyActiveState extends State<SuccessfullyActive> {
         children: [
           HeaderLogo(),
           BuildText(),
-          BuildConfirmPay(
-            successfullyActiveData: successfullyActiveData,
-          ),
-          DefaultButton(
-            title: "الدفع ماستر كارد/ فيزا",
-            onTap: () =>
-                AutoRouter.of(context).push(CompanyRegisterCommercialRoute()),
-            color: MyColors.primary,
-            textColor: MyColors.blackOpacity,
-          ),
-          DefaultButton(
-            title: "الدفع مدي",
-            onTap: () {},
-            color: MyColors.white,
-            textColor: MyColors.blackOpacity,
-          )
+          BuildConfirmPay(successfullyActiveData: successfullyActiveData),
+          BuildButtons(successfullyActiveData: successfullyActiveData,userId: widget.userId,),
         ],
       ),
     );

@@ -12,17 +12,14 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return AuthScaffold(
       child: ListView(
-        padding: const EdgeInsets.only(top: 50, right: 20, left: 20, bottom: 20),
+        padding:
+            const EdgeInsets.only(top: 50, right: 20, left: 20, bottom: 20),
         physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           HeaderLogo(),
-
-          BuildRegisterInputs(registerData,),
-
+          BuildRegisterInputs(registerData),
           BuildCheckTerms(registerData),
-
           BuildButton(registerData),
-
           BuildHaveAccount()
         ],
       ),

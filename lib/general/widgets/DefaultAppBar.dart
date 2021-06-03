@@ -30,12 +30,14 @@ class DefaultAppBar extends PreferredSize {
             size: 14,
             color: MyColors.white,
           ),
-          showLeading == false
-              ? Image.asset(
-                  Res.logo,
-                  height: 30,
-                )
-              : Container()
+          Visibility(
+            visible: showLeading == false,
+            child: Image.asset(
+              Res.logo,
+              height: 30,
+            ),
+            replacement: Container(),
+          )
         ],
       ),
       flexibleSpace: Image.asset(
@@ -47,27 +49,20 @@ class DefaultAppBar extends PreferredSize {
       elevation: 0,
       leadingWidth: leading == null ? 10 : 55,
       leading: leading,
-      // leading: leading ??
-      //     IconButton(
-      //       icon: Icon(
-      //         Icons.arrow_back,
-      //         size: 25,
-      //         color: MyColors.white,
-      //       ),
-      //       onPressed: () => Navigator.of(context).pop(),
-      //     ),
       actions: actions ??
           [
-            showLeading == true
-                ? IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios_sharp,
-                      size: 25,
-                      color: MyColors.white,
-                    ),
-                    onPressed: () => Navigator.of(context).pop(),
-                  )
-                : Container(),
+            Visibility(
+              visible: showLeading == true,
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  size: 25,
+                  color: MyColors.white,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              replacement: Container(),
+            ),
           ],
     );
   }

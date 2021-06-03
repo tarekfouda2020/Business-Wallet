@@ -6,7 +6,7 @@ class BuildForgetText extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 30),
       child: InkWell(
-        onTap: () => AutoRouter.of(context).push(ForgetPasswordEmailRoute()),
+        onTap: () => AutoRouter.of(context).push(ForgetPasswordRoute()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

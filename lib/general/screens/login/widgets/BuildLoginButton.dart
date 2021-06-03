@@ -10,9 +10,7 @@ class BuildLoginButton extends StatelessWidget {
     return LoadingButton(
       btnKey: loginData.btnKey,
       title: tr(context, "login"),
-      onTap: () => AutoRouter.of(context).push(CompanyHomeRoute(index: 4)),
-      // onTap: ()=>AutoRouter.of(context).push(HomeRoute(index: 4)),
-      // onTap: () => loginData.userLogin(context),
+      onTap: () => loginData.userLogin(context),
       color: MyColors.white,
       textColor: MyColors.black,
       margin: const EdgeInsets.symmetric(vertical: 10),

@@ -15,6 +15,7 @@ class BuildTermsView extends StatelessWidget {
           child: Row(
             children: [
               Checkbox(
+                activeColor: MyColors.primary,
                 value: state.data,
                 onChanged: (val) =>
                     companyRegisterData.termCubit.onUpdateData(!state.data),

@@ -14,19 +14,24 @@ class _ActiveAccountState extends State<ActiveAccount> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthScaffold(
-      child: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        physics: BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
+    return WillPopScope(
+        child: AuthScaffold(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            physics: BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            children: [
+              HeaderLogo(),
+              BuildText(),
+              BuildFormInputs(activeAccountData: activeAccountData),
+              BuildButtonList(
+                activeAccountData: activeAccountData,
+                userId: widget.userId,
+              ),
+            ],
+          ),
         ),
-        children: [
-          HeaderLogo(),
-          BuildText(),
-          BuildFormInputs(activeAccountData: activeAccountData),
-          BuildButtonList(activeAccountData: activeAccountData,userId: widget.userId,),
-        ],
-      ),
-    );
+        onWillPop: activeAccountData.onBackPressed,);
   }
 }

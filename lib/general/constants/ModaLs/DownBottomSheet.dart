@@ -25,7 +25,7 @@ class DownBottomSheet {
               return InkWell(
                 onTap: ()=>onTab(data[position].name,data[position].id.toString()),
                 child: Container(
-                  height: 50,
+                  height: 60,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       border: Border(

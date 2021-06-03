@@ -25,7 +25,7 @@ class BuildFormInputs extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               action: TextInputAction.next,
               type: TextInputType.emailAddress,
-              validate: (value) => value!.validateEmpty(context),
+              validate: (value) => value!.validateEmail(context),
             ),
             MyText(
               title: tr(context, "password"),
@@ -35,7 +35,7 @@ class BuildFormInputs extends StatelessWidget {
             IconTextFiled(
               hint: tr(context, "password"),
               controller: loginData.password,
-              validate: (value) => value!.validateEmpty(context),
+              validate: (value) => value!.validatePassword(context),
               isPassword: true,
               action: TextInputAction.done,
               suffixIcon: Icon(Icons.remove_red_eye),

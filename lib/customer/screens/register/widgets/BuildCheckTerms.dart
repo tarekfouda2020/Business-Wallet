@@ -2,34 +2,32 @@ part of 'RegisterWidgetsImports.dart';
 
 class BuildCheckTerms extends StatelessWidget {
   final RegisterData registerData;
+
   const BuildCheckTerms(this.registerData);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-
         BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
           bloc: registerData.termsCubit,
-          builder: (_, state){
+          builder: (_, state) {
             return Checkbox(
-                value: state.data,
-                // onChanged: null,
-                onChanged: (val) =>
-                    registerData.termsCubit.onUpdateData(!state.data)
+              value: state.data,
+              onChanged: (val) =>
+                  registerData.termsCubit.onUpdateData(!state.data),
+              activeColor: MyColors.primary,
             );
           },
         ),
-
         InkWell(
-            onTap: () => AutoRouter.of(context)
-                .push(TermsRoute()),
-            child: MyText(
-              title: "اوافق علي الشروط والأحكام",
-              color: MyColors.primary,
-            )),
+          onTap: () => AutoRouter.of(context).push(TermsRoute()),
+          child: MyText(
+            title: "اوافق علي الشروط والأحكام",
+            color: MyColors.primary,
+          ),
+        ),
       ],
     );
   }
-
 }

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/company/models/dots/LocationModel.dart';
 import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart';
 import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart';
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart';
@@ -11,6 +12,7 @@ import 'package:base_flutter/company/screens/company_home/tabs/company_switched_
 import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart';
+import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImports.dart';
 import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart';
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart';
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart';
@@ -20,6 +22,7 @@ import 'package:base_flutter/company/screens/company_statstics/CompanyStatistics
 import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart';
+import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
@@ -38,11 +41,12 @@ import 'package:base_flutter/customer/screens/wallet/WalletImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/change_password/ChangePasswordImports.dart';
+import 'package:base_flutter/general/screens/comp_active_account/CompActiveAccountImports.dart';
 import 'package:base_flutter/general/screens/confirm_password/ConfirmPasswordImports.dart';
 import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart';
 import 'package:base_flutter/general/screens/customer_welcome/CustomerWelcomeImports.dart';
 import 'package:base_flutter/general/screens/forget_password/ForgetPasswordImports.dart';
-import 'package:base_flutter/general/screens/forget_password_email/ForgetPassEmailImports.dart';
+import 'package:base_flutter/general/screens/forget_password_code/ForgetPasswordCodeImports.dart';
 import 'package:base_flutter/general/screens/image_zoom/ImageZoom.dart';
 import 'package:base_flutter/general/screens/login/LoginImports.dart';
 import 'package:base_flutter/general/screens/reset_password/ResetPasswordImports.dart';

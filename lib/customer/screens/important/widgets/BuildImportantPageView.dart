@@ -7,29 +7,48 @@ class BuildImportantPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Flexible(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: BlocBuilder<GenericCubit, GenericState>(
-            bloc: importantData.importantCubit,
-            builder: (context, state) {
-              return Wrap(
-                spacing: 5,
-                runSpacing: 5,
-                children: List.generate(
-                  4,
-                  (index) => BuildImportantItem(
-                    title: "مقاولات",
-                    onChange: importantData.importantCubit.onUpdateData,
-                    selected: state.data,
+    return BlocBuilder<GenericCubit<List<UserInterestModel>>,
+        GenericState<List<UserInterestModel>>>(
+      bloc: importantData.interestCubit,
+      builder: (_, state) {
+        if (state is GenericUpdateState) {
+          return Column(
+            children: [
+              Flexible(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Wrap(
+                      spacing: 5,
+                      runSpacing: 5,
+                      children: List.generate(
+                        state.data.length,
+                        (index) => BuildImportantItem(
+                          title: state.data[index].name,
+                          onChange: (value) => importantData.onItemChanged(
+                              state.data[index].id, index),
+                          selected: state.data[index].choose,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              );
-            },
-          ),
-        ),
-      )
-    ]);
+              ),
+              LoadingButton(
+                btnKey: importantData.btnKey,
+                title: "حفظ",
+                color: MyColors.primary,
+                onTap: () => importantData.saveImportantData(context),
+              )
+            ],
+          );
+        } else {
+          return Center(
+            child: LoadingDialog.showLoadingView(),
+          );
+        }
+      },
+    );
   }
 }
