@@ -2,6 +2,7 @@ part of 'MainPageImports.dart';
 
 class MainPage extends StatefulWidget {
   final Function()? onTap;
+
   const MainPage({this.onTap});
 
   @override
@@ -9,26 +10,30 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final MainPageData mainPageData = new MainPageData();
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
-          search: BuildMainSearch(),
-          searchOnTap: widget.onTap,
-          body: Column(
-            children: [
-              BuildChangeView(),
-              Flexible(
-                child: TabBarView(
-                  children: [
-                    BuildMainPageView(),
-                    BuildMainPageView(),
-                  ],
-                ),
+        search: BuildMainSearch(),
+        searchOnTap: widget.onTap,
+        body: Column(
+          children: [
+            BuildChangeView(),
+            Flexible(
+              child: TabBarView(
+                children: [
+                  BuildMainPageView(),
+                  BuildMainPageView(),
+                ],
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

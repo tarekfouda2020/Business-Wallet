@@ -267,8 +267,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     ProviderDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i27.ProviderDetails();
+        builder: (data) {
+          final args = data.argsAs<ProviderDetailsRouteArgs>();
+          return _i27.ProviderDetails(kayanId: args.kayanId);
         }),
     InvitationDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -713,7 +714,7 @@ class ChangePasswordRoute extends _i1.PageRouteInfo {
 }
 
 class ImageZoomRoute extends _i1.PageRouteInfo<ImageZoomRouteArgs> {
-  ImageZoomRoute({required List<dynamic> images})
+  ImageZoomRoute({required List<String>? images})
       : super(name,
             path: '/image-zoom', args: ImageZoomRouteArgs(images: images));
 
@@ -723,7 +724,7 @@ class ImageZoomRoute extends _i1.PageRouteInfo<ImageZoomRouteArgs> {
 class ImageZoomRouteArgs {
   const ImageZoomRouteArgs({required this.images});
 
-  final List<dynamic> images;
+  final List<String>? images;
 }
 
 class RegisterRoute extends _i1.PageRouteInfo {
@@ -757,10 +758,19 @@ class ProfilePageRoute extends _i1.PageRouteInfo {
   static const String name = 'ProfilePageRoute';
 }
 
-class ProviderDetailsRoute extends _i1.PageRouteInfo {
-  const ProviderDetailsRoute() : super(name, path: '/provider-details');
+class ProviderDetailsRoute extends _i1.PageRouteInfo<ProviderDetailsRouteArgs> {
+  ProviderDetailsRoute({required String kayanId})
+      : super(name,
+            path: '/provider-details',
+            args: ProviderDetailsRouteArgs(kayanId: kayanId));
 
   static const String name = 'ProviderDetailsRoute';
+}
+
+class ProviderDetailsRouteArgs {
+  const ProviderDetailsRouteArgs({required this.kayanId});
+
+  final String kayanId;
 }
 
 class InvitationDetailsRoute extends _i1.PageRouteInfo {

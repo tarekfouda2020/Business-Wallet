@@ -6,6 +6,16 @@ class Followers extends StatefulWidget {
 }
 
 class _FollowersState extends State<Followers> {
+  final FollowersData followersData = new FollowersData();
+
+  @override
+  void initState() {
+    followersData.pagingController.addPageRequestListener((pageKey) {
+      followersData.fetchPage(pageKey, context);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
@@ -13,15 +23,20 @@ class _FollowersState extends State<Followers> {
       search: BuildFollowersSearch(),
       body: Container(
         alignment: Alignment.topCenter,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 10 ,bottom: 60),
-          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          child: Wrap(
-            spacing: 20,
-            runSpacing: 20,
-            children: List.generate(
-                10,
-                    (index) => BuildProviderItem()
+        child: PagedGridView<int, MainModel>(
+          showNewPageProgressIndicatorAsGridChild: false,
+          showNewPageErrorIndicatorAsGridChild: false,
+          showNoMoreItemsIndicatorAsGridChild: false,
+          pagingController: followersData.pagingController,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 1.1,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+          ),
+          builderDelegate: PagedChildBuilderDelegate<MainModel>(
+            itemBuilder: (context, item, index) => BuildProviderItem(
+              mainModel: item,
             ),
           ),
         ),

@@ -3,6 +3,8 @@ import 'package:base_flutter/company/models/company_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
+import 'package:base_flutter/customer/models/main_details_model.dart';
+import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
@@ -21,18 +23,7 @@ class CustomerHttpMethods {
 
   CustomerHttpMethods(this.context);
 
-  Future<List<CitiesModel>> getCities(int countryId) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    Map<String, dynamic> body = {"lang": lang, "countryId": countryId};
-    var _data = await DioHelper(context: context)
-        .get(url: "/Account/GetAllCities", body: body);
-    if (_data != null) {
-      return List<CitiesModel>.from(
-          _data['cities'].map((e) => CitiesModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
+
 
   Future<bool> userRegister(RegisterModel model) async {
     var _data = await DioHelper(context: context).post(
@@ -47,7 +38,18 @@ class CustomerHttpMethods {
       return false;
     }
   }
-
+  Future<List<CitiesModel>> getCities(int countryId) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {"lang": lang, "countryId": countryId};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Account/GetAllCities", body: body);
+    if (_data != null) {
+      return List<CitiesModel>.from(
+          _data['cities'].map((e) => CitiesModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
   Future<List<UserInterestModel>> getInterest() async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
@@ -73,7 +75,7 @@ class CustomerHttpMethods {
         .post(url: "/Account/SaveInterestApi", body: body, showLoader: false);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
-      user.interest=_data["UserData"]["interest"];
+      user.interest = _data["UserData"]["interest"];
       if (user.typeUser == 1) {
         user.companyModel = CompanyModel.fromJson(_data["UserData"]);
       } else {
@@ -82,10 +84,67 @@ class CustomerHttpMethods {
 
       await Utils.saveUserData(user);
       print("____@@_${user.interest}");
-      Utils.setCurrentUserData(user,0, context);
+      Utils.setCurrentUserData(user, 0, context);
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<List<MainModel>> getMainData(int pageIndex) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+      "page_index": pageIndex
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/User/IndexApi", body: body);
+    if (_data != null) {
+      return List<MainModel>.from(
+          _data['Kayans'].map((e) => MainModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<MainDetailsModel?> getMainDetails(String id) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "userId": userId,
+      "from_home": 0,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/User/KayanDetailsApi", body: body, showLoader: false);
+    if (_data != null) {
+      return MainDetailsModel.fromJson(_data);
+    } else {
+      return MainDetailsModel();
+    }
+  }
+
+  Future<List<MainModel>> getFollowersData(int pageIndex) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+      "page_index": pageIndex
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/User/MyFollowApi", body: body);
+    if (_data != null) {
+      return List<MainModel>.from(
+          _data['follows'].map((e) => MainModel.fromJson(e)));
+    } else {
+      return [];
     }
   }
 }

@@ -1,6 +1,10 @@
 part of 'ProviderDetailsWidgetsImports.dart';
 
 class BuildInformations extends StatelessWidget {
+  final DetailsModel? detailsModel;
+
+  BuildInformations({required this.detailsModel});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,36 +13,42 @@ class BuildInformations extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BuildUserPhoto(),
+          BuildUserPhoto(
+            baseImg: detailsModel!.baseImg,
+          ),
           Expanded(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyText(title: "اسم الكيان كاملا اوييييييييي", size: 10,),
+                  MyText(
+                    title: detailsModel!.kayanName,
+                    size: 10,
+                  ),
                   Row(
                     children: [
                       RatingBar.builder(
-                        initialRating: 1,
-                        minRating: 0,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        updateOnDrag: false,
                         itemCount: 5,
+                        allowHalfRating: true,
+                        ignoreGestures: true,
+                        onRatingUpdate: (double val) {},
+                        unratedColor: MyColors.white,
                         itemSize: 12,
-                        itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                        itemBuilder: (context, _) => Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
-                        onRatingUpdate: (rating) => () {},
+                        itemPadding: const EdgeInsets.symmetric(vertical: 7),
+                        initialRating: detailsModel!.rate.toDouble(),
+                        itemBuilder: (_, index) {
+                          return Icon(
+                            Icons.star,
+                            color: MyColors.primary,
+                          );
+                        },
                       ),
                       SizedBox(
                         width: 3,
                       ),
                       MyText(
-                        title: "(12)",
+                        title: "(${detailsModel!.countRate})",
                         size: 8,
                       )
                     ],
@@ -53,14 +63,16 @@ class BuildInformations extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: MyColors.black
-                ),
+                    shape: BoxShape.circle, color: MyColors.black),
                 alignment: Alignment.center,
-                child: Icon(Icons.thumb_up, size: 13, color: MyColors.primary,),
+                child: Icon(
+                  Icons.thumb_up,
+                  size: 13,
+                  color: detailsModel!.like==true?MyColors.primary:MyColors.white,
+                ),
               ),
               MyText(
-                title: "4",
+                title: "${detailsModel!.countLike}",
                 size: 9,
               )
             ],
@@ -70,8 +82,7 @@ class BuildInformations extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               color: MyColors.primary,
             ),
-            padding: const EdgeInsets.symmetric(
-                horizontal: 10, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: MyText(
               title: "الغاء المتابعة",
               size: 10,

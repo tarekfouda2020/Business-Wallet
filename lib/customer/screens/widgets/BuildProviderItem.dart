@@ -1,81 +1,91 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
+import 'package:base_flutter/general/widgets/CachedImage.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BuildProviderItem extends StatelessWidget {
+  final MainModel? mainModel;
+
+  BuildProviderItem({this.mainModel});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> AutoRouter.of(context).push(ProviderDetailsRoute()),
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.165,
-        width: MediaQuery.of(context).size.width * 0.44,
-        decoration: BoxDecoration(
-            color: MyColors.white,
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-                image: AssetImage(Res.on3),
-                fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.6), BlendMode.darken))),
+      onTap: () => AutoRouter.of(context)
+          .push(ProviderDetailsRoute(kayanId: mainModel!.kayanId)),
+      child: CachedImage(
+        url:
+            "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
+        // url: mainModel!.backgroundImg,
         alignment: Alignment.bottomCenter,
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              height: 40,
-              width: 40,
-              decoration: BoxDecoration(
-                  color: MyColors.white,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage(Res.on1), fit: BoxFit.fill)),
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                MyText(
-                  title: "اسم الكيان",
-                  size: 9,
-                ),
-                Row(
-                  children: [
-                    RatingBar.builder(
-                      initialRating: 1,
-                      minRating: 0,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      updateOnDrag: false,
-                      itemCount: 5,
-                      itemSize: 12,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) => () {},
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
+        borderColor: MyColors.greyWhite,
+        borderRadius: BorderRadius.circular(10),
+        fit: BoxFit.fill,
+        colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              CachedImage(
+                url: mainModel!.Img,
+                haveRadius: false,
+                width: 55,
+                height: 55,
+                borderColor: MyColors.white,
+                boxShape: BoxShape.circle,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
                     MyText(
-                      title: "(12)",
-                      size: 8,
+                      title: mainModel!.kayanName,
+                      size: 10,
+                      color: MyColors.white,
+                    ),
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          itemCount: 5,
+                          allowHalfRating: true,
+                          ignoreGestures: true,
+                          onRatingUpdate: (double val) {},
+                          unratedColor: MyColors.white,
+                          itemSize: 12,
+                          itemPadding: const EdgeInsets.symmetric(vertical: 7),
+                          initialRating: mainModel!.rate.toDouble(),
+                          itemBuilder: (_, index) {
+                            return Icon(
+                              Icons.star,
+                              color: MyColors.primary,
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        MyText(
+                          title: "( ${mainModel!.count.toString()} )",
+                          size: 9,
+                          color: MyColors.white,
+                        ),
+                      ],
                     )
                   ],
                 ),
-              ],
-            )
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

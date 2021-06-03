@@ -1,17 +1,20 @@
 part of 'ProviderDetailsWidgetsImports.dart';
 
 class BuildPicture extends StatelessWidget {
+  final String backGroundImg;
+
+  BuildPicture({required this.backGroundImg});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-              image: AssetImage(Res.pic),
-              fit: BoxFit.fill
-          )
+      margin: const EdgeInsets.only(top: 20),
+      child: CachedImage(
+        url:backGroundImg,
+        borderRadius: BorderRadius.circular(10),
+        width: MediaQuery.of(context).size.width,
+        borderColor: MyColors.greyWhite,
+        height: 170,
       ),
     );
   }

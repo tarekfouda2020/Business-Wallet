@@ -1,0 +1,144 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'details_model.g.dart';
+
+@JsonSerializable(nullable: true)
+class DetailsModel {
+  @JsonKey(name: "branch")
+  bool branch;
+  @JsonKey(name: "Kayan_Id")
+  String kayanId;
+  @JsonKey(name: "KayanName")
+  String kayanName;
+  @JsonKey(name: "BaseImg")
+  String baseImg;
+  @JsonKey(name: "BackgroundImg")
+  String backgroundImg;
+  @JsonKey(name: "Photo")
+  String phone;
+  @JsonKey(name: "Email")
+  String email;
+  @JsonKey(name: "Website")
+  String website;
+  @JsonKey(name: "Address")
+  String address;
+  @JsonKey(name: "Twwitter")
+  String twitter;
+  @JsonKey(name: "FaceBook")
+  String faceBook;
+  @JsonKey(name: "Instagram")
+  String instagram;
+  @JsonKey(name: "WhatsUp")
+  String whatsUp;
+  @JsonKey(name: "CountryCode")
+  String countryCode;
+  @JsonKey(name: "Lat")
+  String lat;
+  @JsonKey(name: "Lng")
+  String lng;
+  @JsonKey(name: "Like")
+  bool like;
+  @JsonKey(name: "MyRate")
+  int myRate;
+  @JsonKey(name: "CountLike")
+  int countLike;
+  @JsonKey(name: "CountFollow")
+  int countFollow;
+  @JsonKey(name: "show_pdf_kayan")
+  bool showPdfKayan;
+  @JsonKey(name: "show_branches_kayan")
+  bool showBranchesKayan;
+  @JsonKey(name: "show_description_kayan")
+  bool showDescriptionKayan;
+  @JsonKey(name: "show_img_kayan")
+  bool showImgKayan;
+  @JsonKey(name: "show_partners_kayan")
+  bool showPartnersKayan;
+  @JsonKey(name: "show_Accreditation_kayan")
+  bool showAccreditationKayan;
+  @JsonKey(name: "name_img")
+  String nameImg;
+  @JsonKey(name: "name_pdf")
+  String namePdf;
+  @JsonKey(name: "CountRate")
+  int countRate;
+  @JsonKey(name: "NumberRate")
+  int numberRate;
+  @JsonKey(name: "Description")
+  String description;
+  @JsonKey(name: "Description_text")
+  String descriptionText;
+  @JsonKey(name: "Follow")
+  bool follow;
+  @JsonKey(name: "Pdf")
+  String pdf;
+  @JsonKey(name: "Specialization")
+  List<String> specialization;
+  @JsonKey(name: "Products")
+  List<String> products;
+  @JsonKey(name: "Accreditation_Certificates")
+  List<String> accreditationCertificates;
+  @JsonKey(name: "Partners")
+  List<String> partners;
+  @JsonKey(name: "mainFiled")
+  int mainFiled;
+  @JsonKey(name: "Visit")
+  int visit;
+  @JsonKey(name: "Rate")
+  int rate;
+  @JsonKey(name: "Fk_User_iSLogin")
+  int fkUserIsLogin;
+  @JsonKey(name: "business")
+  bool business;
+
+  DetailsModel({
+    required this.branch,
+    required this.kayanId,
+    required this.kayanName,
+    required this.baseImg,
+    required this.backgroundImg,
+    required this.phone,
+    required this.email,
+    required this.website,
+    required this.address,
+    required this.twitter,
+    required this.faceBook,
+    required this.instagram,
+    required this.whatsUp,
+    required this.countryCode,
+    required this.lat,
+    required this.lng,
+    required this.like,
+    required this.myRate,
+    required this.countLike,
+    required this.countFollow,
+    required this.showPdfKayan,
+    required this.showBranchesKayan,
+    required this.showDescriptionKayan,
+    required this.showImgKayan,
+    required this.showPartnersKayan,
+    required this.showAccreditationKayan,
+    required this.nameImg,
+    required this.namePdf,
+    required this.countRate,
+    required this.numberRate,
+    required this.description,
+    required this.descriptionText,
+    required this.follow,
+    required this.pdf,
+    required this.specialization,
+    required this.products,
+    required this.accreditationCertificates,
+    required this.partners,
+    required this.mainFiled,
+    required this.visit,
+    required this.rate,
+    required this.fkUserIsLogin,
+    required this.business,
+  });
+
+  factory DetailsModel.fromJson(Map<String, dynamic> json) =>
+      _$DetailsModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DetailsModelToJson(this);
+}

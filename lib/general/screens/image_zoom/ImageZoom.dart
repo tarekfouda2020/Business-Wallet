@@ -3,7 +3,7 @@ import 'package:photo_view/photo_view.dart';
 
 
 class ImageZoom extends StatefulWidget {
-  final List images;
+  final List<String>? images;
 
   const ImageZoom({required this.images});
   @override
@@ -20,12 +20,12 @@ class _ImageZoomState extends State<ImageZoom> {
   @override
   void initState() {
     _controller=new PageController(initialPage: 0);
-    _current= widget.images.first;
+    _current= widget.images!.first;
     super.initState();
   }
 
   _setChangeImage(index){
-    _current=widget.images[index];
+    _current=widget.images?[index];
     _notifier.value=index;
   }
 
@@ -45,14 +45,14 @@ class _ImageZoomState extends State<ImageZoom> {
       body: PageView(
         controller: _controller,
         onPageChanged: _setChangeImage,
-        children: List.generate(widget.images.length, (index){
+        children: List.generate(widget.images!.length, (index){
           return Container(
             alignment: Alignment.center,
             child: PhotoView(
               backgroundDecoration: BoxDecoration(
                 color: Colors.black87,
               ),
-              imageProvider: NetworkImage(widget.images[index]),
+              imageProvider: NetworkImage(widget.images![index]),
             ),
           );
         }),

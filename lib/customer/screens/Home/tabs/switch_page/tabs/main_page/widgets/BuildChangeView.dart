@@ -7,23 +7,19 @@ class BuildChangeView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
-          height: 15,
-          width: 90,
-          margin: const EdgeInsets.symmetric(vertical: 10),
+          width: 100,
           child: TabBar(
-            indicatorColor: MyColors.secondary,
+            indicatorColor: MyColors.darken.withOpacity(.1),
             tabs: [
               Tab(
                 child: Image.asset(
                   Res.noun_men,
-                  height: 10,
                   color: MyColors.white,
                 ),
               ),
               Tab(
                 child: Image.asset(
                   Res.noun_mapp,
-                  height: 13,
                   color: MyColors.white,
                 ),
               ),

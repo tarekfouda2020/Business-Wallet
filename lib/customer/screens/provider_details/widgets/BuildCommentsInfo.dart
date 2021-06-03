@@ -2,8 +2,10 @@ part of 'ProviderDetailsWidgetsImports.dart';
 
 class BuildCommentsInfo extends StatelessWidget {
   final ProviderDetailsData providerDetailsData;
+  final List<CommentModel>? commentModel;
 
-  const BuildCommentsInfo({required this.providerDetailsData});
+  const BuildCommentsInfo(
+      {required this.providerDetailsData, required this.commentModel});
 
   @override
   Widget build(BuildContext context) {
@@ -15,61 +17,70 @@ class BuildCommentsInfo extends StatelessWidget {
             BuildTitle(
               title: "التعليقات",
               open: state.data,
-              onTap: ()=> providerDetailsData.commentsCubit.onUpdateData(!state.data),
+              onTap: () =>
+                  providerDetailsData.commentsCubit.onUpdateData(!state.data),
             ),
             Visibility(
               visible: state.data,
               child: ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 1,
-                itemBuilder: (_, index){
+                itemCount: commentModel!.length,
+                itemBuilder: (_, index) {
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    margin: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: MyColors.greyWhite)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Container(
-                              height: 35,
-                              width: 35,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: MyColors.white,
-                                  image: DecorationImage(
-                                      image: AssetImage(Res.pic), fit: BoxFit.fill)),
+                            CachedImage(
+                              url: commentModel![index].ownerImg,
+                              haveRadius: false,
+                              width: 50,
+                              height: 50,
+                              boxShape: BoxShape.circle,
                             ),
                             Expanded(
-                                child: Container(
-                                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                                  child: MyText(
-                                    title: "اسم المستخدم كاملا اويييييييييي",
-                                    size: 9,
-                                  ),
-                                )),
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: MyText(
+                                  title: commentModel![index].ownerName,
+                                  size: 9,
+                                ),
+                              ),
+                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 MyText(
-                                  title: "PM 05:55 05/20/2021",
+                                  title: commentModel![index].date,
                                   size: 8,
                                   color: MyColors.grey,
                                 ),
                                 RatingBar.builder(
-                                  initialRating: 1,
-                                  minRating: 0,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: true,
-                                  updateOnDrag: false,
                                   itemCount: 5,
+                                  allowHalfRating: true,
+                                  ignoreGestures: true,
+                                  onRatingUpdate: (double val) {},
+                                  unratedColor: MyColors.white,
                                   itemSize: 12,
-                                  itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  onRatingUpdate: (rating) => () {},
+                                  itemPadding:
+                                      const EdgeInsets.symmetric(vertical: 7),
+                                  initialRating:
+                                      commentModel![index].rate.toDouble(),
+                                  itemBuilder: (_, index) {
+                                    return Icon(
+                                      Icons.star,
+                                      color: MyColors.primary,
+                                    );
+                                  },
                                 ),
                               ],
                             ),
@@ -83,24 +94,21 @@ class BuildCommentsInfo extends StatelessWidget {
                                 margin: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
                                 child: MyText(
-                                  title:
-                                  "التعليق هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى",
+                                  title: commentModel![index].text,
                                   size: 9,
                                   color: MyColors.grey,
                                 ),
                               ),
                             ),
                             InkWell(
-                              onTap: ()=> AutoRouter.of(context)
-                                  .push(ImageZoomRoute(images: [Res.pic])),
-                              child: Container(
-                                margin: const EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 10),
+                              onTap: () => AutoRouter.of(context).push(
+                                  ImageZoomRoute(
+                                      images: [commentModel![index].ownerImg])),
+                              child: CachedImage(
+                                url: commentModel![index].ownerImg,
+                                haveRadius: false,
                                 height: 70,
                                 width: 70,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(Res.pic), fit: BoxFit.fill)),
                               ),
                             )
                           ],
