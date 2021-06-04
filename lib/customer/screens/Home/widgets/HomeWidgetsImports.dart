@@ -16,6 +16,7 @@ import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:base_flutter/general/utilities/validator/Validator.dart';
 
 part 'BuildFloatingButton.dart';
 part 'BuildTabBarPages.dart';

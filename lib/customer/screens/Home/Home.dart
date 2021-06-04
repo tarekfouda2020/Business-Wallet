@@ -21,22 +21,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: DefaultTabController(
-          initialIndex: widget.index,
-          length: 5,
-          child: Scaffold(
-              extendBody: true,
-              floatingActionButton: BuildFloatingButton(homeData),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
-              body: BuildTabBarPages(homeData),
-              bottomNavigationBar: BuildTabBarBody(
-                homeData: homeData,
-                index: widget.index,
-              )
-              // bottomNavigationBar: BuildTabBody(homeData)
-              ),
+      child: DefaultTabController(
+        initialIndex: widget.index,
+        length: 5,
+        child: Scaffold(
+          extendBody: true,
+          floatingActionButton: BuildFloatingButton(homeData),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          body: BuildTabBarPages(homeData),
+          bottomNavigationBar: BuildTabBarBody(
+            homeData: homeData,
+            index: widget.index,
+          ),
         ),
-        onWillPop: homeData.onBackPressed);
+      ),
+      onWillPop: homeData.onBackPressed,
+    );
   }
 }

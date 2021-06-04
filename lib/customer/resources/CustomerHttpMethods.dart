@@ -121,7 +121,7 @@ class CustomerHttpMethods {
       "lang": lang
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/User/KayanDetailsApi", body: body, showLoader: false);
+        .get(url: "/User/KayanDetailsApi", body: body);
     if (_data != null) {
       return MainDetailsModel.fromJson(_data);
     } else {

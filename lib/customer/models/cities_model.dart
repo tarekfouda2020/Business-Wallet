@@ -11,6 +11,7 @@ class CitiesModel {
   @JsonKey(name: "fk_country")
   int? fkCountry;
 
+
   CitiesModel({this.id, this.name, this.fkCountry});
 
   factory CitiesModel.fromJson(Map<String, dynamic> json) => _$CitiesModelFromJson(json);

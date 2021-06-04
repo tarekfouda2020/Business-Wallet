@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
-        search: BuildMainSearch(),
+        search: BuildMainSearch(mainPageData: mainPageData,),
         searchOnTap: widget.onTap,
         body: Column(
           children: [

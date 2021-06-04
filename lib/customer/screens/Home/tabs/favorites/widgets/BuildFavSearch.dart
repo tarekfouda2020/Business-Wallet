@@ -6,9 +6,9 @@ class BuildFavSearch extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BuildHeaderDrop(title: "المنطقة",),
-        BuildHeaderDrop(title: "الاهتمامات",),
-        BuildHeaderDrop(title: "الأعلى تقييم",),
+        BuildHeaderDrop(title: "المنطقة", onTap: (){},),
+        BuildHeaderDrop(title: "الاهتمامات",onTap: (){},),
+        BuildHeaderDrop(title: "الأعلى تقييم",onTap: (){},),
 
         Container(
           decoration: BoxDecoration(

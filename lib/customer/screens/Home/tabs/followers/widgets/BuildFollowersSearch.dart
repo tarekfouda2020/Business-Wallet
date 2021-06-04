@@ -6,9 +6,9 @@ class BuildFollowersSearch extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BuildHeaderDrop(title: "المنطقة",),
-        BuildHeaderDrop(title: "الاهتمامات",),
-        BuildHeaderDrop(title: "أخرى",),
+        BuildHeaderDrop(title: "المنطقة",onTap: (){},),
+        BuildHeaderDrop(title: "الاهتمامات",onTap: (){},),
+        BuildHeaderDrop(title: "أخرى",onTap: (){},),
 
         Container(
           decoration: BoxDecoration(

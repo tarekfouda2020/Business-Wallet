@@ -8,8 +8,8 @@ class BuildSearchDrops extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          BuildHeaderDrop(title: "الكل",),
-          BuildHeaderDrop(title: "صنف حسب",),
+          BuildHeaderDrop(title: "الكل",onTap: (){},),
+          BuildHeaderDrop(title: "صنف حسب",onTap: (){},),
 
 
           Container(
