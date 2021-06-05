@@ -51,6 +51,9 @@ class DropdownSearch<T> extends StatefulWidget {
   ///show/hide clear selected item
   final bool showClearButton;
 
+  ///show/hide clear selected item
+  final TextAlign? textAlign;
+
   ///offline items list
   final List<T>? items;
 
@@ -67,6 +70,8 @@ class DropdownSearch<T> extends StatefulWidget {
   final DropdownSearchBuilder<T>? dropdownBuilder;
 
   final TextStyle style;
+
+  final TextStyle? itemStyle;
 
   ///to customize selected item
   final DropdownSearchPopupItemBuilder<T>? popupItemBuilder;
@@ -191,6 +196,8 @@ class DropdownSearch<T> extends StatefulWidget {
     this.onSaved,
     this.validator,
     required this.style,
+    this.itemStyle,
+    this.textAlign,
     this.autoValidateMode = AutovalidateMode.disabled,
     this.onChanged,
     this.mode = Mode.DIALOG,
@@ -289,10 +296,9 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                 ? widget.dropdownBuilder!(
               context,
               data,
-              _selectedItemAsString(data),
+              _selectedItemAsString(data,),
             )
-                : Text(_selectedItemAsString(data),
-              style: widget.style,)
+                : Text(_selectedItemAsString(data), style: widget.style,)
         ),
         if (!widget.showAsSuffixIcons) _manageTrailingIcons(data),
       ],
@@ -320,7 +326,9 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                     (widget.dropdownBuilder == null ||
                         widget.dropdownBuilderSupportsNullItem),
                 isFocused: isFocused,
+                textAlign: widget.textAlign??TextAlign.start,
                 decoration: _manageDropdownDecoration(state, value),
+
                 child: _defaultSelectItemWidget(value),
               );
             });
@@ -374,7 +382,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
             child: widget.clearButton ?? const Icon(Icons.clear, size: 25),
             onTap: clearButtonPressed,
           ),
-        SizedBox(width: 10,),
+        SizedBox(width: widget.showClearButton?10:0,),
         widget.dropdownButtonBuilder != null
             ? GestureDetector(
           onTap: dropdownButtonPressed,
@@ -468,7 +476,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       filterFn: widget.filterFn,
       items: widget.items,
       onFind: widget.onFind,
-      style: widget.style,
+      style: widget.itemStyle?? widget.style,
       showSearchBox: widget.showSearchBox,
       itemBuilder: widget.popupItemBuilder,
       selectedValue: data,

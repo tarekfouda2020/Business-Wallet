@@ -13,7 +13,6 @@ class _InvitationsState extends State<Invitations> {
       search: BuildInvSearch(),
       body: ListView.builder(
         padding: const EdgeInsets.only(bottom: 55),
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         itemCount: 3,
         itemBuilder: (_, index){
           return BuildFavoritesItem();

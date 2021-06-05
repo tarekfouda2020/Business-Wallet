@@ -39,7 +39,7 @@ class LoadingButton extends StatelessWidget {
             key: btnKey,
             onTap: onTap,
             width: width ?? MediaQuery.of(context).size.width,
-            minWidth: 45,
+            minWidth: 50,
             height: 50,
             roundLoadingShape: true,
             color: color ?? MyColors.primary,
@@ -53,7 +53,7 @@ class LoadingButton extends StatelessWidget {
             loader: Container(
               padding: EdgeInsets.all(10),
               child: SpinKitRotatingCircle(
-                color: Colors.white,
+                color: Colors.black,
                 size: 20,
               ),
             ),

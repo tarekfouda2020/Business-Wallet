@@ -10,17 +10,32 @@ class BuildMainSearch extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BuildHeaderDrop(
-          title: "المنطقة",
-          onTap: () {},
+        Flexible(
+          child: FutureBottomSheet<CitiesModel>(
+            label: "المنطقة",
+            validate: (CitiesModel value) => value.validateDropDown(context),
+            useName: true,
+            finData: (filter) async => await CustomerRepository(context).getCities(3),
+            onChange: (CitiesModel value){},
+          ),
         ),
-        BuildHeaderDrop(
-          title: "الاهتمامات",
-          onTap: () {},
+        Flexible(
+          child: FutureBottomSheet<CitiesModel>(
+            label: "الاهتمامات",
+            validate: (CitiesModel value) => value.validateDropDown(context),
+            useName: true,
+            finData: (filter) async => await CustomerRepository(context).getCities(3),
+            onChange: (CitiesModel value){},
+          ),
         ),
-        BuildHeaderDrop(
-          title: "أخرى",
-          onTap: () {},
+        Flexible(
+          child: FutureBottomSheet<CitiesModel>(
+            label: "أخرى",
+            validate: (CitiesModel value) => value.validateDropDown(context),
+            useName: true,
+            finData: (filter) async => await CustomerRepository(context).getCities(3),
+            onChange: (CitiesModel value){},
+          ),
         ),
         Container(
           decoration: BoxDecoration(

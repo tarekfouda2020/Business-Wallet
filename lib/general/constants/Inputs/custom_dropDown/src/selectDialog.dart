@@ -171,7 +171,7 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                         return _itemWidget(item);
                       },
                       separatorBuilder: (_,inndex){
-                        return Divider(color: MyColors.grey,thickness: .8,);
+                        return Divider(color: MyColors.greyWhite,thickness: .8,);
                       },
                     );
                   },
@@ -333,14 +333,24 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
             : () => _handleSelectItem(item),
       );
     else
-      return ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 10),
-        title: Text(_selectedItemAsString(item),style: widget.style,),
-        selected: _manageSelectedItemVisibility(item),
+      return InkWell(
         onTap:
         widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
             ? null
             : () => _handleSelectItem(item),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+          child: Row(
+            children: [
+              Flexible(child: Text(_selectedItemAsString(item),style: widget.style,))
+
+            ],
+            // contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            // title: ,
+            // selected: _manageSelectedItemVisibility(item),
+
+          ),
+        ),
       );
   }
 
@@ -365,21 +375,21 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
           if (widget.showSearchBox)
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                style: widget.searchBoxStyle,
-                controller: widget.searchBoxController,
-                focusNode: focusNode,
-                onChanged: (f) => _debouncer(() {
-                  _onTextChanged(f);
-                }),
-                decoration: widget.searchBoxDecoration ??
-                    InputDecoration(
-                      hintText: widget.hintText,
-                      border: const OutlineInputBorder(),
-                      contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16),
-                    ),
-              ),
+              // child: TextField(
+              //   style: widget.searchBoxStyle,
+              //   controller: widget.searchBoxController,
+              //   focusNode: focusNode,
+              //   onChanged: (f) => _debouncer(() {
+              //     _onTextChanged(f);
+              //   }),
+              //   decoration: widget.searchBoxDecoration ??
+              //       InputDecoration(
+              //         hintText: widget.hintText,
+              //         border: const OutlineInputBorder(),
+              //         contentPadding:
+              //         const EdgeInsets.symmetric(horizontal: 16),
+              //       ),
+              // ),
             )
         ]);
   }
