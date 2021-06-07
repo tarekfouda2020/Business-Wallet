@@ -103,6 +103,7 @@ class _DropdownTextFieldState<DataType> extends State<FutureBottomSheet> {
         ),
         dropdownSearchDecoration: InputDecoration(
           border: InputBorder.none,
+          isCollapsed: true,
           contentPadding: EdgeInsets.zero,
           hintStyle: TextStyle(fontSize: 10),
           labelStyle: TextStyle(fontSize: 10),
