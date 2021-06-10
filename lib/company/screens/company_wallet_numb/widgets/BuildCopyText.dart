@@ -30,7 +30,7 @@ class BuildCopyText extends StatelessWidget {
               color: MyColors.darken,
             ),
             onPressed: () => Utils.copToClipboard(
-                text: "text", scaffold: companyWalletNumbData.scaffold),
+                text: "text", ),
           ),
         )
       ],

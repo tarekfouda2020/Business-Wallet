@@ -1,14 +1,22 @@
 part of 'InvitationDetailsImports.dart';
 
 class InvitationDetails extends StatefulWidget {
+  final int adsId;
+  final bool checkInvite;
+
+  const InvitationDetails({required this.adsId, this.checkInvite = true});
+
   @override
   _InvitationDetailsState createState() => _InvitationDetailsState();
 }
 
 class _InvitationDetailsState extends State<InvitationDetails>
     with SingleTickerProviderStateMixin {
+  final InvitationDetailsData invitationDetailsData = InvitationDetailsData();
+
   @override
   void initState() {
+    invitationDetailsData.fetchData(context, widget.adsId);
     super.initState();
     invitationDetailsData.controller = AnimationController(
       vsync: this,
@@ -25,64 +33,107 @@ class _InvitationDetailsState extends State<InvitationDetails>
       ..addListener(() {
         setState(() {});
       })
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          invitationDetailsData.expandCubit.onUpdateData(220);
-          Future.delayed(Duration(milliseconds: 500), () {
-            invitationDetailsData.showExpandCubit.onUpdateData(true);
-          });
-        }
-      });
+      ..addStatusListener(
+        (status) {
+          if (status == AnimationStatus.completed) {
+            invitationDetailsData.expandCubit.onUpdateData(220);
+            widget.checkInvite
+                ? Future.delayed(Duration(milliseconds: 500), () {
+                    print("_______${widget.adsId}");
+
+                    invitationDetailsData.updateSpecificAds(
+                        context, widget.adsId);
+                    invitationDetailsData.getSpecificAdsPoint(
+                        context, widget.adsId);
+
+                    invitationDetailsData.showExpandCubit.onUpdateData(true);
+                  })
+                : Future.delayed(
+                    Duration(milliseconds: 500),
+                    () {
+                      invitationDetailsData.showExpandCubit.onUpdateData(true);
+                    },
+                  );
+          }
+        },
+      );
     invitationDetailsData.controller.forward();
   }
-
-  InvitationDetailsData invitationDetailsData = InvitationDetailsData();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-      body: Column(
-        children: [
-          Container(
-            height: 180,
-            child: Stack(
-              alignment: Alignment.bottomRight,
+      body: BlocBuilder<GenericCubit<SpecificAdsModel?>,
+          GenericState<SpecificAdsModel?>>(
+        bloc: invitationDetailsData.specificAdsCubit,
+        builder: (_, state) {
+          if (state is GenericUpdateState) {
+            return Column(
               children: [
-                BuildInvAppBar(),
-                BuildInvAnimation(
-                  invitationDetailsData: invitationDetailsData,
+                Container(
+                  height: 180,
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      BuildInvAppBar(),
+                      BuildInvAnimation(
+                        invitationDetailsData: invitationDetailsData,
+                        adsDetailsModel: state.data!.previewAds,
+                      ),
+                      BuildAnimationDetails(
+                        invitationDetailsData: invitationDetailsData,
+                        adsDetailsModel: state.data!.previewAds,
+                      )
+                    ],
+                  ),
                 ),
-                BuildAnimationDetails(
-                  invitationDetailsData: invitationDetailsData,
-                )
+                Flexible(
+                  child: ListView(
+                    padding: const EdgeInsets.only(top: 10),
+                    physics: BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics(),
+                    ),
+                    children: [
+                      BuildInvInfo(
+                        adsDetailsModel: state.data!.previewAds,
+                        invitationDetailsData: invitationDetailsData,
+                        kayanOwnerModel: state.data!.kayanOwner,
+                      ),
+                      BuildInvTitle(title: "وصف الاعلان"),
+                      BuildInvDescription(
+                        desc: state.data!.previewAds.advertDescription,
+                      ),
+                      BuildInvTitle(title: "المحتوي"),
+                      // BuildInvSwiper(
+                      //   mediaModel: state.data!.previewAds.media,
+                      //   adsDetailsModel: state.data!.previewAds,
+                      // ),
+                      BuildInvTitle(title: "صاحب الإعلان"),
+                      BuildAdOwner(
+                        kayanOwnerModel: state.data!.kayanOwner,
+                        adsDetailsModel: state.data!.previewAds,
+                        invitationDetailsData: invitationDetailsData,
+                      ),
+                      BuildInvComments(
+                        invitationDetailsData: invitationDetailsData,
+                        commentModel: state.data!.previewAds.comments,
+                      ),
+                      BuildRateApp(
+                        invitationDetailsData: invitationDetailsData,
+                        adsDetailsModel: state.data!.previewAds,
+                      )
+                    ],
+                  ),
+                ),
               ],
-            ),
-          ),
-          Flexible(
-            child: ListView(
-              padding: const EdgeInsets.only(top: 10),
-              physics: BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
-              children: [
-                BuildInvInfo(),
-                BuildInvTitle(
-                  title: "وصف الاعلان",
-                ),
-                BuildInvDescription(),
-                BuildInvTitle(
-                  title: "الصور",
-                ),
-                BuildInvSwiper(),
-                BuildInvTitle(
-                  title: "صاحب الإعلان",
-                ),
-                BuildAdOwner(),
-                BuildInvComments(invitationDetailsData: invitationDetailsData)
-              ],
-            ),
-          ),
-        ],
+            );
+          } else {
+            return Center(
+              child: LoadingDialog.showLoadingView(),
+            );
+          }
+        },
       ),
       bottomNavigationBar: BuildAddComment(
         invitationDetailsData: invitationDetailsData,

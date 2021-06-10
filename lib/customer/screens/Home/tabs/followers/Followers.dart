@@ -23,7 +23,8 @@ class _FollowersState extends State<Followers> {
       search: BuildFollowersSearch(),
       body: Container(
         alignment: Alignment.topCenter,
-        child: PagedGridView<int, MainModel>(
+        child: PagedGridView<int, FollowerModel>(
+          padding: const EdgeInsets.symmetric(vertical: 20),
           showNewPageProgressIndicatorAsGridChild: false,
           showNewPageErrorIndicatorAsGridChild: false,
           showNoMoreItemsIndicatorAsGridChild: false,
@@ -34,9 +35,9 @@ class _FollowersState extends State<Followers> {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
           ),
-          builderDelegate: PagedChildBuilderDelegate<MainModel>(
+          builderDelegate: PagedChildBuilderDelegate<FollowerModel>(
             itemBuilder: (context, item, index) => BuildProviderItem(
-              mainModel: item,
+              followerModel: item,
             ),
           ),
         ),

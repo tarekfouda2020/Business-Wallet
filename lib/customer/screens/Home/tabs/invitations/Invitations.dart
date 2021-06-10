@@ -6,17 +6,28 @@ class Invitations extends StatefulWidget {
 }
 
 class _InvitationsState extends State<Invitations> {
+  final InvitationsData invitationsData = new InvitationsData();
+
   @override
   Widget build(BuildContext context) {
-    return HomeScaffold(
-      title: "دعوة الإستثمار",
-      search: BuildInvSearch(),
-      body: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 55),
-        itemCount: 3,
-        itemBuilder: (_, index){
-          return BuildFavoritesItem();
-        },
+    return DefaultTabController(
+      length: 2,
+      child: HomeScaffold(
+        title: "دعوة تجارية",
+        search: BuildInvSearch(),
+        body: Column(
+          children: [
+            BuildChangeView(),
+            Flexible(
+              child: TabBarView(
+                children: [
+                  InvitationView(),
+                  InvitationView(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

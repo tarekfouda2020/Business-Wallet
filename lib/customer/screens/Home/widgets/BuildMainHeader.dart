@@ -31,7 +31,7 @@ class BuildMainHeader extends StatelessWidget {
                   ),
                 ): MyText(
                   title: title??"",
-                  size: 11,
+                  size: 14,
                   color: MyColors.white,
                 ),
                 Image.asset(

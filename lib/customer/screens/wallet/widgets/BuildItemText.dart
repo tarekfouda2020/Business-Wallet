@@ -6,12 +6,14 @@ class BuildItemText extends StatelessWidget {
   final bool showButton;
   final bool showText;
 
-  const BuildItemText({
-    required this.text,
-    required this.title,
-    this.showButton = false,
-    this.showText = false,
-  });
+  final desc;
+
+  const BuildItemText(
+      {required this.text,
+      required this.title,
+      this.showButton = false,
+      this.showText = false,
+      this.desc});
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +34,14 @@ class BuildItemText extends StatelessWidget {
                         title: text ?? "",
                         color: MyColors.greyWhite.withOpacity(0.7),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Visibility(
                         visible: showButton,
                         child: InkWell(
-                          onTap: () => AutoRouter.of(context).push(DetailsRoute()),
+                          onTap: () =>
+                              AutoRouter.of(context).push(DetailsRoute()),
                           child: Container(
                             alignment: Alignment.center,
                             width: 50,
@@ -73,7 +78,7 @@ class BuildItemText extends StatelessWidget {
             child: Row(
               children: [
                 MyText(
-                  title: "(لا يوجد نفاط علي وشك الانتهاء)",
+                  title: desc,
                   color: MyColors.greyWhite.withOpacity(0.7),
                   size: 10,
                 ),

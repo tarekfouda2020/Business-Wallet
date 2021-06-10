@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/models/favorite_model.dart';
+import 'package:base_flutter/customer/models/invitation_model.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/CachedImage.dart';
@@ -7,85 +9,136 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BuildFavoritesItem extends StatelessWidget {
+  final FavoriteModel? favoriteModel;
+  final InvitationModel? invitationModel;
+  final bool checkInvite;
+
+  BuildFavoritesItem(
+      {this.favoriteModel, this.invitationModel, this.checkInvite = true});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> AutoRouter.of(context).push(InvitationDetailsRoute()),
+      onTap: () => navigate(context, checkInvite),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: EdgeInsets.zero,
         child: CachedImage(
+          // url:checkInvite?invitationModel!.img: favoriteModel!.imgAnnouncement,
           url:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUoQZSsfmS3ZPKPHu-KORypJzT3ue3T00eSA&usqp=CAU",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUoQZSsfmS3ZPKPHu-KORypJzT3ue3T00eSA&usqp=CAU",
           height: 200,
+          haveBorder: false,
           alignment: Alignment.bottomCenter,
-          // borderRadius: BorderRadius.circular(20),
+          borderColor: MyColors.greyWhite,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
           fit: BoxFit.fill,
-          colorFilter:
-          ColorFilter.mode(Colors.black26, BlendMode.darken),
+          colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
           child: Container(
-            height: 60,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            height: 85,
+            margin: EdgeInsets.zero,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-              // borderRadius: BorderRadius.only(
-              //   bottomRight: Radius.circular(20),
-              //   bottomLeft: Radius.circular(20),
-              // ),
               color: MyColors.black,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    MyText(
-                      title: "اسم الكيان",
-                      size: 9,
-                      color: MyColors.white,
-                    ),
-                    RatingBar.builder(
-                      initialRating: 1,
-                      minRating: 0,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      updateOnDrag: false,
-                      itemCount: 5,
-                      itemSize: 12,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
+            child: Row(
+              children: [
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyText(
+                        title: checkInvite
+                            ? invitationModel!.name
+                            : favoriteModel!.favoriteDetailsModel.nameKayan,
+                        size: 9,
+                        color: MyColors.white,
                       ),
-                      onRatingUpdate: (rating) => () {},
-                    ),
-                  ],
+                      MyText(
+                        title:
+                            "التصنيف : ${checkInvite ? invitationModel!.category : favoriteModel!.favoriteDetailsModel.mainField}",
+                        size: 9,
+                        color: MyColors.white,
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          itemCount: 5,
+                          allowHalfRating: true,
+                          ignoreGestures: true,
+                          onRatingUpdate: (double val) {},
+                          unratedColor: MyColors.white,
+                          itemSize: 12,
+                          itemPadding: const EdgeInsets.symmetric(vertical: 7),
+                          initialRating: checkInvite
+                              ? invitationModel!.rate.toDouble()
+                              : favoriteModel!.rateSp.toDouble(),
+                          itemBuilder: (_, index) {
+                            return Icon(
+                              Icons.star,
+                              color: MyColors.primary,
+                            );
+                          },
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        MyText(
+                          title:
+                              " ( ${checkInvite ? invitationModel!.rate : favoriteModel!.count.toString()})",
+                          size: 10,
+                          color: MyColors.white,
+                        ),
+                      ],
+                    ),
                     MyText(
-                      title: "التصنيف : شركات",
+                      title:
+                          "التاريخ :  ${checkInvite ? invitationModel!.date : favoriteModel!.date}",
                       size: 9,
                       color: MyColors.white,
                     ),
                     MyText(
-                      title: "التاريخ :  10/20/1020",
+                      title:
+                          "الربح :  ${checkInvite ? invitationModel!.numPoint : favoriteModel!.numPoint}",
                       size: 9,
                       color: MyColors.white,
                     ),
                   ],
                 ),
-
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void navigate(BuildContext context, bool checkInvite) {
+    if (checkInvite == true) {
+      if (invitationModel!.type == 1) {
+        AutoRouter.of(context)
+            .push(InvitationDetailsRoute(adsId: invitationModel!.id));
+      } else {
+        AutoRouter.of(context)
+            .push(FavoriteDetailsRoute(adsId: invitationModel!.id));
+      }
+    } else {
+      if (favoriteModel!.typeAds == 1) {
+        AutoRouter.of(context).push(InvitationDetailsRoute(
+            adsId: favoriteModel!.adsId, checkInvite: false));
+      } else {
+        AutoRouter.of(context).push(FavoriteDetailsRoute(
+            adsId: favoriteModel!.adsId, checkInvite: false));
+      }
+    }
   }
 }

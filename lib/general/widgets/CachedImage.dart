@@ -17,20 +17,23 @@ class CachedImage extends StatelessWidget {
   final Color? bgColor;
   final BoxShape? boxShape;
   final bool haveRadius;
+  final bool haveBorder;
 
-  CachedImage(
-      {required this.url,
-      this.fit,
-      this.width,
-      this.height,
-      this.borderRadius,
-      this.colorFilter,
-      this.alignment,
-      this.child,
-      this.boxShape,
-      this.borderColor,
-      this.bgColor,
-      this.haveRadius = true});
+  CachedImage({
+    required this.url,
+    this.fit,
+    this.width,
+    this.height,
+    this.borderRadius,
+    this.colorFilter,
+    this.alignment,
+    this.child,
+    this.boxShape,
+    this.borderColor,
+    this.bgColor,
+    this.haveRadius = true,
+    this.haveBorder = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +53,12 @@ class CachedImage extends StatelessWidget {
           borderRadius:
               haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
           shape: boxShape ?? BoxShape.rectangle,
-
-          border: Border.all(width: 1,color: borderColor??Colors.transparent,),
+          border: haveBorder
+              ? Border.all(
+                  width: 1,
+                  color: borderColor ?? Colors.transparent,
+                )
+              : null,
         ),
         alignment: alignment ?? Alignment.center,
         child: child,

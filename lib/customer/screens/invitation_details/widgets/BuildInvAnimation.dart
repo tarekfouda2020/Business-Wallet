@@ -2,7 +2,10 @@ part of 'InvDetailsWidgetsImports.dart';
 
 class BuildInvAnimation extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
-  const BuildInvAnimation({required this.invitationDetailsData});
+  final AdsDetailsModel adsDetailsModel;
+
+  const BuildInvAnimation(
+      {required this.invitationDetailsData, required this.adsDetailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,7 @@ class BuildInvAnimation extends StatelessWidget {
               color: MyColors.darken,
               borderRadius: BorderRadius.circular(35),
               border: Border.all(color: MyColors.primary)),
-          child:
-          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+          child: BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
             bloc: invitationDetailsData.showExpandCubit,
             builder: (context, state) {
               return Offstage(
@@ -32,7 +34,8 @@ class BuildInvAnimation extends StatelessWidget {
                       width: 35,
                     ),
                     MyText(
-                      title: "100  هللة",
+                      title:
+                          "${adsDetailsModel.pointsForEachUser}  هللة",
                       color: MyColors.white,
                       alien: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
@@ -41,8 +44,7 @@ class BuildInvAnimation extends StatelessWidget {
                       height: 35,
                       width: 35,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: MyColors.black),
+                          shape: BoxShape.circle, color: MyColors.black),
                       alignment: Alignment.center,
                       child: Icon(
                         MdiIcons.handHeartOutline,

@@ -1,9 +1,9 @@
 part of 'FollowersImports.dart';
 
 class FollowersData {
-  final PagingController<int, MainModel> pagingController =
+  final PagingController<int, FollowerModel> pagingController =
       PagingController(firstPageKey: 1);
-  late List<MainModel> followerData;
+  late List<FollowerModel> followerData;
   int pageSize = 10;
 
   void fetchPage(int pageIndex, BuildContext context) async {

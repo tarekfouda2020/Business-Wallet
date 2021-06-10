@@ -1,0 +1,9 @@
+import 'package:base_flutter/customer/models/invitation_model.dart';
+import 'package:base_flutter/customer/resources/CustomerRepository.dart';
+import 'package:base_flutter/customer/screens/Home/tabs/invitations/widgets/InvWidgetsImports.dart';
+import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
+import 'package:base_flutter/customer/screens/widgets/BuildFavoritesItem.dart';
+import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+part 'InvitationView.dart';
+part 'InvitationViewData.dart';

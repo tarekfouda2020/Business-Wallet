@@ -1,6 +1,10 @@
 part of 'WalletWidgetsImports.dart';
 
 class BuildTextSalary extends StatelessWidget {
+  final WalletModel? walletModel;
+
+  const BuildTextSalary({required this.walletModel});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -9,8 +13,8 @@ class BuildTextSalary extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.center,
-          height: 40,
-          width: 80,
+          height: 60,
+          width: 150,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
             border: Border.all(
@@ -19,7 +23,7 @@ class BuildTextSalary extends StatelessWidget {
             ),
           ),
           child: MyText(
-            title: "300 هلله",
+            title: "${walletModel!.cost} هلله",
             color: MyColors.primary,
             size: 14,
           ),
@@ -27,8 +31,8 @@ class BuildTextSalary extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: MyText(
-            title: "الرصيد 3 ريال",
-            color: MyColors.greyWhite.withOpacity(0.7),
+            title: "الرصيد ${walletModel!.costMun} ريال",
+            color: MyColors.greyWhite.withOpacity(0.9),
           ),
         ),
       ],

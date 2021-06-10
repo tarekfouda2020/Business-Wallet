@@ -1,11 +1,15 @@
 part of 'RouterImports.dart';
 
-
 @AdaptiveAutoRouter(
   routes: <AutoRoute>[
     //general routes
-    AdaptiveRoute(page: Splash, initial: true,),
-    CustomRoute(page: Login,),
+    AdaptiveRoute(
+      page: Splash,
+      initial: true,
+    ),
+    CustomRoute(
+      page: Login,
+    ),
     CustomRoute(
         page: WelcomePage,
         transitionsBuilder: TransitionsBuilders.fadeIn,
@@ -26,7 +30,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Terms),
     AdaptiveRoute(page: About),
     AdaptiveRoute(page: ContactUs),
-    CustomRoute(page: SelectUser,
+    CustomRoute(
+        page: SelectUser,
         transitionsBuilder: TransitionsBuilders.fadeIn,
         durationInMilliseconds: 1500),
     AdaptiveRoute(page: ConfirmPassword),
@@ -48,7 +53,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: Conversation),
     AdaptiveRoute(page: Comments),
     AdaptiveRoute(page: AppInfo),
-
+    AdaptiveRoute(page: FavoriteDetails),
+    AdaptiveRoute(page: AccountReconciliation),
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),
@@ -73,8 +79,6 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyConversations),
     AdaptiveRoute(page: CompanyBrochure),
     AdaptiveRoute(page: CompanyBarcode),
-
-
   ],
 )
 class $AppRouter {}

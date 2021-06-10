@@ -1,9 +1,20 @@
+import 'dart:io';
+
+import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/models/ads_details_model.dart';
+import 'package:base_flutter/customer/models/comment_model.dart';
+import 'package:base_flutter/customer/models/kayan_owner_model.dart';
+import 'package:base_flutter/customer/models/media_model.dart';
+import 'package:base_flutter/customer/models/specific_ads_model.dart';
 import 'package:base_flutter/customer/screens/invitation_details/InvitationDetailsImports.dart';
 import 'package:base_flutter/customer/screens/provider_details/widgets/ProviderDetailsWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
+import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:base_flutter/general/widgets/CachedImage.dart';
+import 'package:base_flutter/general/widgets/DefaultButton.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
@@ -26,3 +37,5 @@ part 'BuildInvAppBar.dart';
 part 'BuildAnimationDetails.dart';
 part 'BuildInvInfo.dart';
 part 'BuildAddComment.dart';
+part 'BuildDownloadFile.dart';
+part 'BuildRateApp.dart';

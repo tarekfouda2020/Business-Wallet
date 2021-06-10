@@ -232,7 +232,7 @@ class Utils {
   }
 
   static void copToClipboard(
-      {required String text, required GlobalKey<ScaffoldState> scaffold}) {
+      {required String text}) {
     if (text.trim().isEmpty) {
       LoadingDialog.showToastNotification("لا يوجد بيانات للنسخ");
       return;

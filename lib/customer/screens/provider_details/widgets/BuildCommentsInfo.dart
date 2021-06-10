@@ -3,9 +3,12 @@ part of 'ProviderDetailsWidgetsImports.dart';
 class BuildCommentsInfo extends StatelessWidget {
   final ProviderDetailsData providerDetailsData;
   final List<CommentModel>? commentModel;
+  final String kayanId;
 
   const BuildCommentsInfo(
-      {required this.providerDetailsData, required this.commentModel});
+      {required this.providerDetailsData,
+      required this.commentModel,
+      required this.kayanId});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,7 @@ class BuildCommentsInfo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CachedImage(
                               url: commentModel![index].ownerImg,
@@ -50,40 +54,53 @@ class BuildCommentsInfo extends StatelessWidget {
                               child: Container(
                                 margin:
                                     const EdgeInsets.symmetric(horizontal: 10),
-                                child: MyText(
-                                  title: commentModel![index].ownerName,
-                                  size: 9,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MyText(
+                                      title: commentModel![index].ownerName,
+                                      size: 9,
+                                    ),
+                                    RatingBar.builder(
+                                      itemCount: 5,
+                                      allowHalfRating: true,
+                                      ignoreGestures: true,
+                                      onRatingUpdate: (double val) {},
+                                      unratedColor: MyColors.white,
+                                      itemSize: 12,
+                                      itemPadding: const EdgeInsets.symmetric(
+                                          vertical: 7),
+                                      initialRating:
+                                          commentModel![index].rate.toDouble(),
+                                      itemBuilder: (_, index) {
+                                        return Icon(
+                                          Icons.star,
+                                          color: MyColors.primary,
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                MyText(
-                                  title: commentModel![index].date,
-                                  size: 8,
-                                  color: MyColors.grey,
-                                ),
-                                RatingBar.builder(
-                                  itemCount: 5,
-                                  allowHalfRating: true,
-                                  ignoreGestures: true,
-                                  onRatingUpdate: (double val) {},
-                                  unratedColor: MyColors.white,
-                                  itemSize: 12,
-                                  itemPadding:
-                                      const EdgeInsets.symmetric(vertical: 7),
-                                  initialRating:
-                                      commentModel![index].rate.toDouble(),
-                                  itemBuilder: (_, index) {
-                                    return Icon(
-                                      Icons.star,
-                                      color: MyColors.primary,
-                                    );
-                                  },
-                                ),
-                              ],
+                            MyText(
+                              title: commentModel![index].date,
+                              size: 10,
+                              color: MyColors.grey,
                             ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            InkWell(
+                              // key: providerDetailsData.btnKey,
+                              // onTap: () => providerDetailsData.menu
+                              //     .show(widgetKey: providerDetailsData.btnKey),
+                              child: Icon(
+                                Icons.more_vert_outlined,
+                                size: 27,
+                                color: MyColors.grey,
+                              ),
+                            )
                           ],
                         ),
                         Row(
@@ -102,11 +119,14 @@ class BuildCommentsInfo extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () => AutoRouter.of(context).push(
-                                  ImageZoomRoute(
-                                      images: [commentModel![index].ownerImg])),
+                                ImageZoomRoute(
+                                  images: [commentModel![index].ownerImg],
+                                ),
+                              ),
                               child: CachedImage(
-                                url: commentModel![index].ownerImg,
+                                url: commentModel![index].commentImg,
                                 haveRadius: false,
+                                borderColor: MyColors.greyWhite,
                                 height: 70,
                                 width: 70,
                               ),
@@ -120,6 +140,98 @@ class BuildCommentsInfo extends StatelessWidget {
               ),
             )
           ],
+        );
+      },
+    );
+  }
+
+  void buildReportComment(BuildContext context, int commentId) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              MyText(
+                title: "ابلاغ عن تعليق",
+                color: MyColors.primary,
+                size: 14,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              RichTextFiled(
+                hint: "الرسالة",
+                max: 3,
+                fillColor: MyColors.greyWhite,
+                controller: providerDetailsData.report,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                action: TextInputAction.done,
+                validate: (value) => value!.validateEmpty(context),
+              ),
+              LoadingButton(
+                btnKey: providerDetailsData.btnKey,
+                title: "ابلاغ",
+                color: MyColors.primary,
+                onTap: () => providerDetailsData.reportComment(
+                    context, commentId, kayanId),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void buildEditComment(BuildContext context, int commentId) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              MyText(
+                title: "تعديل التعليق",
+                color: MyColors.primary,
+                size: 14,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              RichTextFiled(
+                hint: "الرسالة",
+                max: 3,
+                fillColor: MyColors.greyWhite,
+                controller: providerDetailsData.newComment,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                action: TextInputAction.done,
+                validate: (value) => value!.validateEmpty(context),
+              ),
+              LoadingButton(
+                btnKey: providerDetailsData.btnKey,
+                title: "ابلاغ",
+                color: MyColors.primary,
+                onTap: () =>
+                    providerDetailsData.editComment(context, commentId),
+              ),
+            ],
+          ),
         );
       },
     );

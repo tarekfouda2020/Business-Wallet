@@ -2,7 +2,10 @@ part of 'InvDetailsWidgetsImports.dart';
 
 class BuildInvComments extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
-  const BuildInvComments({required this.invitationDetailsData});
+  final List<CommentModel> commentModel;
+
+  const BuildInvComments(
+      {required this.invitationDetailsData, required this.commentModel});
 
   @override
   Widget build(BuildContext context) {
@@ -11,79 +14,123 @@ class BuildInvComments extends StatelessWidget {
       builder: (context, state) {
         return ListView(
           shrinkWrap: true,
+          padding: EdgeInsets.zero,
           physics: NeverScrollableScrollPhysics(),
           children: [
             BuildTitle(
               title: "التعليقات",
               open: state.data,
-              onTap: ()=> invitationDetailsData.commentCubit.onUpdateData(!state.data),
+              onTap: () =>
+                  invitationDetailsData.commentCubit.onUpdateData(!state.data),
             ),
             Visibility(
               visible: state.data,
-              child: Container(
-                margin:
-                const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        BuildInvPic(),
-                        Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 10),
-                              child: MyText(
-                                title: "اسم المستخدم كاملا",
-                                size: 9,
+              child: Visibility(
+                visible: commentModel.length > 0,
+                child: ListView.builder(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: commentModel.length,
+                  itemBuilder: (_, index) {
+                    return Container(
+                      margin: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: MyColors.greyWhite)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BuildInvPic(
+                                image: commentModel[index].ownerImg,
                               ),
-                            )),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            MyText(
-                              title: "منذ 3 دقيقة",
-                              size: 8,
-                              color: MyColors.grey,
-                            ),
-                            RatingBar.builder(
-                              initialRating: 1,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              updateOnDrag: false,
-                              itemCount: 5,
-                              itemSize: 12,
-                              itemPadding:
-                              EdgeInsets.symmetric(horizontal: 1.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
+                              Expanded(
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      MyText(
+                                        title: commentModel[index].ownerName,
+                                        size: 9,
+                                      ),
+                                      RatingBar.builder(
+                                        itemCount: 5,
+                                        allowHalfRating: true,
+                                        ignoreGestures: true,
+                                        onRatingUpdate: (double val) {},
+                                        unratedColor: MyColors.white,
+                                        itemSize: 12,
+                                        itemPadding: const EdgeInsets.symmetric(
+                                            vertical: 7),
+                                        initialRating:
+                                            commentModel[index].rate.toDouble(),
+                                        itemBuilder: (_, index) {
+                                          return Icon(
+                                            Icons.star,
+                                            color: MyColors.primary,
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              onRatingUpdate: (rating) => () {},
-                            ),
-                          ],
-                        ),
-                        Icon(Icons.more_vert)
-                      ],
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            child: MyText(
-                              title:
-                              "التعليق هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى",
-                              size: 9,
-                              color: MyColors.grey,
-                            ),
+                              MyText(
+                                title: commentModel[index].date,
+                                size: 10,
+                                color: MyColors.grey,
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: MyText(
+                                    title: commentModel[index].text,
+                                    size: 9,
+                                    color: MyColors.grey,
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () => AutoRouter.of(context).push(
+                                  ImageZoomRoute(
+                                    images: [commentModel[index].ownerImg],
+                                  ),
+                                ),
+                                child: CachedImage(
+                                  url: commentModel[index].commentImg,
+                                  haveRadius: false,
+                                  borderColor: MyColors.greyWhite,
+                                  height: 70,
+                                  width: 70,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                replacement: Center(
+                  child: MyText(
+                    title: "لا يوجد تعليقات",
+                    size: 13,
+                    color: MyColors.white,
+                  ),
                 ),
               ),
             )

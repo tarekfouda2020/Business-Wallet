@@ -34,6 +34,7 @@ class _BuildMainPageViewState extends State<BuildMainPageView> {
         builderDelegate: PagedChildBuilderDelegate<MainModel>(
           itemBuilder: (context, item, index) => BuildProviderItem(
             mainModel: item,
+            checkFollow: false,
           ),
         ),
       ),

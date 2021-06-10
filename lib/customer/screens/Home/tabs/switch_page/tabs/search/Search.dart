@@ -2,6 +2,7 @@ part of 'SearchImports.dart';
 
 class Search extends StatefulWidget {
   final Function()? onTap;
+
   const Search({this.onTap});
 
   @override
@@ -10,6 +11,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   SearchData searchData = SearchData();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -27,8 +29,8 @@ class _SearchState extends State<Search> {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  BuildSearchView(),
-                  BuildSearchView(),
+                  SearchView(),
+                  SearchView(),
                 ],
               ),
             ),

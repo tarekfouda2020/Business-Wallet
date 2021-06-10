@@ -2,7 +2,11 @@ part of 'InvDetailsWidgetsImports.dart';
 
 class BuildAnimationDetails extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
-  const BuildAnimationDetails({required this.invitationDetailsData});
+  final AdsDetailsModel adsDetailsModel;
+
+  const BuildAnimationDetails(
+      {required this.invitationDetailsData, required this.adsDetailsModel});
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -17,12 +21,11 @@ class BuildAnimationDetails extends StatelessWidget {
             Container(
               height: 70,
               width: 70,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: MyColors.darken),
+              decoration:
+                  BoxDecoration(shape: BoxShape.circle, color: MyColors.darken),
               child: CircularStepProgressIndicator(
                 totalSteps: 40,
-                currentStep:
-                invitationDetailsData.animation.value.toInt(),
+                currentStep: invitationDetailsData.animation.value.toInt(),
                 stepSize: 7,
                 selectedColor: MyColors.primary,
                 unselectedColor: MyColors.greyWhite,
@@ -33,7 +36,7 @@ class BuildAnimationDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MyText(
-                      title: "20",
+                      title: adsDetailsModel.point.toString(),
                       size: 10,
                     ),
                     MyText(

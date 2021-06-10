@@ -108,6 +108,18 @@ class LoadingDialog {
   }
 
   static showSimpleToast(msg) {
-    BotToast.showText(text: msg);
+    BotToast.showText(text: msg,
+      contentColor: MyColors.blackOpacity,
+    );
+  }
+
+  static showCustomToast(msg) {
+    BotToast.showText(
+      text: msg,
+      contentColor: MyColors.blackOpacity,
+      textStyle: TextStyle(color: MyColors.white, fontSize: 19),
+      duration: Duration(seconds: 2),
+      align: Alignment.center,
+    );
   }
 }

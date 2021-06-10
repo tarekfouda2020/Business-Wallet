@@ -1,95 +1,181 @@
 part of 'CommentsWidgetsImports.dart';
 
 class BuildCommentsPageView extends StatelessWidget {
-  final String? text;
-  final String? title;
+  final ProfileCommentsModel comments;
+  final CommentsData commentsData;
 
-  const BuildCommentsPageView({this.text, this.title});
+  const BuildCommentsPageView(
+      {required this.comments, required this.commentsData});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: MyColors.greyWhite.withOpacity(0.5), width: 1),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
+    return Container(
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: MyColors.greyWhite)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              CachedImage(
+                url: comments.Img,
+                haveRadius: false,
                 width: 60,
                 height: 60,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: MyColors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(Res.pic),
-                      fit: BoxFit.fill,
-                    )),
+                borderColor: MyColors.greyWhite,
+                boxShape: BoxShape.circle,
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MyText(
+                        title: comments.kayanName,
+                        size: 9,
+                      ),
+                      RatingBar.builder(
+                        itemCount: 5,
+                        allowHalfRating: true,
+                        ignoreGestures: true,
+                        onRatingUpdate: (double val) {},
+                        unratedColor: MyColors.white,
+                        itemSize: 12,
+                        itemPadding: const EdgeInsets.symmetric(vertical: 7),
+                        initialRating: comments.rate.toDouble(),
+                        itemBuilder: (_, index) {
+                          return Icon(
+                            Icons.star,
+                            color: MyColors.primary,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 width: 10,
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            MyText(
-                              title: text??"",
-                              size: 10,
-                              color: MyColors.white,
-                            ),
-                            SizedBox(width: 5,),
-                            Container(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: RatingBar.builder(
-                                minRating: 0,
-                                initialRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemCount: 5,
-                                itemSize: 15,
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                ),
-                                onRatingUpdate: (v) {},
-                              ),
-                            ),
-                          ],
-                        ),
-                        InkWell(
-                          onTap: (){},
-                          child: Icon(
-                            Icons.more_vert,
-                            color: MyColors.greyWhite.withOpacity(0.7),
-                          ),
-                        )
-                      ],
-                    ),
-                    MyText(
-                      title: title??"",
-                      size: 10,
-                      color: MyColors.greyWhite.withOpacity(0.7),
-                    ),
-                  ],
+              InkWell(
+                // key: providerDetailsData.btnKey,
+                onTap: () => buildEditComment(context, comments.commentId),
+                child: Icon(
+                  Icons.more_vert_outlined,
+                  size: 27,
+                  color: MyColors.grey,
                 ),
+              )
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: MyText(
+                    title: comments.comment,
+                    size: 9,
+                    color: MyColors.grey,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () => AutoRouter.of(context).push(
+                  ImageZoomRoute(
+                    images: [comments.commentImg],
+                  ),
+                ),
+                child: CachedImage(
+                  url: comments.commentImg,
+                  haveRadius: false,
+                  borderColor: MyColors.greyWhite,
+                  height: 70,
+                  width: 70,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  void buildEditComment(BuildContext context, int commentId) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              MyText(
+                title: "تعديل التعليق",
+                color: MyColors.primary,
+                size: 14,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              BlocBuilder<GenericCubit<int>, GenericState<int>>(
+                bloc: commentsData.rateCubit,
+                builder: (context, state) {
+                  return Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    child: RatingBar.builder(
+                      initialRating: state.data.toDouble(),
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: false,
+                      updateOnDrag: false,
+                      itemCount: 5,
+                      itemSize: 25,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) =>
+                          commentsData.rateCubit.onUpdateData(rating.toInt()),
+                    ),
+                  );
+                },
+              ),
+              RichTextFiled(
+                hint: "الرسالة",
+                max: 3,
+                fillColor: MyColors.greyWhite,
+                controller: commentsData.newComment,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                action: TextInputAction.done,
+                validate: (value) => value!.validateEmpty(context),
+              ),
+              LoadingButton(
+                btnKey: commentsData.btnKey,
+                title: "ابلاغ",
+                color: MyColors.primary,
+                onTap: () => commentsData.editComment(
+                    context, comments.kayanId, commentId),
               ),
             ],
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

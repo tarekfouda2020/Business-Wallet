@@ -1013,6 +1013,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
+  spear_menu:
+    dependency: "direct main"
+    description:
+      name: spear_menu
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   sqflite:
     dependency: transitive
     description:

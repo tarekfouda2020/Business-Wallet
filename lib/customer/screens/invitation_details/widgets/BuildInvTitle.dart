@@ -7,7 +7,8 @@ class BuildInvTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(vertical: 10),
       padding:
       const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
       color: MyColors.black,

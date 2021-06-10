@@ -15,6 +15,8 @@ class _ProviderDetailsState extends State<ProviderDetails> {
   @override
   void initState() {
     providerDetailsData.fetchData(context, widget.kayanId);
+    providerDetailsData.initMenu(context);
+
     super.initState();
   }
 
@@ -42,10 +44,17 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                   parent: AlwaysScrollableScrollPhysics()),
               children: [
                 BuildPicture(backGroundImg: state.data!.details!.backgroundImg),
-                BuildInformations(detailsModel: state.data!.details),
-                BuildProviderDescription(
-                  providerDetailsData: providerDetailsData,
+                BuildInformations(
                   detailsModel: state.data!.details,
+                  providerDetailsData: providerDetailsData,
+                ),
+                Visibility(
+                  visible: state.data!.details!.showDescriptionKayan,
+                  child: BuildProviderDescription(
+                    providerDetailsData: providerDetailsData,
+                    detailsModel: state.data!.details,
+                  ),
+                  replacement: Container(),
                 ),
                 BuildContactInfo(
                   providerDetailsData: providerDetailsData,
@@ -62,6 +71,11 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                 BuildCommentsInfo(
                   providerDetailsData: providerDetailsData,
                   commentModel: state.data!.comments,
+                  kayanId: state.data!.details!.kayanId,
+                ),
+                BuildRateApp(
+                  providerDetailsData: providerDetailsData,
+                  detailsModel: state.data!.details,
                 ),
               ],
             );

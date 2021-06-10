@@ -12,13 +12,14 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final MainPageData mainPageData = new MainPageData();
 
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
-        search: BuildMainSearch(mainPageData: mainPageData,),
+        search: BuildMainSearch(
+          mainPageData: mainPageData,
+        ),
         searchOnTap: widget.onTap,
         body: Column(
           children: [

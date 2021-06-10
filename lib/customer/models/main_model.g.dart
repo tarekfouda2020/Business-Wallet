@@ -17,6 +17,7 @@ MainModel _$MainModelFromJson(Map<String, dynamic> json) {
     lat: json['lat'] as String,
     lng: json['lng'] as String,
     hasAds: json['hasAds'] as int,
+    numberEdit: json['NumberEdit'] as int,
   );
 }
 
@@ -30,4 +31,5 @@ Map<String, dynamic> _$MainModelToJson(MainModel instance) => <String, dynamic>{
       'lat': instance.lat,
       'lng': instance.lng,
       'hasAds': instance.hasAds,
+      'NumberEdit': instance.numberEdit,
     };

@@ -6,18 +6,28 @@ class Favorites extends StatefulWidget {
 }
 
 class _FavoritesState extends State<Favorites> {
+  final FavoritesData favoritesData = new FavoritesData();
+
   @override
   Widget build(BuildContext context) {
-    return HomeScaffold(
-      title: "مفضلتي",
-      search: BuildFavSearch(),
-      body: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 55),
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        itemCount: 3,
-        itemBuilder: (_, index){
-          return BuildFavoritesItem();
-        },
+    return DefaultTabController(
+      length: 2,
+      child: HomeScaffold(
+        title: "مفضلتي",
+        search: BuildFavSearch(),
+        body: Column(
+          children: [
+            BuildChangeView(),
+            Flexible(
+              child: TabBarView(
+                children: [
+                  FavoritesView(),
+                  FavoritesView(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

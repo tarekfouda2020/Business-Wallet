@@ -37,7 +37,8 @@ class BuildBarCode extends StatelessWidget {
                     color: MyColors.darken,
                   ),
                   onPressed: () => Utils.copToClipboard(
-                      text: "text", scaffold: companyBarcodeData.scaffold),
+                    text: "text",
+                  ),
                 ),
               ),
             ],

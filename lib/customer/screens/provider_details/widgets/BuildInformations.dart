@@ -2,8 +2,10 @@ part of 'ProviderDetailsWidgetsImports.dart';
 
 class BuildInformations extends StatelessWidget {
   final DetailsModel? detailsModel;
+  final ProviderDetailsData providerDetailsData;
 
-  BuildInformations({required this.detailsModel});
+  BuildInformations(
+      {required this.detailsModel, required this.providerDetailsData});
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +61,22 @@ class BuildInformations extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: MyColors.black),
-                alignment: Alignment.center,
-                child: Icon(
-                  Icons.thumb_up,
-                  size: 13,
-                  color: detailsModel!.like==true?MyColors.primary:MyColors.white,
+              InkWell(
+                onTap: () => providerDetailsData.addOrRemoveLike(
+                    context, detailsModel!.kayanId),
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: MyColors.black),
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.thumb_up,
+                    size: 13,
+                    color: detailsModel!.like == true
+                        ? MyColors.primary
+                        : MyColors.white,
+                  ),
                 ),
               ),
               MyText(
@@ -77,16 +85,20 @@ class BuildInformations extends StatelessWidget {
               )
             ],
           ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: MyColors.primary,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: MyText(
-              title: "الغاء المتابعة",
-              size: 10,
-              color: Colors.black,
+          InkWell(
+            onTap: () => providerDetailsData.addOrRemoveFollow(
+                context, detailsModel!.kayanId),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: MyColors.primary,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: MyText(
+                title: detailsModel!.follow ? "الغاء المتابعة" : "متابعة",
+                size: 10,
+                color: Colors.black,
+              ),
             ),
           )
         ],

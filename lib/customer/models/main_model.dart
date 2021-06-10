@@ -23,16 +23,21 @@ class MainModel {
   @JsonKey(name: "hasAds")
   int hasAds;
 
-  MainModel(
-      {required this.kayanId,
-      required this.kayanName,
-      required this.rate,
-      required this.count,
-      required this.Img,
-      required this.backgroundImg,
-      required this.lat,
-      required this.lng,
-      required this.hasAds});
+  @JsonKey(name: "NumberEdit")
+  int numberEdit;
+
+  MainModel({
+    required this.kayanId,
+    required this.kayanName,
+    required this.rate,
+    required this.count,
+    required this.Img,
+    required this.backgroundImg,
+    required this.lat,
+    required this.lng,
+    required this.hasAds,
+    required this.numberEdit,
+  });
 
   factory MainModel.fromJson(Map<String, dynamic> json) =>
       _$MainModelFromJson(json);

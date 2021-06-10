@@ -3,12 +3,14 @@ part of 'ProfilePageWidgetsImports.dart';
 class BuildProfilePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var customer = context.read<UserCubit>().state.model.customerModel;
+
     return ListView(
       physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       children: [
         BuildProfileHeader(
           buttonText: "تعديل الصفحة الشخصية",
-          onTap: ()=> AutoRouter.of(context).push(EditProfileRoute()),
+          onTap: () => AutoRouter.of(context).push(EditProfileRoute()),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 15),
@@ -22,43 +24,51 @@ class BuildProfilePageView extends StatelessWidget {
         BuildInfoItem(
           iconData: Icons.phone_in_talk,
           title: "رقم الجوال",
-          details: "01234567890",
+          details: customer!.phoneNumber!,
           iconColor: Colors.green,
         ),
         BuildInfoItem(
           iconData: Icons.email_sharp,
           title: "البريد الالكتروني",
-          details: "aya@gmail.com",
+          details: customer.email!,
         ),
         BuildInfoItem(
           iconData: Icons.person,
           title: "الجنس",
-          details: "أنثى",
+          details: (customer.genderUser == "f") ? "انثي" : "ذكر",
         ),
         BuildInfoItem(
           iconData: Icons.calendar_today_outlined,
           title: "تاريخ الميلاد",
-          details: "18/1/2000",
+          details: customer.birthDateUser!,
         ),
         BuildInfoItem(
           iconData: Icons.home,
           title: "السكن",
-          details: "لم يحدد بعد",
+          details: (customer.accommodationType == null)
+              ? "لم يحدد بعد"
+              : customer.accommodationType!,
         ),
         BuildInfoItem(
           iconData: Icons.directions_bus,
           title: "مستوى التعليم",
-          details: "لم يحدد بعد",
+          details: (customer.educationLevel == null)
+              ? "لم يحدد بعد"
+              : customer.educationLevel!,
         ),
         BuildInfoItem(
           iconData: MdiIcons.accountGroup,
           title: "أفراد الأسرة",
-          details: "لم يحدد بعد",
+          details: (customer.numFamily == null)
+              ? "لم يحدد بعد"
+              : "${customer.numFamily!}أفراد",
         ),
         BuildInfoItem(
           iconData: Icons.monetization_on,
           title: "متوسط الدخل",
-          details: "لم يحدد بعد",
+          details: (customer.averageIncomePerYear == null)
+              ? "لم يحدد بعد"
+              : "${customer.averageIncomePerYear!}ريال سعودي",
         ),
       ],
     );

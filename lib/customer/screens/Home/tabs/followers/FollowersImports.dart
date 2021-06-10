@@ -1,3 +1,4 @@
+import 'package:base_flutter/customer/models/follower_model.dart';
 import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/followers/widgets/FollowersWidgetsImports.dart';
