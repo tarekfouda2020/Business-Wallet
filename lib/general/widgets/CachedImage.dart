@@ -87,7 +87,8 @@ class CachedImage extends StatelessWidget {
       errorWidget: (context, url, error) => Container(
         width: width,
         height: height,
-        alignment: Alignment.center,
+        alignment: alignment ?? Alignment.center,
+        child: child,
         decoration: BoxDecoration(
           color: bgColor ?? Colors.transparent,
           borderRadius:

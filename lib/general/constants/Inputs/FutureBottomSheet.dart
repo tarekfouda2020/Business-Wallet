@@ -68,7 +68,7 @@ class _DropdownTextFieldState<DataType> extends State<FutureBottomSheet> {
         selectedItem: widget.selectedItem,
         itemAsString: (dynamic u) => widget.useName ? u.name : u,
         showSelectedItem: widget.showSelectedItem,
-        style: TextStyle(fontSize: 8),
+        style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
         itemStyle: CustomInputTextStyle(lang: lang),
         searchBoxDecoration: CustomInputDecoration(
             lang: lang,
@@ -105,8 +105,8 @@ class _DropdownTextFieldState<DataType> extends State<FutureBottomSheet> {
           border: InputBorder.none,
           isCollapsed: true,
           contentPadding: EdgeInsets.zero,
-          hintStyle: TextStyle(fontSize: 10),
-          labelStyle: TextStyle(fontSize: 10),
+          hintStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
+          labelStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
         ),
       ),
     );

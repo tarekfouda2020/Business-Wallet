@@ -6,13 +6,13 @@ class SearchViewData{
   int pageSize = 10;
 
   void fetchPage(int pageIndex, BuildContext context) async {
-    mainData = await CustomerRepository(context).getMainData(pageIndex);
-    final isLastPage = mainData.length < pageSize;
-    if (isLastPage) {
-      pagingController.appendLastPage(mainData);
-    } else {
-      final nextPageKey = pageIndex + 1;
-      pagingController.appendPage(mainData, nextPageKey);
-    }
+    // mainData = await CustomerRepository(context).getMainData(pageIndex);
+    // final isLastPage = mainData.length < pageSize;
+    // if (isLastPage) {
+    //   pagingController.appendLastPage(mainData);
+    // } else {
+    //   final nextPageKey = pageIndex + 1;
+    //   pagingController.appendPage(mainData, nextPageKey);
+    // }
   }
 }

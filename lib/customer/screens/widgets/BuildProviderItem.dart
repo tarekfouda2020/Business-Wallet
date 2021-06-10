@@ -21,9 +21,7 @@ class BuildProviderItem extends StatelessWidget {
     return InkWell(
       onTap: () => navigate(context, checkFollow),
       child: CachedImage(
-        url:
-            "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-        // url: checkFollow ? followerModel!.background : mainModel!.backgroundImg,
+        url: checkFollow ? followerModel!.background : mainModel!.backgroundImg,
         alignment: Alignment.bottomCenter,
         borderColor: MyColors.greyWhite,
         borderRadius: BorderRadius.circular(10),

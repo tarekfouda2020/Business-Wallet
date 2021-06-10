@@ -101,25 +101,6 @@ class CustomerHttpMethods {
     }
   }
 
-  Future<List<MainModel>> getMainData(int pageIndex) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "page_index": pageIndex
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/User/IndexApi", body: body);
-    if (_data != null) {
-      return List<MainModel>.from(
-          _data['Kayans'].map((e) => MainModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
   Future<List<MainModel>> getMainFiltered(
       int pageIndex, int cityId, int interestId, int filterId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;

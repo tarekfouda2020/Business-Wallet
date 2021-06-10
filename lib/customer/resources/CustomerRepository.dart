@@ -36,9 +36,6 @@ class CustomerRepository {
   Future<bool> saveInterest(String items) =>
       _customerHttpMethods.saveInterest(items);
 
-  Future<List<MainModel>> getMainData(int pageIndex) =>
-      _customerHttpMethods.getMainData(pageIndex);
-
   Future<List<MainModel>> getMainFiltered(
           int pageIndex, int cityId, int interestId, int filterId) =>
       _customerHttpMethods.getMainFiltered(

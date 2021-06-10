@@ -1,5 +1,6 @@
 
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';

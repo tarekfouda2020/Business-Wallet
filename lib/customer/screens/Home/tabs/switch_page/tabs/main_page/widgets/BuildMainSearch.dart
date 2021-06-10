@@ -17,7 +17,7 @@ class BuildMainSearch extends StatelessWidget {
             useName: true,
             finData: (filter) async =>
                 await CustomerRepository(context).getCities(3),
-            onChange: (CitiesModel value) {},
+            onChange: (CitiesModel value) => mainPageData.onSelectCities(value),
           ),
         ),
         Flexible(
@@ -27,46 +27,20 @@ class BuildMainSearch extends StatelessWidget {
             useName: true,
             finData: (filter) async =>
                 await CustomerRepository(context).getInterest(),
-            onChange: (UserInterestModel value) {},
+            onChange: (UserInterestModel value) => mainPageData.onSelectInterest(value),
           ),
         ),
-
-        // BlocConsumer<GenericCubit<String>, GenericState<String>>(
-        //   bloc: mainPageData.filterCubit,
-        //   listener: (_, state) {
-        //     mainPageData.filter.text = FilterModel()
-        //         .filters
-        //         .firstWhere((e) => e.id == state.data)
-        //         .name!;
-        //   },
-        //   builder: (_, state) {
-        //     return InkWellTextField(
-        //       icon: Icon(Icons.arrow_drop_down),
-        //       controller: mainPageData.filter,
-        //       validate: (value) => value!.validateEmpty(context),
-        //       margin: const EdgeInsets.symmetric(vertical: 10),
-        //       onTab: () => DownBottomSheet(
-        //         context: context,
-        //         title: 'أخرى',
-        //         onTab: (name, id) => FilterModel.selectType(id, context),
-        //         data: FilterModel().filters,
-        //       ).show(),
-        //       hint: 'أخرى',
-        //     );
-        //   },
-        // ),
         Flexible(
-          child: FutureBottomSheet<CitiesModel>(
+          child: FutureBottomSheet<FilterModel>(
             label: "أخرى",
-            validate: (CitiesModel value) => value.validateDropDown(context),
+            validate: (FilterModel value) => value.validateDropDown(context),
             useName: true,
-            finData: (filter) async =>
-                await CustomerRepository(context).getCities(3),
-            onChange: (CitiesModel value) {},
+            data: FilterModel.filters,
+            onChange: (FilterModel value) => mainPageData.selectType(value),
           ),
         ),
         InkWell(
-          // onTap: ()=>mainPageData.setMainFiltered(context),
+          onTap: ()=>mainPageData.pagingController.refresh(),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

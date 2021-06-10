@@ -1,17 +1,20 @@
 part of 'MainViewImports.dart';
 
+
 class BuildMainPageView extends StatefulWidget {
+  final MainPageData mainPageData;
+
+  const BuildMainPageView({required this.mainPageData});
   @override
   _BuildMainPageViewState createState() => _BuildMainPageViewState();
 }
 
 class _BuildMainPageViewState extends State<BuildMainPageView> {
-  final MainViewData mainViewData = new MainViewData();
 
   @override
   void initState() {
-    mainViewData.pagingController.addPageRequestListener((pageKey) {
-      mainViewData.fetchPage(pageKey, context);
+    widget.mainPageData.pagingController.addPageRequestListener((pageKey) {
+      widget.mainPageData.fetchPage(pageKey, context);
     });
     super.initState();
   }
@@ -24,7 +27,7 @@ class _BuildMainPageViewState extends State<BuildMainPageView> {
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
-        pagingController: mainViewData.pagingController,
+        pagingController: widget.mainPageData.pagingController,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 1.1,
           crossAxisSpacing: 10,

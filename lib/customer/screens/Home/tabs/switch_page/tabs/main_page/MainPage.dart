@@ -27,8 +27,8 @@ class _MainPageState extends State<MainPage> {
             Flexible(
               child: TabBarView(
                 children: [
-                  BuildMainPageView(),
-                  BuildMainPageView(),
+                  BuildMainPageView(mainPageData: mainPageData,),
+                  BuildMainPageView(mainPageData: mainPageData,),
                 ],
               ),
             ),
