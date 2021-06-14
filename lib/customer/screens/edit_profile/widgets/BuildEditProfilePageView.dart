@@ -11,7 +11,7 @@ class BuildEditProfilePageView extends StatelessWidget {
         parent: AlwaysScrollableScrollPhysics()
       ),
       children: [
-        BuildEditProfileHeader(),
+        BuildEditProfileHeader(editProfileData: editProfileData,),
         BuildEditProfileFormInputs(editProfileData: editProfileData),
         BuildEditProfileButton(editProfileData: editProfileData),
       ],

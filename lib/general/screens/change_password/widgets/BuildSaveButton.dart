@@ -1,7 +1,6 @@
 part of 'ChangePassWidgetsImports.dart';
 
 class BuildSaveButton extends StatelessWidget {
-
   final ChangePasswordData changePasswordData;
 
   const BuildSaveButton({required this.changePasswordData});
@@ -14,7 +13,7 @@ class BuildSaveButton extends StatelessWidget {
       textColor: MyColors.black,
       color: MyColors.primary,
       margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-      onTap: () => changePasswordData.setChangePassword(context),
+      onTap: () => changePasswordData.changePassword(context),
     );
   }
 }

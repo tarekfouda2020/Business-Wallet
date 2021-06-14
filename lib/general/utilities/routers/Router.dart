@@ -55,6 +55,7 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: AppInfo),
     AdaptiveRoute(page: FavoriteDetails),
     AdaptiveRoute(page: AccountReconciliation),
+    AdaptiveRoute(page: WalletHelp),
 
     //company routes
     AdaptiveRoute(page: CompanyRegister),

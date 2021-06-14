@@ -104,11 +104,29 @@ class _InvitationDetailsState extends State<InvitationDetails>
                       BuildInvDescription(
                         desc: state.data!.previewAds.advertDescription,
                       ),
-                      BuildInvTitle(title: "المحتوي"),
-                      // BuildInvSwiper(
-                      //   mediaModel: state.data!.previewAds.media,
-                      //   adsDetailsModel: state.data!.previewAds,
-                      // ),
+                      BuildInvTitle(title: "الصور"),
+                      Visibility(
+                        visible: state.data!.previewAds.images.isEmpty,
+                        child: Center(
+                          child: MyText(
+                            title: "لا يوجد صور",
+                          ),
+                        ),
+                        replacement: BuildInvSwiper(
+                          images: state.data!.previewAds.images,
+                          adsDetailsModel: state.data!.previewAds,
+                        ),
+                      ),
+                      BuildInvTitle(title: "الفيديوهات"),
+                      Visibility(
+                        visible: state.data!.previewAds.images.isEmpty,
+                        child: Center(
+                          child: MyText(
+                            title: "لا يوجد فيديوهات",
+                          ),
+                        ),
+                        replacement: BuildVideo(),
+                      ),
                       BuildInvTitle(title: "صاحب الإعلان"),
                       BuildAdOwner(
                         kayanOwnerModel: state.data!.kayanOwner,

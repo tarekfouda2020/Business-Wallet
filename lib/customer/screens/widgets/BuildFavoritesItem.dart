@@ -45,6 +45,7 @@ class BuildFavoritesItem extends StatelessWidget {
               color: MyColors.black,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
                   child: Column(
@@ -62,6 +63,7 @@ class BuildFavoritesItem extends StatelessWidget {
                             "التصنيف : ${checkInvite ? invitationModel!.category : favoriteModel!.favoriteDetailsModel.mainField}",
                         size: 9,
                         color: MyColors.white,
+                        // overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

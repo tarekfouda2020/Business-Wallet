@@ -11,7 +11,8 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DefaultAppBar(title: 'تغيير كلمة المرور') ,
+      backgroundColor: MyColors.darken,
+      appBar: DefaultAppBar(title: 'تغيير كلمة المرور'),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         physics: BouncingScrollPhysics(

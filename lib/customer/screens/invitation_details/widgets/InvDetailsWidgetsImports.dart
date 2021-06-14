@@ -39,3 +39,4 @@ part 'BuildInvInfo.dart';
 part 'BuildAddComment.dart';
 part 'BuildDownloadFile.dart';
 part 'BuildRateApp.dart';
+part 'BuildVideo.dart';

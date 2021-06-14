@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
+import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
+import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
@@ -9,8 +12,10 @@ import 'package:base_flutter/customer/models/invitation_model.dart';
 import 'package:base_flutter/customer/models/main_details_model.dart';
 import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/profile_comments_model.dart';
+import 'package:base_flutter/customer/models/reconciliation_data_model.dart';
 import 'package:base_flutter/customer/models/specific_ads_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
+import 'package:base_flutter/customer/models/wallet_details_model.dart';
 import 'package:base_flutter/customer/models/wallet_model.dart';
 import 'package:base_flutter/customer/resources/CustomerHttpMethods.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +35,11 @@ class CustomerRepository {
   Future<List<CitiesModel>> getCities(int countryId) =>
       _customerHttpMethods.getCities(countryId);
 
+  Future<List<DropDownModel>> getBank() => _customerHttpMethods.getBank();
+
+  Future<List<FieldDropDownModel>> getFields() =>
+      _customerHttpMethods.getFields();
+
   Future<List<UserInterestModel>> getInterest() =>
       _customerHttpMethods.getInterest();
 
@@ -41,11 +51,20 @@ class CustomerRepository {
       _customerHttpMethods.getMainFiltered(
           pageIndex, cityId, interestId, filterId);
 
+  Future<List<MainModel>> getMainSearched(
+          int pageIndex, int searchId, int fieldId, String text) =>
+      _customerHttpMethods.getMainSearched(pageIndex, searchId, fieldId, text);
+
   Future<MainDetailsModel?> getMainDetails(String id) =>
       _customerHttpMethods.getMainDetails(id);
 
-  Future<List<FollowerModel>> getFollowersData(int pageIndex) =>
+  Future<List<FollowerModel>> getFollowersData(int pageIndex,) =>
       _customerHttpMethods.getFollowersData(pageIndex);
+
+  Future<List<FollowerModel>> getFollowersFiltered(
+          int pageIndex, int cityId, int interestId, int filterId) =>
+      _customerHttpMethods.getFollowersFiltered(
+          pageIndex, cityId, interestId, filterId);
 
   Future<bool> addLike(String kayanId) => _customerHttpMethods.addLike(kayanId);
 
@@ -72,7 +91,7 @@ class CustomerRepository {
       _customerHttpMethods.getFavoriteData(pageIndex, fkCity, fkInterest, rate);
 
   Future<List<InvitationModel>> getInvitationData(
-          int pageIndex, int fkCity, fkInterest, String rate) =>
+          int pageIndex, int fkCity, int fkInterest, String rate) =>
       _customerHttpMethods.getInvitationData(
           pageIndex, fkCity, fkInterest, rate);
 
@@ -117,4 +136,24 @@ class CustomerRepository {
 
   Future<bool> shareWalletPoint(int costMoney, int point, String code) =>
       _customerHttpMethods.shareWalletPoint(costMoney, point, code);
+
+  Future<bool> updateCustomerData(UpdateCustomerModel model) async =>
+      _customerHttpMethods.updateCustomerData(model);
+
+  Future<bool> changePassword(String oldPassword, String newPassword) async =>
+      _customerHttpMethods.changePassword(oldPassword, newPassword);
+
+  Future<String?> walletHelp() => _customerHttpMethods.walletHelp();
+
+  Future<List<WalletDetailsModel>> getWalletDetails() =>
+      _customerHttpMethods.getWalletDetails();
+
+  Future<ReconciliationDataModel?> getReconciliation(
+          double cost, double costMun) =>
+      _customerHttpMethods.getReconciliation(cost, costMun);
+
+  Future<bool> reconciliationBank(double cost, double point, String fullName,
+          String fkBank, String iBAN) =>
+      _customerHttpMethods.reconciliationBank(
+          cost, point, fullName, fkBank, iBAN);
 }

@@ -15,7 +15,7 @@ class BuildWalletButton extends StatelessWidget {
           btnKey: walletData.btnKey,
           title: "تأكيد",
           onTap: () => walletData.shareWalletPoint(
-              context, walletModel!.costMun, walletModel!.points),
+              context, walletModel!.costMun.toInt(), walletModel!.points),
           color: MyColors.primary,
           textColor: MyColors.black,
           borderRadius: 25,
@@ -29,7 +29,16 @@ class BuildWalletButton extends StatelessWidget {
         ),
         DefaultButton(
           title: "تصفيه المحفظه",
-          onTap: () => navigate(context),
+          onTap: () {
+            print("_____${walletModel!.cost}");
+            print("_____@@@${walletModel!.costMun}");
+
+            AutoRouter.of(context).push(AccountReconciliationRoute(
+                cost: walletModel!.cost.toDouble(),
+                costMun: walletModel!.costMun));
+          },
+
+          // onTap: () => navigate(context),
           color: MyColors.primary,
           textColor: MyColors.black,
         ),
@@ -43,7 +52,8 @@ class BuildWalletButton extends StatelessWidget {
         "الحد الادنى لتصفية المحفظة 300 ريال و التصفية عليها رسوم ادارية 10 ريال",
       );
     } else {
-      AutoRouter.of(context).push(AccountReconciliationRoute());
+      AutoRouter.of(context).push(AccountReconciliationRoute(
+          cost: walletModel!.cost.toDouble(), costMun: walletModel!.costMun));
     }
   }
 }

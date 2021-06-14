@@ -4,7 +4,6 @@ class BuildProfilePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var customer = context.read<UserCubit>().state.model.customerModel;
-
     return ListView(
       physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       children: [

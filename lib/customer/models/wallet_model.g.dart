@@ -14,7 +14,7 @@ WalletModel _$WalletModelFromJson(Map<String, dynamic> json) {
     pointMonth: json['PointMonth'] as int,
     descriptionPointMonth: json['DescriptionPointMonth'] as String,
     cost: json['Cost'] as int,
-    costMun: json['CostMun'] as int,
+    costMun: (json['CostMun'] as num).toDouble(),
   );
 }
 

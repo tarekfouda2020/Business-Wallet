@@ -1,29 +1,42 @@
 part of 'InvWidgetsImports.dart';
 
 class BuildInvSearch extends StatelessWidget {
+  final InvitationsData invitationsData;
+
+  const BuildInvSearch({required this.invitationsData});
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        BuildHeaderDrop(
-          title: "الأعلى تقييم",
-          onTap: () {},
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: MyColors.primary,
+        Flexible(
+          child: FutureBottomSheet<FilterModel>(
+            label: "الأعلى تقييم",
+            validate: (FilterModel value) => value.validateDropDown(context),
+            useName: true,
+            data: FilterModel.invitationFilters,
+            onChange: (FilterModel value) => invitationsData.selectType(value),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          child: MyText(
-            title: "البحث",
-            size: 10,
-            color: Colors.black,
+        ),
+        InkWell(
+          onTap: () {
+            invitationsData.pagingController.refresh();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: MyColors.primary,
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+            child: MyText(
+              title: "البحث",
+              size: 10,
+              color: Colors.black,
+            ),
           ),
         )
       ],
     );
-    ;
   }
 }

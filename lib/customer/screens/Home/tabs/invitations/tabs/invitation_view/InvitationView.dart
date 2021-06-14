@@ -1,17 +1,19 @@
 part of 'InvitationViewImports.dart';
 
 class InvitationView extends StatefulWidget {
+  final InvitationsData invitationsData;
+
+  const InvitationView({required this.invitationsData});
+
   @override
   _InvitationViewState createState() => _InvitationViewState();
 }
 
 class _InvitationViewState extends State<InvitationView> {
-  final InvitationViewData invitationViewData = new InvitationViewData();
-
   @override
   void initState() {
-    invitationViewData.pagingController.addPageRequestListener((pageKey) {
-      invitationViewData.fetchPage(pageKey, 0, 0, "M", context);
+    widget.invitationsData.pagingController.addPageRequestListener((pageKey) {
+      widget.invitationsData.fetchPage(pageKey, context);
     });
     super.initState();
   }
@@ -22,7 +24,7 @@ class _InvitationViewState extends State<InvitationView> {
       physics: BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
-      pagingController: invitationViewData.pagingController,
+      pagingController: widget.invitationsData.pagingController,
       builderDelegate: PagedChildBuilderDelegate<InvitationModel>(
         itemBuilder: (context, item, index) => BuildFavoritesItem(
           invitationModel: item,

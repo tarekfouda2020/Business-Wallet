@@ -38,7 +38,10 @@ class AdsDetailsModel {
   String catalog;
   @JsonKey(name: 'media')
   List<MediaModel> media;
-
+  @JsonKey(name: 'imgs')
+  List<String> images;
+  @JsonKey(name: 'videos')
+  List<String> videos;
   @JsonKey(name: 'Id')
   int id;
   @JsonKey(name: 'point')
@@ -77,6 +80,8 @@ class AdsDetailsModel {
     required this.countLike,
     required this.like,
     required this.follow,
+    required this.images,
+    required this.videos,
     required this.wish,
     required this.myRate,
     required this.advertDescription,
@@ -94,8 +99,8 @@ class AdsDetailsModel {
     required this.adsFile,
     required this.adsText,
     required this.business,
-  required this.comments,
-  required this.media,
+    required this.comments,
+    required this.media,
   });
 
   factory AdsDetailsModel.fromJson(Map<String, dynamic> json) =>

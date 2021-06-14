@@ -17,7 +17,7 @@ class WalletModel {
   @JsonKey(name: 'Cost')
   int cost;
   @JsonKey(name: 'CostMun')
-  int costMun;
+  double costMun;
 
   WalletModel(
       {required this.pointsEarned,

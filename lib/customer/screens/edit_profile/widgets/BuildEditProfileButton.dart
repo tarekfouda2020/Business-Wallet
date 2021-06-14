@@ -1,4 +1,5 @@
-part of'EditProfileWidgetsImports.dart';
+part of 'EditProfileWidgetsImports.dart';
+
 class BuildEditProfileButton extends StatelessWidget {
   final EditProfileData editProfileData;
 
@@ -11,22 +12,21 @@ class BuildEditProfileButton extends StatelessWidget {
         DefaultButton(
           title: "تغيير كلمه المرور",
           onTap: () => AutoRouter.of(context).push(ChangePasswordRoute()),
-          // onTap: (){},
           color: MyColors.white,
           borderRadius: BorderRadius.circular(20),
           borderColor: MyColors.blackOpacity,
-          textColor: MyColors.grey,
+          textColor: MyColors.blackOpacity,
           // margin: const EdgeInsets.symmetric(vertical: 10),
         ),
         LoadingButton(
           btnKey: editProfileData.btnKey,
           title: "حفظ التعديلات",
-          onTap: (){},
-          // onTap: () => AutoRouter.of(context).push(HomeRoute()),
+          onTap: () {
+            editProfileData.updateUserData(context);
+          },
           color: MyColors.primary,
           textColor: MyColors.black,
           borderRadius: 20,
-          // margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         ),
       ],
     );

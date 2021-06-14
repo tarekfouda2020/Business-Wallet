@@ -21,7 +21,7 @@ class BuildEditProfileFormInputs extends StatelessWidget {
             ),
             IconTextFiled(
               hint: "اسم المستخدم",
-              controller: editProfileData.email,
+              controller: editProfileData.name,
               margin: const EdgeInsets.symmetric(vertical: 10),
               action: TextInputAction.next,
               type: TextInputType.name,
@@ -60,134 +60,238 @@ class BuildEditProfileFormInputs extends StatelessWidget {
               size: 11,
               color: MyColors.white,
             ),
-            LabelTextField(
-              hint: "الدوله",
-              controller: editProfileData.country,
+            Container(
+              constraints: BoxConstraints(
+                  minHeight: 55,
+                  maxHeight: 80,
+                  minWidth: double.infinity,
+                  maxWidth: double.infinity),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30), color: MyColors.black),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              validate: (value) => value!.validateEmpty(context),
+              child: MyText(title: "السعودية"),
             ),
             MyText(
               title: "المنطقه",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "المنطقه",
-              controller: editProfileData.region,
+            DropdownTextField<CitiesModel>(
+              dropKey: editProfileData.city,
+              label: "المنطقة",
+              selectedItem: editProfileData.cityId,
               margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-              validate: (value) => value!.validateEmpty(context),
+              validate: (CitiesModel value) => value.validateDropDown(context),
+              onChange: editProfileData.onSelectCities,
+              useName: true,
+              finData: (filter) async =>
+                  await CustomerRepository(context).getCities(3),
             ),
             MyText(
               title: "الجنس",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "الجنس",
-              controller: editProfileData.gender,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              suffixIcon: Icon(Icons.edit),
-              validate: (value) => value!.validateEmpty(context),
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
+              bloc: editProfileData.genderCubit,
+              listener: (_, state) {
+                editProfileData.gender.text = GenderModel()
+                    .genders
+                    .firstWhere((e) => e.id == state.data)
+                    .name!;
+              },
+              builder: (_, state) {
+                return InkWellTextField(
+                  icon: Icon(Icons.arrow_drop_down),
+                  controller: editProfileData.gender,
+                  validate: (value) => value!.validateEmpty(context),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  onTab: () => DownBottomSheet(
+                    context: context,
+                    title: 'الجنس',
+                    onTab: (name, id) =>
+                        editProfileData.selectType(id, context),
+                    data: GenderModel().genders,
+                  ).show(),
+                  hint: 'الجنس',
+                );
+              },
             ),
             MyText(
               title: "تاريخ الميلاد",
               size: 11,
               color: MyColors.white,
             ),
-            BlocBuilder<GenericCubit<String>, GenericState<String>>(
+
+            BlocConsumer<GenericCubit, GenericState>(
               bloc: editProfileData.dateCubit,
-              builder: (context, state){
-                if (state is GenericInitialState) {
-                  return InkWellTextField(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    controller: editProfileData.birthDate,
-                    hint: "تاريخ الميلاد",
-                    onTab: ()=> editProfileData.getDatePicker(context),
-                    validate: (value) => value!.validatePhone(context),
-                    icon: Icon(
-                      Icons.calendar_today_outlined,
-                      color: MyColors.white,
-                    ),
-                  );
-                }
-                else {
-                  return InkWellTextField(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    controller: editProfileData.birthDate,
-                    hint: state.data,
-                    onTab: ()=> editProfileData.getDatePicker(context),
-                    // onTab: (){},
-                    validate: (value) => value!.validatePhone(context),
-                    icon: Icon(
-                      Icons.calendar_today_outlined,
-                      color: MyColors.white,
-                    ),
-                  );
-                }
+              listener: (_, state) {
+                editProfileData.birthDate.text = state.data;
               },
-            ),
+              builder: (_, state) {
+                return InkWellTextField(
+                  hint: "تاريخ الميلاد",
+                  controller: editProfileData.birthDate,
+                  icon: Icon(
+                    Icons.calendar_today_outlined,
+                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  validate: (value) => value!.validateEmpty(context),
+                  onTab: () => editProfileData.getDatePicker(context),
+                );
+              },
+             ),
+            // BlocBuilder<GenericCubit<String>, GenericState<String>>(
+            //   bloc: editProfileData.dateCubit,
+            //   builder: (context, state) {
+            //     if (state is GenericInitialState) {
+            //       return InkWellTextField(
+            //         margin: const EdgeInsets.symmetric(vertical: 10),
+            //         controller: editProfileData.birthDate,
+            //         hint: "تاريخ الميلاد",
+            //         onTab: () => editProfileData.getDatePicker(context),
+            //         validate: (value) => value!.validateEmpty(context),
+            //         icon: Icon(
+            //           Icons.calendar_today_outlined,
+            //           color: MyColors.white,
+            //         ),
+            //       );
+            //     } else {
+            //       return InkWellTextField(
+            //         margin: const EdgeInsets.symmetric(vertical: 10),
+            //         controller: editProfileData.birthDate,
+            //         hint: state.data,
+            //         onTab: () => editProfileData.getDatePicker(context),
+            //         // onTab: (){},
+            //         validate: (value) => value!.validateEmpty(context),
+            //         icon: Icon(
+            //           Icons.calendar_today_outlined,
+            //           color: MyColors.white,
+            //         ),
+            //       );
+            //     }
+            //   },
+            // ),
             MyText(
               title: "السكن",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "السكن",
-              controller: editProfileData.living,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-              validate: (value) => value!.validateEmpty(context),
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
+              bloc: editProfileData.livingCubit,
+              listener: (_, state) {
+                editProfileData.living.text = LivingModel()
+                    .living
+                    .firstWhere((e) => e.id == state.data)
+                    .name!;
+              },
+              builder: (_, state) {
+                return InkWellTextField(
+                  icon: Icon(Icons.arrow_drop_down),
+                  controller: editProfileData.living,
+                  validate: (value) => value!.validateEmpty(context),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  onTab: () => DownBottomSheet(
+                          context: context,
+                          title: 'السكن',
+                          onTab: (name, id) =>
+                              editProfileData.selectLiving(id, context),
+                          data: LivingModel().living)
+                      .show(),
+                  hint: 'السكن',
+                );
+              },
             ),
             MyText(
               title: "مستوي التعليم",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "مستوي التعليم",
-              controller: editProfileData.educationLevel,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-              validate: (value) => value!.validateEmpty(context),
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
+              bloc: editProfileData.educationCubit,
+              listener: (_, state) {
+                editProfileData.educationLevel.text = EducationModel()
+                    .education
+                    .firstWhere((e) => e.id == state.data)
+                    .name!;
+              },
+              builder: (_, state) {
+                return InkWellTextField(
+                  icon: Icon(Icons.arrow_drop_down),
+                  controller: editProfileData.educationLevel,
+                  validate: (value) => value!.validateEmpty(context),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  onTab: () => DownBottomSheet(
+                          context: context,
+                          title: 'مستوي التعليم',
+                          onTab: (name, id) =>
+                              editProfileData.selectEducation(id, context),
+                          data: EducationModel().education)
+                      .show(),
+                  hint: 'مستوي التعليم',
+                );
+              },
             ),
             MyText(
               title: "افراد الاسره",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "افراد الاسره",
-              controller: editProfileData.educationLevel,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.number,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-              validate: (value) => value!.validateEmpty(context),
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
+              bloc: editProfileData.familyCubit,
+              listener: (_, state) {
+                editProfileData.familyMembers.text = FamilyMemberModel()
+                    .family
+                    .firstWhere((e) => e.id == state.data)
+                    .name!;
+              },
+              builder: (_, state) {
+                return InkWellTextField(
+                  icon: Icon(Icons.arrow_drop_down),
+                  controller: editProfileData.familyMembers,
+                  validate: (value) => value!.validateEmpty(context),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  onTab: () => DownBottomSheet(
+                          context: context,
+                          title: 'افراد الاسره',
+                          onTab: (name, id) =>
+                              editProfileData.selectFamily(id, context),
+                          data: FamilyMemberModel().family)
+                      .show(),
+                  hint: 'افراد الاسره',
+                );
+              },
             ),
             MyText(
               title: "متوسط الدخل في الشهر",
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: "متوسط الدخل في الشهر",
-              controller: editProfileData.educationLevel,
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              action: TextInputAction.next,
-              type: TextInputType.text,
-              suffixIcon: Icon(Icons.keyboard_arrow_down),
-              validate: (value) => value!.validateEmpty(context),
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
+              bloc: editProfileData.incomeCubit,
+              listener: (_, state) {
+                editProfileData.averageSalary.text = IncomeModel()
+                    .income
+                    .firstWhere((e) => e.id == state.data)
+                    .name!;
+              },
+              builder: (_, state) {
+                return InkWellTextField(
+                  icon: Icon(Icons.arrow_drop_down),
+                  controller: editProfileData.averageSalary,
+                  validate: (value) => value!.validateEmpty(context),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  onTab: () => DownBottomSheet(
+                          context: context,
+                          title: 'متوسط الدخل في الشهر',
+                          onTab: (name, id) =>
+                              editProfileData.selectIncome(id, context),
+                          data: IncomeModel().income)
+                      .show(),
+                  hint: 'متوسط الدخل في الشهر',
+                );
+              },
             ),
           ],
         ),

@@ -14,15 +14,17 @@ class _FavoritesState extends State<Favorites> {
       length: 2,
       child: HomeScaffold(
         title: "مفضلتي",
-        search: BuildFavSearch(),
+        search: BuildFavSearch(
+          favoritesData: favoritesData,
+        ),
         body: Column(
           children: [
             BuildChangeView(),
             Flexible(
               child: TabBarView(
                 children: [
-                  FavoritesView(),
-                  FavoritesView(),
+                  FavoritesView(favoritesData: favoritesData,),
+                  FavoritesView(favoritesData: favoritesData,),
                 ],
               ),
             ),

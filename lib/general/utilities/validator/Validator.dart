@@ -6,70 +6,88 @@ extension Validator on String {
     return null;
   }
 
-  String? validateEmpty(BuildContext context,{String? message}) {
+  String? validateName(BuildContext context, {String? message}) {
+    if (this.trim().isEmpty ||
+        this.length < 3 ||
+        this.contains(RegExp(r"^[A-Za-z0-9|_|.]")) == false) {
+      return message ?? tr(context, "fillField");
+    }
+    return null;
+
+    // if (this.length < 3) {
+    //   return message ?? tr(context, "fillField");
+    // }
+    // if (this.contains(RegExp(r"^[A-Za-z0-9|_|.]")) == false) {
+    //   return message ?? tr(context, "fillField");
+    // }
+    // return null;
+  }
+
+  String? validateEmpty(BuildContext context, {String? message}) {
     if (this.trim().isEmpty) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     }
     return null;
   }
 
-  String? validatePassword(BuildContext context,{String? message}) {
+  String? validatePassword(BuildContext context, {String? message}) {
     if (this.trim().isEmpty) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     } else if (this.length < 6) {
-      return message ?? tr(context,"passValidation");
+      return message ?? tr(context, "passValidation");
     }
     return null;
   }
 
-  String? validateEmail(BuildContext context,{String? message}) {
+  String? validateEmail(BuildContext context, {String? message}) {
     if (this.trim().isEmpty) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     } else if (!RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(this)) {
-      return message ?? tr(context,"mailValidation");
+      return message ?? tr(context, "mailValidation");
     }
     return null;
   }
 
-  String? validateEmailORNull(BuildContext context,{String? message}) {
+  String? validateEmailORNull(BuildContext context, {String? message}) {
     if (this.trim().isNotEmpty) {
       if (!RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(this)) {
-        return message ?? tr(context,"mailValidation");
+        return message ?? tr(context, "mailValidation");
       }
     }
     return null;
   }
 
-  String? validatePhone(BuildContext context,{String? message}) {
+  String? validatePhone(BuildContext context, {String? message}) {
     if (this.trim().isEmpty) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     } else if (!RegExp(
-        r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)')
-        .hasMatch(this) ||
+                r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)')
+            .hasMatch(this) ||
         this.length < 10) {
-      return message ?? tr(context,"phoneValidation");
+      return message ?? tr(context, "phoneValidation");
     }
     return null;
   }
 
-  String? validatePasswordConfirm(BuildContext context,{required String pass, String? message}) {
+  String? validatePasswordConfirm(BuildContext context,
+      {required String pass, String? message}) {
     if (this.trim().isEmpty) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     } else if (this != pass) {
-      return message ?? tr(context,"confirmValidation");
+      return message ?? tr(context, "confirmValidation");
     }
     return null;
   }
 }
 
 extension ValidatorDrop<DataType> on DataType {
-  String? validateDropDown(BuildContext context,{String? message}) {
+  String? validateDropDown(BuildContext context, {String? message}) {
     if (this == null) {
-      return message ?? tr(context,"fillField");
+      return message ?? tr(context, "fillField");
     }
     return null;
   }

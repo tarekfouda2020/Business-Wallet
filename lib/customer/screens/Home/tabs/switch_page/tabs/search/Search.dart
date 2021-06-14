@@ -10,27 +10,27 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  SearchData searchData = SearchData();
+  final SearchData searchData = SearchData();
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
-        search: BuildSearchDrops(),
+        search: BuildSearchDrops(
+          searchData: searchData,
+        ),
         searchOnTap: widget.onTap,
         // searchOnTap: () => AutoRouter.of(context).pop(),
         body: Column(
           children: [
-            BuildSearchChangeView(
-              searchData: searchData,
-            ),
+            BuildSearchChangeView(searchData: searchData),
             Flexible(
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  SearchView(),
-                  SearchView(),
+                  SearchView(searchData: searchData,),
+                  SearchView(searchData: searchData,),
                 ],
               ),
             ),

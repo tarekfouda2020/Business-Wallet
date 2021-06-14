@@ -1,7 +1,7 @@
 part of 'ProviderDetailsImports.dart';
 
 class ProviderDetailsData {
-  // final GlobalKey btnKey = new GlobalKey();
+  final GlobalKey btnKey2 = new GlobalKey();
 
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();

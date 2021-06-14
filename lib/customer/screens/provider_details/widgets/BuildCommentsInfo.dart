@@ -92,9 +92,9 @@ class BuildCommentsInfo extends StatelessWidget {
                               width: 10,
                             ),
                             InkWell(
-                              // key: providerDetailsData.btnKey,
-                              // onTap: () => providerDetailsData.menu
-                              //     .show(widgetKey: providerDetailsData.btnKey),
+                              key: GlobalKey(),
+                              onTap: () => providerDetailsData.menu
+                                  .show(widgetKey: providerDetailsData.btnKey),
                               child: Icon(
                                 Icons.more_vert_outlined,
                                 size: 27,

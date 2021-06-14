@@ -1,19 +1,19 @@
 part of 'SearchViewImports.dart';
 
 class SearchView extends StatefulWidget {
-  const SearchView({Key? key}) : super(key: key);
+  final SearchData searchData;
+
+  const SearchView({required this.searchData});
 
   @override
   _SearchViewState createState() => _SearchViewState();
 }
 
 class _SearchViewState extends State<SearchView> {
-  final SearchViewData searchViewData = new SearchViewData();
-
   @override
   void initState() {
-    searchViewData.pagingController.addPageRequestListener((pageKey) {
-      searchViewData.fetchPage(pageKey, context);
+    widget.searchData.pagingController.addPageRequestListener((pageKey) {
+      widget.searchData.fetchPage(pageKey, context);
     });
     super.initState();
   }
@@ -26,7 +26,7 @@ class _SearchViewState extends State<SearchView> {
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
-        pagingController: searchViewData.pagingController,
+        pagingController: widget.searchData.pagingController,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 1.1,
           crossAxisSpacing: 10,

@@ -20,7 +20,7 @@ class _FollowersState extends State<Followers> {
   Widget build(BuildContext context) {
     return HomeScaffold(
       title: "متابعتي",
-      search: BuildFollowersSearch(),
+      search: BuildFollowersSearch(followersData: followersData,),
       body: Container(
         alignment: Alignment.topCenter,
         child: PagedGridView<int, FollowerModel>(

@@ -1,19 +1,19 @@
 part of 'FavoritesViewImports.dart';
 
 class FavoritesView extends StatefulWidget {
-  const FavoritesView({Key? key}) : super(key: key);
+final FavoritesData favoritesData;
 
+  const FavoritesView({required this.favoritesData}) ;
   @override
   _FavoritesViewState createState() => _FavoritesViewState();
 }
 
 class _FavoritesViewState extends State<FavoritesView> {
-  final FavoritesViewData favoritesViewData = new FavoritesViewData();
 
   @override
   void initState() {
-    favoritesViewData.pagingController.addPageRequestListener((pageKey) {
-      favoritesViewData.fetchPage(pageKey, 0, 0, "M", context);
+    widget.favoritesData.pagingController.addPageRequestListener((pageKey) {
+      widget.favoritesData.fetchPage(pageKey, context);
     });
     super.initState();
   }
@@ -24,7 +24,7 @@ class _FavoritesViewState extends State<FavoritesView> {
       physics: BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
-      pagingController: favoritesViewData.pagingController,
+      pagingController:  widget.favoritesData.pagingController,
       builderDelegate: PagedChildBuilderDelegate<FavoriteModel>(
         itemBuilder: (context, item, index) => BuildFavoritesItem(
           favoriteModel: item,

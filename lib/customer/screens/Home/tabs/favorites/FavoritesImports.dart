@@ -1,4 +1,7 @@
+import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
+import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
+import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/tabs/favorites_view/FavoritesViewImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/widgets/FavWidgetsImports.dart';

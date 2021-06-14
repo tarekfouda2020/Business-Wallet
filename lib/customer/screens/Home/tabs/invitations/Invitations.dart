@@ -14,15 +14,17 @@ class _InvitationsState extends State<Invitations> {
       length: 2,
       child: HomeScaffold(
         title: "دعوة تجارية",
-        search: BuildInvSearch(),
+        search: BuildInvSearch(
+          invitationsData: invitationsData,
+        ),
         body: Column(
           children: [
             BuildChangeView(),
             Flexible(
               child: TabBarView(
                 children: [
-                  InvitationView(),
-                  InvitationView(),
+                  InvitationView(invitationsData: invitationsData),
+                  InvitationView(invitationsData: invitationsData),
                 ],
               ),
             ),
