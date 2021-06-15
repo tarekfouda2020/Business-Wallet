@@ -9,7 +9,14 @@ class Utils {
     if (strUser != null) {
       UserModel data = UserModel.fromJson(json.decode(strUser));
       changeLanguage(data.lang ?? "ar", context);
-      setCurrentUserData(data,data.step, context, fromWhere: "splash");
+      setCurrentUserData(
+        data,
+        data.step,
+        context,
+        data.customerModel!.userId,
+        fromWhere: "splash",
+
+      );
     } else {
       IntroModel? response = await GeneralRepository(context).getIntro();
       changeLanguage("ar", context);
@@ -28,7 +35,7 @@ class Utils {
   }
 
   static void setCurrentUserData(
-      UserModel model, int? step, BuildContext context,
+      UserModel model, int? step, BuildContext context, String userId,
       {String fromWhere = "login"}) async {
     context.read<UserCubit>().onUpdateUserData(model);
     if (model.typeUser == 1) {
@@ -51,7 +58,8 @@ class Utils {
       if (model.interest == true) {
         AutoRouter.of(context).push(HomeRoute(index: 4));
       } else {
-        AutoRouter.of(context).push(ImportantRoute(fromWhere: fromWhere));
+        AutoRouter.of(context)
+            .push(ImportantRoute(fromWhere: fromWhere, userId: userId));
       }
     }
   }
@@ -231,8 +239,7 @@ class Utils {
     }
   }
 
-  static void copToClipboard(
-      {required String text}) {
+  static void copToClipboard({required String text}) {
     if (text.trim().isEmpty) {
       LoadingDialog.showToastNotification("لا يوجد بيانات للنسخ");
       return;

@@ -38,9 +38,18 @@ class _FavoriteDetailsState extends State<FavoriteDetails> {
                   desc: state.data!.investmentAdsDetails.advertDescription,
                 ),
                 BuildInvTitle(title: " الاسئلة"),
-                BuildQuestionList(
-                  favoriteDetailsData: favoriteDetailsData,
-                  isShow: state.data!.investmentAdsDetails.isShow,
+                Visibility(visible: state.data!.questions.isEmpty,
+                  child: Center(
+                    child: MyText(
+                      title: "لا يوجد اسئلة",
+                      size: 11,
+                      color: MyColors.white,
+                    ),
+                  ),
+                  replacement: BuildQuestionList(
+                    favoriteDetailsData: favoriteDetailsData,
+                    isShow: state.data!.investmentAdsDetails.isShow,
+                  ),
                 ),
                 BuildInvTitle(title: "صاحب الإعلان"),
                 BuildAdsOwner(

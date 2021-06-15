@@ -41,7 +41,7 @@ class BuildCommentsInfo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CachedImage(
                               url: commentModel![index].ownerImg,
@@ -91,15 +91,49 @@ class BuildCommentsInfo extends StatelessWidget {
                             SizedBox(
                               width: 10,
                             ),
-                            InkWell(
-                              key: GlobalKey(),
-                              onTap: () => providerDetailsData.menu
-                                  .show(widgetKey: providerDetailsData.btnKey),
-                              child: Icon(
+                            PopupMenuButton(
+                              color: Colors.white,
+                              elevation: 20,
+                              icon: Icon(
                                 Icons.more_vert_outlined,
-                                size: 27,
                                 color: MyColors.grey,
                               ),
+                              enabled: true,
+                              onSelected: (int value) {
+                                if (value == 0) {
+                                  buildEditComment(
+                                      context, commentModel![index].commentId);
+                                } else if (value == 1) {
+                                  buildReportComment(
+                                      context, commentModel![index].commentId);
+                                } else {
+                                  providerDetailsData.deleteComment(context,
+                                      commentModel![index].commentId, kayanId);
+                                }
+                              },
+                              itemBuilder: (context) => [
+                                PopupMenuItem(
+                                  child: MyText(
+                                    title: "تعديل",
+                                    color: MyColors.black,
+                                  ),
+                                  value: 0,
+                                ),
+                                PopupMenuItem(
+                                  child: MyText(
+                                    title: "ابلاغ",
+                                    color: MyColors.black,
+                                  ),
+                                  value: 1,
+                                ),
+                                PopupMenuItem(
+                                  child: MyText(
+                                    title: "حذف",
+                                    color: MyColors.black,
+                                  ),
+                                  value: 2,
+                                ),
+                              ],
                             )
                           ],
                         ),
@@ -228,7 +262,7 @@ class BuildCommentsInfo extends StatelessWidget {
                 title: "ابلاغ",
                 color: MyColors.primary,
                 onTap: () =>
-                    providerDetailsData.editComment(context, commentId),
+                    providerDetailsData.editComment(context, commentId,kayanId),
               ),
             ],
           ),

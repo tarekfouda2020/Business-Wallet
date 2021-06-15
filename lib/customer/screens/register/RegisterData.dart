@@ -36,6 +36,7 @@ class RegisterData {
     FocusScope.of(context).requestFocus(FocusNode());
     AdaptivePicker.datePicker(
       title: "",
+      minDate: DateTime(1800),
       context: context,
       onConfirm: (date) {
         if (date != null) {

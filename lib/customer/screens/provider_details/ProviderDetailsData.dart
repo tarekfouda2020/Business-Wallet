@@ -1,10 +1,11 @@
 part of 'ProviderDetailsImports.dart';
 
 class ProviderDetailsData {
-  final GlobalKey btnKey2 = new GlobalKey();
+  // final GlobalKey btnKey2 = new GlobalKey();
 
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
+  final GenericCubit<int> menuCubit = new GenericCubit(0);
 
   final GenericCubit<File?> imageCubit = new GenericCubit(null);
   final GenericCubit<bool> contactCubit = GenericCubit(false);
@@ -37,7 +38,7 @@ class ProviderDetailsData {
         .then((value) => fetchData(context, kayanId));
   }
 
-  void addRate(BuildContext context, String kayanId,int rate) async {
+  void addRate(BuildContext context, String kayanId, int rate) async {
     await CustomerRepository(context)
         .addRate(rate, kayanId)
         .then((value) => fetchData(context, kayanId));
@@ -64,45 +65,31 @@ class ProviderDetailsData {
     });
   }
 
-  void deleteComment(BuildContext context, int commentId) async {
+  void deleteComment(
+      BuildContext context, int commentId, String kayanId) async {
     await CustomerRepository(context)
         .deleteComment(commentId)
-        .then((value) => AutoRouter.of(context).pop());
+        .then((value) => fetchData(context, kayanId));
   }
 
-  void editComment(BuildContext context, int commentId) async {
+  void editComment(BuildContext context, int commentId, String kayanId) async {
     await CustomerRepository(context)
         .editComment(commentId, newComment.text)
-        .then((value) => AutoRouter.of(context).pop());
+        .then((value) {
+      fetchData(context, kayanId);
+      newComment.clear();
+      AutoRouter.of(context).pop();
+    });
   }
 
   void reportComment(
       BuildContext context, int commentId, String kayanId) async {
     await CustomerRepository(context)
         .reportComment(commentId, kayanId, report.text)
-        .then((value) => AutoRouter.of(context).pop());
-  }
-
-  late final SpearMenu menu;
-
-  void initMenu(BuildContext context) {
-    List<MenuItemProvider> setData = <MenuItemProvider>[];
-    setData.add(MenuItem(title: "ابلاغ", isActive: false));
-    setData.add(MenuItem(title: "مسح", isActive: false));
-
-    menu = SpearMenu(
-      items: setData,
-      context: context,
-      onClickMenu: (item) => onClickMenu(item, context),
-    );
-  }
-
-  void onClickMenu(MenuItemProvider item, BuildContext context) async {
-    if (item.menuTitle == "ابلاغ") {
-      // CustomerRepository(context).reportComment(commentId);
-    } else {
-      // CustomerRepository(context).deleteComment(commentId);
-    }
-    print('______ ${item.menuTitle}');
+        .then((value) {
+      fetchData(context, kayanId);
+      report.clear();
+      AutoRouter.of(context).pop();
+    });
   }
 }

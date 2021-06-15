@@ -45,7 +45,6 @@ class _InvitationDetailsState extends State<InvitationDetails>
                         context, widget.adsId);
                     invitationDetailsData.getSpecificAdsPoint(
                         context, widget.adsId);
-
                     invitationDetailsData.showExpandCubit.onUpdateData(true);
                   })
                 : Future.delayed(

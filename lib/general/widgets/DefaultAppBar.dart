@@ -34,15 +34,23 @@ class DefaultAppBar extends PreferredSize {
             visible: showLeading == false,
             child: Image.asset(
               Res.logo,
-              height: 30,
+              height: 40,
             ),
             replacement: Container(),
           )
         ],
       ),
-      flexibleSpace: Image.asset(
-        Res.bgheader,
-        fit: BoxFit.fill,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Res.bgheader),
+            fit: BoxFit.fill,
+            colorFilter: ColorFilter.mode(
+              Colors.white24,
+              BlendMode.softLight,
+            ),
+          ),
+        ),
       ),
       centerTitle: false,
       backgroundColor: MyColors.darken,

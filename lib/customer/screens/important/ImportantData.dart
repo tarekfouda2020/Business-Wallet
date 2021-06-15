@@ -33,7 +33,7 @@ class ImportantData {
     interestCubit.onUpdateData(interestCubit.state.data);
   }
 
-  saveImportantData(BuildContext context) async {
+  saveImportantData(BuildContext context,String userId) async {
     String ids = interestCubit.state.data
         .where((element) => element.choose && element.id != 0)
         .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
@@ -41,7 +41,7 @@ class ImportantData {
       return LoadingDialog.showSimpleToast("حدد اهتمامتك");
     } else {
       btnKey.currentState!.animateForward();
-      await CustomerRepository(context).saveInterest(ids);
+      await CustomerRepository(context).saveInterest(ids,userId);
       btnKey.currentState!.animateReverse();
     }
   }

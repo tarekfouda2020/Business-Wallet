@@ -7,17 +7,16 @@ class BuildTermsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15),
-      child: ListView(
-        // mainAxisSize: MainAxisSize.min,
-        children: [
-          HeaderLogo(),
-          Html(
-            data: text,
-          ),
-        ],
-      ),
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      children: [
+        HeaderLogo(),
+        MyText(
+          title: text,
+          size: 11,
+          color: MyColors.white,
+        )
+      ],
     );
   }
 }

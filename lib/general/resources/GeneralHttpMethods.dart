@@ -8,6 +8,7 @@ import 'package:base_flutter/general/constants/GlobalState.dart';
 import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/intro_model.dart';
+import 'package:base_flutter/general/models/social_model.dart';
 import 'package:base_flutter/general/models/user_model.dart';
 import 'package:base_flutter/general/screens/forget_password_code/ForgetPasswordCodeImports.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
@@ -53,11 +54,12 @@ class GeneralHttpMethods {
           user.lang = _lang;
           user.typeUser = type;
           user.interest = interest;
-          user.step=step;
+          user.step = step;
           user.customerModel =
               CustomerModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
-          Utils.setCurrentUserData(user,step, context);
+          Utils.setCurrentUserData(
+              user, step, context, user.customerModel!.userId);
         } else {
           context.router.push(ActiveAccountRoute(userId: userId));
         }
@@ -79,7 +81,8 @@ class GeneralHttpMethods {
           user.interest = interest;
           user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
-          Utils.setCurrentUserData(user,step, context);
+          Utils.setCurrentUserData(
+              user, step, context, user.customerModel!.userId);
         }
       }
 
@@ -221,9 +224,9 @@ class GeneralHttpMethods {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/api/v1/AboutApp", body: body);
+        .get(url: "/Plans/GetAbout", body: body);
     if (_data != null) {
-      return _data["data"]["about_app"];
+      return _data["about"];
     } else {
       return null;
     }
@@ -234,9 +237,9 @@ class GeneralHttpMethods {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/api/v1/AboutApp", body: body);
+        .get(url: "/Plans/GetCondition", body: body);
     if (_data != null) {
-      return _data["data"]["condetions"];
+      return _data["condition"];
     } else {
       return null;
     }
@@ -269,20 +272,35 @@ class GeneralHttpMethods {
     }
   }
 
-  Future<bool> sendMessage(String? name, String? mail, String? message) async {
+  Future<bool> sendMessage(
+      String? name, String? phone, String? title, String? msg) async {
     String lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "lang": "$lang",
-      "name": "$name",
-      "email": "$mail",
-      "comment": "$message",
+      "userName": "$name",
+      "phone": phone,
+      "title": title,
+      "msg": "$msg",
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/api/v1/ContactUs", body: body, showLoader: false);
+        .post(url: "/Plans/SendContact", body: body, showLoader: false);
     if (_data != null) {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<SocialModel?> getSocial() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {"lang": lang};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/GetSocail", body: body);
+    if (_data != null) {
+      return SocialModel.fromJson(_data["socail"]);
+    } else {
+      return null;
     }
   }
 

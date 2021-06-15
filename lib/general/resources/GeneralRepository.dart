@@ -1,5 +1,6 @@
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/intro_model.dart';
+import 'package:base_flutter/general/models/social_model.dart';
 import 'package:base_flutter/general/models/user_model.dart';
 import 'package:flutter/material.dart';
 
@@ -53,8 +54,11 @@ class GeneralRepository {
   Future<List<QuestionModel>> frequentQuestions() =>
       _generalHttpMethods.frequentQuestions();
 
-  Future<bool> sendMessage({String? name, String? mail, String? message}) =>
-      _generalHttpMethods.sendMessage(name, mail, message);
+  Future<SocialModel?> getSocial() => _generalHttpMethods.getSocial();
+
+  Future<bool> sendMessage(
+          {String? name, String? phone, String? title, String? msg}) =>
+      _generalHttpMethods.sendMessage(name, phone, title, msg);
 
   Future<UserModel?> checkActive(String phone) =>
       _generalHttpMethods.checkActive(phone);

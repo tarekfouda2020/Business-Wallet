@@ -62,14 +62,37 @@ class BuildCommentsPageView extends StatelessWidget {
               SizedBox(
                 width: 10,
               ),
-              InkWell(
-                // key: providerDetailsData.btnKey,
-                onTap: () => buildEditComment(context, comments.commentId),
-                child: Icon(
+              PopupMenuButton(
+                color: Colors.white,
+                elevation: 20,
+                icon: Icon(
                   Icons.more_vert_outlined,
-                  size: 27,
                   color: MyColors.grey,
                 ),
+                enabled: true,
+                onSelected: (int value) {
+                  if (value == 0) {
+                    buildEditComment(context, comments.commentId);
+                  } else {
+                    commentsData.deleteComment(context, comments.commentId);
+                  }
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: MyText(
+                      title: "تعديل",
+                      color: MyColors.black,
+                    ),
+                    value: 0,
+                  ),
+                  PopupMenuItem(
+                    child: MyText(
+                      title: "حذف",
+                      color: MyColors.black,
+                    ),
+                    value: 1,
+                  ),
+                ],
               )
             ],
           ),

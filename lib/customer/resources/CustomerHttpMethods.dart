@@ -6,6 +6,7 @@ import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
+import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/comment_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
@@ -111,8 +112,8 @@ class CustomerHttpMethods {
     }
   }
 
-  Future<bool> saveInterest(String items) async {
-    String userId = context.read<UserCubit>().state.model.customerModel!.userId;
+  Future<bool> saveInterest(String items, String userId) async {
+    // String userId = context.read<UserCubit>().state.model.customerModel!.userId;
     Map<String, dynamic> body = {
       "items": "$items",
       "UserId": "$userId",
@@ -130,35 +131,12 @@ class CustomerHttpMethods {
 
       await Utils.saveUserData(user);
       print("____@@_${user.interest}");
-      Utils.setCurrentUserData(user, 0, context);
+      Utils.setCurrentUserData(user, 0, context, userId);
       return true;
     } else {
       return false;
     }
   }
-  //
-  // Future<List<MainModel>> getMainFiltered(
-  //     int pageIndex, int cityId, int interestId, int filterId) async {
-  //   var lang = context.read<LangCubit>().state.locale.languageCode;
-  //   var userId = context.read<UserCubit>().state.model.customerModel!.userId;
-  //
-  //   Map<String, dynamic> body = {
-  //     "lang": lang,
-  //     "userId": userId,
-  //     "city_id": cityId,
-  //     "interests": interestId,
-  //     "top_rate": filterId,
-  //     "page_index": pageIndex
-  //   };
-  //   var _data = await DioHelper(context: context)
-  //       .get(url: "/User/SearchApi", body: body);
-  //   if (_data != null) {
-  //     return List<MainModel>.from(
-  //         _data['Kayans'].map((e) => MainModel.fromJson(e)));
-  //   } else {
-  //     return [];
-  //   }
-  // }
 
 
   Future<List<MainModel>> getMainFiltered(
@@ -183,6 +161,24 @@ class CustomerHttpMethods {
       return [];
     }
   }
+
+  Future<List<AutoSearchModel>> getAutoSearch(String word) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "word":word
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/User/AutoSearchApi", body: body);
+    if (_data != null) {
+      return List<AutoSearchModel>.from(
+          _data['Kayans'].map((e) => AutoSearchModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
   Future<List<MainModel>> getMainSearched(
       int pageIndex, int searchId, int fieldId, String text) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -200,7 +196,7 @@ class CustomerHttpMethods {
         .get(url: "/Account/FilterSearchKayanApi", body: body);
     if (_data != null) {
       return List<MainModel>.from(
-          _data['homeKayan'].map((e) => MainModel.fromJson(e)));
+          _data['Kayans'].map((e) => MainModel.fromJson(e)));
     } else {
       return [];
     }
@@ -243,6 +239,7 @@ class CustomerHttpMethods {
       return [];
     }
   }
+
   //
   // Future<List<FollowerModel>> getFollowersFiltered(
   //     int pageIndex, int cityId, int interestId, int filterId) async {
@@ -266,7 +263,6 @@ class CustomerHttpMethods {
   //     return [];
   //   }
   // }
-
 
   Future<List<FollowerModel>> getFollowersFiltered(
       int pageIndex, int cityId, int interestId, int filterId) async {

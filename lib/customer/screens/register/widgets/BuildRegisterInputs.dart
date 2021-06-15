@@ -18,7 +18,7 @@ class BuildRegisterInputs extends StatelessWidget {
           LabelTextField(
             hint: "اسم المستخدم",
             controller: registerData.userName,
-            validate: (value) => value!.validateEmpty(context),
+            validate: (value) => value!.validateName(context),
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
           ),
@@ -166,7 +166,6 @@ class BuildRegisterInputs extends StatelessWidget {
               );
             },
           ),
-
           Container(
             margin: const EdgeInsets.only(top: 10),
             child: MyText(

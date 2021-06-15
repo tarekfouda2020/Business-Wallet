@@ -1,9 +1,22 @@
 part of 'SearchImports.dart';
 
 class SearchData {
+  final TextEditingController search = TextEditingController();
+  late String searchText;
+
+  Future<List<AutoSearchModel>> fetchAutoSearch(BuildContext context,String word) async {
+    var autoSearch = await CustomerRepository(context).getAutoSearch(word);
+    return autoSearch;
+  }
+
+  void onSelectModel(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+    searchText = search.text;
+    pagingController.refresh();
+  }
+
   final PagingController<int, MainModel> pagingController =
       PagingController(firstPageKey: 1);
-  final TextEditingController search = TextEditingController();
 
   int fieldId = 0;
   int filterId = 0;

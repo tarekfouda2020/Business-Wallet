@@ -9,6 +9,12 @@ class _ContactUsState extends State<ContactUs> {
   final ContactUsData contactUsData = new ContactUsData();
 
   @override
+  void initState() {
+    contactUsData.fetchData(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
@@ -27,9 +33,11 @@ class _ContactUsState extends State<ContactUs> {
             margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             color: MyColors.primary,
             borderRadius: 30,
-            onTap: () {},
+            onTap: () => contactUsData.contactUs(context),
           ),
-          BuildSocialView(),
+          BuildSocialView(
+            contactUsData: contactUsData,
+          ),
         ],
       ),
     );

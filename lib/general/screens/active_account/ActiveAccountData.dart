@@ -14,7 +14,7 @@ class ActiveAccountData {
       var result = await GeneralRepository(context).sendCode(code.text, userId);
       btnKey.currentState!.animateReverse();
       if (result) {
-        AutoRouter.of(context).push(ImportantRoute(fromWhere: "splash"));
+        AutoRouter.of(context).push(ImportantRoute(fromWhere: "splash",userId: userId));
       }
     }
   }

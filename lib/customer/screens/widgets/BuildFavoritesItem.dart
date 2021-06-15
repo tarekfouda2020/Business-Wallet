@@ -24,9 +24,11 @@ class BuildFavoritesItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: EdgeInsets.zero,
         child: CachedImage(
-          // url:checkInvite?invitationModel!.img: favoriteModel!.imgAnnouncement,
-          url:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUoQZSsfmS3ZPKPHu-KORypJzT3ue3T00eSA&usqp=CAU",
+          url: checkInvite
+              ? invitationModel!.img
+              : favoriteModel!.imgAnnouncement,
+          // url:
+          //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUoQZSsfmS3ZPKPHu-KORypJzT3ue3T00eSA&usqp=CAU",
           height: 200,
           haveBorder: false,
           alignment: Alignment.bottomCenter,

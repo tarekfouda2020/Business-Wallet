@@ -3,6 +3,7 @@ part of 'ProfileWidgetsImports.dart';
 class BuildProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var customer= context.read<UserCubit>().state.model.customerModel;
     return Flexible(
       child: ListView(
         padding: const EdgeInsets.only(top: 15, bottom: 60),
@@ -22,7 +23,7 @@ class BuildProfileView extends StatelessWidget {
             title: "الاهتمامات",
             icon: MdiIcons.accountGroup,
             onTap: () =>
-                AutoRouter.of(context).push(ImportantRoute()),
+                AutoRouter.of(context).push(ImportantRoute(userId: customer!.userId)),
           ),
           BuildProfileItem(
             title: "المراسلات",

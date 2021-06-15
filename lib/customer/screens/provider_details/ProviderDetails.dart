@@ -15,7 +15,6 @@ class _ProviderDetailsState extends State<ProviderDetails> {
   @override
   void initState() {
     providerDetailsData.fetchData(context, widget.kayanId);
-    providerDetailsData.initMenu(context);
 
     super.initState();
   }

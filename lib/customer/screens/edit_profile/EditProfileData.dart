@@ -74,10 +74,10 @@ class EditProfileData {
     cityId = CitiesModel(fkCountry: 3, id: user.fkCity!, name: user.cityName!);
     gender.text = (user.genderUser!) == "f" ? "انثي" : "ذكر";
     birthDate.text = user.birthDateUser!;
-    living.text = user.accommodationType!;
-    educationLevel.text = user.educationLevel!;
-    familyMembers.text = user.numFamily!;
-    averageSalary.text = user.averageIncomePerYear!;
+    living.text = user.accommodationType ?? "";
+    educationLevel.text = user.educationLevel ?? "";
+    familyMembers.text = user.numFamily ?? "";
+    averageSalary.text = user.averageIncomePerYear ?? "";
   }
 
   setImage() async {
@@ -104,7 +104,7 @@ class EditProfileData {
 
   void updateUserData(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      // var user = context.read<UserCubit>().state.model.customerModel;
+      var user = context.read<UserCubit>().state.model.customerModel;
 
       btnKey.currentState!.animateForward();
       UpdateCustomerModel model = UpdateCustomerModel(
@@ -112,7 +112,9 @@ class EditProfileData {
         phone: phone.text,
         address: "",
         averageIncome: incomeCubit.state.data,
-        birthDate: dateCubit.state.data,
+        birthDate: dateCubit.state.data == ""
+            ? user!.birthDateUser
+            : dateCubit.state.data,
         codePhone: "+966",
         education: educationCubit.state.data,
         email: email.text,

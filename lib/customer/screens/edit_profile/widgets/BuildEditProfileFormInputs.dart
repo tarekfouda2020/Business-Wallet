@@ -26,7 +26,7 @@ class BuildEditProfileFormInputs extends StatelessWidget {
               action: TextInputAction.next,
               type: TextInputType.name,
               suffixIcon: Icon(Icons.edit),
-              validate: (value) => value!.validateEmpty(context),
+              validate: (value) => value!.validateName(context),
             ),
             MyText(
               title: "البريد الالكتروني",
@@ -53,7 +53,7 @@ class BuildEditProfileFormInputs extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 10),
               action: TextInputAction.next,
               type: TextInputType.phone,
-              validate: (value) => value!.validateEmpty(context),
+              validate: (value) => value!.validatePhone(context),
             ),
             MyText(
               title: "الدوله",
@@ -142,37 +142,7 @@ class BuildEditProfileFormInputs extends StatelessWidget {
                 );
               },
              ),
-            // BlocBuilder<GenericCubit<String>, GenericState<String>>(
-            //   bloc: editProfileData.dateCubit,
-            //   builder: (context, state) {
-            //     if (state is GenericInitialState) {
-            //       return InkWellTextField(
-            //         margin: const EdgeInsets.symmetric(vertical: 10),
-            //         controller: editProfileData.birthDate,
-            //         hint: "تاريخ الميلاد",
-            //         onTab: () => editProfileData.getDatePicker(context),
-            //         validate: (value) => value!.validateEmpty(context),
-            //         icon: Icon(
-            //           Icons.calendar_today_outlined,
-            //           color: MyColors.white,
-            //         ),
-            //       );
-            //     } else {
-            //       return InkWellTextField(
-            //         margin: const EdgeInsets.symmetric(vertical: 10),
-            //         controller: editProfileData.birthDate,
-            //         hint: state.data,
-            //         onTab: () => editProfileData.getDatePicker(context),
-            //         // onTab: (){},
-            //         validate: (value) => value!.validateEmpty(context),
-            //         icon: Icon(
-            //           Icons.calendar_today_outlined,
-            //           color: MyColors.white,
-            //         ),
-            //       );
-            //     }
-            //   },
-            // ),
+
             MyText(
               title: "السكن",
               size: 11,

@@ -4,6 +4,7 @@ import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
+import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';
@@ -43,8 +44,11 @@ class CustomerRepository {
   Future<List<UserInterestModel>> getInterest() =>
       _customerHttpMethods.getInterest();
 
-  Future<bool> saveInterest(String items) =>
-      _customerHttpMethods.saveInterest(items);
+  Future<bool> saveInterest(String items, String userId) =>
+      _customerHttpMethods.saveInterest(items, userId);
+
+  Future<List<AutoSearchModel>> getAutoSearch(String word) =>
+      _customerHttpMethods.getAutoSearch(word);
 
   Future<List<MainModel>> getMainFiltered(
           int pageIndex, int cityId, int interestId, int filterId) =>
@@ -58,7 +62,9 @@ class CustomerRepository {
   Future<MainDetailsModel?> getMainDetails(String id) =>
       _customerHttpMethods.getMainDetails(id);
 
-  Future<List<FollowerModel>> getFollowersData(int pageIndex,) =>
+  Future<List<FollowerModel>> getFollowersData(
+    int pageIndex,
+  ) =>
       _customerHttpMethods.getFollowersData(pageIndex);
 
   Future<List<FollowerModel>> getFollowersFiltered(

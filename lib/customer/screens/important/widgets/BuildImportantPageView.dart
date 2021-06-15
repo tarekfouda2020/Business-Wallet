@@ -2,8 +2,10 @@ part of 'ImportantWidgetsImports.dart';
 
 class BuildImportantPageView extends StatelessWidget {
   final ImportantData importantData;
+  final String userId;
 
-  const BuildImportantPageView({required this.importantData});
+  const BuildImportantPageView(
+      {required this.importantData, required this.userId});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class BuildImportantPageView extends StatelessWidget {
                 btnKey: importantData.btnKey,
                 title: "حفظ",
                 color: MyColors.primary,
-                onTap: () => importantData.saveImportantData(context),
+                onTap: () => importantData.saveImportantData(context, userId),
               )
             ],
           );
