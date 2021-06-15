@@ -132,7 +132,7 @@ class CustomerHttpMethods {
 
       await Utils.saveUserData(user);
       print("____@@_${user.interest}");
-      Utils.setCurrentUserData(user, 0, context, userId);
+      Utils.setCurrentUserData(user, 0, context, userId: userId);
       return true;
     } else {
       return false;

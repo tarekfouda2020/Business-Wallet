@@ -307,7 +307,8 @@ class AppRouter extends _i1.RootStackRouter {
     ImportantRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
-          final args = data.argsAs<ImportantRouteArgs>();
+          final args = data.argsAs<ImportantRouteArgs>(
+              orElse: () => const ImportantRouteArgs());
           return _i33.Important(fromWhere: args.fromWhere, userId: args.userId);
         }),
     ConversationRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
@@ -848,7 +849,7 @@ class DetailsRoute extends _i1.PageRouteInfo {
 }
 
 class ImportantRoute extends _i1.PageRouteInfo<ImportantRouteArgs> {
-  ImportantRoute({String fromWhere = "login", required String userId})
+  ImportantRoute({String fromWhere = "login", String? userId})
       : super(name,
             path: '/Important',
             args: ImportantRouteArgs(fromWhere: fromWhere, userId: userId));
@@ -857,11 +858,11 @@ class ImportantRoute extends _i1.PageRouteInfo<ImportantRouteArgs> {
 }
 
 class ImportantRouteArgs {
-  const ImportantRouteArgs({this.fromWhere = "login", required this.userId});
+  const ImportantRouteArgs({this.fromWhere = "login", this.userId});
 
   final String fromWhere;
 
-  final String userId;
+  final String? userId;
 }
 
 class ConversationRoute extends _i1.PageRouteInfo {

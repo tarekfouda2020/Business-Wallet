@@ -35,7 +35,7 @@ class BuildFormInputs extends StatelessWidget {
             IconTextFiled(
               hint: tr(context, "password"),
               controller: loginData.password,
-              validate: (value) => value!.validatePassword(context),
+              validate: (value) => value!.validateEmpty(context),
               isPassword: true,
               action: TextInputAction.done,
               suffixIcon: Icon(Icons.remove_red_eye),

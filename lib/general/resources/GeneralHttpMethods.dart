@@ -59,7 +59,7 @@ class GeneralHttpMethods {
               CustomerModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
           Utils.setCurrentUserData(
-              user, step, context, user.customerModel!.userId);
+              user, step, context, userId: user.customerModel!.userId);
         } else {
           context.router.push(ActiveAccountRoute(userId: userId));
         }
@@ -82,7 +82,7 @@ class GeneralHttpMethods {
           user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
           Utils.setCurrentUserData(
-              user, step, context, user.customerModel!.userId);
+              user, step, context);
         }
       }
 

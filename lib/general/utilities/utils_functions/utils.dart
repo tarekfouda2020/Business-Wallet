@@ -13,7 +13,6 @@ class Utils {
         data,
         data.step,
         context,
-        data.customerModel!.userId,
         fromWhere: "splash",
 
       );
@@ -35,8 +34,8 @@ class Utils {
   }
 
   static void setCurrentUserData(
-      UserModel model, int? step, BuildContext context, String userId,
-      {String fromWhere = "login"}) async {
+      UserModel model, int? step, BuildContext context,
+      {String fromWhere = "login", String? userId}) async {
     context.read<UserCubit>().onUpdateUserData(model);
     if (model.typeUser == 1) {
       if (step == 0) {
