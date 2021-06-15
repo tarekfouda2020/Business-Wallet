@@ -1,58 +1,61 @@
 part of 'ConversationWidgetsImports.dart';
 
 class BuildConversationPageView extends StatelessWidget {
+  final ConversationModel conversationModel;
+
+  const BuildConversationPageView({required this.conversationModel});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 10),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          color: MyColors.black,
-          child: Row(
-            children: [
-              Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(Res.pic),
-                      fit: BoxFit.fill,
-                    )),
-              ),
-              SizedBox(width: 10,),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: MyColors.black,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Row(
+        children: [
+          CachedImage(
+            url: conversationModel.img,
+            haveRadius: false,
+            width: 55,
+            height: 55,
+            borderColor: MyColors.white,
+            boxShape: BoxShape.circle,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MyText(
-                          title: "AutoCode",
-                          size: 10,
-                          color: MyColors.white,
-                        ),
-                        MyText(
-                          title: "pm 05:39 25/5/2021",
-                          size: 10,
-                          color: MyColors.greyWhite.withOpacity(0.7),
-                        ),
-                      ],
+                    MyText(
+                      title: conversationModel.userName,
+                      size: 10,
+                      color: MyColors.white,
                     ),
                     MyText(
-                      title: "new",
+                      title: conversationModel.date,
                       size: 10,
                       color: MyColors.greyWhite.withOpacity(0.7),
                     ),
                   ],
                 ),
-              ),
-            ],
+                MyText(
+                  title: conversationModel.lastMsg,
+                  size: 10,
+                  color: MyColors.greyWhite.withOpacity(0.7),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

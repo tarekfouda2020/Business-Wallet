@@ -6,6 +6,7 @@ import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
+import 'package:base_flutter/customer/models/conversation_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';
 import 'package:base_flutter/customer/models/investment_ads_model.dart';
@@ -162,4 +163,7 @@ class CustomerRepository {
           String fkBank, String iBAN) =>
       _customerHttpMethods.reconciliationBank(
           cost, point, fullName, fkBank, iBAN);
+
+  Future<List<ConversationModel>> getConversation() =>
+      _customerHttpMethods.getConversation();
 }

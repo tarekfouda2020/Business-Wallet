@@ -9,6 +9,7 @@ import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/comment_model.dart';
+import 'package:base_flutter/customer/models/conversation_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';
@@ -812,6 +813,25 @@ class CustomerHttpMethods {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<List<ConversationModel>> getConversation() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "id_user": userId,
+
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/ChatApi/GetListMsgOfUser", body: body);
+    if (_data != null) {
+      return List<ConversationModel>.from(
+          _data['data'].map((e) => ConversationModel.fromJson(e)));
+    } else {
+      return [];
     }
   }
 }
