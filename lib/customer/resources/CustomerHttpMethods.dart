@@ -174,7 +174,7 @@ class CustomerHttpMethods {
         .get(url: "/User/AutoSearchApi", body: body);
     if (_data != null) {
       return List<AutoSearchModel>.from(
-          _data['Kayans'].map((e) => AutoSearchModel.fromJson(e)));
+          _data['kayans'].map((e) => AutoSearchModel.fromJson(e)));
     } else {
       return [];
     }

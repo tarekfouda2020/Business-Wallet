@@ -2,16 +2,16 @@ part of 'SearchImports.dart';
 
 class SearchData {
   final TextEditingController search = TextEditingController();
-  late String searchText;
+  final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
 
   Future<List<AutoSearchModel>> fetchAutoSearch(BuildContext context,String word) async {
     var autoSearch = await CustomerRepository(context).getAutoSearch(word);
     return autoSearch;
   }
 
-  void onSelectModel(BuildContext context) {
+  void onSelectModel(BuildContext context,AutoSearchModel model) {
     FocusScope.of(context).requestFocus(FocusNode());
-    searchText = search.text;
+    searchUpdateCubit.onUpdateData(model.name);
     pagingController.refresh();
   }
 

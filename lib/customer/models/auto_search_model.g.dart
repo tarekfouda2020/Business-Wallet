@@ -11,8 +11,6 @@ AutoSearchModel _$AutoSearchModelFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     name: json['name'] as String,
     fieldId: json['FieldId'] as int,
-    img: json['img'] as String,
-    bac: json['bac'] as String,
   );
 }
 
@@ -21,6 +19,4 @@ Map<String, dynamic> _$AutoSearchModelToJson(AutoSearchModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'FieldId': instance.fieldId,
-      'img': instance.img,
-      'bac': instance.bac,
     };

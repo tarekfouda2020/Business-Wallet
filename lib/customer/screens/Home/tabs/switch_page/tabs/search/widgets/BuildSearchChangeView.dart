@@ -20,12 +20,21 @@ class _BuildSearchChangeViewState extends State<BuildSearchChangeView> {
         children: [
           Expanded(
             flex: 7,
-            child: AutoCompleteField<AutoSearchModel>(
-              label: "كلمة البحث",
-              onSearch: (text) async =>
-                  widget.searchData.fetchAutoSearch(context, text),
-              onSubmit: (model) => widget.searchData.onSelectModel(context),
-              controller: widget.searchData.search,
+            child: BlocConsumer<GenericCubit, GenericState>(
+              bloc: widget.searchData.searchUpdateCubit,
+              listener: (_,state){
+                if(state.data!=null)widget.searchData.search.text=state.data;
+              },
+              builder: (context, state) {
+                return AutoCompleteField<AutoSearchModel>(
+                  label: "كلمة البحث",
+                  onSearch: (text) async =>
+                      widget.searchData.fetchAutoSearch(context, text),
+                  onSubmit: (model) =>
+                      widget.searchData.onSelectModel(context, model),
+                  controller: widget.searchData.search,
+                );
+              },
             ),
           ),
           Expanded(

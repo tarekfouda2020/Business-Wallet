@@ -21,7 +21,8 @@ class AutoCompleteField<DataType> extends StatelessWidget {
     return TypeAheadField<DataType>(
       textFieldConfiguration: TextFieldConfiguration(
         autofocus: false,
-        style: GoogleFonts.cairo(fontSize: 10),
+        controller: controller,
+        style: GoogleFonts.cairo(fontSize: 12,fontWeight: FontWeight.bold),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -57,23 +58,15 @@ class AutoCompleteField<DataType> extends StatelessWidget {
         ),
       ),
       suggestionsCallback: onSearch,
-      itemBuilder: (context, suggestion) {
+      itemBuilder: (context, DataType suggestion) {
         return Container(
           height: 45,
           padding: EdgeInsets.symmetric(horizontal: 10),
-          decoration: BoxDecoration(
-            color: MyColors.white,
-            border: Border(
-              bottom: BorderSide(
-                color: MyColors.greyWhite,
-                width: 1,
-              ),
-            ),
-          ),
+          color: MyColors.secondary,
           child: Column(
             children: [
               MyText(
-                title: "suggestion.toString()",
+                title: suggestion.toString(),
                 size: 10,
                 color: MyColors.white,
               ),
