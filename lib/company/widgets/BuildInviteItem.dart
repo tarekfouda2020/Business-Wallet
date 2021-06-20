@@ -8,12 +8,10 @@ import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class BuildFavItem extends StatelessWidget {
-  final CompFavoriteModel? favoriteModel;
+class BuildInviteItem extends StatelessWidget {
+  final CompInvitationModel? invitationModel;
 
-
-  const BuildFavItem(
-      {this.favoriteModel});
+  const BuildInviteItem({this.invitationModel});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class BuildFavItem extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding: EdgeInsets.zero,
         child: CachedImage(
-          url:  favoriteModel!.img,
+          url: invitationModel!.img,
           height: 200,
           haveBorder: false,
           borderColor: MyColors.greyWhite,
@@ -48,7 +46,7 @@ class BuildFavItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     MyText(
-                      title: favoriteModel!.kayanName,
+                      title: invitationModel!.name,
                       size: 9,
                       color: MyColors.white,
                     ),
@@ -63,7 +61,7 @@ class BuildFavItem extends StatelessWidget {
                           width: 5,
                         ),
                         MyText(
-                          title: favoriteModel!.phone,
+                          title: invitationModel!.phone,
                           size: 10,
                           color: MyColors.white,
                         ),
@@ -82,7 +80,7 @@ class BuildFavItem extends StatelessWidget {
                       width: 5,
                     ),
                     MyText(
-                      title: favoriteModel!.address,
+                      title: invitationModel!.address,
                       size: 9,
                       color: MyColors.white,
                     ),

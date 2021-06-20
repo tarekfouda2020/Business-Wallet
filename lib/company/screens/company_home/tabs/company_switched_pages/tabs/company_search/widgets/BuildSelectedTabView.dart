@@ -1,50 +1,54 @@
 part of 'CompSearchWidgetsImports.dart';
 
 class BuildSelectedTabView extends StatelessWidget {
+  final CompanySearchData companySearchData;
+
+  const BuildSelectedTabView({required this.companySearchData});
+
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Container(
-        height: 55,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        decoration: BoxDecoration(
-          color: MyColors.black.withOpacity(0.95),
-          boxShadow: [
-            BoxShadow(
-              color: MyColors.greyWhite,
-              spreadRadius: 1,
-              blurRadius: 1,
-            )
-          ],
-          borderRadius: BorderRadius.circular(30),
-        ),
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            BuildHeaderDrop(title: "الكل"),
-            BuildHeaderDrop(title: "ملف حسب"),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: EdgeInsets.symmetric(vertical: 12),
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: FutureBottomSheet<FieldDropDownModel>(
+              label: "الكل",
+              validate: (FieldDropDownModel value) =>
+                  value.validateDropDown(context),
+              useName: true,
+              finData: (filter) async =>
+                  await CustomerRepository(context).getFields(),
+              onChange: (FieldDropDownModel value) =>
+                  companySearchData.onSelectField(value),
+            ),
+          ),
+          Flexible(
+            child: FutureBottomSheet<FilterModel>(
+              label: "صنف حسب",
+              validate: (FilterModel value) => value.validateDropDown(context),
+              useName: true,
+              data: FilterModel.mainSearchFilters,
+              onChange: (FilterModel value) => companySearchData.selectType(value),
+            ),
+          ),
+          InkWell(
+            onTap: () => companySearchData.pagingController.refresh(),
+            child: Container(
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
                 color: MyColors.primary,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(25),
-                ),
               ),
-              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
               child: MyText(
-                title: "تأكيد",
+                title: "البحث",
                 size: 10,
-                color: MyColors.black,
+                color: Colors.black,
               ),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

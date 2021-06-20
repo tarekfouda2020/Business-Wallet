@@ -21,17 +21,6 @@ class FollowersData {
     }
   }
 
-  // void fetchPage(int pageIndex, BuildContext context) async {
-  //   followerData =
-  //   await CustomerRepository(context).getFollowersData(pageIndex);
-  //   final isLastPage = followerData.length < pageSize;
-  //   if (isLastPage) {
-  //     pagingController.appendLastPage(followerData);
-  //   } else {
-  //     final nextPageKey = pageIndex + 1;
-  //     pagingController.appendPage(followerData, nextPageKey);
-  //   }
-  // }
 
   void onSelectCities(CitiesModel? model) {
     if (model != null) cityId = model.id;

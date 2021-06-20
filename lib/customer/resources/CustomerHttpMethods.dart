@@ -203,6 +203,9 @@ class CustomerHttpMethods {
     }
   }
 
+
+
+
   Future<MainDetailsModel?> getMainDetails(String id) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
@@ -241,29 +244,6 @@ class CustomerHttpMethods {
     }
   }
 
-  //
-  // Future<List<FollowerModel>> getFollowersFiltered(
-  //     int pageIndex, int cityId, int interestId, int filterId) async {
-  //   var lang = context.read<LangCubit>().state.locale.languageCode;
-  //   var userId = context.read<UserCubit>().state.model.customerModel!.userId;
-  //
-  //   Map<String, dynamic> body = {
-  //     "lang": lang,
-  //     "userId": userId,
-  //     "CityId": cityId,
-  //     "interestId": interestId,
-  //     "RateId": filterId,
-  //     "page_index": pageIndex
-  //   };
-  //   var _data = await DioHelper(context: context)
-  //       .get(url: "/User/SearchKayanFollowApi", body: body);
-  //   if (_data != null) {
-  //     return List<FollowerModel>.from(
-  //         _data['follows'].map((e) => FollowerModel.fromJson(e)));
-  //   } else {
-  //     return [];
-  //   }
-  // }
 
   Future<List<FollowerModel>> getFollowersFiltered(
       int pageIndex, int cityId, int interestId, int filterId) async {

@@ -10,42 +10,42 @@ class BuildContactData extends StatelessWidget {
           Row(
             children: [
               BuildContactItem(
-                "رقم الجوال",
-                Icons.phone_in_talk_outlined,
-                Colors.green,
-                "desc",
+                title: "رقم الجوال",
+                iconData: Icons.phone_in_talk_outlined,
+                color: Colors.green,
+                desc: "desc",
               ),
               BuildContactItem(
-                "البريد الالكتروني",
-                Icons.phone_in_talk_outlined,
-                Colors.yellow,
-                "desc",
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              BuildContactItem(
-                "رابط المنشأة",
-                Icons.phone_in_talk_outlined,
-                Colors.blue,
-                "desc",
-              ),
-              BuildContactItem(
-                "اجراء محادثة",
-                Icons.phone_in_talk_outlined,
-                Colors.yellow,
-                "desc",
+                title: "البريد الالكتروني",
+                iconData: Icons.phone_in_talk_outlined,
+                color: Colors.yellow,
+                desc: "desc",
               ),
             ],
           ),
           Row(
             children: [
               BuildContactItem(
-                "العنوان",
-                MdiIcons.mapMarkerRadius,
-                Colors.red,
-                "desc",
+                title: "رابط المنشأة",
+                iconData: Icons.phone_in_talk_outlined,
+                color: Colors.blue,
+                desc: "desc",
+              ),
+              BuildContactItem(
+                title: "اجراء محادثة",
+                iconData: Icons.phone_in_talk_outlined,
+                color: Colors.yellow,
+                desc: "desc",
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              BuildContactItem(
+                title: "العنوان",
+                iconData: MdiIcons.mapMarkerRadius,
+                color: Colors.red,
+                desc: "desc",
               ),
             ],
           ),

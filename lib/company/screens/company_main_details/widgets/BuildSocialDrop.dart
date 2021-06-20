@@ -2,8 +2,10 @@ part of 'DetailsWidgetsImports.dart';
 
 class BuildSocialDrop extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
+  final DetailsModel? detailsModel;
 
-  BuildSocialDrop({required this.companyMainDetailsData});
+  BuildSocialDrop(
+      {required this.companyMainDetailsData, required this.detailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +20,34 @@ class BuildSocialDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: Container(
-                height: 50,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (_, index) => Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 3),
-                    child: Icon(
-                      MdiIcons.whatsapp,
-                      size: 35,
+                margin:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BuildSocialItem(
+                      image: Res.wha,
+                      onTap: () => Utils.launchWhatsApp(
+                        detailsModel!.whatsUp,
+                      ),
                     ),
-                  )
+                    BuildSocialItem(
+                      image: Res.facebook,
+                      onTap: () => Utils.launchWhatsApp(
+                        detailsModel!.faceBook,
+                      ),
+                    ),
+                    BuildSocialItem(
+                      image: Res.twitter,
+                      onTap: () => Utils.launchWhatsApp(
+                        detailsModel!.twitter,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),
-
               ),
             ),
           ],

@@ -2,8 +2,13 @@ part of 'DetailsWidgetsImports.dart';
 
 class BuildCommentsDrop extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
+  final List<CommentModel>? commentModel;
+  final String kayanId;
 
-  BuildCommentsDrop({required this.companyMainDetailsData});
+  BuildCommentsDrop(
+      {required this.companyMainDetailsData,
+      required this.commentModel,
+      required this.kayanId});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +18,9 @@ class BuildCommentsDrop extends StatelessWidget {
         return Column(
           children: [
             BuildDropItem(
-                title: "التعليقات",
-                genericCubit: companyMainDetailsData.commentsDropCubit),
+              title: "التعليقات",
+              genericCubit: companyMainDetailsData.commentsDropCubit,
+            ),
             Visibility(
               visible: state.data,
               child: Container(
@@ -22,8 +28,12 @@ class BuildCommentsDrop extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (_, index) => BuildCommentItem(),
+                  itemCount: commentModel!.length,
+                  itemBuilder: (_, index) => BuildCommentItem(
+                    commentModel: commentModel![index],
+                    companyMainDetailsData: companyMainDetailsData,
+                    kayanId: kayanId,
+                  ),
                 ),
               ),
               replacement: Container(

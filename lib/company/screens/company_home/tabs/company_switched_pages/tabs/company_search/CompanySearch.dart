@@ -16,20 +16,20 @@ class _CompanySearchState extends State<CompanySearch> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        backgroundColor: MyColors.darken,
-        appBar: BuildAppBar(
+      child: HomeScaffold(
+        search: BuildSelectedTabView(
           companySearchData: companySearchData,
-          onTap: widget.onTap,
         ),
+        searchOnTap: widget.onTap,
         body: Column(
           children: [
             BuildSearchText(companySearchData: companySearchData),
             Flexible(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  CompSearchMenu(),
-                  CompSearchMenu(),
+                  CompSearchMenu(companySearchData: companySearchData,),
+                  CompSearchMenu(companySearchData: companySearchData,),
                 ],
               ),
             ),

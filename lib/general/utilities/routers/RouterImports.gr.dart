@@ -378,8 +378,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     CompanyMainDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i45.CompanyMainDetails();
+        builder: (data) {
+          final args = data.argsAs<CompanyMainDetailsRouteArgs>();
+          return _i45.CompanyMainDetails(kayanId: args.kayanId);
         }),
     CompanyProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -996,10 +997,20 @@ class CompanyHomeRouteArgs {
   final int index;
 }
 
-class CompanyMainDetailsRoute extends _i1.PageRouteInfo {
-  const CompanyMainDetailsRoute() : super(name, path: '/company-main-details');
+class CompanyMainDetailsRoute
+    extends _i1.PageRouteInfo<CompanyMainDetailsRouteArgs> {
+  CompanyMainDetailsRoute({required String kayanId})
+      : super(name,
+            path: '/company-main-details',
+            args: CompanyMainDetailsRouteArgs(kayanId: kayanId));
 
   static const String name = 'CompanyMainDetailsRoute';
+}
+
+class CompanyMainDetailsRouteArgs {
+  const CompanyMainDetailsRouteArgs({required this.kayanId});
+
+  final String kayanId;
 }
 
 class CompanyProfileRoute extends _i1.PageRouteInfo {

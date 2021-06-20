@@ -9,24 +9,40 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
   final CompanyFollowersData companyFollowersData = new CompanyFollowersData();
 
   @override
+  void initState() {
+    companyFollowersData.pagingController.addPageRequestListener((pageKey) {
+      companyFollowersData.fetchPage(pageKey, context);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.darken,
-      appBar: BuildAppBar(
+    return HomeScaffold(
+      title: "متابعتي",
+      search: BuildSelectedTabView(
         companyFollowersData: companyFollowersData,
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+      body: Container(
+        alignment: Alignment.topCenter,
+        child: PagedGridView<int, FollowerModel>(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          showNewPageProgressIndicatorAsGridChild: false,
+          showNewPageErrorIndicatorAsGridChild: false,
+          showNoMoreItemsIndicatorAsGridChild: false,
+          pagingController: companyFollowersData.pagingController,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 1.1,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+          ),
+          builderDelegate: PagedChildBuilderDelegate<FollowerModel>(
+            itemBuilder: (context, item, index) => BuildMainItem(
+              followerModel: item,
+            ),
+          ),
         ),
-        itemCount: 4,
-        itemBuilder: (_, index) {
-          return BuildMainItem();
-        },
       ),
     );
   }

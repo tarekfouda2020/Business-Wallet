@@ -13,16 +13,15 @@ class _CompanyInvitationState extends State<CompanyInvitation> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        backgroundColor: MyColors.darken,
-        appBar: BuildAppBar(
+      child: HomeScaffold(
+        title: "دعوة تجارية",
+        search: BuildMenuView(
           companyInvitationData: companyInvitationData,
         ),
         body: TabBarView(
           children: [
-            InvitationMenu(),
-            InvitationMenu(),
+            InvitationMenu(companyInvitationData: companyInvitationData,),
+            InvitationMenu(companyInvitationData: companyInvitationData,),
           ],
         ),
       ),

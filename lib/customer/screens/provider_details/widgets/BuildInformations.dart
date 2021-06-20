@@ -15,9 +15,7 @@ class BuildInformations extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BuildUserPhoto(
-            baseImg: detailsModel!.baseImg,
-          ),
+          BuildUserPhoto(baseImg: detailsModel!.baseImg),
           Expanded(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),

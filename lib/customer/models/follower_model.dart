@@ -20,14 +20,13 @@ class FollowerModel {
   int numberEdit;
 
   FollowerModel(
-      {
-       required this.id,
-        required    this.name,
-        required  this.background,
-        required  this.img,
-        required  this.rate,
-        required  this.count,
-        required  this.numberEdit});
+      {required this.id,
+      required this.name,
+      required this.background,
+      required this.img,
+      required this.rate,
+      required this.count,
+      required this.numberEdit});
 
   factory FollowerModel.fromJson(Map<String, dynamic> json) =>
       _$FollowerModelFromJson(json);

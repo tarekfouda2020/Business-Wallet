@@ -48,6 +48,7 @@ class CustomerRepository {
   Future<bool> saveInterest(String items, String userId) =>
       _customerHttpMethods.saveInterest(items, userId);
 
+
   Future<List<AutoSearchModel>> getAutoSearch(String word) =>
       _customerHttpMethods.getAutoSearch(word);
 
@@ -60,18 +61,21 @@ class CustomerRepository {
           int pageIndex, int searchId, int fieldId, String text) =>
       _customerHttpMethods.getMainSearched(pageIndex, searchId, fieldId, text);
 
+
   Future<MainDetailsModel?> getMainDetails(String id) =>
       _customerHttpMethods.getMainDetails(id);
 
-  Future<List<FollowerModel>> getFollowersData(
-    int pageIndex,
-  ) =>
+
+
+  Future<List<FollowerModel>> getFollowersData(int pageIndex) =>
       _customerHttpMethods.getFollowersData(pageIndex);
 
   Future<List<FollowerModel>> getFollowersFiltered(
           int pageIndex, int cityId, int interestId, int filterId) =>
       _customerHttpMethods.getFollowersFiltered(
           pageIndex, cityId, interestId, filterId);
+
+
 
   Future<bool> addLike(String kayanId) => _customerHttpMethods.addLike(kayanId);
 

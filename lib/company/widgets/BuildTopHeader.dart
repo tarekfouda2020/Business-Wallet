@@ -19,6 +19,10 @@ class BuildTopHeader extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(Res.bgheader),
           fit: BoxFit.fill,
+          colorFilter: ColorFilter.mode(
+            Colors.white24,
+            BlendMode.softLight,
+          ),
         ),
       ),
       child: Row(
@@ -28,7 +32,7 @@ class BuildTopHeader extends StatelessWidget {
             visible: search,
             child: MyText(
               title: title??"",
-              size: 16,
+              size: 14,
               color: MyColors.white,
             ),
             replacement: IconButton(
@@ -40,16 +44,10 @@ class BuildTopHeader extends StatelessWidget {
               onPressed: onTap,
             ),
           ),
-          Container(
-            height: 50,
-            width: 100,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Res.logo),
-                fit: BoxFit.fill,
-              ),
-            ),
-          )
+          Image.asset(
+            Res.logo,
+            height: 40,
+          ),
         ],
       ),
     );

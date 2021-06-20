@@ -5,33 +5,24 @@ class CompanyFavorite extends StatefulWidget {
   _CompanyFavoriteState createState() => _CompanyFavoriteState();
 }
 
-class _CompanyFavoriteState extends State<CompanyFavorite>
-    with SingleTickerProviderStateMixin {
+class _CompanyFavoriteState extends State<CompanyFavorite> {
   final CompanyFavoriteData companyFavoriteData = new CompanyFavoriteData();
-
-  @override
-  void initState() {
-    companyFavoriteData.pageController =
-        new TabController(length: 2, vsync: this);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        backgroundColor: MyColors.darken,
-        appBar: BuildAppBar(companyFavoriteData: companyFavoriteData),
+      child: HomeScaffold(
+        title: "مفضلتي",
+        search: BuildSelectedTabView(companyFavoriteData: companyFavoriteData,),
         body: Column(
           children: [
             BuildMenuView(companyFavoriteData: companyFavoriteData),
             Flexible(
               child: TabBarView(
                 children: [
-                  FavoriteMenu(),
-                  FavoriteMap(),
+                  FavoriteMenu(companyFavoriteData: companyFavoriteData),
+                  FavoriteMenu(companyFavoriteData: companyFavoriteData)
                 ],
               ),
             ),

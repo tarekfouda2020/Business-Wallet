@@ -2,8 +2,10 @@ part of 'DetailsWidgetsImports.dart';
 
 class BuildContactDrop extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
+  final DetailsModel? detailsModel;
 
-  BuildContactDrop({required this.companyMainDetailsData});
+  BuildContactDrop(
+      {required this.companyMainDetailsData, required this.detailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +15,15 @@ class BuildContactDrop extends StatelessWidget {
         return Column(
           children: [
             BuildDropItem(
-                title: "معلومات التواصل",
-                genericCubit: companyMainDetailsData.contactDropCubit),
+              title: "معلومات التواصل",
+              genericCubit: companyMainDetailsData.contactDropCubit,
+            ),
             Visibility(
               visible: state.data,
-              child: BuildContactData(),
+              child: BuildContactData(
+                companyMainDetailsData: companyMainDetailsData,
+                detailsModel: detailsModel,
+              ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),
               ),

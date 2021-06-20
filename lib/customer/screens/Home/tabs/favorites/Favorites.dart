@@ -23,8 +23,12 @@ class _FavoritesState extends State<Favorites> {
             Flexible(
               child: TabBarView(
                 children: [
-                  FavoritesView(favoritesData: favoritesData,),
-                  FavoritesView(favoritesData: favoritesData,),
+                  FavoritesView(
+                    favoritesData: favoritesData,
+                  ),
+                  FavoritesView(
+                    favoritesData: favoritesData,
+                  ),
                 ],
               ),
             ),

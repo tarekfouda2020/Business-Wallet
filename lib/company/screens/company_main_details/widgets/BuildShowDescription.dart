@@ -1,11 +1,11 @@
-part of 'ProviderDetailsWidgetsImports.dart';
+part of 'DetailsWidgetsImports.dart';
 
-class BuildProviderDescription extends StatelessWidget {
-  final ProviderDetailsData providerDetailsData;
+class BuildShowDescription extends StatelessWidget {
+  final CompanyMainDetailsData companyMainDetailsData;
   final DetailsModel? detailsModel;
 
-  const BuildProviderDescription(
-      {required this.providerDetailsData, required this.detailsModel});
+  const BuildShowDescription(
+      {required this.companyMainDetailsData, required this.detailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,7 @@ class BuildProviderDescription extends StatelessWidget {
               size: 10,
               color: MyColors.grey,
             ),
-            // Html(
-            //   data: detailsModel!.description,
-            //   customTextStyle: (node, textStyle) {
-            //     return TextStyle(
-            //       color: MyColors.grey,
-            //       fontSize: 10,
-            //     );
-            //   },
-            // ),
+
           ],
         ),
       ),

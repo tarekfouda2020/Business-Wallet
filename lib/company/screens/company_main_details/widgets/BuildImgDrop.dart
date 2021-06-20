@@ -2,8 +2,8 @@ part of 'DetailsWidgetsImports.dart';
 
 class BuildImgDrop extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
-
-  BuildImgDrop({required this.companyMainDetailsData});
+  final DetailsModel? detailsModel;
+  BuildImgDrop({required this.companyMainDetailsData,required this.detailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class BuildImgDrop extends StatelessWidget {
                 genericCubit: companyMainDetailsData.imagesDropCubit),
             Visibility(
               visible: state.data,
-              child: BuildImagesData(),
+              child: BuildImagesData(products: detailsModel!.products,),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),
               ),

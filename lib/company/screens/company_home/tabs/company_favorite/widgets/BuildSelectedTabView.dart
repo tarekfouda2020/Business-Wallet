@@ -1,51 +1,56 @@
 part of 'CompFavoriteWidgetsImports.dart';
 
 class BuildSelectedTabView extends StatelessWidget {
+  final CompanyFavoriteData companyFavoriteData;
+
+  const BuildSelectedTabView({required this.companyFavoriteData});
+
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Container(
-        height: 50,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: MyColors.black.withOpacity(0.95),
-          borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-              color: MyColors.greyWhite,
-              spreadRadius: 1,
-              blurRadius: 1,
-            )
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: FutureBottomSheet<CitiesModel>(
+            label: "المنطقة",
+            validate: (CitiesModel value) => value.validateDropDown(context),
+            useName: true,
+            finData: (filter) async =>
+                await CustomerRepository(context).getCities(3),
+            onChange: (CitiesModel value) =>
+                companyFavoriteData.onSelectCities(value),
+          ),
         ),
-        child: Row(
-          children: <Widget>[
-            BuildHeaderDrop(title: "المنطقة"),
-            BuildHeaderDrop(title: "الاهتمامات"),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                color: MyColors.primary,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(25),
-                ),
-              ),
-              alignment: Alignment.center,
-              child: MyText(
-                title: "تأكيد",
-                size: 10,
-                color: MyColors.black,
-              ),
+        Flexible(
+          child: FutureBottomSheet<UserInterestModel>(
+            label: "الاهتمامات",
+            validate: (UserInterestModel value) =>
+                value.validateDropDown(context),
+            useName: true,
+            finData: (filter) async =>
+                await CustomerRepository(context).getInterest(),
+            onChange: (UserInterestModel value) =>
+                companyFavoriteData.onSelectInterest(value),
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            companyFavoriteData.pagingController.refresh();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: MyColors.primary,
             ),
-          ],
-        ),
-      ),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+            child: MyText(
+              title: "البحث",
+              size: 10,
+              color: Colors.black,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
