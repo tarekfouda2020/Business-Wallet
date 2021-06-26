@@ -15,6 +15,7 @@ class _CompanyHomeState extends State<CompanyHome>
 
   @override
   void initState() {
+    GlobalNotification.instance.setupNotification(context);
     companyHomeData.initController(this, widget.index);
     super.initState();
   }

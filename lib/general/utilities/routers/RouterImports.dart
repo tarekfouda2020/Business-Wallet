@@ -39,6 +39,7 @@ import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.
 import 'package:base_flutter/customer/screens/profile_page/ProfilePageImports.dart';
 import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsImports.dart';
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart';
+import 'package:base_flutter/customer/screens/video_page/VideoPageImports.dart';
 import 'package:base_flutter/customer/screens/wallet/WalletImports.dart';
 import 'package:base_flutter/customer/screens/wallet_help/WalletHelpImports.dart';
 import 'package:base_flutter/general/screens/about/AboutImports.dart';

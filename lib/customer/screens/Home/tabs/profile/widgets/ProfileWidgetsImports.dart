@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart';
 import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';

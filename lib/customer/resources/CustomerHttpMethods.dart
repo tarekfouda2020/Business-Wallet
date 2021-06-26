@@ -2,13 +2,15 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/company_model.dart';
+import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
-import 'package:base_flutter/customer/models/comment_model.dart';
 import 'package:base_flutter/customer/models/conversation_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
@@ -156,6 +158,9 @@ class CustomerHttpMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/User/IndexApi", body: body);
     if (_data != null) {
+      context.read<FollowCountCubit>().onUpdateCount(_data["followNotify"]??0);
+      context.read<InvistCountCubit>().onUpdateCount(_data["invetionNotify"]??0);
+      context.read<WalletCountCubit>().onUpdateCount(_data["walletNotify"]??0);
       return List<MainModel>.from(
           _data['Kayans'].map((e) => MainModel.fromJson(e)));
     } else {
@@ -261,6 +266,7 @@ class CustomerHttpMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/User/MyFollowApi", body: body);
     if (_data != null) {
+      context.read<FollowCountCubit>().onUpdateCount(0);
       return List<FollowerModel>.from(
           _data['follows'].map((e) => FollowerModel.fromJson(e)));
     } else {
@@ -427,6 +433,7 @@ class CustomerHttpMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/User/IndexInvetionsApi", body: body);
     if (_data != null) {
+      context.read<InvistCountCubit>().onUpdateCount(0);
       return List<InvitationModel>.from(
           _data['data']["allProducts"].map((e) => InvitationModel.fromJson(e)));
     } else {
@@ -656,6 +663,7 @@ class CustomerHttpMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/WalletUser/IndexApi", body: body);
     if (_data != null) {
+      context.read<WalletCountCubit>().onUpdateCount(0);
       return WalletModel.fromJson(_data["data"]);
     } else {
       return null;

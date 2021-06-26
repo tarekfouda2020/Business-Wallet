@@ -1,27 +1,30 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GlobalNotification {
   static StreamController<Map<String, dynamic>> _onMessageStreamController =
   StreamController.broadcast();
 
   late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
-  static GlobalKey<NavigatorState> navigatorKey=new GlobalKey<NavigatorState>();
+  static late BuildContext context;
   static GlobalNotification instance = new GlobalNotification._();
 
   GlobalNotification._();
 
   GlobalNotification();
 
-  setupNotification(GlobalKey<NavigatorState> navKey)async{
-    navigatorKey = navKey;
+  setupNotification(BuildContext cxt)async{
+    context = cxt;
     _flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
     var android = new AndroidInitializationSettings("@mipmap/launcher_icon");
     var ios = new IOSInitializationSettings();
@@ -44,9 +47,9 @@ class GlobalNotification {
         print("_____________________notification:${message.notification?.title}");
         _showLocalNotification(message);
         _onMessageStreamController.add(message.data);
-        if (int.parse(message.data["type"]) == -1) {
+        if (int.parse(message.data["type"]??"0") == -1) {
           Utils.clearSavedData();
-          navigatorKey.currentContext!.router.push(LoginRoute());
+          AutoRouter.of(context).push(LoginRoute());
         }
       });
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
@@ -69,6 +72,16 @@ class GlobalNotification {
 
   _showLocalNotification(RemoteMessage? message) async {
     if (message == null) return;
+
+    int type = int.parse("${message.data["type"]??"0"}");
+    if(type==22){
+      context.read<FollowCountCubit>().onIncreaseCount();
+    }else if(type==23){
+      context.read<InvistCountCubit>().onIncreaseCount();
+    }else if(type==24){
+      context.read<WalletCountCubit>().onIncreaseCount();
+    }
+
     var android = AndroidNotificationDetails(
       "${DateTime.now()}",
       "${message.notification?.title}",

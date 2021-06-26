@@ -12,16 +12,10 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    _checkingData();
+    Utils.manipulateSplashData(context);
     super.initState();
   }
 
-  _checkingData() async {
-    GlobalNotification.instance.setupNotification(widget.navigatorKey);
-    Future.delayed(Duration(seconds: 2), () {
-      Utils.manipulateSplashData(context);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

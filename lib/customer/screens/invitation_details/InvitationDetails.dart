@@ -17,46 +17,15 @@ class _InvitationDetailsState extends State<InvitationDetails>
   @override
   void initState() {
     invitationDetailsData.fetchData(context, widget.adsId);
+    invitationDetailsData.initAnimation(this,context, widget.adsId,widget.checkInvite,refreshPage);
+
     super.initState();
-    invitationDetailsData.controller = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 5000,
-      ),
-    );
+  }
 
-    invitationDetailsData.animation = Tween<double>(
-      begin: 0,
-      end: 40,
-    ).animate(CurvedAnimation(
-        parent: invitationDetailsData.controller, curve: Curves.easeOut))
-      ..addListener(() {
-        setState(() {});
-      })
-      ..addStatusListener(
-        (status) {
-          if (status == AnimationStatus.completed) {
-            invitationDetailsData.expandCubit.onUpdateData(220);
-            widget.checkInvite
-                ? Future.delayed(Duration(milliseconds: 500), () {
-                    print("_______${widget.adsId}");
+  refreshPage(){
+    setState(() {
 
-                    invitationDetailsData.updateSpecificAds(
-                        context, widget.adsId);
-                    invitationDetailsData.getSpecificAdsPoint(
-                        context, widget.adsId);
-                    invitationDetailsData.showExpandCubit.onUpdateData(true);
-                  })
-                : Future.delayed(
-                    Duration(milliseconds: 500),
-                    () {
-                      invitationDetailsData.showExpandCubit.onUpdateData(true);
-                    },
-                  );
-          }
-        },
-      );
-    invitationDetailsData.controller.forward();
+    });
   }
 
   @override
@@ -118,13 +87,13 @@ class _InvitationDetailsState extends State<InvitationDetails>
                       ),
                       BuildInvTitle(title: "الفيديوهات"),
                       Visibility(
-                        visible: state.data!.previewAds.images.isEmpty,
+                        visible: state.data!.previewAds.videos.isEmpty,
                         child: Center(
                           child: MyText(
                             title: "لا يوجد فيديوهات",
                           ),
                         ),
-                        replacement: BuildVideo(),
+                        replacement: BuildVideoList(videos: state.data!.previewAds.videos,),
                       ),
                       BuildInvTitle(title: "صاحب الإعلان"),
                       BuildAdOwner(

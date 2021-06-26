@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/company_model.dart';
+import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
+import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
@@ -334,6 +337,9 @@ class GeneralHttpMethods {
     };
     print(body);
     await DioHelper(context: context).get(url: "/Plans/Logout", body: body);
+    context.read<FollowCountCubit>().onUpdateCount(0);
+    context.read<InvistCountCubit>().onUpdateCount(0);
+    context.read<WalletCountCubit>().onUpdateCount(0);
     EasyLoading.dismiss().then((value) {
       Utils.clearSavedData();
       Phoenix.rebirth(context);
@@ -348,8 +354,10 @@ class GeneralHttpMethods {
       "device_Id": "$deviceId",
       "user_id": context.read<UserCubit>().state.model.companyModel?.userId,
     };
-    print(body);
     await DioHelper(context: context).get(url: "/Plans/Logout", body: body);
+    context.read<FollowCountCubit>().onUpdateCount(0);
+    context.read<InvistCountCubit>().onUpdateCount(0);
+    context.read<WalletCountCubit>().onUpdateCount(0);
     EasyLoading.dismiss().then((value) {
       Utils.clearSavedData();
       Phoenix.rebirth(context);

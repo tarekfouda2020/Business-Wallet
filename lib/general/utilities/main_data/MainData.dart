@@ -31,5 +31,14 @@ class MainData {
         BlocProvider<LocationCubit>(
           create: (BuildContext context) => LocationCubit(),
         ),
+        BlocProvider<FollowCountCubit>(
+          create: (BuildContext context) => FollowCountCubit(),
+        ),
+        BlocProvider<InvistCountCubit>(
+          create: (BuildContext context) => InvistCountCubit(),
+        ),
+        BlocProvider<WalletCountCubit>(
+          create: (BuildContext context) => WalletCountCubit(),
+        ),
       ];
 }

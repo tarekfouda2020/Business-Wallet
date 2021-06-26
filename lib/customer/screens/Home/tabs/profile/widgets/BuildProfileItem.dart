@@ -4,8 +4,9 @@ class BuildProfileItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final Function() ?onTap;
+  final bool isWallet;
 
-  const BuildProfileItem({required this.icon, required this.title, this.onTap});
+  const BuildProfileItem({required this.icon, required this.title, this.onTap, this.isWallet = false});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,25 @@ class BuildProfileItem extends StatelessWidget {
                   title: title,
                   color: MyColors.grey,
                   size: 11.5,
-                )
+                ),
+                Spacer(),
+                BlocBuilder<WalletCountCubit, WalletCountState>(
+                  builder: (context, state) {
+                    return Offstage(
+                      offstage: !isWallet || state.count==0,
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: MyColors.primary,
+                        ),
+                        alignment: Alignment.center,
+                        child: Text("${state.count}",style: TextStyle(fontSize: 10,color: MyColors.darken),),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
             Padding(

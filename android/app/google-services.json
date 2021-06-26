@@ -1,112 +1,41 @@
 {
   "project_info": {
-    "project_number": "590499560296",
-    "project_id": "flutter-base-a428c",
-    "storage_bucket": "flutter-base-a428c.appspot.com"
+    "project_number": "992563384655",
+    "firebase_url": "https://shopping-f2b5f.firebaseio.com",
+    "project_id": "shopping-f2b5f",
+    "storage_bucket": "shopping-f2b5f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590499560296:android:a7b3a0d19abcd4d73674dd",
+        "mobilesdk_app_id": "1:992563384655:android:e80c68e8c3a2f68c8b753a",
         "android_client_info": {
-          "package_name": "sa.aait.aspbranch.baseFlutter"
+          "package_name": "com.sa.aait.shopping.shopping"
         }
       },
       "oauth_client": [
         {
-          "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
+          "client_id": "992563384655-29bcq32kgf426vjljigpn37u5616jjjj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBWWwNklL6kn2iGdgjYGKm3qGEfUMXpLNY"
+          "current_key": "AIzaSyDQQNUJz4J2DnrbC8aMTxFF_l7IV-5sfXQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
+              "client_id": "992563384655-29bcq32kgf426vjljigpn37u5616jjjj.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "590499560296-0gp7c8qda4idesf8vikvv45r2s3r3t7r.apps.googleusercontent.com",
+              "client_id": "992563384655-fp0vfe102ko3bdlufbhs8cr3qi3225p4.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "sa.aait.aspbranch.basestruct"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:590499560296:android:c58b54d86786b03e3674dd",
-        "android_client_info": {
-          "package_name": "sa.aait.aspbranch.basestruct"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBWWwNklL6kn2iGdgjYGKm3qGEfUMXpLNY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "590499560296-0gp7c8qda4idesf8vikvv45r2s3r3t7r.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "sa.aait.aspbranch.basestruct"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:590499560296:android:dc0da606f867c4293674dd",
-        "android_client_info": {
-          "package_name": "sa.aait.aspbranch.nullbaseF"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBWWwNklL6kn2iGdgjYGKm3qGEfUMXpLNY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "590499560296-fe5ijjgktqdm8qhacp621e6t3btjqj0i.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "590499560296-0gp7c8qda4idesf8vikvv45r2s3r3t7r.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "sa.aait.aspbranch.basestruct"
+                "bundle_id": "com.sa.aait.shopping.shopping"
               }
             }
           ]

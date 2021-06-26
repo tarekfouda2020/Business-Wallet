@@ -14,6 +14,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    GlobalNotification.instance.setupNotification(context);
     homeData.initController(this, widget.index);
     super.initState();
   }

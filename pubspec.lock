@@ -170,12 +170,12 @@ packages:
     source: hosted
     version: "2.0.1"
   chewie:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: chewie
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.2.2"
   chewie_audio:
     dependency: transitive
     description:
@@ -238,7 +238,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   curved_navigation_bar:
     dependency: "direct main"
     description:
@@ -301,14 +301,14 @@ packages:
       name: file_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2+2"
+    version: "3.0.3"
   firebase_core:
     dependency: "direct main"
     description:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   firebase_core_platform_interface:
     dependency: transitive
     description:
@@ -329,21 +329,21 @@ packages:
       name: firebase_messaging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "10.0.0"
+    version: "10.0.2"
   firebase_messaging_platform_interface:
     dependency: transitive
     description:
       name: firebase_messaging_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.2"
   firebase_messaging_web:
     dependency: transitive
     description:
       name: firebase_messaging_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.2"
   fixnum:
     dependency: transitive
     description:
@@ -362,7 +362,7 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "7.0.1"
   flutter_blurhash:
     dependency: transitive
     description:
@@ -390,7 +390,7 @@ packages:
       name: flutter_html
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   flutter_inappwebview:
     dependency: "direct main"
     description:
@@ -650,7 +650,7 @@ packages:
       name: infinite_scroll_pagination
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "3.0.1+1"
   intl:
     dependency: "direct main"
     description:
@@ -692,21 +692,21 @@ packages:
       name: location
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.1"
+    version: "4.3.0"
   location_platform_interface:
     dependency: transitive
     description:
       name: location_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.3.0"
   location_web:
     dependency: transitive
     description:
       name: location_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.1.1"
   logging:
     dependency: transitive
     description:
@@ -720,7 +720,7 @@ packages:
       name: map_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.1"
   matcher:
     dependency: transitive
     description:
@@ -763,6 +763,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  numerus:
+    dependency: transitive
+    description:
+      name: numerus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   octo_image:
     dependency: transitive
     description:
@@ -1026,7 +1033,7 @@ packages:
       name: sliver_tools
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.10+1"
+    version: "0.2.5"
   source_gen:
     dependency: transitive
     description:
@@ -1075,7 +1082,7 @@ packages:
       name: step_progress_indicator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   stream_channel:
     dependency: transitive
     description:
@@ -1210,12 +1217,12 @@ packages:
     source: hosted
     version: "2.1.0"
   video_player:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.4"
+    version: "2.1.6"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -1236,7 +1243,7 @@ packages:
       name: wakelock
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.5.2"
   wakelock_macos:
     dependency: transitive
     description:
@@ -1258,6 +1265,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0+1"
+  wakelock_windows:
+    dependency: transitive
+    description:
+      name: wakelock_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   watcher:
     dependency: transitive
     description:
@@ -1308,5 +1322,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.12.1 <3.0.0"
+  dart: ">=2.13.0 <3.0.0"
   flutter: ">=2.2.0"
