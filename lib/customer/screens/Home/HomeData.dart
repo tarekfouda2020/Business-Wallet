@@ -8,6 +8,14 @@ class HomeData {
   late CurvedAnimation curve;
   int currentIndex=0;
 
+  List<Widget> tabsView=[
+    Favorites(),
+    Followers(),
+    Invitations(),
+    Profile(),
+    SwitchPage()
+  ];
+
   List<BottomTabModel> tabs = [
     BottomTabModel(iconData: Icons.favorite,title: "مفضلتي"),
     BottomTabModel(iconData: Icons.store_mall_directory,title: "متابعتي"),

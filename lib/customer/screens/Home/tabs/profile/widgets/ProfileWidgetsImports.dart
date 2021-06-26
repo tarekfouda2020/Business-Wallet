@@ -1,10 +1,16 @@
+import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart';
+import 'package:base_flutter/customer/screens/comments/CommentsImports.dart';
+import 'package:base_flutter/customer/screens/conversation/ConversationImports.dart';
+import 'package:base_flutter/customer/screens/important/ImportantWidgets.dart';
 import 'package:base_flutter/customer/screens/number_wallet/NumberWalletImports.dart';
+import 'package:base_flutter/customer/screens/wallet/WalletImports.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/resources/GeneralRepository.dart';
+import 'package:base_flutter/general/screens/contact_us/ContactUsImports.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/CachedImage.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';

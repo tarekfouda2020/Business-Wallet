@@ -7,47 +7,46 @@ class BuildProfileView extends StatelessWidget {
     return Flexible(
       child: ListView(
         padding: const EdgeInsets.only(top: 15, bottom: 60),
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           BuildProfileItem(
             title: "رقم المحفظة",
             icon: Icons.code,
-            onTap: () => AutoRouter.of(context).push(NumberWalletRoute()),
+            page: NumberWallet(),
           ),
           BuildProfileItem(
             title: "المحفظة",
             icon: Icons.monetization_on,
-            onTap: () => AutoRouter.of(context).push(WalletRoute()),
+            page: Wallet(),
           ),
           BuildProfileItem(
             title: "الاهتمامات",
             icon: MdiIcons.accountGroup,
-            onTap: () =>
-                AutoRouter.of(context).push(ImportantRoute(userId: customer!.userId)),
+            page: Important(userId: customer!.userId),
           ),
           BuildProfileItem(
             title: "المراسلات",
             icon: MdiIcons.chatProcessingOutline,
-            onTap: () => AutoRouter.of(context).push(ConversationRoute()),
+            page: Conversation(),
           ),
           BuildProfileItem(
             title: "التعليقات",
             icon: Icons.message,
-            onTap: () => AutoRouter.of(context).push(CommentsRoute()),
+            page: Comments(),
           ),
           BuildProfileItem(
             title: "مشاركة التطبيق",
             icon: Icons.share,
+            onTap: (){},
           ),
           BuildProfileItem(
             title: "معلومات التطبيق",
             icon: Icons.settings,
-            onTap: () => AutoRouter.of(context).push(AppInfoRoute()),
+            page: AppInfo(),
           ),
           BuildProfileItem(
             title: "تواصل معنا",
             icon: Icons.phone_in_talk,
-            onTap: () => AutoRouter.of(context).push(ContactUsRoute()),
+            page: ContactUs(),
           ),
           InkWell(
             onTap: () => GeneralRepository(context).customerLogout(),

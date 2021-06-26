@@ -7,47 +7,47 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:base_flutter/company/models/dots/LocationModel.dart' as _i9;
 import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart'
-    as _i60;
+    as _i61;
 import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart'
-    as _i59;
+    as _i60;
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart'
-    as _i50;
-import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
-    as _i58;
-import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
-    as _i48;
-import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
-    as _i47;
-import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
-    as _i49;
-import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
-    as _i44;
-import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
     as _i51;
-import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
+import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
+    as _i59;
+import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditActivityImports.dart'
+    as _i49;
+import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart'
+    as _i48;
+import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart'
+    as _i50;
+import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart'
     as _i45;
-import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
-    as _i57;
-import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImports.dart'
-    as _i43;
-import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
-    as _i54;
-import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
-    as _i46;
-import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
-    as _i40;
-import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart'
-    as _i41;
-import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
-    as _i42;
-import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
-    as _i53;
-import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
-    as _i55;
-import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
-    as _i56;
-import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
+import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart'
     as _i52;
+import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
+    as _i46;
+import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
+    as _i58;
+import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImports.dart'
+    as _i44;
+import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
+    as _i55;
+import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
+    as _i47;
+import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
+    as _i41;
+import 'package:base_flutter/company/screens/company_register_commercial/CompanyRegisterCommercialImports.dart'
+    as _i42;
+import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
+    as _i43;
+import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
+    as _i54;
+import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
+    as _i56;
+import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
+    as _i57;
+import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
+    as _i53;
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart'
     as _i10;
 import 'package:base_flutter/customer/screens/account_reconciliation/AccountReconciliationImports.dart'
@@ -79,11 +79,13 @@ import 'package:base_flutter/customer/screens/provider_details/ProviderDetailsIm
     as _i27;
 import 'package:base_flutter/customer/screens/register/RegisterImports.dart'
     as _i23;
+import 'package:base_flutter/customer/screens/video_page/VideoPageImports.dart'
+    as _i40;
 import 'package:base_flutter/customer/screens/wallet/WalletImports.dart'
     as _i31;
 import 'package:base_flutter/customer/screens/wallet_help/WalletHelpImports.dart'
     as _i39;
-import 'package:base_flutter/general/models/intro_model.dart' as _i62;
+import 'package:base_flutter/general/models/intro_model.dart' as _i63;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i17;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i11;
@@ -115,7 +117,7 @@ import 'package:base_flutter/general/screens/successfully_active/SuccessfullyAct
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i16;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i61;
+import 'package:flutter/cupertino.dart' as _i62;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -345,117 +347,123 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i39.WalletHelp();
         }),
+    VideoPageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<VideoPageRouteArgs>();
+          return _i40.VideoPage(link: args.link);
+        }),
     CompanyRegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i40.CompanyRegister();
+          return _i41.CompanyRegister();
         }),
     CompanyRegisterCommercialRoute.name: (routeData) =>
         _i1.AdaptivePage<dynamic>(
             routeData: routeData,
             builder: (data) {
               final args = data.argsAs<CompanyRegisterCommercialRouteArgs>();
-              return _i41.CompanyRegisterCommercial(userId: args.userId);
+              return _i42.CompanyRegisterCommercial(userId: args.userId);
             }),
     CompanyRegisterInterestsRoute.name: (routeData) =>
         _i1.AdaptivePage<dynamic>(
             routeData: routeData,
             builder: (data) {
               final args = data.argsAs<CompanyRegisterInterestsRouteArgs>();
-              return _i42.CompanyRegisterInterests(userId: args.userId);
+              return _i43.CompanyRegisterInterests(userId: args.userId);
             }),
     CompanyPaymentRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanyPaymentRouteArgs>();
-          return _i43.CompanyPayment(userId: args.userId, id: args.id);
+          return _i44.CompanyPayment(userId: args.userId, id: args.id);
         }),
     CompanyHomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanyHomeRouteArgs>();
-          return _i44.CompanyHome(args.index);
+          return _i45.CompanyHome(args.index);
         }),
     CompanyMainDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanyMainDetailsRouteArgs>();
-          return _i45.CompanyMainDetails(kayanId: args.kayanId);
+          return _i46.CompanyMainDetails(kayanId: args.kayanId);
         }),
     CompanyProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i46.CompanyProfile();
+          return _i47.CompanyProfile();
         }),
     CompanyEditProfileRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i47.CompanyEditProfile();
+          return _i48.CompanyEditProfile();
         }),
     CompanyEditActivityRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i48.CompanyEditActivity();
+          return _i49.CompanyEditActivity();
         }),
     CompanyFavDetailsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i49.CompanyFavDetails();
+          return _i50.CompanyFavDetails();
         }),
     CompanyCommentsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i50.CompanyComments();
+          return _i51.CompanyComments();
         }),
     CompanyInterestsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i51.CompanyInterests();
+          return _i52.CompanyInterests();
         }),
     CompanyWalletNumbRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i52.CompanyWalletNumb();
+          return _i53.CompanyWalletNumb();
         }),
     CompanyStatisticsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i53.CompanyStatistics();
+          return _i54.CompanyStatistics();
         }),
     CompanyPointsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i54.CompanyPoints();
+          return _i55.CompanyPoints();
         }),
     CompanySubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i55.CompanySubscribe();
+          return _i56.CompanySubscribe();
         }),
     CompanyWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i56.CompanyWallet();
+          return _i57.CompanyWallet();
         }),
     CompanyPackagesRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i57.CompanyPackages();
+          return _i58.CompanyPackages();
         }),
     CompanyConversationsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i58.CompanyConversations();
+          return _i59.CompanyConversations();
         }),
     CompanyBrochureRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i59.CompanyBrochure();
+          return _i60.CompanyBrochure();
         }),
     CompanyBarcodeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i60.CompanyBarcode();
+          return _i61.CompanyBarcode();
         })
   };
 
@@ -502,6 +510,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(AccountReconciliationRoute.name,
             path: '/account-reconciliation'),
         _i1.RouteConfig(WalletHelpRoute.name, path: '/wallet-help'),
+        _i1.RouteConfig(VideoPageRoute.name, path: '/video-page'),
         _i1.RouteConfig(CompanyRegisterRoute.name, path: '/company-register'),
         _i1.RouteConfig(CompanyRegisterCommercialRoute.name,
             path: '/company-register-commercial'),
@@ -536,7 +545,7 @@ class AppRouter extends _i1.RootStackRouter {
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i61.GlobalKey<_i61.NavigatorState> navigatorKey})
+  SplashRoute({required _i62.GlobalKey<_i62.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -546,11 +555,11 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i61.GlobalKey<_i61.NavigatorState> navigatorKey;
+  final _i62.GlobalKey<_i62.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({_i62.IntroModel? introModel})
+  LoginRoute({_i63.IntroModel? introModel})
       : super(name,
             path: '/Login', args: LoginRouteArgs(introModel: introModel));
 
@@ -560,11 +569,11 @@ class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
 class LoginRouteArgs {
   const LoginRouteArgs({this.introModel});
 
-  final _i62.IntroModel? introModel;
+  final _i63.IntroModel? introModel;
 }
 
 class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
-  WelcomePageRoute({_i62.IntroModel? introModel})
+  WelcomePageRoute({_i63.IntroModel? introModel})
       : super(name,
             path: '/welcome-page',
             args: WelcomePageRouteArgs(introModel: introModel));
@@ -575,11 +584,11 @@ class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
 class WelcomePageRouteArgs {
   const WelcomePageRouteArgs({this.introModel});
 
-  final _i62.IntroModel? introModel;
+  final _i63.IntroModel? introModel;
 }
 
 class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
-  CustomerWelcomeRoute({_i62.IntroModel? introModel})
+  CustomerWelcomeRoute({_i63.IntroModel? introModel})
       : super(name,
             path: '/customer-welcome',
             args: CustomerWelcomeRouteArgs(introModel: introModel));
@@ -590,7 +599,7 @@ class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
 class CustomerWelcomeRouteArgs {
   const CustomerWelcomeRouteArgs({this.introModel});
 
-  final _i62.IntroModel? introModel;
+  final _i63.IntroModel? introModel;
 }
 
 class ForgetPasswordRoute extends _i1.PageRouteInfo {
@@ -719,7 +728,7 @@ class ContactUsRoute extends _i1.PageRouteInfo {
 }
 
 class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
-  SelectUserRoute({_i62.IntroModel? introModel})
+  SelectUserRoute({_i63.IntroModel? introModel})
       : super(name,
             path: '/select-user',
             args: SelectUserRouteArgs(introModel: introModel));
@@ -730,7 +739,7 @@ class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
 class SelectUserRouteArgs {
   const SelectUserRouteArgs({this.introModel});
 
-  final _i62.IntroModel? introModel;
+  final _i63.IntroModel? introModel;
 }
 
 class ConfirmPasswordRoute extends _i1.PageRouteInfo {
@@ -926,6 +935,19 @@ class WalletHelpRoute extends _i1.PageRouteInfo {
   const WalletHelpRoute() : super(name, path: '/wallet-help');
 
   static const String name = 'WalletHelpRoute';
+}
+
+class VideoPageRoute extends _i1.PageRouteInfo<VideoPageRouteArgs> {
+  VideoPageRoute({required String link})
+      : super(name, path: '/video-page', args: VideoPageRouteArgs(link: link));
+
+  static const String name = 'VideoPageRoute';
+}
+
+class VideoPageRouteArgs {
+  const VideoPageRouteArgs({required this.link});
+
+  final String link;
 }
 
 class CompanyRegisterRoute extends _i1.PageRouteInfo {

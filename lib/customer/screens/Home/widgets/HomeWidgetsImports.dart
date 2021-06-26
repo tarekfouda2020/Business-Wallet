@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:animations/animations.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
