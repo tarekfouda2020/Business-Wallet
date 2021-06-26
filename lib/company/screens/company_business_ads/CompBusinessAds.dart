@@ -13,12 +13,6 @@ class _CompBusinessAdsState extends State<CompBusinessAds> {
   final CompBusinessAdsData compBusinessAdsData = new CompBusinessAdsData();
 
   @override
-  void initState() {
-    compBusinessAdsData.fetchData(context, widget.adsId);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,

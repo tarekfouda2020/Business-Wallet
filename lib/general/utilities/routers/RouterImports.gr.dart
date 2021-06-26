@@ -516,8 +516,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     CompProductAdsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i67.CompProductAds();
+        builder: (data) {
+          final args = data.argsAs<CompProductAdsRouteArgs>();
+          return _i67.CompProductAds(adsId: args.adsId);
         }),
     CompSpecificAdsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -1281,10 +1282,19 @@ class CompBrochureSubscribeRoute extends _i1.PageRouteInfo {
   static const String name = 'CompBrochureSubscribeRoute';
 }
 
-class CompProductAdsRoute extends _i1.PageRouteInfo {
-  const CompProductAdsRoute() : super(name, path: '/comp-product-ads');
+class CompProductAdsRoute extends _i1.PageRouteInfo<CompProductAdsRouteArgs> {
+  CompProductAdsRoute({required int adsId})
+      : super(name,
+            path: '/comp-product-ads',
+            args: CompProductAdsRouteArgs(adsId: adsId));
 
   static const String name = 'CompProductAdsRoute';
+}
+
+class CompProductAdsRouteArgs {
+  const CompProductAdsRouteArgs({required this.adsId});
+
+  final int adsId;
 }
 
 class CompSpecificAdsRoute extends _i1.PageRouteInfo<CompSpecificAdsRouteArgs> {

@@ -9,7 +9,7 @@ class CompanyStatisticsData {
     statisticsCubit.onUpdateData(data);
   }
 
-  void navigate(BuildContext context, int value, int type,int id) {
+  void navigate(BuildContext context, int value, int type, int id) {
     if (value == 0) {
       AutoRouter.of(context).push(CompanyStatisticsRateRoute());
     } else {
@@ -17,10 +17,15 @@ class CompanyStatisticsData {
         AutoRouter.of(context).push(CompSpecificAdsRoute(adsId: id));
       }
       if (type == 2) {
-        AutoRouter.of(context).push(CompProductAdsRoute());
+        AutoRouter.of(context).push(CompProductAdsRoute(adsId: id));
       }
       if (type == 3) {
-        AutoRouter.of(context).push(CompBusinessAdsRoute(adsId: id));
+        AutoRouter.of(context).push(CompanyFavDetailsRoute(
+          adsId: id,
+          checkInvite: false,
+          showSendCard: 1,
+          sendCard: 0,
+        ));
       }
     }
   }

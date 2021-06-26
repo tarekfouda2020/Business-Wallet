@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
+import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_specific_ads/CompSpecificAdsImports.dart';
 import 'package:base_flutter/company/screens/company_statstics/widgets/CompStatisticsWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';

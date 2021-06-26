@@ -20,7 +20,8 @@ class InvitationDetailsData {
     specificAdsCubit.onUpdateData(data);
   }
 
-  initAnimation(TickerProvider ticker,BuildContext context,int adsId,bool checkInvite,Function setState){
+  initAnimation(TickerProvider ticker, BuildContext context, int adsId,
+      bool checkInvite, Function setState) {
     controller = AnimationController(
       vsync: ticker,
       duration: const Duration(
@@ -31,27 +32,26 @@ class InvitationDetailsData {
     animation = Tween<double>(
       begin: 0,
       end: 40,
-    ).animate(CurvedAnimation(
-        parent: controller, curve: Curves.easeOut))
+    ).animate(CurvedAnimation(parent: controller, curve: Curves.easeOut))
       ..addListener(() {
         setState(() {});
       })
       ..addStatusListener(
-            (status) {
+        (status) {
           if (status == AnimationStatus.completed) {
             expandCubit.onUpdateData(220);
             checkInvite
                 ? Future.delayed(Duration(milliseconds: 500), () {
-              updateSpecificAds(context, adsId);
-              getSpecificAdsPoint(context, adsId);
-              showExpandCubit.onUpdateData(true);
-            })
+                    updateSpecificAds(context, adsId);
+                    getSpecificAdsPoint(context, adsId);
+                    showExpandCubit.onUpdateData(true);
+                  })
                 : Future.delayed(
-              Duration(milliseconds: 500),
-                  () {
-                showExpandCubit.onUpdateData(true);
-              },
-            );
+                    Duration(milliseconds: 500),
+                    () {
+                      showExpandCubit.onUpdateData(true);
+                    },
+                  );
           }
         },
       );
@@ -66,7 +66,8 @@ class InvitationDetailsData {
 
   void getSpecificAdsPoint(BuildContext context, int adsId) async {
     await CustomerRepository(context)
-        .getSpecificAdsPoint("0",
+        .getSpecificAdsPoint(
+            "0",
             specificAdsCubit.state.data!.previewAds.pointsForEachUser,
             adsId,
             "1")

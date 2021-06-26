@@ -43,7 +43,9 @@ class _CompSpecificAdsState extends State<CompSpecificAds> {
                   desc: state.data!.previewAds.advertDescription,
                 ),
                 BuildInvTitle(title: "عروض"),
-                BuildFile(),
+                BuildFile(
+                  adsDetailsModel: state.data!.previewAds,
+                ),
                 BuildInvTitle(title: "الصور"),
                 Visibility(
                   visible: state.data!.previewAds.images.isEmpty,
