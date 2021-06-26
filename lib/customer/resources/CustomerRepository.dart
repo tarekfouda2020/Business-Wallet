@@ -151,8 +151,8 @@ class CustomerRepository {
   Future<bool> updateCustomerData(UpdateCustomerModel model) async =>
       _customerHttpMethods.updateCustomerData(model);
 
-  Future<bool> changePassword(String oldPassword, String newPassword) async =>
-      _customerHttpMethods.changePassword(oldPassword, newPassword);
+  Future<bool> changePassword(String oldPassword, String newPassword,String userId) async =>
+      _customerHttpMethods.changePassword(oldPassword, newPassword,userId);
 
   Future<String?> walletHelp() => _customerHttpMethods.walletHelp();
 

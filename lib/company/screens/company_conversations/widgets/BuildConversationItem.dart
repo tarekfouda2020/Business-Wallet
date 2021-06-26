@@ -1,6 +1,10 @@
 part of 'CompConversationWidgetImports.dart';
 
 class BuildConversationItem extends StatelessWidget {
+  final ConversationModel conversationModel;
+
+  const BuildConversationItem({required this.conversationModel});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,46 +15,43 @@ class BuildConversationItem extends StatelessWidget {
         border: Border.all(color: MyColors.greyWhite),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CachedImage(
-            url:
-                "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-            width: 65,
-            height: 65,
+            url: conversationModel.img,
             haveRadius: false,
+            width: 55,
+            height: 55,
+            borderColor: MyColors.white,
             boxShape: BoxShape.circle,
           ),
+          SizedBox(
+            width: 10,
+          ),
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      MyText(
-                        title: "اسم مستخدم",
-                        size: 11,
-                        color: MyColors.white,
-                      ),
-                      Spacer(),
-                      MyText(
-                        title: "10/20/2020",
-                        size: 10,
-                        color: MyColors.white,
-                      ),
-
-                    ],
-                  ),
-                  MyText(
-                    title: "تم",
-                    size: 10,
-                    color: MyColors.white,
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MyText(
+                      title: conversationModel.userName,
+                      size: 10,
+                      color: MyColors.white,
+                    ),
+                    MyText(
+                      title: conversationModel.date,
+                      size: 10,
+                      color: MyColors.greyWhite.withOpacity(0.7),
+                    ),
+                  ],
+                ),
+                MyText(
+                  title: conversationModel.lastMsg,
+                  size: 10,
+                  color: MyColors.greyWhite.withOpacity(0.7),
+                ),
+              ],
             ),
           ),
         ],

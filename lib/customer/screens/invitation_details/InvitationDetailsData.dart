@@ -61,7 +61,7 @@ class InvitationDetailsData {
   void updateSpecificAds(BuildContext context, int adsId) async {
     await CustomerRepository(context)
         .updateSpecificAds(adsId)
-        .then((value) => fetchData(context, adsId));
+        .then((value) => getSpecificAdsPoint(context, adsId));
   }
 
   void getSpecificAdsPoint(BuildContext context, int adsId) async {

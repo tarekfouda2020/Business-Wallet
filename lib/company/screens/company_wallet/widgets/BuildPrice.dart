@@ -1,6 +1,9 @@
 part of 'CompWalletWidgetsImports.dart';
 
 class BuildPrice extends StatelessWidget {
+  final CompWalletModel compWalletModel;
+
+  const BuildPrice({required this.compWalletModel}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +24,13 @@ class BuildPrice extends StatelessWidget {
             ),
           ),
           child: MyText(
-            title: "300 هلله",
+            title: "${compWalletModel.cost}هلله",
             color: MyColors.primary,
             size: 14,
           ),
         ),
         MyText(
-          title: "الرصيد 3 ريال",
+          title: "الرصيد ${compWalletModel.cost} ريال",
           size: 12,
           color: MyColors.greyWhite.withOpacity(0.9),
         ),

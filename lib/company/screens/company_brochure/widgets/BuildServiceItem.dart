@@ -1,11 +1,14 @@
 part of 'CompBrochureWidgetsImports.dart';
 
 class BuildServiceItem extends StatelessWidget {
+  final AddBrochureServiceModel model;
   final CompanyBrochureData companyBrochureData;
-  final GenericCubit serviceCubit;
+  final int index;
 
   BuildServiceItem(
-      {required this.companyBrochureData, required this.serviceCubit});
+      {required this.model,
+      required this.companyBrochureData,
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class BuildServiceItem extends StatelessWidget {
           flex: 3,
           child: LabelTextField(
             hint: "اسم الخدمة",
-            controller: companyBrochureData.serviceName,
+            controller: model.serviceName,
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
             margin: const EdgeInsets.symmetric(vertical: 15),
@@ -29,7 +32,7 @@ class BuildServiceItem extends StatelessWidget {
           flex: 3,
           child: LabelTextField(
             hint: "سعر الخدمة",
-            controller: companyBrochureData.servicePrice,
+            controller: model.servicePrice,
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
             margin: const EdgeInsets.symmetric(vertical: 5),
@@ -43,8 +46,7 @@ class BuildServiceItem extends StatelessWidget {
               Icons.clear,
               color: MyColors.primary,
             ),
-            onPressed: () => companyBrochureData.showService
-                .onUpdateData(!serviceCubit.state.data),
+            onPressed: () => companyBrochureData.removeService(index),
           ),
         )
       ],

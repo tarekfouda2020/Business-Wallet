@@ -26,10 +26,7 @@ class AccountReconciliationData {
   }
 
   void reconciliationBank(
-    BuildContext context,
-    double cost,
-    double point,
-  ) async {
+      BuildContext context, double cost, double point) async {
     if (formKey.currentState!.validate()) {
       if (!termsCubit.state.data) {
         LoadingDialog.showSimpleToast("هل وافقت علي الشروط ");

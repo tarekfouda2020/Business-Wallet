@@ -9,6 +9,12 @@ class _CompanyBarcodeState extends State<CompanyBarcode> {
   final CompanyBarcodeData companyBarcodeData = new CompanyBarcodeData();
 
   @override
+  void initState() {
+    companyBarcodeData.fetchData(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,

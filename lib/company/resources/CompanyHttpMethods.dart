@@ -2,20 +2,35 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/comp_fav_details_model.dart';
 import 'package:base_flutter/company/models/comp_favorite_model.dart';
+import 'package:base_flutter/company/models/comp_filter_reconciliation_model.dart';
+import 'package:base_flutter/company/models/comp_interest_model.dart';
 import 'package:base_flutter/company/models/comp_invitation_model.dart';
+import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
+import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/company_model.dart';
+import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
+import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
+import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
 import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
+
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
+import 'package:base_flutter/customer/models/conversation_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';
+import 'package:base_flutter/customer/models/investment_ads_model.dart';
 import 'package:base_flutter/customer/models/main_details_model.dart';
 import 'package:base_flutter/customer/models/main_model.dart';
+import 'package:base_flutter/customer/models/profile_comments_model.dart';
+import 'package:base_flutter/customer/models/specific_ads_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
+import 'package:base_flutter/customer/models/wallet_details_model.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/GlobalState.dart';
@@ -223,9 +238,6 @@ class CompanyHttpMethods {
     }
   }
 
-
-
-
   Future<List<CompFavoriteModel>> getFavoriteData(
       int pageIndex, int fkCity, fkInterest) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -248,10 +260,6 @@ class CompanyHttpMethods {
     }
   }
 
-
-
-
-
   Future<List<CompInvitationModel>> getInvitationData(int pageIndex) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -272,9 +280,6 @@ class CompanyHttpMethods {
       return [];
     }
   }
-
-
-
 
   Future<List<FollowerModel>> getFollowersFiltered(
       int pageIndex, int cityId, int interestId, int filterId) async {
@@ -318,8 +323,6 @@ class CompanyHttpMethods {
     }
   }
 
-
-
   Future<bool> addLike(String kayanId) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -339,7 +342,7 @@ class CompanyHttpMethods {
   }
 
   Future<bool> addFollow(String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
 
     Map<String, dynamic> body = {
@@ -349,6 +352,24 @@ class CompanyHttpMethods {
     };
     var _data = await DioHelper(context: context)
         .post(url: "/User/AddFollowApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> sendBrochure(String kayanId) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "Current_User": userId,
+      "Kayan_Id": kayanId,
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/Plans/SendBusinessCard", body: body);
     if (_data != null) {
       return true;
     } else {
@@ -439,6 +460,568 @@ class CompanyHttpMethods {
       return true;
     } else {
       return false;
+    }
+  }
+
+  Future<CompFavDetailsModel?> getAds(
+      int adsId, int sendCard, int showSendCard) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "Id": adsId,
+      "userId": userId,
+      "lang": lang,
+      "idSendCard": sendCard,
+      "IsShowWhenSend": showSendCard,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/InvestmentInvitation/PreviewBusiness_CardApi", body: body);
+    if (_data != null) {
+      return CompFavDetailsModel.fromJson(_data['businesscardDB']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool> updateAds(int adsId, int showSend) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "Id": adsId,
+      "userId": userId,
+      "lang": lang,
+      "IsShowWhenSend": showSend == 0 ? false : true
+    };
+    var _data = await DioHelper(context: context).get(
+        url: "/InvestmentInvitation/UpdateAnnouncement_Business_CardApi",
+        body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> getAdsPoint(
+      String type, int points, int adsId, String adsType) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "userId": userId,
+      "type": type,
+      "point": points,
+      "id_ads": adsId,
+      "type_ads": adsType,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/InvestmentInvitation/PoketPointKayanApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> likeAds(int announcementId, String type) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+      "Announcement_Id": announcementId,
+      "type": type
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/InvestmentInvitation/AddWishApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> followAds(String kayanId) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+      "Kayan_Id": kayanId,
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/InvestmentInvitation/AddFollowApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<List<CompInterestModel>> getInterest() async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Account/GetInterestsKayanApi", body: body);
+    if (_data != null) {
+      return List<CompInterestModel>.from(
+          _data['data']['interests'].map((e) => CompInterestModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<bool> saveInterest(String items) async {
+    String userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "interests": items,
+      "lang": lang,
+      "user_id": "$userId",
+    };
+    var _data = await DioHelper(context: context).post(
+        url: "/Account/EditInterstiesKayanApi", body: body, showLoader: false);
+    if (_data != null) {
+      UserModel user = context.read<UserCubit>().state.model;
+      user.interest = _data['data']["UserData"]["interest"];
+      user.companyModel = CompanyModel.fromJson(_data['data']["UserData"]);
+
+      await Utils.saveUserData(user);
+      print("____@@_${user.interest}");
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<List<ProfileCommentsModel>> getProfileComments() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/User/MyCommentsApi", body: body);
+    if (_data != null) {
+      return List<ProfileCommentsModel>.from(
+          _data['Kayans'].map((e) => ProfileCommentsModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<bool> rateProfileComment(int rate, String kayanId) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "kayan_Id": kayanId,
+      "Current_User": userId,
+      "NewRate": rate,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/EditRateApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<List<ConversationModel>> getConversation() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "id_user": userId,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/ChatApi/GetListMsgOfUser", body: body);
+    if (_data != null) {
+      return List<ConversationModel>.from(
+          _data['data'].map((e) => ConversationModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<String?> promoCode() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {"user_id": userId, "lang": lang};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/PromoCode", body: body);
+    if (_data != null) {
+      return _data["data"]["promocode"];
+    } else {
+      return null;
+    }
+  }
+
+  Future<CompWalletModel?> getWalletData() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {"user_id": userId, "lang": lang};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/MyWallet", body: body);
+    updateWallet(_data["data"]["perviewStatsicViewModel"]['points']);
+
+    if (_data != null) {
+      return CompWalletModel.fromJson(_data["data"]["perviewStatsicViewModel"]);
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool> updateWallet(int points) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang": lang,
+      "Marketing_points": points,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/UpdateMainPockect", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<List<WalletDetailsModel>> getWalletDetails() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/DetailsWallet", body: body);
+    if (_data != null) {
+      return List<WalletDetailsModel>.from(
+          _data["data"].map((e) => WalletDetailsModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<bool> shareWalletPoint(String type, double package) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "type": type,
+      "package": package,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context).post(
+      url: "/Plans/SetMainPockect",
+      body: body,
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<CompFilterReconciliationModel?> getReconciliation() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/Getfiltering", body: body);
+    if (_data != null) {
+      return CompFilterReconciliationModel.fromJson(
+          _data["data"]['kayan_data']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<DropDownModel>> getBank() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/WalletUser/GetAllBanks", body: body);
+    if (_data != null) {
+      return List<DropDownModel>.from(
+          _data['Banks'].map((e) => DropDownModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<bool> reconciliationBank(double cost, double point, String fullName,
+      String fkBank, String iBAN) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "userId": userId,
+      "points": point,
+      "cost": cost,
+      "full_name": fullName,
+      "fk_bank": fkBank,
+      "IBAN": iBAN,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context).post(
+        url: "/WalletUser/AddFilterRequestApi", body: body, showLoader: false);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<CompStatisticsDetailsModel?> getStatistics() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/MyStatistics", body: body);
+    if (_data != null) {
+      return CompStatisticsDetailsModel.fromJson(_data["data"]);
+    } else {
+      return null;
+    }
+  }
+
+  Future<BarcodeModel?> getBarcode() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/BarCode", body: body);
+    if (_data != null) {
+      return BarcodeModel.fromJson(_data["data"]["barcode"]);
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool> updateCompanyData(UpdateCompanyProfileModel model) async {
+    var _data = await DioHelper(context: context).uploadFile(
+      url: '/Account/UpdateKayanApi',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      UserModel user = context.read<UserCubit>().state.model;
+      user.companyModel =
+          CompanyModel.fromJson(_data['data']["kyanApiViewModel"]);
+      user.deviceId = GlobalState.instance.get("token");
+      await Utils.saveUserData(user);
+      context.read<UserCubit>().onUpdateUserData(user);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> removeImage(int id, int type) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "TypeImg": type,
+      "lang": lang,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: '/Account/RemoveImages', body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> sendBrochureData(SendBrochureModel model) async {
+    var _data = await DioHelper(context: context).uploadFile(
+      url: '/Plans/AddNewCard',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  Future<bool> addSubscribe(AddSubscribeModel model) async {
+    var _data = await DioHelper(context: context).uploadFile(
+      url: '/Plans/Announcementsentspecificcategory',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  Future<SpecificAdsModel?> getSpecificAds(int adsId) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
+    var _data = await DioHelper(context: context).get(
+        url:
+        "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
+        body: body);
+    if (_data != null) {
+      return SpecificAdsModel.fromJson(_data);
+    } else {
+      return null;
+    }
+  }
+  Future<bool> updateSpecificAds(int adsId) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
+    var _data = await DioHelper(context: context).get(
+        url:
+        "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
+        body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  Future<bool> getSpecificAdsPoint(
+      String type, int points, int adsId, String adsType) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "userId": userId,
+      "type": type,
+      "point": points,
+      "id_ads": adsId,
+      "type_ads": adsType,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/InvestmentInvitation/PoketPointKayanApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  Future<bool> likeSpecificAds(int announcementId, String type) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "userId": userId,
+      "Announcement_Id": announcementId,
+      "type": type
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/InvestmentInvitation/AddWishApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  Future<bool> specificAdsRate(int adsId, int rate, String type) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "ad_Id": adsId,
+      "userId": userId,
+      "NewRate": rate,
+      "type": type,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context)
+        .post(url: "/InvestmentInvitation/AddRateApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+  Future<bool> specificAdsComment(
+      int adsId, String msg, File? image, String type) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "IId": adsId,
+      "userId": userId,
+      "txtcomment": msg,
+      "uploadImage": image,
+      "lang": lang,
+      "type": type
+    };
+    var _data = await DioHelper(context: context)
+        .uploadFile(url: "/InvestmentInvitation/AddCommentApi", body: body);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+  Future<InvestmentAdsModel?> getInvestmentAds(int adsId) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
+    var _data = await DioHelper(context: context).get(
+        url: "/InvestmentInvitation/PreviewAnnouncement_service_evaluationApi",
+        body: body);
+    if (_data != null) {
+      return InvestmentAdsModel.fromJson(_data);
+    } else {
+      return null;
     }
   }
 }

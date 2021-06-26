@@ -635,7 +635,6 @@ class CustomerHttpMethods {
       return [];
     }
   }
-
   Future<bool> rateProfileComment(int rate, String kayanId) async {
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -654,6 +653,7 @@ class CustomerHttpMethods {
       return false;
     }
   }
+
 
   Future<WalletModel?> getWalletData() async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -711,8 +711,7 @@ class CustomerHttpMethods {
     }
   }
 
-  Future<bool> changePassword(String oldPassword, String newPassword) async {
-    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+  Future<bool> changePassword(String oldPassword, String newPassword,String userId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "lang": lang,

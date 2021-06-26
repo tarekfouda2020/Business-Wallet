@@ -26,11 +26,6 @@ class EditProfileData {
   final TextEditingController averageSalary = new TextEditingController();
   CitiesModel? cityId;
 
-  // GenderModel? genderId;
-  // IncomeModel? incomeId;
-  // LivingModel? livingId;
-  // FamilyMemberModel? familyMemberId;
-  // EducationModel? educationId;
 
   final TextEditingController gender = new TextEditingController();
 

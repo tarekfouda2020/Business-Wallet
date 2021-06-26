@@ -7,11 +7,14 @@ class BuildEditProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
     return Column(
       children: [
         DefaultButton(
           title: "تغيير كلمه المرور",
-          onTap: () => AutoRouter.of(context).push(ChangePasswordRoute()),
+          onTap: () =>
+              AutoRouter.of(context).push(ChangePasswordRoute(userId: userId)),
           color: MyColors.white,
           borderRadius: BorderRadius.circular(20),
           borderColor: MyColors.blackOpacity,

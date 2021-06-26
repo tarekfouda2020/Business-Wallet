@@ -10,6 +10,12 @@ class _CompanyWalletNumbState extends State<CompanyWalletNumb> {
       new CompanyWalletNumbData();
 
   @override
+  void initState() {
+    companyWalletNumbData.fetchData(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: companyWalletNumbData.scaffold,

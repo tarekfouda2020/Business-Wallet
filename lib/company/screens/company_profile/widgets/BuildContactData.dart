@@ -3,54 +3,54 @@ part of 'CompProfileWidgetsImports.dart';
 class BuildContactData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var company = context.read<UserCubit>().state.model.companyModel;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BuildContactItem(
                 title: "رقم الجوال",
-                iconData: Icons.phone_in_talk_outlined,
-                color: Colors.green,
-                desc: "desc",
+                desc: company!.phone!,
+                iconData: Icons.phone_in_talk,
+                color: Colors.yellow,
+                onTap: () => Utils.callPhone(phone: company.phone),
               ),
               BuildContactItem(
                 title: "البريد الالكتروني",
-                iconData: Icons.phone_in_talk_outlined,
-                color: Colors.yellow,
-                desc: "desc",
+                desc: company.email!,
+                iconData: Icons.mail_sharp,
+                color: Colors.green,
+                onTap: () => Utils.sendMail(company.email),
               ),
-            ],
-          ),
-          Row(
-            children: [
               BuildContactItem(
                 title: "رابط المنشأة",
-                iconData: Icons.phone_in_talk_outlined,
+                desc: company.website == "" ? "لا يوجد" : company.website!,
+                iconData: Icons.language,
                 color: Colors.blue,
-                desc: "desc",
-              ),
-              BuildContactItem(
-                title: "اجراء محادثة",
-                iconData: Icons.phone_in_talk_outlined,
-                color: Colors.yellow,
-                desc: "desc",
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              BuildContactItem(
-                title: "العنوان",
-                iconData: MdiIcons.mapMarkerRadius,
-                color: Colors.red,
-                desc: "desc",
+                onTap: () => Utils.launchURL(url: company.website!),
               ),
             ],
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              children: [
+                BuildContactItem(
+                  title: "العنوان",
+                  desc: company.address == "" ? "لا يوجد" : company.address!,
+                  iconData: MdiIcons.mapMarkerRadius,
+                  color: Colors.red,
+                  allLocation: false,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
             child: CachedImage(
               url:
                   "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",

@@ -7,49 +7,53 @@ class BuildAddService extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
-      bloc: companyBrochureData.showService,
-      builder: (_, state) {
-        return Column(
+    return Column(
+      children: [
+        Row(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: LabelTextField(
-                    hint: "الخدمات ",
-                    controller: companyBrochureData.service,
-                    action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: IconButton(
-                    icon: Icon(
-                      MdiIcons.plusCircle,
-                      color: MyColors.primary,
-                      size: 35,
-                    ),
-                    onPressed: () => companyBrochureData.showService
-                        .onUpdateData(!state.data),
-                  ),
-                )
-              ],
-            ),
-            Visibility(
-              visible: state.data,
-              child: BuildServiceItem(
-                companyBrochureData: companyBrochureData,
-                serviceCubit: companyBrochureData.showService,
+            Expanded(
+              flex: 5,
+              child: LabelTextField(
+                hint: "الخدمات ",
+                controller: companyBrochureData.service,
+                action: TextInputAction.next,
+                type: TextInputType.emailAddress,
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                validate: (value) => value!.validateEmpty(context),
               ),
-              replacement: Container(),
+            ),
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                icon: Icon(
+                  MdiIcons.plusCircle,
+                  color: MyColors.primary,
+                  size: 35,
+                ),
+                onPressed: companyBrochureData.addService,
+              ),
             )
           ],
-        );
-      },
+        ),
+        BlocBuilder<GenericCubit<List<AddBrochureServiceModel>>,
+            GenericState<List<AddBrochureServiceModel>>>(
+          bloc: companyBrochureData.addBrochureServiceModelCubit,
+          builder: (_, state) {
+            return Column(
+              children: List.generate(
+                state.data.length,
+                (index) {
+                  return BuildServiceItem(
+                    model: state.data[index],
+                    index: index,
+                    companyBrochureData: companyBrochureData,
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }

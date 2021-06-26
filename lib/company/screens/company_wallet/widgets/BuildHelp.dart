@@ -17,7 +17,7 @@ class BuildHelp extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: ()=>AutoRouter.of(context).push(TermsRoute()),
+            onTap: ()=>AutoRouter.of(context).push(WalletHelpRoute()),
             child: MyText(
               title: " اضغط هنا",
               size: 13,

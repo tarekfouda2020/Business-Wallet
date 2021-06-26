@@ -38,7 +38,6 @@ class BuildChangeForm extends StatelessWidget {
                 pass: changePasswordData.newPassword.text),
             isPassword: true,
             action: TextInputAction.done,
-            onSubmit: ()=> changePasswordData.changePassword(context),
           ),
         ],
       ),

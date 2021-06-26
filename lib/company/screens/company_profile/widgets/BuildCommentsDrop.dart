@@ -7,6 +7,8 @@ class BuildCommentsDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var company = context.read<UserCubit>().state.model.companyModel;
+
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
       bloc: companyProfileData.commentsDropCubit,
       builder: (_, state) {
@@ -17,13 +19,24 @@ class BuildCommentsDrop extends StatelessWidget {
                 genericCubit: companyProfileData.commentsDropCubit),
             Visibility(
               visible: state.data,
-              child: Container(
-                child: ListView.builder(
+              child: Visibility(
+                visible: company!.commentKayan!.isEmpty,
+                child: Center(
+                  child: MyText(
+                    title: "لا يوجد تعليقات",
+                    size: 12,
+                    color: MyColors.white,
+                  ),
+                ),
+                replacement: ListView.builder(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (_, index) => BuildCommentItem(),
+                  itemCount: company.commentKayan!.length,
+                  itemBuilder: (_, index) => BuildCommentItem(
+                    commentModel: company.commentKayan![index],
+                    companyProfileData: companyProfileData,
+                  ),
                 ),
               ),
               replacement: Container(

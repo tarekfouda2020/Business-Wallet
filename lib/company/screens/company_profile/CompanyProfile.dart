@@ -25,6 +25,12 @@ class _CompanyProfileState extends State<CompanyProfile> {
             BuildContactDrop(companyProfileData: companyProfileData),
             BuildSocialDrop(companyProfileData: companyProfileData),
             BuildImgDrop(companyProfileData: companyProfileData),
+            BuildShowAccreditation(
+              companyProfileData: companyProfileData,
+            ),
+            BuildShowPartner(
+              companyProfileData: companyProfileData,
+            ),
             BuildCommentsDrop(companyProfileData: companyProfileData),
           ],
         ),

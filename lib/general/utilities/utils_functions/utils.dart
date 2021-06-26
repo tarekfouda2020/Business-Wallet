@@ -213,6 +213,17 @@ class Utils {
       return null;
     }
   }
+  static Future<File?> getPdf() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowMultiple: false, type: FileType.custom,allowedExtensions: ['pdf']);
+
+    if (result != null) {
+      List<File> files = result.paths.map((path) => File("$path")).toList();
+      return files.first;
+    } else {
+      return null;
+    }
+  }
 
   static Future<List<File>> getImages() async {
     FilePickerResult? result = await FilePicker.platform
@@ -263,30 +274,63 @@ class Utils {
     return true;
   }
 
-  static Future<LocationData> getCurrentLocation() async {
+
+  static Future<LocationData?> getCurrentLocation() async {
     final location = new Location();
     bool permission = await askForPermission(location);
-    LocationData? current;
+    late LocationData current;
     if (permission) {
       current = await location.getLocation();
     }
-    return current ?? LocationData.fromMap({"latitude": 0, "longitude": 0});
+    return current;
   }
 
-  static void navigateToMapWithDirection(
-      {required String lat, required String lng, required String title}) async {
+  static void navigateToMapWithDirection({required String lat,required String lng, required BuildContext context}) async {
     final availableMaps = await MapLauncher.installedMaps;
-    LocationData loc = await getCurrentLocation();
-    if (availableMaps.length > 0) {
+    LocationData? loc = await getCurrentLocation();
+    if (availableMaps.length > 0&&loc!=null) {
       await availableMaps.first.showDirections(
-        destinationTitle: title,
+        destinationTitle: "destination",
         origin: Coords(loc.latitude!, loc.longitude!),
         destination: Coords(double.parse(lat), double.parse(lng)),
       );
     } else {
-      LoadingDialog.showSimpleToast("قم بتحميل خريطة جوجل");
+      LoadingDialog.showSimpleToast("قم بتحميل خريطة جوجل"); //"قم بتحميل خريطة جوجل");
     }
   }
+
+  static void navigateToLocationAddress(BuildContext context,LocationCubit locCubit) async {
+    FocusScope.of(context).requestFocus(FocusNode());
+    LoadingDialog.showLoadingDialog();
+    var current = await Utils.getCurrentLocation();
+    LocationModel? locationModel = locCubit.state.model;
+    if (current != null) {
+      locationModel = LocationModel("${current.latitude}", "${current.longitude}", "");
+    }
+    double lat = double.parse(locationModel!.lat);
+    double lng = double.parse(locationModel.lng);
+    String address = await getAddress(LatLng(lat,lng),context);
+    locationModel.address=address;
+    locCubit.onLocationUpdated(locationModel);
+    EasyLoading.dismiss();
+    Navigator.of(context).push(
+      CupertinoPageRoute(
+        builder: (cxt) => BlocProvider.value(
+          value: locCubit,
+          child: LocationAddress(),
+        ),
+      ),
+    );
+  }
+  static Future<String> getAddress(LatLng latLng,BuildContext context) async {
+    final coordinates = new Coordinates(latLng.latitude, latLng.longitude);
+    List<Address> addresses  = await Geocoder.local
+        .findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    print("${first.featureName} : ${first.addressLine}");
+    return first.addressLine;
+  }
+
 
   static String convertDigitsToLatin(String s) {
     var sb = new StringBuffer();

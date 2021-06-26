@@ -13,23 +13,30 @@ class _CompanyPackagesState extends State<CompanyPackages> {
       appBar: DefaultAppBar(
         title: "الباقات الاعلانية",
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-          child: Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            runAlignment: WrapAlignment.start,
-            alignment: WrapAlignment.start,
-            children: List.generate(
-              5,
-                  (index) => BuildPackagesItem(),
-            ),
-          ),
-        ),
-      )
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 25),
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  BuildPackagesItem(),
+                  BuildPackagesItem(),
+                  BuildPackagesItem(),
+                ],
+              ),
+              Column(
+                children: [
+                  BuildPackagesItem(),
+                  BuildPackagesItem(),
+                ],
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
