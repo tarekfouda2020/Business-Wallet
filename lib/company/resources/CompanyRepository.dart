@@ -14,6 +14,7 @@ import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
 import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
+import 'package:base_flutter/company/models/packages_model.dart';
 import 'package:base_flutter/company/resources/CompanyHttpMethods.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
@@ -197,12 +198,13 @@ class CompanyRepository {
   Future<bool> specificAdsRate(int adsId, int rate, String type) =>
       _companyHttpMethods.specificAdsRate(adsId, rate, type);
 
-
   Future<bool> specificAdsComment(
-      int adsId, String msg, File? image, String type) =>
+          int adsId, String msg, File? image, String type) =>
       _companyHttpMethods.specificAdsComment(adsId, msg, image, type);
 
   Future<InvestmentAdsModel?> getInvestmentAds(int adsId) =>
       _companyHttpMethods.getInvestmentAds(adsId);
 
+  Future<List<PackagesModel>> getAllPackages() =>
+      _companyHttpMethods.getAllPackages();
 }

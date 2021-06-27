@@ -1,8 +1,6 @@
 part of 'CompOpinionSubscribeImports.dart';
 
 class CompOpinionSubscribe extends StatefulWidget {
-  const CompOpinionSubscribe({Key? key}) : super(key: key);
-
   @override
   _CompOpinionSubscribeState createState() => _CompOpinionSubscribeState();
 }
@@ -27,13 +25,17 @@ class _CompOpinionSubscribeState extends State<CompOpinionSubscribe> {
         onPageChanged: compOpinionSubscribeData.subscribeCubit.onUpdateData,
         children: [
           FirstStepOpinion(
-
+            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
+            movePage: compOpinionSubscribeData.movePage,
           ),
           SecondStepOpinion(
-         ),
+            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
+            movePage: compOpinionSubscribeData.movePage,
+          ),
           ThirdStepOpinion(
-         ),
-
+            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
+            movePage: compOpinionSubscribeData.movePage,
+          ),
         ],
       ),
     );

@@ -24,10 +24,22 @@ class _CompSpecialSubscribeState extends State<CompSpecialSubscribe> {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: compSpecialSubscribeData.subscribeCubit.onUpdateData,
         children: [
-          FirstStepSpecial(),
-          SecondStepSpecial(),
-          ThirdStepSpecial(),
-          FourthStepSpecial(),
+          FirstStepSpecial(
+            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
+            movePage: compSpecialSubscribeData.movePage,
+          ),
+          SecondStepSpecial(
+            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
+            movePage: compSpecialSubscribeData.movePage,
+          ),
+          ThirdStepSpecial(
+            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
+            movePage: compSpecialSubscribeData.movePage,
+          ),
+          // FourthStepSpecial(
+          //   subscribeCubit: compSpecialSubscribeData.subscribeCubit,
+          //   movePage: compSpecialSubscribeData.movePage,
+          // ),
         ],
       ),
     );

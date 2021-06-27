@@ -6,7 +6,6 @@ class BuildDetails extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
-
         children: [
           Row(
             children: [

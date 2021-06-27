@@ -1,12 +1,15 @@
 part of 'CompPackagesWidgetsImports.dart';
 class BuildTextItem extends StatelessWidget {
+  final String contentItem;
+
+  const BuildTextItem({required this.contentItem});
   @override
   Widget build(BuildContext context) {
     return Column(
 
       children: [
         MyText(
-          title: "نصوص",
+          title: contentItem,
           size: 10,
           color: MyColors.offWhite,
         ),

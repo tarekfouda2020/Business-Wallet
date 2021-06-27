@@ -458,8 +458,10 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     CompanySubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i56.CompanySubscribe();
+        builder: (data) {
+          final args = data.argsAs<CompanySubscribeRouteArgs>(
+              orElse: () => const CompanySubscribeRouteArgs());
+          return _i56.CompanySubscribe(showVideo: args.showVideo);
         }),
     CompanyWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -507,7 +509,7 @@ class AppRouter extends _i1.RootStackRouter {
     CompOpinionSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i65.CompOpinionSubscribe();
+          return _i65.CompOpinionSubscribe();
         }),
     CompBrochureSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -1196,10 +1198,20 @@ class CompanyPointsRoute extends _i1.PageRouteInfo {
   static const String name = 'CompanyPointsRoute';
 }
 
-class CompanySubscribeRoute extends _i1.PageRouteInfo {
-  const CompanySubscribeRoute() : super(name, path: '/company-subscribe');
+class CompanySubscribeRoute
+    extends _i1.PageRouteInfo<CompanySubscribeRouteArgs> {
+  CompanySubscribeRoute({bool showVideo = true})
+      : super(name,
+            path: '/company-subscribe',
+            args: CompanySubscribeRouteArgs(showVideo: showVideo));
 
   static const String name = 'CompanySubscribeRoute';
+}
+
+class CompanySubscribeRouteArgs {
+  const CompanySubscribeRouteArgs({this.showVideo = true});
+
+  final bool showVideo;
 }
 
 class CompanyWalletRoute extends _i1.PageRouteInfo {

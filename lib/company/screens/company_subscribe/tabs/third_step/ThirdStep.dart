@@ -26,8 +26,7 @@ class _ThirdStepState extends State<ThirdStep> {
             movePage: widget.movePage,
           ),
           BuildReviewPrice(),
-         BuildDetails(),
-
+          BuildDetails(),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,

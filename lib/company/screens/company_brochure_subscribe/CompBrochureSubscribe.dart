@@ -26,9 +26,18 @@ class _CompBrochureSubscribeState extends State<CompBrochureSubscribe> {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: compBrochureSubscribeData.subscribeCubit.onUpdateData,
         children: [
-          FirstStepBrochure(),
-          SecondStepBrochure(),
-          ThirdStepBrochure(),
+          FirstStepBrochure(
+            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
+            movePage: compBrochureSubscribeData.movePage,
+          ),
+          SecondStepBrochure(
+            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
+            movePage: compBrochureSubscribeData.movePage,
+          ),
+          ThirdStepBrochure(
+            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
+            movePage: compBrochureSubscribeData.movePage,
+          ),
         ],
       ),
     );

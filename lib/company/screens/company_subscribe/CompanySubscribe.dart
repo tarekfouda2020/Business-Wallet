@@ -1,6 +1,10 @@
 part of 'CompanySubscribeImports.dart';
 
 class CompanySubscribe extends StatefulWidget {
+  final bool showVideo;
+
+  const CompanySubscribe({this.showVideo = true});
+
   @override
   _CompanySubscribeState createState() => _CompanySubscribeState();
 }
@@ -26,6 +30,7 @@ class _CompanySubscribeState extends State<CompanySubscribe> {
           FirstStep(
             subscribeCubit: companySubscribeData.subscribeCubit,
             movePage: companySubscribeData.movePage,
+            showVideo: widget.showVideo,
           ),
           SecondStep(
             subscribeCubit: companySubscribeData.subscribeCubit,

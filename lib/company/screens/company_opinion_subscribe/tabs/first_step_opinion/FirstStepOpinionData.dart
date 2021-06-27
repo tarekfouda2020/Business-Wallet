@@ -1,3 +1,5 @@
 part of 'FirstStepOpinionImports.dart';
-class FirstStepOpinionData{
+
+class FirstStepOpinionData {
+
 }

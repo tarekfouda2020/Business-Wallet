@@ -18,6 +18,7 @@ import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
+import 'package:base_flutter/company/models/packages_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
@@ -886,19 +887,6 @@ class CompanyHttpMethods {
     }
   }
 
-
-  Future<bool> addSubscribe(AddSubscribeModel model) async {
-    var _data = await DioHelper(context: context).uploadFile(
-      url: '/Plans/Announcementsentspecificcategory',
-      body: model.toJson(),
-      showLoader: false,
-    );
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   Future<SpecificAdsModel?> getSpecificAds(int adsId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -906,7 +894,7 @@ class CompanyHttpMethods {
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
     var _data = await DioHelper(context: context).get(
         url:
-        "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
+            "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
         body: body);
     if (_data != null) {
       return SpecificAdsModel.fromJson(_data);
@@ -914,6 +902,7 @@ class CompanyHttpMethods {
       return null;
     }
   }
+
   Future<bool> updateSpecificAds(int adsId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -921,7 +910,7 @@ class CompanyHttpMethods {
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
     var _data = await DioHelper(context: context).get(
         url:
-        "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
+            "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
         body: body);
     if (_data != null) {
       return true;
@@ -929,6 +918,7 @@ class CompanyHttpMethods {
       return false;
     }
   }
+
   Future<bool> getSpecificAdsPoint(
       String type, int points, int adsId, String adsType) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -950,6 +940,7 @@ class CompanyHttpMethods {
       return false;
     }
   }
+
   Future<bool> likeSpecificAds(int announcementId, String type) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -968,6 +959,7 @@ class CompanyHttpMethods {
       return false;
     }
   }
+
   Future<bool> specificAdsRate(int adsId, int rate, String type) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -986,8 +978,8 @@ class CompanyHttpMethods {
     } else {
       return false;
     }
-
   }
+
   Future<bool> specificAdsComment(
       int adsId, String msg, File? image, String type) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -1008,8 +1000,8 @@ class CompanyHttpMethods {
     } else {
       return false;
     }
-
   }
+
   Future<InvestmentAdsModel?> getInvestmentAds(int adsId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -1022,6 +1014,37 @@ class CompanyHttpMethods {
       return InvestmentAdsModel.fromJson(_data);
     } else {
       return null;
+    }
+  }
+
+  Future<List<PackagesModel>> getAllPackages() async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "userId": userId,
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/GetAllPackages", body: body);
+    if (_data != null) {
+      return List<PackagesModel>.from(
+          _data['packages'].map((e) => PackagesModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<bool> addSubscribe(AddSubscribeModel model) async {
+    var _data = await DioHelper(context: context).uploadFile(
+      url: '/Plans/Announcementsentspecificcategory',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

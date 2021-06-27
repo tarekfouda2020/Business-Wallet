@@ -1,7 +1,11 @@
 part of 'FourthStepSpecialImports.dart';
 
 class FourthStepSpecial extends StatefulWidget {
-  const FourthStepSpecial({Key? key}) : super(key: key);
+  final GenericCubit subscribeCubit;
+  final Function(int page) movePage;
+
+  const FourthStepSpecial(
+      {required this.subscribeCubit, required this.movePage});
 
   @override
   _FourthStepSpecialState createState() => _FourthStepSpecialState();

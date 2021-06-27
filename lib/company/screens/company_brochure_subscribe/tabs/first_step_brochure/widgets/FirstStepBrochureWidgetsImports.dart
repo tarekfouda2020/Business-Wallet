@@ -1,0 +1,12 @@
+import 'package:base_flutter/company/screens/company_fav_details/widgets/CompFavDetailsWidgetsImports.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
+import 'package:base_flutter/general/widgets/CachedImage.dart';
+import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+part 'BuildContact.dart';
+part 'BuildDesc.dart';
+part 'BuildProducts.dart';
+part 'BuildServiceItem.dart';
+part 'BuildServices.dart';
