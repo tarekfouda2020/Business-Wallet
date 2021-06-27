@@ -1,5 +1,10 @@
 part of 'ThirdStepWidgetsImports.dart';
+
 class BuildReviewPrice extends StatelessWidget {
+  final CompanySubscribeData companySubscribeData;
+
+  const BuildReviewPrice({required this.companySubscribeData});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -10,7 +15,7 @@ class BuildReviewPrice extends StatelessWidget {
           color: MyColors.white,
         ),
         MyText(
-          title: "500 ر.س",
+          title: "${companySubscribeData.baseCost} ر.س",
           size: 16,
           color: MyColors.primary,
         ),

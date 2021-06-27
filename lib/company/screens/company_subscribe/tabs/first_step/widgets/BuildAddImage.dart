@@ -1,9 +1,9 @@
 part of 'FirstStepWidgetsImports.dart';
 
 class BuildAddImage extends StatelessWidget {
-  final FirstStepData firstStepData;
+  final CompanySubscribeData companySubscribeData;
 
-  BuildAddImage({required this.firstStepData});
+  BuildAddImage({required this.companySubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,13 @@ class BuildAddImage extends StatelessWidget {
                   color: MyColors.primary,
                   size: 35,
                 ),
-                onPressed: firstStepData.setImage,
+                onPressed: companySubscribeData.setImage,
               ),
             ],
           ),
         ),
         BlocBuilder<GenericCubit<List<File>>, GenericState<List<File>>>(
-          bloc: firstStepData.imageCubit,
+          bloc: companySubscribeData.imageCubit,
           builder: (_, fileState) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class BuildAddImage extends StatelessWidget {
                           width: 100,
                           height: 100,
                           child: InkWell(
-                            onTap: () => firstStepData.removeImage(e),
+                            onTap: () => companySubscribeData.removeImage(e),
                             child: Icon(
                               Icons.cancel,
                               size: 30,

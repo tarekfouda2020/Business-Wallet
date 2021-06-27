@@ -12,6 +12,8 @@ class AddSubscribeModel {
   int? durationSec;
   String? startTime;
   int? fkCity;
+  String? cityName;
+
   String? interests;
   String? gender;
   String? accommodation;
@@ -38,6 +40,7 @@ class AddSubscribeModel {
       this.durationSec,
       this.startTime,
       this.fkCity,
+        this.cityName,
       this.interests,
       this.gender,
       this.accommodation,

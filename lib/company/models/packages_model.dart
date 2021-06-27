@@ -9,9 +9,9 @@ class PackagesModel {
   @JsonKey(name: 'title')
   String title;
   @JsonKey(name: 'decription')
-  String decription;
+  String desc;
   @JsonKey(name: 'Content')
-  List<String> Content;
+  List<String> content;
   @JsonKey(name: 'start')
   String start;
   @JsonKey(name: 'data')
@@ -22,8 +22,8 @@ class PackagesModel {
   PackagesModel(
       {required this.type,
       required this.title,
-      required this.decription,
-      required this.Content,
+      required this.desc,
+      required this.content,
       required this.start,
       required this.data,
       required this.price});

@@ -1,16 +1,26 @@
 part of 'CompSpecificAdsImports.dart';
 
 class CompSpecificAdsData {
+  late AnimationController controller;
+  late Animation<double> animation;
+  Timer? timer;
   final GenericCubit<bool> commentCubit = GenericCubit(false);
+  final GenericCubit<double> expandCubit = GenericCubit(0);
+  final GenericCubit<bool> showExpandCubit = GenericCubit(false);
+
+
   final GenericCubit<int> rateCubit = new GenericCubit(0);
   final GenericCubit<SpecificAdsModel?> specificAdsCubit =
       new GenericCubit(null);
   final GenericCubit<File?> imageCubit = new GenericCubit(null);
   final TextEditingController comment = TextEditingController();
+  final GenericCubit<bool> isOwner = new GenericCubit(true);
+
 
   void fetchData(BuildContext context, int adsId) async {
     var data = await CompanyRepository(context).getSpecificAds(adsId);
     specificAdsCubit.onUpdateData(data);
+    isOwner.onUpdateData(data!.previewAds.isOwner);
   }
 
   void updateSpecificAds(BuildContext context, int adsId) async {

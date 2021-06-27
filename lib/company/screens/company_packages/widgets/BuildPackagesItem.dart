@@ -26,7 +26,7 @@ class BuildPackagesItem extends StatelessWidget {
             color: MyColors.primary,
           ),
           Visibility(
-            visible: packagesModel.decription == "",
+            visible: packagesModel.desc == "",
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 20),
               child: Icon(
@@ -35,18 +35,18 @@ class BuildPackagesItem extends StatelessWidget {
               ),
             ),
             replacement: MyText(
-              title: "${packagesModel.decription}",
+              title: "${packagesModel.desc}",
               size: 8,
               color: MyColors.white,
             ),
           ),
           ListView.builder(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            itemCount: packagesModel.Content.length,
+            itemCount: packagesModel.content.length,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (_, index) => BuildTextItem(
-              contentItem: packagesModel.Content[index],
+              contentItem: packagesModel.content[index],
             ),
           ),
           MyText(

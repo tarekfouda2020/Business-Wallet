@@ -1,5 +1,6 @@
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
 import 'package:base_flutter/company/screens/company_product_ads/widgets/CompProductAdsWidgetsImports.dart';
+import 'package:base_flutter/company/screens/company_specific_ads/widgets/CompSpecificAdsWidgetsImports.dart';
 import 'package:base_flutter/customer/models/investment_ads_model.dart';
 import 'package:base_flutter/customer/models/question_model.dart';
 import 'package:base_flutter/customer/screens/invitation_details/widgets/InvDetailsWidgetsImports.dart';

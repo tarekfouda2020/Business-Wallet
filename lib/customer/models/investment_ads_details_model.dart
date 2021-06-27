@@ -30,6 +30,10 @@ class InvestmentAdsDetailsModel {
   bool follow;
   @JsonKey(name: 'images')
   List<MediaModel> images;
+  @JsonKey(name: 'imgs')
+  List<String> imgs;
+  @JsonKey(name: 'videos')
+  List<String> videos;
   @JsonKey(name: 'myQusetion')
   List<QuestionModel> myQuestions;
 
@@ -46,6 +50,8 @@ class InvestmentAdsDetailsModel {
       required this.pintsForEachUser,
       required this.follow,
       required this.images,
+      required this.imgs,
+      required this.videos,
       required this.myQuestions});
 
   factory InvestmentAdsDetailsModel.fromJson(Map<String, dynamic> json) =>

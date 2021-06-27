@@ -1,10 +1,9 @@
 part of 'FourthStepImports.dart';
 
 class FourthStep extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompanySubscribeData companySubscribeData;
 
-  FourthStep({required this.subscribeCubit, required this.movePage});
+  FourthStep({required this.companySubscribeData});
 
   @override
   _FourthStepState createState() => _FourthStepState();
@@ -25,7 +24,6 @@ class _FourthStepState extends State<FourthStep> {
         children: [
           BuildStepper(
             step4: true,
-            movePage: widget.movePage,
           ),
           BuildPaymentText(),
           BlocBuilder<GenericCubit, GenericState>(
@@ -59,9 +57,17 @@ class _FourthStepState extends State<FourthStep> {
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 30,horizontal: 10),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
             title: "تأكيد",
-            onTap: () => widget.movePage(3),
+            onTap: () => widget.companySubscribeData.moveNext,
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.companySubscribeData.moveBack(),
           )
         ],
       ),

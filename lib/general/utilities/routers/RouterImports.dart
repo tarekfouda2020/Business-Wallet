@@ -28,6 +28,7 @@ import 'package:base_flutter/company/screens/company_specific_ads/CompSpecificAd
 import 'package:base_flutter/company/screens/company_statistics_rate/CompanyStatisticsRateImports.dart';
 import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart';
 import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/tabs/second_step/SecondStepImports.dart';
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart';
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart';

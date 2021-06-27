@@ -83,12 +83,17 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompAccountReconciliation),
     AdaptiveRoute(page: CompanyStatisticsRate),
     AdaptiveRoute(page: CompanyBarcode),
-    AdaptiveRoute(page: CompSpecialSubscribe),
-    AdaptiveRoute(page: CompOpinionSubscribe),
     AdaptiveRoute(page: CompBrochureSubscribe),
     AdaptiveRoute(page: CompProductAds),
     AdaptiveRoute(page: CompSpecificAds),
     AdaptiveRoute(page: CompBusinessAds),
+
+    AdaptiveRoute(page: CompanySubscribe),
+    AdaptiveRoute(page: SecondStep),
+
+
+    AdaptiveRoute(page: CompSpecialSubscribe),
+    AdaptiveRoute(page: CompOpinionSubscribe),
 
 
 

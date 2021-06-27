@@ -1,3 +1,4 @@
+import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_subscribe/tabs/third_step/widgets/ThirdStepWidgetsImports.dart';
 import 'package:base_flutter/company/screens/company_subscribe/widgets/CompanySubscribeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';

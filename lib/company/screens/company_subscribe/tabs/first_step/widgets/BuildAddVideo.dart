@@ -1,9 +1,9 @@
 part of 'FirstStepWidgetsImports.dart';
 
 class BuildAddVideo extends StatelessWidget {
-  final FirstStepData firstStepData;
+  final CompanySubscribeData companySubscribeData;
 
-  BuildAddVideo({required this.firstStepData});
+  BuildAddVideo({required this.companySubscribeData});
 
   @override
   Widget build(BuildContext context) {

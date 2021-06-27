@@ -1,10 +1,9 @@
 part of 'ThirdStepImports.dart';
 
 class ThirdStep extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompanySubscribeData companySubscribeData;
 
-  ThirdStep({required this.subscribeCubit, required this.movePage});
+  ThirdStep({required this.companySubscribeData});
 
   @override
   _ThirdStepState createState() => _ThirdStepState();
@@ -23,16 +22,36 @@ class _ThirdStepState extends State<ThirdStep> {
         children: [
           BuildStepper(
             step3: true,
-            movePage: widget.movePage,
           ),
-          BuildReviewPrice(),
-          BuildDetails(),
+          BuildReviewPrice(
+            companySubscribeData: widget.companySubscribeData,
+          ),
+          BuildDetails(
+            companySubscribeData: widget.companySubscribeData,
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.blackOpacity,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "حفظ كملف PDF",
+            onTap: () => widget.companySubscribeData.savePdf(context),
+          ),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             borderRadius: BorderRadius.circular(30),
             title: "التالي",
-            onTap: () => widget.movePage(3),
+            onTap: () => widget.companySubscribeData.moveNext(),
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.blackOpacity,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.companySubscribeData.moveBack(),
           )
         ],
       ),

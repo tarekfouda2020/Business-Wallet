@@ -34,15 +34,28 @@ class _CompProductAdsState extends State<CompProductAds> {
               children: [
                 BuildInvTitle(title: "صور الاعلان"),
                 Visibility(
-                  visible: state.data!.investmentAdsDetails.images.isEmpty,
+                  visible: state.data!.investmentAdsDetails.imgs.isEmpty,
                   child: Center(
                     child: MyText(
                       title: "لا يوجد صور",
                     ),
                   ),
-                  replacement: BuildProductImages(),
+                  replacement: BuildProductImages(
+                    images: state.data!.investmentAdsDetails.imgs,
+                  ),
                 ),
                 BuildInvTitle(title: "فيديوهات الاعلان"),
+                Visibility(
+                  visible: state.data!.investmentAdsDetails.videos.isEmpty,
+                  child: Center(
+                    child: MyText(
+                      title: "لا يوجد فيديوهات",
+                    ),
+                  ),
+                  replacement: BuildAdsVideoList(
+                    videos: state.data!.investmentAdsDetails.videos,
+                  ),
+                ),
                 BuildInvTitle(title: "وصف الاعلان"),
                 BuildProductDesc(
                   desc: state.data!.investmentAdsDetails.advertDescription,
