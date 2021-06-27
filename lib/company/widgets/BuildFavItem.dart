@@ -11,19 +11,24 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class BuildFavItem extends StatelessWidget {
   final CompFavoriteModel? favoriteModel;
 
-
-  const BuildFavItem(
-      {this.favoriteModel});
+  const BuildFavItem({this.favoriteModel});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => AutoRouter.of(context).push(CompanyFavDetailsRoute()),
+      onTap: () => AutoRouter.of(context).push(
+        CompanyFavDetailsRoute(
+          adsId: favoriteModel!.id,
+          sendCard: favoriteModel!.idSendCard,
+          showSendCard: favoriteModel!.isShowWhenSend,
+          checkInvite: false,
+        ),
+      ),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding: EdgeInsets.zero,
         child: CachedImage(
-          url:  favoriteModel!.img,
+          url: favoriteModel!.img,
           height: 200,
           haveBorder: false,
           borderColor: MyColors.greyWhite,

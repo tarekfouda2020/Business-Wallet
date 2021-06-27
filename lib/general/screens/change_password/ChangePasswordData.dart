@@ -11,11 +11,11 @@ class ChangePasswordData {
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
 
-  void changePassword(BuildContext context) async {
+  void changePassword(BuildContext context, String userId) async {
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
       var result = await CustomerRepository(context)
-          .changePassword(oldPassword.text, newPassword.text);
+          .changePassword(oldPassword.text, newPassword.text, userId);
       btnKey.currentState!.animateReverse();
       if (result) {
         AutoRouter.of(context).pop();

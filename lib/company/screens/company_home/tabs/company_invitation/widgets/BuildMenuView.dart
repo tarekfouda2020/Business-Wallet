@@ -7,14 +7,9 @@ class BuildMenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Container(
+    return Container(
       height: 50,
       margin: const EdgeInsets.symmetric(horizontal: 15),
-      padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: MyColors.black.withOpacity(.95),
         borderRadius: BorderRadius.circular(25),
@@ -49,6 +44,6 @@ class BuildMenuView extends StatelessWidget {
           ),
         ],
       ),
-    ),);
+    );
   }
 }

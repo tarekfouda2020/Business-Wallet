@@ -1,6 +1,10 @@
 part of 'CompFavDetailsWidgetsImports.dart';
 
 class BuildContact extends StatelessWidget {
+  final CompFavDetailsModel compFavDetailsModel;
+
+  const BuildContact({required this.compFavDetailsModel});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -9,20 +13,28 @@ class BuildContact extends StatelessWidget {
           title: "طرق التواصل",
         ),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
           child: Row(
             children: [
-              BuildContactItem(
-                title: "رقم الجوال",
-                color: Colors.green,
-                iconData: MdiIcons.whatsapp,
-                desc: "fdfdfdf",
+              Expanded(
+                flex:1,
+                child: BuildContactItem(
+                  title: "رقم الجوال",
+                  color: Colors.green,
+                  iconData: MdiIcons.whatsapp,
+                  desc: compFavDetailsModel.phone,
+                  onTap: () => Utils.callPhone(phone: compFavDetailsModel.phone),
+                ),
               ),
-              BuildContactItem(
-                title: "البريد الالكتروني",
-                color: Colors.yellow,
-                iconData: MdiIcons.email,
-                desc: "Fdfdf",
+              Expanded(
+                flex: 2,
+                child: BuildContactItem(
+                  title: "البريد الالكتروني",
+                  color: Colors.yellow,
+                  desc: compFavDetailsModel.email,
+                  iconData: MdiIcons.email,
+                  onTap: () => Utils.sendMail(compFavDetailsModel.email),
+                ),
               ),
             ],
           ),

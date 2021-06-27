@@ -3,8 +3,12 @@ part of 'FirstStepImports.dart';
 class FirstStep extends StatefulWidget {
   final GenericCubit subscribeCubit;
   final Function(int page) movePage;
+  final bool showVideo;
 
-  FirstStep({required this.subscribeCubit, required this.movePage});
+  FirstStep(
+      {required this.subscribeCubit,
+      required this.movePage,
+      this.showVideo = true});
 
   @override
   _FirstStepState createState() => _FirstStepState();
@@ -27,10 +31,15 @@ class _FirstStepState extends State<FirstStep> {
             step1: true,
             movePage: widget.movePage,
           ),
-          BuildHelp(),
+          // BuildHelp(),
           BuildForm(firstStepData: firstStepData),
           BuildAddFile(firstStepData: firstStepData),
           BuildAddImage(firstStepData: firstStepData),
+          Visibility(
+            visible: widget.showVideo,
+            child: BuildAddVideo(firstStepData: firstStepData),
+            replacement: Container(),
+          ),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,

@@ -12,35 +12,22 @@ class _CompanyBrochureState extends State<CompanyBrochure> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-      body: Column(
+      appBar: DefaultAppBar(
+        title: "بيانات البروشور",
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         children: [
-          Container(
-            height: 190,
-            child: Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                DefaultAppBar(
-                  title: "بيانات البروشور",
-                ),
-                BuildUserInfo(),
-              ],
-            ),
-          ),
-          Flexible(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              children: [
-                BuildBrochureForm(companyBrochureData: companyBrochureData),
-                DefaultButton(
-                  title: "حفظ",
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(30),
-                  color: MyColors.primary,
-                  textColor: MyColors.blackOpacity,
-                )
-              ],
-            ),
-          ),
+          BuildUserInfo(),
+          BuildBrochureForm(companyBrochureData: companyBrochureData),
+          LoadingButton(
+            btnKey: companyBrochureData.btnKey,
+            title: "حفظ",
+            onTap: () => companyBrochureData.sendBrochureData(context),
+            borderRadius: 30,
+            color: MyColors.primary,
+            textColor: MyColors.blackOpacity,
+          )
         ],
       ),
     );

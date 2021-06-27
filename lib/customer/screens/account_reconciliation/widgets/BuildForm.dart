@@ -24,7 +24,7 @@ class BuildForm extends StatelessWidget {
             LabelTextField(
               hint: "الاسم ثلاثي",
               controller: accountReconciliationData.name,
-              validate: (value) => value!.validateEmpty(context),
+              validate: (value) => value!.validateName(context),
               margin: const EdgeInsets.symmetric(vertical: 10),
               action: TextInputAction.next,
             ),

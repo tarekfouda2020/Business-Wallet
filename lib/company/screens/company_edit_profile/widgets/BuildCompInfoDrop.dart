@@ -61,24 +61,33 @@ class BuildCompInfoDrop extends StatelessWidget {
                     validate: (value) => value!.validateEmpty(context),
                   ),
                   BuildFormText(text: "الدولة"),
-                  InkWellTextField(
-                    controller: companyEditProfileData.city,
-                    hint: "السعودية",
-                    onTab: () {},
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                  Container(
+                    constraints: BoxConstraints(
+                        minHeight: 55,
+                        maxHeight: 80,
+                        minWidth: double.infinity,
+                        maxWidth: double.infinity),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: MyColors.black),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: MyText(title: "السعودية"),
                   ),
-                  BuildFormText(text: "المنطقة"),
-                  DropdownTextField<DropDownModel>(
-                    dropKey: companyEditProfileData.country,
-                    hint: "المنطقة",
-                    borderRadius: 80,
-                    validate: (DropDownModel value) => value.validateDropDown(context),
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    onChange: companyEditProfileData.changeRegion,
-                    // data: ,
+                  BuildFormText(text: "المنطقه"),
+                  DropdownTextField<CitiesModel>(
+                    dropKey: companyEditProfileData.city,
+                    label: "المنطقة",
+                    selectedItem: companyEditProfileData.cityId,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    validate: (CitiesModel value) =>
+                        value.validateDropDown(context),
+                    onChange: companyEditProfileData.onSelectCities,
+                    useName: true,
+                    finData: (filter) async =>
+                        await CustomerRepository(context).getCities(3),
                   ),
-
                 ],
               ),
               replacement: Container(

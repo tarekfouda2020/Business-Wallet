@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:base_flutter/company/screens/company_subscribe/tabs/first_step/FirstStepImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
@@ -18,3 +20,4 @@ part 'BuildAddFile.dart';
 
 part 'BuildForm.dart';
 part 'BuildImageItem.dart';
+part 'BuildAddVideo.dart';

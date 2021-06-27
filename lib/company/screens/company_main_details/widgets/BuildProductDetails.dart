@@ -5,8 +5,7 @@ class BuildProductDetails extends StatelessWidget {
   final CompanyMainDetailsData companyMainDetailsData;
 
   const BuildProductDetails(
-      {required this.detailsModel, required this.companyMainDetailsData})
-     ;
+      {required this.detailsModel, required this.companyMainDetailsData});
 
   @override
   Widget build(BuildContext context) {
@@ -102,17 +101,21 @@ class BuildProductDetails extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: MyColors.primary,
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                child: MyText(
-                  title: "ارسال بروشور",
-                  size: 9,
-                  color: Colors.black,
+              InkWell(
+                onTap: () => companyMainDetailsData.sendBrochure(
+                    context, detailsModel!.kayanId),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: MyColors.primary,
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  child: MyText(
+                    title: "ارسال بروشور",
+                    size: 9,
+                    color: Colors.black,
+                  ),
                 ),
               ),
               InkWell(
@@ -124,7 +127,8 @@ class BuildProductDetails extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: MyColors.primary,
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   child: MyText(
                     title: detailsModel!.follow ? "الغاء المتابعة" : "متابعة",
                     size: 9,

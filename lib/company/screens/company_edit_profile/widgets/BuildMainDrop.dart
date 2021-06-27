@@ -61,13 +61,32 @@ class BuildMainDrop extends StatelessWidget {
                     validate: (value) => value!.validateEmpty(context),
                   ),
                   BuildFormText(text: "موقع الفرع الرئيسي"),
-                  InkWellTextField(
-                    controller: companyEditProfileData.city,
-                    hint: "موقع الفرع الرئيسي",
-                    onTab: () {},
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                  BlocConsumer<LocationCubit, LocationState>(
+                    bloc: companyEditProfileData.locCubit,
+                    listener: (_, state) {
+                      companyEditProfileData.compLocation.text =
+                          state.model!.address;
+                      companyEditProfileData.lat = state.model!.lat;
+                      companyEditProfileData.lng = state.model!.lng;
+                    },
+                    builder: (_, state) {
+                      return InkWellTextField(
+                        controller: companyEditProfileData.compLocation,
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        hint: 'موقع الفرع الرئيسي',
+                        type: TextInputType.text,
+                        icon: Icon(
+                          Icons.gps_fixed,
+                          size: 20,
+                          color: MyColors.primary,
+                        ),
+                        validate: (value) => value!.validateEmpty(context),
+                        onTab: () => Utils.navigateToLocationAddress(
+                            context, companyEditProfileData.locCubit),
+                      );
+                    },
                   ),
+
                   BuildFormText(text: "الموقع الالكتروني"),
                   IconTextFiled(
                     hint: "الموقع الالكتروني",

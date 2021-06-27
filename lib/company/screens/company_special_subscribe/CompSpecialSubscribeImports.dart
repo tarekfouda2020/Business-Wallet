@@ -1,0 +1,9 @@
+import 'package:base_flutter/company/screens/company_special_subscribe/tabs/first_step_special/FirstStepSpecialImports.dart';
+import 'package:base_flutter/company/screens/company_special_subscribe/tabs/fourth_step_special/FourthStepSpecialImports.dart';
+import 'package:base_flutter/company/screens/company_special_subscribe/tabs/second_step_special/SecondStepSpecialImports.dart';
+import 'package:base_flutter/company/screens/company_special_subscribe/tabs/third_step_special/ThirdStepSpecialImports.dart';
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:flutter/material.dart';
+part 'CompSpecialSubscribe.dart';
+part 'CompSpecialSubscribeData.dart';

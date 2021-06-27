@@ -28,9 +28,7 @@ class MainData {
         BlocProvider<UserCubit>(
           create: (BuildContext context) => UserCubit(),
         ),
-        BlocProvider<LocationCubit>(
-          create: (BuildContext context) => LocationCubit(),
-        ),
+
         BlocProvider<FollowCountCubit>(
           create: (BuildContext context) => FollowCountCubit(),
         ),

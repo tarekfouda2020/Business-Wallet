@@ -1,4 +1,5 @@
 part of 'CompProfileWidgetsImports.dart';
+
 class BuildImgDrop extends StatelessWidget {
   final CompanyProfileData companyProfileData;
 
@@ -6,6 +7,8 @@ class BuildImgDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var company = context.read<UserCubit>().state.model.companyModel;
+
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
       bloc: companyProfileData.imagesDropCubit,
       builder: (_, state) {
@@ -16,7 +19,18 @@ class BuildImgDrop extends StatelessWidget {
                 genericCubit: companyProfileData.imagesDropCubit),
             Visibility(
               visible: state.data,
-              child: BuildImagesData(),
+              child: Visibility(
+                visible: company!.imgkayan!.isEmpty,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  child: MyText(
+                    title: "لا يوجد صور",
+                    size: 12,
+                    color: MyColors.white,
+                  ),
+                ),
+                replacement: BuildImagesData(),
+              ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),
               ),

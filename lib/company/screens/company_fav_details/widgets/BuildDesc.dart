@@ -1,6 +1,9 @@
 part of 'CompFavDetailsWidgetsImports.dart';
 
 class BuildDesc extends StatelessWidget {
+  final String desc;
+
+  const BuildDesc({required this.desc});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,8 +15,7 @@ class BuildDesc extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: MyText(
-            title:
-                " نص يمكن استبداله نص يمكن استبداله نص يمكن استبداله نص يمكن استبداله نص يمكن استبداله نص يمكن استبداله نص يمكن استبداله",
+            title:desc,
             size: 11,
             color: MyColors.grey,
           ),

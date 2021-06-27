@@ -1,6 +1,8 @@
+import 'package:base_flutter/company/models/comp_branch_model.dart';
 import 'package:base_flutter/company/models/comp_comment_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_image_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
+import 'package:base_flutter/company/models/dots/drop_down_string_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'company_model.g.dart';
@@ -53,8 +55,14 @@ class CompanyModel {
   String? barcode;
   @JsonKey(name: "interests")
   List<DropDownModel>? interests;
+
+  @JsonKey(name: "mainFiled")
+  DropDownModel? mainFiled;
+  @JsonKey(name: "sub")
+  List<DropDownStringModel>? sub;
+
   @JsonKey(name: "branch_Kayans")
-  List<DropDownImageModel>? branchKayans;
+  List<CompBranchModel>? branchKayans;
   @JsonKey(name: "whats")
   String? whats;
   @JsonKey(name: "instgram")
@@ -127,6 +135,8 @@ class CompanyModel {
       this.barcodeImg,
       this.barcode,
       this.interests,
+      this.mainFiled,
+      this.sub,
       this.branchKayans,
       this.whats,
       this.instgram,

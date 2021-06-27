@@ -5,12 +5,15 @@ class BuildContactItem extends StatelessWidget {
   final IconData? iconData;
   final Color? color;
   final String? desc;
+  final Function()? onTap;
 
-  BuildContactItem({this.title, this.iconData, this.color, this.desc});
+  BuildContactItem(
+      {this.title, this.iconData, this.color, this.desc, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return InkWell(
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
@@ -32,10 +35,12 @@ class BuildContactItem extends StatelessWidget {
                 SizedBox(
                   width: 3,
                 ),
-                MyText(
-                  title: desc ?? "",
-                  size: 10,
-                  color: MyColors.grey,
+                Flexible(
+                  child: MyText(
+                    title: desc ??"",
+                    size: 10,
+                    color: MyColors.grey,
+                  ),
                 ),
               ],
             ),

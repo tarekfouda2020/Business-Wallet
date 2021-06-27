@@ -31,30 +31,6 @@ class CompanyRegisterData {
     cityId = model.id;
   }
 
-  void getUserLocation(BuildContext context) async {
-    LoadingDialog.showLoadingDialog();
-    LocationData loc = await Utils.getCurrentLocation();
-    EasyLoading.dismiss();
-    if (loc != null) {
-      Navigator.of(context).push(
-        CupertinoPageRoute(
-          builder: (cxt) => BlocProvider.value(
-            value: locationCubit,
-            child: LocationAddress(lat: loc.latitude!, lng: loc.longitude!),
-          ),
-        ),
-      );
-    } else {
-      Navigator.of(context).push(
-        CupertinoPageRoute(
-          builder: (cxt) => BlocProvider.value(
-            value: locationCubit,
-            child: LocationAddress(lat: 24.774265, lng: 46.738586),
-          ),
-        ),
-      );
-    }
-  }
 
   void setCompRegister(BuildContext context) async {
     FocusScope.of(context).requestFocus(FocusNode());

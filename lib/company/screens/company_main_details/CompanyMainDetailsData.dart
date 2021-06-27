@@ -40,6 +40,12 @@ class CompanyMainDetailsData {
         .addFollow(kayanId)
         .then((value) => fetchData(context, kayanId));
   }
+  void sendBrochure(BuildContext context, String kayanId) async {
+    await CompanyRepository(context)
+        .sendBrochure(kayanId)
+        .then((value) => fetchData(context, kayanId));
+  }
+
 
   void addRate(BuildContext context, String kayanId, int rate) async {
     await CompanyRepository(context)

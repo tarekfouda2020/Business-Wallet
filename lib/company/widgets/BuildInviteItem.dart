@@ -6,7 +6,6 @@ import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/CachedImage.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BuildInviteItem extends StatelessWidget {
   final CompInvitationModel? invitationModel;
@@ -16,7 +15,13 @@ class BuildInviteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => AutoRouter.of(context).push(CompanyFavDetailsRoute()),
+      onTap: () => AutoRouter.of(context).push(
+        CompanyFavDetailsRoute(
+          adsId: invitationModel!.id,
+          sendCard: invitationModel!.idSendCard,
+          showSendCard: invitationModel!.isShowWhenSend,
+        ),
+      ),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
         padding: EdgeInsets.zero,

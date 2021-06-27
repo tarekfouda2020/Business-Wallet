@@ -11,6 +11,7 @@ class BuildAppBar extends PreferredSize {
 
   @override
   Widget build(BuildContext context) {
+
     return PreferredSize(
       preferredSize: preferredSize,
       child: Container(

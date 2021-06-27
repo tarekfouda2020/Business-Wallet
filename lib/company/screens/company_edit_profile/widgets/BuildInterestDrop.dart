@@ -7,6 +7,8 @@ class BuildInterestDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var company = context.read<UserCubit>().state.model.companyModel;
+
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
       bloc: companyEditProfileData.interestDropCubit,
       builder: (_, state) {
@@ -27,9 +29,9 @@ class BuildInterestDrop extends StatelessWidget {
                         spacing: 5,
                         runSpacing: 5,
                         children: List.generate(
-                          3,
+                          company!.interests!.length,
                           (index) => BuildCheckItem(
-                            title: "مصانع",
+                            title: company.interests![index].name,
                             onChange: companyEditProfileData
                                 .interestCubit.onUpdateData,
                             selected: state.data,

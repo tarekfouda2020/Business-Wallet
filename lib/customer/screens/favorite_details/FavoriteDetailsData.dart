@@ -6,7 +6,6 @@ class FavoriteDetailsData {
       new GlobalKey<CustomButtonState>();
 
   final GenericCubit<bool> showDescriptionDrop = GenericCubit(false);
-  final GenericCubit<int> questionCubit = GenericCubit(0);
 
   final GenericCubit<List<QuestionModel>> allQuestionCubit = GenericCubit([]);
 

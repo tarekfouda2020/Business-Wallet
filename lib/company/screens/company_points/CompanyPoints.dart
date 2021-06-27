@@ -6,11 +6,61 @@ class CompanyPoints extends StatefulWidget {
 }
 
 class _CompanyPointsState extends State<CompanyPoints> {
+  final CompanyPointsData companyPointsData = new CompanyPointsData();
+
+  @override
+  void initState() {
+    companyPointsData.fetchData(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-      appBar: DefaultAppBar(title: "تفاصيل النقاط",),
+      appBar: DefaultAppBar(
+        title: "تفاصيل النقاط",
+      ),
+      body: Column(
+        children: [
+          BuildHeaderTableRow(),
+          BlocBuilder<GenericCubit<List<WalletDetailsModel>>,
+              GenericState<List<WalletDetailsModel>>>(
+            bloc: companyPointsData.walletDetailsCubit,
+            builder: (_, state) {
+              if (state is GenericUpdateState) {
+                if (state.data.isEmpty) {
+                  return Container(
+                    alignment: Alignment.center,
+                    // margin: const EdgeInsets.symmetric(vertical: 200),
+                    child: MyText(
+                      title: "لا يوجد تفاصيل",
+                      size: 13,
+                      color: MyColors.white,
+                    ),
+                  );
+                } else {
+                  return Flexible(
+                    child: ListView(
+                      children: <Widget>[
+                        BuildTableRowItem(
+                          tableDetails: state.data,
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              } else {
+                return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 100),
+                  alignment: Alignment.center,
+                  child: LoadingDialog.showLoadingView(),
+                );
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }

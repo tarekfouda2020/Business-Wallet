@@ -5,12 +5,14 @@ class BuildPointsItem extends StatelessWidget {
   final String? desc;
   final bool showButton;
   final bool showText;
+  final String? subTitle;
 
   const BuildPointsItem({
     required this.title,
     required this.desc,
     this.showButton = false,
     this.showText = false,
+    this.subTitle,
   });
 
   @override
@@ -33,7 +35,7 @@ class BuildPointsItem extends StatelessWidget {
                       color: MyColors.offWhite.withOpacity(.7),
                     ),
                     MyText(
-                      title: "لا يوجد نقاط علي وشك الانتهاء",
+                      title:subTitle??"",
                       size: 10,
                       color: MyColors.offWhite.withOpacity(.7),
                     ),

@@ -23,7 +23,9 @@ class BuildInterestItem extends StatelessWidget {
             checkColor: MyColors.white,
             activeColor: MyColors.primary,
           ),
-          MyText(title: title, size: 11, color: MyColors.white),
+          Expanded(
+            child: MyText(title: title, size: 11, color: MyColors.white),
+          )
         ],
       ),
     );

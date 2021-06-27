@@ -10,6 +10,12 @@ class _CompanyEditActivityState extends State<CompanyEditActivity> {
       new CompanyEditActivityData();
 
   @override
+  void initState() {
+    companyEditActivityData.seInitialData(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
@@ -30,13 +36,14 @@ class _CompanyEditActivityState extends State<CompanyEditActivity> {
               ],
             ),
           ),
-          DefaultButton(
+          LoadingButton(
+            btnKey: companyEditActivityData.btnKey,
             title: "تأكيد",
-            onTap: () {},
+            onTap: () => companyEditActivityData.saveImportantData(context),
             color: MyColors.primary,
             textColor: MyColors.black,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.all( 20),
+            borderRadius: 30,
+            margin: const EdgeInsets.all(20),
           )
         ],
       ),

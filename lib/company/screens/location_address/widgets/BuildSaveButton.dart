@@ -12,17 +12,16 @@ class BuildSaveButton extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         InkWell(
-          onTap: () => locationAddressData.changeLocation(context),
+          onTap: ()=>locationAddressData.changeLocation(context),
           child: Container(
             height: 45,
             width: MediaQuery.of(context).size.width * .7,
             decoration: BoxDecoration(
-              color: MyColors.primary,
-              borderRadius: BorderRadius.circular(30),
-            ),
+                color: MyColors.primary,
+                borderRadius: BorderRadius.circular(30)),
             alignment: Alignment.center,
             child: MyText(
-              title: tr(context, 'saveLocation'),
+              title: tr(context,'saveLocation'),
               size: 12,
               color: MyColors.white,
             ),

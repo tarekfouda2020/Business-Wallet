@@ -9,6 +9,12 @@ class _CompanyInterestsState extends State<CompanyInterests> {
   final CompanyInterestData companyInterestData = new CompanyInterestData();
 
   @override
+  void initState() {
+    companyInterestData.fetchData(context);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
@@ -19,11 +25,12 @@ class _CompanyInterestsState extends State<CompanyInterests> {
         children: [
           BuildInterestText(),
           BuildInterestList(companyInterestData: companyInterestData),
-          DefaultButton(
+          LoadingButton(
+            btnKey: companyInterestData.btnKey,
             title: "تأكيد",
-            onTap: () {},
+            onTap: () => companyInterestData.saveImportantData(context),
+            borderRadius: 30,
             color: MyColors.primary,
-            borderRadius: BorderRadius.circular(30),
             textColor: MyColors.blackOpacity,
           )
         ],

@@ -4,7 +4,7 @@ class BuildRadioItem extends StatelessWidget {
   final String title;
   final bool value;
   final bool selected;
-  final Function(Object?) onChange;
+  final Function onChange;
 
   const BuildRadioItem(
       {required this.title,

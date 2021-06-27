@@ -6,6 +6,14 @@ class CompanyComments extends StatefulWidget {
 }
 
 class _CompanyCommentsState extends State<CompanyComments> {
+  final CompanyCommentsData companyCommentsData = new CompanyCommentsData();
+
+  @override
+  void initState() {
+    companyCommentsData.fetchData(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +21,37 @@ class _CompanyCommentsState extends State<CompanyComments> {
       appBar: DefaultAppBar(
         title: "التعليقات",
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-        itemCount: 4,
-        itemBuilder: (_, index) => BuildCommentItem(),
+      body: BlocBuilder<GenericCubit<List<ProfileCommentsModel>>,
+          GenericState<List<ProfileCommentsModel>>>(
+        bloc: companyCommentsData.commentsCubit,
+        builder: (_, state) {
+          if (state is GenericUpdateState) {
+            if (state.data.length > 0) {
+              return ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                itemCount: state.data.length,
+                itemBuilder: (context, index) {
+                  return BuildCommentItem(
+                    comments: state.data[index],
+                    companyCommentsData: companyCommentsData,
+                  );
+                },
+              );
+            } else {
+              return Center(
+                child: MyText(
+                  title: "لا يوجد تعليقات",
+                  size: 13,
+                  color: MyColors.primary,
+                ),
+              );
+            }
+          } else {
+            return Center(
+              child: LoadingDialog.showLoadingView(),
+            );
+          }
+        },
       ),
     );
   }

@@ -33,8 +33,14 @@ CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) {
     interests: (json['interests'] as List<dynamic>?)
         ?.map((e) => DropDownModel.fromJson(e as Map<String, dynamic>))
         .toList(),
+    mainFiled: json['mainFiled'] == null
+        ? null
+        : DropDownModel.fromJson(json['mainFiled'] as Map<String, dynamic>),
+    sub: (json['sub'] as List<dynamic>?)
+        ?.map((e) => DropDownStringModel.fromJson(e as Map<String, dynamic>))
+        .toList(),
     branchKayans: (json['branch_Kayans'] as List<dynamic>?)
-        ?.map((e) => DropDownImageModel.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => CompBranchModel.fromJson(e as Map<String, dynamic>))
         .toList(),
     whats: json['whats'] as String?,
     instgram: json['instgram'] as String?,
@@ -95,6 +101,8 @@ Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) =>
       'pare_code_Img': instance.barcodeImg,
       'pare_code': instance.barcode,
       'interests': instance.interests,
+      'mainFiled': instance.mainFiled,
+      'sub': instance.sub,
       'branch_Kayans': instance.branchKayans,
       'whats': instance.whats,
       'instgram': instance.instgram,

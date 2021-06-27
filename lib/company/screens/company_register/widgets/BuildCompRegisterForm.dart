@@ -194,7 +194,8 @@ class BuildCompRegisterForm extends StatelessWidget {
                 icon: Icon(Icons.location_on_outlined),
                 margin: const EdgeInsets.symmetric(vertical: 10),
                 validate: (value) => value!.validateEmpty(context),
-                onTab: () => companyRegisterData.getUserLocation(context),
+                onTab: () => Utils.navigateToLocationAddress(
+                    context, companyRegisterData.locationCubit),
               );
             },
           ),

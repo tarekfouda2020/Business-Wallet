@@ -4,7 +4,7 @@ class BuildShowDropItem extends StatelessWidget {
   final String title;
   final Function() onTap;
   final GenericCubit genericCubit;
-  final GenericCubit radioCubit;
+  final GenericCubit<bool> radioCubit;
   final bool showTextField;
   final bool showAddBranch;
   final GenericCubit? branchCubit;
@@ -57,7 +57,7 @@ class BuildShowDropItem extends StatelessWidget {
               ),
               replacement: Spacer(),
             ),
-            BlocBuilder<GenericCubit, GenericState>(
+            BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
               bloc: radioCubit,
               builder: (context, state) {
                 return Row(

@@ -7,6 +7,8 @@ class BuildSocialDrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var company = context.read<UserCubit>().state.model.companyModel;
+
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
       bloc: companyProfileData.socialDropCubit,
       builder: (_, state) {
@@ -18,19 +20,31 @@ class BuildSocialDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: Container(
-                height: 50,
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: 3,
-                    itemBuilder: (_, index) => Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 3),
-                          child: Icon(
-                            MdiIcons.whatsapp,
-                            size: 35,
-                          ),
-                        )),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BuildSocialItem(
+                      image: Res.wha,
+                      onTap: () => Utils.launchWhatsApp(
+                        company!.whats,
+                      ),
+                    ),
+                    BuildSocialItem(
+                      image: Res.facebook,
+                      onTap: () => Utils.launchWhatsApp(
+                        company!.facebook,
+                      ),
+                    ),
+                    BuildSocialItem(
+                      image: Res.twitter,
+                      onTap: () => Utils.launchWhatsApp(
+                        company!.twitter,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               replacement: Container(
                 margin: const EdgeInsets.symmetric(vertical: 5),

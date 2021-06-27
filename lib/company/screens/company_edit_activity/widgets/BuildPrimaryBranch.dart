@@ -12,14 +12,17 @@ class BuildPrimaryBranch extends StatelessWidget {
       children: [
         BuildFormText(text: "النشاط الرئيسي في السجل التجاري"),
         DropdownTextField<DropDownModel>(
-          dropKey: companyEditActivityData.primaryBranch,
+          dropKey: companyEditActivityData.mainField,
           hint: "النشاط الرئيسي",
-          borderRadius: 80,
+          selectedItem: companyEditActivityData.mainFieldId,
+          margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           validate: (DropDownModel value) => value.validateDropDown(context),
-          margin: EdgeInsets.symmetric(vertical: 10),
-          onChange: companyEditActivityData.changePrimaryBranch,
-          // data: ,
+          onChange: companyEditActivityData.onSelectMain,
+          useName: true,
+          finData: (filter) async =>
+          await CompanyRepository(context).getMainField(refresh: false),
         ),
+
       ],
     );
   }

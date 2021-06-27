@@ -80,7 +80,18 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyPackages),
     AdaptiveRoute(page: CompanyConversations),
     AdaptiveRoute(page: CompanyBrochure),
+    AdaptiveRoute(page: CompAccountReconciliation),
+    AdaptiveRoute(page: CompanyStatisticsRate),
     AdaptiveRoute(page: CompanyBarcode),
+    AdaptiveRoute(page: CompSpecialSubscribe),
+    AdaptiveRoute(page: CompOpinionSubscribe),
+    AdaptiveRoute(page: CompBrochureSubscribe),
+    AdaptiveRoute(page: CompProductAds),
+    AdaptiveRoute(page: CompSpecificAds),
+    AdaptiveRoute(page: CompBusinessAds),
+
+
+
   ],
 )
 class $AppRouter {}
