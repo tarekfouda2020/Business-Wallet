@@ -532,7 +532,8 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<SecondStepRouteArgs>();
           return _i68.SecondStep(
-              companySubscribeData: args.companySubscribeData);
+              companySubscribeData: args.companySubscribeData,
+              showVideo: args.showVideo);
         }),
     CompSpecialSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -1349,19 +1350,25 @@ class CompBusinessAdsRouteArgs {
 }
 
 class SecondStepRoute extends _i1.PageRouteInfo<SecondStepRouteArgs> {
-  SecondStepRoute({required _i56.CompanySubscribeData companySubscribeData})
+  SecondStepRoute(
+      {required _i56.CompanySubscribeData companySubscribeData,
+      required bool showVideo})
       : super(name,
             path: '/second-step',
             args: SecondStepRouteArgs(
-                companySubscribeData: companySubscribeData));
+                companySubscribeData: companySubscribeData,
+                showVideo: showVideo));
 
   static const String name = 'SecondStepRoute';
 }
 
 class SecondStepRouteArgs {
-  const SecondStepRouteArgs({required this.companySubscribeData});
+  const SecondStepRouteArgs(
+      {required this.companySubscribeData, required this.showVideo});
 
   final _i56.CompanySubscribeData companySubscribeData;
+
+  final bool showVideo;
 }
 
 class CompSpecialSubscribeRoute extends _i1.PageRouteInfo {

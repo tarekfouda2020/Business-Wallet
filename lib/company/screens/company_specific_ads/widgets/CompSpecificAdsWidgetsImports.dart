@@ -43,6 +43,4 @@ part 'BuildAdsComments.dart';
 part 'BuildAddRate.dart';
 
 part 'BuildAddComments.dart';
-part 'BuildAnimationDetails.dart';
-part 'BuildAnimation.dart';
 part 'BuildAdsVideoList.dart';

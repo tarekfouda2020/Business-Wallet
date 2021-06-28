@@ -26,7 +26,6 @@ class _ThirdStepOpinionState extends State<ThirdStepOpinion> {
             step1: true,
             step2: true,
             step3: true,
-            movePage: widget.movePage,
           ),
           DefaultButton(
             color: MyColors.primary,

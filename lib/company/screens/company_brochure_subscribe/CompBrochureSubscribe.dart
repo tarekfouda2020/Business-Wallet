@@ -27,16 +27,13 @@ class _CompBrochureSubscribeState extends State<CompBrochureSubscribe> {
         onPageChanged: compBrochureSubscribeData.subscribeCubit.onUpdateData,
         children: [
           FirstStepBrochure(
-            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
-            movePage: compBrochureSubscribeData.movePage,
+            compBrochureSubscribeData: compBrochureSubscribeData,
           ),
           SecondStepBrochure(
-            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
-            movePage: compBrochureSubscribeData.movePage,
+            compBrochureSubscribeData: compBrochureSubscribeData,
           ),
           ThirdStepBrochure(
-            subscribeCubit: compBrochureSubscribeData.subscribeCubit,
-            movePage: compBrochureSubscribeData.movePage,
+            compBrochureSubscribeData: compBrochureSubscribeData,
           ),
         ],
       ),

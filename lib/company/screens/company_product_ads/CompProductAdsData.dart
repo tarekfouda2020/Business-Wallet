@@ -10,9 +10,9 @@ class CompProductAdsData {
   void fetchData(BuildContext context, int adsId) async {
     var data = await CompanyRepository(context).getInvestmentAds(adsId);
     investmentAdsCubit.onUpdateData(data);
-    // isOwner.onUpdateData(data!.investmentAdsDetails.isOwner);
+    isOwner.onUpdateData(data!.investmentAdsDetails.isOwner);
 
-    allQuestionCubit.onUpdateData(data!.questions);
+    allQuestionCubit.onUpdateData(data.questions);
   }
 
   void onChangeAnswer(BuildContext context, int index, int value, bool isShow) {

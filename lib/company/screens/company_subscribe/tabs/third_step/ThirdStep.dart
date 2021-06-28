@@ -2,8 +2,9 @@ part of 'ThirdStepImports.dart';
 
 class ThirdStep extends StatefulWidget {
   final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
 
-  ThirdStep({required this.companySubscribeData});
+  ThirdStep({required this.companySubscribeData, required this.showVideo});
 
   @override
   _ThirdStepState createState() => _ThirdStepState();
@@ -28,30 +29,10 @@ class _ThirdStepState extends State<ThirdStep> {
           ),
           BuildDetails(
             companySubscribeData: widget.companySubscribeData,
+            showVideo: widget.showVideo,
           ),
-          DefaultButton(
-            color: MyColors.white,
-            textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            title: "حفظ كملف PDF",
-            onTap: () => widget.companySubscribeData.savePdf(context),
-          ),
-          DefaultButton(
-            color: MyColors.primary,
-            textColor: MyColors.blackOpacity,
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            borderRadius: BorderRadius.circular(30),
-            title: "التالي",
-            onTap: () => widget.companySubscribeData.moveNext(),
-          ),
-          DefaultButton(
-            color: MyColors.white,
-            textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            title: "السابق",
-            onTap: () => widget.companySubscribeData.moveBack(),
+          BuildButtonList(
+            companySubscribeData: widget.companySubscribeData,
           )
         ],
       ),

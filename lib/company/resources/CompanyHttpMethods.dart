@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/brochure_details_model.dart';
 import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
 import 'package:base_flutter/company/models/comp_favorite_model.dart';
@@ -1098,7 +1099,7 @@ class CompanyHttpMethods {
     if (_data != null) {
       var data = List<DropDownSelected>.from(
           _data["data"]["interests"].map((e) => DropDownSelected.fromJson(e)));
-      data.insert(0, DropDownSelected(id: 1000, name: "الكل", selected: false));
+      data.insert(0, DropDownSelected(id: 0, name: "الكل", selected: false));
       return data;
     } else {
       return [];
@@ -1185,4 +1186,76 @@ class CompanyHttpMethods {
       return null;
     }
   }
+  Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/DetailsPreviewMainPage',
+      body: body,
+    );
+    if (_data != null) {
+      return BusinessAdsDetailsModel.fromJson(
+          _data['data']['detailsPreviewBusiness_CardViewModel']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<BrochureDetailsModel?> getBrochureDetails() async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang":lang
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/GetDataCard',
+      body: body,
+    );
+    if (_data != null) {
+      return BrochureDetailsModel.fromJson(
+          _data['data']['businesscardDB']);
+    } else {
+      return null;
+    }
+  }
+  Future<CostSubscribeModel?> getCostBrochureSubscribe(
+      int brochureNum) async {
+    Map<String, dynamic> body = {
+      "numbercard": brochureNum,
+
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AccountBusinessCard',
+      body: body,
+    );
+    if (_data != null) {
+      return CostSubscribeModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
+
+  Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) async {
+    Map<String, dynamic> body = {
+      "cost": cost,
+      "price": price,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AccountNewCost',
+      body: body,
+    );
+    if (_data != null) {
+      return ExtraCostModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
 }

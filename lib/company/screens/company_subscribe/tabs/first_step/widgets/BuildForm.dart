@@ -33,11 +33,11 @@ class BuildForm extends StatelessWidget {
             validate: (value) => value!.validateEmpty(context),
           ),
           BuildAddFile(companySubscribeData: companySubscribeData),
-          BuildAddImage(companySubscribeData: companySubscribeData),
           Visibility(
             visible: showVideo,
             child: BuildAddVideo(companySubscribeData: companySubscribeData),
-            replacement: Container(),
+            replacement:
+                BuildAddImage(companySubscribeData: companySubscribeData),
           ),
         ],
       ),

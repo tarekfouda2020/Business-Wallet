@@ -1,10 +1,9 @@
 part of 'FirstStepBrochureWidgetsImports.dart';
 
 class BuildContact extends StatelessWidget {
-  // final CompFavDetailsModel compFavDetailsModel;
-  //
-  // const BuildContact({required this.compFavDetailsModel});
+ final BrochureDetailsModel brochureDetailsModel;
 
+  const BuildContact({required this.brochureDetailsModel});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,8 +22,8 @@ class BuildContact extends StatelessWidget {
                   color: Colors.green,
                   iconData: MdiIcons.whatsapp,
 
-                  // desc: compFavDetailsModel.phone,
-                  // onTap: () => Utils.callPhone(phone: compFavDetailsModel.phone),
+                  desc: brochureDetailsModel.phone,
+                  onTap: () => Utils.callPhone(phone: brochureDetailsModel.phone),
                 ),
               ),
               Expanded(
@@ -33,8 +32,8 @@ class BuildContact extends StatelessWidget {
                   title: "البريد الالكتروني",
                   color: Colors.yellow,
                   iconData: MdiIcons.email,
-                  // desc: compFavDetailsModel.email,
-                  // onTap: () => Utils.sendMail(compFavDetailsModel.email),
+                  desc: brochureDetailsModel.email,
+                  onTap: () => Utils.sendMail(brochureDetailsModel.email),
                 ),
               ),
             ],

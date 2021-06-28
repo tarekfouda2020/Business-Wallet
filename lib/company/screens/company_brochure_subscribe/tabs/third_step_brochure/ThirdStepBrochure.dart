@@ -1,11 +1,9 @@
 part of 'ThirdStepBrochureImports.dart';
 
 class ThirdStepBrochure extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompBrochureSubscribeData compBrochureSubscribeData;
 
-  const ThirdStepBrochure(
-      {required this.subscribeCubit, required this.movePage});
+  const ThirdStepBrochure({required this.compBrochureSubscribeData});
 
   @override
   _ThirdStepBrochureState createState() => _ThirdStepBrochureState();
@@ -23,19 +21,18 @@ class _ThirdStepBrochureState extends State<ThirdStepBrochure> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: [
           BuildStepper(
-            step1: true,
-            step2: true,
             step3: true,
-            movePage: widget.movePage,
           ),
-          BuildReviewPrice(),
+          BuildReviewPrice(
+            compBrochureSubscribeData: widget.compBrochureSubscribeData,
+          ),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(2),
+            onTap: () => widget.compBrochureSubscribeData.moveNext(),
           )
         ],
       ),

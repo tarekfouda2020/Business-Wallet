@@ -20,8 +20,11 @@ class _CompanyStatisticsRateState extends State<CompanyStatisticsRate> {
         ? companyStatisticsRateData.getSpecificAdsDetails(context, widget.id)
         : widget.type == 2
             ? companyStatisticsRateData.getProductAdsDetails(context, widget.id)
-            : companyStatisticsRateData.getBusinessAdsDetails(
-                context, widget.id);
+            : widget.type == 3
+                ? companyStatisticsRateData.getBusinessAdsDetails(
+                    context, widget.id)
+                : companyStatisticsRateData.getMainAdsDetails(
+                    context, widget.id);
     super.initState();
   }
 
@@ -34,15 +37,24 @@ class _CompanyStatisticsRateState extends State<CompanyStatisticsRate> {
       ),
       body: Column(
         children: [
-          BuildRateTopTable(),
+          Visibility(
+            visible: widget.type == 4,
+            child: BuildMainTopTable(),
+            replacement: BuildRateTopTable(),
+          ),
           widget.type == 1
               ? BuildSpecificTable(
                   companyStatisticsRateData: companyStatisticsRateData)
               : widget.type == 2
                   ? BuildProductTable(
                       companyStatisticsRateData: companyStatisticsRateData)
-                  : BuildBusinessTable(
-                      companyStatisticsRateData: companyStatisticsRateData),
+                  : widget.type == 3
+                      ? BuildBusinessTable(
+                          companyStatisticsRateData: companyStatisticsRateData)
+                      : BuildMainTable(
+                          companyStatisticsRateData: companyStatisticsRateData),
+
+
         ],
       ),
     );

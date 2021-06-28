@@ -2,8 +2,10 @@ part of 'ThirdStepWidgetsImports.dart';
 
 class BuildDetails extends StatelessWidget {
   final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
 
-  const BuildDetails({required this.companySubscribeData});
+  const BuildDetails(
+      {required this.companySubscribeData, required this.showVideo});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,9 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "الجنس",
-                desc: companySubscribeData.addSubscribeModel.gender=="F"?"انثي":"ذكر",
+                desc: companySubscribeData.addSubscribeModel.gender == "F"
+                    ? "انثي"
+                    : "ذكر",
               ),
               BuildReviewItem(
                 title: "نوع السكن",
@@ -93,8 +97,18 @@ class BuildDetails extends StatelessWidget {
               ),
             ],
           ),
-          BuildImages(companySubscribeData: companySubscribeData,),
-          BuildFiles(companySubscribeData: companySubscribeData,),
+          Visibility(
+            visible: showVideo,
+            child: BuildVideosView(
+              companySubscribeData: companySubscribeData,
+            ),
+            replacement: BuildImages(
+              companySubscribeData: companySubscribeData,
+            ),
+          ),
+          BuildFiles(
+            companySubscribeData: companySubscribeData,
+          ),
         ],
       ),
     );

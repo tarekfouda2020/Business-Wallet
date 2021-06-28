@@ -25,7 +25,6 @@ class _SecondStepOpinionState extends State<SecondStepOpinion> {
           BuildStepper(
             step1: true,
             step2: true,
-            movePage: widget.movePage,
           ),
           DefaultButton(
             color: MyColors.primary,

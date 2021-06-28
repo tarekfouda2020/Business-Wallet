@@ -9,6 +9,7 @@ class BuildPackagesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 320,
       width: MediaQuery.of(context).size.width * .45,
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -25,6 +26,8 @@ class BuildPackagesItem extends StatelessWidget {
             size: 11,
             color: MyColors.primary,
           ),
+          Spacer(flex: 1,),
+
           Visibility(
             visible: packagesModel.desc == "",
             child: Container(
@@ -34,10 +37,13 @@ class BuildPackagesItem extends StatelessWidget {
                 size: 30,
               ),
             ),
-            replacement: MyText(
-              title: "${packagesModel.desc}",
-              size: 8,
-              color: MyColors.white,
+            replacement: Container(
+              margin: const EdgeInsets.symmetric(horizontal:5),
+              child: MyText(
+                title: "${packagesModel.desc}",
+                size: 8,
+                color: MyColors.white,
+              ),
             ),
           ),
           ListView.builder(
@@ -55,6 +61,7 @@ class BuildPackagesItem extends StatelessWidget {
             size: 9.5,
             color: MyColors.offWhite,
           ),
+          Spacer(flex: 1,),
           InkWell(
             onTap: () =>companyPackagesData.navigate(context, packagesModel.type),
             child: Container(

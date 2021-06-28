@@ -2,8 +2,9 @@ part of 'FourthStepImports.dart';
 
 class FourthStep extends StatefulWidget {
   final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
 
-  FourthStep({required this.companySubscribeData});
+  FourthStep({required this.companySubscribeData, required this.showVideo});
 
   @override
   _FourthStepState createState() => _FourthStepState();

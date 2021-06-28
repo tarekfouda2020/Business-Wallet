@@ -21,7 +21,7 @@ class CompanyFavDetailsData {
     var data =
         await CompanyRepository(context).getAds(adsId, sendCard, showSendCard);
     adsDetailsCubit.onUpdateData(data);
-    // isOwner.onUpdateData(data!.isOwner);
+    isOwner.onUpdateData(data!.isOwner);
 
   }
 

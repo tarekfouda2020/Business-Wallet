@@ -2,8 +2,9 @@ part of 'SecondStepImports.dart';
 
 class SecondStep extends StatefulWidget {
   final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
 
-  SecondStep({required this.companySubscribeData});
+  SecondStep({required this.companySubscribeData, required this.showVideo});
 
   @override
   _SecondStepState createState() => _SecondStepState();
@@ -11,11 +12,6 @@ class SecondStep extends StatefulWidget {
 
 class _SecondStepState extends State<SecondStep> {
   final SecondStepData secondStepData = new SecondStepData();
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +29,13 @@ class _SecondStepState extends State<SecondStep> {
           BuildSecForm(companySubscribeData: widget.companySubscribeData),
           BuildPrice(companySubscribeData: widget.companySubscribeData),
           BuildAdsValue(companySubscribeData: widget.companySubscribeData),
-          DefaultButton(
+          LoadingButton(
+            btnKey: widget.companySubscribeData.btnKey,
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: 30,
             title: "التالي",
-            onTap: () => widget.companySubscribeData.onSecSubscribe(context),
+            onTap: () => widget.companySubscribeData.getFinalCostSubscribe(context),
           ),
           DefaultButton(
             color: MyColors.white,

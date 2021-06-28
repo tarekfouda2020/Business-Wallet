@@ -25,7 +25,6 @@ class _FirstStepSpecialState extends State<FirstStepSpecial> {
         children: [
           BuildStepper(
             step1: true,
-            movePage: widget.movePage,
           ),
           BuildForm(firstStepSpecialData: firstStepSpecialData,),
           BuildPrice(),

@@ -18,6 +18,7 @@ InvestmentAdsDetailsModel _$InvestmentAdsDetailsModelFromJson(
     time: json['time'] as int,
     myRate: json['MyRate'] as int,
     isShow: json['isShow'] as bool,
+    isOwner: json['isOwner'] as bool,
     pintsForEachUser: json['PointsForEachUser'] as int,
     follow: json['follow'] as bool,
     images: (json['images'] as List<dynamic>)
@@ -43,6 +44,7 @@ Map<String, dynamic> _$InvestmentAdsDetailsModelToJson(
       'time': instance.time,
       'MyRate': instance.myRate,
       'isShow': instance.isShow,
+      'isOwner': instance.isOwner,
       'PointsForEachUser': instance.pintsForEachUser,
       'follow': instance.follow,
       'images': instance.images,

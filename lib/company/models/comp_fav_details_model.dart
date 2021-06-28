@@ -45,6 +45,9 @@ class CompFavDetailsModel {
   bool isShowWhenSendCheck;
   @JsonKey(name: 'isShow')
   bool isShow;
+  @JsonKey(name: 'isOwner')
+  bool isOwner;
+
   @JsonKey(name: 'PointsForEachUser')
   int pointsForEachUser;
   @JsonKey(name: 'name_service')
@@ -80,6 +83,7 @@ class CompFavDetailsModel {
       required this.isShowWhenSend,
       required this.isShowWhenSendCheck,
       required this.isShow,
+      required this.isOwner,
       required this.pointsForEachUser,
       required this.nameService,
       required this.nameProduct,

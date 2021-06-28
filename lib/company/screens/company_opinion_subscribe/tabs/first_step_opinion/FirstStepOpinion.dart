@@ -25,7 +25,6 @@ class _FirstStepOpinionState extends State<FirstStepOpinion> {
         children: [
           BuildStepper(
             step1: true,
-            movePage: widget.movePage,
           ),
 
           DefaultButton(

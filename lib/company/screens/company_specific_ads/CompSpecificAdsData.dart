@@ -1,13 +1,8 @@
 part of 'CompSpecificAdsImports.dart';
 
 class CompSpecificAdsData {
-  late AnimationController controller;
-  late Animation<double> animation;
-  Timer? timer;
-  final GenericCubit<bool> commentCubit = GenericCubit(false);
-  final GenericCubit<double> expandCubit = GenericCubit(0);
-  final GenericCubit<bool> showExpandCubit = GenericCubit(false);
 
+  final GenericCubit<bool> commentCubit = GenericCubit(false);
 
   final GenericCubit<int> rateCubit = new GenericCubit(0);
   final GenericCubit<SpecificAdsModel?> specificAdsCubit =

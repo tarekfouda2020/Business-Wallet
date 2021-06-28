@@ -33,12 +33,15 @@ class _CompanySubscribeState extends State<CompanySubscribe> {
           ),
           SecondStep(
             companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
           ThirdStep(
             companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
           FourthStep(
             companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
         ],
       ),

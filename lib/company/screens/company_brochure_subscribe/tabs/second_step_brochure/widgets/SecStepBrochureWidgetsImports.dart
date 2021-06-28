@@ -1,8 +1,10 @@
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
+import 'package:base_flutter/company/screens/company_brochure_subscribe/CompBrochureSubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_brochure_subscribe/tabs/second_step_brochure/SecondStepBrochureImports.dart';
 import 'package:base_flutter/company/widgets/BuildFormText.dart';
+import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/Inputs/DropdownTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';

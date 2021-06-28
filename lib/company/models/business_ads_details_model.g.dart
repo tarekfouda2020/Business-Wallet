@@ -15,7 +15,7 @@ BusinessAdsDetailsModel _$BusinessAdsDetailsModelFromJson(
     name: json['name'] as String,
     userName: json['user_name'] as String,
     id: json['id'] as int,
-    cost: json['cost'] as int,
+    cost: (json['cost'] as num).toDouble(),
     countShow: json['count_show'] as int,
   );
 }

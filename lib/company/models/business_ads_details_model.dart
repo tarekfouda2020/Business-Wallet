@@ -17,19 +17,19 @@ class BusinessAdsDetailsModel {
   @JsonKey(name: 'id')
   int id;
   @JsonKey(name: 'cost')
-  int cost;
+  double cost;
   @JsonKey(name: 'count_show')
   int countShow;
 
   BusinessAdsDetailsModel(
       {required this.date,
       required this.show,
-        required  this.count,
-        required this.name,
-        required  this.userName,
-        required  this.id,
-        required   this.cost,
-        required  this.countShow});
+      required this.count,
+      required this.name,
+      required this.userName,
+      required this.id,
+      required this.cost,
+      required this.countShow});
 
   factory BusinessAdsDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$BusinessAdsDetailsModelFromJson(json);

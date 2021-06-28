@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/brochure_details_model.dart';
 import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
 import 'package:base_flutter/company/models/comp_favorite_model.dart';
@@ -237,4 +238,17 @@ class CompanyRepository {
 
   Future<BusinessAdsDetailsModel?> getBusinessAdsDetails(int id) =>
       _companyHttpMethods.getBusinessAdsDetails(id);
+
+  Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id) =>
+      _companyHttpMethods.getMainAdsDetails(id);
+
+  Future<BrochureDetailsModel?> getBrochureDetails() =>
+      _companyHttpMethods.getBrochureDetails();
+
+  Future<CostSubscribeModel?> getCostBrochureSubscribe(int brochureNum) =>
+      _companyHttpMethods.getCostBrochureSubscribe(brochureNum);
+
+  Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) =>
+      _companyHttpMethods.getExtraBrochureCost(cost, price);
+
 }

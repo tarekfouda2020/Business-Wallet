@@ -1,6 +1,7 @@
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
+import 'package:base_flutter/company/screens/company_brochure_subscribe/CompBrochureSubscribeImports.dart';
 import 'package:base_flutter/company/screens/company_brochure_subscribe/tabs/second_step_brochure/widgets/SecStepBrochureWidgetsImports.dart';
 import 'package:base_flutter/company/screens/company_opinion_subscribe/widgets/CompOpinionSubscribeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';

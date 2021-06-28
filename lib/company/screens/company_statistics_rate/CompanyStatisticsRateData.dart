@@ -8,6 +8,9 @@ class CompanyStatisticsRateData {
   final GenericCubit<BusinessAdsDetailsModel?> businessDetailsCubit =
       new GenericCubit(null);
 
+  final GenericCubit<BusinessAdsDetailsModel?> mainDetailsCubit =
+  new GenericCubit(null);
+
   void getSpecificAdsDetails(BuildContext context, int id) async {
     var data = await CompanyRepository(context).getSpecificAdsDetails(id);
     specificDetailsCubit.onUpdateData(data);
@@ -21,5 +24,15 @@ class CompanyStatisticsRateData {
   void getBusinessAdsDetails(BuildContext context, int id) async {
     var data = await CompanyRepository(context).getBusinessAdsDetails(id);
     businessDetailsCubit.onUpdateData(data);
+  }
+  void getMainAdsDetails(BuildContext context, int id) async {
+    var data = await CompanyRepository(context).getMainAdsDetails(id);
+    mainDetailsCubit.onUpdateData(data);
+  }
+  void savePdf(BuildContext context,int id) async {
+    var data = await CompanyRepository(context).savePdf(id);
+    if (data != null) {
+      Utils.launchURL(url: data);
+    }
   }
 }
