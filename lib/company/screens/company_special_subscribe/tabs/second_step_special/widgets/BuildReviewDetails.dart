@@ -1,6 +1,10 @@
 part of 'SecStepSpecialWidgetsImports.dart';
 
 class BuildReviewDetails extends StatelessWidget {
+  final CompSpecialSubscribeData compSpecialSubscribeData;
+
+  const BuildReviewDetails({required this.compSpecialSubscribeData});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,11 +15,12 @@ class BuildReviewDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "تاريخ البداية",
-                desc: "fdfdf",
+                desc:
+                    compSpecialSubscribeData.addSpecialSubscribeModel.startTime,
               ),
               BuildReviewItem(
                 title: "مدة الترقية",
-                desc: "fdfdf",
+                desc: compSpecialSubscribeData.addSpecialSubscribeModel.dayShow,
               ),
             ],
           ),
@@ -23,11 +28,13 @@ class BuildReviewDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "المنطقة",
-                desc: "fddf",
+                desc: compSpecialSubscribeData
+                    .addSpecialSubscribeModel.fkCityName,
               ),
               BuildReviewItem(
                 title: "الاشخاص المهتمين ب",
-                desc: "fddf",
+                desc: compSpecialSubscribeData
+                    .addSpecialSubscribeModel.interestsNames,
               ),
             ],
           ),

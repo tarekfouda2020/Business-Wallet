@@ -1,9 +1,9 @@
-part of 'FirstStepWidgetsImports.dart';
+part of 'FirstStepOpinionWidgetsImport.dart';
 
-class BuildAddVideo extends StatelessWidget {
-  final CompanySubscribeData companySubscribeData;
+class BuildOpinionImages extends StatelessWidget {
+  final CompOpinionSubscribeData compOpinionSubscribeData;
 
-  BuildAddVideo({required this.companySubscribeData});
+  const BuildOpinionImages({required this.compOpinionSubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BuildAddVideo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyText(
-                title: "ادراج فيديو ",
+                title: "ادراج صورة ",
                 size: 11,
                 color: MyColors.white,
               ),
@@ -25,13 +25,13 @@ class BuildAddVideo extends StatelessWidget {
                   color: MyColors.primary,
                   size: 35,
                 ),
-                onPressed: companySubscribeData.setVideos,
+                onPressed: compOpinionSubscribeData.setImage,
               ),
             ],
           ),
         ),
         BlocBuilder<GenericCubit<List<File>>, GenericState<List<File>>>(
-          bloc: companySubscribeData.videosCubit,
+          bloc: compOpinionSubscribeData.imageCubit,
           builder: (_, fileState) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,12 +44,12 @@ class BuildAddVideo extends StatelessWidget {
                     alignment: WrapAlignment.start,
                     children: [
                       ...fileState.data.map(
-                        (e) => Container(
+                            (e) => Container(
                           alignment: Alignment.topLeft,
                           width: 100,
                           height: 100,
                           child: InkWell(
-                            onTap: () => companySubscribeData.removeVideos(e),
+                            onTap: () => compOpinionSubscribeData.removeImage(e),
                             child: Icon(
                               Icons.cancel,
                               size: 30,
@@ -57,11 +57,12 @@ class BuildAddVideo extends StatelessWidget {
                             ),
                           ),
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(Res.logo),
-                            ),
+                            border: Border.all(color: MyColors.grey, width: 1),
                             borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: MyColors.greyWhite),
+                            image: DecorationImage(
+                              image: FileImage(e),
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       )

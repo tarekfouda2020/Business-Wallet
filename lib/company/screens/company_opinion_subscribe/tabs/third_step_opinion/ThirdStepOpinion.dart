@@ -1,11 +1,9 @@
 part of 'ThirdStepOpinionImports.dart';
 
 class ThirdStepOpinion extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompOpinionSubscribeData compOpinionSubscribeData;
 
-  const ThirdStepOpinion(
-      {required this.subscribeCubit, required this.movePage});
+  const ThirdStepOpinion({required this.compOpinionSubscribeData});
 
   @override
   _ThirdStepOpinionState createState() => _ThirdStepOpinionState();
@@ -23,8 +21,6 @@ class _ThirdStepOpinionState extends State<ThirdStepOpinion> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: [
           BuildStepper(
-            step1: true,
-            step2: true,
             step3: true,
           ),
           DefaultButton(
@@ -33,7 +29,7 @@ class _ThirdStepOpinionState extends State<ThirdStepOpinion> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(2),
+            onTap: () => widget.compOpinionSubscribeData.moveNext(),
           )
         ],
       ),

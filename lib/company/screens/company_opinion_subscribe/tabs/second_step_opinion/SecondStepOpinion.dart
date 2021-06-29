@@ -1,11 +1,9 @@
 part of 'SecondStepOpinionImports.dart';
 
 class SecondStepOpinion extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompOpinionSubscribeData compOpinionSubscribeData;
 
-  const SecondStepOpinion(
-      {required this.subscribeCubit, required this.movePage});
+  const SecondStepOpinion({required this.compOpinionSubscribeData});
 
   @override
   _SecondStepOpinionState createState() => _SecondStepOpinionState();
@@ -23,16 +21,27 @@ class _SecondStepOpinionState extends State<SecondStepOpinion> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: [
           BuildStepper(
-            step1: true,
             step2: true,
           ),
+          BuildSecOpinionForm(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData),
+          BuildOpinionPrice(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(2),
+            onTap: () => widget.compOpinionSubscribeData.moveNext(),
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.compOpinionSubscribeData.moveBack(),
           )
         ],
       ),

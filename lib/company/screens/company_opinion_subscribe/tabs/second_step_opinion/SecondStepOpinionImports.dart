@@ -1,4 +1,6 @@
-import 'package:base_flutter/company/screens/company_opinion_subscribe/widgets/CompOpinionSubscribeWidgetsImports.dart';
+import 'package:base_flutter/company/screens/company_opinion_subscribe/CompOpinionSubscribeImports.dart';
+import 'package:base_flutter/company/screens/company_opinion_subscribe/tabs/second_step_opinion/widgets/SecStepOpinionWidgetsImports.dart';
+import 'package:base_flutter/company/screens/company_subscribe/widgets/CompanySubscribeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';

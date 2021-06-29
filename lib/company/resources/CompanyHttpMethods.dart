@@ -14,6 +14,9 @@ import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/company_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
+import 'package:base_flutter/company/models/dots/AddBrochureSubscribeModel.dart';
+import 'package:base_flutter/company/models/dots/AddOpinionSubscribeModel.dart';
+import 'package:base_flutter/company/models/dots/AddSpecialSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
@@ -1040,17 +1043,20 @@ class CompanyHttpMethods {
       return [];
     }
   }
-
-  Future<int?> addSubscribe(AddSubscribeModel model) async {
-    var _data = await DioHelper(context: context).post(
-      url: '/Plans/Announcementsentspecificcategory',
-      body: model.toJson(),
-      showLoader: false,
-    );
+  Future<List<DropDownSelected>> getPeopleInterests(bool refresh) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "/Plans/Getinterests", body: body);
     if (_data != null) {
-      return _data["ID"];
+      var data = List<DropDownSelected>.from(
+          _data["data"]["interests"].map((e) => DropDownSelected.fromJson(e)));
+      data.insert(0, DropDownSelected(id: 0, name: "الكل", selected: false));
+      return data;
     } else {
-      return null;
+      return [];
     }
   }
 
@@ -1089,22 +1095,26 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<DropDownSelected>> getPeopleInterests(bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
+  Future<CostSubscribeModel?> getOpinionSubscribeCost(
+      int countView, int countImage, int countVideo, int countQuestion) async {
     Map<String, dynamic> body = {
-      "lang": lang,
+      "count_view": countView,
+      "count_image": countImage,
+      "count_video": countVideo,
+      "count_question": countQuestion,
     };
-    var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/Plans/Getinterests", body: body);
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/CostAdvirtismentEvelation',
+      body: body,
+    );
     if (_data != null) {
-      var data = List<DropDownSelected>.from(
-          _data["data"]["interests"].map((e) => DropDownSelected.fromJson(e)));
-      data.insert(0, DropDownSelected(id: 0, name: "الكل", selected: false));
-      return data;
+      return CostSubscribeModel.fromJson(_data['data']['costs']);
     } else {
-      return [];
+      return null;
     }
   }
+
+
 
   Future<double?> finalCost(double baseCost) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -1255,6 +1265,55 @@ class CompanyHttpMethods {
       return ExtraCostModel.fromJson(_data['data']['costs']);
     } else {
       return null;
+    }
+  }
+
+  Future<int?> addSubscribe(AddSubscribeModel model) async {
+    var _data = await DioHelper(context: context).post(
+      url: '/Plans/Announcementsentspecificcategory',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      return _data["ID"];
+    } else {
+      return null;
+    }
+  }
+
+  Future<int?> addSpecialSubscribe(AddSpecialSubscribeModel model) async {
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/MainPageAdvert',
+      body: model.toJson(),
+    );
+    if (_data != null) {
+      return _data["ID"];
+    } else {
+      return null;
+    }
+  }
+
+  Future<int?> addOpinionSubscribe(AddOpinionSubscribeModel model) async {
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AddAnnouncement_service_evaluation',
+      body: model.toJson(),
+    );
+    if (_data != null) {
+      return _data["ID"];
+    } else {
+      return null;
+    }
+  }
+
+  Future<bool> addBrochureSubscribe(AddBrochureSubscribeModel model) async {
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AddNewBusinessCard',
+      body: model.toJson(),
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
     }
   }
 

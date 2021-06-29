@@ -1,48 +1,43 @@
 import 'dart:io';
 
-class AddSubscribeModel {
+class AddOpinionSubscribeModel {
   String? userId;
-  String? adsName;
   String? adsDesc;
-  String? fileName;
-  File? pdf;
-  List<File>? images;
-  List<File>? videos;
-  int? countView;
-  int? durationSec;
-  String? startTime;
-  int? fkCity;
-  String? cityName;
+  String? questions;
+  List<File>? adsImages;
+  List<File>? adsVideo;
+  String? countWatch;
+  String? timeStart;
+  String? fkCity;
+  String? fkCityName;
   String? interests;
-  String?interestsNames;
+  String? interestsNames;
+
   String? gender;
   String? accommodation;
   String? education;
   String? numberFamily;
   String? ageGroup;
   String? averageIncome;
-  int? mainCost;
-  int? addedCost;
-  int? mainPoints;
-  int? addedPoints;
-  int? price;
+  String? mainCost;
+  String? addedCost;
+  String? mainPoints;
+  String? addedPoints;
+  String? price;
   String? lang;
 
-  AddSubscribeModel(
+  AddOpinionSubscribeModel(
       {this.userId,
-      this.adsName,
       this.adsDesc,
-      this.fileName,
-      this.pdf,
-      this.images,
-      this.videos,
-      this.countView,
-      this.durationSec,
-      this.startTime,
+      this.questions,
+      this.adsImages,
+      this.adsVideo,
+      this.countWatch,
+      this.timeStart,
       this.fkCity,
-        this.cityName,
+      this.fkCityName,
       this.interests,
-        this.interestsNames,
+      this.interestsNames,
       this.gender,
       this.accommodation,
       this.education,
@@ -58,15 +53,12 @@ class AddSubscribeModel {
 
   Map<String, dynamic> toJson() => {
         "user_id": userId,
-        "ad_name": adsName,
         "ad_description": adsDesc,
-        "ad_type_name": fileName,
-        "ads_file": pdf,
-        "ad_imgs": images,
-        "ad_videos": videos,
-        "count_view": countView,
-        "time_view": durationSec,
-        "time_start": startTime,
+        "qusetions": questions,
+        "ad_imgs": adsImages,
+        "ad_videos": adsVideo,
+        "countWatch": countWatch,
+        "time_start": timeStart,
         "fk_city": fkCity,
         "interests": interests,
         "gander": gender,
@@ -80,7 +72,6 @@ class AddSubscribeModel {
         "main_points": mainPoints,
         "points_add": addedPoints,
         "price": price,
-//      "type_payment": "$_payType",
         "lang": lang,
       };
 }

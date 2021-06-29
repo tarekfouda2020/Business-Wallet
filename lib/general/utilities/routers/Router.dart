@@ -96,7 +96,6 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompSpecificAds),
     AdaptiveRoute(page: CompBusinessAds),
 
-    AdaptiveRoute(page: CompanySubscribe),
     AdaptiveRoute(page: SecondStep),
 
     CustomRoute(page: CompSpecialSubscribe,

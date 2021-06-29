@@ -4,6 +4,12 @@ class CompBrochureSubscribeData {
   late final PageController controller;
   final GenericCubit<int> subscribeCubit = new GenericCubit(0);
   double baseCost = 0;
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+
+  final GlobalKey<CustomButtonState> btnKey =
+      new GlobalKey<CustomButtonState>();
+
+  final GenericCubit<int> idCubit = new GenericCubit(0);
 
   final GenericCubit<CostSubscribeModel?> costCubit = new GenericCubit(null);
   final GenericCubit<ExtraCostModel?> costViewCubit = new GenericCubit(null);
@@ -121,12 +127,45 @@ class CompBrochureSubscribeData {
 
   void getFinalCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context).finalCost(baseCost);
-    finalCostCubit.onUpdateData(data);
+    if (data != null) {
+      finalCostCubit.onUpdateData(data);
+      moveNext();
+    }
   }
 
+  void navigateToThird(BuildContext context) {
+    onBrochureSubscribe(context);
+  }
 
-  void navigateToThird(BuildContext context){
-    getFinalCostSubscribe(context);
-    moveNext();
+  void onBrochureSubscribe(BuildContext context) async {
+    if (formKey.currentState!.validate()) {
+      btnKey.currentState!.animateForward();
+      AddBrochureSubscribeModel addBrochureSubscribeModel =
+          new AddBrochureSubscribeModel(
+        userId: context.read<UserCubit>().state.model.companyModel!.userId,
+        businessCardId: brochureDataCubit.state.data!.businessId.toString(),
+        fkMainField: mainFieldId.toString(),
+        numberCard: brochure.text,
+        fkCity: regionModel?.id.toString(),
+        price: extraCost.text,
+        typePayment: "1",
+        allSubField: subFieldCubit.state.data
+            .where((element) => element.id != 0)
+            .fold("", (prev, e) => "$prev" + "${e.id}" + ","),
+        mainCost: costCubit.state.data!.item1.toString(),
+        addedCost: costViewCubit.state.data!.item1.toString(),
+        mainPoints: costCubit.state.data!.item3.toString(),
+        addedPoints: costViewCubit.state.data!.item2.toString(),
+        lang: context.read<LangCubit>().state.locale.languageCode,
+      );
+
+      var data = await CompanyRepository(context)
+          .addBrochureSubscribe(addBrochureSubscribeModel);
+      btnKey.currentState!.animateReverse();
+
+      if (data) {
+        getFinalCostSubscribe(context);
+      }
+    }
   }
 }
