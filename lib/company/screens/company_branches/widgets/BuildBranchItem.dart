@@ -127,7 +127,15 @@ class BuildBranchItem extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Icon(Icons.edit,size: 20,color: MyColors.primary,),
                 ),
-              )
+              ),
+              SizedBox(width: 5),
+              InkWell(
+                onTap: (){},
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: Icon(Icons.close,size: 22,color: MyColors.primary,),
+                ),
+              ),
             ],
           ),
 
