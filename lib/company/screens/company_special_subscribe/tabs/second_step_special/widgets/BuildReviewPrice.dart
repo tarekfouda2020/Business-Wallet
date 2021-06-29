@@ -1,6 +1,10 @@
 part of 'SecStepSpecialWidgetsImports.dart';
 
 class BuildReviewPrice extends StatelessWidget {
+  final CompSpecialSubscribeData compSpecialSubscribeData;
+
+  const BuildReviewPrice({required this.compSpecialSubscribeData});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +22,7 @@ class BuildReviewPrice extends StatelessWidget {
             color: MyColors.white,
           ),
           MyText(
-            title: "500 ر.س",
+            title: "${compSpecialSubscribeData.baseCostCubit.state.data} ر.س",
             size: 16,
             color: MyColors.primary,
           ),

@@ -1,9 +1,9 @@
-part of 'FirstStepWidgetsImports.dart';
+part of 'FirstStepOpinionWidgetsImport.dart';
 
-class BuildAddVideo extends StatelessWidget {
-  final CompanySubscribeData companySubscribeData;
+class BuildOpinionVideos extends StatelessWidget {
+  final CompOpinionSubscribeData compOpinionSubscribeData;
 
-  BuildAddVideo({required this.companySubscribeData});
+  const BuildOpinionVideos({required this.compOpinionSubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +25,13 @@ class BuildAddVideo extends StatelessWidget {
                   color: MyColors.primary,
                   size: 35,
                 ),
-                onPressed: companySubscribeData.setVideos,
+                onPressed: compOpinionSubscribeData.setVideos,
               ),
             ],
           ),
         ),
         BlocBuilder<GenericCubit<List<File>>, GenericState<List<File>>>(
-          bloc: companySubscribeData.videosCubit,
+          bloc: compOpinionSubscribeData.videosCubit,
           builder: (_, fileState) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,8 @@ class BuildAddVideo extends StatelessWidget {
                           width: 100,
                           height: 100,
                           child: InkWell(
-                            onTap: () => companySubscribeData.removeVideos(e),
+                            onTap: () =>
+                                compOpinionSubscribeData.removeVideos(e),
                             child: Icon(
                               Icons.cancel,
                               size: 30,

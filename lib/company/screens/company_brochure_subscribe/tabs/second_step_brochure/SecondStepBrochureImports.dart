@@ -9,6 +9,7 @@ import 'package:base_flutter/general/constants/Inputs/custom_dropDown/CustomDrop
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
 import 'package:base_flutter/general/widgets/DefaultButton.dart';
+import 'package:base_flutter/general/widgets/LoadingButton.dart';
 import 'package:flutter/material.dart';
 part 'SecondStepBrochureData.dart';
 part 'SecondStepBrochure.dart';

@@ -25,17 +25,17 @@ class _CompOpinionSubscribeState extends State<CompOpinionSubscribe> {
         onPageChanged: compOpinionSubscribeData.subscribeCubit.onUpdateData,
         children: [
           FirstStepOpinion(
-            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
-            movePage: compOpinionSubscribeData.movePage,
+            compOpinionSubscribeData: compOpinionSubscribeData,
           ),
           SecondStepOpinion(
-            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
-            movePage: compOpinionSubscribeData.movePage,
+            compOpinionSubscribeData: compOpinionSubscribeData,
           ),
           ThirdStepOpinion(
-            subscribeCubit: compOpinionSubscribeData.subscribeCubit,
-            movePage: compOpinionSubscribeData.movePage,
+            compOpinionSubscribeData: compOpinionSubscribeData,
           ),
+          FourthStepOpinion(
+            compOpinionSubscribeData: compOpinionSubscribeData,
+          )
         ],
       ),
     );

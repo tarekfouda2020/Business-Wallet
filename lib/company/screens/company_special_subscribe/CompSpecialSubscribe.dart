@@ -25,16 +25,13 @@ class _CompSpecialSubscribeState extends State<CompSpecialSubscribe> {
         onPageChanged: compSpecialSubscribeData.subscribeCubit.onUpdateData,
         children: [
           FirstStepSpecial(
-            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
-            movePage: compSpecialSubscribeData.movePage,
+            compSpecialSubscribeData: compSpecialSubscribeData,
           ),
           SecondStepSpecial(
-            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
-            movePage: compSpecialSubscribeData.movePage,
+            compSpecialSubscribeData: compSpecialSubscribeData,
           ),
           ThirdStepSpecial(
-            subscribeCubit: compSpecialSubscribeData.subscribeCubit,
-            movePage: compSpecialSubscribeData.movePage,
+            compSpecialSubscribeData: compSpecialSubscribeData,
           ),
           // FourthStepSpecial(
           //   subscribeCubit: compSpecialSubscribeData.subscribeCubit,

@@ -1,11 +1,9 @@
 part of 'SecondStepSpecialImports.dart';
 
 class SecondStepSpecial extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompSpecialSubscribeData compSpecialSubscribeData;
 
-  const SecondStepSpecial(
-      {required this.subscribeCubit, required this.movePage});
+  const SecondStepSpecial({required this.compSpecialSubscribeData});
 
   @override
   _SecondStepSpecialState createState() => _SecondStepSpecialState();
@@ -26,24 +24,15 @@ class _SecondStepSpecialState extends State<SecondStepSpecial> {
             step1: true,
             step2: true,
           ),
-          BuildReviewPrice(),
-          BuildReviewDetails(),
-          DefaultButton(
-            color: MyColors.primary,
-            textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
-            title: "حفظ كملف",
-            onTap: () {},
+          BuildReviewPrice(
+            compSpecialSubscribeData: widget.compSpecialSubscribeData,
           ),
-          DefaultButton(
-            color: MyColors.primary,
-            textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            title: "التالي",
-            onTap: () => widget.movePage(2),
-          )
+          BuildReviewDetails(
+            compSpecialSubscribeData: widget.compSpecialSubscribeData,
+          ),
+          BuildButtonList(
+            compSpecialSubscribeData: widget.compSpecialSubscribeData,
+          ),
         ],
       ),
     );

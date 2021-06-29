@@ -1,30 +1,27 @@
-part of 'ThirdStepSpecialImports.dart';
+part of 'FourthStepOpinionImports.dart';
 
-class ThirdStepSpecial extends StatefulWidget {
-  final CompSpecialSubscribeData compSpecialSubscribeData;
+class FourthStepOpinion extends StatefulWidget {
+  final CompOpinionSubscribeData compOpinionSubscribeData;
 
-  const ThirdStepSpecial({required this.compSpecialSubscribeData});
+  const FourthStepOpinion({required this.compOpinionSubscribeData});
 
   @override
-  _ThirdStepSpecialState createState() => _ThirdStepSpecialState();
+  _FourthStepOpinionState createState() => _FourthStepOpinionState();
 }
 
-class _ThirdStepSpecialState extends State<ThirdStepSpecial> {
+class _FourthStepOpinionState extends State<FourthStepOpinion> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
       appBar: DefaultAppBar(
-        title: "باقة تميز",
+        title: "باقة استطلاع رأي",
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         children: [
           BuildStepper(
-            step3: true,
-          ),
-          BuildReviewPrice(
-            compSpecialSubscribeData: widget.compSpecialSubscribeData,
+            step4: true,
           ),
           DefaultButton(
             color: MyColors.primary,
@@ -32,10 +29,9 @@ class _ThirdStepSpecialState extends State<ThirdStepSpecial> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.compSpecialSubscribeData.moveNext(),
+            onTap: () => widget.compOpinionSubscribeData.moveNext(),
           )
         ],
       ),
-    );
-  }
+    );  }
 }

@@ -271,6 +271,9 @@ class CompanySubscribeData {
       addSubscribeModel.interests = interestCubit.state.data
           .where((element) => element.selected && element.id != 0)
           .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
+      addSubscribeModel.interestsNames = interestCubit.state.data
+          .where((element) => element.selected && element.id != 0)
+          .fold("", (prev, e) => "$prev" + "${e.name}" + ",");
       addSubscribeModel.gender = genderCubit.state.data == 1 ? "M" : "F";
       addSubscribeModel.accommodation = livingCubit.state.data;
       addSubscribeModel.education = educationCubit.state.data;

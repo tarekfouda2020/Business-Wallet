@@ -460,13 +460,18 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i55.CompanyPoints();
         }),
-    CompanySubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    CompanySubscribeRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompanySubscribeRouteArgs>(
               orElse: () => const CompanySubscribeRouteArgs());
           return _i56.CompanySubscribe(showVideo: args.showVideo);
-        }),
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 500,
+        opaque: true,
+        barrierDismissible: false),
     CompanyWalletRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
@@ -657,7 +662,6 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(CompProductAdsRoute.name, path: '/comp-product-ads'),
         _i1.RouteConfig(CompSpecificAdsRoute.name, path: '/comp-specific-ads'),
         _i1.RouteConfig(CompBusinessAdsRoute.name, path: '/comp-business-ads'),
-        _i1.RouteConfig(CompanySubscribeRoute.name, path: '/company-subscribe'),
         _i1.RouteConfig(SecondStepRoute.name, path: '/second-step'),
         _i1.RouteConfig(CompSpecialSubscribeRoute.name,
             path: '/comp-special-subscribe'),

@@ -1,18 +1,17 @@
 part of 'FirstStepSpecialImports.dart';
 
 class FirstStepSpecial extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompSpecialSubscribeData compSpecialSubscribeData;
 
-  const FirstStepSpecial(
-      {required this.subscribeCubit, required this.movePage});
+  const FirstStepSpecial({required this.compSpecialSubscribeData});
 
   @override
   _FirstStepSpecialState createState() => _FirstStepSpecialState();
 }
 
 class _FirstStepSpecialState extends State<FirstStepSpecial> {
-  final FirstStepSpecialData firstStepSpecialData= new FirstStepSpecialData();
+  final FirstStepSpecialData firstStepSpecialData = new FirstStepSpecialData();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,15 +25,21 @@ class _FirstStepSpecialState extends State<FirstStepSpecial> {
           BuildStepper(
             step1: true,
           ),
-          BuildForm(firstStepSpecialData: firstStepSpecialData,),
-          BuildPrice(),
-          DefaultButton(
+          BuildForm(
+            compSpecialSubscribeData: widget.compSpecialSubscribeData,
+          ),
+          BuildPrice(
+            compSpecialSubscribeData: widget.compSpecialSubscribeData,
+          ),
+          LoadingButton(
+            btnKey: widget.compSpecialSubscribeData.btnKey,
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: 30,
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(1),
+            onTap: () =>
+                widget.compSpecialSubscribeData.onSpecialSubscribe(context),
           )
         ],
       ),

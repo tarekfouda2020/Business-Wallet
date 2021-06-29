@@ -12,6 +12,9 @@ import 'package:base_flutter/company/models/comp_invitation_model.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
+import 'package:base_flutter/company/models/dots/AddBrochureSubscribeModel.dart';
+import 'package:base_flutter/company/models/dots/AddOpinionSubscribeModel.dart';
+import 'package:base_flutter/company/models/dots/AddSpecialSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
@@ -68,9 +71,10 @@ class CompanyRepository {
   Future<bool> saveField(String fkMain, String fkSub, String userId) =>
       _companyHttpMethods.saveField(fkMain, fkSub, userId);
 
-  Future<List<MainModel>> getMain(
-          int pageIndex, int cityId, int interestId, int filterId,bool refresh ) =>
-      _companyHttpMethods.getMain(pageIndex, cityId, interestId, filterId,refresh);
+  Future<List<MainModel>> getMain(int pageIndex, int cityId, int interestId,
+          int filterId, bool refresh) =>
+      _companyHttpMethods.getMain(
+          pageIndex, cityId, interestId, filterId, refresh);
 
   Future<List<AutoSearchModel>> getAutoSearch(String word) =>
       _companyHttpMethods.getAutoSearch(word);
@@ -79,17 +83,19 @@ class CompanyRepository {
           int pageIndex, int searchId, int fieldId, String text) =>
       _companyHttpMethods.getMainSearch(pageIndex, searchId, fieldId, text);
 
-  Future<List<FollowerModel>> getFollowersFiltered(
-          int pageIndex, int cityId, int interestId, int filterId, bool refresh) =>
+  Future<List<FollowerModel>> getFollowersFiltered(int pageIndex, int cityId,
+          int interestId, int filterId, bool refresh) =>
       _companyHttpMethods.getFollowersFiltered(
           pageIndex, cityId, interestId, filterId, refresh);
 
   Future<List<CompFavoriteModel>> getFavoriteData(
           int pageIndex, int fkCity, fkInterest, bool refresh) =>
-      _companyHttpMethods.getFavoriteData(pageIndex, fkCity, fkInterest, refresh);
+      _companyHttpMethods.getFavoriteData(
+          pageIndex, fkCity, fkInterest, refresh);
 
-  Future<List<CompInvitationModel>> getInvitationData(int pageIndex, bool refresh) =>
-      _companyHttpMethods.getInvitationData(pageIndex,refresh);
+  Future<List<CompInvitationModel>> getInvitationData(
+          int pageIndex, bool refresh) =>
+      _companyHttpMethods.getInvitationData(pageIndex, refresh);
 
   Future<MainDetailsModel?> getMainDetails(String id) =>
       _companyHttpMethods.getMainDetails(id);
@@ -134,7 +140,7 @@ class CompanyRepository {
   Future<bool> followAds(String kayanId) =>
       _companyHttpMethods.followAds(kayanId);
 
-  Future<List<CompInterestModel>> getInterest(bool refresh ) =>
+  Future<List<CompInterestModel>> getInterest(bool refresh) =>
       _companyHttpMethods.getInterest(refresh);
 
   Future<bool> saveInterest(String items) =>
@@ -187,9 +193,6 @@ class CompanyRepository {
   Future<bool> sendBrochureData(SendBrochureModel model) async =>
       _companyHttpMethods.sendBrochureData(model);
 
-  Future<int?> addSubscribe(AddSubscribeModel model) async =>
-      _companyHttpMethods.addSubscribe(model);
-
   Future<SpecificAdsModel?> getSpecificAds(int adsId) =>
       _companyHttpMethods.getSpecificAds(adsId);
 
@@ -213,7 +216,7 @@ class CompanyRepository {
   Future<InvestmentAdsModel?> getInvestmentAds(int adsId) =>
       _companyHttpMethods.getInvestmentAds(adsId);
 
-  Future<List<PackagesModel>> getAllPackages(bool refresh ) =>
+  Future<List<PackagesModel>> getAllPackages(bool refresh) =>
       _companyHttpMethods.getAllPackages(refresh);
 
   Future<CostSubscribeModel?> getCostSubscribe(
@@ -250,9 +253,25 @@ class CompanyRepository {
   Future<CostSubscribeModel?> getCostBrochureSubscribe(int brochureNum) =>
       _companyHttpMethods.getCostBrochureSubscribe(brochureNum);
 
+  Future<CostSubscribeModel?> getOpinionSubscribeCost(
+      int countView, int countImage, int countVideo, int countQuestion) =>
+      _companyHttpMethods.getOpinionSubscribeCost(
+          countView, countImage, countVideo, countQuestion);
+
   Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) =>
       _companyHttpMethods.getExtraBrochureCost(cost, price);
 
+  Future<int?> addSubscribe(AddSubscribeModel model) async =>
+      _companyHttpMethods.addSubscribe(model);
+
+  Future<int?> addSpecialSubscribe(AddSpecialSubscribeModel model) async =>
+      _companyHttpMethods.addSpecialSubscribe(model);
+
+  Future<int?> addOpinionSubscribe(AddOpinionSubscribeModel model) async =>
+      _companyHttpMethods.addOpinionSubscribe(model);
+
+  Future<bool> addBrochureSubscribe(AddBrochureSubscribeModel model) async =>
+      _companyHttpMethods.addBrochureSubscribe(model);
   Future<List<BranchModel>> getBranches(bool refresh)=> _companyHttpMethods.getBranches(refresh);
 
   Future<BranchModel?> addBranch(AddBranchModel model)=> _companyHttpMethods.addBranch(model);
