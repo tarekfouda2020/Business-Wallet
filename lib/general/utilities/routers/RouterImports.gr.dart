@@ -13,9 +13,9 @@ import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImpor
 import 'package:base_flutter/company/screens/company_brochure/CompanyBrochureImports.dart'
     as _i60;
 import 'package:base_flutter/company/screens/company_brochure_subscribe/CompBrochureSubscribeImports.dart'
-    as _i66;
+    as _i64;
 import 'package:base_flutter/company/screens/company_business_ads/CompBusinessAdsImports.dart'
-    as _i69;
+    as _i67;
 import 'package:base_flutter/company/screens/company_comments/CompanyCommentsImports.dart'
     as _i51;
 import 'package:base_flutter/company/screens/company_conversations/CompanyConversationsImports.dart'
@@ -33,7 +33,7 @@ import 'package:base_flutter/company/screens/company_interests/CompanyInterestsI
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart'
     as _i46;
 import 'package:base_flutter/company/screens/company_opinion_subscribe/CompOpinionSubscribeImports.dart'
-    as _i65;
+    as _i70;
 import 'package:base_flutter/company/screens/company_packages/CompanyPackagesImports.dart'
     as _i58;
 import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImports.dart'
@@ -41,7 +41,7 @@ import 'package:base_flutter/company/screens/company_payment/CompanyPaymentImpor
 import 'package:base_flutter/company/screens/company_points/CompanyPointsImports.dart'
     as _i55;
 import 'package:base_flutter/company/screens/company_product_ads/CompProductAdsImports.dart'
-    as _i67;
+    as _i65;
 import 'package:base_flutter/company/screens/company_profile/CompanyProfileImport.dart'
     as _i47;
 import 'package:base_flutter/company/screens/company_register/CompanyRegisterImports.dart'
@@ -51,15 +51,17 @@ import 'package:base_flutter/company/screens/company_register_commercial/Company
 import 'package:base_flutter/company/screens/company_register_interests/CompanyRegisterInterestsImports.dart'
     as _i43;
 import 'package:base_flutter/company/screens/company_special_subscribe/CompSpecialSubscribeImports.dart'
-    as _i64;
+    as _i69;
 import 'package:base_flutter/company/screens/company_specific_ads/CompSpecificAdsImports.dart'
-    as _i68;
+    as _i66;
 import 'package:base_flutter/company/screens/company_statistics_rate/CompanyStatisticsRateImports.dart'
     as _i62;
 import 'package:base_flutter/company/screens/company_statstics/CompanyStatisticsImports.dart'
     as _i54;
 import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeImports.dart'
     as _i56;
+import 'package:base_flutter/company/screens/company_subscribe/tabs/second_step/SecondStepImports.dart'
+    as _i68;
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart'
     as _i57;
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
@@ -101,7 +103,7 @@ import 'package:base_flutter/customer/screens/wallet/WalletImports.dart'
     as _i31;
 import 'package:base_flutter/customer/screens/wallet_help/WalletHelpImports.dart'
     as _i39;
-import 'package:base_flutter/general/models/intro_model.dart' as _i71;
+import 'package:base_flutter/general/models/intro_model.dart' as _i72;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i17;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i11;
@@ -133,7 +135,7 @@ import 'package:base_flutter/general/screens/successfully_active/SuccessfullyAct
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i16;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i70;
+import 'package:flutter/cupertino.dart' as _i71;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -493,46 +495,55 @@ class AppRouter extends _i1.RootStackRouter {
             }),
     CompanyStatisticsRateRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i62.CompanyStatisticsRate();
+        builder: (data) {
+          final args = data.argsAs<CompanyStatisticsRateRouteArgs>();
+          return _i62.CompanyStatisticsRate(type: args.type, id: args.id);
         }),
     CompanyBarcodeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
           return _i63.CompanyBarcode();
         }),
-    CompSpecialSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i64.CompSpecialSubscribe();
-        }),
-    CompOpinionSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i65.CompOpinionSubscribe();
-        }),
     CompBrochureSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i66.CompBrochureSubscribe();
+          return const _i64.CompBrochureSubscribe();
         }),
     CompProductAdsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompProductAdsRouteArgs>();
-          return _i67.CompProductAds(adsId: args.adsId);
+          return _i65.CompProductAds(adsId: args.adsId);
         }),
     CompSpecificAdsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompSpecificAdsRouteArgs>();
-          return _i68.CompSpecificAds(adsId: args.adsId);
+          return _i66.CompSpecificAds(adsId: args.adsId);
         }),
     CompBusinessAdsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<CompBusinessAdsRouteArgs>();
-          return _i69.CompBusinessAds(adsId: args.adsId);
+          return _i67.CompBusinessAds(adsId: args.adsId);
+        }),
+    SecondStepRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<SecondStepRouteArgs>();
+          return _i68.SecondStep(
+              companySubscribeData: args.companySubscribeData,
+              showVideo: args.showVideo);
+        }),
+    CompSpecialSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i69.CompSpecialSubscribe();
+        }),
+    CompOpinionSubscribeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i70.CompOpinionSubscribe();
         })
   };
 
@@ -614,20 +625,22 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(CompanyStatisticsRateRoute.name,
             path: '/company-statistics-rate'),
         _i1.RouteConfig(CompanyBarcodeRoute.name, path: '/company-barcode'),
-        _i1.RouteConfig(CompSpecialSubscribeRoute.name,
-            path: '/comp-special-subscribe'),
-        _i1.RouteConfig(CompOpinionSubscribeRoute.name,
-            path: '/comp-opinion-subscribe'),
         _i1.RouteConfig(CompBrochureSubscribeRoute.name,
             path: '/comp-brochure-subscribe'),
         _i1.RouteConfig(CompProductAdsRoute.name, path: '/comp-product-ads'),
         _i1.RouteConfig(CompSpecificAdsRoute.name, path: '/comp-specific-ads'),
-        _i1.RouteConfig(CompBusinessAdsRoute.name, path: '/comp-business-ads')
+        _i1.RouteConfig(CompBusinessAdsRoute.name, path: '/comp-business-ads'),
+        _i1.RouteConfig(CompanySubscribeRoute.name, path: '/company-subscribe'),
+        _i1.RouteConfig(SecondStepRoute.name, path: '/second-step'),
+        _i1.RouteConfig(CompSpecialSubscribeRoute.name,
+            path: '/comp-special-subscribe'),
+        _i1.RouteConfig(CompOpinionSubscribeRoute.name,
+            path: '/comp-opinion-subscribe')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i70.GlobalKey<_i70.NavigatorState> navigatorKey})
+  SplashRoute({required _i71.GlobalKey<_i71.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -637,11 +650,11 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i70.GlobalKey<_i70.NavigatorState> navigatorKey;
+  final _i71.GlobalKey<_i71.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({_i71.IntroModel? introModel})
+  LoginRoute({_i72.IntroModel? introModel})
       : super(name,
             path: '/Login', args: LoginRouteArgs(introModel: introModel));
 
@@ -651,11 +664,11 @@ class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
 class LoginRouteArgs {
   const LoginRouteArgs({this.introModel});
 
-  final _i71.IntroModel? introModel;
+  final _i72.IntroModel? introModel;
 }
 
 class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
-  WelcomePageRoute({_i71.IntroModel? introModel})
+  WelcomePageRoute({_i72.IntroModel? introModel})
       : super(name,
             path: '/welcome-page',
             args: WelcomePageRouteArgs(introModel: introModel));
@@ -666,11 +679,11 @@ class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
 class WelcomePageRouteArgs {
   const WelcomePageRouteArgs({this.introModel});
 
-  final _i71.IntroModel? introModel;
+  final _i72.IntroModel? introModel;
 }
 
 class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
-  CustomerWelcomeRoute({_i71.IntroModel? introModel})
+  CustomerWelcomeRoute({_i72.IntroModel? introModel})
       : super(name,
             path: '/customer-welcome',
             args: CustomerWelcomeRouteArgs(introModel: introModel));
@@ -681,7 +694,7 @@ class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
 class CustomerWelcomeRouteArgs {
   const CustomerWelcomeRouteArgs({this.introModel});
 
-  final _i71.IntroModel? introModel;
+  final _i72.IntroModel? introModel;
 }
 
 class ForgetPasswordRoute extends _i1.PageRouteInfo {
@@ -799,7 +812,7 @@ class ContactUsRoute extends _i1.PageRouteInfo {
 }
 
 class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
-  SelectUserRoute({_i71.IntroModel? introModel})
+  SelectUserRoute({_i72.IntroModel? introModel})
       : super(name,
             path: '/select-user',
             args: SelectUserRouteArgs(introModel: introModel));
@@ -810,7 +823,7 @@ class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
 class SelectUserRouteArgs {
   const SelectUserRouteArgs({this.introModel});
 
-  final _i71.IntroModel? introModel;
+  final _i72.IntroModel? introModel;
 }
 
 class ConfirmPasswordRoute extends _i1.PageRouteInfo {
@@ -1260,31 +1273,28 @@ class CompAccountReconciliationRouteArgs {
   final double costMun;
 }
 
-class CompanyStatisticsRateRoute extends _i1.PageRouteInfo {
-  const CompanyStatisticsRateRoute()
-      : super(name, path: '/company-statistics-rate');
+class CompanyStatisticsRateRoute
+    extends _i1.PageRouteInfo<CompanyStatisticsRateRouteArgs> {
+  CompanyStatisticsRateRoute({required int type, required int id})
+      : super(name,
+            path: '/company-statistics-rate',
+            args: CompanyStatisticsRateRouteArgs(type: type, id: id));
 
   static const String name = 'CompanyStatisticsRateRoute';
+}
+
+class CompanyStatisticsRateRouteArgs {
+  const CompanyStatisticsRateRouteArgs({required this.type, required this.id});
+
+  final int type;
+
+  final int id;
 }
 
 class CompanyBarcodeRoute extends _i1.PageRouteInfo {
   const CompanyBarcodeRoute() : super(name, path: '/company-barcode');
 
   static const String name = 'CompanyBarcodeRoute';
-}
-
-class CompSpecialSubscribeRoute extends _i1.PageRouteInfo {
-  const CompSpecialSubscribeRoute()
-      : super(name, path: '/comp-special-subscribe');
-
-  static const String name = 'CompSpecialSubscribeRoute';
-}
-
-class CompOpinionSubscribeRoute extends _i1.PageRouteInfo {
-  const CompOpinionSubscribeRoute()
-      : super(name, path: '/comp-opinion-subscribe');
-
-  static const String name = 'CompOpinionSubscribeRoute';
 }
 
 class CompBrochureSubscribeRoute extends _i1.PageRouteInfo {
@@ -1337,4 +1347,40 @@ class CompBusinessAdsRouteArgs {
   const CompBusinessAdsRouteArgs({required this.adsId});
 
   final int adsId;
+}
+
+class SecondStepRoute extends _i1.PageRouteInfo<SecondStepRouteArgs> {
+  SecondStepRoute(
+      {required _i56.CompanySubscribeData companySubscribeData,
+      required bool showVideo})
+      : super(name,
+            path: '/second-step',
+            args: SecondStepRouteArgs(
+                companySubscribeData: companySubscribeData,
+                showVideo: showVideo));
+
+  static const String name = 'SecondStepRoute';
+}
+
+class SecondStepRouteArgs {
+  const SecondStepRouteArgs(
+      {required this.companySubscribeData, required this.showVideo});
+
+  final _i56.CompanySubscribeData companySubscribeData;
+
+  final bool showVideo;
+}
+
+class CompSpecialSubscribeRoute extends _i1.PageRouteInfo {
+  const CompSpecialSubscribeRoute()
+      : super(name, path: '/comp-special-subscribe');
+
+  static const String name = 'CompSpecialSubscribeRoute';
+}
+
+class CompOpinionSubscribeRoute extends _i1.PageRouteInfo {
+  const CompOpinionSubscribeRoute()
+      : super(name, path: '/comp-opinion-subscribe');
+
+  static const String name = 'CompOpinionSubscribeRoute';
 }

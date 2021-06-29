@@ -1,6 +1,8 @@
 part of 'CompanyFavDetailsImports.dart';
 
 class CompanyFavDetailsData {
+  final GenericCubit<bool> isOwner = new GenericCubit(true);
+
   late AnimationController controller;
   late Animation<double> animation;
   Timer? timer;
@@ -19,6 +21,8 @@ class CompanyFavDetailsData {
     var data =
         await CompanyRepository(context).getAds(adsId, sendCard, showSendCard);
     adsDetailsCubit.onUpdateData(data);
+    isOwner.onUpdateData(data!.isOwner);
+
   }
 
   void updateAds(
@@ -36,8 +40,8 @@ class CompanyFavDetailsData {
         .then((value) => fetchData(context, adsId, sendCard, showSendCard));
   }
 
-  void addOrRemoveLikeAds(BuildContext context,
-      int adsId, int showSend, int showSendCard) async {
+  void addOrRemoveLikeAds(
+      BuildContext context, int adsId, int showSend, int showSendCard) async {
     await CompanyRepository(context)
         .likeAds(adsId, "1")
         .then((value) => fetchData(context, adsId, showSend, showSendCard));

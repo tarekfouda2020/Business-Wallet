@@ -2,6 +2,7 @@ part of 'CompProductAdsImports.dart';
 
 class CompProductAdsData {
   final GenericCubit<List<QuestionModel>> allQuestionCubit = GenericCubit([]);
+  final GenericCubit<bool> isOwner = new GenericCubit(true);
 
   final GenericCubit<InvestmentAdsModel?> investmentAdsCubit =
       new GenericCubit(null);
@@ -9,7 +10,9 @@ class CompProductAdsData {
   void fetchData(BuildContext context, int adsId) async {
     var data = await CompanyRepository(context).getInvestmentAds(adsId);
     investmentAdsCubit.onUpdateData(data);
-    allQuestionCubit.onUpdateData(data!.questions);
+    isOwner.onUpdateData(data!.investmentAdsDetails.isOwner);
+
+    allQuestionCubit.onUpdateData(data.questions);
   }
 
   void onChangeAnswer(BuildContext context, int index, int value, bool isShow) {

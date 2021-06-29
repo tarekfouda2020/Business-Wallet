@@ -24,12 +24,18 @@ class InvestmentAdsDetailsModel {
   int myRate;
   @JsonKey(name: 'isShow')
   bool isShow;
+  @JsonKey(name: 'isOwner')
+  bool isOwner;
   @JsonKey(name: 'PointsForEachUser')
   int pintsForEachUser;
   @JsonKey(name: 'follow')
   bool follow;
   @JsonKey(name: 'images')
   List<MediaModel> images;
+  @JsonKey(name: 'imgs')
+  List<String> imgs;
+  @JsonKey(name: 'videos')
+  List<String> videos;
   @JsonKey(name: 'myQusetion')
   List<QuestionModel> myQuestions;
 
@@ -43,9 +49,12 @@ class InvestmentAdsDetailsModel {
       required this.time,
       required this.myRate,
       required this.isShow,
+      required this.isOwner,
       required this.pintsForEachUser,
       required this.follow,
       required this.images,
+      required this.imgs,
+      required this.videos,
       required this.myQuestions});
 
   factory InvestmentAdsDetailsModel.fromJson(Map<String, dynamic> json) =>

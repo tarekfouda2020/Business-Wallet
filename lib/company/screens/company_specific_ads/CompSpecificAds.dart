@@ -9,12 +9,14 @@ class CompSpecificAds extends StatefulWidget {
   _CompSpecificAdsState createState() => _CompSpecificAdsState();
 }
 
-class _CompSpecificAdsState extends State<CompSpecificAds> {
+class _CompSpecificAdsState extends State<CompSpecificAds>
+    with SingleTickerProviderStateMixin {
   final CompSpecificAdsData compSpecificAdsData = new CompSpecificAdsData();
 
   @override
   void initState() {
     compSpecificAdsData.fetchData(context, widget.adsId);
+
     super.initState();
   }
 
@@ -22,6 +24,7 @@ class _CompSpecificAdsState extends State<CompSpecificAds> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
+
       appBar: DefaultAppBar(
         title: "تفاصيل الاعلان",
       ),
@@ -67,7 +70,9 @@ class _CompSpecificAdsState extends State<CompSpecificAds> {
                       title: "لا يوجد فيديوهات",
                     ),
                   ),
-                  replacement: BuildVideoView(),
+                  replacement: BuildAdsVideoList(
+                    videos: state.data!.previewAds.videos,
+                  ),
                 ),
                 BuildInvTitle(title: "صاحب الإعلان"),
                 BuildOwnerAds(

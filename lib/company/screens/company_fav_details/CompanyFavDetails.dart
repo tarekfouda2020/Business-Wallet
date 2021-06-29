@@ -70,6 +70,7 @@ class _CompanyFavDetailsState extends State<CompanyFavDetails>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
+
       body: BlocBuilder<GenericCubit<CompFavDetailsModel?>,
           GenericState<CompFavDetailsModel?>>(
         bloc: companyFavDetailsData.adsDetailsCubit,

@@ -1,9 +1,9 @@
 part of 'SecStepBrochureWidgetsImports.dart';
 
 class BuildForm extends StatelessWidget {
-  final SecondStepBrochureData secondStepBrochureData;
+  final CompBrochureSubscribeData compBrochureSubscribeData;
 
-  const BuildForm({required this.secondStepBrochureData});
+  const BuildForm({required this.compBrochureSubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -13,22 +13,25 @@ class BuildForm extends StatelessWidget {
         BuildFormText(text: "عدد البروشور"),
         LabelTextField(
           hint: "عدد البروشور",
-          controller: secondStepBrochureData.brochureNum,
-          margin: const EdgeInsets.symmetric(
-              vertical: 5, horizontal: 5),
+          controller: compBrochureSubscribeData.brochure,
+          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           action: TextInputAction.next,
           type: TextInputType.emailAddress,
+          onChange: (value) =>
+              compBrochureSubscribeData.getCostSubscribe(context),
           validate: (value) => value!.validateEmpty(context),
         ),
         BuildFormText(text: "المنطقة"),
-        DropdownTextField<DropDownModel>(
-          dropKey: secondStepBrochureData.region,
+        DropdownTextField<CitiesModel>(
+          dropKey: compBrochureSubscribeData.city,
           label: "المنطقة",
+          selectedItem: compBrochureSubscribeData.regionModel,
           margin: const EdgeInsets.symmetric(vertical: 10),
-          onChange: secondStepBrochureData.changeRegion,
-          validate: (DropDownModel value) => value.validateDropDown(context),
-          // finData: (filter) async =>
-          // await CustomerRepository(context).getCountries(),
+          validate: (CitiesModel value) => value.validateDropDown(context),
+          onChange: compBrochureSubscribeData.changeRegion,
+          useName: true,
+          finData: (filter) async =>
+              await CompanyRepository(context).getCompCities(3),
         ),
       ],
     );

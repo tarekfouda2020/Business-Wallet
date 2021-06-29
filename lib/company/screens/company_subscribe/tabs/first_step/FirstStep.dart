@@ -1,14 +1,10 @@
 part of 'FirstStepImports.dart';
 
 class FirstStep extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompanySubscribeData companySubscribeData;
   final bool showVideo;
 
-  FirstStep(
-      {required this.subscribeCubit,
-      required this.movePage,
-      this.showVideo = true});
+  FirstStep({required this.companySubscribeData, this.showVideo = true});
 
   @override
   _FirstStepState createState() => _FirstStepState();
@@ -29,16 +25,10 @@ class _FirstStepState extends State<FirstStep> {
         children: [
           BuildStepper(
             step1: true,
-            movePage: widget.movePage,
           ),
-          // BuildHelp(),
-          BuildForm(firstStepData: firstStepData),
-          BuildAddFile(firstStepData: firstStepData),
-          BuildAddImage(firstStepData: firstStepData),
-          Visibility(
-            visible: widget.showVideo,
-            child: BuildAddVideo(firstStepData: firstStepData),
-            replacement: Container(),
+          BuildForm(
+            companySubscribeData: widget.companySubscribeData,
+            showVideo: widget.showVideo,
           ),
           DefaultButton(
             color: MyColors.primary,
@@ -46,8 +36,8 @@ class _FirstStepState extends State<FirstStep> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.movePage(1),
-          )
+            onTap: () => widget.companySubscribeData.onSubscribe(context),
+          ),
         ],
       ),
     );

@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/brochure_details_model.dart';
+import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
 import 'package:base_flutter/company/models/comp_favorite_model.dart';
 import 'package:base_flutter/company/models/comp_filter_reconciliation_model.dart';
@@ -11,6 +13,7 @@ import 'package:base_flutter/company/models/comp_invitation_model.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/company_model.dart';
+import 'package:base_flutter/company/models/cost_subscribe_model.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
@@ -18,7 +21,10 @@ import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
+import 'package:base_flutter/company/models/extra_cost_model.dart';
 import 'package:base_flutter/company/models/packages_model.dart';
+import 'package:base_flutter/company/models/product_ads_details_model.dart';
+import 'package:base_flutter/company/models/specific_ads_details_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
@@ -1035,16 +1041,221 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<bool> addSubscribe(AddSubscribeModel model) async {
-    var _data = await DioHelper(context: context).uploadFile(
+  Future<int?> addSubscribe(AddSubscribeModel model) async {
+    var _data = await DioHelper(context: context).post(
       url: '/Plans/Announcementsentspecificcategory',
       body: model.toJson(),
       showLoader: false,
     );
     if (_data != null) {
-      return true;
+      return _data["ID"];
     } else {
-      return false;
+      return null;
     }
   }
+
+  Future<CostSubscribeModel?> getCostSubscribe(
+      int countView, int countImage, int countVideo, int time) async {
+    Map<String, dynamic> body = {
+      "count_view": countView,
+      "count_image": countImage,
+      "count_video": countVideo,
+      "time": time,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/CostAdvirtisment',
+      body: body,
+    );
+    if (_data != null) {
+      return CostSubscribeModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<ExtraCostModel?> getExtraCostSubscribe(int cost, int price) async {
+    Map<String, dynamic> body = {
+      "cost": cost,
+      "price": price,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AddPriceAdvirtisment',
+      body: body,
+    );
+    if (_data != null) {
+      return ExtraCostModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<DropDownSelected>> getPeopleInterests(bool refresh) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+    };
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
+        .get(url: "/Plans/Getinterests", body: body);
+    if (_data != null) {
+      var data = List<DropDownSelected>.from(
+          _data["data"]["interests"].map((e) => DropDownSelected.fromJson(e)));
+      data.insert(0, DropDownSelected(id: 0, name: "الكل", selected: false));
+      return data;
+    } else {
+      return [];
+    }
+  }
+
+  Future<double?> finalCost(double baseCost) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {"base_cost": baseCost, "lang": lang};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/AccountFinalCost", body: body);
+    if (_data != null) {
+      return _data["data"]['FinalCost'];
+    } else {
+      return null;
+    }
+  }
+
+  Future<String?> savePdf(int id) async {
+    Map<String, dynamic> body = {"ID": id};
+    var _data = await DioHelper(context: context)
+        .get(url: "/Plans/SavePdf_Sent_Specific_Category", body: body);
+    if (_data != null) {
+      return _data["PathPdf"];
+    } else {
+      return null;
+    }
+  }
+
+  Future<SpecificAdsDetailsModel?> getSpecificAdsDetails(int id) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/DetailsAnnouncement_sent_specific_category',
+      body: body,
+    );
+    if (_data != null) {
+      return SpecificAdsDetailsModel.fromJson(
+          _data['data']['detailsAnnouncement_Sent_Specific_CategoryViewModel']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<ProductAdsDetailsModel?> getProductAdsDetails(int id) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/DetailsAnnouncement_service_evaluation',
+      body: body,
+    );
+    if (_data != null) {
+      return ProductAdsDetailsModel.fromJson(
+          _data['data']['detailsAnnouncement_service_evaluationViewModel']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<BusinessAdsDetailsModel?> getBusinessAdsDetails(int id) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/DetailsPreviewBusiness_Card',
+      body: body,
+    );
+    if (_data != null) {
+      return BusinessAdsDetailsModel.fromJson(
+          _data['data']['detailsPreviewBusiness_CardViewModel']);
+    } else {
+      return null;
+    }
+  }
+  Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id) async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    Map<String, dynamic> body = {
+      "id": id,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/DetailsPreviewMainPage',
+      body: body,
+    );
+    if (_data != null) {
+      return BusinessAdsDetailsModel.fromJson(
+          _data['data']['detailsPreviewBusiness_CardViewModel']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<BrochureDetailsModel?> getBrochureDetails() async {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+
+    Map<String, dynamic> body = {
+      "user_id": userId,
+      "lang":lang
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/GetDataCard',
+      body: body,
+    );
+    if (_data != null) {
+      return BrochureDetailsModel.fromJson(
+          _data['data']['businesscardDB']);
+    } else {
+      return null;
+    }
+  }
+  Future<CostSubscribeModel?> getCostBrochureSubscribe(
+      int brochureNum) async {
+    Map<String, dynamic> body = {
+      "numbercard": brochureNum,
+
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AccountBusinessCard',
+      body: body,
+    );
+    if (_data != null) {
+      return CostSubscribeModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
+
+  Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) async {
+    Map<String, dynamic> body = {
+      "cost": cost,
+      "price": price,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/AccountNewCost',
+      body: body,
+    );
+    if (_data != null) {
+      return ExtraCostModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
 }

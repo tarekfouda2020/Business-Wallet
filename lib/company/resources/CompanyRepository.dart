@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/brochure_details_model.dart';
+import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
 import 'package:base_flutter/company/models/comp_favorite_model.dart';
 import 'package:base_flutter/company/models/comp_filter_reconciliation_model.dart';
@@ -8,13 +10,17 @@ import 'package:base_flutter/company/models/comp_interest_model.dart';
 import 'package:base_flutter/company/models/comp_invitation_model.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
+import 'package:base_flutter/company/models/cost_subscribe_model.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
 import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
+import 'package:base_flutter/company/models/extra_cost_model.dart';
 import 'package:base_flutter/company/models/packages_model.dart';
+import 'package:base_flutter/company/models/product_ads_details_model.dart';
+import 'package:base_flutter/company/models/specific_ads_details_model.dart';
 import 'package:base_flutter/company/resources/CompanyHttpMethods.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
@@ -179,7 +185,7 @@ class CompanyRepository {
   Future<bool> sendBrochureData(SendBrochureModel model) async =>
       _companyHttpMethods.sendBrochureData(model);
 
-  Future<bool> addSubscribe(AddSubscribeModel model) async =>
+  Future<int?> addSubscribe(AddSubscribeModel model) async =>
       _companyHttpMethods.addSubscribe(model);
 
   Future<SpecificAdsModel?> getSpecificAds(int adsId) =>
@@ -207,4 +213,42 @@ class CompanyRepository {
 
   Future<List<PackagesModel>> getAllPackages() =>
       _companyHttpMethods.getAllPackages();
+
+  Future<CostSubscribeModel?> getCostSubscribe(
+          int countView, int countImage, int countVideo, int time) =>
+      _companyHttpMethods.getCostSubscribe(
+          countView, countImage, countVideo, time);
+
+  Future<ExtraCostModel?> getExtraCostSubscribe(int cost, int price) =>
+      _companyHttpMethods.getExtraCostSubscribe(cost, price);
+
+  Future<List<DropDownSelected>> getPeopleInterests({bool refresh = true}) =>
+      _companyHttpMethods.getPeopleInterests(refresh);
+
+  Future<double?> finalCost(double baseCost) =>
+      _companyHttpMethods.finalCost(baseCost);
+
+  Future<String?> savePdf(int id) async => _companyHttpMethods.savePdf(id);
+
+  Future<SpecificAdsDetailsModel?> getSpecificAdsDetails(int id) =>
+      _companyHttpMethods.getSpecificAdsDetails(id);
+
+  Future<ProductAdsDetailsModel?> getProductAdsDetails(int id) =>
+      _companyHttpMethods.getProductAdsDetails(id);
+
+  Future<BusinessAdsDetailsModel?> getBusinessAdsDetails(int id) =>
+      _companyHttpMethods.getBusinessAdsDetails(id);
+
+  Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id) =>
+      _companyHttpMethods.getMainAdsDetails(id);
+
+  Future<BrochureDetailsModel?> getBrochureDetails() =>
+      _companyHttpMethods.getBrochureDetails();
+
+  Future<CostSubscribeModel?> getCostBrochureSubscribe(int brochureNum) =>
+      _companyHttpMethods.getCostBrochureSubscribe(brochureNum);
+
+  Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) =>
+      _companyHttpMethods.getExtraBrochureCost(cost, price);
+
 }

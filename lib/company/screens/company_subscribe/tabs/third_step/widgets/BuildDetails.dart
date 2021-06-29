@@ -1,6 +1,12 @@
 part of 'ThirdStepWidgetsImports.dart';
 
 class BuildDetails extends StatelessWidget {
+  final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
+
+  const BuildDetails(
+      {required this.companySubscribeData, required this.showVideo});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,11 +17,11 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "اسم الاعلان",
-                desc: "fdfdf",
+                desc: companySubscribeData.addSubscribeModel.adsName,
               ),
               BuildReviewItem(
                 title: "وصف الاعلان",
-                desc: "fdfdf",
+                desc: companySubscribeData.addSubscribeModel.adsDesc,
               ),
             ],
           ),
@@ -23,11 +29,13 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "عدد المشاهدات",
-                desc: "fddf",
+                desc:
+                    companySubscribeData.addSubscribeModel.countView.toString(),
               ),
               BuildReviewItem(
                 title: "وقت مشاهدة الاعلان",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.durationSec
+                    .toString(),
               ),
             ],
           ),
@@ -35,11 +43,11 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "تاريخ بداية الاعلان",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.startTime,
               ),
               BuildReviewItem(
                 title: "المدينة",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.cityName,
               ),
             ],
           ),
@@ -47,11 +55,13 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "الجنس",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.gender == "F"
+                    ? "انثي"
+                    : "ذكر",
               ),
               BuildReviewItem(
                 title: "نوع السكن",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.accommodation,
               ),
             ],
           ),
@@ -59,11 +69,11 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "مستوي التعليم",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.education,
               ),
               BuildReviewItem(
                 title: "عدد افراد الاسرة",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.numberFamily,
               ),
             ],
           ),
@@ -71,16 +81,34 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "متوسط الدخل في السنة",
-                desc: "fddf",
+                desc: companySubscribeData.addSubscribeModel.averageIncome,
               ),
               BuildReviewItem(
-                title: "الاشخاص مهتمين ب",
-                desc: "fddf",
+                title: "الفئة العمرية",
+                desc: companySubscribeData.addSubscribeModel.ageGroup,
               ),
             ],
           ),
-          BuildImages(),
-          BuildFiles(),
+          Row(
+            children: [
+              BuildReviewItem(
+                title: "الاشخاص مهتمين ب",
+                desc: companySubscribeData.addSubscribeModel.interests,
+              ),
+            ],
+          ),
+          Visibility(
+            visible: showVideo,
+            child: BuildVideosView(
+              companySubscribeData: companySubscribeData,
+            ),
+            replacement: BuildImages(
+              companySubscribeData: companySubscribeData,
+            ),
+          ),
+          BuildFiles(
+            companySubscribeData: companySubscribeData,
+          ),
         ],
       ),
     );

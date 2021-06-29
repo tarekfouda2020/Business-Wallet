@@ -1,9 +1,9 @@
 part of 'SecondStepWidgetsImports.dart';
 
 class BuildAdsValue extends StatelessWidget {
-  final SecondStepData secondStepData;
+  final CompanySubscribeData companySubscribeData;
 
-  BuildAdsValue({required this.secondStepData});
+  BuildAdsValue({required this.companySubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,12 @@ class BuildAdsValue extends StatelessWidget {
           ),
           LabelTextField(
             hint: "برجاء ادخال المبلغ",
-            controller: secondStepData.value,
+            controller: companySubscribeData.value,
             margin: const EdgeInsets.symmetric(vertical: 25),
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
+            onChange: (value) => companySubscribeData.getExtraCostSubscribe(
+                context, int.parse(value)),
             validate: (value) => value!.validateEmpty(context),
           ),
         ],

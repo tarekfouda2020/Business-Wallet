@@ -11,7 +11,8 @@ class CompanyStatisticsData {
 
   void navigate(BuildContext context, int value, int type, int id) {
     if (value == 0) {
-      AutoRouter.of(context).push(CompanyStatisticsRateRoute());
+      AutoRouter.of(context)
+          .push(CompanyStatisticsRateRoute(type: type, id: id));
     } else {
       if (type == 1) {
         AutoRouter.of(context).push(CompSpecificAdsRoute(adsId: id));
@@ -21,11 +22,7 @@ class CompanyStatisticsData {
       }
       if (type == 3) {
         AutoRouter.of(context).push(CompanyFavDetailsRoute(
-          adsId: id,
-          checkInvite: false,
-          showSendCard: 1,
-          sendCard: 0,
-        ));
+            adsId: id, checkInvite: false, showSendCard: 1, sendCard: 0));
       }
     }
   }

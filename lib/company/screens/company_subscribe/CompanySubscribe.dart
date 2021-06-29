@@ -28,21 +28,20 @@ class _CompanySubscribeState extends State<CompanySubscribe> {
         onPageChanged: companySubscribeData.subscribeCubit.onUpdateData,
         children: [
           FirstStep(
-            subscribeCubit: companySubscribeData.subscribeCubit,
-            movePage: companySubscribeData.movePage,
+            companySubscribeData: companySubscribeData,
             showVideo: widget.showVideo,
           ),
           SecondStep(
-            subscribeCubit: companySubscribeData.subscribeCubit,
-            movePage: companySubscribeData.movePage,
+            companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
           ThirdStep(
-            subscribeCubit: companySubscribeData.subscribeCubit,
-            movePage: companySubscribeData.movePage,
+            companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
           FourthStep(
-            subscribeCubit: companySubscribeData.subscribeCubit,
-            movePage: companySubscribeData.movePage,
+            companySubscribeData: companySubscribeData,
+            showVideo: widget.showVideo,
           ),
         ],
       ),

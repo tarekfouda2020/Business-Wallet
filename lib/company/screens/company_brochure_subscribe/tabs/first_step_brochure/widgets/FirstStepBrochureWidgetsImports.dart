@@ -1,3 +1,6 @@
+import 'package:base_flutter/company/models/brochure_details_model.dart';
+import 'package:base_flutter/company/models/comp_service_model.dart';
+import 'package:base_flutter/company/models/dots/image_model.dart';
 import 'package:base_flutter/company/screens/company_fav_details/widgets/CompFavDetailsWidgetsImports.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
@@ -10,3 +13,4 @@ part 'BuildDesc.dart';
 part 'BuildProducts.dart';
 part 'BuildServiceItem.dart';
 part 'BuildServices.dart';
+part 'BuildFileView.dart';

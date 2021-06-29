@@ -1,9 +1,9 @@
 part of 'FirstStepWidgetsImports.dart';
 
 class BuildAddFile extends StatelessWidget {
-  final FirstStepData firstStepData;
+  final CompanySubscribeData companySubscribeData;
 
-  BuildAddFile({required this.firstStepData});
+  BuildAddFile({required this.companySubscribeData});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BuildAddFile extends StatelessWidget {
               flex: 5,
               child: LabelTextField(
                 hint: "اسم الملف",
-                controller: firstStepData.fileName,
+                controller: companySubscribeData.fileName,
                 action: TextInputAction.next,
                 type: TextInputType.emailAddress,
                 margin: const EdgeInsets.symmetric(vertical: 15),
@@ -30,13 +30,13 @@ class BuildAddFile extends StatelessWidget {
                   color: MyColors.primary,
                   size: 30,
                 ),
-                onPressed: firstStepData.setFile,
+                onPressed: companySubscribeData.setFile,
               ),
             )
           ],
         ),
         BlocBuilder<GenericCubit<File?>, GenericState<File?>>(
-          bloc: firstStepData.fileCubit,
+          bloc: companySubscribeData.fileCubit,
           builder: (_, fileState) {
             if (fileState.data == null) {
               return Container(
@@ -56,7 +56,7 @@ class BuildAddFile extends StatelessWidget {
                           color: MyColors.white,
                         ),
                         InkWell(
-                          onTap: firstStepData.removeFile,
+                          onTap: companySubscribeData.removeFile,
                           child: Icon(
                             Icons.cancel,
                             size: 30,

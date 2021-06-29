@@ -18,11 +18,14 @@ InvestmentAdsDetailsModel _$InvestmentAdsDetailsModelFromJson(
     time: json['time'] as int,
     myRate: json['MyRate'] as int,
     isShow: json['isShow'] as bool,
+    isOwner: json['isOwner'] as bool,
     pintsForEachUser: json['PointsForEachUser'] as int,
     follow: json['follow'] as bool,
     images: (json['images'] as List<dynamic>)
         .map((e) => MediaModel.fromJson(e as Map<String, dynamic>))
         .toList(),
+    imgs: (json['imgs'] as List<dynamic>).map((e) => e as String).toList(),
+    videos: (json['videos'] as List<dynamic>).map((e) => e as String).toList(),
     myQuestions: (json['myQusetion'] as List<dynamic>)
         .map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -41,8 +44,11 @@ Map<String, dynamic> _$InvestmentAdsDetailsModelToJson(
       'time': instance.time,
       'MyRate': instance.myRate,
       'isShow': instance.isShow,
+      'isOwner': instance.isOwner,
       'PointsForEachUser': instance.pintsForEachUser,
       'follow': instance.follow,
       'images': instance.images,
+      'imgs': instance.imgs,
+      'videos': instance.videos,
       'myQusetion': instance.myQuestions,
     };

@@ -1,6 +1,10 @@
 part of 'ThirdStepWidgetsImports.dart';
 
 class BuildImages extends StatelessWidget {
+  final CompanySubscribeData companySubscribeData;
+
+  const BuildImages({required this.companySubscribeData});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,19 +20,27 @@ class BuildImages extends StatelessWidget {
           runSpacing: 10,
           alignment: WrapAlignment.start,
           children: List.generate(
-            3,
-            (index) => CachedImage(
-              url:
-                  "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-              width: 70,
-              height: 70,
+            companySubscribeData.imageCubit.state.data.length,
+            (index) => Container(
+              alignment: Alignment.topLeft,
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                border: Border.all(color: MyColors.grey, width: 1),
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: FileImage(
+                    companySubscribeData.imageCubit.state.data[index],
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
         ),
         Divider(
           color: MyColors.grey,
           height: 30,
-
         )
       ],
     );

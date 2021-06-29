@@ -25,7 +25,6 @@ class _SecondStepSpecialState extends State<SecondStepSpecial> {
           BuildStepper(
             step1: true,
             step2: true,
-            movePage: widget.movePage,
           ),
           BuildReviewPrice(),
           BuildReviewDetails(),

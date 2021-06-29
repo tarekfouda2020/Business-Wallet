@@ -26,7 +26,6 @@ class _ThirdStepSpecialState extends State<ThirdStepSpecial> {
             step1: true,
             step2: true,
             step3: true,
-            movePage: widget.movePage,
           ),
           BuildReviewPrice(),
           DefaultButton(

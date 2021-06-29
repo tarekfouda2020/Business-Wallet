@@ -1,10 +1,10 @@
 part of 'SecondStepImports.dart';
 
 class SecondStep extends StatefulWidget {
-  final GenericCubit subscribeCubit;
-  final Function(int page) movePage;
+  final CompanySubscribeData companySubscribeData;
+  final bool showVideo;
 
-  SecondStep({required this.subscribeCubit, required this.movePage});
+  SecondStep({required this.companySubscribeData, required this.showVideo});
 
   @override
   _SecondStepState createState() => _SecondStepState();
@@ -25,17 +25,25 @@ class _SecondStepState extends State<SecondStep> {
         children: [
           BuildStepper(
             step2: true,
-            movePage: widget.movePage,
           ),
-          BuildSecForm(secondStepData: secondStepData),
-          BuildPrice(),
-          BuildAdsValue(secondStepData: secondStepData),
-          DefaultButton(
+          BuildSecForm(companySubscribeData: widget.companySubscribeData),
+          BuildPrice(companySubscribeData: widget.companySubscribeData),
+          BuildAdsValue(companySubscribeData: widget.companySubscribeData),
+          LoadingButton(
+            btnKey: widget.companySubscribeData.btnKey,
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: 30,
             title: "التالي",
-            onTap: () => widget.movePage(2),
+            onTap: () => widget.companySubscribeData.getFinalCostSubscribe(context),
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.companySubscribeData.moveBack(),
           )
         ],
       ),
