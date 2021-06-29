@@ -48,11 +48,7 @@ class CompanyEditProfileData {
   final TextEditingController facebook = new TextEditingController();
   final TextEditingController google = new TextEditingController();
 
-  final TextEditingController branchLocation = new TextEditingController();
-  final TextEditingController branchPhone = new TextEditingController();
-  final TextEditingController workHoursFrom = new TextEditingController();
-  final TextEditingController workHoursTo = new TextEditingController();
-  final TextEditingController branchStatus = new TextEditingController();
+
 
   final TextEditingController image = new TextEditingController();
   final TextEditingController file = new TextEditingController();

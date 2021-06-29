@@ -11,47 +11,47 @@ class BuildCustomerData extends StatelessWidget {
         BuildAccountItem(
           title: "الباقات الاعلانية",
           iconData: Icons.assignment,
-          onTap: () => AutoRouter.of(context).push(CompanyPackagesRoute()),
+          page: CompanyPackages(),
         ),
         BuildAccountItem(
           title: "احصائيات وتقارير",
           iconData: Icons.insert_chart,
-          onTap: () => AutoRouter.of(context).push(CompanyStatisticsRoute()),
+          page: CompanyStatistics(),
         ),
         BuildAccountItem(
           title: "المحفظة",
           iconData: Icons.monetization_on,
-          onTap: () => AutoRouter.of(context).push(CompanyWalletRoute()),
+          page: CompanyWallet(),
         ),
         BuildAccountItem(
           title: "رقم المحفظة",
           iconData: MdiIcons.codeNotEqualVariant,
-          onTap: () => AutoRouter.of(context).push(CompanyWalletNumbRoute()),
+          page: CompanyWalletNumb(),
         ),
         BuildAccountItem(
           title: "باركود",
           iconData: Icons.qr_code,
-          onTap: () => AutoRouter.of(context).push(CompanyBarcodeRoute()),
+          page: CompanyBarcode(),
         ),
         BuildAccountItem(
           title: "المراسلات",
           iconData: Icons.chat,
-          onTap: () => AutoRouter.of(context).push(CompanyConversationsRoute()),
+          page: CompanyConversations(),
         ),
         BuildAccountItem(
           title: "التعليقات",
           iconData: Icons.chat,
-          onTap: () => AutoRouter.of(context).push(CompanyCommentsRoute()),
+          page: CompanyComments(),
         ),
         BuildAccountItem(
           title: "الاهتمامات",
           iconData: MdiIcons.accountGroup,
-          onTap: () => AutoRouter.of(context).push(CompanyInterestsRoute()),
+          page: CompanyInterests(),
         ),
         BuildAccountItem(
           title: "بيانات البروشور",
           iconData: Icons.credit_card_outlined,
-          onTap: () => AutoRouter.of(context).push(CompanyBrochureRoute()),
+          page: CompanyBrochure(),
         ),
       ],
     );

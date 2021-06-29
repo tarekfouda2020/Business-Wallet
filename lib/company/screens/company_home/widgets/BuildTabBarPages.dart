@@ -7,16 +7,21 @@ class BuildTabBarPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
-      controller: companyHomeData.tabController,
-      physics: NeverScrollableScrollPhysics(),
-      children: [
-        CompanyFavorite(),
-        CompanyFollowers(),
-        CompanyInvitation(),
-        CompanyAccount(),
-        CompSwitchedPage(),
-      ],
+    return BlocBuilder<GenericCubit<int>, GenericState<int>>(
+      bloc: companyHomeData.homeTabCubit,
+      builder: (context, state) {
+        return PageTransitionSwitcher(
+          transitionBuilder:
+              (child, primaryAnimation, secondaryAnimation) {
+            return FadeThroughTransition(
+              animation: primaryAnimation,
+              secondaryAnimation: secondaryAnimation,
+              child: child,
+            );
+          },
+          child: companyHomeData.tabsView[state.data],
+        );
+      },
     );
   }
 }

@@ -23,7 +23,7 @@ class _CompanyAccountState extends State<CompanyAccount> {
           BuildAccountItem(
             title: "تواصل معنا",
             iconData: Icons.phone_in_talk_outlined,
-            onTap: () => AutoRouter.of(context).push(ContactUsRoute()),
+            page: ContactUs(),
           ),
           BuildLogout()
         ],

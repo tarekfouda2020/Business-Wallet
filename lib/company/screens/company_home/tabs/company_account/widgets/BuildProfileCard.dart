@@ -38,22 +38,32 @@ class BuildProfileCard extends StatelessWidget {
               color: MyColors.white,
             ),
             Spacer(),
-            InkWell(
-              onTap: () => AutoRouter.of(context).push(CompanyProfileRoute()),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-                decoration: BoxDecoration(
-                  color: MyColors.primary,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: MyText(
-                  title: "الصفحة الشخصية",
-                  color: MyColors.blackOpacity,
-                  size: 10,
-                ),
-              ),
-            )
+            OpenContainer(
+              closedElevation: 0,
+              openElevation: 0,
+              closedColor: Colors.transparent,
+              middleColor: Colors.transparent,
+              transitionDuration: Duration(milliseconds: 800),
+              transitionType: ContainerTransitionType.fadeThrough,
+              closedBuilder: (context, action) {
+                return Container(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  decoration: BoxDecoration(
+                    color: MyColors.primary,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: MyText(
+                    title: "الصفحة الشخصية",
+                    color: MyColors.blackOpacity,
+                    size: 10,
+                  ),
+                );
+              },
+              openBuilder: (context, action) {
+                return CompanyProfile();
+              },
+            ),
           ],
         ),
       ),

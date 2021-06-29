@@ -4,10 +4,19 @@ class CompanyHomeData {
   final GlobalKey<ScaffoldState> scaffold = new GlobalKey<ScaffoldState>();
 
   final GenericCubit<int> homeTabCubit = GenericCubit(4);
-  Animation<double>? animation;
+  Animation<double> ?animation;
   late AnimationController animationController;
   late CurvedAnimation curve;
-  int currentIndex = 0;
+  int currentIndex=0;
+
+  List<Widget> tabsView=[
+    CompanyFavorite(),
+    CompanyFollowers(),
+    CompanyInvitation(),
+    CompanyAccount(),
+    CompSwitchedPage(),
+  ];
+
 
   List<BottomTabModel> tabs = [
     BottomTabModel(iconData: Icons.favorite, title: "مفضلتي"),

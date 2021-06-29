@@ -10,6 +10,7 @@ class BuildShowDropItem extends StatelessWidget {
   final GenericCubit? branchCubit;
   final TextEditingController? controller;
   final CompanyEditProfileData companyEditProfileData;
+  bool forwardArrow;
 
   BuildShowDropItem(
       {required this.title,
@@ -19,6 +20,7 @@ class BuildShowDropItem extends StatelessWidget {
       this.showTextField = false,
       this.showAddBranch = false,
       this.controller,
+      this.forwardArrow = false,
       this.branchCubit,
       required this.companyEditProfileData});
 
@@ -96,13 +98,20 @@ class BuildShowDropItem extends StatelessWidget {
                 width: 20,
               ),
             ),
-            Icon(
-              genericCubit.state.data
-                  ? Icons.keyboard_arrow_up_rounded
-                  : Icons.keyboard_arrow_down_rounded,
-              color: genericCubit.state.data
-                  ? MyColors.primary
-                  : MyColors.greyWhite.withOpacity(.9),
+            Visibility(
+              visible: !forwardArrow,
+              child: Icon(
+                genericCubit.state.data
+                    ? Icons.keyboard_arrow_up_rounded
+                    : Icons.keyboard_arrow_down_rounded,
+                color: genericCubit.state.data
+                    ? MyColors.primary
+                    : MyColors.greyWhite.withOpacity(.9),
+              ),
+              replacement: Icon(
+                Icons.arrow_forward_ios,
+                color: MyColors.primary,
+              ),
             ),
           ],
         ),

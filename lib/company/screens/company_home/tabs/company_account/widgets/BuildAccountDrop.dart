@@ -19,7 +19,6 @@ class BuildAccountDrop extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: BuildCustomerData(),
-              replacement: Container(),
             ),
           ],
         );
