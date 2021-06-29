@@ -1,6 +1,10 @@
 part of 'CompanyBranchesWidgetImports.dart';
 
 class BuildAddButton extends StatelessWidget {
+  final CompanyBranchesData branchesData;
+
+  const BuildAddButton({required this.branchesData});
+
   @override
   Widget build(BuildContext context) {
     return OpenContainer(
@@ -14,11 +18,14 @@ class BuildAddButton extends StatelessWidget {
         return FloatingActionButton(
           onPressed: null,
           backgroundColor: MyColors.primary,
-          child: Icon(Icons.add,size: 25,color: MyColors.darken,),
+          child: Icon(Icons.add, size: 25, color: MyColors.darken,),
         );
       },
       openBuilder: (context, action) {
-        return AddBranch();
+        return BlocProvider.value(
+          value: branchesData.branchesCubit,
+          child: AddBranch(),
+        );
       },
     );
   }

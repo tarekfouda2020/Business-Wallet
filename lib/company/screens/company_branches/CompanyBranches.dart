@@ -5,9 +5,17 @@ class CompanyBranches extends StatefulWidget {
   _CompanyBranchesState createState() => _CompanyBranchesState();
 }
 
-class _CompanyBranchesState extends State<CompanyBranches>{
+class _CompanyBranchesState extends State<CompanyBranches> {
 
   final CompanyBranchesData branchesData = new CompanyBranchesData();
+
+
+  @override
+  void initState() {
+    branchesData.fetchData(context, refresh: false);
+    branchesData.fetchData(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +27,28 @@ class _CompanyBranchesState extends State<CompanyBranches>{
         preferredSize: Size.fromHeight(60),
       ),
 
-      body: ListView(
-        children: [
-
-        ],
+      body: BlocBuilder<BranchesCubit, BranchesState>(
+        bloc: branchesData.branchesCubit,
+        builder: (context, state) {
+          if (state is BranchesUpdateState) {
+            if (state.branches.length>0) {
+              return ListView.builder(
+                padding: EdgeInsets.only(right: 15,left: 15,bottom: 20),
+                itemCount: state.branches.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return BuildBranchItem(model: state.branches[index]);
+                },
+              );
+            }
+            return Center(
+              child: MyText(title: "لا يوجد لديك فروع",size: 12,color: MyColors.primary,),
+            );
+          }
+          return LoadingDialog.showLoadingView();
+        },
       ),
 
-      floatingActionButton: BuildAddButton(),
+      floatingActionButton: BuildAddButton(branchesData: branchesData),
 
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/branch_model.dart';
 import 'package:base_flutter/company/models/brochure_details_model.dart';
 import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
@@ -11,6 +12,7 @@ import 'package:base_flutter/company/models/comp_invitation_model.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
+import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
@@ -250,5 +252,9 @@ class CompanyRepository {
 
   Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) =>
       _companyHttpMethods.getExtraBrochureCost(cost, price);
+
+  Future<List<BranchModel>> getBranches(bool refresh)=> _companyHttpMethods.getBranches(refresh);
+
+  Future<BranchModel?> addBranch(AddBranchModel model)=> _companyHttpMethods.addBranch(model);
 
 }

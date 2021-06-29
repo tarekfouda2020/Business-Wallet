@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/barcode_model.dart';
+import 'package:base_flutter/company/models/branch_model.dart';
 import 'package:base_flutter/company/models/brochure_details_model.dart';
 import 'package:base_flutter/company/models/business_ads_details_model.dart';
 import 'package:base_flutter/company/models/comp_fav_details_model.dart';
@@ -14,6 +15,7 @@ import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/company_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
+import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
@@ -1253,6 +1255,37 @@ class CompanyHttpMethods {
     );
     if (_data != null) {
       return ExtraCostModel.fromJson(_data['data']['costs']);
+    } else {
+      return null;
+    }
+  }
+
+  Future<List<BranchModel>> getBranches(bool refresh) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "user_id": userId,
+    };
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
+        .get(url: "/Plans/GetBranch", body: body);
+    if (_data != null) {
+      return List<BranchModel>.from(_data['branch_Kayans'].map((e) => BranchModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<BranchModel?> addBranch(AddBranchModel model) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    model.lang = lang;
+    var _data = await DioHelper(context: context).post(
+      url: '/Plans/UpdateBranch',
+      body: model.toJson(),
+      showLoader: false,
+    );
+    if (_data != null) {
+      return BranchModel.fromJson(_data["data"]);
     } else {
       return null;
     }

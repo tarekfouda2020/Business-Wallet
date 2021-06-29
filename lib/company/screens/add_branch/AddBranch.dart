@@ -24,7 +24,7 @@ class _AddBranchState extends State<AddBranch> {
           BuildAddForm(branchData: branchData),
           LoadingButton(
             title: "اضافة",
-            onTap: () {},
+            onTap: () =>branchData.setAddBranch(context),
             margin: EdgeInsets.symmetric(vertical: 20),
             btnKey: branchData.btnKey,
           ),
