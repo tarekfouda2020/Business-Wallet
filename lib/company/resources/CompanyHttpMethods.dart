@@ -1315,9 +1315,10 @@ class CompanyHttpMethods {
   }
 
   Future<int?> addSpecialSubscribe(AddSpecialSubscribeModel model) async {
-    var _data = await DioHelper(context: context).get(
+    var _data = await DioHelper(context: context).uploadFile(
       url: '/Plans/MainPageAdvert',
       body: model.toJson(),
+      showLoader: false
     );
     if (_data != null) {
       return _data["ID"];
@@ -1327,9 +1328,10 @@ class CompanyHttpMethods {
   }
 
   Future<int?> addOpinionSubscribe(AddOpinionSubscribeModel model) async {
-    var _data = await DioHelper(context: context).get(
+    var _data = await DioHelper(context: context).uploadFile(
       url: '/Plans/AddAnnouncement_service_evaluation',
       body: model.toJson(),
+      showLoader: false
     );
     if (_data != null) {
       return _data["ID"];

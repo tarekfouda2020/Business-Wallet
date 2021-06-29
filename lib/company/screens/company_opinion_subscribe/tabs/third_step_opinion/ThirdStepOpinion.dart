@@ -23,14 +23,12 @@ class _ThirdStepOpinionState extends State<ThirdStepOpinion> {
           BuildStepper(
             step3: true,
           ),
-          DefaultButton(
-            color: MyColors.primary,
-            textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            title: "التالي",
-            onTap: () => widget.compOpinionSubscribeData.moveNext(),
-          )
+          BuildPriceView(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData),
+          BuildDetailsView(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData),
+          BuildButtonList(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData)
         ],
       ),
     );

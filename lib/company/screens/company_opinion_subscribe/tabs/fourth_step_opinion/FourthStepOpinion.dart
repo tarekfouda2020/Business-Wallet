@@ -23,6 +23,8 @@ class _FourthStepOpinionState extends State<FourthStepOpinion> {
           BuildStepper(
             step4: true,
           ),
+          BuildPriceView(
+              compOpinionSubscribeData: widget.compOpinionSubscribeData),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
