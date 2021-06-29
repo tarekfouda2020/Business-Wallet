@@ -27,13 +27,15 @@ class _SecondStepOpinionState extends State<SecondStepOpinion> {
               compOpinionSubscribeData: widget.compOpinionSubscribeData),
           BuildOpinionPrice(
               compOpinionSubscribeData: widget.compOpinionSubscribeData),
-          DefaultButton(
+          LoadingButton(
+            btnKey: widget.compOpinionSubscribeData.btnKey,
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: 30,
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.compOpinionSubscribeData.moveNext(),
+            onTap: () =>
+                widget.compOpinionSubscribeData.getFinalCostSubscribe(context),
           ),
           DefaultButton(
             color: MyColors.white,

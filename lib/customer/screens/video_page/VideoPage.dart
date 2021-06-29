@@ -22,8 +22,9 @@ class _VideoPageState extends State<VideoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.darken,
         appBar: PreferredSize(
-          child: DefaultAppBar(title: "الفديو",),
+          child: DefaultAppBar(title: "الفيديو",),
           preferredSize: Size.fromHeight(60),
         ),
 

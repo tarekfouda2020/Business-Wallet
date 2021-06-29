@@ -300,7 +300,6 @@ class CompOpinionSubscribeData {
       addOpinionSubscribeModel.mainCost = costCubit.state.data!.item1.toString();
       addOpinionSubscribeModel.addedCost = costViewCubit.state.data!.item1.toString();
       addOpinionSubscribeModel.mainPoints = costCubit.state.data!.item3.toString();
-
       addOpinionSubscribeModel.addedPoints = costViewCubit.state.data!.item2.toString();
       addOpinionSubscribeModel.price = value.text;
       addOpinionSubscribeModel.lang =

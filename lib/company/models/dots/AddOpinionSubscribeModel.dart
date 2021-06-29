@@ -6,13 +6,13 @@ class AddOpinionSubscribeModel {
   String? questions;
   List<File>? adsImages;
   List<File>? adsVideo;
+
   String? countWatch;
   String? timeStart;
   String? fkCity;
   String? fkCityName;
   String? interests;
   String? interestsNames;
-
   String? gender;
   String? accommodation;
   String? education;

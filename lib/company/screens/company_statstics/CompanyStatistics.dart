@@ -31,7 +31,7 @@ class _CompanyStatisticsState extends State<CompanyStatistics> {
               children: [
                 BuildStatisticsText(),
                 Flexible(
-                  child: Column(
+                  child: ListView(
                     children: [
                       Row(
                         children: [
