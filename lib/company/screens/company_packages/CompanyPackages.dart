@@ -10,6 +10,7 @@ class _CompanyPackagesState extends State<CompanyPackages> {
 
   @override
   void initState() {
+    companyPackagesData.fetchData(context,refresh: false);
     companyPackagesData.fetchData(context);
     super.initState();
   }

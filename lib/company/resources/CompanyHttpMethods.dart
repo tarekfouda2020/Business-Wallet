@@ -186,7 +186,7 @@ class CompanyHttpMethods {
   }
 
   Future<List<MainModel>> getMain(
-      int pageIndex, int cityId, int interestId, int filterId) async {
+      int pageIndex, int cityId, int interestId, int filterId,bool refresh ) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -198,7 +198,7 @@ class CompanyHttpMethods {
       "top_rate": filterId,
       "page_number": pageIndex
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/IndexKayan", body: body);
     if (_data != null) {
       return List<MainModel>.from(
@@ -246,7 +246,7 @@ class CompanyHttpMethods {
   }
 
   Future<List<CompFavoriteModel>> getFavoriteData(
-      int pageIndex, int fkCity, fkInterest) async {
+      int pageIndex, int fkCity, fkInterest, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     Map<String, dynamic> body = {
@@ -257,7 +257,7 @@ class CompanyHttpMethods {
       // "Rate": rate,
       "page_number": pageIndex
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/MyWishlist", body: body);
     if (_data != null) {
       return List<CompFavoriteModel>.from(_data['data']["MyWishlist3"]
@@ -267,7 +267,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<CompInvitationModel>> getInvitationData(int pageIndex) async {
+  Future<List<CompInvitationModel>> getInvitationData(int pageIndex, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     Map<String, dynamic> body = {
@@ -278,7 +278,7 @@ class CompanyHttpMethods {
       "Rate": "M",
       "page_number": pageIndex
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/IndexApi", body: body);
     if (_data != null) {
       return List<CompInvitationModel>.from(
@@ -289,7 +289,7 @@ class CompanyHttpMethods {
   }
 
   Future<List<FollowerModel>> getFollowersFiltered(
-      int pageIndex, int cityId, int interestId, int filterId) async {
+      int pageIndex, int cityId, int interestId, int filterId, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -301,7 +301,7 @@ class CompanyHttpMethods {
       "RateId": filterId,
       "page_number": pageIndex
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/MyFollow", body: body);
     if (_data != null) {
       return List<FollowerModel>.from(
@@ -570,7 +570,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<CompInterestModel>> getInterest() async {
+  Future<List<CompInterestModel>> getInterest(bool refresh ) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -578,7 +578,7 @@ class CompanyHttpMethods {
       "lang": lang,
       "user_id": userId,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Account/GetInterestsKayanApi", body: body);
     if (_data != null) {
       return List<CompInterestModel>.from(
@@ -1023,7 +1023,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<PackagesModel>> getAllPackages() async {
+  Future<List<PackagesModel>> getAllPackages(bool refresh ) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -1031,7 +1031,7 @@ class CompanyHttpMethods {
       "userId": userId,
       "lang": lang,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/GetAllPackages", body: body);
     if (_data != null) {
       return List<PackagesModel>.from(

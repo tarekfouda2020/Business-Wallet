@@ -12,6 +12,7 @@ class FavoriteMenu extends StatefulWidget {
 class _FavoriteMenuState extends State<FavoriteMenu> {
   @override
   void initState() {
+    widget.companyFavoriteData.fetchPage(1, context,refresh: false);
     widget.companyFavoriteData.pagingController
         .addPageRequestListener((pageKey) {
       widget.companyFavoriteData.fetchPage(pageKey, context);

@@ -3,8 +3,8 @@ part of 'CompanyPackagesImports.dart';
 class CompanyPackagesData {
   final GenericCubit<List<PackagesModel>> packageCubit = new GenericCubit([]);
 
-  void fetchData(BuildContext context) async {
-    var data = await CompanyRepository(context).getAllPackages();
+  void fetchData(BuildContext context,{bool refresh = true}) async {
+    var data = await CompanyRepository(context).getAllPackages(refresh);
     packageCubit.onUpdateData(data);
   }
 

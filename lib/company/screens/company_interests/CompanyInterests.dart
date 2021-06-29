@@ -10,6 +10,7 @@ class _CompanyInterestsState extends State<CompanyInterests> {
 
   @override
   void initState() {
+    companyInterestData.fetchData(context,refresh: false);
     companyInterestData.fetchData(context);
     super.initState();
   }

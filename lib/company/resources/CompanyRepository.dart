@@ -67,8 +67,8 @@ class CompanyRepository {
       _companyHttpMethods.saveField(fkMain, fkSub, userId);
 
   Future<List<MainModel>> getMain(
-          int pageIndex, int cityId, int interestId, int filterId) =>
-      _companyHttpMethods.getMain(pageIndex, cityId, interestId, filterId);
+          int pageIndex, int cityId, int interestId, int filterId,bool refresh ) =>
+      _companyHttpMethods.getMain(pageIndex, cityId, interestId, filterId,refresh);
 
   Future<List<AutoSearchModel>> getAutoSearch(String word) =>
       _companyHttpMethods.getAutoSearch(word);
@@ -78,16 +78,16 @@ class CompanyRepository {
       _companyHttpMethods.getMainSearch(pageIndex, searchId, fieldId, text);
 
   Future<List<FollowerModel>> getFollowersFiltered(
-          int pageIndex, int cityId, int interestId, int filterId) =>
+          int pageIndex, int cityId, int interestId, int filterId, bool refresh) =>
       _companyHttpMethods.getFollowersFiltered(
-          pageIndex, cityId, interestId, filterId);
+          pageIndex, cityId, interestId, filterId, refresh);
 
   Future<List<CompFavoriteModel>> getFavoriteData(
-          int pageIndex, int fkCity, fkInterest) =>
-      _companyHttpMethods.getFavoriteData(pageIndex, fkCity, fkInterest);
+          int pageIndex, int fkCity, fkInterest, bool refresh) =>
+      _companyHttpMethods.getFavoriteData(pageIndex, fkCity, fkInterest, refresh);
 
-  Future<List<CompInvitationModel>> getInvitationData(int pageIndex) =>
-      _companyHttpMethods.getInvitationData(pageIndex);
+  Future<List<CompInvitationModel>> getInvitationData(int pageIndex, bool refresh) =>
+      _companyHttpMethods.getInvitationData(pageIndex,refresh);
 
   Future<MainDetailsModel?> getMainDetails(String id) =>
       _companyHttpMethods.getMainDetails(id);
@@ -132,8 +132,8 @@ class CompanyRepository {
   Future<bool> followAds(String kayanId) =>
       _companyHttpMethods.followAds(kayanId);
 
-  Future<List<CompInterestModel>> getInterest() =>
-      _companyHttpMethods.getInterest();
+  Future<List<CompInterestModel>> getInterest(bool refresh ) =>
+      _companyHttpMethods.getInterest(refresh);
 
   Future<bool> saveInterest(String items) =>
       _companyHttpMethods.saveInterest(items);
@@ -211,8 +211,8 @@ class CompanyRepository {
   Future<InvestmentAdsModel?> getInvestmentAds(int adsId) =>
       _companyHttpMethods.getInvestmentAds(adsId);
 
-  Future<List<PackagesModel>> getAllPackages() =>
-      _companyHttpMethods.getAllPackages();
+  Future<List<PackagesModel>> getAllPackages(bool refresh ) =>
+      _companyHttpMethods.getAllPackages(refresh);
 
   Future<CostSubscribeModel?> getCostSubscribe(
           int countView, int countImage, int countVideo, int time) =>

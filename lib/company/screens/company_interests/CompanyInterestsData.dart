@@ -6,8 +6,8 @@ class CompanyInterestData {
   final GenericCubit<List<CompInterestModel>> interestCubit =
       new GenericCubit([]);
 
-  void fetchData(BuildContext context) async {
-    var data = await CompanyRepository(context).getInterest();
+  void fetchData(BuildContext context,{bool refresh = true}) async {
+    var data = await CompanyRepository(context).getInterest(refresh);
     data.insert(0, CompInterestModel(id: 0, name: "الكل", active: false));
     interestCubit.onUpdateData(data);
   }

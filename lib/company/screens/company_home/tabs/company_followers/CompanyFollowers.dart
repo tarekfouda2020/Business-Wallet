@@ -10,6 +10,7 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
 
   @override
   void initState() {
+    companyFollowersData.fetchPage(1, context,refresh: false);
     companyFollowersData.pagingController.addPageRequestListener((pageKey) {
       companyFollowersData.fetchPage(pageKey, context);
     });

@@ -7,10 +7,13 @@ class CompanyFavoriteData {
   int cityId = 0;
   int interestId = 0;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,{bool refresh = true}) async {
     List<CompFavoriteModel> followerData = await CompanyRepository(context)
-        .getFavoriteData(pageIndex, cityId, interestId);
+        .getFavoriteData(pageIndex, cityId, interestId,refresh);
     final isLastPage = followerData.length < pageSize;
+    if (pageIndex==1) {
+      pagingController.itemList=[];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(followerData);
     } else {
