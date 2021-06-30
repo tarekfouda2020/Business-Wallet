@@ -53,7 +53,8 @@ class BuildContactWidget extends StatelessWidget {
                 visible: allLocation,
                 child: Container(),
                 replacement: InkWell(
-                  onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute()),
+                  onTap: (){},
+                  // onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute()),
                   child: MyText(
                     title: "(مشاهدة جميع المواقع)",
                     size: 11,
