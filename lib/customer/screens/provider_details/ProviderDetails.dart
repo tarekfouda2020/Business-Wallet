@@ -14,6 +14,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
 
   @override
   void initState() {
+    providerDetailsData.fetchData(context, widget.kayanId, refresh: false);
     providerDetailsData.fetchData(context, widget.kayanId);
     super.initState();
   }
@@ -23,7 +24,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
     return Scaffold(
       backgroundColor: MyColors.darken,
       appBar: DefaultAppBar(
-        title: "",
+        title: "تفاصيل الاعلان",
         leading: IconButton(
           icon: Icon(
             Icons.share,

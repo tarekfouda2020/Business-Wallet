@@ -9,8 +9,9 @@ class _CompanyBarcodeState extends State<CompanyBarcode> {
   final CompanyBarcodeData companyBarcodeData = new CompanyBarcodeData();
 
   @override
-  void initState() {
-    companyBarcodeData.fetchData(context);
+  void initState() {    companyBarcodeData.fetchData(context,refresh:false);
+
+  companyBarcodeData.fetchData(context);
     super.initState();
   }
 

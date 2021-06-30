@@ -10,6 +10,7 @@ class _WalletState extends State<Wallet> {
 
   @override
   void initState() {
+    walletData.fetchData(context, refresh: false);
     walletData.fetchData(context);
     super.initState();
   }

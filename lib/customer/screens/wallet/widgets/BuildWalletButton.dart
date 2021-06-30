@@ -18,7 +18,7 @@ class BuildWalletButton extends StatelessWidget {
               context, walletModel!.costMun.toInt(), walletModel!.points),
           color: MyColors.primary,
           textColor: MyColors.black,
-          borderRadius: 25,
+          borderRadius: 30,
           margin: const EdgeInsets.symmetric(horizontal: 100),
         ),
         BuildCheckTerms(
@@ -30,15 +30,13 @@ class BuildWalletButton extends StatelessWidget {
         DefaultButton(
           title: "تصفيه المحفظه",
           onTap: () {
-            print("_____${walletModel!.cost}");
-            print("_____@@@${walletModel!.costMun}");
-
             AutoRouter.of(context).push(AccountReconciliationRoute(
                 cost: walletModel!.cost.toDouble(),
                 costMun: walletModel!.costMun));
           },
 
           // onTap: () => navigate(context),
+          borderRadius: BorderRadius.circular(30),
           color: MyColors.primary,
           textColor: MyColors.black,
         ),

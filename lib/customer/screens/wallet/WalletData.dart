@@ -9,8 +9,8 @@ class WalletData {
 
   final GenericCubit<WalletModel?> walletCubit = new GenericCubit(null);
 
-  void fetchData(BuildContext context) async {
-    var data = await CustomerRepository(context).getWalletData();
+  void fetchData(BuildContext context,{bool refresh=true}) async {
+    var data = await CustomerRepository(context).getWalletData(refresh);
     walletCubit.onUpdateData(data);
   }
 

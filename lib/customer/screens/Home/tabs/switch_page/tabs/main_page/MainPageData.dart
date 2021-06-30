@@ -8,10 +8,14 @@ class MainPageData {
   int interestId = 0;
   int filterId = 0;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,
+      {bool refresh = true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
-        .getMainFiltered(pageIndex, cityId, interestId, filterId);
+        .getMainFiltered(pageIndex, cityId, interestId, filterId,refresh);
     final isLastPage = mainData.length < pageSize;
+    if (pageIndex==1) {
+      pagingController.itemList=[];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(mainData);
     } else {

@@ -27,7 +27,7 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
       body: Container(
         alignment: Alignment.topCenter,
         child: PagedGridView<int, FollowerModel>(
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
           showNewPageProgressIndicatorAsGridChild: false,
           showNewPageErrorIndicatorAsGridChild: false,
           showNoMoreItemsIndicatorAsGridChild: false,
@@ -39,6 +39,8 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
             crossAxisCount: 2,
           ),
           builderDelegate: PagedChildBuilderDelegate<FollowerModel>(
+            noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
+
             itemBuilder: (context, item, index) => BuildMainItem(
               followerModel: item,
             ),

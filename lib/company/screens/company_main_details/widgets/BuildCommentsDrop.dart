@@ -25,7 +25,7 @@ class BuildCommentsDrop extends StatelessWidget {
               visible: state.data,
               child: Container(
                 child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: commentModel!.length,

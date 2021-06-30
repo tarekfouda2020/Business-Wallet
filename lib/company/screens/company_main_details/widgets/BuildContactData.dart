@@ -21,9 +21,11 @@ class BuildContactData extends StatelessWidget {
                 children: [
                   BuildContactItem(
                     title: "رقم الجوال",
-                    desc: detailsModel!.phone,
+                    desc: detailsModel!.phone == ""
+                        ? "لا يوجد"
+                        : detailsModel!.phone,
                     iconData: Icons.phone_in_talk,
-                    color: Colors.yellow,
+                    color: Colors.green,
                     onTap: () => Utils.callPhone(phone: detailsModel!.phone),
                   ),
                   SizedBox(
@@ -31,9 +33,11 @@ class BuildContactData extends StatelessWidget {
                   ),
                   BuildContactItem(
                     title: "البريد الالكتروني",
-                    desc: detailsModel!.email,
+                    desc: detailsModel!.email == ""
+                        ? "لا يوجد"
+                        : detailsModel!.email,
                     iconData: Icons.mail_sharp,
-                    color: Colors.green,
+                    color: Colors.yellow,
                     onTap: () => Utils.sendMail(detailsModel!.email),
                   ),
                 ],
@@ -43,7 +47,9 @@ class BuildContactData extends StatelessWidget {
                 children: [
                   BuildContactItem(
                     title: "رابط المنشأة",
-                    desc: detailsModel!.website,
+                    desc: detailsModel!.website == ""
+                        ? "لا يوجد"
+                        : detailsModel!.website,
                     iconData: Icons.language,
                     color: Colors.blue,
                     onTap: () => Utils.launchURL(url: detailsModel!.website),
@@ -55,7 +61,7 @@ class BuildContactData extends StatelessWidget {
                     title: "اجراء محادثة",
                     desc: "اجراء محادثة",
                     iconData: Icons.message,
-                    color: Colors.green,
+                    color: Colors.yellow,
                   ),
                 ],
               ),
@@ -67,7 +73,9 @@ class BuildContactData extends StatelessWidget {
               children: [
                 BuildContactItem(
                   title: "العنوان",
-                  desc: detailsModel!.address,
+                  desc: detailsModel!.address == ""
+                      ? "لا يوجد"
+                      : detailsModel!.address,
                   iconData: MdiIcons.mapMarkerRadius,
                   color: Colors.red,
                   allLocation: false,

@@ -15,8 +15,8 @@ class InvitationDetailsData {
   final GenericCubit<SpecificAdsModel?> specificAdsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, int adsId) async {
-    var data = await CustomerRepository(context).getSpecificAds(adsId);
+  void fetchData(BuildContext context, int adsId,{bool refresh=true}) async {
+    var data = await CustomerRepository(context).getSpecificAds(adsId,refresh);
     specificAdsCubit.onUpdateData(data);
   }
 

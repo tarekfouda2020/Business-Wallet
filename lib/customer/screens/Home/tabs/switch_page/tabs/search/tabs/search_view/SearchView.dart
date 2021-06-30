@@ -12,6 +12,8 @@ class SearchView extends StatefulWidget {
 class _SearchViewState extends State<SearchView> {
   @override
   void initState() {
+    widget.searchData.fetchPage(1, context, refresh: false);
+
     widget.searchData.pagingController.addPageRequestListener((pageKey) {
       widget.searchData.fetchPage(pageKey, context);
     });
@@ -23,6 +25,7 @@ class _SearchViewState extends State<SearchView> {
     return Container(
       alignment: Alignment.topCenter,
       child: PagedGridView<int, MainModel>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
@@ -34,6 +37,7 @@ class _SearchViewState extends State<SearchView> {
           crossAxisCount: 2,
         ),
         builderDelegate: PagedChildBuilderDelegate<MainModel>(
+          noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
           itemBuilder: (context, item, index) => BuildProviderItem(
             mainModel: item,
             checkFollow: false,

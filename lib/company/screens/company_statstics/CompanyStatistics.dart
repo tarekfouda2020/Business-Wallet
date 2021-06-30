@@ -11,6 +11,7 @@ class _CompanyStatisticsState extends State<CompanyStatistics> {
 
   @override
   void initState() {
+    companyStatisticsData.fetchData(context, refresh: false);
     companyStatisticsData.fetchData(context);
     super.initState();
   }

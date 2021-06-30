@@ -16,6 +16,8 @@ class _AccountReconciliationState extends State<AccountReconciliation> {
 
   @override
   void initState() {
+    accountReconciliationData.fetchData(context, widget.cost, widget.costMun,refresh: false);
+
     accountReconciliationData.fetchData(context, widget.cost, widget.costMun);
     super.initState();
   }

@@ -21,8 +21,8 @@ class ProviderDetailsData {
   final GenericCubit<MainDetailsModel?> mainDetailsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, String kayanId) async {
-    var data = await CustomerRepository(context).getMainDetails(kayanId);
+  void fetchData(BuildContext context, String kayanId,{bool refresh= true}) async {
+    var data = await CustomerRepository(context).getMainDetails(kayanId,refresh );
     mainDetailsCubit.onUpdateData(data);
   }
 

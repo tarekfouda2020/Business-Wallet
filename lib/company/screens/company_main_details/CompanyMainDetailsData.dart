@@ -4,7 +4,7 @@ class CompanyMainDetailsData {
   final GenericCubit<int> menuCubit = new GenericCubit(0);
 
   final GlobalKey<CustomButtonState> btnKey =
-  new GlobalKey<CustomButtonState>();
+      new GlobalKey<CustomButtonState>();
   final GenericCubit<bool> contactDropCubit = new GenericCubit(false);
   final GenericCubit<bool> socialDropCubit = new GenericCubit(false);
   final GenericCubit<bool> imagesDropCubit = new GenericCubit(false);
@@ -19,15 +19,15 @@ class CompanyMainDetailsData {
   final GenericCubit<int> rateCubit = new GenericCubit(0);
   final GenericCubit<File?> imageCubit = new GenericCubit(null);
 
-
   final GenericCubit<MainDetailsModel?> mainDetailsCubit =
-  new GenericCubit(null);
+      new GenericCubit(null);
 
-  void fetchData(BuildContext context, String kayanId) async {
-    var data = await CompanyRepository(context).getMainDetails(kayanId);
+  void fetchData(BuildContext context, String kayanId,
+      {bool refresh = true}) async {
+    var data =
+        await CompanyRepository(context).getMainDetails(kayanId, refresh);
     mainDetailsCubit.onUpdateData(data);
   }
-
 
   void addOrRemoveLike(BuildContext context, String kayanId) async {
     await CompanyRepository(context)
@@ -40,12 +40,12 @@ class CompanyMainDetailsData {
         .addFollow(kayanId)
         .then((value) => fetchData(context, kayanId));
   }
+
   void sendBrochure(BuildContext context, String kayanId) async {
     await CompanyRepository(context)
         .sendBrochure(kayanId)
         .then((value) => fetchData(context, kayanId));
   }
-
 
   void addRate(BuildContext context, String kayanId, int rate) async {
     await CompanyRepository(context)

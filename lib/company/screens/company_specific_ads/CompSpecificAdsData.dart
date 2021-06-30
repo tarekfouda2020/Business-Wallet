@@ -12,29 +12,12 @@ class CompSpecificAdsData {
   final GenericCubit<bool> isOwner = new GenericCubit(true);
 
 
-  void fetchData(BuildContext context, int adsId) async {
-    var data = await CompanyRepository(context).getSpecificAds(adsId);
+  void fetchData(BuildContext context, int adsId,{bool refresh=true}) async {
+    var data = await CompanyRepository(context).getSpecificAds(adsId,refresh);
     specificAdsCubit.onUpdateData(data);
-    isOwner.onUpdateData(data!.previewAds.isOwner);
   }
 
-  void updateSpecificAds(BuildContext context, int adsId) async {
-    await CompanyRepository(context)
-        .updateSpecificAds(adsId)
-        .then((value) => getSpecificAdsPoint(context, adsId));
-  }
 
-  void getSpecificAdsPoint(BuildContext context, int adsId) async {
-    print(
-        "==============${specificAdsCubit.state.data!.previewAds.pointsForEachUser}");
-    await CompanyRepository(context)
-        .getSpecificAdsPoint(
-            "0",
-            specificAdsCubit.state.data!.previewAds.pointsForEachUser,
-            adsId,
-            "1")
-        .then((value) => fetchData(context, adsId));
-  }
 
   void addOrRemoveLike(BuildContext context, int adsId) async {
     await CompanyRepository(context)

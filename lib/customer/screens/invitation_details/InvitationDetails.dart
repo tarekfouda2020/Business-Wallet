@@ -16,11 +16,13 @@ class _InvitationDetailsState extends State<InvitationDetails>
 
   @override
   void initState() {
-  //   invitationDetailsData.fetchData(context, widget.adsId);
-  //   invitationDetailsData.initAnimation(this,context, widget.adsId,widget.checkInvite,refreshPage);
-  //
-  //   super.initState();
-  // }
+    //   invitationDetailsData.fetchData(context, widget.adsId);
+    //   invitationDetailsData.initAnimation(this,context, widget.adsId,widget.checkInvite,refreshPage);
+    //
+    //   super.initState();
+    // }
+    invitationDetailsData.fetchData(context, widget.adsId, refresh: false);
+
     invitationDetailsData.fetchData(context, widget.adsId);
     super.initState();
     invitationDetailsData.controller = AnimationController(
@@ -39,36 +41,33 @@ class _InvitationDetailsState extends State<InvitationDetails>
         setState(() {});
       })
       ..addStatusListener(
-            (status) {
+        (status) {
           if (status == AnimationStatus.completed) {
             invitationDetailsData.expandCubit.onUpdateData(220);
             widget.checkInvite
                 ? Future.delayed(Duration(milliseconds: 500), () {
-              print("_______${widget.adsId}");
+                    print("_______${widget.adsId}");
 
-              invitationDetailsData.updateSpecificAds(
-                  context, widget.adsId);
-              invitationDetailsData.getSpecificAdsPoint(
-                  context, widget.adsId);
-              invitationDetailsData.showExpandCubit.onUpdateData(true);
-            })
+                    invitationDetailsData.updateSpecificAds(
+                        context, widget.adsId);
+                    invitationDetailsData.getSpecificAdsPoint(
+                        context, widget.adsId);
+                    invitationDetailsData.showExpandCubit.onUpdateData(true);
+                  })
                 : Future.delayed(
-              Duration(milliseconds: 500),
-                  () {
-                invitationDetailsData.showExpandCubit.onUpdateData(true);
-              },
-            );
+                    Duration(milliseconds: 500),
+                    () {
+                      invitationDetailsData.showExpandCubit.onUpdateData(true);
+                    },
+                  );
           }
         },
       );
     invitationDetailsData.controller.forward();
   }
 
-
-  refreshPage(){
-    setState(() {
-
-    });
+  refreshPage() {
+    setState(() {});
   }
 
   @override
@@ -136,7 +135,9 @@ class _InvitationDetailsState extends State<InvitationDetails>
                             title: "لا يوجد فيديوهات",
                           ),
                         ),
-                        replacement: BuildVideoList(videos: state.data!.previewAds.videos,),
+                        replacement: BuildVideoList(
+                          videos: state.data!.previewAds.videos,
+                        ),
                       ),
                       BuildInvTitle(title: "صاحب الإعلان"),
                       BuildAdOwner(

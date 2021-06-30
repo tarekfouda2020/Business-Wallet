@@ -15,6 +15,7 @@ class _CompSpecificAdsState extends State<CompSpecificAds>
 
   @override
   void initState() {
+    compSpecificAdsData.fetchData(context, widget.adsId, refresh: false);
     compSpecificAdsData.fetchData(context, widget.adsId);
 
     super.initState();
@@ -24,7 +25,6 @@ class _CompSpecificAdsState extends State<CompSpecificAds>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-
       appBar: DefaultAppBar(
         title: "تفاصيل الاعلان",
       ),

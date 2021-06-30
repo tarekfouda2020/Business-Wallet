@@ -2,8 +2,9 @@ part of 'CompStatisticsRateWidgetsImports.dart';
 
 class BuildBusinessTable extends StatelessWidget {
   final CompanyStatisticsRateData companyStatisticsRateData;
+  final int type;
 
-  const BuildBusinessTable({required this.companyStatisticsRateData});
+  const BuildBusinessTable({required this.companyStatisticsRateData,required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -30,51 +31,12 @@ class BuildBusinessTable extends StatelessWidget {
                               ),
                             ),
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 17),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    left: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title: "عدد الزيارات",
-                                  size: 11,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: MyColors.white,
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 17),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    MyText(
-                                      title: " المنجز : ${state.data!.show} ",
-                                      size: 11,
-                                      color: MyColors.white,
-                                    ),
-                                    MyText(
-                                      title: " المتبقي : ${state.data!.count}",
-                                      size: 11,
-                                      color: MyColors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              BuildTableRightItem(title: "عدد الزيارات"),
+                              BuildTableLeftItem(
+                                title: " المنجز : ${state.data!.show} ",
+                                desc: " المتبقي : ${state.data!.count}",
+                              )
+
                             ],
                           ),
                           TableRow(
@@ -87,41 +49,13 @@ class BuildBusinessTable extends StatelessWidget {
                               ),
                             ),
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 17),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    left: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title: "تاريخ البداية",
-                                  size: 11,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: MyColors.white,
-                                ),
+                              BuildTableRightItem(
+                                title: "تاريخ البداية",
                               ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 17),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title: state.data!.date,
-                                  size: 11,
-                                  color: MyColors.white,
-                                ),
-                              ),
+                              BuildTableLeftItem(
+                                title: state.data!.date,
+                              )
+
                             ],
                           ),
 
@@ -136,7 +70,7 @@ class BuildBusinessTable extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
                   title: "حفظ كملف PDF",
-                  onTap: () => companyStatisticsRateData.savePdf(context,state.data!.id),
+                  onTap: () => companyStatisticsRateData.savePdfs(context,state.data!.id,type),
                 ),
               ],
             ),

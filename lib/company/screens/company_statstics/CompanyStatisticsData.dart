@@ -4,8 +4,8 @@ class CompanyStatisticsData {
   final GenericCubit<CompStatisticsDetailsModel?> statisticsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context) async {
-    var data = await CompanyRepository(context).getStatistics();
+  void fetchData(BuildContext context,{bool refresh=true}) async {
+    var data = await CompanyRepository(context).getStatistics(refresh);
     statisticsCubit.onUpdateData(data);
   }
 

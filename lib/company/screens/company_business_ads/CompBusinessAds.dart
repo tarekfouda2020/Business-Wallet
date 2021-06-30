@@ -14,6 +14,7 @@ class _CompBusinessAdsState extends State<CompBusinessAds> {
 
   @override
   void initState() {
+    compBusinessAdsData.fetchData(context, widget.adsId, refresh: false);
     compBusinessAdsData.fetchData(context, widget.adsId);
     super.initState();
   }

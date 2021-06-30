@@ -13,7 +13,7 @@ class BuildDesc extends StatelessWidget {
           title: "وصف الاعلان",
         ),
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
           child: MyText(
             title:desc,
             size: 11,

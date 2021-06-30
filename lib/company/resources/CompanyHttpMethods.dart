@@ -190,400 +190,15 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<MainModel>> getMain(
-      int pageIndex, int cityId, int interestId, int filterId,bool refresh ) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
+  Future<List<CompInterestModel>> getInterest(bool refresh) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
+    var lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "lang": lang,
       "user_id": userId,
-      "city_id": cityId,
-      "interests": interestId,
-      "top_rate": filterId,
-      "page_number": pageIndex
-    };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
-        .get(url: "/Plans/IndexKayan", body: body);
-    if (_data != null) {
-      return List<MainModel>.from(
-          _data['data']['Kayans'].map((e) => MainModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<List<AutoSearchModel>> getAutoSearch(String word) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {"lang": lang, "word": word};
-    var _data = await DioHelper(context: context)
-        .get(url: "/User/AutoSearchApi", body: body);
-    if (_data != null) {
-      return List<AutoSearchModel>.from(
-          _data['kayans'].map((e) => AutoSearchModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<List<MainModel>> getMainSearch(
-      int pageIndex, int searchId, int fieldId, String text) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "SearchId": searchId,
-      "id": fieldId,
-      "text": text,
-      "page_number": pageIndex
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/Account/FilterSearchKayanApi", body: body);
-    if (_data != null) {
-      return List<MainModel>.from(
-          _data['Kayans'].map((e) => MainModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<List<CompFavoriteModel>> getFavoriteData(
-      int pageIndex, int fkCity, fkInterest, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "user_id": userId,
-      "fk_city": fkCity,
-      "fk_intrest": fkInterest,
-      // "Rate": rate,
-      "page_number": pageIndex
-    };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
-        .get(url: "/Plans/MyWishlist", body: body);
-    if (_data != null) {
-      return List<CompFavoriteModel>.from(_data['data']["MyWishlist3"]
-          .map((e) => CompFavoriteModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<List<CompInvitationModel>> getInvitationData(int pageIndex, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "user_id": userId,
-      "fk_city": "0",
-      "fk_intrest": "0",
-      "Rate": "M",
-      "page_number": pageIndex
-    };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
-        .get(url: "/Plans/IndexApi", body: body);
-    if (_data != null) {
-      return List<CompInvitationModel>.from(
-          _data['data'].map((e) => CompInvitationModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<List<FollowerModel>> getFollowersFiltered(
-      int pageIndex, int cityId, int interestId, int filterId, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "CityId": cityId,
-      "interestId": interestId,
-      "RateId": filterId,
-      "page_number": pageIndex
     };
     var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/Plans/MyFollow", body: body);
-    if (_data != null) {
-      return List<FollowerModel>.from(
-          _data['follows'].map((e) => FollowerModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
-
-  Future<MainDetailsModel?> getMainDetails(String id) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "id": id,
-      "userId": userId,
-      "from_home": 0,
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/Plans/KayanDetailsApi", body: body);
-    if (_data != null) {
-      return MainDetailsModel.fromJson(_data);
-    } else {
-      return MainDetailsModel();
-    }
-  }
-
-  Future<bool> addLike(String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "Kayan_Id": kayanId,
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/User/AddLikeApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> addFollow(String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "Kayan_Id": kayanId,
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/User/AddFollowApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> sendBrochure(String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "Current_User": userId,
-      "Kayan_Id": kayanId,
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/Plans/SendBusinessCard", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> addRate(int rate, String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "kayan_Id": kayanId,
-      "userId": userId,
-      "newRate": rate,
-      "EditRate": "1",
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/Plans/AddRateApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> addComment(String kayanId, String msg, File? image) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "kayan_Id": kayanId,
-      "userId": userId,
-      "txtcomment": msg,
-      "uploadImage": image,
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .uploadFile(url: "/User/AddCommentApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> deleteComment(int commentId) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {"id": commentId, "lang": lang};
-    var _data = await DioHelper(context: context)
-        .post(url: "/User/DeleteCommentApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> editComment(int commentId, String msg) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {"id": commentId, "newtext": msg, "lang": lang};
-    var _data = await DioHelper(context: context)
-        .post(url: "/User/EditCommentApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> reportComment(int commentId, String kayanId, String msg) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "commentId": commentId,
-      "userId": userId,
-      "txtReport": msg,
-      "KayanId": kayanId,
-      "lang": lang,
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/User/CommentReportApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<CompFavDetailsModel?> getAds(
-      int adsId, int sendCard, int showSendCard) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "Id": adsId,
-      "userId": userId,
-      "lang": lang,
-      "idSendCard": sendCard,
-      "IsShowWhenSend": showSendCard,
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/InvestmentInvitation/PreviewBusiness_CardApi", body: body);
-    if (_data != null) {
-      return CompFavDetailsModel.fromJson(_data['businesscardDB']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<bool> updateAds(int adsId, int showSend) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "Id": adsId,
-      "userId": userId,
-      "lang": lang,
-      "IsShowWhenSend": showSend == 0 ? false : true
-    };
-    var _data = await DioHelper(context: context).get(
-        url: "/InvestmentInvitation/UpdateAnnouncement_Business_CardApi",
-        body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> getAdsPoint(
-      String type, int points, int adsId, String adsType) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "userId": userId,
-      "type": type,
-      "point": points,
-      "id_ads": adsId,
-      "type_ads": adsType,
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/InvestmentInvitation/PoketPointKayanApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> likeAds(int announcementId, String type) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "Announcement_Id": announcementId,
-      "type": type
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/InvestmentInvitation/AddWishApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> followAds(String kayanId) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "Kayan_Id": kayanId,
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/InvestmentInvitation/AddFollowApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<List<CompInterestModel>> getInterest(bool refresh ) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "user_id": userId,
-    };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Account/GetInterestsKayanApi", body: body);
     if (_data != null) {
       return List<CompInterestModel>.from(
@@ -617,14 +232,14 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<ProfileCommentsModel>> getProfileComments() async {
+  Future<List<ProfileCommentsModel>> getProfileComments(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     Map<String, dynamic> body = {
       "lang": lang,
       "userId": userId,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/User/MyCommentsApi", body: body);
     if (_data != null) {
       return List<ProfileCommentsModel>.from(
@@ -653,7 +268,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<ConversationModel>> getConversation() async {
+  Future<List<ConversationModel>> getConversation(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -661,7 +276,7 @@ class CompanyHttpMethods {
       "lang": lang,
       "id_user": userId,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/ChatApi/GetListMsgOfUser", body: body);
     if (_data != null) {
       return List<ConversationModel>.from(
@@ -671,12 +286,12 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<String?> promoCode() async {
+  Future<String?> promoCode(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
     Map<String, dynamic> body = {"user_id": userId, "lang": lang};
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/PromoCode", body: body);
     if (_data != null) {
       return _data["data"]["promocode"];
@@ -685,12 +300,12 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<CompWalletModel?> getWalletData() async {
+  Future<CompWalletModel?> getWalletData(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
     Map<String, dynamic> body = {"user_id": userId, "lang": lang};
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/MyWallet", body: body);
     updateWallet(_data["data"]["perviewStatsicViewModel"]['points']);
 
@@ -813,7 +428,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<CompStatisticsDetailsModel?> getStatistics() async {
+  Future<BarcodeModel?> getBarcode(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -821,24 +436,7 @@ class CompanyHttpMethods {
       "user_id": userId,
       "lang": lang,
     };
-    var _data = await DioHelper(context: context)
-        .get(url: "/Plans/MyStatistics", body: body);
-    if (_data != null) {
-      return CompStatisticsDetailsModel.fromJson(_data["data"]);
-    } else {
-      return null;
-    }
-  }
-
-  Future<BarcodeModel?> getBarcode() async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "user_id": userId,
-      "lang": lang,
-    };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/BarCode", body: body);
     if (_data != null) {
       return BarcodeModel.fromJson(_data["data"]["barcode"]);
@@ -898,153 +496,6 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<SpecificAdsModel?> getSpecificAds(int adsId) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
-    var _data = await DioHelper(context: context).get(
-        url:
-            "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
-        body: body);
-    if (_data != null) {
-      return SpecificAdsModel.fromJson(_data);
-    } else {
-      return null;
-    }
-  }
-
-  Future<bool> updateSpecificAds(int adsId) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
-    var _data = await DioHelper(context: context).get(
-        url:
-            "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
-        body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> getSpecificAdsPoint(
-      String type, int points, int adsId, String adsType) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "userId": userId,
-      "type": type,
-      "point": points,
-      "id_ads": adsId,
-      "type_ads": adsType,
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .get(url: "/InvestmentInvitation/PoketPointKayanApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> likeSpecificAds(int announcementId, String type) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "lang": lang,
-      "userId": userId,
-      "Announcement_Id": announcementId,
-      "type": type
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/InvestmentInvitation/AddWishApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> specificAdsRate(int adsId, int rate, String type) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "ad_Id": adsId,
-      "userId": userId,
-      "NewRate": rate,
-      "type": type,
-      "lang": lang
-    };
-    var _data = await DioHelper(context: context)
-        .post(url: "/InvestmentInvitation/AddRateApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> specificAdsComment(
-      int adsId, String msg, File? image, String type) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "IId": adsId,
-      "userId": userId,
-      "txtcomment": msg,
-      "uploadImage": image,
-      "lang": lang,
-      "type": type
-    };
-    var _data = await DioHelper(context: context)
-        .uploadFile(url: "/InvestmentInvitation/AddCommentApi", body: body);
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<InvestmentAdsModel?> getInvestmentAds(int adsId) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
-    var _data = await DioHelper(context: context).get(
-        url: "/InvestmentInvitation/PreviewAnnouncement_service_evaluationApi",
-        body: body);
-    if (_data != null) {
-      return InvestmentAdsModel.fromJson(_data);
-    } else {
-      return null;
-    }
-  }
-
-  Future<List<PackagesModel>> getAllPackages(bool refresh ) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "userId": userId,
-      "lang": lang,
-    };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
-        .get(url: "/Plans/GetAllPackages", body: body);
-    if (_data != null) {
-      return List<PackagesModel>.from(
-          _data['packages'].map((e) => PackagesModel.fromJson(e)));
-    } else {
-      return [];
-    }
-  }
   Future<List<DropDownSelected>> getPeopleInterests(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
@@ -1062,214 +513,6 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<CostSubscribeModel?> getCostSubscribe(
-      int countView, int countImage, int countVideo, int time) async {
-    Map<String, dynamic> body = {
-      "count_view": countView,
-      "count_image": countImage,
-      "count_video": countVideo,
-      "time": time,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/CostAdvirtisment',
-      body: body,
-    );
-    if (_data != null) {
-      return CostSubscribeModel.fromJson(_data['data']['costs']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<ExtraCostModel?> getExtraCostSubscribe(int cost, int price) async {
-    Map<String, dynamic> body = {
-      "cost": cost,
-      "price": price,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/AddPriceAdvirtisment',
-      body: body,
-    );
-    if (_data != null) {
-      return ExtraCostModel.fromJson(_data['data']['costs']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<CostSubscribeModel?> getOpinionSubscribeCost(
-      int countView, int countImage, int countVideo, int countQuestion) async {
-    Map<String, dynamic> body = {
-      "count_view": countView,
-      "count_image": countImage,
-      "count_video": countVideo,
-      "count_question": countQuestion,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/CostAdvirtismentEvelation',
-      body: body,
-    );
-    if (_data != null) {
-      return CostSubscribeModel.fromJson(_data['data']['costs']);
-    } else {
-      return null;
-    }
-  }
-
-
-
-  Future<double?> finalCost(double baseCost) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {"base_cost": baseCost, "lang": lang};
-    var _data = await DioHelper(context: context)
-        .get(url: "/Plans/AccountFinalCost", body: body);
-    if (_data != null) {
-      return _data["data"]['FinalCost'];
-    } else {
-      return null;
-    }
-  }
-
-  Future<String?> savePdf(int id) async {
-    Map<String, dynamic> body = {"ID": id};
-    var _data = await DioHelper(context: context)
-        .get(url: "/Plans/SavePdf_Sent_Specific_Category", body: body);
-    if (_data != null) {
-      return _data["PathPdf"];
-    } else {
-      return null;
-    }
-  }
-
-  Future<SpecificAdsDetailsModel?> getSpecificAdsDetails(int id) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "id": id,
-      "user_id": userId,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/DetailsAnnouncement_sent_specific_category',
-      body: body,
-    );
-    if (_data != null) {
-      return SpecificAdsDetailsModel.fromJson(
-          _data['data']['detailsAnnouncement_Sent_Specific_CategoryViewModel']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<ProductAdsDetailsModel?> getProductAdsDetails(int id) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "id": id,
-      "user_id": userId,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/DetailsAnnouncement_service_evaluation',
-      body: body,
-    );
-    if (_data != null) {
-      return ProductAdsDetailsModel.fromJson(
-          _data['data']['detailsAnnouncement_service_evaluationViewModel']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<BusinessAdsDetailsModel?> getBusinessAdsDetails(int id) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "id": id,
-      "user_id": userId,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/DetailsPreviewBusiness_Card',
-      body: body,
-    );
-    if (_data != null) {
-      return BusinessAdsDetailsModel.fromJson(
-          _data['data']['detailsPreviewBusiness_CardViewModel']);
-    } else {
-      return null;
-    }
-  }
-  Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id) async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-
-    Map<String, dynamic> body = {
-      "id": id,
-      "user_id": userId,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/DetailsPreviewMainPage',
-      body: body,
-    );
-    if (_data != null) {
-      return BusinessAdsDetailsModel.fromJson(
-          _data['data']['detailsPreviewBusiness_CardViewModel']);
-    } else {
-      return null;
-    }
-  }
-
-  Future<BrochureDetailsModel?> getBrochureDetails() async {
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-
-    Map<String, dynamic> body = {
-      "user_id": userId,
-      "lang":lang
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/GetDataCard',
-      body: body,
-    );
-    if (_data != null) {
-      return BrochureDetailsModel.fromJson(
-          _data['data']['businesscardDB']);
-    } else {
-      return null;
-    }
-  }
-  Future<CostSubscribeModel?> getCostBrochureSubscribe(
-      int brochureNum) async {
-    Map<String, dynamic> body = {
-      "numbercard": brochureNum,
-
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/AccountBusinessCard',
-      body: body,
-    );
-    if (_data != null) {
-      return CostSubscribeModel.fromJson(_data['data']['costs']);
-    } else {
-      return null;
-    }
-  }
-
-
-  Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) async {
-    Map<String, dynamic> body = {
-      "cost": cost,
-      "price": price,
-    };
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/AccountNewCost',
-      body: body,
-    );
-    if (_data != null) {
-      return ExtraCostModel.fromJson(_data['data']['costs']);
-    } else {
-      return null;
-    }
-  }
-
   Future<List<BranchModel>> getBranches(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -1277,10 +520,11 @@ class CompanyHttpMethods {
       "lang": lang,
       "user_id": userId,
     };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/GetBranch", body: body);
     if (_data != null) {
-      return List<BranchModel>.from(_data['branch_Kayans'].map((e) => BranchModel.fromJson(e)));
+      return List<BranchModel>.from(
+          _data['branch_Kayans'].map((e) => BranchModel.fromJson(e)));
     } else {
       return [];
     }
@@ -1289,7 +533,7 @@ class CompanyHttpMethods {
   Future<BranchModel?> addBranch(AddBranchModel model) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
-    model.userId=userId;
+    model.userId = userId;
     model.lang = lang;
     var _data = await DioHelper(context: context).post(
       url: '/Plans/UpdateBranch',
@@ -1319,57 +563,4 @@ class CompanyHttpMethods {
       return false;
     }
   }
-
-  Future<int?> addSubscribe(AddSubscribeModel model) async {
-    var _data = await DioHelper(context: context).post(
-      url: '/Plans/Announcementsentspecificcategory',
-      body: model.toJson(),
-      showLoader: false,
-    );
-    if (_data != null) {
-      return _data["ID"];
-    } else {
-      return null;
-    }
-  }
-
-  Future<int?> addSpecialSubscribe(AddSpecialSubscribeModel model) async {
-    var _data = await DioHelper(context: context).uploadFile(
-      url: '/Plans/MainPageAdvert',
-      body: model.toJson(),
-      showLoader: false
-    );
-    if (_data != null) {
-      return _data["ID"];
-    } else {
-      return null;
-    }
-  }
-
-  Future<int?> addOpinionSubscribe(AddOpinionSubscribeModel model) async {
-    var _data = await DioHelper(context: context).uploadFile(
-      url: '/Plans/AddAnnouncement_service_evaluation',
-      body: model.toJson(),
-      showLoader: false
-    );
-    if (_data != null) {
-      return _data["ID"];
-    } else {
-      return null;
-    }
-  }
-
-  Future<bool> addBrochureSubscribe(AddBrochureSubscribeModel model) async {
-    var _data = await DioHelper(context: context).get(
-      url: '/Plans/AddNewBusinessCard',
-      body: model.toJson(),
-    );
-    if (_data != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-
 }

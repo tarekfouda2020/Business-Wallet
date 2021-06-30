@@ -12,7 +12,7 @@ class InvitationMenu extends StatefulWidget {
 class _InvitationMenuState extends State<InvitationMenu> {
   @override
   void initState() {
-    widget.companyInvitationData.fetchPage(1, context,refresh: false);
+    widget.companyInvitationData.fetchPage(1, context, refresh: false);
     widget.companyInvitationData.pagingController
         .addPageRequestListener((pageKey) {
       widget.companyInvitationData.fetchPage(pageKey, context);
@@ -23,12 +23,13 @@ class _InvitationMenuState extends State<InvitationMenu> {
   @override
   Widget build(BuildContext context) {
     return PagedListView<int, CompInvitationModel>(
-      padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       physics: BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),
       pagingController: widget.companyInvitationData.pagingController,
       builderDelegate: PagedChildBuilderDelegate<CompInvitationModel>(
+        noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
         itemBuilder: (context, item, index) => BuildInviteItem(
           invitationModel: item,
         ),

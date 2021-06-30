@@ -10,6 +10,7 @@ class _ConversationState extends State<Conversation> {
 
   @override
   void initState() {
+    conversationData.fetchData(context, refresh: false);
     conversationData.fetchData(context);
     super.initState();
   }
@@ -28,7 +29,8 @@ class _ConversationState extends State<Conversation> {
           if (state is GenericUpdateState) {
             if (state.data.length > 0) {
               return ListView.builder(
-                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 itemCount: state.data.length,
                 itemBuilder: (_, index) => BuildConversationPageView(
                   conversationModel: state.data[index],

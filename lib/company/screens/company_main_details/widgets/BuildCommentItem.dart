@@ -16,8 +16,9 @@ class BuildCommentItem extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: MyColors.greyWhite)),
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: MyColors.greyWhite),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -74,7 +75,7 @@ class BuildCommentItem extends StatelessWidget {
                 elevation: 20,
                 icon: Icon(
                   Icons.more_vert_outlined,
-                  color: MyColors.grey,
+                  color: MyColors.white,
                 ),
                 enabled: true,
                 onSelected: (int value) {
@@ -135,7 +136,7 @@ class BuildCommentItem extends StatelessWidget {
                 ),
                 child: CachedImage(
                   url: commentModel!.commentImg,
-                  haveRadius: false,
+                  borderRadius: BorderRadius.circular(5),
                   borderColor: MyColors.greyWhite,
                   height: 70,
                   width: 70,

@@ -17,9 +17,9 @@ class CompanyFavDetailsData {
       new GenericCubit(null);
 
   void fetchData(
-      BuildContext context, int adsId, int sendCard, int showSendCard) async {
+      BuildContext context, int adsId, int sendCard, int showSendCard,{bool refresh=true}) async {
     var data =
-        await CompanyRepository(context).getAds(adsId, sendCard, showSendCard);
+        await CompanyRepository(context).getAds(adsId, sendCard, showSendCard,refresh);
     adsDetailsCubit.onUpdateData(data);
     isOwner.onUpdateData(data!.isOwner);
 

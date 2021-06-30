@@ -25,7 +25,6 @@ class BuildShowDescription extends StatelessWidget {
               size: 10,
               color: MyColors.grey,
             ),
-
           ],
         ),
       ),

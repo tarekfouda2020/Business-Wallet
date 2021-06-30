@@ -21,7 +21,6 @@ class _SearchState extends State<Search> {
           searchData: searchData,
         ),
         searchOnTap: widget.onTap,
-        // searchOnTap: () => AutoRouter.of(context).pop(),
         body: Column(
           children: [
             BuildSearchChangeView(searchData: searchData),

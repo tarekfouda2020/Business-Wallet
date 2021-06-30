@@ -24,6 +24,9 @@ class _CompanyFavDetailsState extends State<CompanyFavDetails>
   @override
   void initState() {
     companyFavDetailsData.fetchData(
+        context, widget.adsId, widget.sendCard, widget.showSendCard,
+        refresh: false);
+    companyFavDetailsData.fetchData(
         context, widget.adsId, widget.sendCard, widget.showSendCard);
     super.initState();
     companyFavDetailsData.controller = AnimationController(
@@ -70,7 +73,6 @@ class _CompanyFavDetailsState extends State<CompanyFavDetails>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-
       body: BlocBuilder<GenericCubit<CompFavDetailsModel?>,
           GenericState<CompFavDetailsModel?>>(
         bloc: companyFavDetailsData.adsDetailsCubit,

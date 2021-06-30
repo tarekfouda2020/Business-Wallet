@@ -16,15 +16,7 @@ class _CompanyStatisticsRateState extends State<CompanyStatisticsRate> {
 
   @override
   void initState() {
-    widget.type == 1
-        ? companyStatisticsRateData.getSpecificAdsDetails(context, widget.id)
-        : widget.type == 2
-            ? companyStatisticsRateData.getProductAdsDetails(context, widget.id)
-            : widget.type == 3
-                ? companyStatisticsRateData.getBusinessAdsDetails(
-                    context, widget.id)
-                : companyStatisticsRateData.getMainAdsDetails(
-                    context, widget.id);
+    companyStatisticsRateData.initMethods(context, widget.type, widget.id);
     super.initState();
   }
 
@@ -42,19 +34,10 @@ class _CompanyStatisticsRateState extends State<CompanyStatisticsRate> {
             child: BuildMainTopTable(),
             replacement: BuildRateTopTable(),
           ),
-          widget.type == 1
-              ? BuildSpecificTable(
-                  companyStatisticsRateData: companyStatisticsRateData)
-              : widget.type == 2
-                  ? BuildProductTable(
-                      companyStatisticsRateData: companyStatisticsRateData)
-                  : widget.type == 3
-                      ? BuildBusinessTable(
-                          companyStatisticsRateData: companyStatisticsRateData)
-                      : BuildMainTable(
-                          companyStatisticsRateData: companyStatisticsRateData),
-
-
+          BuildNavigateTables(
+            type: widget.type,
+            companyStatisticsRateData: companyStatisticsRateData,
+          )
         ],
       ),
     );

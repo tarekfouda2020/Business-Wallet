@@ -105,8 +105,8 @@ class _DropdownTextFieldState<DataType> extends State<FutureBottomSheet> {
           border: InputBorder.none,
           isCollapsed: true,
           contentPadding: EdgeInsets.zero,
-          hintStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
-          labelStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold),
+          hintStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.white70),
+          labelStyle: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.white70),
         ),
       ),
     );

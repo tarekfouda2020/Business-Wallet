@@ -15,7 +15,7 @@ class BuildTabBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = active ? MyColors.primary : MyColors.grey;
+    Color color = active ? MyColors.primary : Colors.white70;
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: 10,

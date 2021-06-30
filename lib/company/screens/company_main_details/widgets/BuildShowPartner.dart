@@ -33,7 +33,7 @@ class BuildShowPartner extends StatelessWidget {
                 replacement: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   width: MediaQuery.of(context).size.width,
-                  height: 150,
+                  height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: detailsModel!.partners.length,

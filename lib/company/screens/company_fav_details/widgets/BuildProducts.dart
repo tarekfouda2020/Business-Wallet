@@ -34,8 +34,8 @@ class BuildProducts extends StatelessWidget {
                   child: CachedImage(
                     borderColor: MyColors.greyWhite,
                     url: images[index].img,
+                    fit: BoxFit.fill,
                     width: 90,
-                    borderRadius: BorderRadius.circular(10),
                   ),
                 );
               },

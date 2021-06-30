@@ -11,6 +11,7 @@ class _CompanyConversationsState extends State<CompanyConversations> {
 
   @override
   void initState() {
+    companyConversationsData.fetchData(context, refresh: false);
     companyConversationsData.fetchData(context);
     super.initState();
   }
@@ -29,7 +30,8 @@ class _CompanyConversationsState extends State<CompanyConversations> {
           if (state is GenericUpdateState) {
             if (state.data.length > 0) {
               return ListView.builder(
-                padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 itemCount: state.data.length,
                 itemBuilder: (_, index) => BuildConversationItem(
                   conversationModel: state.data[index],
@@ -51,7 +53,6 @@ class _CompanyConversationsState extends State<CompanyConversations> {
           }
         },
       ),
-
     );
   }
 }

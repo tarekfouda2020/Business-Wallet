@@ -22,10 +22,13 @@ class SearchData {
   int filterId = 0;
   int pageSize = 10;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context, {bool refresh=true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
-        .getMainSearched(pageIndex, filterId, fieldId, search.text);
+        .getMainSearched(pageIndex, filterId, fieldId, search.text,refresh);
     final isLastPage = mainData.length < pageSize;
+    if (pageIndex==1) {
+      pagingController.itemList=[];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(mainData);
     } else {

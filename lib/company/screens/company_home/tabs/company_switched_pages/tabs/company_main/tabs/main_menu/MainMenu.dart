@@ -12,7 +12,7 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   @override
   void initState() {
-    widget.companyMainData.fetchPage(1, context,refresh: false);
+    widget.companyMainData.fetchPage(1, context, refresh: false);
     widget.companyMainData.pagingController.addPageRequestListener((pageKey) {
       widget.companyMainData.fetchPage(pageKey, context);
     });
@@ -24,6 +24,7 @@ class _MainMenuState extends State<MainMenu> {
     return Container(
       alignment: Alignment.topCenter,
       child: PagedGridView<int, MainModel>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
@@ -35,6 +36,7 @@ class _MainMenuState extends State<MainMenu> {
           crossAxisCount: 2,
         ),
         builderDelegate: PagedChildBuilderDelegate<MainModel>(
+          noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
           itemBuilder: (context, item, index) => BuildMainItem(
             mainModel: item,
             checkFollow: false,

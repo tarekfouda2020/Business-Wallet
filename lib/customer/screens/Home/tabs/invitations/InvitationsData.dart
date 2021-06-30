@@ -8,10 +8,14 @@ class InvitationsData {
   late List<InvitationModel> invitationData;
   int pageSize = 10;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,
+      {bool refresh = true}) async {
     invitationData = await CustomerRepository(context)
-        .getInvitationData(pageIndex, 0, 0, filterId);
+        .getInvitationData(pageIndex, 0, 0, filterId,refresh);
     final isLastPage = invitationData.length < pageSize;
+    if (pageIndex == 1) {
+      pagingController.itemList = [];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(invitationData);
     } else {

@@ -20,3 +20,6 @@ part 'BuildSpecificTable.dart';
 
 part 'BuildMainTable.dart';
 part 'BuildMainTopTable.dart';
+part 'BuildNavigateTables.dart';
+part 'BuildTableLeftItem.dart';
+part 'BuildTableRightItem.dart';

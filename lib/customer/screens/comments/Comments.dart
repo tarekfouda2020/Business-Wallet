@@ -10,6 +10,7 @@ class _CommentsState extends State<Comments> {
 
   @override
   void initState() {
+    commentsData.fetchData(context, refresh: false);
     commentsData.fetchData(context);
     super.initState();
   }

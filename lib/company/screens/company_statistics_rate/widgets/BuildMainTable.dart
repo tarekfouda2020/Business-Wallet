@@ -2,8 +2,9 @@ part of 'CompStatisticsRateWidgetsImports.dart';
 
 class BuildMainTable extends StatelessWidget {
   final CompanyStatisticsRateData companyStatisticsRateData;
+  final int type;
 
-  const BuildMainTable({required this.companyStatisticsRateData});
+  const BuildMainTable({required this.companyStatisticsRateData,required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -30,68 +31,14 @@ class BuildMainTable extends StatelessWidget {
                               ),
                             ),
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 15),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    left: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title: state.data!.date,
-                                  size: 11,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: MyColors.white,
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 15),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title:
-                                  state.data!.cost.toString(),
-                                  size: 11,
-                                  color: MyColors.white,
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 15),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: MyColors.primary.withOpacity(.3),
-                                      width: 1,
-                                    ),
-                                  ),
-                                ),
-                                alignment: Alignment.center,
-                                child: MyText(
-                                  title:
-                                  state.data!.countShow.toString(),
-                                  size: 11,
-                                  color: MyColors.white,
-                                ),
-                              ),
+                              BuildTableRightItem(title:  state.data!.date,),
+                              BuildTableRightItem(title: state.data!.cost.toString(),),
+                              BuildTableRightItem(title:    state.data!.countShow.toString(),),
+
                             ],
                           ),
-
-
                         ],
                       ),
-
-
                     ],
                   ),
                 ),
@@ -102,7 +49,7 @@ class BuildMainTable extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
                   title: "حفظ كملف PDF",
                   onTap: () =>
-                      companyStatisticsRateData.savePdf(context, state.data!.id),
+                      companyStatisticsRateData.savePdfs(context, state.data!.id,type),
                 ),
               ],
             ),

@@ -5,6 +5,7 @@ class BuildTableItem extends StatelessWidget {
   final CompStatisticsModel compStatisticsModel;
   final CompanyStatisticsData companyStatisticsData;
 
+
   const BuildTableItem(
       {required this.title,
       required this.compStatisticsModel,

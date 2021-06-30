@@ -10,6 +10,7 @@ class _CompanyCommentsState extends State<CompanyComments> {
 
   @override
   void initState() {
+    companyCommentsData.fetchData(context, refresh: false);
     companyCommentsData.fetchData(context);
     super.initState();
   }

@@ -19,9 +19,10 @@ class AccountReconciliationData {
   final GenericCubit<ReconciliationDataModel?> reconciliationCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, double cost, double costMun) async {
+  void fetchData(BuildContext context, double cost, double costMun,
+      {bool refresh = true}) async {
     var data =
-        await CustomerRepository(context).getReconciliation(cost, costMun);
+        await CustomerRepository(context).getReconciliation(cost, costMun,refresh);
     reconciliationCubit.onUpdateData(data);
   }
 

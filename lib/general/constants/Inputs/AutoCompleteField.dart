@@ -22,7 +22,7 @@ class AutoCompleteField<DataType> extends StatelessWidget {
       textFieldConfiguration: TextFieldConfiguration(
         autofocus: false,
         controller: controller,
-        style: GoogleFonts.cairo(fontSize: 12,fontWeight: FontWeight.bold),
+        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.bold),
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
@@ -43,7 +43,7 @@ class AutoCompleteField<DataType> extends StatelessWidget {
             borderSide: BorderSide(color: Colors.red, width: 1),
           ),
           hintText: "  $label  ",
-          hintStyle: GoogleFonts.cairo(fontSize: 14),
+          hintStyle: GoogleFonts.cairo(fontSize: 14, color: Colors.white70),
           contentPadding: EdgeInsets.symmetric(
             horizontal: 10,
             vertical: 10,
@@ -53,7 +53,7 @@ class AutoCompleteField<DataType> extends StatelessWidget {
           suffixIcon: Icon(
             Icons.search,
             size: 20,
-            color: MyColors.grey,
+            color: Colors.white70,
           ),
         ),
       ),
@@ -70,7 +70,9 @@ class AutoCompleteField<DataType> extends StatelessWidget {
                 size: 10,
                 color: MyColors.white,
               ),
-              Divider(color: MyColors.greyWhite,)
+              Divider(
+                color: MyColors.greyWhite,
+              )
             ],
           ),
         );
@@ -89,7 +91,6 @@ class AutoCompleteField<DataType> extends StatelessWidget {
       onSuggestionSelected: onSubmit,
       hideOnEmpty: false,
       hideOnError: false,
-
     );
   }
 }

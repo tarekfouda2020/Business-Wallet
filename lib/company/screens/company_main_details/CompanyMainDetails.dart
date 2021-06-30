@@ -15,6 +15,7 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
 
   @override
   void initState() {
+    companyMainDetailsData.fetchData(context, widget.kayanId, refresh: false);
     companyMainDetailsData.fetchData(context, widget.kayanId);
 
     super.initState();
@@ -43,13 +44,9 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
                   detailsModel: state.data!.details,
                   companyMainDetailsData: companyMainDetailsData,
                 ),
-                Visibility(
-                  visible: state.data!.details!.showDescriptionKayan,
-                  child: BuildShowDescription(
-                    companyMainDetailsData: companyMainDetailsData,
-                    detailsModel: state.data!.details,
-                  ),
-                  replacement: Container(),
+                BuildShowDescription(
+                  companyMainDetailsData: companyMainDetailsData,
+                  detailsModel: state.data!.details,
                 ),
                 BuildContactDrop(
                   companyMainDetailsData: companyMainDetailsData,

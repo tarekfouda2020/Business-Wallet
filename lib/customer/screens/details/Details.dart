@@ -10,6 +10,8 @@ class _DetailsState extends State<Details> {
 
   @override
   void initState() {
+    detailsData.fetchData(context,refresh: false);
+
     detailsData.fetchData(context);
     super.initState();
   }

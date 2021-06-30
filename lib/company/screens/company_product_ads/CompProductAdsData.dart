@@ -7,8 +7,9 @@ class CompProductAdsData {
   final GenericCubit<InvestmentAdsModel?> investmentAdsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, int adsId) async {
-    var data = await CompanyRepository(context).getInvestmentAds(adsId);
+  void fetchData(BuildContext context, int adsId, {bool refresh = true}) async {
+    var data =
+        await CompanyRepository(context).getInvestmentAds(adsId, refresh);
     investmentAdsCubit.onUpdateData(data);
     isOwner.onUpdateData(data!.investmentAdsDetails.isOwner);
 

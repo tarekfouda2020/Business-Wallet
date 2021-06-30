@@ -4,27 +4,31 @@ class CompanySearchData {
   final TextEditingController search = TextEditingController();
   final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
 
-  Future<List<AutoSearchModel>> fetchAutoSearch(BuildContext context,String word) async {
-    var autoSearch = await CompanyRepository(context).getAutoSearch(word);
+  Future<List<AutoSearchModel>> fetchAutoSearch(
+      BuildContext context, String word,
+      ) async {
+    var autoSearch =
+        await CompanyRepository(context).getAutoSearch(word);
     return autoSearch;
   }
 
-  void onSelectModel(BuildContext context,AutoSearchModel model) {
+  void onSelectModel(BuildContext context, AutoSearchModel model) {
     FocusScope.of(context).requestFocus(FocusNode());
     searchUpdateCubit.onUpdateData(model.name);
     pagingController.refresh();
   }
 
   final PagingController<int, MainModel> pagingController =
-  PagingController(firstPageKey: 1);
+      PagingController(firstPageKey: 1);
 
   int fieldId = 0;
   int filterId = 0;
   int pageSize = 10;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,
+      {bool refresh = true}) async {
     List<MainModel> mainData = await CompanyRepository(context)
-        .getMainSearch(pageIndex, filterId, fieldId, search.text);
+        .getMainSearch(pageIndex, filterId, fieldId, search.text, refresh);
     final isLastPage = mainData.length < pageSize;
     if (isLastPage) {
       pagingController.appendLastPage(mainData);

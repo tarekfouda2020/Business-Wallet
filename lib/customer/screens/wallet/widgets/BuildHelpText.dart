@@ -9,8 +9,8 @@ class BuildHelpText extends StatelessWidget {
         children: [
           MyText(
             title: "للمساعده",
-            size: 10,
-            color: MyColors.greyWhite.withOpacity(0.8),
+            size: 12,
+            color: MyColors.grey,
           ),
           SizedBox(width: 5,),
           InkWell(

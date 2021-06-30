@@ -9,10 +9,13 @@ class FollowersData {
   int interestId = 0;
   int filterId = -1;
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,{bool refresh=true}) async {
     followerData = await CustomerRepository(context)
-        .getFollowersFiltered(pageIndex, cityId, interestId, filterId);
+        .getFollowersFiltered(pageIndex, cityId, interestId, filterId,refresh);
     final isLastPage = followerData.length < pageSize;
+    if (pageIndex==1) {
+      pagingController.itemList=[];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(followerData);
     } else {

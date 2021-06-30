@@ -10,6 +10,7 @@ class _NumberWalletState extends State<NumberWallet> {
 
   @override
   void initState() {
+    numberWalletData.fetchData(context, refresh: false);
     numberWalletData.fetchData(context);
     super.initState();
   }
@@ -28,7 +29,7 @@ class _NumberWalletState extends State<NumberWallet> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BuildNumberWalletText(),
-            BuildCode(numberWalletData:numberWalletData),
+            BuildCode(numberWalletData: numberWalletData),
           ],
         ),
       ),

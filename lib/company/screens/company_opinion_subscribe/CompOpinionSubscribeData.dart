@@ -322,7 +322,7 @@ class CompOpinionSubscribeData {
   }
 
   void savePdf(BuildContext context) async {
-    var data = await CompanyRepository(context).savePdf(idCubit.state.data);
+    var data = await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
     if (data != null) {
       Utils.launchURL(url: data);
     }

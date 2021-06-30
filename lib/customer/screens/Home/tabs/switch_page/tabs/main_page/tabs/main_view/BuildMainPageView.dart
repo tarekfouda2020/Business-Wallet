@@ -1,18 +1,18 @@
 part of 'MainViewImports.dart';
 
-
 class BuildMainPageView extends StatefulWidget {
   final MainPageData mainPageData;
 
   const BuildMainPageView({required this.mainPageData});
+
   @override
   _BuildMainPageViewState createState() => _BuildMainPageViewState();
 }
 
 class _BuildMainPageViewState extends State<BuildMainPageView> {
-
   @override
   void initState() {
+    widget.mainPageData.fetchPage(1, context, refresh: false);
     widget.mainPageData.pagingController.addPageRequestListener((pageKey) {
       widget.mainPageData.fetchPage(pageKey, context);
     });
@@ -24,6 +24,7 @@ class _BuildMainPageViewState extends State<BuildMainPageView> {
     return Container(
       alignment: Alignment.topCenter,
       child: PagedGridView<int, MainModel>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
@@ -35,6 +36,7 @@ class _BuildMainPageViewState extends State<BuildMainPageView> {
           crossAxisCount: 2,
         ),
         builderDelegate: PagedChildBuilderDelegate<MainModel>(
+          noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
           itemBuilder: (context, item, index) => BuildProviderItem(
             mainModel: item,
             checkFollow: false,

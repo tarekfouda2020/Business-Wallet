@@ -1,5 +1,6 @@
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
 import 'package:base_flutter/company/widgets/BuildMainItem.dart';
+import 'package:base_flutter/company/widgets/BuildNoItemFound.dart';
 import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';

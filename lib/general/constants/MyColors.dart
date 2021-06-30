@@ -8,8 +8,8 @@ class MyColors{
   static Color bg=Color(0xfffffafa);
   static Color offWhite=Color(0xffF2F2F2);
   static Color gold=Color(0xffe4aa69);
-  static Color grey=Colors.grey;
-  static Color greyWhite=Colors.grey.withOpacity(.2);
+  static Color grey=Colors.white70;
+  static Color greyWhite=Colors.white24;
   static Color black=Color(0xff2d2d2d).withOpacity(.9);
   static Color blackOpacity=Colors.black;
   static Color white=Colors.white;

@@ -17,6 +17,8 @@ class _ImportantState extends State<Important> {
   void initState() {
     importantData.fetchIntro(context);
     importantData.fetchData(context);
+
+    importantData.fetchData(context);
     super.initState();
   }
 

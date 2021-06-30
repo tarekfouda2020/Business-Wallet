@@ -13,8 +13,8 @@ class CompanyCommentsData {
   final GenericCubit<List<ProfileCommentsModel>> commentsCubit =
       new GenericCubit([]);
 
-  void fetchData(BuildContext context) async {
-    var data = await CompanyRepository(context).getProfileComments();
+  void fetchData(BuildContext context,{bool refresh=true}) async {
+    var data = await CompanyRepository(context).getProfileComments(refresh);
     commentsCubit.onUpdateData(data);
   }
 

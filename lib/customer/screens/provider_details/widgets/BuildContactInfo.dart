@@ -35,7 +35,9 @@ class BuildContactInfo extends StatelessWidget {
                           children: [
                             BuildContactWidget(
                               title: "رقم الجوال",
-                              detail: detailsModel!.phone,
+                              detail: detailsModel!.phone == ""
+                                  ? "لا يوجد"
+                                  : detailsModel!.phone,
                               icon: Icons.phone_in_talk,
                               iconColor: Colors.green,
                               onTap: () =>
@@ -46,8 +48,11 @@ class BuildContactInfo extends StatelessWidget {
                             ),
                             BuildContactWidget(
                               title: "البريد الالكتروني",
-                              detail: detailsModel!.email,
+                              detail:detailsModel!.email == ""
+                                  ? "لا يوجد"
+                                  : detailsModel!.email,
                               icon: Icons.mail_sharp,
+                              iconColor: Colors.yellow,
                               onTap: () => Utils.sendMail(detailsModel!.email),
                             ),
                           ],
@@ -57,7 +62,9 @@ class BuildContactInfo extends StatelessWidget {
                           children: [
                             BuildContactWidget(
                               title: "رابط المنشأة",
-                              detail: detailsModel!.website,
+                              detail: detailsModel!.website == ""
+                                  ? "لا يوجد"
+                                  : detailsModel!.website,
                               icon: Icons.language,
                               iconColor: Colors.blue,
                               onTap: () =>
@@ -70,6 +77,8 @@ class BuildContactInfo extends StatelessWidget {
                               title: "اجراء محادثة",
                               detail: "اجراء محادثة",
                               icon: Icons.message,
+                              iconColor: Colors.yellow,
+
                             ),
                           ],
                         ),
@@ -79,22 +88,17 @@ class BuildContactInfo extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(vertical: 20),
                       child: BuildContactWidget(
                         title: "العنوان",
-                        detail: detailsModel!.address,
+                        detail: detailsModel!.address == ""
+                            ? "لا يوجد"
+                            : detailsModel!.address,
                         icon: Icons.location_on,
                         iconColor: Colors.red,
+                        allLocation: false,
+
                       ),
                     ),
-                    Container(
-                      height: 150,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 5),
-                      child: Image.asset(
-                        Res.pic,
-                        fit: BoxFit.fill,
-                      ),
-                    )
+                    BuildImageMap(lat: detailsModel!.lat, lng: detailsModel!.lng)
+
                   ],
                 ),
               ),

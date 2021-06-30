@@ -8,10 +8,13 @@ class FavoritesData {
   int interestId = 0;
   String filterId = "M";
 
-  void fetchPage(int pageIndex, BuildContext context) async {
+  void fetchPage(int pageIndex, BuildContext context,{bool refresh=true}) async {
     List<FavoriteModel> followerData = await CustomerRepository(context)
-        .getFavoriteData(pageIndex, cityId, interestId, filterId);
+        .getFavoriteData(pageIndex, cityId, interestId, filterId,refresh);
     final isLastPage = followerData.length < pageSize;
+    if (pageIndex == 1) {
+      pagingController.itemList = [];
+    }
     if (isLastPage) {
       pagingController.appendLastPage(followerData);
     } else {

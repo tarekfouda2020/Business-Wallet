@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/company/widgets/BuildImageMap.dart';
 import 'package:base_flutter/customer/models/comment_model.dart';
 import 'package:base_flutter/customer/models/details_model.dart';
 import 'package:base_flutter/customer/models/main_details_model.dart';

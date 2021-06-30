@@ -16,8 +16,8 @@ class CompanyWalletData {
     Navigator.of(context).pop();
   }
 
-  void fetchData(BuildContext context) async {
-    var data = await CompanyRepository(context).getWalletData();
+  void fetchData(BuildContext context,{bool refresh= true}) async {
+    var data = await CompanyRepository(context).getWalletData(refresh);
     walletCubit.onUpdateData(data);
   }
 

@@ -12,6 +12,8 @@ class CompSearchMenu extends StatefulWidget {
 class _CompSearchMenuState extends State<CompSearchMenu> {
   @override
   void initState() {
+    widget.companySearchData..fetchPage(1, context, refresh: false);
+
     widget.companySearchData.pagingController.addPageRequestListener((pageKey) {
       widget.companySearchData.fetchPage(pageKey, context);
     });
@@ -23,6 +25,7 @@ class _CompSearchMenuState extends State<CompSearchMenu> {
     return Container(
       alignment: Alignment.topCenter,
       child: PagedGridView<int, MainModel>(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,
@@ -34,10 +37,10 @@ class _CompSearchMenuState extends State<CompSearchMenu> {
           crossAxisCount: 2,
         ),
         builderDelegate: PagedChildBuilderDelegate<MainModel>(
+          noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
           itemBuilder: (context, item, index) => BuildMainItem(
             mainModel: item,
             checkFollow: false,
-
           ),
         ),
       ),
