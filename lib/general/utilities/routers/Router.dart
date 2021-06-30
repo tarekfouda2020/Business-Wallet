@@ -114,6 +114,12 @@ part of 'RouterImports.dart';
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
     ),
+    CustomRoute(
+      page: EditBranch,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      durationInMilliseconds: 500,
+      reverseDurationInMilliseconds: 500,
+    ),
   ],
 )
 class $AppRouter {}

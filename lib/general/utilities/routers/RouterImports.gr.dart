@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
+import 'package:base_flutter/company/models/branch_model.dart' as _i75;
 import 'package:base_flutter/company/models/dots/LocationModel.dart' as _i9;
 import 'package:base_flutter/company/screens/company_account_reconciliation/CompAccountReconciliationImports.dart'
     as _i61;
@@ -68,6 +69,8 @@ import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports
     as _i57;
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart'
     as _i53;
+import 'package:base_flutter/company/screens/edit_branch/EditBranchImports.dart'
+    as _i72;
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart'
     as _i10;
 import 'package:base_flutter/customer/screens/account_reconciliation/AccountReconciliationImports.dart'
@@ -105,7 +108,7 @@ import 'package:base_flutter/customer/screens/wallet/WalletImports.dart'
     as _i31;
 import 'package:base_flutter/customer/screens/wallet_help/WalletHelpImports.dart'
     as _i39;
-import 'package:base_flutter/general/models/intro_model.dart' as _i73;
+import 'package:base_flutter/general/models/intro_model.dart' as _i74;
 import 'package:base_flutter/general/screens/about/AboutImports.dart' as _i17;
 import 'package:base_flutter/general/screens/active_account/ActiveAccountImports.dart'
     as _i11;
@@ -137,7 +140,7 @@ import 'package:base_flutter/general/screens/successfully_active/SuccessfullyAct
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i16;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i72;
+import 'package:flutter/cupertino.dart' as _i73;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -576,6 +579,17 @@ class AppRouter extends _i1.RootStackRouter {
         durationInMilliseconds: 500,
         reverseDurationInMilliseconds: 500,
         opaque: true,
+        barrierDismissible: false),
+    EditBranchRoute.name: (routeData) => _i1.CustomPage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EditBranchRouteArgs>();
+          return _i72.EditBranch(model: args.model);
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 500,
+        opaque: true,
         barrierDismissible: false)
   };
 
@@ -667,12 +681,13 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/comp-special-subscribe'),
         _i1.RouteConfig(CompOpinionSubscribeRoute.name,
             path: '/comp-opinion-subscribe'),
-        _i1.RouteConfig(CompanyBranchesRoute.name, path: '/company-branches')
+        _i1.RouteConfig(CompanyBranchesRoute.name, path: '/company-branches'),
+        _i1.RouteConfig(EditBranchRoute.name, path: '/edit-branch')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i72.GlobalKey<_i72.NavigatorState> navigatorKey})
+  SplashRoute({required _i73.GlobalKey<_i73.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -682,11 +697,11 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i72.GlobalKey<_i72.NavigatorState> navigatorKey;
+  final _i73.GlobalKey<_i73.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({_i73.IntroModel? introModel})
+  LoginRoute({_i74.IntroModel? introModel})
       : super(name,
             path: '/Login', args: LoginRouteArgs(introModel: introModel));
 
@@ -696,11 +711,11 @@ class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
 class LoginRouteArgs {
   const LoginRouteArgs({this.introModel});
 
-  final _i73.IntroModel? introModel;
+  final _i74.IntroModel? introModel;
 }
 
 class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
-  WelcomePageRoute({_i73.IntroModel? introModel})
+  WelcomePageRoute({_i74.IntroModel? introModel})
       : super(name,
             path: '/welcome-page',
             args: WelcomePageRouteArgs(introModel: introModel));
@@ -711,11 +726,11 @@ class WelcomePageRoute extends _i1.PageRouteInfo<WelcomePageRouteArgs> {
 class WelcomePageRouteArgs {
   const WelcomePageRouteArgs({this.introModel});
 
-  final _i73.IntroModel? introModel;
+  final _i74.IntroModel? introModel;
 }
 
 class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
-  CustomerWelcomeRoute({_i73.IntroModel? introModel})
+  CustomerWelcomeRoute({_i74.IntroModel? introModel})
       : super(name,
             path: '/customer-welcome',
             args: CustomerWelcomeRouteArgs(introModel: introModel));
@@ -726,7 +741,7 @@ class CustomerWelcomeRoute extends _i1.PageRouteInfo<CustomerWelcomeRouteArgs> {
 class CustomerWelcomeRouteArgs {
   const CustomerWelcomeRouteArgs({this.introModel});
 
-  final _i73.IntroModel? introModel;
+  final _i74.IntroModel? introModel;
 }
 
 class ForgetPasswordRoute extends _i1.PageRouteInfo {
@@ -844,7 +859,7 @@ class ContactUsRoute extends _i1.PageRouteInfo {
 }
 
 class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
-  SelectUserRoute({_i73.IntroModel? introModel})
+  SelectUserRoute({_i74.IntroModel? introModel})
       : super(name,
             path: '/select-user',
             args: SelectUserRouteArgs(introModel: introModel));
@@ -855,7 +870,7 @@ class SelectUserRoute extends _i1.PageRouteInfo<SelectUserRouteArgs> {
 class SelectUserRouteArgs {
   const SelectUserRouteArgs({this.introModel});
 
-  final _i73.IntroModel? introModel;
+  final _i74.IntroModel? introModel;
 }
 
 class ConfirmPasswordRoute extends _i1.PageRouteInfo {
@@ -1421,4 +1436,18 @@ class CompanyBranchesRoute extends _i1.PageRouteInfo {
   const CompanyBranchesRoute() : super(name, path: '/company-branches');
 
   static const String name = 'CompanyBranchesRoute';
+}
+
+class EditBranchRoute extends _i1.PageRouteInfo<EditBranchRouteArgs> {
+  EditBranchRoute({required _i75.BranchModel model})
+      : super(name,
+            path: '/edit-branch', args: EditBranchRouteArgs(model: model));
+
+  static const String name = 'EditBranchRoute';
+}
+
+class EditBranchRouteArgs {
+  const EditBranchRouteArgs({required this.model});
+
+  final _i75.BranchModel model;
 }

@@ -19,6 +19,8 @@ class AddBranchModel {
   bool? status;
   @JsonKey(name: "lang")
   String? lang;
+  @JsonKey(name: "user_id")
+  String? userId;
 
 
   AddBranchModel(

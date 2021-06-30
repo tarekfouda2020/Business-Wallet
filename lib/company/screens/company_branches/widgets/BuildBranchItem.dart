@@ -116,30 +116,46 @@ class BuildBranchItem extends StatelessWidget {
               SizedBox(width: 5),
               Expanded(
                 child: MyText(
-                  title: model.statues?"فعال":"غير فعال",
+                  title: model.statues ? "فعال" : "غير فعال",
                   color: MyColors.primary,
                   size: 10,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              InkWell(
-                onTap: (){},
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: Icon(Icons.edit,size: 20,color: MyColors.primary,),
-                ),
+              OpenContainer(
+                closedColor: Colors.transparent,
+                closedElevation: 0,
+                openBuilder: (context, action) {
+                  return BlocProvider.value(
+                    value: branchesData.branchesCubit,
+                    child: EditBranch(model: model),
+                  );
+                },
+                closedBuilder: (context, action) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 6),
+                    child: Icon(
+                      Icons.edit,
+                      size: 20,
+                      color: MyColors.primary,
+                    ),
+                  );
+                },
               ),
               SizedBox(width: 5),
               InkWell(
-                onTap: ()=> branchesData.removeBranch(context, model),
+                onTap: () => branchesData.removeBranch(context, model),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: Icon(Icons.close,size: 22,color: MyColors.primary,),
+                  child: Icon(
+                    Icons.close,
+                    size: 22,
+                    color: MyColors.primary,
+                  ),
                 ),
               ),
             ],
           ),
-
         ],
       ),
     );

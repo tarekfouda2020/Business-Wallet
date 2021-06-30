@@ -1288,6 +1288,8 @@ class CompanyHttpMethods {
 
   Future<BranchModel?> addBranch(AddBranchModel model) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    model.userId=userId;
     model.lang = lang;
     var _data = await DioHelper(context: context).post(
       url: '/Plans/UpdateBranch',

@@ -1,6 +1,6 @@
-part of 'AddBranchImports.dart';
+part of 'EditBranchImports.dart';
 
-class AddBranchData {
+class EditBranchData{
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<CustomButtonState> btnKey = new GlobalKey();
 
@@ -12,12 +12,22 @@ class AddBranchData {
   final TextEditingController branchPhone = new TextEditingController();
   final TextEditingController workHoursFrom = new TextEditingController();
   final TextEditingController workHoursTo = new TextEditingController();
-  final TextEditingController branchStatus = new TextEditingController();
+
 
   String? lat;
   String? lng;
 
   DropDownModel? stateModel;
+
+  initDataModel(BranchModel model){
+    branchLocation.text=model.address;
+    branchPhone.text=model.phone;
+    workHoursFrom.text=model.hourWork;
+    workHoursTo.text=model.hourWorkTo;
+    lat = model.lat;
+    lng=model.lng;
+    stateModel = DropDownModel(id: model.statues?1:2, name: model.statues?"فعال":"غير فعال");
+  }
 
   onStateChanged(DropDownModel? model) {
     if (model != null) {
@@ -51,11 +61,11 @@ class AddBranchData {
     );
   }
 
-  setAddBranch(BuildContext context) async {
+  setAddBranch(BuildContext context, BranchModel branchModel) async {
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
       AddBranchModel model = new AddBranchModel(
-          id: 0,
+          id: branchModel.id,
           phone: branchPhone.text,
           address: branchLocation.text,
           lat: lat,
@@ -67,7 +77,8 @@ class AddBranchData {
       var data = await CompanyRepository(context).addBranch(model);
       if (data != null) {
         var branCubit = context.read<BranchesCubit>();
-        branCubit.state.branches.add(data);
+        int index = branCubit.state.branches.indexOf(branchModel);
+        branCubit.state.branches[index]=data;
         branCubit.onUpdateData(branCubit.state.branches);
         AutoRouter.of(context).pop();
       }

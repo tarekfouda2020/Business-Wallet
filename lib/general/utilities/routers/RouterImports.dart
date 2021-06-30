@@ -32,6 +32,7 @@ import 'package:base_flutter/company/screens/company_subscribe/CompanySubscribeI
 import 'package:base_flutter/company/screens/company_subscribe/tabs/second_step/SecondStepImports.dart';
 import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports.dart';
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart';
+import 'package:base_flutter/company/screens/edit_branch/EditBranchImports.dart';
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';

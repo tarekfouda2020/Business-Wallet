@@ -18,7 +18,7 @@ AddBranchModel _$AddBranchModelFromJson(Map<String, dynamic> json) {
     toHour: json['to_hour_work'] as String?,
     status: json['status'] as bool?,
     lang: json['lang'] as String?,
-  );
+  )..userId = json['user_id'] as String?;
 }
 
 Map<String, dynamic> _$AddBranchModelToJson(AddBranchModel instance) =>
@@ -33,4 +33,5 @@ Map<String, dynamic> _$AddBranchModelToJson(AddBranchModel instance) =>
       'to_hour_work': instance.toHour,
       'status': instance.status,
       'lang': instance.lang,
+      'user_id': instance.userId,
     };
