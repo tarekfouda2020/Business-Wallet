@@ -3,7 +3,7 @@ part of 'LocationAddressImports.dart';
 class LocationAddressData {
   final GlobalKey<ScaffoldState> _scaffold = new GlobalKey<ScaffoldState>();
   final Completer<GoogleMapController> controller = Completer();
-  late LocationModel locationModel;
+  LocationModel? locationModel;
   final apiKey = "AIzaSyDIBH6mfPQ13UnF9aZtmaUQtuu-mQcxxb0";
 
 
@@ -15,7 +15,7 @@ class LocationAddressData {
         loc.longitude.toString(),
         address
     );
-    context.read<LocationCubit>().onLocationUpdated(locationModel);
+    context.read<LocationCubit>().onLocationUpdated(locationModel!);
   }
 
 
@@ -32,7 +32,11 @@ class LocationAddressData {
   }
 
   void changeLocation(BuildContext context) async {
-    context.read<LocationCubit>().onLocationUpdated(locationModel,change: true);
+    if (locationModel==null) {
+      LoadingDialog.showSimpleToast("حدد موقعك علي الخريطة");
+      return;
+    }
+    context.read<LocationCubit>().onLocationUpdated(locationModel!,change: true);
     Navigator.pop(context);
   }
 

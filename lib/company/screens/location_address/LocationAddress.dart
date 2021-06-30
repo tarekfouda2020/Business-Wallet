@@ -14,6 +14,7 @@ class _LocationAddress extends State<LocationAddress> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: locationAddressData._scaffold,
+      backgroundColor: MyColors.darken,
       appBar: AppBar(
         title: BlocBuilder<LocationCubit,LocationState>(
           builder: (context,state){

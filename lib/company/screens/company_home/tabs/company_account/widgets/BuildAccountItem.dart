@@ -33,12 +33,12 @@ class BuildAccountItem extends StatelessWidget {
                     ),
                     child: Icon(
                       iconData,
-                      color: MyColors.greyWhite.withOpacity(.9),
+                      color: MyColors.primary.withOpacity(.8),
                     ),
                   ),
                   MyText(
                     title: title ?? "",
-                    color: MyColors.greyWhite.withOpacity(.9),
+                    color: Colors.white70,
                     size: 12,
                   ),
                 ],

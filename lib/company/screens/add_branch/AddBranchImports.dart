@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';

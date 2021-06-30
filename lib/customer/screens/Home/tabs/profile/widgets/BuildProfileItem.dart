@@ -41,12 +41,12 @@ class BuildProfileItem extends StatelessWidget {
                       child: Icon(
                         icon,
                         size: 18,
-                        color: MyColors.grey,
+                        color: MyColors.primary,
                       ),
                     ),
                     MyText(
                       title: title,
-                      color: MyColors.grey,
+                      color: Colors.white70,
                       size: 11.5,
                     ),
                     Spacer(),

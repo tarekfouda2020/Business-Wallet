@@ -1307,7 +1307,7 @@ class CompanyHttpMethods {
       "lang": lang,
       "id": id,
     };
-    var _data = await DioHelper(context: context).get(
+    var _data = await DioHelper(context: context).post(
       url: '/Plans/RemoveBranch',
       body: body,
     );

@@ -67,8 +67,9 @@ class AddBranchData {
       var data = await CompanyRepository(context).addBranch(model);
       if (data != null) {
         var branCubit = context.read<BranchesCubit>();
-        branCubit.state.branches.add(data);
+        branCubit.state.branches.insert(0,data);
         branCubit.onUpdateData(branCubit.state.branches);
+        AutoRouter.of(context).pop();
       }
       btnKey.currentState!.animateReverse();
     }

@@ -13,6 +13,7 @@ class CompanyBranchesData{
     var result = await CompanyRepository(context).removeBranch(model.id);
     if (result) {
       branchesCubit.state.branches.remove(model);
+      branchesCubit.onUpdateData(branchesCubit.state.branches);
     }
   }
 

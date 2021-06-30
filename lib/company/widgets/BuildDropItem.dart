@@ -28,7 +28,7 @@ class BuildDropItem extends StatelessWidget {
               title: title,
               color: genericCubit.state.data
                   ? MyColors.primary
-                  : MyColors.greyWhite.withOpacity(.9),
+                  : Colors.white70,
               size: 12,
             ),
             Spacer(),

@@ -131,7 +131,7 @@ class BuildBranchItem extends StatelessWidget {
               ),
               SizedBox(width: 5),
               InkWell(
-                onTap: (){},
+                onTap: ()=> branchesData.removeBranch(context, model),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: Icon(Icons.close,size: 22,color: MyColors.primary,),
