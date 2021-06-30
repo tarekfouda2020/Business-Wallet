@@ -4,11 +4,13 @@ class BuildAnswerItem extends StatelessWidget {
   final CompOpinionSubscribeData compOpinionSubscribeData;
   final int index;
   final int position;
+  final AddOpinionQuestionsModel model;
 
   const BuildAnswerItem(
       {required this.compOpinionSubscribeData,
       required this.index,
-      required this.position});
+      required this.position,
+      required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class BuildAnswerItem extends StatelessWidget {
           flex: 3,
           child: LabelTextField(
             hint: "الاجابة",
-            controller: compOpinionSubscribeData.msg,
+            controller:model.answersNameController[position],
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
             margin: const EdgeInsets.symmetric(vertical: 15),

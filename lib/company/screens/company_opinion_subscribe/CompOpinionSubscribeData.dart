@@ -77,6 +77,10 @@ class CompOpinionSubscribeData {
   }
 
   removeAnswer(int index, int position) {
+    if (position == 0) {
+      return LoadingDialog.showCustomToast(
+          "يجب ان يكون هناك اجابة واحدة علي الاقل");
+    }
     addOpinionQuestionCubit.state.data[index].answersNameController
         .removeAt(position);
     addOpinionQuestionCubit.onUpdateData(addOpinionQuestionCubit.state.data);
@@ -297,10 +301,14 @@ class CompOpinionSubscribeData {
       addOpinionSubscribeModel.numberFamily = familyCubit.state.data;
       addOpinionSubscribeModel.ageGroup = ageCubit.state.data;
       addOpinionSubscribeModel.averageIncome = incomeCubit.state.data;
-      addOpinionSubscribeModel.mainCost = costCubit.state.data!.item1.toString();
-      addOpinionSubscribeModel.addedCost = costViewCubit.state.data!.item1.toString();
-      addOpinionSubscribeModel.mainPoints = costCubit.state.data!.item3.toString();
-      addOpinionSubscribeModel.addedPoints = costViewCubit.state.data!.item2.toString();
+      addOpinionSubscribeModel.mainCost =
+          costCubit.state.data!.item1.toString();
+      addOpinionSubscribeModel.addedCost =
+          costViewCubit.state.data!.item1.toString();
+      addOpinionSubscribeModel.mainPoints =
+          costCubit.state.data!.item3.toString();
+      addOpinionSubscribeModel.addedPoints =
+          costViewCubit.state.data!.item2.toString();
       addOpinionSubscribeModel.price = value.text;
       addOpinionSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;

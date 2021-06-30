@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/dots/LocationModel.dart';
+import 'package:base_flutter/company/screens/all_branches/AllBranchesImports.dart';
 import 'package:base_flutter/company/screens/company_account_reconciliation/CompAccountReconciliationImports.dart';
 import 'package:base_flutter/company/screens/company_barcode/CompanyBarcodeImports.dart';
 import 'package:base_flutter/company/screens/company_branches/CompanyBranchesImports.dart';

@@ -75,15 +75,7 @@ class BuildContactData extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: CachedImage(
-              url:
-                  "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-              width: MediaQuery.of(context).size.width,
-              height: 130,
-            ),
-          )
+          BuildImageMap(lat: detailsModel!.lat, lng: detailsModel!.lng)
         ],
       ),
     );

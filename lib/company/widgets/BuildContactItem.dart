@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:flutter/material.dart';
 
@@ -53,11 +55,14 @@ class BuildContactItem extends StatelessWidget {
               Visibility(
                 visible: allLocation,
                 child: Container(),
-                replacement: MyText(
-                  title: "(مشاهدة جميع المواقع)",
-                  size: 11,
-                  color: MyColors.primary,
-                  decoration: TextDecoration.underline,
+                replacement: InkWell(
+                  onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute()),
+                  child: MyText(
+                    title: "(مشاهدة جميع المواقع)",
+                    size: 11,
+                    color: MyColors.primary,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
               )
             ],

@@ -29,16 +29,16 @@ class CompanyRegisterInterestsData {
         subFieldCubit.state.data.addAll(all);
         subFieldCubit.onUpdateData(subFieldCubit.state.data);
       } else {
-        // subFieldCubit.state.data.where((e) => e.id == model.id);
-        //
-        // subFieldId = model.id;
-        // if (subFieldCubit.state.data[index].id == subFieldId) {
-        //   return LoadingDialog.showSimpleToast(
-        //       "لا يمكن اختيار نفس النشاط الفرعي");
-        // } else {
-        subFieldId = model.id;
-        subFieldCubit.state.data.add(model);
-        subFieldCubit.onUpdateData(subFieldCubit.state.data);
+        var exist =
+            subFieldCubit.state.data.where((e) => e.id == model.id).toList();
+        if (exist.length > 0) {
+          return LoadingDialog.showSimpleToast(
+              "لا يمكن اختيار نفس النشاط الفرعي");
+        } else {
+          subFieldId = model.id;
+          subFieldCubit.state.data.add(model);
+          subFieldCubit.onUpdateData(subFieldCubit.state.data);
+        }
       }
     }
   }

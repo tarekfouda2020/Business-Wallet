@@ -26,7 +26,7 @@ class BuildQuestionItem extends StatelessWidget {
                 flex: 3,
                 child: LabelTextField(
                   hint: "السؤال",
-                  controller: compOpinionSubscribeData.msg,
+                  controller: model.questionNameController,
                   action: TextInputAction.next,
                   type: TextInputType.emailAddress,
                   margin: const EdgeInsets.symmetric(vertical: 15),
@@ -72,6 +72,7 @@ class BuildQuestionItem extends StatelessWidget {
                   compOpinionSubscribeData: compOpinionSubscribeData,
                   index: index,
                   position: answerIndex,
+                  model: model,
                 );
               },
             ),

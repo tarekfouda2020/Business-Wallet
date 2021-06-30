@@ -75,6 +75,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyWalletNumb),
     AdaptiveRoute(page: CompanyStatistics),
     AdaptiveRoute(page: CompanyPoints),
+    AdaptiveRoute(page: AllBranches),
+
     CustomRoute(page: CompanySubscribe,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,

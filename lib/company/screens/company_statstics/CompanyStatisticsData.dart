@@ -21,8 +21,7 @@ class CompanyStatisticsData {
         AutoRouter.of(context).push(CompProductAdsRoute(adsId: id));
       }
       if (type == 3) {
-        AutoRouter.of(context).push(CompanyFavDetailsRoute(
-            adsId: id, checkInvite: false, showSendCard: 1, sendCard: 0));
+        AutoRouter.of(context).push(CompBusinessAdsRoute(adsId: id));
       }
     }
   }

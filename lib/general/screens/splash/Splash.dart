@@ -12,11 +12,11 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-    // Future.delayed(Duration(microseconds: 200));
-    Utils.manipulateSplashData(context);
+    Future.delayed((Duration(seconds: 1)), () {
+      Utils.manipulateSplashData(context);
+    });
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
