@@ -1301,6 +1301,23 @@ class CompanyHttpMethods {
     }
   }
 
+  Future<bool> removeBranch(int id) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "id": id,
+    };
+    var _data = await DioHelper(context: context).get(
+      url: '/Plans/RemoveBranch',
+      body: body,
+    );
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future<int?> addSubscribe(AddSubscribeModel model) async {
     var _data = await DioHelper(context: context).post(
       url: '/Plans/Announcementsentspecificcategory',
@@ -1351,5 +1368,6 @@ class CompanyHttpMethods {
       return false;
     }
   }
+
 
 }

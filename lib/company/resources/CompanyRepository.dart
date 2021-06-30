@@ -276,4 +276,6 @@ class CompanyRepository {
 
   Future<BranchModel?> addBranch(AddBranchModel model)=> _companyHttpMethods.addBranch(model);
 
+  Future<bool> removeBranch(int id)=> _companyHttpMethods.removeBranch(id);
+
 }

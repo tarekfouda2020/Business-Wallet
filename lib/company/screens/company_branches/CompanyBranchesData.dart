@@ -9,4 +9,11 @@ class CompanyBranchesData{
     branchesCubit.onUpdateData(data);
   }
 
+  removeBranch(BuildContext context, BranchModel model)async{
+    var result = await CompanyRepository(context).removeBranch(model.id);
+    if (result) {
+      branchesCubit.state.branches.remove(model);
+    }
+  }
+
 }

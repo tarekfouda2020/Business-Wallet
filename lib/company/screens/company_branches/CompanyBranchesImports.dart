@@ -1,3 +1,4 @@
+import 'package:base_flutter/company/models/branch_model.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
 import 'package:base_flutter/company/screens/company_branches/branches_cubit/branches_cubit.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';

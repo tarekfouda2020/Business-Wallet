@@ -2,8 +2,9 @@ part of 'CompanyBranchesWidgetImports.dart';
 
 class BuildBranchItem extends StatelessWidget {
   final BranchModel model;
+  final CompanyBranchesData branchesData;
 
-  const BuildBranchItem({required this.model});
+  const BuildBranchItem({required this.model, required this.branchesData});
 
   @override
   Widget build(BuildContext context) {
