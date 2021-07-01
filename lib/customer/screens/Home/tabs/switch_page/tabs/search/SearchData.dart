@@ -44,4 +44,25 @@ class SearchData {
   void selectType(FilterModel? model) {
     if (model != null) filterId = int.parse(model.id);
   }
+
+  Future<List<MainModel>> fetchMapData(BuildContext context,double lat,double lng , double zoom) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+    MapFilterModel model =new MapFilterModel(
+      lang: lang,
+      userId: userId,
+      id: fieldId.toString(),
+      searchId: filterId.toString(),
+      topRate: filterId.toString(),
+      lat: lat.toString(),
+      lng: lng.toString(),
+      text: search.text,
+      distance: Utils.determineDistance(zoom).toString(),
+    );
+    List<MainModel> data = await CustomerRepository(context).getMapProviders(model);
+    return data;
+  }
+
+
+
 }

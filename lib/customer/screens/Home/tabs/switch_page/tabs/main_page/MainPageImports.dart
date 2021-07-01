@@ -7,6 +7,7 @@ import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
+import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

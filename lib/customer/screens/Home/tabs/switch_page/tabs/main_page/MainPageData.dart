@@ -47,22 +47,13 @@ class MainPageData {
       topRate: filterId.toString(),
       lat: lat.toString(),
       lng: lng.toString(),
-      distance: determineDistance(zoom).toString(),
+      distance: Utils.determineDistance(zoom).toString(),
     );
     List<MainModel> data = await CustomerRepository(context)
         .getMapProviders(model);
     return data;
   }
 
-  double determineDistance(double zoom){
-    if (zoom>=12) {
-      return 1;
-    } else if (zoom>=8) {
-      return 5;
-    } else if (zoom>=6) {
-      return 10;
-    }
-    return 15;
-  }
+
 
 }

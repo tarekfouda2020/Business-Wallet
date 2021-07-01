@@ -1,5 +1,7 @@
 part of 'SearchImports.dart';
 
+
+
 class Search extends StatefulWidget {
   final Function()? onTap;
 
@@ -28,8 +30,8 @@ class _SearchState extends State<Search> {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  SearchView(searchData: searchData,),
-                  MapScreen(),
+                  SearchView(searchData: searchData),
+                  MapScreen(searchData: searchData),
                 ],
               ),
             ),

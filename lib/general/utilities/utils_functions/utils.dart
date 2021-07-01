@@ -352,6 +352,17 @@ class Utils {
     return first.addressLine;
   }
 
+  static double determineDistance(double zoom){
+    if (zoom>=12) {
+      return 1;
+    } else if (zoom>=8) {
+      return 5;
+    } else if (zoom>=6) {
+      return 10;
+    }
+    return 15;
+  }
+
   static String convertDigitsToLatin(String s) {
     var sb = new StringBuffer();
     for (int i = 0; i < s.length; i++) {
