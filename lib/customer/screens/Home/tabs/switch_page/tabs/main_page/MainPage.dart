@@ -26,9 +26,10 @@ class _MainPageState extends State<MainPage> {
             BuildChangeView(),
             Flexible(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   BuildMainPageView(mainPageData: mainPageData,),
-                  BuildMainPageView(mainPageData: mainPageData,),
+                  MapScreen(),
                 ],
               ),
             ),

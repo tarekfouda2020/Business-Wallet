@@ -28,7 +28,7 @@ class BuildProviderItem extends StatelessWidget {
         fit: BoxFit.fill,
         colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
         child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
@@ -41,7 +41,7 @@ class BuildProviderItem extends StatelessWidget {
                 boxShape: BoxShape.circle,
               ),
               SizedBox(
-                width: 10,
+                width: 5,
               ),
               Expanded(
                 child: Column(
@@ -52,7 +52,7 @@ class BuildProviderItem extends StatelessWidget {
                       title: checkFollow
                           ? followerModel!.name
                           : mainModel!.kayanName,
-                      size: 10,
+                      size: 8,
                       color: MyColors.white,
                     ),
                     Row(
@@ -63,7 +63,7 @@ class BuildProviderItem extends StatelessWidget {
                           ignoreGestures: true,
                           onRatingUpdate: (double val) {},
                           unratedColor: MyColors.white,
-                          itemSize: 12,
+                          itemSize: 10,
                           itemPadding: const EdgeInsets.symmetric(vertical: 7),
                           initialRating: checkFollow
                               ? followerModel!.rate
