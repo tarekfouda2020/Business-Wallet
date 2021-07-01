@@ -29,7 +29,7 @@ class _SearchState extends State<Search> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   SearchView(searchData: searchData,),
-                  SearchView(searchData: searchData,),
+                  MapScreen(),
                 ],
               ),
             ),

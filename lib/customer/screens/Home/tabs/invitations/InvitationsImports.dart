@@ -6,6 +6,7 @@ import 'package:base_flutter/customer/screens/Home/tabs/invitations/tabs/invitat
 import 'package:base_flutter/customer/screens/Home/tabs/invitations/widgets/InvWidgetsImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/main_page/widgets/MainPageWidgetsImports.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
+import 'package:base_flutter/customer/screens/map_screen/MapScreenImports.dart';
 import 'package:base_flutter/customer/screens/widgets/BuildFavoritesItem.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

@@ -22,13 +22,10 @@ class _FavoritesState extends State<Favorites> {
             BuildChangeView(),
             Flexible(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
-                  FavoritesView(
-                    favoritesData: favoritesData,
-                  ),
-                  FavoritesView(
-                    favoritesData: favoritesData,
-                  ),
+                  FavoritesView(favoritesData: favoritesData),
+                  MapScreen(),
                 ],
               ),
             ),

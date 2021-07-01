@@ -22,9 +22,10 @@ class _InvitationsState extends State<Invitations> {
             BuildChangeView(),
             Flexible(
               child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   InvitationView(invitationsData: invitationsData),
-                  InvitationView(invitationsData: invitationsData),
+                  MapScreen(),
                 ],
               ),
             ),
