@@ -1,6 +1,8 @@
 import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
+import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
+import 'package:base_flutter/customer/models/Dtos/MapFilterModel.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/favorite_model.dart';
 import 'package:base_flutter/customer/models/follower_model.dart';
@@ -113,6 +115,17 @@ class CustomerHomeMethods {
       context
           .read<WalletCountCubit>()
           .onUpdateCount(_data["walletNotify"] ?? 0);
+      return List<MainModel>.from(
+          _data['Kayans'].map((e) => MainModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+
+  Future<List<MainModel>> getMapProviders(MapFilterModel model) async {
+    var _data = await DioHelper(context: context)
+        .get(url: "/User/IndexAndSearchApi", body: model.toJson());
+    if (_data != null) {
       return List<MainModel>.from(
           _data['Kayans'].map((e) => MainModel.fromJson(e)));
     } else {

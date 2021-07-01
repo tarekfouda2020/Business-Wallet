@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:base_flutter/customer/models/Dtos/MapFilterModel.dart';
 import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
@@ -62,6 +63,9 @@ class CustomerRepository {
           int interestId, int filterId, bool refresh) =>
       _customerHomeMethods.getMainFiltered(
           pageIndex, cityId, interestId, filterId, refresh);
+
+  Future<List<MainModel>> getMapProviders(MapFilterModel model) =>
+      _customerHomeMethods.getMapProviders(model);
 
   Future<List<MainModel>> getMainSearched(int pageIndex, int searchId,
           int fieldId, String text, bool refresh) =>

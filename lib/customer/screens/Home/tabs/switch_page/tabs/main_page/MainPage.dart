@@ -28,8 +28,8 @@ class _MainPageState extends State<MainPage> {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  BuildMainPageView(mainPageData: mainPageData,),
-                  MapScreen(),
+                  BuildMainPageView(mainPageData: mainPageData),
+                  MapScreen(mainPageData: mainPageData),
                 ],
               ),
             ),
