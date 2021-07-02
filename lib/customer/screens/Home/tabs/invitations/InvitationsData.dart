@@ -27,4 +27,14 @@ class InvitationsData {
   void selectType(FilterModel? model) {
     if (model != null) filterId = model.id;
   }
+
+
+  Future<List<InvitationModel>> fetchMapPage(BuildContext context, {bool refresh = true}) async {
+    var data = await CustomerRepository(context)
+        .getInvitationData(1, 0, 0, filterId,refresh);
+    return data;
+  }
+
+
+
 }

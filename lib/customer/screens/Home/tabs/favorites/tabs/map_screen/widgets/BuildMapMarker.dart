@@ -1,10 +1,11 @@
 part of 'MapScreenWidgetImports.dart';
 
 class BuildMapMarker extends StatelessWidget {
-  final MainModel? mainModel;
-  final FollowerModel? followerModel;
-  final bool checkFollow;
-  const BuildMapMarker({this.mainModel, this.followerModel, this.checkFollow = false});
+  final String img;
+  final String name;
+
+  const BuildMapMarker({required this.img, required this.name});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,16 +22,14 @@ class BuildMapMarker extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             CachedImage(
-              url: checkFollow ? followerModel!.img : mainModel!.Img,
+              url: img,
               width: 45,
               height: 45,
               boxShape: BoxShape.circle,
               haveRadius: false,
             ),
             SizedBox(width: 5),
-            MyText(title: checkFollow
-                ? followerModel!.name
-                : mainModel!.kayanName, size: 12, color: MyColors.white,),
+            MyText(title: name, size: 12, color: MyColors.white,),
           ],
         ),
       ),

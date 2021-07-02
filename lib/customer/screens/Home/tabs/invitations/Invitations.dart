@@ -25,7 +25,7 @@ class _InvitationsState extends State<Invitations> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   InvitationView(invitationsData: invitationsData),
-                  MapScreen(),
+                  MapScreen(invitationsData: invitationsData),
                 ],
               ),
             ),

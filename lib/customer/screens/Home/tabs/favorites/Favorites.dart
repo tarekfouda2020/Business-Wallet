@@ -25,7 +25,7 @@ class _FavoritesState extends State<Favorites> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   FavoritesView(favoritesData: favoritesData),
-                  MapScreen(),
+                  MapScreen(favoritesData: favoritesData),
                 ],
               ),
             ),

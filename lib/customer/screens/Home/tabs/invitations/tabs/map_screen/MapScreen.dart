@@ -1,6 +1,10 @@
 part of 'MapScreenImports.dart';
 
+
 class MapScreen extends StatefulWidget {
+  final InvitationsData invitationsData ;
+
+  const MapScreen({required this.invitationsData});
   @override
   _MapScreenState createState() => _MapScreenState();
 }
@@ -12,14 +16,14 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    mapScreenData.fetchPage(context);
+    mapScreenData.getCurrentLocation(context,widget.invitationsData);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GenericCubit<List<Marker>>, GenericState<List<Marker>>>(
       bloc: mapScreenData.markersCubit,
-      builder: (context, state) {
+      builder: (_, state) {
         return GoogleMap(
           compassEnabled: true,
           myLocationEnabled: true,
@@ -27,25 +31,14 @@ class _MapScreenState extends State<MapScreen> {
           zoomControlsEnabled: true,
           zoomGesturesEnabled: true,
           initialCameraPosition:
-          CameraPosition(target: LatLng(24.76006327315991, 46.67399099468996), zoom: 8),
+          CameraPosition(target: LatLng(24.76006327315991, 46.67399099468996), zoom: 10),
           markers: state.data.toSet(),
           onMapCreated: mapScreenData.onMapCreated,
-          onCameraMove: (position) {
-            print("$position");
-          },
+          onCameraMove: (position) {},
         );
       },
     );
   }
-
-
-  @override
-  void dispose() {
-    mapScreenData.mapController.dispose();
-    mapScreenData.timer.cancel();
-    super.dispose();
-  }
-
 
 }
 

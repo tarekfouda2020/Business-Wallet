@@ -34,4 +34,10 @@ class FavoritesData {
   void selectType(FilterModel? model) {
     if (model != null) filterId = model.id;
   }
+
+  Future<List<FavoriteModel>> fetchMapPage(BuildContext context,{bool refresh=true}) async {
+    List<FavoriteModel> followerData = await CustomerRepository(context)
+        .getFavoriteData(1, cityId, interestId, filterId,refresh);
+    return followerData;
+  }
 }
