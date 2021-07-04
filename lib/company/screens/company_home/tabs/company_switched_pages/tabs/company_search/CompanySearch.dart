@@ -28,8 +28,12 @@ class _CompanySearchState extends State<CompanySearch> {
               child: TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  CompSearchMenu(companySearchData: companySearchData,),
-                  CompSearchMenu(companySearchData: companySearchData,),
+                  CompSearchMenu(
+                    companySearchData: companySearchData,
+                  ),
+                  MapScreen(
+                    searchData: companySearchData,
+                  )
                 ],
               ),
             ),

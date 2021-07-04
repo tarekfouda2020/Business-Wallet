@@ -31,6 +31,7 @@ import 'package:base_flutter/company/resources/CompanyHomeMethods.dart';
 import 'package:base_flutter/company/resources/CompanyHttpMethods.dart';
 import 'package:base_flutter/company/resources/CompanyStatisticsMethods.dart';
 import 'package:base_flutter/company/resources/CompanySubscribeMethods.dart';
+import 'package:base_flutter/customer/models/Dtos/MapFilterModel.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/conversation_model.dart';
@@ -90,6 +91,9 @@ class CompanyRepository {
 
   Future<List<AutoSearchModel>> getAutoSearch(String word) =>
       _companyHomeMethods.getAutoSearch(word);
+
+  Future<List<MainModel>> getMapProviders(MapFilterModel model) =>
+      _companyHomeMethods.getMapProviders(model);
 
   Future<List<MainModel>> getMainSearch(int pageIndex, int searchId,
           int fieldId, String text, bool refresh) =>

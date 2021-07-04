@@ -29,6 +29,8 @@ class _FavoriteMenuState extends State<FavoriteMenu> {
       ),
       pagingController: widget.companyFavoriteData.pagingController,
       builderDelegate: PagedChildBuilderDelegate<CompFavoriteModel>(
+        noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
+
         itemBuilder: (context, item, index) => BuildFavItem(
           favoriteModel: item,
         ),

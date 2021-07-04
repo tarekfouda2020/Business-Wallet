@@ -21,7 +21,7 @@ class _CompanyInvitationState extends State<CompanyInvitation> {
         body: TabBarView(
           children: [
             InvitationMenu(companyInvitationData: companyInvitationData,),
-            InvitationMenu(companyInvitationData: companyInvitationData,),
+            InvitationMap(companyInvitationData: companyInvitationData,),
           ],
         ),
       ),

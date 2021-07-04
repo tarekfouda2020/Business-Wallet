@@ -27,7 +27,9 @@ class _CompanyMainState extends State<CompanyMain> {
               child: TabBarView(
                 children: [
                   MainMenu(companyMainData: companyMainData),
-                  MainMenu(companyMainData: companyMainData),
+                  MapScreen(
+                    mainPageData: companyMainData,
+                  )
                 ],
               ),
             ),

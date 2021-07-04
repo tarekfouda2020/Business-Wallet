@@ -35,5 +35,23 @@ class CompanyMainData {
     if (model != null) filterId = int.parse(model.id);
   }
 
+  Future<List<MainModel>> fetchMapData(BuildContext context,double lat,double lng , double zoom) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    MapFilterModel model =new MapFilterModel(
+      lang: lang,
+      userId: userId,
+      cityId: cityId.toString(),
+      interests: interestId.toString(),
+      topRate: filterId.toString(),
+      type: "0",
+      lat: lat.toString(),
+      lng: lng.toString(),
+      distance: Utils.determineDistance(zoom).toString(),
+    );
+    List<MainModel> data = await CompanyRepository(context)
+        .getMapProviders(model);
+    return data;
+  }
 
 }

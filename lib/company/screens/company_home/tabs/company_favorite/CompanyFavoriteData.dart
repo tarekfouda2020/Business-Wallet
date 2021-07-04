@@ -2,17 +2,18 @@ part of 'CompanyFavoriteImports.dart';
 
 class CompanyFavoriteData {
   final PagingController<int, CompFavoriteModel> pagingController =
-  PagingController(firstPageKey: 1);
+      PagingController(firstPageKey: 1);
   int pageSize = 10;
   int cityId = 0;
   int interestId = 0;
 
-  void fetchPage(int pageIndex, BuildContext context,{bool refresh = true}) async {
+  void fetchPage(int pageIndex, BuildContext context,
+      {bool refresh = true}) async {
     List<CompFavoriteModel> followerData = await CompanyRepository(context)
-        .getFavoriteData(pageIndex, cityId, interestId,refresh);
+        .getFavoriteData(pageIndex, cityId, interestId, refresh);
     final isLastPage = followerData.length < pageSize;
-    if (pageIndex==1) {
-      pagingController.itemList=[];
+    if (pageIndex == 1) {
+      pagingController.itemList = [];
     }
     if (isLastPage) {
       pagingController.appendLastPage(followerData);
@@ -30,5 +31,10 @@ class CompanyFavoriteData {
     if (model != null) interestId = model.id;
   }
 
-
+  Future<List<CompFavoriteModel>> fetchMapPage(BuildContext context,
+      {bool refresh = true}) async {
+    List<CompFavoriteModel> followerData = await CompanyRepository(context)
+        .getFavoriteData(1, cityId, interestId, refresh);
+    return followerData;
+  }
 }

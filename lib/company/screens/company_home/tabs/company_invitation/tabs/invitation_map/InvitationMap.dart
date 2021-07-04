@@ -1,27 +1,27 @@
-part of 'FavoriteMapImports.dart';
+part of 'InvitationMapImports.dart';
 
-class FavoriteMap extends StatefulWidget {
-  final CompanyFavoriteData companyFavoriteData;
+class InvitationMap extends StatefulWidget {
+  final CompanyInvitationData companyInvitationData;
 
-  const FavoriteMap({required this.companyFavoriteData});
+  const InvitationMap({required this.companyInvitationData});
 
   @override
-  _FavoriteMapState createState() => _FavoriteMapState();
+  _InvitationMapState createState() => _InvitationMapState();
 }
 
-class _FavoriteMapState extends State<FavoriteMap> {
-  final FavoriteMapData favoriteMapData = new FavoriteMapData();
+class _InvitationMapState extends State<InvitationMap> {
+  final InvitationMapData invitationMapData = new InvitationMapData();
 
   @override
   void initState() {
     super.initState();
-    favoriteMapData.getCurrentLocation(context, widget.companyFavoriteData);
+    invitationMapData.getCurrentLocation(context, widget.companyInvitationData);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GenericCubit<List<Marker>>, GenericState<List<Marker>>>(
-      bloc: favoriteMapData.markersCubit,
+      bloc: invitationMapData.markersCubit,
       builder: (_, state) {
         return GoogleMap(
           compassEnabled: true,
@@ -32,7 +32,7 @@ class _FavoriteMapState extends State<FavoriteMap> {
           initialCameraPosition: CameraPosition(
               target: LatLng(24.76006327315991, 46.67399099468996), zoom: 10),
           markers: state.data.toSet(),
-          onMapCreated: favoriteMapData.onMapCreated,
+          onMapCreated: invitationMapData.onMapCreated,
           onCameraMove: (position) {},
         );
       },

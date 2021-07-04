@@ -5,10 +5,10 @@ class CompanySearchData {
   final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
 
   Future<List<AutoSearchModel>> fetchAutoSearch(
-      BuildContext context, String word,
-      ) async {
-    var autoSearch =
-        await CompanyRepository(context).getAutoSearch(word);
+    BuildContext context,
+    String word,
+  ) async {
+    var autoSearch = await CompanyRepository(context).getAutoSearch(word);
     return autoSearch;
   }
 
@@ -44,5 +44,26 @@ class CompanySearchData {
 
   void selectType(FilterModel? model) {
     if (model != null) filterId = int.parse(model.id);
+  }
+
+  Future<List<MainModel>> fetchMapData(
+      BuildContext context, double lat, double lng, double zoom) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    MapFilterModel model = new MapFilterModel(
+      lang: lang,
+      userId: userId,
+      id: fieldId.toString(),
+      searchId: filterId.toString(),
+      topRate: filterId.toString(),
+      lat: lat.toString(),
+      lng: lng.toString(),
+      type: "0",
+      text: search.text,
+      distance: Utils.determineDistance(zoom).toString(),
+    );
+    List<MainModel> data =
+        await CompanyRepository(context).getMapProviders(model);
+    return data;
   }
 }

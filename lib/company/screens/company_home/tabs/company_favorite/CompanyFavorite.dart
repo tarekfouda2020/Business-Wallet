@@ -22,7 +22,7 @@ class _CompanyFavoriteState extends State<CompanyFavorite> {
               child: TabBarView(
                 children: [
                   FavoriteMenu(companyFavoriteData: companyFavoriteData),
-                  FavoriteMenu(companyFavoriteData: companyFavoriteData)
+                  FavoriteMap(companyFavoriteData: companyFavoriteData)
                 ],
               ),
             ),
