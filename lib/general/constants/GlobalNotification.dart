@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
@@ -14,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class GlobalNotification {
   static StreamController<Map<String, dynamic>> _onMessageStreamController =
   StreamController.broadcast();
-
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
   late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
   static late BuildContext context;
   static GlobalNotification instance = new GlobalNotification._();
@@ -25,6 +26,10 @@ class GlobalNotification {
 
   setupNotification(BuildContext cxt)async{
     context = cxt;
+    setAndroidConfiguration();
+  }
+
+  setAndroidConfiguration()async{
     _flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
     var android = new AndroidInitializationSettings("@mipmap/launcher_icon");
     var ios = new IOSInitializationSettings();
@@ -34,7 +39,7 @@ class GlobalNotification {
       onSelectNotification: flutterNotificationClick,
     );
     FirebaseMessaging messaging = FirebaseMessaging.instance;
-    NotificationSettings settings = await messaging.requestPermission(provisional: true);
+    NotificationSettings settings = await messaging.requestPermission(sound: true,badge: true,alert: true,provisional: false);
     print('User granted permission: ${settings.authorizationStatus}');
     if(settings.authorizationStatus==AuthorizationStatus.authorized){
       messaging.getToken().then((token) {
@@ -81,6 +86,7 @@ class GlobalNotification {
     }else if(type==24){
       context.read<WalletCountCubit>().onIncreaseCount();
     }
+    if (Platform.isIOS) return;
 
     var android = AndroidNotificationDetails(
       "${DateTime.now()}",
