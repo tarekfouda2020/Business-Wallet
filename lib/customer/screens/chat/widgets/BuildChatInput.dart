@@ -21,7 +21,7 @@ class BuildChatInput extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         hint: "اكتب رسالتك هنا",
         action: TextInputAction.newline,
-        // submit: () => chatsData.sendChatMessage(receiverId, orderId, context),
+        submit: () => chatsData.setSendMsg(context, senderId, receiverId),
       ),
     );
   }

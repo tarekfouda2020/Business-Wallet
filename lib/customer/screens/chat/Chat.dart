@@ -23,6 +23,7 @@ class _ChatState extends State<Chat> {
     chatData.pagingController.addPageRequestListener((pageKey) {
       chatData.fetchData(context, widget.senderId, widget.receiverId, pageKey);
     });
+    chatData.streamListener(context, mounted, widget.receiverId);
     super.initState();
   }
 

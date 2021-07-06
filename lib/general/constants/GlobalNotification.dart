@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
@@ -13,10 +12,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GlobalNotification {
-  static StreamController<Map<String, dynamic>> _onMessageStreamController =
+  static StreamController<RemoteMessage> _onMessageStreamController =
   StreamController.broadcast();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
+  static late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
   static late BuildContext context;
   static GlobalNotification instance = new GlobalNotification._();
 
@@ -54,8 +53,10 @@ class GlobalNotification {
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         print("_____________________Message data:${message.data}");
         print("_____________________notification:${message.notification?.title}");
-        _showLocalNotification(message);
-        _onMessageStreamController.add(message.data);
+        _onMessageStreamController.add(message);
+        if (int.parse(message.data["type"]??"0") != 1) {
+          showLocalNotification(message);
+        }
         if (int.parse(message.data["type"]??"0") == -1) {
           Utils.clearSavedData();
           AutoRouter.of(context).push(LoginRoute());
@@ -75,11 +76,11 @@ class GlobalNotification {
     flutterNotificationClick(json.encode(message.data));
   }
 
-  StreamController<Map<String, dynamic>> get notificationSubject {
+  StreamController<RemoteMessage> get notificationSubject {
     return _onMessageStreamController;
   }
 
-  _showLocalNotification(RemoteMessage? message) async {
+  static showLocalNotification(RemoteMessage? message) async {
     if (message == null) return;
 
     int type = int.parse("${message.data["type"]??"0"}");
@@ -112,5 +113,6 @@ class GlobalNotification {
 
     // int _type = int.parse(_data["type"] ?? "4");
   }
+
 
 }

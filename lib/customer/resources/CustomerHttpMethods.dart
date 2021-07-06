@@ -332,6 +332,25 @@ class CustomerHttpMethods {
     }
   }
 
+  Future<bool> sendMessage(String sender, String receiver, String msg) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "Sender_id": sender,
+      "reciver_id": receiver,
+      "msg": msg,
+      "lang": lang
+    };
+    var _data = await DioHelper(context: context).post(
+        url: "/ChatApi/SendPushMsg",
+        body: body,
+        showLoader: false);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   Future<List<ConversationModel>> getConversation(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
