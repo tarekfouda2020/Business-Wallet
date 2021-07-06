@@ -90,8 +90,6 @@ class GlobalNotification {
     }else if(type==24){
       context.read<WalletCountCubit>().onIncreaseCount();
     }
-    if (Platform.isIOS) return;
-
     var android = AndroidNotificationDetails(
       "${DateTime.now()}",
       "${message.notification?.title}",
