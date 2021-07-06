@@ -38,14 +38,18 @@ class GlobalNotification {
       initSettings,
       onSelectNotification: flutterNotificationClick,
     );
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
     NotificationSettings settings = await messaging.requestPermission(sound: true,badge: true,alert: true,provisional: false);
     print('User granted permission: ${settings.authorizationStatus}');
     if(settings.authorizationStatus==AuthorizationStatus.authorized){
       messaging.getToken().then((token) {
         print(token);
       });
-      messaging.setForegroundNotificationPresentationOptions(alert: true,badge: true,sound: true);
+      await messaging.setForegroundNotificationPresentationOptions(
+        alert: false, // Required to display a heads up notification
+        badge: false,
+        sound: false,
+      );
       // messaging.getInitialMessage().then((message) => _showLocalNotification(message));
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         print("_____________________Message data:${message.data}");
@@ -106,9 +110,9 @@ class GlobalNotification {
 
   static Future flutterNotificationClick(String? payload) async {
     print("tttttttttt $payload");
-    var _data = json.decode("$payload");
+    // var _data = json.decode("$payload");
 
-    int _type = int.parse(_data["type"] ?? "4");
+    // int _type = int.parse(_data["type"] ?? "4");
   }
 
 }
