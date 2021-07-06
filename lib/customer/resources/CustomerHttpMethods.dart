@@ -1,27 +1,17 @@
-import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/company_model.dart';
-import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
-import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
-import 'package:base_flutter/customer/models/auto_search_model.dart';
+import 'package:base_flutter/customer/models/MessageModel.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/conversation_model.dart';
 import 'package:base_flutter/customer/models/customer_model.dart';
-import 'package:base_flutter/customer/models/favorite_model.dart';
-import 'package:base_flutter/customer/models/follower_model.dart';
-import 'package:base_flutter/customer/models/investment_ads_model.dart';
-import 'package:base_flutter/customer/models/invitation_model.dart';
-import 'package:base_flutter/customer/models/main_details_model.dart';
-import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/profile_comments_model.dart';
 import 'package:base_flutter/customer/models/reconciliation_data_model.dart';
-import 'package:base_flutter/customer/models/specific_ads_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/customer/models/wallet_details_model.dart';
 import 'package:base_flutter/customer/models/wallet_model.dart';
@@ -355,6 +345,22 @@ class CustomerHttpMethods {
     if (_data != null) {
       return List<ConversationModel>.from(
           _data['data'].map((e) => ConversationModel.fromJson(e)));
+    } else {
+      return [];
+    }
+  }
+  Future<List<MessageModel>> getChatMessages(String sender , String receiver, int pageNumber) async {
+    var lang = context.read<LangCubit>().state.locale.languageCode;
+    Map<String, dynamic> body = {
+      "lang": lang,
+      "SenderId": sender,
+      "ReceiverId": receiver,
+    };
+    var _data = await DioHelper(context: context,)
+        .get(url: "/ChatApi/GetAllMessageBetweenTwoUser", body: body);
+    if (_data != null) {
+      return List<MessageModel>.from(
+          _data['data'].map((e) => MessageModel.fromJson(e)));
     } else {
       return [];
     }

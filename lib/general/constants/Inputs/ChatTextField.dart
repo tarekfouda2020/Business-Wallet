@@ -9,7 +9,8 @@ import 'CustomInputTextStyle.dart';
 
 class ChatTextField extends StatelessWidget {
   final TextEditingController controller;
-  final String label;
+  final String? label;
+  final String? hint;
   final EdgeInsets? margin;
   final TextInputType? type;
   final Widget? icon;
@@ -20,7 +21,8 @@ class ChatTextField extends StatelessWidget {
   final Function()? submit;
 
   ChatTextField({
-    required this.label,
+    this.label,
+    this.hint,
     required this.controller,
     this.margin,
     this.type,

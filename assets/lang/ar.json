@@ -343,7 +343,9 @@
   "finishChat": "انهاء المحادثة",
   "travelCityDestination": "المدينة المراد السفر إليها",
   "noOffers": "لا توجد عروض",
-  "travelDestinationCountry": "الدولة المراد السفر اليها"
+  "travelDestinationCountry": "الدولة المراد السفر اليها",
+  "noMessages": "لايوجد رسائل",
+  "sendFirstMsg": "ارسل رسالتك الاولي"
 }
 
 

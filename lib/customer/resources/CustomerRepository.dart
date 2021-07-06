@@ -5,6 +5,7 @@ import 'package:base_flutter/customer/models/Dtos/UpdateCustomerModel.dart';
 import 'package:base_flutter/customer/models/Dtos/drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/Dtos/register_model.dart';
+import 'package:base_flutter/customer/models/MessageModel.dart';
 import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/conversation_model.dart';
@@ -179,4 +180,7 @@ class CustomerRepository {
 
   Future<List<ConversationModel>> getConversation(bool refresh) =>
       _customerHttpMethods.getConversation(refresh);
+
+  Future<List<MessageModel>> getChatMessages(String sender , String receiver, int pageNumber) =>
+      _customerHttpMethods.getChatMessages(sender,receiver,pageNumber);
 }

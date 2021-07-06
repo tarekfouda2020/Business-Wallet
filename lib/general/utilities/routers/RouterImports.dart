@@ -40,6 +40,7 @@ import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.d
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
 import 'package:base_flutter/customer/screens/account_reconciliation/AccountReconciliationImports.dart';
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart';
+import 'package:base_flutter/customer/screens/chat/ChatImports.dart';
 import 'package:base_flutter/customer/screens/comments/CommentsImports.dart';
 import 'package:base_flutter/customer/screens/conversation/ConversationImports.dart';
 import 'package:base_flutter/customer/screens/details/DetailsImports.dart';
