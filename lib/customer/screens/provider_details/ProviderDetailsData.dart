@@ -104,4 +104,35 @@ class ProviderDetailsData {
       }
     }
   }
+
+  showEditDialog(BuildContext context, ProviderDetailsData providerDetailsData,
+      String kayanId, int commentId) {
+    ModalHelper.showModal(
+      context: context,
+      title: "تعديل",
+      content: BuildEditDialog(
+        providerDetailsData: providerDetailsData,
+        kayanId: kayanId,
+        commentId: commentId,
+      ),
+    );
+  }
+
+  showReportDialog(
+      BuildContext context,
+      ProviderDetailsData providerDetailsData,
+      String kayanId,
+      int commentId,
+      String ownerId) {
+    ModalHelper.showModal(
+      context: context,
+      title: "ابلاغ",
+      content: BuildReportDialog(
+        providerDetailsData: providerDetailsData,
+        commentId: commentId,
+        kayanId: kayanId,
+        ownerId: ownerId,
+      ),
+    );
+  }
 }

@@ -41,3 +41,5 @@ part 'BuildCommentsInfo.dart';
 part 'BuildCommentField.dart';
 part 'BuildProviderDescription.dart';
 part 'BuildRateApp.dart';
+part 'BuildEditDialog.dart';
+part 'BuildReportDialog.dart';

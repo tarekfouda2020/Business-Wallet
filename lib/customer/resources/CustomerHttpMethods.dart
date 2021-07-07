@@ -340,7 +340,7 @@ class CustomerHttpMethods {
       "lang": lang
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/ChatApi/SendPushMsg", body: body, showLoader: false);
+        .get(url: "/ChatApi/SendPushMsg", body: body);
     if (_data != null) {
       return true;
     } else {
