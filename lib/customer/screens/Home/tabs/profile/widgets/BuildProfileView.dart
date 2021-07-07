@@ -74,7 +74,8 @@ class BuildProfileView extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
+          SizedBox(height: 100),
         ],
       ),
     );

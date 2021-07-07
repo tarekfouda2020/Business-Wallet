@@ -14,43 +14,48 @@ class BuildMainHeader extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
-          Container(
-            height: 130,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Res.bgheader),
-                fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(
-                  Colors.white24,
-                  BlendMode.softLight,
+          AppBar(
+            flexibleSpace: Container(
+              height: 130,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(Res.bgheader),
+                  fit: BoxFit.fill,
+                  colorFilter: ColorFilter.mode(
+                    Colors.white24,
+                    BlendMode.softLight,
+                  ),
                 ),
               ),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  title == null
+                      ? IconButton(
+                    onPressed: searchOnTap,
+                    icon: Icon(
+                      Icons.search,
+                      size: 30,
+                      color: MyColors.white,
+                    ),
+                  )
+                      : MyText(
+                    title: title ?? "",
+                    size: 14,
+                    color: MyColors.white,
+                  ),
+                  Image.asset(
+                    Res.logo,
+                    height: 40,
+                  ),
+                ],
+              ),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                title == null
-                    ? IconButton(
-                        onPressed: searchOnTap,
-                        icon: Icon(
-                          Icons.search,
-                          size: 30,
-                          color: MyColors.white,
-                        ),
-                      )
-                    : MyText(
-                        title: title ?? "",
-                        size: 14,
-                        color: MyColors.white,
-                      ),
-                Image.asset(
-                  Res.logo,
-                  height: 40,
-                ),
-              ],
-            ),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
           ),
           Positioned(
             bottom: 0,

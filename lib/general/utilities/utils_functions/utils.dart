@@ -302,6 +302,45 @@ class Utils {
       {required String lat,
       required String lng,
       required BuildContext context}) async {
+
+    try {
+      final coords = Coords(double.parse(lat), double.parse(lng));
+      final title = "Destination";
+      final availableMaps = await MapLauncher.installedMaps;
+
+      showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                child: Wrap(
+                  children: <Widget>[
+                    for (var map in availableMaps)
+                      ListTile(
+                        onTap: () => map.showMarker(
+                          coords: coords,
+                          title: title,
+                        ),
+                        title: Text(map.mapName),
+                        leading: SvgPicture.asset(
+                          map.icon,
+                          height: 30.0,
+                          width: 30.0,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      );
+    } catch (e) {
+      LoadingDialog.showSimpleToast("$e");
+    }
+
+
     final availableMaps = await MapLauncher.installedMaps;
     LocationData? loc = await getCurrentLocation();
     if (availableMaps.length > 0 && loc != null) {
@@ -311,8 +350,7 @@ class Utils {
         destination: Coords(double.parse(lat), double.parse(lng)),
       );
     } else {
-      LoadingDialog.showSimpleToast(
-          "قم بتحميل خريطة جوجل"); //"قم بتحميل خريطة جوجل");
+      LoadingDialog.showSimpleToast("قم بتحميل خريطة جوجل");
     }
   }
 

@@ -20,7 +20,7 @@ class _ProfileState extends State<Profile> {
             buttonText: "الصفحة الشخصية",
             onTap: ()=> AutoRouter.of(context).push(ProfilePageRoute()),
           ),
-          BuildProfileView()
+          BuildProfileView(),
         ],
       ),
     );

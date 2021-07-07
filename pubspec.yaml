@@ -78,6 +78,7 @@ dependencies:
   video_player: ^2.1.6
   animations: ^2.0.0
   map: ^1.0.0
+  flutter_svg: ^0.22.0
 
 
 
