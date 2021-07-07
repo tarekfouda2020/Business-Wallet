@@ -9,6 +9,7 @@ import 'package:base_flutter/customer/models/comment_model.dart';
 import 'package:base_flutter/customer/models/details_model.dart';
 import 'package:base_flutter/customer/models/main_details_model.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/RichTextFiled.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';

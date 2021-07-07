@@ -42,9 +42,11 @@ class ProviderDetailsData {
   }
 
   void addRate(BuildContext context, String kayanId, int rate) async {
-    await CustomerRepository(context)
-        .addRate(rate, kayanId)
-        .then((value) => fetchData(context, kayanId));
+    rateCubit.onUpdateData(rate);
+    await CustomerRepository(context).addRate(rate, kayanId).then((value) {
+      fetchData(context, kayanId);
+      rateCubit.onUpdateData(0);
+    });
   }
 
   void setImage() async {

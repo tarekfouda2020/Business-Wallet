@@ -13,7 +13,7 @@ class CommentsData {
   final GenericCubit<List<ProfileCommentsModel>> commentsCubit =
       new GenericCubit([]);
 
-  void fetchData(BuildContext context,{bool refresh=true}) async {
+  void fetchData(BuildContext context, {bool refresh = true}) async {
     var data = await CustomerRepository(context).getProfileComments(refresh);
     commentsCubit.onUpdateData(data);
   }
@@ -44,5 +44,22 @@ class CommentsData {
       rateCubit.onUpdateData(0);
       fetchData(context);
     });
+  }
+
+  showEditDialog(BuildContext context, CommentsData commentsData,
+      String kayanId, int commentId,int index) {
+    CustomerRepository(context).getProfileComments(false).then((data) {
+      commentsCubit.onUpdateData(data);
+    });
+    ModalHelper.showModal(
+      context: context,
+      title: "تعديل",
+      content: BuildEditDialog(
+        commentsData: commentsData,
+        kayanId: kayanId,
+        index: index,
+        commentId: commentId,
+      ),
+    );
   }
 }

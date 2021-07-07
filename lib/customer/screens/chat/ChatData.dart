@@ -55,6 +55,7 @@ class ChatData{
       chatList.insert(0, MessageModel(senderId: sender,date: date,text: msgInput.text));
       pagingController.itemList = [];
       pagingController.itemList = chatList;
+      msgInput.clear();
     }
   }
 

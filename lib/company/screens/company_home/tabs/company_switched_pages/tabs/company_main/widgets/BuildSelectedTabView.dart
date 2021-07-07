@@ -6,6 +6,8 @@ class BuildSelectedTabView extends StatelessWidget {
   const BuildSelectedTabView({required this.companyMainData}) ;
   @override
   Widget build(BuildContext context) {
+    String userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
     return Row(
       children: <Widget>[
         Flexible(
@@ -24,7 +26,7 @@ class BuildSelectedTabView extends StatelessWidget {
             validate: (UserInterestModel value) => value.validateDropDown(context),
             useName: true,
             finData: (filter) async =>
-            await CustomerRepository(context).getInterest(),
+            await CustomerRepository(context).getInterest(userId),
             onChange: (UserInterestModel value) => companyMainData.onSelectInterest(value),
           ),
         ),

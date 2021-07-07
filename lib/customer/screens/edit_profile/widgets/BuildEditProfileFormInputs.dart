@@ -181,6 +181,7 @@ class BuildEditProfileFormInputs extends StatelessWidget {
             BlocConsumer<GenericCubit<String>, GenericState<String>>(
               bloc: editProfileData.educationCubit,
               listener: (_, state) {
+                print("================> ${state.data}");
                 editProfileData.educationLevel.text = EducationModel()
                     .education
                     .firstWhere((e) => e.id == state.data)

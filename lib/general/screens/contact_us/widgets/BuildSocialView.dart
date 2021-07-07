@@ -26,7 +26,7 @@ class BuildSocialView extends StatelessWidget {
                 ),
                 BuildSocialItem(
                   iconData: MdiIcons.whatsapp,
-                  onTap: () => Utils.launchWhatsApp(state.data!.whatsup),
+                  onTap: () => Utils.launchURL(url: state.data!.whatsup),
                 ),
                 BuildSocialItem(
                   iconData: MdiIcons.twitter,

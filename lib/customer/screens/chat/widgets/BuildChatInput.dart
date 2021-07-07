@@ -15,7 +15,7 @@ class BuildChatInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 20),
-      color: MyColors.primary,
+      color: MyColors.secondary,
       child: ChatTextField(
         controller: chatsData.msgInput,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

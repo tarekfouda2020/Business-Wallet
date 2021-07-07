@@ -7,8 +7,8 @@ class ImportantData {
       new GenericCubit([]);
   final GenericCubit<IntroModel?> introCubit = new GenericCubit(null);
 
-  void fetchData(BuildContext context) async {
-    var data = await CustomerRepository(context).getInterest();
+  void fetchData(BuildContext context,String userId) async {
+    var data = await CustomerRepository(context).getInterest(userId);
     data.insert(0, UserInterestModel(id: 0, name: "الكل", choose: false));
     interestCubit.onUpdateData(data);
   }

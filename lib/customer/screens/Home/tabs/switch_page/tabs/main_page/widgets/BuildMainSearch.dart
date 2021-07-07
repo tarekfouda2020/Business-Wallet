@@ -7,6 +7,8 @@ class BuildMainSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -26,7 +28,7 @@ class BuildMainSearch extends StatelessWidget {
             validate: (UserInterestModel value) => value.validateDropDown(context),
             useName: true,
             finData: (filter) async =>
-                await CustomerRepository(context).getInterest(),
+                await CustomerRepository(context).getInterest(userId),
             onChange: (UserInterestModel value) => mainPageData.onSelectInterest(value),
           ),
         ),

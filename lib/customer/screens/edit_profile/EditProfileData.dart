@@ -8,11 +8,11 @@ class EditProfileData {
 
   final GenericCubit<String> dateCubit = GenericCubit("");
   final GenericCubit<File?> imageCubit = new GenericCubit(null);
-  final GenericCubit<String> genderCubit = new GenericCubit("m");
-  final GenericCubit<String> incomeCubit = new GenericCubit("1-10000");
-  final GenericCubit<String> livingCubit = new GenericCubit("سكن مشترك");
-  final GenericCubit<String> familyCubit = new GenericCubit("1-4");
-  final GenericCubit<String> educationCubit = new GenericCubit("ثانوي");
+  final GenericCubit<String> genderCubit = new GenericCubit("");
+  final GenericCubit<String> incomeCubit = new GenericCubit("");
+  final GenericCubit<String> livingCubit = new GenericCubit("");
+  final GenericCubit<String> familyCubit = new GenericCubit("");
+  final GenericCubit<String> educationCubit = new GenericCubit("");
 
   final TextEditingController name = new TextEditingController();
   final TextEditingController email = new TextEditingController();
@@ -25,7 +25,6 @@ class EditProfileData {
   final TextEditingController familyMembers = new TextEditingController();
   final TextEditingController averageSalary = new TextEditingController();
   CitiesModel? cityId;
-
 
   final TextEditingController gender = new TextEditingController();
 
@@ -62,17 +61,23 @@ class EditProfileData {
 
   seInitialData(BuildContext context) {
     var user = context.read<UserCubit>().state.model.customerModel;
-    print("__________${user!.educationLevel}");
-    name.text = user.userName!;
+    name.text = user!.userName!;
     email.text = user.email!;
     phone.text = user.phoneNumber!;
     cityId = CitiesModel(fkCountry: 3, id: user.fkCity!, name: user.cityName!);
-    gender.text = (user.genderUser!) == "f" ? "انثي" : "ذكر";
-    birthDate.text = user.birthDateUser!;
-    living.text = user.accommodationType ?? "";
-    educationLevel.text = user.educationLevel ?? "";
-    familyMembers.text = user.numFamily ?? "";
-    averageSalary.text = user.averageIncomePerYear ?? "";
+    genderCubit.onUpdateData(user.genderUser??"");
+    dateCubit.onUpdateData(user.birthDateUser??"");
+    livingCubit.onUpdateData(user.accommodationType??"");
+    educationCubit.onUpdateData(user.educationLevel??"");
+    familyCubit.onUpdateData(user.numFamily??"");
+    incomeCubit.onUpdateData(user.averageIncomePerYear??"");
+    gender.text= user.genderUser=="f"?"انثي":"ذكر";
+    birthDate.text= user.birthDateUser??"";
+    living.text= user.accommodationType??"";
+    educationLevel.text= user.educationLevel??"";
+    familyMembers.text= user.numFamily??"";
+    averageSalary.text= user.averageIncomePerYear??"";
+
   }
 
   setImage() async {

@@ -51,8 +51,8 @@ class CustomerRepository {
   Future<List<FieldDropDownModel>> getFields() =>
       _customerHttpMethods.getFields();
 
-  Future<List<UserInterestModel>> getInterest() =>
-      _customerHttpMethods.getInterest();
+  Future<List<UserInterestModel>> getInterest(String userId) =>
+      _customerHttpMethods.getInterest(userId);
 
   Future<bool> saveInterest(String items, String userId) =>
       _customerHttpMethods.saveInterest(items, userId);

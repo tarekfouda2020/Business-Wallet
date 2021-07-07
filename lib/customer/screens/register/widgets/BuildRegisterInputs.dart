@@ -51,7 +51,7 @@ class BuildRegisterInputs extends StatelessWidget {
                     hint: "رقم الجوال",
                     controller: registerData.phone,
                     type: TextInputType.number,
-                    validate: (value) => value!.validatePhone(context),
+                    validate: (value) => value!.noValidate(),
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     action: TextInputAction.next,
                   ),

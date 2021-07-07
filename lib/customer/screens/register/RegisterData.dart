@@ -53,7 +53,7 @@ class RegisterData {
   final GenericCubit<IntroModel?> introCubit = new GenericCubit(null);
 
   void fetchIntro(BuildContext context, {bool refresh = true}) async {
-    var data= await GeneralRepository(context).getIntro(refresh: refresh);
+    var data = await GeneralRepository(context).getIntro(refresh: refresh);
     introCubit.onUpdateData(data);
   }
 
@@ -61,6 +61,20 @@ class RegisterData {
     FocusScope.of(context).requestFocus(FocusNode());
 
     if (formKey.currentState!.validate()) {
+      if (phone.text == "") {
+        LoadingDialog.showSimpleToast("من فضلك ادخل رقم الجوال");
+        return;
+      } else if (!RegExp(
+              r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)')
+          .hasMatch(phone.text)) {
+        LoadingDialog.showSimpleToast("    من فضلك ادخل الجوال صحيحا");
+        return;
+      } else if (phone.text.length != 10) {
+        LoadingDialog.showSimpleToast(
+            "من فضلك رقم الجوال يجب ان يكون 10 ارقام");
+        return;
+      }
+
       if (!termsCubit.state.data) {
         LoadingDialog.showSimpleToast("هل وافقت علي الشروط والاحكام");
         return;

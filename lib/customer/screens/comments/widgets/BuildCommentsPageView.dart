@@ -3,9 +3,9 @@ part of 'CommentsWidgetsImports.dart';
 class BuildCommentsPageView extends StatelessWidget {
   final ProfileCommentsModel comments;
   final CommentsData commentsData;
-
+final int index;
   const BuildCommentsPageView(
-      {required this.comments, required this.commentsData});
+      {required this.comments, required this.commentsData,required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,8 @@ class BuildCommentsPageView extends StatelessWidget {
                 enabled: true,
                 onSelected: (int value) {
                   if (value == 0) {
-                    buildEditComment(context, comments.commentId);
+                    commentsData.showEditDialog(context, commentsData,
+                        comments.kayanId, comments.commentId,index);
                   } else {
                     commentsData.deleteComment(context, comments.commentId);
                   }
@@ -116,95 +117,28 @@ class BuildCommentsPageView extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () => AutoRouter.of(context).push(
-                  ImageZoomRoute(
-                    images: [comments.commentImg],
+              Visibility(
+                visible: comments.commentImg == "",
+                replacement: InkWell(
+                  onTap: () => AutoRouter.of(context).push(
+                    ImageZoomRoute(
+                      images: [comments.commentImg],
+                    ),
+                  ),
+                  child: CachedImage(
+                    url: comments.commentImg,
+                    haveRadius: false,
+                    borderColor: MyColors.greyWhite,
+                    height: 70,
+                    width: 70,
                   ),
                 ),
-                child: CachedImage(
-                  url: comments.commentImg,
-                  haveRadius: false,
-                  borderColor: MyColors.greyWhite,
-                  height: 70,
-                  width: 70,
-                ),
+                child: Container(),
               )
             ],
           ),
         ],
       ),
-    );
-  }
-
-  void buildEditComment(BuildContext context, int commentId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyText(
-                title: "تعديل التعليق",
-                color: MyColors.primary,
-                size: 14,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              BlocBuilder<GenericCubit<int>, GenericState<int>>(
-                bloc: commentsData.rateCubit,
-                builder: (context, state) {
-                  return Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(vertical: 15),
-                    child: RatingBar.builder(
-                      initialRating: state.data.toDouble(),
-                      minRating: 0,
-                      direction: Axis.horizontal,
-                      allowHalfRating: false,
-                      updateOnDrag: false,
-                      itemCount: 5,
-                      itemSize: 25,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) =>
-                          commentsData.rateCubit.onUpdateData(rating.toInt()),
-                    ),
-                  );
-                },
-              ),
-              RichTextFiled(
-                hint: "الرسالة",
-                max: 3,
-                fillColor: MyColors.greyWhite,
-                controller: commentsData.newComment,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                action: TextInputAction.done,
-                validate: (value) => value!.validateEmpty(context),
-              ),
-              LoadingButton(
-                btnKey: commentsData.btnKey,
-                title: "ابلاغ",
-                color: MyColors.primary,
-                onTap: () => commentsData.editComment(
-                    context, comments.kayanId, commentId),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

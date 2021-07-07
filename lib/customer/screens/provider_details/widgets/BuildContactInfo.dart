@@ -9,6 +9,7 @@ class BuildContactInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var senderId = context.read<UserCubit>().state.model.customerModel!.userId;
     return BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
       bloc: providerDetailsData.contactCubit,
       builder: (context, state) {
@@ -48,7 +49,7 @@ class BuildContactInfo extends StatelessWidget {
                             ),
                             BuildContactWidget(
                               title: "البريد الالكتروني",
-                              detail:detailsModel!.email == ""
+                              detail: detailsModel!.email == ""
                                   ? "لا يوجد"
                                   : detailsModel!.email,
                               icon: Icons.mail_sharp,
@@ -78,7 +79,13 @@ class BuildContactInfo extends StatelessWidget {
                               detail: "اجراء محادثة",
                               icon: Icons.message,
                               iconColor: Colors.yellow,
-
+                              onTap: () => AutoRouter.of(context).push(
+                                ChatRoute(
+                                  senderId: senderId,
+                                  receiverName: detailsModel!.kayanName,
+                                  receiverId: detailsModel!.kayanId,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -94,11 +101,10 @@ class BuildContactInfo extends StatelessWidget {
                         icon: Icons.location_on,
                         iconColor: Colors.red,
                         allLocation: false,
-
                       ),
                     ),
-                    BuildImageMap(lat: detailsModel!.lat, lng: detailsModel!.lng)
-
+                    BuildImageMap(
+                        lat: detailsModel!.lat, lng: detailsModel!.lng)
                   ],
                 ),
               ),

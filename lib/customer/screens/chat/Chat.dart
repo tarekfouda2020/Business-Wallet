@@ -31,6 +31,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColors.darken,
       appBar: PreferredSize(
         child: DefaultAppBar(
           title: widget.receiverName,

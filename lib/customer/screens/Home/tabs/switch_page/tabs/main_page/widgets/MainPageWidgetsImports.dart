@@ -4,6 +4,7 @@ import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/main_page/MainPageImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/Inputs/InkWellTextField.dart';
 import 'package:base_flutter/general/constants/ModaLs/DownBottomSheet.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';

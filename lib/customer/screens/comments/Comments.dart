@@ -35,6 +35,7 @@ class _CommentsState extends State<Comments> {
                   return BuildCommentsPageView(
                     comments: state.data[index],
                     commentsData: commentsData,
+                    index: index,
                   );
                 },
               );

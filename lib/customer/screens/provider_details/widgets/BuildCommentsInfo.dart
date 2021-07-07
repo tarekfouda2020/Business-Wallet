@@ -200,71 +200,20 @@ class BuildCommentsInfo extends StatelessWidget {
   }
 
   void buildReportComment(BuildContext context, int commentId, String ownerId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
+    ModalHelper.showModal(
       context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Form(
-            key: providerDetailsData.formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                MyText(
-                  title: "ابلاغ عن تعليق",
-                  color: MyColors.primary,
-                  size: 14,
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                RichTextFiled(
-                  hint: "الرسالة",
-                  max: 3,
-                  fillColor: MyColors.greyWhite,
-                  controller: providerDetailsData.report,
-                  margin: const EdgeInsets.symmetric(horizontal: 16),
-                  action: TextInputAction.done,
-                  validate: (value) => value!.validateEmpty(context),
-                ),
-                LoadingButton(
-                  btnKey: providerDetailsData.btnKey,
-                  title: "ابلاغ",
-                  color: MyColors.primary,
-                  onTap: () => providerDetailsData.reportComment(
-                      context, commentId, kayanId, ownerId),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  void buildEditComment(BuildContext context, int commentId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+      title: "ابلاغ",
+      expand: false,
+      content: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+        child: Form(
+          key: providerDetailsData.formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MyText(
-                title: "تعديل التعليق",
+                title: "ابلاغ عن تعليق",
                 color: MyColors.primary,
                 size: 14,
               ),
@@ -275,7 +224,7 @@ class BuildCommentsInfo extends StatelessWidget {
                 hint: "الرسالة",
                 max: 3,
                 fillColor: MyColors.greyWhite,
-                controller: providerDetailsData.newComment,
+                controller: providerDetailsData.report,
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 action: TextInputAction.done,
                 validate: (value) => value!.validateEmpty(context),
@@ -284,13 +233,54 @@ class BuildCommentsInfo extends StatelessWidget {
                 btnKey: providerDetailsData.btnKey,
                 title: "ابلاغ",
                 color: MyColors.primary,
-                onTap: () => providerDetailsData.editComment(
-                    context, commentId, kayanId),
+                onTap: () => providerDetailsData.reportComment(
+                    context, commentId, kayanId, ownerId),
               ),
             ],
           ),
-        );
-      },
+        ),
+      ),
+    );
+  }
+
+  void buildEditComment(BuildContext context, int commentId) {
+    ModalHelper.showModal(
+      context: context,
+      title: "تعديل",
+      expand: false,
+      content: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            MyText(
+              title: "تعديل التعليق",
+              color: MyColors.primary,
+              size: 14,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            RichTextFiled(
+              hint: "الرسالة",
+              max: 3,
+              fillColor: MyColors.greyWhite,
+              controller: providerDetailsData.newComment,
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              action: TextInputAction.done,
+              validate: (value) => value!.validateEmpty(context),
+            ),
+            LoadingButton(
+              btnKey: providerDetailsData.btnKey,
+              title: "ابلاغ",
+              color: MyColors.primary,
+              onTap: () =>
+                  providerDetailsData.editComment(context, commentId, kayanId),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

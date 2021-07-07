@@ -139,7 +139,7 @@ class GeneralHttpMethods {
         url: "/Plans/ForgatPasswordbyEmail", body: body, showLoader: false);
     if (_data != null) {
       AutoRouter.of(context).push(ForgetPasswordCodeRoute(
-          phone: _data["data"]["email"], userId: _data["data"]["userId"]));
+          phone: _data["data"]["email"], userId: _data["data"]["Id"]));
       return true;
     } else {
       return false;

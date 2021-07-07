@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/company_model.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
@@ -90,14 +89,15 @@ class CustomerHttpMethods {
     }
   }
 
-  Future<List<UserInterestModel>> getInterest() async {
+  Future<List<UserInterestModel>> getInterest(String userId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
+
     Map<String, dynamic> body = {
       "lang": lang,
+      "user_id": userId,
     };
-    var _data = await DioHelper(
-      context: context,
-    ).get(url: "/Account/GetAllInterestApi", body: body);
+    var _data = await DioHelper(context: context)
+        .get(url: "/Account/GetAllInterestApi", body: body);
     if (_data != null) {
       return List<UserInterestModel>.from(
           _data['interests'].map((e) => UserInterestModel.fromJson(e)));
@@ -131,7 +131,6 @@ class CustomerHttpMethods {
       return false;
     }
   }
-
 
   Future<String?> promoCode(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -340,10 +339,8 @@ class CustomerHttpMethods {
       "msg": msg,
       "lang": lang
     };
-    var _data = await DioHelper(context: context).post(
-        url: "/ChatApi/SendPushMsg",
-        body: body,
-        showLoader: false);
+    var _data = await DioHelper(context: context)
+        .post(url: "/ChatApi/SendPushMsg", body: body, showLoader: false);
     if (_data != null) {
       return true;
     } else {
@@ -368,18 +365,21 @@ class CustomerHttpMethods {
       return [];
     }
   }
-  Future<List<MessageModel>> getChatMessages(String sender , String receiver, int pageNumber) async {
+
+  Future<List<MessageModel>> getChatMessages(
+      String sender, String receiver, int pageNumber) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "lang": lang,
       "SenderId": sender,
       "ReceiverId": receiver,
     };
-    var _data = await DioHelper(context: context,)
-        .get(url: "/ChatApi/GetAllMessageBetweenTwoUser", body: body);
+    var _data = await DioHelper(
+      context: context,
+    ).get(url: "/ChatApi/GetAllMessageBetweenTwoUser", body: body);
     if (_data != null) {
       return List<MessageModel>.from(
-          _data['data'].map((e) => MessageModel.fromJson(e)));
+          _data['messages'].map((e) => MessageModel.fromJson(e)));
     } else {
       return [];
     }

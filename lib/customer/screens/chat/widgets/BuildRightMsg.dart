@@ -8,7 +8,7 @@ class BuildRightMsg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10,),
       margin: EdgeInsets.only(top: 10),
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -18,7 +18,7 @@ class BuildRightMsg extends StatelessWidget {
           ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight: MediaQuery.of(context).size.height,
-              minHeight: 30,
+              minHeight: 35,
               maxWidth: MediaQuery.of(context).size.width * .7,
               minWidth: MediaQuery.of(context).size.width * .4,
             ),

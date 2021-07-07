@@ -60,12 +60,19 @@ class ChatTextField extends StatelessWidget {
                 decoration: CustomInputDecoration(lang: lang, label: label),
               ),
             ),
-            IconButton(
-              onPressed: submit,
-              icon: Icon(
-                Icons.send,
-                size: 20,
-                color: MyColors.black,
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+              decoration: BoxDecoration(
+                color: MyColors.primary,
+                shape: BoxShape.circle
+              ),
+              child: IconButton(
+                onPressed: submit,
+                icon: Icon(
+                  Icons.send,
+                  size: 20,
+                  color: MyColors.blackOpacity,
+                ),
               ),
             ),
           ],

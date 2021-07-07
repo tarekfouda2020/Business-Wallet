@@ -18,7 +18,7 @@ class BuildLeftMsg extends StatelessWidget {
           ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight: MediaQuery.of(context).size.height,
-              minHeight: 30,
+              minHeight: 35,
               maxWidth: MediaQuery.of(context).size.width * .7,
               minWidth: MediaQuery.of(context).size.width * .4,
             ),
@@ -33,14 +33,14 @@ class BuildLeftMsg extends StatelessWidget {
                 ),
               ),
               child: MyText(
-                title: model.text??"",
+                title: model.text ?? "",
                 size: 9,
                 color: MyColors.black,
               ),
             ),
           ),
           MyText(
-            title: model.date??"",
+            title: model.date ?? "",
             size: 8,
             color: MyColors.greyWhite,
           ),

@@ -16,9 +16,8 @@ class _ImportantState extends State<Important> {
   @override
   void initState() {
     importantData.fetchIntro(context);
-    importantData.fetchData(context);
+    importantData.fetchData(context,widget.userId!);
 
-    importantData.fetchData(context);
     super.initState();
   }
 

@@ -9,6 +9,8 @@ class BuildContactData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var senderId = context.read<UserCubit>().state.model.companyModel!.userId;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Column(
@@ -62,6 +64,13 @@ class BuildContactData extends StatelessWidget {
                     desc: "اجراء محادثة",
                     iconData: Icons.message,
                     color: Colors.yellow,
+                    onTap: () => AutoRouter.of(context).push(
+                      ChatRoute(
+                        senderId: senderId,
+                        receiverName: detailsModel!.kayanName,
+                        receiverId: detailsModel!.kayanId,
+                      ),
+                    ),
                   ),
                 ],
               ),

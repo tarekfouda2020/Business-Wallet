@@ -39,11 +39,13 @@ class BuildRateApp extends StatelessWidget {
                     Icons.star,
                     color: Colors.amber,
                   ),
-                  onRatingUpdate: (rating) => providerDetailsData.addRate(
-                    context,
-                    detailsModel!.kayanId,
-                    rating.toInt(),
-                  ),
+                  onRatingUpdate: (rating) {
+                    providerDetailsData.addRate(
+                      context,
+                      detailsModel!.kayanId,
+                      rating.toInt(),
+                    );
+                  },
                 ),
               );
             },

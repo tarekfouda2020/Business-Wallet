@@ -11,13 +11,13 @@ class ForgerPasswordData {
   final TextEditingController phone = new TextEditingController();
   final TextEditingController email = new TextEditingController();
 
-  void onForgetPassword(BuildContext context) async {
-    if (formKey.currentState!.validate()) {
-      btnKey.currentState!.animateForward();
-      await GeneralRepository(context).forgetPasswordByPhone(phone.text);
-      btnKey.currentState!.animateReverse();
-    }
-  }
+  // void onForgetPassword(BuildContext context) async {
+  //   if (formKey.currentState!.validate()) {
+  //     btnKey.currentState!.animateForward();
+  //     await GeneralRepository(context).forgetPasswordByPhone(phone.text);
+  //     btnKey.currentState!.animateReverse();
+  //   }
+  // }
 
   void onForgetPasswordByEmail(BuildContext context) async {
     if (formKey.currentState!.validate()) {
