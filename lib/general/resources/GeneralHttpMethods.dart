@@ -7,13 +7,11 @@ import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubi
 import 'package:base_flutter/customer/models/customer_model.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
-import 'package:base_flutter/general/constants/GlobalState.dart';
 import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/models/QuestionModel.dart';
 import 'package:base_flutter/general/models/intro_model.dart';
 import 'package:base_flutter/general/models/social_model.dart';
 import 'package:base_flutter/general/models/user_model.dart';
-import 'package:base_flutter/general/screens/forget_password_code/ForgetPasswordCodeImports.dart';
 import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
@@ -22,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class GeneralHttpMethods {
   final BuildContext context;
@@ -32,7 +30,7 @@ class GeneralHttpMethods {
   GeneralHttpMethods(this.context);
 
   Future<bool> userLogin(String email, String pass) async {
-    String? _token = "await messaging.getToken()";
+    String? _token = await messaging.getToken();
     String _lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {
       "email": "$email",
