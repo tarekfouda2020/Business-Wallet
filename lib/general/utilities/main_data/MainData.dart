@@ -28,7 +28,9 @@ class MainData {
         BlocProvider<UserCubit>(
           create: (BuildContext context) => UserCubit(),
         ),
-
+        BlocProvider<ChatOnlineCubit>(
+          create: (BuildContext context) => ChatOnlineCubit(),
+        ),
         BlocProvider<FollowCountCubit>(
           create: (BuildContext context) => FollowCountCubit(),
         ),

@@ -3,6 +3,7 @@ import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubi
 import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
 import 'package:base_flutter/general/blocks/auth_cubit/auth_cubit.dart';
+import 'package:base_flutter/general/blocks/chat_online_cubit/chat_online_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

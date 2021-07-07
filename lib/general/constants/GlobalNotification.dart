@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/follow_count_cubit/follow_count_cubit.dart';
 import 'package:base_flutter/customer/blocs/wallet_count_cubit/wallet_count_cubit.dart';
+import 'package:base_flutter/general/blocks/chat_online_cubit/chat_online_cubit.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -54,7 +55,7 @@ class GlobalNotification {
         print("_____________________Message data:${message.data}");
         print("_____________________notification:${message.notification?.title}");
         _onMessageStreamController.add(message);
-        if (int.parse(message.data["type"]??"0") != 1) {
+        if (int.parse(message.data["type"]??"0") != 1 && !context.read<ChatOnlineCubit>().state.online) {
           showLocalNotification(message);
         }
         if (int.parse(message.data["type"]??"0") == -1) {

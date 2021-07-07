@@ -24,6 +24,7 @@ class _ChatState extends State<Chat> {
       chatData.fetchData(context, widget.senderId, widget.receiverId, pageKey);
     });
     chatData.streamListener(context, mounted, widget.receiverId);
+    context.read<ChatOnlineCubit>().onUpdateData(true);
     super.initState();
   }
 
@@ -54,4 +55,11 @@ class _ChatState extends State<Chat> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    context.read<ChatOnlineCubit>().onUpdateData(false);
+    super.dispose();
+  }
+
 }
