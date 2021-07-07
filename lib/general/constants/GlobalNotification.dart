@@ -13,7 +13,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GlobalNotification {
-  static StreamController<RemoteMessage> _onMessageStreamController =
+  static StreamController<Map<String,dynamic>> _onMessageStreamController =
   StreamController.broadcast();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   static late FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin;
@@ -54,8 +54,8 @@ class GlobalNotification {
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         print("_____________________Message data:${message.data}");
         print("_____________________notification:${message.notification?.title}");
-        _onMessageStreamController.add(message);
-        if (int.parse(message.data["type"]??"0") != 1 && !context.read<ChatOnlineCubit>().state.online) {
+        _onMessageStreamController.add(message.data);
+        if (!context.read<ChatOnlineCubit>().state.online) {
           showLocalNotification(message);
         }
         if (int.parse(message.data["type"]??"0") == -1) {
@@ -77,7 +77,7 @@ class GlobalNotification {
     flutterNotificationClick(json.encode(message.data));
   }
 
-  StreamController<RemoteMessage> get notificationSubject {
+  StreamController<Map<String, dynamic>> get notificationSubject {
     return _onMessageStreamController;
   }
 
@@ -108,11 +108,32 @@ class GlobalNotification {
         payload: json.encode(message.data));
   }
 
+  static showChatNotification(Map<String,dynamic> message) async {
+    var android = AndroidNotificationDetails(
+      "${DateTime.now()}",
+      "${message["namesender"]}",
+      "${message["msg"]}",
+      priority: Priority.high,
+      importance: Importance.max,
+      playSound: true,
+      shortcutId: DateTime.now().toIso8601String(),
+    );
+    var ios = IOSNotificationDetails();
+    var _platform = NotificationDetails(android: android, iOS: ios);
+    _flutterLocalNotificationsPlugin.show(
+        DateTime.now().microsecond, "${message["namesender"]}", "${message["msg"]}", _platform,
+        payload: json.encode(message));
+  }
+
+
   static Future flutterNotificationClick(String? payload) async {
     print("tttttttttt $payload");
-    // var _data = json.decode("$payload");
+    var _data = json.decode("$payload");
 
-    // int _type = int.parse(_data["type"] ?? "4");
+    int _type = int.parse(_data["type"] ?? "0");
+    if (_type==1) {
+      AutoRouter.of(context).push(ChatRoute(senderId: "${_data["reciver_id"]}", receiverId: "${_data["sender_id"]}", receiverName: "${_data["namesender"]}",));
+    }
   }
 
 

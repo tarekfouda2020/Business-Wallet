@@ -30,37 +30,51 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.darken,
-      appBar: PreferredSize(
-        child: DefaultAppBar(
-          title: widget.receiverName,
+    return WillPopScope(
+      child: Scaffold(
+        backgroundColor: MyColors.darken,
+        appBar: PreferredSize(
+          child: DefaultAppBar(
+            title: widget.receiverName,
+            actions: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  size: 25,
+                  color: MyColors.white,
+                ),
+                onPressed: () {
+                  context.read<ChatOnlineCubit>().onUpdateData(false);
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          ),
+          preferredSize: Size.fromHeight(60),
         ),
-        preferredSize: Size.fromHeight(60),
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-        child: Column(
-          children: [
-            BuildChatMessages(
-              chatsData: chatData,
-              sender: widget.senderId,
-            ),
-            BuildChatInput(
-              chatsData: chatData,
-              receiverId: widget.receiverId,
-              senderId: widget.senderId,
-            ),
-          ],
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+          child: Column(
+            children: [
+              BuildChatMessages(
+                chatsData: chatData,
+                sender: widget.senderId,
+              ),
+              BuildChatInput(
+                chatsData: chatData,
+                receiverId: widget.receiverId,
+                senderId: widget.senderId,
+              ),
+            ],
+          ),
         ),
       ),
+      onWillPop: onChatBack,
     );
   }
 
-  @override
-  void dispose() {
+  Future<bool> onChatBack() async {
     context.read<ChatOnlineCubit>().onUpdateData(false);
-    super.dispose();
+    return true;
   }
-
 }

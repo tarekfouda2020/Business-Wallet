@@ -30,20 +30,22 @@ class ChatData{
   }
 
   void streamListener(BuildContext context, mounted,String receiver) {
-    if (!mounted) {
-      globalNotification.notificationSubject.stream.listen((RemoteMessage message) {
-        String senderId = "${message.data["sender_id"]}";
-        String receiverId = "${message.data["reciver_id"]}";
-        String text = "${message.data["msg"]}";
-        String date = "${message.data["date"]}";
-        if (receiver!=senderId) {
-          GlobalNotification.showLocalNotification(message);
-        }else{
-          chatList.insert(0, MessageModel(senderId: receiverId,date: date,text: text));
-          pagingController.itemList = [];
-          pagingController.itemList = chatList;
-        }
-      });
+    globalNotification.notificationSubject.stream.listen((data) {
+      print("===========> ${context.read<ChatOnlineCubit>().state.online}");
+      String senderId = "${data["sender_id"]}";
+      String receiverId = "${data["reciver_id"]}";
+      String text = "${data["msg"]}";
+      String date = "${data["date"]}";
+      if (receiver!=senderId) {
+        GlobalNotification.showChatNotification(data);
+      }else{
+        chatList.insert(0, MessageModel(senderId: senderId,date: date,text: text));
+        pagingController.itemList = [];
+        pagingController.itemList = chatList;
+      }
+    });
+    if (mounted) {
+
     }
   }
 
