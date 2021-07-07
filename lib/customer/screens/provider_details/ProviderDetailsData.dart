@@ -6,6 +6,7 @@ class ProviderDetailsData {
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
   final GenericCubit<int> menuCubit = new GenericCubit(0);
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
   final GenericCubit<File?> imageCubit = new GenericCubit(null);
   final GenericCubit<bool> contactCubit = GenericCubit(false);
@@ -21,8 +22,10 @@ class ProviderDetailsData {
   final GenericCubit<MainDetailsModel?> mainDetailsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, String kayanId,{bool refresh= true}) async {
-    var data = await CustomerRepository(context).getMainDetails(kayanId,refresh );
+  void fetchData(BuildContext context, String kayanId,
+      {bool refresh = true}) async {
+    var data =
+        await CustomerRepository(context).getMainDetails(kayanId, refresh);
     mainDetailsCubit.onUpdateData(data);
   }
 
@@ -82,14 +85,21 @@ class ProviderDetailsData {
     });
   }
 
-  void reportComment(
-      BuildContext context, int commentId, String kayanId) async {
-    await CustomerRepository(context)
-        .reportComment(commentId, kayanId, report.text)
-        .then((value) {
-      fetchData(context, kayanId);
-      report.clear();
-      AutoRouter.of(context).pop();
-    });
+  void reportComment(BuildContext context, int commentId, String kayanId,
+      String ownerId) async {
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+    if (ownerId == userId) {
+      return LoadingDialog.showCustomToast("لا يمكن ابلاغ عن تعليقك");
+    } else {
+      if (formKey.currentState!.validate()) {
+        await CustomerRepository(context)
+            .reportComment(commentId, kayanId, report.text)
+            .then((value) {
+          fetchData(context, kayanId);
+          report.clear();
+          AutoRouter.of(context).pop();
+        });
+      }
+    }
   }
 }

@@ -24,11 +24,18 @@ class BuildInvSwiper extends StatelessWidget {
           ),
           child: Swiper(
             itemBuilder: (BuildContext context, int index) {
-              return CachedImage(
-                url: images[index],
-                fit: BoxFit.fill,
-                bgColor: MyColors.white,
-                borderRadius: BorderRadius.circular(10),
+              return InkWell(
+                onTap: () => AutoRouter.of(context).push(
+                  ImageZoomRoute(
+                    images: images,
+                  ),
+                ),
+                child: CachedImage(
+                  url: images[index],
+                  fit: BoxFit.fill,
+                  bgColor: MyColors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
               );
             },
             pagination: SwiperPagination(),

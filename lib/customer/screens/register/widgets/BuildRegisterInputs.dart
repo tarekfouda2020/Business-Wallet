@@ -50,6 +50,7 @@ class BuildRegisterInputs extends StatelessWidget {
                   child: LabelTextField(
                     hint: "رقم الجوال",
                     controller: registerData.phone,
+                    type: TextInputType.number,
                     validate: (value) => value!.validatePhone(context),
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     action: TextInputAction.next,
@@ -172,17 +173,24 @@ class BuildRegisterInputs extends StatelessWidget {
               title: "كلمة المرور",
             ),
           ),
-          IconTextFiled(
-            hint: "كلمة المرور",
-            controller: registerData.pass,
-            validate: (value) => value!.validatePassword(context),
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            action: TextInputAction.next,
-            isPassword: true,
-            suffixIcon: Icon(
-              Icons.remove_red_eye,
-              color: MyColors.white,
-            ),
+
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: registerData.showPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "كلمة المرور",
+                controller: registerData.pass,
+                validate: (value) => value!.validatePassword(context),
+                action: TextInputAction.next,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () =>
+                      registerData.showPass.onUpdateData(!state.data),
+                ),
+                isPassword: state.data,
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
           Container(
             margin: const EdgeInsets.only(top: 10),
@@ -190,19 +198,27 @@ class BuildRegisterInputs extends StatelessWidget {
               title: "تأكيد كلمة المرور",
             ),
           ),
-          IconTextFiled(
-            hint: "تأكيد كلمة المرور",
-            controller: registerData.confirmPass,
-            validate: (value) => value!
-                .validatePasswordConfirm(context, pass: registerData.pass.text),
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            action: TextInputAction.next,
-            isPassword: true,
-            suffixIcon: Icon(
-              Icons.remove_red_eye,
-              color: MyColors.white,
-            ),
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: registerData.showConfirmPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "تأكيد كلمة المرور",
+                controller: registerData.confirmPass,
+                action: TextInputAction.done,
+                isPassword: state.data,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () =>
+                      registerData.showConfirmPass.onUpdateData(!state.data),
+                ),
+                validate: (value) => value!
+                    .validatePasswordConfirm(context, pass: registerData.pass.text),
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
+
+
         ],
       ),
     );

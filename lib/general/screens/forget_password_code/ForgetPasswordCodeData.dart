@@ -7,6 +7,10 @@ class ForgetPasswordCodeData {
 
   final TextEditingController code = new TextEditingController();
 
+  void onResendCode(BuildContext context,String userId ) async {
+    await GeneralRepository(context).resendCode(userId);
+  }
+
   void forgetPasswordCode(BuildContext context, String phone) async {
     if (formKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();

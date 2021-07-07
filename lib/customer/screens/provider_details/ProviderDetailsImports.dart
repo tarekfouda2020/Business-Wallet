@@ -5,6 +5,7 @@ import 'package:base_flutter/customer/models/main_details_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';
 import 'package:base_flutter/customer/screens/provider_details/widgets/ProviderDetailsWidgetsImports.dart';
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/constants/Inputs/IconTextFiled.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';

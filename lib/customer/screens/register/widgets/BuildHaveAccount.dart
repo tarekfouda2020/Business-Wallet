@@ -1,6 +1,10 @@
 part of 'RegisterWidgetsImports.dart';
 
 class BuildHaveAccount extends StatelessWidget {
+  final RegisterData registerData;
+
+  const BuildHaveAccount({required this.registerData});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,14 +16,21 @@ class BuildHaveAccount extends StatelessWidget {
             title: "لديك حساب بالفعل",
             color: MyColors.grey,
           ),
-          SizedBox(width: 10,),
-          InkWell(
-            onTap: ()=> AutoRouter.of(context)
-                .push(LoginRoute()),
-            child: MyText(
-              title: "تسجيل دخول",
-              color: MyColors.primary,
-            ),
+          SizedBox(
+            width: 10,
+          ),
+          BlocBuilder<GenericCubit<IntroModel?>, GenericState<IntroModel?>>(
+            bloc: registerData.introCubit,
+            builder: (_, state) {
+              return InkWell(
+                onTap: () => AutoRouter.of(context)
+                    .push(LoginRoute(introModel: state.data)),
+                child: MyText(
+                  title: "تسجيل دخول",
+                  color: MyColors.primary,
+                ),
+              );
+            },
           )
         ],
       ),

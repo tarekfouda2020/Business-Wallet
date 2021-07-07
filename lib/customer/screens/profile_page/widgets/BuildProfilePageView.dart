@@ -4,6 +4,7 @@ class BuildProfilePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var customer = context.read<UserCubit>().state.model.customerModel;
+    print ("________${customer!.genderUser}");
     return ListView(
       physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       children: [
@@ -23,7 +24,7 @@ class BuildProfilePageView extends StatelessWidget {
         BuildInfoItem(
           iconData: Icons.phone_in_talk,
           title: "رقم الجوال",
-          details: customer!.phoneNumber!,
+          details: customer.phoneNumber!,
           iconColor: Colors.green,
         ),
         BuildInfoItem(

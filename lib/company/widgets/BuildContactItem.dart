@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BuildContactItem extends StatelessWidget {
   final String title;
@@ -17,10 +19,13 @@ class BuildContactItem extends StatelessWidget {
       required this.iconData,
       required this.color,
       required this.desc,
-      this.allLocation = true,this.onTap});
+      this.allLocation = true,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
+    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +35,7 @@ class BuildContactItem extends StatelessWidget {
           color: MyColors.greyWhite.withOpacity(.9),
         ),
         InkWell(
-          onTap:onTap,
+          onTap: onTap,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -56,7 +61,8 @@ class BuildContactItem extends StatelessWidget {
                 visible: allLocation,
                 child: Container(),
                 replacement: InkWell(
-                  onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute()),
+                  onTap: () => AutoRouter.of(context)
+                      .push(AllBranchesRoute(userId: userId)),
                   child: MyText(
                     title: "(مشاهدة جميع المواقع)",
                     size: 11,

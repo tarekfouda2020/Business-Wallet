@@ -52,17 +52,20 @@ class BuildInvInfo extends StatelessWidget {
               Container(
                 child: Row(
                   children: [
-                    Container(
-                      height: 30,
-                      width: 30,
-                      padding: const EdgeInsets.all(5),
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                          color: MyColors.black, shape: BoxShape.circle),
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        MdiIcons.shareVariant,
-                        size: 18,
+                    InkWell(
+                      onTap: () => Utils.shareApp("https://www.google.com.eg/"),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        padding: const EdgeInsets.all(5),
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: MyColors.black, shape: BoxShape.circle),
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          MdiIcons.shareVariant,
+                          size: 18,
+                        ),
                       ),
                     ),
                     InkWell(
@@ -88,21 +91,29 @@ class BuildInvInfo extends StatelessWidget {
               )
             ],
           ),
-          Row(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                child: Icon(
-                  Icons.location_on,
-                  size: 15,
-                  color: MyColors.primary,
+          InkWell(
+            onTap: () {
+              print("_______");
+              Utils.navigateToMapWithDirection(
+                  lat: kayanOwnerModel.lat, lng: kayanOwnerModel.lng, context: context);
+            },
+            child: Row(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  child: Icon(
+                    Icons.location_on,
+                    size: 15,
+                    color: MyColors.primary,
+                  ),
                 ),
-              ),
-              MyText(
-                title: kayanOwnerModel.addressKayan,
-                size: 9,
-              )
-            ],
+                MyText(
+                  title: kayanOwnerModel.addressKayan,
+                  size: 9,
+                )
+              ],
+            ),
           )
         ],
       ),

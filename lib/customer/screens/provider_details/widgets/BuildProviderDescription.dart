@@ -25,15 +25,6 @@ class BuildProviderDescription extends StatelessWidget {
               size: 10,
               color: MyColors.grey,
             ),
-            // Html(
-            //   data: detailsModel!.description,
-            //   customTextStyle: (node, textStyle) {
-            //     return TextStyle(
-            //       color: MyColors.grey,
-            //       fontSize: 10,
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),

@@ -198,7 +198,7 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ForgetPasswordCodeRouteArgs>();
-          return _i8.ForgetPasswordCode(phone: args.phone);
+          return _i8.ForgetPasswordCode(phone: args.phone, userId: args.userId);
         }),
     LocationAddressRoute.name: (routeData) =>
         _i1.AdaptivePage<_i9.LocationModel>(
@@ -477,8 +477,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     AllBranchesRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i57.AllBranches();
+        builder: (data) {
+          final args = data.argsAs<AllBranchesRouteArgs>();
+          return _i57.AllBranches(userId: args.userId);
         }),
     CompanySubscribeRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
@@ -771,18 +772,21 @@ class ForgetPasswordRoute extends _i1.PageRouteInfo {
 
 class ForgetPasswordCodeRoute
     extends _i1.PageRouteInfo<ForgetPasswordCodeRouteArgs> {
-  ForgetPasswordCodeRoute({required String phone})
+  ForgetPasswordCodeRoute({required String phone, required String userId})
       : super(name,
             path: '/forget-password-code',
-            args: ForgetPasswordCodeRouteArgs(phone: phone));
+            args: ForgetPasswordCodeRouteArgs(phone: phone, userId: userId));
 
   static const String name = 'ForgetPasswordCodeRoute';
 }
 
 class ForgetPasswordCodeRouteArgs {
-  const ForgetPasswordCodeRouteArgs({required this.phone});
+  const ForgetPasswordCodeRouteArgs(
+      {required this.phone, required this.userId});
 
   final String phone;
+
+  final String userId;
 }
 
 class LocationAddressRoute extends _i1.PageRouteInfo {
@@ -1305,10 +1309,18 @@ class CompanyPointsRoute extends _i1.PageRouteInfo {
   static const String name = 'CompanyPointsRoute';
 }
 
-class AllBranchesRoute extends _i1.PageRouteInfo {
-  const AllBranchesRoute() : super(name, path: '/all-branches');
+class AllBranchesRoute extends _i1.PageRouteInfo<AllBranchesRouteArgs> {
+  AllBranchesRoute({required String userId})
+      : super(name,
+            path: '/all-branches', args: AllBranchesRouteArgs(userId: userId));
 
   static const String name = 'AllBranchesRoute';
+}
+
+class AllBranchesRouteArgs {
+  const AllBranchesRouteArgs({required this.userId});
+
+  final String userId;
 }
 
 class CompanySubscribeRoute

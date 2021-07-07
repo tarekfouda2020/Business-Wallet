@@ -40,7 +40,7 @@ class BuildContactUsForm extends StatelessWidget {
             hint: "الرجاء ادخال رقم الجوال",
             controller: contactUsData.phone,
             action: TextInputAction.next,
-            type: TextInputType.emailAddress,
+            type: TextInputType.number,
             margin: const EdgeInsets.symmetric(vertical: 5),
             validate: (value) => value!.validatePhone(context),
           ),

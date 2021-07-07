@@ -61,8 +61,8 @@ class GeneralHttpMethods {
           user.customerModel =
               CustomerModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
-          Utils.setCurrentUserData(
-              user, step, context, userId: user.customerModel!.userId);
+          Utils.setCurrentUserData(user, step, context,
+              userId: user.customerModel!.userId);
         } else {
           context.router.push(ActiveAccountRoute(userId: userId));
         }
@@ -84,8 +84,7 @@ class GeneralHttpMethods {
           user.interest = interest;
           user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
           await Utils.saveUserData(user);
-          Utils.setCurrentUserData(
-              user, step, context);
+          Utils.setCurrentUserData(user, step, context);
         }
       }
 
@@ -122,8 +121,8 @@ class GeneralHttpMethods {
     var _data = await DioHelper(context: context)
         .post(url: "/Account/ForgetPasswordApi", body: body, showLoader: false);
     if (_data != null) {
-      AutoRouter.of(context)
-          .push(ForgetPasswordCodeRoute(phone: _data["data"]["Phone"]));
+      AutoRouter.of(context).push(ForgetPasswordCodeRoute(
+          phone: _data["data"]["Phone"], userId: _data["data"]["userId"]));
       return true;
     } else {
       return false;
@@ -139,8 +138,8 @@ class GeneralHttpMethods {
     var _data = await DioHelper(context: context).post(
         url: "/Plans/ForgatPasswordbyEmail", body: body, showLoader: false);
     if (_data != null) {
-      AutoRouter.of(context)
-          .push(ForgetPasswordCodeRoute(phone: _data["data"]["Phone"]));
+      AutoRouter.of(context).push(ForgetPasswordCodeRoute(
+          phone: _data["data"]["email"], userId: _data["data"]["userId"]));
       return true;
     } else {
       return false;
@@ -210,7 +209,7 @@ class GeneralHttpMethods {
     String lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {"lang": lang, "userId": userId};
     var _data = await DioHelper(context: context)
-        .post(url: "/Account/ResendCodeApi", body: body, showLoader: false);
+        .post(url: "/Account/ResendCodeApi", body: body);
     return (_data != null);
   }
 

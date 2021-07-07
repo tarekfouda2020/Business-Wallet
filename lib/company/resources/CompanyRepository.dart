@@ -298,8 +298,8 @@ class CompanyRepository {
   Future<bool> addBrochureSubscribe(AddBrochureSubscribeModel model) async =>
       _companySubscribeMethods.addBrochureSubscribe(model);
 
-  Future<List<BranchModel>> getBranches(bool refresh) =>
-      _companyHttpMethods.getBranches(refresh);
+  Future<List<BranchModel>> getBranches(bool refresh,String userId) =>
+      _companyHttpMethods.getBranches(refresh,userId);
 
   Future<BranchModel?> addBranch(AddBranchModel model) =>
       _companyHttpMethods.addBranch(model);

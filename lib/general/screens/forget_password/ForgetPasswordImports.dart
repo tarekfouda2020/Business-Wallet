@@ -1,10 +1,11 @@
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
 import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/resources/GeneralRepository.dart';
 import 'package:base_flutter/general/widgets/AuthScaffold.dart';
 import 'widgets/ForgetPasswordWidgetsImports.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter/general/widgets/HeaderLogo.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'ForgetPasswordData.dart';
 part 'ForgetPassword.dart';

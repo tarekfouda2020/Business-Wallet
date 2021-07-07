@@ -30,7 +30,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
             Icons.share,
             color: MyColors.white,
           ),
-          onPressed: () {},
+          onPressed: () => Utils.shareApp("https://www.google.com.eg/"),
         ),
       ),
       body: BlocBuilder<GenericCubit<MainDetailsModel?>,

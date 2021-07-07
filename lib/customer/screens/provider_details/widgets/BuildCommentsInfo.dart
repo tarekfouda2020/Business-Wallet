@@ -26,7 +26,7 @@ class BuildCommentsInfo extends StatelessWidget {
             Visibility(
               visible: state.data,
               child: Visibility(
-                visible: commentModel!.length>0,
+                visible: commentModel!.length > 0,
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -54,10 +54,11 @@ class BuildCommentsInfo extends StatelessWidget {
                               ),
                               Expanded(
                                 child: Container(
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 10),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       MyText(
                                         title: commentModel![index].ownerName,
@@ -72,8 +73,9 @@ class BuildCommentsInfo extends StatelessWidget {
                                         itemSize: 12,
                                         itemPadding: const EdgeInsets.symmetric(
                                             vertical: 7),
-                                        initialRating:
-                                            commentModel![index].rate.toDouble(),
+                                        initialRating: commentModel![index]
+                                            .rate
+                                            .toDouble(),
                                         itemBuilder: (_, index) {
                                           return Icon(
                                             Icons.star,
@@ -103,14 +105,18 @@ class BuildCommentsInfo extends StatelessWidget {
                                 enabled: true,
                                 onSelected: (int value) {
                                   if (value == 0) {
-                                    buildEditComment(
-                                        context, commentModel![index].commentId);
+                                    buildEditComment(context,
+                                        commentModel![index].commentId);
                                   } else if (value == 1) {
                                     buildReportComment(
-                                        context, commentModel![index].commentId);
+                                        context,
+                                        commentModel![index].commentId,
+                                        commentModel![index].ownerId);
                                   } else {
-                                    providerDetailsData.deleteComment(context,
-                                        commentModel![index].commentId, kayanId);
+                                    providerDetailsData.deleteComment(
+                                        context,
+                                        commentModel![index].commentId,
+                                        kayanId);
                                   }
                                 },
                                 itemBuilder: (context) => [
@@ -153,18 +159,22 @@ class BuildCommentsInfo extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              InkWell(
-                                onTap: () => AutoRouter.of(context).push(
-                                  ImageZoomRoute(
-                                    images: [commentModel![index].ownerImg],
+                              Visibility(
+                                visible: commentModel![index].commentImg == "",
+                                child: Container(),
+                                replacement: InkWell(
+                                  onTap: () => AutoRouter.of(context).push(
+                                    ImageZoomRoute(
+                                      images: [commentModel![index].ownerImg],
+                                    ),
                                   ),
-                                ),
-                                child: CachedImage(
-                                  url: commentModel![index].commentImg,
-                                  haveRadius: false,
-                                  borderColor: MyColors.greyWhite,
-                                  height: 70,
-                                  width: 70,
+                                  child: CachedImage(
+                                    url: commentModel![index].commentImg,
+                                    haveRadius: false,
+                                    borderColor: MyColors.greyWhite,
+                                    height: 70,
+                                    width: 70,
+                                  ),
                                 ),
                               )
                             ],
@@ -189,7 +199,7 @@ class BuildCommentsInfo extends StatelessWidget {
     );
   }
 
-  void buildReportComment(BuildContext context, int commentId) {
+  void buildReportComment(BuildContext context, int commentId, String ownerId) {
     showModalBottomSheet(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -200,35 +210,38 @@ class BuildCommentsInfo extends StatelessWidget {
       builder: (BuildContext context) {
         return Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyText(
-                title: "ابلاغ عن تعليق",
-                color: MyColors.primary,
-                size: 14,
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              RichTextFiled(
-                hint: "الرسالة",
-                max: 3,
-                fillColor: MyColors.greyWhite,
-                controller: providerDetailsData.report,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                action: TextInputAction.done,
-                validate: (value) => value!.validateEmpty(context),
-              ),
-              LoadingButton(
-                btnKey: providerDetailsData.btnKey,
-                title: "ابلاغ",
-                color: MyColors.primary,
-                onTap: () => providerDetailsData.reportComment(
-                    context, commentId, kayanId),
-              ),
-            ],
+          child: Form(
+            key: providerDetailsData.formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                MyText(
+                  title: "ابلاغ عن تعليق",
+                  color: MyColors.primary,
+                  size: 14,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                RichTextFiled(
+                  hint: "الرسالة",
+                  max: 3,
+                  fillColor: MyColors.greyWhite,
+                  controller: providerDetailsData.report,
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  action: TextInputAction.done,
+                  validate: (value) => value!.validateEmpty(context),
+                ),
+                LoadingButton(
+                  btnKey: providerDetailsData.btnKey,
+                  title: "ابلاغ",
+                  color: MyColors.primary,
+                  onTap: () => providerDetailsData.reportComment(
+                      context, commentId, kayanId, ownerId),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -271,8 +284,8 @@ class BuildCommentsInfo extends StatelessWidget {
                 btnKey: providerDetailsData.btnKey,
                 title: "ابلاغ",
                 color: MyColors.primary,
-                onTap: () =>
-                    providerDetailsData.editComment(context, commentId,kayanId),
+                onTap: () => providerDetailsData.editComment(
+                    context, commentId, kayanId),
               ),
             ],
           ),

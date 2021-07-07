@@ -513,9 +513,9 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<BranchModel>> getBranches(bool refresh) async {
+  Future<List<BranchModel>> getBranches(bool refresh,String userId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+
     Map<String, dynamic> body = {
       "lang": lang,
       "user_id": userId,

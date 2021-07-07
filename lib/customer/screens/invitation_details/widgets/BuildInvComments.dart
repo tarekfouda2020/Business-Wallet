@@ -104,19 +104,23 @@ class BuildInvComments extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              InkWell(
-                                onTap: () => AutoRouter.of(context).push(
-                                  ImageZoomRoute(
-                                    images: [commentModel[index].ownerImg],
+                              Visibility(
+                                visible: commentModel[index].commentImg=="",
+                                replacement: InkWell(
+                                  onTap: () => AutoRouter.of(context).push(
+                                    ImageZoomRoute(
+                                      images: [commentModel[index].ownerImg],
+                                    ),
+                                  ),
+                                  child: CachedImage(
+                                    url: commentModel[index].commentImg,
+                                    haveRadius: false,
+                                    borderColor: MyColors.greyWhite,
+                                    height: 70,
+                                    width: 70,
                                   ),
                                 ),
-                                child: CachedImage(
-                                  url: commentModel[index].commentImg,
-                                  haveRadius: false,
-                                  borderColor: MyColors.greyWhite,
-                                  height: 70,
-                                  width: 70,
-                                ),
+                                child: Container(),
                               )
                             ],
                           ),

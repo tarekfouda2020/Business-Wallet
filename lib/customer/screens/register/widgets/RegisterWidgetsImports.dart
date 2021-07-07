@@ -10,6 +10,7 @@ import 'package:base_flutter/general/constants/Inputs/InkWellTextField.dart';
 import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/ModaLs/DownBottomSheet.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/models/intro_model.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';
 import 'package:base_flutter/general/widgets/LoadingButton.dart';

@@ -14,25 +14,42 @@ class BuildFormInputs extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelTextField(
-            hint: tr(context, "newPass"),
-            controller: resetPasswordData.newPassword,
-            action: TextInputAction.next,
-            type: TextInputType.text,
-            isPassword: true,
-            validate: (value) => value!.validatePassword(context),
-            margin: const EdgeInsets.symmetric(vertical: 10),
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: resetPasswordData.showPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "كلمة المرور",
+                controller: resetPasswordData.newPassword,
+                validate: (value) => value!.validatePassword(context),
+                action: TextInputAction.next,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () =>
+                      resetPasswordData.showPass.onUpdateData(!state.data),
+                ),
+                isPassword: state.data,
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
-          LabelTextField(
-            hint: tr(context, "confirmPassword"),
-            controller: resetPasswordData.confirmNewPassword,
-            action: TextInputAction.done,
-            type: TextInputType.text,
-            isPassword: true,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            validate: (value) => value!.validatePasswordConfirm(context,
-                pass: resetPasswordData.newPassword.text),
-            onSubmit: () => resetPasswordData.onResetPassword(context, userId),
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: resetPasswordData.showConfirmPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "تأكيد كلمة المرور",
+                controller: resetPasswordData.confirmNewPassword,
+                action: TextInputAction.done,
+                isPassword: state.data,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () => resetPasswordData.showConfirmPass
+                      .onUpdateData(!state.data),
+                ),
+                validate: (value) => value!.validatePasswordConfirm(context,
+                    pass: resetPasswordData.newPassword.text),
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
         ],
       ),

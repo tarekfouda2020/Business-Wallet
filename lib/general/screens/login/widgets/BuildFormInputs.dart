@@ -32,13 +32,22 @@ class BuildFormInputs extends StatelessWidget {
               size: 11,
               color: MyColors.white,
             ),
-            IconTextFiled(
-              hint: tr(context, "password"),
-              controller: loginData.password,
-              validate: (value) => value!.validateEmpty(context),
-              isPassword: true,
-              action: TextInputAction.done,
-              suffixIcon: Icon(Icons.remove_red_eye),
+            BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+              bloc: loginData.showPassword,
+              builder: (context, state) {
+                return IconTextFiled(
+                  hint: tr(context, "password"),
+                  controller: loginData.password,
+                  validate: (value) => value!.validateEmpty(context),
+                  action: TextInputAction.done,
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.remove_red_eye_rounded),
+                    onPressed: () =>
+                        loginData.showPassword.onUpdateData(!state.data),
+                  ),
+                  isPassword: state.data,
+                );
+              },
             ),
           ],
         ),

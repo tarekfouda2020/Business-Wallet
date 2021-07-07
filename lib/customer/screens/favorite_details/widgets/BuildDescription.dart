@@ -15,10 +15,8 @@ class BuildDescription extends StatelessWidget {
           visible: desc == "",
           replacement: Container(
             margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-            child: MyText(
-              title: desc,
-              size: 12,
-              color: MyColors.white,
+            child: Html(
+              data: desc,
             ),
           ),
           child: Center(

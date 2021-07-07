@@ -15,7 +15,7 @@ class _FavoriteDetailsState extends State<FavoriteDetails> {
 
   @override
   void initState() {
-    favoriteDetailsData.fetchData(context, widget.adsId,refresh: false);
+    favoriteDetailsData.fetchData(context, widget.adsId, refresh: false);
 
     favoriteDetailsData.fetchData(context, widget.adsId);
     super.initState();

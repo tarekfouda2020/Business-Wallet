@@ -17,6 +17,9 @@ class RegisterData {
   final TextEditingController confirmPass = TextEditingController();
   final TextEditingController gender = new TextEditingController();
 
+  final GenericCubit<bool> showPass = new GenericCubit(true);
+  final GenericCubit<bool> showConfirmPass = new GenericCubit(true);
+
   final GlobalKey<DropdownSearchState> city = new GlobalKey();
 
   int? cityId;
@@ -45,6 +48,13 @@ class RegisterData {
         }
       },
     );
+  }
+
+  final GenericCubit<IntroModel?> introCubit = new GenericCubit(null);
+
+  void fetchIntro(BuildContext context, {bool refresh = true}) async {
+    var data= await GeneralRepository(context).getIntro(refresh: refresh);
+    introCubit.onUpdateData(data);
   }
 
   void setUserRegister(BuildContext context) async {

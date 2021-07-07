@@ -22,7 +22,7 @@ class _InvitationViewState extends State<InvitationView> {
   @override
   Widget build(BuildContext context) {
     return PagedListView<int, InvitationModel>(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(bottom: 120),
       physics: BouncingScrollPhysics(
         parent: AlwaysScrollableScrollPhysics(),
       ),

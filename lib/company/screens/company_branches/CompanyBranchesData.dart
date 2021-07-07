@@ -5,7 +5,9 @@ class CompanyBranchesData{
   final BranchesCubit branchesCubit =new BranchesCubit();
 
   fetchData(BuildContext context,{bool refresh = true})async{
-    var data = await CompanyRepository(context).getBranches(refresh);
+    var companyId = context.read<UserCubit>().state.model.companyModel!.userId;
+
+    var data = await CompanyRepository(context).getBranches(refresh,companyId);
     branchesCubit.onUpdateData(data);
   }
 

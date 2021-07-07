@@ -20,7 +20,7 @@ class _RegisterState extends State<Register> {
           BuildRegisterInputs(registerData),
           BuildCheckTerms(registerData),
           BuildButton(registerData),
-          BuildHaveAccount()
+          BuildHaveAccount(registerData: registerData,)
         ],
       ),
     );

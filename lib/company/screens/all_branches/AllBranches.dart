@@ -1,6 +1,9 @@
 part of 'AllBranchesImports.dart';
 
 class AllBranches extends StatefulWidget {
+final String userId;
+
+  const AllBranches({required this.userId}) ;
   @override
   _AllBranchesState createState() => _AllBranchesState();
 }
@@ -10,8 +13,8 @@ class _AllBranchesState extends State<AllBranches> {
 
   @override
   void initState() {
-    allBranchesData.fetchData(context, refresh: false);
-    allBranchesData.fetchData(context);
+    allBranchesData.fetchData(context,widget.userId, refresh: false);
+    allBranchesData.fetchData(context,widget.userId);
     super.initState();
   }
 
@@ -31,7 +34,8 @@ class _AllBranchesState extends State<AllBranches> {
           if (state is BranchesUpdateState) {
             if (state.branches.length > 0) {
               return RefreshIndicator(
-                onRefresh: () => allBranchesData.fetchData(context),
+                onRefresh: () =>
+                    allBranchesData.fetchData(context, widget.userId),
                 child: ListView.builder(
                   padding: EdgeInsets.only(right: 15, left: 15, bottom: 20),
                   itemCount: state.branches.length,

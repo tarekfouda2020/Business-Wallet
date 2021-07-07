@@ -12,7 +12,7 @@ class BuildInvSearch extends StatelessWidget {
       children: [
         Flexible(
           child: FutureBottomSheet<FilterModel>(
-            label: "الأعلى تقييم",
+            label: "التقييم",
             validate: (FilterModel value) => value.validateDropDown(context),
             useName: true,
             data: FilterModel.invitationFilters,

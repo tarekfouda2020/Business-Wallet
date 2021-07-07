@@ -18,6 +18,8 @@ class BuildContactWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -53,8 +55,7 @@ class BuildContactWidget extends StatelessWidget {
                 visible: allLocation,
                 child: Container(),
                 replacement: InkWell(
-                  onTap: (){},
-                  // onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute()),
+                  onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute(userId: userId)),
                   child: MyText(
                     title: "(مشاهدة جميع المواقع)",
                     size: 11,

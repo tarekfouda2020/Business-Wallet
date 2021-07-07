@@ -1,5 +1,6 @@
 part of 'ChatImports.dart';
 
+
 class ChatData{
 
   final TextEditingController msgInput = new TextEditingController();

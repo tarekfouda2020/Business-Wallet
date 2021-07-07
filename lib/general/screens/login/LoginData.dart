@@ -5,6 +5,7 @@ class LoginData {
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
+  final GenericCubit<bool> showPassword = new GenericCubit(true);
 
   final TextEditingController email = new TextEditingController();
   final TextEditingController password = new TextEditingController();

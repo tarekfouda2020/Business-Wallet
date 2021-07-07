@@ -6,6 +6,9 @@ class ResetPasswordData {
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
 
+  final GenericCubit<bool> showPass = new GenericCubit(true);
+  final GenericCubit<bool> showConfirmPass = new GenericCubit(true);
+
   final TextEditingController newPassword = new TextEditingController();
   final TextEditingController confirmNewPassword = new TextEditingController();
 
