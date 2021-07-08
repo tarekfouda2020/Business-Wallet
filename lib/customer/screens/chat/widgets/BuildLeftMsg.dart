@@ -42,7 +42,7 @@ class BuildLeftMsg extends StatelessWidget {
           MyText(
             title: model.date ?? "",
             size: 8,
-            color: MyColors.greyWhite,
+            color: Colors.white60,
           ),
         ],
       ),
