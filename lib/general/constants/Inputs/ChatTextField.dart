@@ -39,44 +39,37 @@ class ChatTextField extends StatelessWidget {
     var lang = context.watch<LangCubit>().state.locale.languageCode;
     return Container(
       margin: margin ?? EdgeInsets.all(0),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-            minHeight: 50,
-            maxHeight: 50,
-            minWidth: double.infinity,
-            maxWidth: double.infinity),
-        child: Row(
-          children: [
-            Flexible(
-              child: TextFormField(
-                controller: controller,
-                keyboardType: TextInputType.multiline,
-                enabled: true,
-                obscureText: isPassword,
-                textInputAction: TextInputAction.newline,
-                maxLines: 10,
-                minLines: 8,
-                style: CustomInputTextStyle(lang: lang),
-                decoration: CustomInputDecoration(lang: lang, label: label),
+      child: Row(
+        children: [
+          Flexible(
+            child: TextFormField(
+              controller: controller,
+              keyboardType: TextInputType.multiline,
+              enabled: true,
+              obscureText: isPassword,
+              textInputAction: TextInputAction.newline,
+              maxLines: null,
+              style: CustomInputTextStyle(lang: lang),
+              textAlignVertical: TextAlignVertical.center,
+              decoration: CustomInputDecoration(lang: lang, hint: hint,label: label,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 12)),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
+            decoration: BoxDecoration(
+              color: MyColors.primary,
+              shape: BoxShape.circle
+            ),
+            child: IconButton(
+              onPressed: submit,
+              icon: Icon(
+                Icons.send,
+                size: 20,
+                color: MyColors.blackOpacity,
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 5,horizontal: 5),
-              decoration: BoxDecoration(
-                color: MyColors.primary,
-                shape: BoxShape.circle
-              ),
-              child: IconButton(
-                onPressed: submit,
-                icon: Icon(
-                  Icons.send,
-                  size: 20,
-                  color: MyColors.blackOpacity,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
