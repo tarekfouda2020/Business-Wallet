@@ -55,7 +55,7 @@ class BuildCompRegisterForm extends StatelessWidget {
                   controller: companyRegisterData.phone,
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   action: TextInputAction.next,
-                  type: TextInputType.emailAddress,
+                  type: TextInputType.number,
                   validate: (value) => value!.validateEmpty(context),
                 ),
               ),
@@ -118,7 +118,7 @@ class BuildCompRegisterForm extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
-            validate: (value) => value!.validateEmail(context),
+            validate: (value) => value!.noValidate(),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -146,8 +146,8 @@ class BuildCompRegisterForm extends StatelessWidget {
                   controller: companyRegisterData.companyPhone,
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   action: TextInputAction.next,
-                  type: TextInputType.emailAddress,
-                  validate: (String? value) {},
+                  type: TextInputType.phone,
+                  validate: (value) => value!.noValidate(),
                 ),
               ),
               Expanded(
@@ -181,21 +181,26 @@ class BuildCompRegisterForm extends StatelessWidget {
             text: "الموقع",
           ),
           BlocConsumer<LocationCubit, LocationState>(
-            bloc: companyRegisterData.locationCubit,
-            listener: (context, state) {
+            bloc: companyRegisterData.locCubit,
+            listener: (_, state) {
               companyRegisterData.address.text = state.model!.address;
               companyRegisterData.lat = state.model!.lat;
               companyRegisterData.lng = state.model!.lng;
             },
-            builder: (context, state) {
+            builder: (_, state) {
               return InkWellTextField(
-                hint: 'الموقع',
                 controller: companyRegisterData.address,
-                icon: Icon(Icons.location_on_outlined),
-                margin: const EdgeInsets.symmetric(vertical: 10),
+                margin: EdgeInsets.symmetric(vertical: 10),
+                hint: 'موقع الفرع الرئيسي',
+                type: TextInputType.text,
+                icon: Icon(
+                  Icons.gps_fixed,
+                  size: 20,
+                  color: MyColors.primary,
+                ),
                 validate: (value) => value!.validateEmpty(context),
                 onTab: () => Utils.navigateToLocationAddress(
-                    context, companyRegisterData.locationCubit),
+                    context, companyRegisterData.locCubit),
               );
             },
           ),
@@ -230,35 +235,45 @@ class BuildCompRegisterForm extends StatelessWidget {
           BuildFormText(
             text: "كلمة المرور",
           ),
-          IconTextFiled(
-            hint: "كلمة المرور",
-            controller: companyRegisterData.password,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            action: TextInputAction.next,
-            isPassword: true,
-            suffixIcon: Icon(
-              Icons.remove_red_eye,
-              color: MyColors.grey,
-            ),
-            type: TextInputType.emailAddress,
-            validate: (value) => value!.validatePassword(context),
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: companyRegisterData.showPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "كلمة المرور",
+                controller: companyRegisterData.password,
+                validate: (value) => value!.validatePassword(context),
+                action: TextInputAction.next,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () =>
+                      companyRegisterData.showPass.onUpdateData(!state.data),
+                ),
+                isPassword: state.data,
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
           BuildFormText(
             text: "تأكيد كلمة المرور",
           ),
-          IconTextFiled(
-            hint: "تأكيد كلمة المرور",
-            controller: companyRegisterData.confirmPassword,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            action: TextInputAction.next,
-            isPassword: true,
-            suffixIcon: Icon(
-              Icons.remove_red_eye,
-              color: MyColors.grey,
-            ),
-            type: TextInputType.emailAddress,
-            validate: (value) => value!.validatePasswordConfirm(context,
-                pass: companyRegisterData.password.text),
+          BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
+            bloc: companyRegisterData.showConfirmPass,
+            builder: (context, state) {
+              return IconTextFiled(
+                hint: "تأكيد كلمة المرور",
+                controller: companyRegisterData.confirmPassword,
+                action: TextInputAction.done,
+                isPassword: state.data,
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  onPressed: () => companyRegisterData.showConfirmPass
+                      .onUpdateData(!state.data),
+                ),
+                validate: (value) => value!.validatePasswordConfirm(context,
+                    pass: companyRegisterData.password.text),
+                margin: const EdgeInsets.symmetric(vertical: 10),
+              );
+            },
           ),
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -282,7 +297,7 @@ class BuildCompRegisterForm extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
-            validate: (String? value) {},
+            validate: (value) => value!.noValidate(),
           ),
         ],
       ),

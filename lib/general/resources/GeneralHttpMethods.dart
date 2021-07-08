@@ -215,7 +215,7 @@ class GeneralHttpMethods {
     String lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {"lang": lang, "user_id": userId};
     var _data = await DioHelper(context: context).post(
-        url: "/Account/ResendCodeKayanApi", body: body, showLoader: false);
+        url: "/Account/ResendCodeKayanApi", body: body, );
     return (_data != null);
   }
 

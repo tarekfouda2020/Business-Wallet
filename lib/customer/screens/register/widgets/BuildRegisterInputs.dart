@@ -173,7 +173,6 @@ class BuildRegisterInputs extends StatelessWidget {
               title: "كلمة المرور",
             ),
           ),
-
           BlocBuilder<GenericCubit<bool>, GenericState<bool>>(
             bloc: registerData.showPass,
             builder: (context, state) {
@@ -211,14 +210,12 @@ class BuildRegisterInputs extends StatelessWidget {
                   onPressed: () =>
                       registerData.showConfirmPass.onUpdateData(!state.data),
                 ),
-                validate: (value) => value!
-                    .validatePasswordConfirm(context, pass: registerData.pass.text),
+                validate: (value) => value!.validatePasswordConfirm(context,
+                    pass: registerData.pass.text),
                 margin: const EdgeInsets.symmetric(vertical: 10),
               );
             },
           ),
-
-
         ],
       ),
     );

@@ -82,7 +82,7 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> externalPost({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
+  Future<dynamic> externalPost({required String url,required Map<String, dynamic> body,bool showLoader = true,bool showMsg = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
@@ -105,7 +105,7 @@ class DioHelper {
     return null;
   }
   Future<dynamic> uploadFile(
-      {required String url, required Map<String, dynamic> body,bool showLoader = true}) async {
+      {required String url, required Map<String, dynamic> body,bool showLoader = true,bool showMsg = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
@@ -145,7 +145,7 @@ class DioHelper {
       var response = await _dio.post("$baseUrl$url", data: formData);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      LoadingDialog.showToastNotification(response.data["msg"].toString());
+      if (showMsg)LoadingDialog.showToastNotification(response.data["msg"].toString());
       if (response.data["key"] == 1) return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();

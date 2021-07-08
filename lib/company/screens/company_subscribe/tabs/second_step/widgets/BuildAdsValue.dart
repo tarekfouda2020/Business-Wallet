@@ -30,7 +30,7 @@ class BuildAdsValue extends StatelessWidget {
             controller: companySubscribeData.value,
             margin: const EdgeInsets.symmetric(vertical: 25),
             action: TextInputAction.next,
-            type: TextInputType.emailAddress,
+            type: TextInputType.number,
             onChange: (value) => companySubscribeData.getExtraCostSubscribe(
                 context, int.parse(value)),
             validate: (value) => value!.validateEmpty(context),

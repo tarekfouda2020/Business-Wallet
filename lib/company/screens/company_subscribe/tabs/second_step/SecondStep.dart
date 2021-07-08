@@ -35,7 +35,7 @@ class _SecondStepState extends State<SecondStep> {
             textColor: MyColors.blackOpacity,
             borderRadius: 30,
             title: "التالي",
-            onTap: () => widget.companySubscribeData.getFinalCostSubscribe(context),
+            onTap: () => widget.companySubscribeData.onSecSubscribe(context),
           ),
           DefaultButton(
             color: MyColors.white,

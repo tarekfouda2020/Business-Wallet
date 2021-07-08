@@ -3,6 +3,8 @@ part of 'CompanyRegisterInterestsImports.dart';
 class CompanyRegisterInterestsData {
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+
   final GlobalKey<DropdownSearchState> mainField = new GlobalKey();
   final GlobalKey<DropdownSearchState> subField = new GlobalKey();
   final GenericCubit<List<DropDownSelected>> subFieldCubit =
@@ -53,12 +55,14 @@ class CompanyRegisterInterestsData {
   }
 
   saveImportantData(BuildContext context, String userId) async {
-    String ids = subFieldCubit.state.data
-        .where((element) => element.id != 0)
-        .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
-    btnKey.currentState!.animateForward();
-    await CompanyRepository(context)
-        .saveField(mainFieldId.toString(), ids, userId);
-    btnKey.currentState!.animateReverse();
+    if (formKey.currentState!.validate()) {
+      String ids = subFieldCubit.state.data
+          .where((element) => element.id != 0)
+          .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
+      btnKey.currentState!.animateForward();
+      await CompanyRepository(context)
+          .saveField(mainFieldId.toString(), ids, userId);
+      btnKey.currentState!.animateReverse();
+    }
   }
 }

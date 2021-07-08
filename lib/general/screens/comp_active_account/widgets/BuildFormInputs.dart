@@ -19,10 +19,6 @@ class BuildFormInputs extends StatelessWidget {
             action: TextInputAction.done,
             validate: (value) => value!.validateEmpty(context),
           ),
-          MyText(
-            title: "إعادة إرسال الكود",
-            color: MyColors.grey,
-          )
         ],
       ),
     );

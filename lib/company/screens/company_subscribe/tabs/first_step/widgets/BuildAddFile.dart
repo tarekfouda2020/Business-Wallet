@@ -19,7 +19,7 @@ class BuildAddFile extends StatelessWidget {
                 action: TextInputAction.next,
                 type: TextInputType.emailAddress,
                 margin: const EdgeInsets.symmetric(vertical: 15),
-                validate: (value) => value!.validateEmpty(context),
+                validate: (value) => value!.noValidate(),
               ),
             ),
             Expanded(

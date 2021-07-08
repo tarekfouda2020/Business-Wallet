@@ -124,8 +124,8 @@ class CompanyHttpMethods {
       "user_id": userId,
       "lang": lang,
     };
-    var _data = await DioHelper(context: context).post(
-        url: "/Account/CompleteDataKaynaApi", body: body, showLoader: false);
+    var _data = await DioHelper(context: context).get(
+        url: "/Account/CompleteDataKaynaApi", body: body);
     if (_data != null) {
       AutoRouter.of(context)
           .push(CompanyRegisterInterestsRoute(userId: userId));
@@ -177,7 +177,7 @@ class CompanyHttpMethods {
       "lang": lang
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/Account/SaveFieldsApi", body: body, showLoader: false);
+        .get(url: "/Account/SaveFieldsApi", body: body);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data["data"]["UserData"]["interest"];
@@ -217,8 +217,8 @@ class CompanyHttpMethods {
       "lang": lang,
       "user_id": "$userId",
     };
-    var _data = await DioHelper(context: context).post(
-        url: "/Account/EditInterstiesKayanApi", body: body, showLoader: false);
+    var _data = await DioHelper(context: context).get(
+        url: "/Account/EditInterstiesKayanApi", body: body);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data['data']["UserData"]["interest"];
@@ -450,6 +450,7 @@ class CompanyHttpMethods {
       url: '/Account/UpdateKayanApi',
       body: model.toJson(),
       showLoader: false,
+      showMsg: false
     );
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;

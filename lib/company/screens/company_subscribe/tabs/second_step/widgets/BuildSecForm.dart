@@ -22,14 +22,16 @@ class BuildSecForm extends StatelessWidget {
                     children: [
                       BuildFormText(text: "عدد المشاهدات المطلوب"),
                       LabelTextField(
-                        hint: "عدد المشاهدات المطلوب",
+                        hint: "يجب ألا يقل عن 500",
                         controller: companySubscribeData.views,
                         margin: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 5),
                         action: TextInputAction.next,
-                        type: TextInputType.emailAddress,
-                        onChange: (value) =>
-                            companySubscribeData.getCostSubscribe(context),
+                        type: TextInputType.number,
+                        onChange: (value) {
+
+                          companySubscribeData.getCostSubscribe(context);
+                        },
                         validate: (value) => value!.validateEmpty(context),
                       ),
                     ],
@@ -110,9 +112,7 @@ class BuildSecForm extends StatelessWidget {
           InkWellTextField(
             icon: Icon(Icons.arrow_drop_down),
             controller: companySubscribeData.interest,
-            validate: (value){
-
-            },
+            validate: (value) {},
             margin: const EdgeInsets.symmetric(vertical: 10),
             onTab: () => companySubscribeData.showInterestDialog(
                 context, companySubscribeData),

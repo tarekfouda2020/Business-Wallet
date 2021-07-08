@@ -54,7 +54,7 @@ class BuildShowDropItem extends StatelessWidget {
                   maxHeight: 40,
                   enabledColor: MyColors.white,
                   controller: controller ?? TextEditingController(),
-                  validate: (value) => value!.validateEmpty(context),
+                  validate: (value) => value!.noValidate(),
                 ),
               ),
               replacement: Spacer(),

@@ -254,15 +254,15 @@ class CompanySubscribeData {
   void getFinalCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context).finalCost(baseCost);
     finalCostCubit.onUpdateData(data);
-    if (data != null) {
-      onSecSubscribe(context);
-    }
   }
 
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
-
+      if (addSubscribeModel.countView! < 500) {
+        LoadingDialog.showCustomToast("يجب ألا يقل عدد المشاهدات عن 500");
+        return;
+      }
       addSubscribeModel.countView = int.parse(views.text);
       addSubscribeModel.durationSec = durationCubit.state.data;
       addSubscribeModel.startTime = dateCubit.state.data;
@@ -290,6 +290,9 @@ class CompanySubscribeData {
           context.read<LangCubit>().state.locale.languageCode;
       var data =
           await CompanyRepository(context).addSubscribe(addSubscribeModel);
+      if (data != null) {
+        getFinalCostSubscribe(context);
+      }
       btnKey.currentState!.animateReverse();
 
       idCubit.onUpdateData(data!);
@@ -302,7 +305,8 @@ class CompanySubscribeData {
 //third page
 
   void savePdf(BuildContext context) async {
-    var data = await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
+    var data =
+        await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
     if (data != null) {
       Utils.launchURL(url: data);
     }

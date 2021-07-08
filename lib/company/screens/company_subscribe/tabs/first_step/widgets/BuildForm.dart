@@ -24,7 +24,7 @@ class BuildForm extends StatelessWidget {
           ),
           BuildFormText(text: "نص اختياري"),
           RichTextFiled(
-            hint: "اسم الاعلان",
+            hint: "نص اختياري",
             max: 2,
             controller: companySubscribeData.msg,
             margin: const EdgeInsets.symmetric(vertical: 10),
