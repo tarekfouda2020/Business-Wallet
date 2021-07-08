@@ -21,7 +21,7 @@
         android:label="Business Wallet">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDV1H2CcIYVHXtndUp8w_tu79A5OgLoAFU" />
+            android:value="AIzaSyDIBH6mfPQ13UnF9aZtmaUQtuu-mQcxxb0" />
 
         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
