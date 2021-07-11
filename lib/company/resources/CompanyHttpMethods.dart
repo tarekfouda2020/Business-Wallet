@@ -174,7 +174,7 @@ class CompanyHttpMethods {
       "main_filed": "$fkMain",
       "sub_filed": fkSub,
       "user_id": "$userId",
-      "lang": lang
+      "lang": lang,
     };
     var _data = await DioHelper(context: context)
         .get(url: "/Account/SaveFieldsApi", body: body);
