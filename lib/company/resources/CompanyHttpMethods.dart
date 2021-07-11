@@ -182,6 +182,7 @@ class CompanyHttpMethods {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data["data"]["UserData"]["interest"];
       user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
+      context.read<UserCubit>().onUpdateUserData(user);
       await Utils.saveUserData(user);
       AutoRouter.of(context).push(CompanyHomeRoute(index: 4));
       return true;
