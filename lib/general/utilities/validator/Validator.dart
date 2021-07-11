@@ -74,8 +74,8 @@ extension Validator on String {
             r'(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)')
         .hasMatch(this)) {
       return message ?? tr(context, "phoneValidation");
-    } else if (this.length != 10) {
-      return message ?? "من فضلك رقم الجوال يجب ان يكون 10 ارقام";
+    } else if (this.length < 9) {
+      return message ?? "من فضلك رقم الجوال يجب ان يكون 9 ارقام";
     }
     return null;
   }

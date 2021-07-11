@@ -26,7 +26,7 @@ class BuildMainDrop extends StatelessWidget {
                     hint: "اسم المنشأة",
                     controller: companyEditProfileData.compName,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.name,
                     suffixIcon: Icon(
                       Icons.edit,
                       size: 20,
@@ -39,13 +39,13 @@ class BuildMainDrop extends StatelessWidget {
                     hint: "رقم الهاتف",
                     controller: companyEditProfileData.compPhone,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.phone,
                     suffixIcon: Icon(
                       Icons.edit,
                       size: 20,
                     ),
                     margin: const EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                    validate: (value) => value!.validatePhone(context),
                   ),
                   BuildFormText(text: "البريد الالكتروني"),
                   IconTextFiled(
@@ -58,7 +58,7 @@ class BuildMainDrop extends StatelessWidget {
                       size: 20,
                     ),
                     margin: const EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                    validate: (value) => value!.validateEmail(context),
                   ),
                   BuildFormText(text: "موقع الفرع الرئيسي"),
                   BlocConsumer<LocationCubit, LocationState>(
@@ -80,7 +80,7 @@ class BuildMainDrop extends StatelessWidget {
                           size: 20,
                           color: MyColors.primary,
                         ),
-                        validate: (value) => value!.validateEmpty(context),
+                        validate: (value) => value!.noValidate(),
                         onTab: () => Utils.navigateToLocationAddress(
                             context, companyEditProfileData.locCubit),
                       );
@@ -92,7 +92,7 @@ class BuildMainDrop extends StatelessWidget {
                     hint: "الموقع الالكتروني",
                     controller: companyEditProfileData.compWebsite,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.text,
                     suffixIcon: Icon(Icons.keyboard_arrow_down_rounded),
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     validate: (value) => value!.validateEmpty(context),

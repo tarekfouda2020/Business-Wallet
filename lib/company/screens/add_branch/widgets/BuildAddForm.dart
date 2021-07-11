@@ -46,8 +46,8 @@ class BuildAddForm extends StatelessWidget {
                     Icons.edit,
                     size: 20,
                   ),
-                  type: TextInputType.emailAddress,
-                  validate: (value) => value!.validateEmpty(context),
+                  type: TextInputType.phone,
+                  validate: (value) => value!.validatePhone(context),
                 ),
               ),
               Expanded(
@@ -89,7 +89,7 @@ class BuildAddForm extends StatelessWidget {
               return InkWellTextField(
                 hint: "ساعات العمل من",
                 controller: branchData.workHoursFrom,
-                type: TextInputType.emailAddress,
+                type: TextInputType.text,
                 icon: Icon(
                   Icons.edit,
                   size: 20,
@@ -112,7 +112,7 @@ class BuildAddForm extends StatelessWidget {
               return InkWellTextField(
                 hint: "ساعات العمل الي",
                 controller: branchData.workHoursTo,
-                type: TextInputType.emailAddress,
+                type: TextInputType.text,
                 icon: Icon(
                   Icons.edit,
                   size: 20,

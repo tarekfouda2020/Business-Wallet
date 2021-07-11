@@ -159,24 +159,33 @@ class CompanyEditProfileData {
     email.text = company.email!;
     cityId =
         CitiesModel(fkCountry: 3, id: company.fkCity!, name: company.cityName!);
-    compName.text = company.kayanName!;
-    compPhone.text = company.phoneKayan!;
-    compEmail.text = company.emailKayan!;
-    compLocation.text = company.address!;
-    compWebsite.text = company.website!;
-    desc.text = company.description!;
-    whatsApp.text = company.whats!;
-    instagram.text = company.instgram!;
-    twitter.text = company.twitter!;
+    compName.text = company.kayanName??"";
+    compPhone.text = company.phoneKayan??"";
+    compEmail.text = company.emailKayan??"";
+    compLocation.text = company.address??"";
+    compWebsite.text = company.website??"";
+    desc.text = company.description??"";
+    whatsApp.text = company.whats??"";
+    instagram.text = company.instgram??"";
+    twitter.text = company.twitter??"";
     facebook.text = company.facebook!;
-    google.text = company.google!;
+    google.text = company.google??"";
+    compLocation.text = company.address??"";
+    lat=company.lat??"";
+    lng=company.lng??"";
+    showDescCubit.onUpdateData(company.showDescription??true);
+    showBranchCubit.onUpdateData(company.showBranch??true);
+    showImagesCubit.onUpdateData(company.showImgKayan??true);
+    showFilesCubit.onUpdateData(company.showPdfKayan??true);
+    showCertificateCubit.onUpdateData(company.showAccreditationKayan??true);
+    showPartnerCubit.onUpdateData(company.showPartnersKayan??true);
   }
 
   void updateCompanyData(BuildContext context) async {
+    FocusScope.of(context).requestFocus(FocusNode());
     if (formKey.currentState!.validate()) {
-      var user = context.read<UserCubit>().state.model.companyModel;
-
       btnKey.currentState!.animateForward();
+      var user = context.read<UserCubit>().state.model.companyModel;
       UpdateCompanyProfileModel model = UpdateCompanyProfileModel(
         name: userName.text,
         phone: phone.text,
@@ -216,8 +225,12 @@ class CompanyEditProfileData {
         img: imageCubit.state.data,
         lang: context.read<LangCubit>().state.locale.languageCode,
       );
-      await CompanyRepository(context).updateCompanyData(model);
+      var result =  await CompanyRepository(context).updateCompanyData(model);
       btnKey.currentState!.animateReverse();
+      if (result) {
+        // LoadingDialog.showSimpleToast("تم التعديل بنجاح");
+        Navigator.of(context).pop();
+      }
     }
   }
 }

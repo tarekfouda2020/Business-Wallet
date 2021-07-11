@@ -49,14 +49,14 @@ class ChatData{
 
   setSendMsg(BuildContext context,String sender,String receiver)async{
     if(msgInput.text.trim().isEmpty)return;
-    var result = await CustomerRepository(context).sendMessage(sender, receiver,msgInput.text);
-    if (result) {
-      String date = DateFormat("hh:mm a").format(DateTime.now());
-      chatList.insert(0, MessageModel(senderId: sender,date: date,text: msgInput.text));
-      pagingController.itemList = [];
-      pagingController.itemList = chatList;
-      msgInput.clear();
-    }
+    String date = DateFormat("hh:mm a").format(DateTime.now());
+    chatList.insert(0, MessageModel(senderId: sender,date: date,text: msgInput.text));
+    pagingController.itemList = [];
+    pagingController.itemList = chatList;
+    String msg = msgInput.text.toString();
+    msgInput.clear();
+    await CustomerRepository(context).sendMessage(sender, receiver,msg);
+
   }
 
 }

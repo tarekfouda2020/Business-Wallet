@@ -26,13 +26,13 @@ class BuildSocialDrop extends StatelessWidget {
                     hint: "رقم الواتساب",
                     controller: companyEditProfileData.whatsApp,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.phone,
                     suffixIcon: Icon(
                       Icons.edit,
                       size: 20,
                     ),
                     margin: const EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                    validate: (value) => value!.validatePhone(context),
                   ),
                   BuildFormText(text: "الانستقرام"),
                   IconTextFiled(

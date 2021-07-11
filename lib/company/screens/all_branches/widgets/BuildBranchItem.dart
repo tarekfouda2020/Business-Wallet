@@ -95,7 +95,7 @@ class BuildBranchItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyText(
-                      title: "العمل الي :",
+                      title: "العمل من :",
                       color: MyColors.white,
                       size: 10,
                       fontWeight: FontWeight.w600,
@@ -110,19 +110,20 @@ class BuildBranchItem extends StatelessWidget {
                   ],
                 ),
               ),
+
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyText(
-                      title: "العمل من :",
+                      title: "العمل الي :",
                       color: MyColors.white,
                       size: 10,
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(width: 5),
                     MyText(
-                      title: model.hourWork,
+                      title: model.hourWorkTo,
                       color: MyColors.primary,
                       size: 10,
                       fontWeight: FontWeight.w600,

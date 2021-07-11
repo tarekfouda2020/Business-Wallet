@@ -26,8 +26,8 @@ class DioHelper {
 
   Options _buildCacheOptions(Map<String, dynamic> body, {bool subKey = true}) {
     return buildCacheOptions(
-      Duration(hours: 1),
-      maxStale: Duration(days: 1),
+      Duration(days: 3),
+      maxStale: Duration(days: 7),
       forceRefresh: forceRefresh,
       subKey: subKey ? json.encode(body) : "",
       options: Options(extra: {}),

@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/MyText.dart';
 
@@ -98,20 +99,21 @@ class LoadingDialog {
     BotToast.showSimpleNotification(
         title: msg,
         align: alignment ?? Alignment.bottomCenter,
-        backgroundColor: color ?? MyColors.notifyColor,
-        titleStyle: TextStyle(color: textColor ?? MyColors.white),
+        backgroundColor: color ?? MyColors.primary,
+        titleStyle: TextStyle(color: textColor ?? MyColors.black,fontSize: 14,fontWeight: FontWeight.bold),
         duration: Duration(seconds: 3),
         hideCloseButton: false,
         closeIcon: Icon(
           Icons.close,
           size: 25,
-          color: MyColors.white,
+          color: MyColors.black,
         ));
   }
 
   static showSimpleToast(msg) {
     BotToast.showText(text: msg,
-      contentColor: MyColors.blackOpacity,
+      contentColor: MyColors.primary,
+      textStyle: GoogleFonts.cairo(fontSize: 16,color: MyColors.black,fontWeight: FontWeight.bold)
     );
   }
 

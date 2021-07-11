@@ -26,7 +26,7 @@ class BuildCompInfoDrop extends StatelessWidget {
                     hint: "اسم المستخدم",
                     controller: companyEditProfileData.userName,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.name,
                     suffixIcon: Icon(
                       Icons.edit,
                       size: 20,
@@ -39,13 +39,13 @@ class BuildCompInfoDrop extends StatelessWidget {
                     hint: "رقم الجوال",
                     controller: companyEditProfileData.phone,
                     action: TextInputAction.next,
-                    type: TextInputType.emailAddress,
+                    type: TextInputType.phone,
                     suffixIcon: Icon(
                       Icons.edit,
                       size: 20,
                     ),
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                    validate: (value) => value!.validatePhone(context),
                   ),
                   BuildFormText(text: "البريد الالكتروني"),
                   IconTextFiled(
@@ -58,7 +58,7 @@ class BuildCompInfoDrop extends StatelessWidget {
                       size: 20,
                     ),
                     margin: EdgeInsets.symmetric(vertical: 10),
-                    validate: (value) => value!.validateEmpty(context),
+                    validate: (value) => value!.validateEmail(context),
                   ),
                   BuildFormText(text: "الدولة"),
                   Container(

@@ -9,6 +9,14 @@ class LocationAddress extends StatefulWidget {
 class _LocationAddress extends State<LocationAddress> {
   final LocationAddressData locationAddressData = new LocationAddressData();
 
+  @override
+  void initState() {
+    var loc = context.read<LocationCubit>().state.model;
+    double lat = double.parse(loc?.lat??"0");
+    double lng = double.parse(loc?.lng??"0");
+    locationAddressData.getLocationAddress(LatLng(lat, lng), context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +28,8 @@ class _LocationAddress extends State<LocationAddress> {
           builder: (context,state){
             return MyText(
               title: "${state.model!.address}",
-              size: 10,
-              color: MyColors.white,
+              size: 12,
+              color: MyColors.black,
             );
           },
         ),

@@ -38,8 +38,8 @@ class BuildBranchItem extends StatelessWidget {
                 child: MyText(
                   title: model.address,
                   color: MyColors.primary,
-                  size: 10,
-                  fontWeight: FontWeight.w600,
+                  size: 11,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -58,8 +58,8 @@ class BuildBranchItem extends StatelessWidget {
                 child: MyText(
                   title: model.phone,
                   color: MyColors.primary,
-                  size: 10,
-                  fontWeight: FontWeight.w600,
+                  size: 11,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -78,8 +78,8 @@ class BuildBranchItem extends StatelessWidget {
                 child: MyText(
                   title: model.hourWork,
                   color: MyColors.primary,
-                  size: 10,
-                  fontWeight: FontWeight.w600,
+                  size: 11,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -96,10 +96,10 @@ class BuildBranchItem extends StatelessWidget {
               SizedBox(width: 5),
               Expanded(
                 child: MyText(
-                  title: model.hourWork,
+                  title: model.hourWorkTo,
                   color: MyColors.primary,
-                  size: 10,
-                  fontWeight: FontWeight.w600,
+                  size: 11,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -118,8 +118,8 @@ class BuildBranchItem extends StatelessWidget {
                 child: MyText(
                   title: model.statues ? "فعال" : "غير فعال",
                   color: MyColors.primary,
-                  size: 10,
-                  fontWeight: FontWeight.w600,
+                  size: 11,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               OpenContainer(

@@ -358,8 +358,7 @@ class Utils {
       BuildContext context, LocationCubit locCubit) async {
     FocusScope.of(context).requestFocus(FocusNode());
     LoadingDialog.showLoadingDialog();
-    // var current = await Utils.getCurrentLocation();
-    var current ;
+    var current = await Utils.getCurrentLocation();
     LocationModel? locationModel = locCubit.state.model;
     if (current != null) {
       locationModel =
@@ -367,7 +366,7 @@ class Utils {
     }
     double lat = double.parse(locationModel!.lat);
     double lng = double.parse(locationModel.lng);
-    String address = await getAddress(LatLng(lat, lng), context);
+    String? address = await getAddress(LatLng(lat, lng), context);
     locationModel.address = address;
     locCubit.onLocationUpdated(locationModel);
     EasyLoading.dismiss();
@@ -383,11 +382,16 @@ class Utils {
 
   static Future<String> getAddress(LatLng latLng, BuildContext context) async {
     final coordinates = new Coordinates(latLng.latitude, latLng.longitude);
-    List<Address> addresses =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    var first = addresses.first;
-    print("${first.featureName} : ${first.addressLine}");
-    return first.addressLine;
+    try{
+      List<Address>? addresses =
+      await Geocoder.local.findAddressesFromCoordinates(coordinates);
+      var first = addresses.first;
+      print("${first.featureName} : ${first.addressLine}");
+      return first.addressLine;
+    }catch(e){
+      return "";
+    }
+
   }
 
   static double determineDistance(double zoom){

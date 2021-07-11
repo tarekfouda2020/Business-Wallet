@@ -46,11 +46,11 @@ class BuildGoogleMapView extends StatelessWidget {
                     locationAddressData.getLocationAddress(loc.target, context),
               ),
             ),
-            // ImageIcon(
-            //   AssetImage(Res.ma),
-            //   size: 80,
-            //   color: MyColors.secondary,
-            // ),
+            ImageIcon(
+              AssetImage(Res.marker),
+              size: 80,
+              color: MyColors.secondary,
+            ),
           ],
         );
       },

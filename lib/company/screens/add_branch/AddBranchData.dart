@@ -31,7 +31,7 @@ class AddBranchData {
       title: "ساعات العمل من",
       onConfirm: (date) {
         if (date != null) {
-          String time = DateFormat("HH:MM").format(date);
+          String time = DateFormat("HH:mm").format(date);
           fromCubit.onUpdateData(time);
         }
       },
@@ -44,7 +44,7 @@ class AddBranchData {
       title: "ساعات العمل الي",
       onConfirm: (date) {
         if (date != null) {
-          String time = DateFormat("HH:MM").format(date);
+          String time = DateFormat("HH:mm").format(date);
           toCubit.onUpdateData(time);
         }
       },

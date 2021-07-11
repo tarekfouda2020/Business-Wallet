@@ -451,7 +451,7 @@ class CompanyHttpMethods {
       url: '/Account/UpdateKayanApi',
       body: model.toJson(),
       showLoader: false,
-      showMsg: false
+      // showMsg: false
     );
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;

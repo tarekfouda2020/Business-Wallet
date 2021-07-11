@@ -12,6 +12,8 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
+    Geolocator.requestPermission();
+    Geolocator.isLocationServiceEnabled();
     Future.delayed((Duration(seconds: 1)), () {
       Utils.manipulateSplashData(context);
     });
