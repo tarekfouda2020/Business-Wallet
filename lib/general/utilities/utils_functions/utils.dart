@@ -302,7 +302,7 @@ class Utils {
       {required String lat,
       required String lng,
       required BuildContext context}) async {
-
+    if(lat=="0")return;
     try {
       final coords = Coords(double.parse(lat), double.parse(lng));
       final title = "Destination";
@@ -338,19 +338,6 @@ class Utils {
       );
     } catch (e) {
       LoadingDialog.showSimpleToast("$e");
-    }
-
-
-    final availableMaps = await MapLauncher.installedMaps;
-    LocationData? loc = await getCurrentLocation();
-    if (availableMaps.length > 0 && loc != null) {
-      await availableMaps.first.showDirections(
-        destinationTitle: "destination",
-        origin: Coords(loc.latitude!, loc.longitude!),
-        destination: Coords(double.parse(lat), double.parse(lng)),
-      );
-    } else {
-      LoadingDialog.showSimpleToast("قم بتحميل خريطة جوجل");
     }
   }
 

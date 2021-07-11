@@ -10,6 +10,7 @@ DropDownModel _$DropDownModelFromJson(Map<String, dynamic> json) {
   return DropDownModel(
     id: json['id'] as int,
     name: json['name'] as String,
+    selected: json['selected'] as bool,
   );
 }
 
@@ -17,4 +18,5 @@ Map<String, dynamic> _$DropDownModelToJson(DropDownModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'selected': instance.selected,
     };

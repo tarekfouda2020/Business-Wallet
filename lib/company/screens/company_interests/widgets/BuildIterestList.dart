@@ -7,15 +7,15 @@ class BuildInterestList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: BlocBuilder<GenericCubit<List<CompInterestModel>>,
-            GenericState<List<CompInterestModel>>>(
-          bloc: companyInterestData.interestCubit,
-          builder: (context, state) {
-            if (state is GenericUpdateState) {
-              return Wrap(
+    return BlocBuilder<GenericCubit<List<CompInterestModel>>,
+        GenericState<List<CompInterestModel>>>(
+      bloc: companyInterestData.interestCubit,
+      builder: (context, state) {
+        if (state is GenericUpdateState) {
+          return Flexible(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Wrap(
                 spacing: 5,
                 runSpacing: 5,
                 children: List.generate(
@@ -27,15 +27,17 @@ class BuildInterestList extends StatelessWidget {
                     selected: state.data[index].active,
                   ),
                 ),
-              );
-            } else {
-              return Center(
-                child: LoadingDialog.showLoadingView(),
-              );
-            }
-          },
-        ),
-      ),
+              ),
+            ),
+          );
+        } else {
+          return Expanded(
+            child: Center(
+              child: LoadingDialog.showLoadingView(),
+            ),
+          );
+        }
+      },
     );
   }
 }

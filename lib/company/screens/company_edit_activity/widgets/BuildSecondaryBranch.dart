@@ -7,8 +7,6 @@ class BuildSecondaryBranch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var company = context.read<UserCubit>().state.model.companyModel;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,35 +35,6 @@ class BuildSecondaryBranch extends StatelessWidget {
                 spacing: 10,
                 runAlignment: WrapAlignment.start,
                 children: [
-                  ...company!.sub!.map(
-                    (e) => Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        color: MyColors.secondary,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          MyText(
-                            title: "${e.name}",
-                            size: 11,
-                            color: MyColors.white,
-                          ),
-                          IconButton(
-                            onPressed: ()=>companyEditActivityData.removeExistSub(context,e),
-                            icon: Icon(
-                              MdiIcons.closeCircle,
-                              size: 23,
-                              color: MyColors.primary,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
                   ...state.data.map(
                     (e) => Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),

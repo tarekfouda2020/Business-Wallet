@@ -15,6 +15,9 @@ class CompanyEditActivityData {
     var company = context.read<UserCubit>().state.model.companyModel;
     mainFieldId = DropDownModel(
         id: company!.mainFiled!.id, name: company.mainFiled!.name);
+    subFieldCubit.onUpdateData(company.sub!
+        .map((e) => DropDownSelected(id: int.parse(e.id??"0"),name: e.name??"",selected: true))
+        .toList());
   }
 
   void onSelectMain(DropDownModel? model) {
@@ -73,7 +76,7 @@ class CompanyEditActivityData {
         .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
     btnKey.currentState!.animateForward();
     await CompanyRepository(context)
-        .saveField(mainFieldId.toString(), ids, company!.userId);
+        .saveField("${mainFieldId?.id}", ids, company!.userId);
     btnKey.currentState!.animateReverse();
   }
 }

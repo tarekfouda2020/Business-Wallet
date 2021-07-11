@@ -2,7 +2,7 @@ part of 'EditProfileWidgetsImports.dart';
 
 class BuildCheckItem extends StatelessWidget {
   final String title;
-  final Function(Object?) onChange;
+  final Function(bool) onChange;
   final bool selected;
 
   BuildCheckItem({
@@ -19,11 +19,11 @@ class BuildCheckItem extends StatelessWidget {
         children: [
           Checkbox(
             value: selected,
-            onChanged: (val) => onChange(val),
+            onChanged: (val) => onChange(val!),
             checkColor: MyColors.white,
             activeColor: MyColors.primary,
           ),
-          MyText(title: title, size: 11, color: MyColors.white),
+          Expanded(child: MyText(title: title, size: 11, color: MyColors.white)),
         ],
       ),
     );

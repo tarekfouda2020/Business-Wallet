@@ -177,14 +177,14 @@ class CompanyHttpMethods {
       "lang": lang,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/Account/SaveFieldsApi", body: body);
+        .post(url: "/Account/SaveFieldsApi", body: body,showLoader: false);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data["data"]["UserData"]["interest"];
       user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
       context.read<UserCubit>().onUpdateUserData(user);
       await Utils.saveUserData(user);
-      AutoRouter.of(context).push(CompanyHomeRoute(index: 4));
+      AutoRouter.of(context).pop();
       return true;
     } else {
       return false;
@@ -224,9 +224,8 @@ class CompanyHttpMethods {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data['data']["UserData"]["interest"];
       user.companyModel = CompanyModel.fromJson(_data['data']["UserData"]);
-
+      context.read<UserCubit>().onUpdateUserData(user);
       await Utils.saveUserData(user);
-      print("____@@_${user.interest}");
       return true;
     } else {
       return false;

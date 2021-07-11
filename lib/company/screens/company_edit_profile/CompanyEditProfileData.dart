@@ -21,7 +21,7 @@ class CompanyEditProfileData {
   final GenericCubit<bool> showImagesCubit = new GenericCubit(true);
   final GenericCubit<bool> showFilesCubit = new GenericCubit(true);
   final GenericCubit<Object?> showBranchViewCubit = new GenericCubit(true);
-  final GenericCubit<Object?> interestCubit = new GenericCubit(true);
+  final GenericCubit<List<DropDownModel>> interestCubit = new GenericCubit([]);
 
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<CustomButtonState> btnKey =
@@ -152,6 +152,11 @@ class CompanyEditProfileData {
     user.onUpdateUserData(user.state.model);
   }
 
+  changeInterestItem(int index,bool value){
+    interestCubit.state.data[index].selected = value;
+    interestCubit.onUpdateData(interestCubit.state.data);
+  }
+
   seInitialData(BuildContext context) {
     var company = context.read<UserCubit>().state.model.companyModel;
     userName.text = company!.userName!;
@@ -179,6 +184,7 @@ class CompanyEditProfileData {
     showFilesCubit.onUpdateData(company.showPdfKayan??true);
     showCertificateCubit.onUpdateData(company.showAccreditationKayan??true);
     showPartnerCubit.onUpdateData(company.showPartnersKayan??true);
+    interestCubit.onUpdateData(company.interests??[]);
   }
 
   void updateCompanyData(BuildContext context) async {
@@ -219,7 +225,7 @@ class CompanyEditProfileData {
         showPartnerKayan: showPartnerCubit.state.data,
         showPdfKayan: showFilesCubit.state.data,
         showBranch: showBranchCubit.state.data,
-        // interests: "",
+        interests: interestCubit.state.data.where((e) => e.selected).fold("", (prev, element) => "$prev"+"${element.id},"),
         // branch: "",
         userId: user!.userId,
         img: imageCubit.state.data,
@@ -228,7 +234,6 @@ class CompanyEditProfileData {
       var result =  await CompanyRepository(context).updateCompanyData(model);
       btnKey.currentState!.animateReverse();
       if (result) {
-        // LoadingDialog.showSimpleToast("تم التعديل بنجاح");
         Navigator.of(context).pop();
       }
     }

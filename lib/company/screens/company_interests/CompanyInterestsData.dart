@@ -35,8 +35,12 @@ class CompanyInterestData {
       return LoadingDialog.showSimpleToast("حدد اهتمامتك");
     } else {
       btnKey.currentState!.animateForward();
-      await CompanyRepository(context).saveInterest(ids);
+     var result =  await CompanyRepository(context).saveInterest(ids);
       btnKey.currentState!.animateReverse();
+      if (result) {
+        LoadingDialog.showSimpleToast("تم التعديل بنجاح");
+        AutoRouter.of(context).popAndPush(CompanyEditProfileRoute());
+      }
     }
   }
 }

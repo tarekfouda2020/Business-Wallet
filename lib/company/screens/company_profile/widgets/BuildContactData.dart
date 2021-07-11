@@ -3,7 +3,7 @@ part of 'CompProfileWidgetsImports.dart';
 class BuildContactData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var company = context.read<UserCubit>().state.model.companyModel;
+    var company = context.watch<UserCubit>().state.model.companyModel;
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -39,23 +39,47 @@ class BuildContactData extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: Row(
               children: [
-                BuildContactItem(
-                  title: "العنوان",
-                  desc: company.address == "" ? "لا يوجد" : company.address!,
-                  iconData: MdiIcons.mapMarkerRadius,
-                  color: Colors.red,
-                  allLocation: false,
+                InkWell(
+                  onTap: () => Utils.navigateToMapWithDirection(
+                    lat: company.lat ?? "0",
+                    lng: company.lng ?? "0",
+                    context: context,
+                  ),
+                  child: BuildContactItem(
+                    title: "العنوان",
+                    desc: company.address ?? "لا يوجد",
+                    iconData: MdiIcons.mapMarkerRadius,
+                    color: Colors.red,
+                    allLocation: false,
+                  ),
                 ),
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: CachedImage(
-              url:
-                  "https://www.ibelieveinsci.com/wp-content/uploads/GettyImages-498928946-59cd1dd3af5d3a0011d3a87e.jpg",
-              width: MediaQuery.of(context).size.width,
-              height: 130,
+          InkWell(
+            onTap: () => Utils.navigateToMapWithDirection(
+              lat: company.lat ?? "0",
+              lng: company.lng ?? "0",
+              context: context,
+            ),
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              height: 140,
+              child: ImgMap.Map(
+                controller: ImgMap.MapController(
+                  location: LatLng(double.parse(company.lat ?? "0"),
+                      double.parse(company.lng ?? "0")),
+                ),
+                builder: (context, x, y, z) {
+                  final url =
+                      'https://www.google.com/maps/vt/pb=!1m4!1m3!1i$z!2i$x!3i$y!2m3!1e0!2sm!3i420120488!3m7!2sen!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425';
+                  return CachedImage(
+                    url: url,
+                    fit: BoxFit.cover,
+                    height: 140,
+                  );
+                },
+              ),
             ),
           )
         ],

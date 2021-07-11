@@ -19,6 +19,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';
+import 'package:map/map.dart'as ImgMap;
+import 'package:latlng/latlng.dart';
+
+
 part 'BuildCommentItem.dart';
 
 part 'BuildCommentsDrop.dart';
