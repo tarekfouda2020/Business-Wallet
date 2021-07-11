@@ -15,8 +15,8 @@ class InvitationDetailsData {
   final GenericCubit<SpecificAdsModel?> specificAdsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, int adsId,{bool refresh=true}) async {
-    var data = await CustomerRepository(context).getSpecificAds(adsId,refresh);
+  void fetchData(BuildContext context, int adsId, {bool refresh = true}) async {
+    var data = await CustomerRepository(context).getSpecificAds(adsId, refresh);
     specificAdsCubit.onUpdateData(data);
   }
 
@@ -118,5 +118,12 @@ class InvitationDetailsData {
     await CustomerRepository(context)
         .deleteComment(commentId)
         .then((value) => AutoRouter.of(context).pop());
+  }
+
+  void shareKayan(String id) async {
+    final Uri url = await DynamicLinkService().createDynamicLink(
+      id,
+    );
+    Utils.shareApp(url.toString());
   }
 }

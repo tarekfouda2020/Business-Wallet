@@ -79,6 +79,7 @@ dependencies:
   animations: ^2.0.0
   map: ^1.0.0
   flutter_svg: ^0.22.0
+  firebase_dynamic_links: ^2.0.6
 
 
 

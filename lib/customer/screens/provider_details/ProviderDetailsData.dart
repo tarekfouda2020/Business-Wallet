@@ -135,4 +135,11 @@ class ProviderDetailsData {
       ),
     );
   }
+
+  void shareKayan(String id) async {
+    final Uri url = await DynamicLinkService().createDynamicLink(
+      id,
+    );
+    Utils.shareApp(url.toString());
+  }
 }

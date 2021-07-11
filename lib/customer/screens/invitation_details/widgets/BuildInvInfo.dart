@@ -53,7 +53,8 @@ class BuildInvInfo extends StatelessWidget {
                 child: Row(
                   children: [
                     InkWell(
-                      onTap: () => Utils.shareApp("https://www.google.com.eg/"),
+                      onTap: () => invitationDetailsData
+                          .shareKayan(adsDetailsModel.userId),
                       child: Container(
                         height: 30,
                         width: 30,
@@ -95,7 +96,9 @@ class BuildInvInfo extends StatelessWidget {
             onTap: () {
               print("_______");
               Utils.navigateToMapWithDirection(
-                  lat: kayanOwnerModel.lat, lng: kayanOwnerModel.lng, context: context);
+                  lat: kayanOwnerModel.lat,
+                  lng: kayanOwnerModel.lng,
+                  context: context);
             },
             child: Row(
               children: [

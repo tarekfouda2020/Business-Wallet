@@ -9,14 +9,30 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _HomeState extends State<Home>
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   HomeData homeData = HomeData();
 
   @override
   void initState() {
     GlobalNotification.instance.setupNotification(context);
     homeData.initController(this, widget.index);
+    WidgetsBinding.instance?.addObserver(this);
+    homeData.dynamicLinkService.retrieveDynamicLink(context);
     super.initState();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      new Timer(
+        const Duration(milliseconds: 2000),
+        () {
+          print("ahmed");
+          homeData.dynamicLinkService.retrieveDynamicLink(context);
+        },
+      );
+    }
   }
 
   @override

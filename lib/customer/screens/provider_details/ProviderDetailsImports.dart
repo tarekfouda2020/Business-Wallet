@@ -12,6 +12,7 @@ import 'package:base_flutter/general/constants/Inputs/LabelTextField.dart';
 import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/constants/ModaLs/ModalHelper.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/utils_functions/DynamicLinkService.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:base_flutter/general/widgets/DefaultAppBar.dart';
 import 'package:base_flutter/general/utilities/validator/Validator.dart';

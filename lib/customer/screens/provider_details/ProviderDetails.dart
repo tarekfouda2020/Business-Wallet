@@ -30,7 +30,7 @@ class _ProviderDetailsState extends State<ProviderDetails> {
             Icons.share,
             color: MyColors.white,
           ),
-          onPressed: () => Utils.shareApp("https://www.google.com.eg/"),
+          onPressed: () => providerDetailsData.shareKayan(widget.kayanId),
         ),
       ),
       body: BlocBuilder<GenericCubit<MainDetailsModel?>,
