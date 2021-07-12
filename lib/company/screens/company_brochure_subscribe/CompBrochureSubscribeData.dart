@@ -83,8 +83,9 @@ class CompBrochureSubscribeData {
         subFieldCubit.state.data.addAll(all);
         subFieldCubit.onUpdateData(subFieldCubit.state.data);
       } else {
-       var exist = subFieldCubit.state.data.where((e) => e.id == model.id).toList();
-        if (exist.length>0) {
+        var exist =
+            subFieldCubit.state.data.where((e) => e.id == model.id).toList();
+        if (exist.length > 0) {
           return LoadingDialog.showSimpleToast(
               "لا يمكن اختيار نفس النشاط الفرعي");
         } else {
@@ -106,8 +107,8 @@ class CompBrochureSubscribeData {
   }
 
   void getCostSubscribe(BuildContext context) async {
-    var data = await CompanyRepository(context)
-        .getCostBrochureSubscribe(int.parse(Utils.convertDigitsToLatin(brochure.text)));
+    var data = await CompanyRepository(context).getCostBrochureSubscribe(
+        int.parse(Utils.convertDigitsToLatin(brochure.text)));
     baseCost = data?.item1 ?? 0;
     costCubit.onUpdateData(data);
     costChangeCubit.onUpdateData(data!.item1);
@@ -138,7 +139,7 @@ class CompBrochureSubscribeData {
 
   void onBrochureSubscribe(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      if (subFieldCubit.state.data.length==0) {
+      if (subFieldCubit.state.data.length == 0) {
         LoadingDialog.showSimpleToast("من فضلك ادخل الانشطة الفرعية");
         return;
       }
@@ -148,7 +149,7 @@ class CompBrochureSubscribeData {
         return;
       }
 
-      if (costCubit.state.data==null) {
+      if (costCubit.state.data == null) {
         LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
         return;
       }
@@ -180,5 +181,15 @@ class CompBrochureSubscribeData {
         getFinalCostSubscribe(context);
       }
     }
+  }
+
+  void navToPayment(
+      {required String userId,
+      required String cost,
+      required int type,
+      required String advertId,
+      required BuildContext context}) {
+    AutoRouter.of(context).push(PackagesPaymentRoute(
+        userId: userId, type: type, advertId: advertId, cost: cost));
   }
 }

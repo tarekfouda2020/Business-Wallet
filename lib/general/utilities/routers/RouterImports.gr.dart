@@ -75,6 +75,8 @@ import 'package:base_flutter/company/screens/edit_branch/EditBranchImports.dart'
     as _i74;
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart'
     as _i10;
+import 'package:base_flutter/company/screens/packages_payment/PackagesPaymentImports.dart'
+    as _i75;
 import 'package:base_flutter/customer/screens/account_reconciliation/AccountReconciliationImports.dart'
     as _i38;
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart'
@@ -143,7 +145,6 @@ import 'package:base_flutter/general/screens/successfully_active/SuccessfullyAct
 import 'package:base_flutter/general/screens/terms/TermsImports.dart' as _i16;
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart'
     as _i5;
-import 'package:flutter/cupertino.dart' as _i75;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -608,6 +609,21 @@ class AppRouter extends _i1.RootStackRouter {
         durationInMilliseconds: 500,
         reverseDurationInMilliseconds: 500,
         opaque: true,
+        barrierDismissible: false),
+    PackagesPaymentRoute.name: (routeData) => _i1.CustomPage<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<PackagesPaymentRouteArgs>();
+          return _i75.PackagesPayment(
+              userId: args.userId,
+              cost: args.cost,
+              type: args.type,
+              advertId: args.advertId);
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 500,
+        opaque: true,
         barrierDismissible: false)
   };
 
@@ -702,12 +718,13 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(CompOpinionSubscribeRoute.name,
             path: '/comp-opinion-subscribe'),
         _i1.RouteConfig(CompanyBranchesRoute.name, path: '/company-branches'),
-        _i1.RouteConfig(EditBranchRoute.name, path: '/edit-branch')
+        _i1.RouteConfig(EditBranchRoute.name, path: '/edit-branch'),
+        _i1.RouteConfig(PackagesPaymentRoute.name, path: '/packages-payment')
       ];
 }
 
 class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({required _i75.GlobalKey<_i75.NavigatorState> navigatorKey})
+  SplashRoute({required _i2.GlobalKey<_i2.NavigatorState> navigatorKey})
       : super(name,
             path: '/', args: SplashRouteArgs(navigatorKey: navigatorKey));
 
@@ -717,7 +734,7 @@ class SplashRoute extends _i1.PageRouteInfo<SplashRouteArgs> {
 class SplashRouteArgs {
   const SplashRouteArgs({required this.navigatorKey});
 
-  final _i75.GlobalKey<_i75.NavigatorState> navigatorKey;
+  final _i2.GlobalKey<_i2.NavigatorState> navigatorKey;
 }
 
 class LoginRoute extends _i1.PageRouteInfo<LoginRouteArgs> {
@@ -1515,4 +1532,34 @@ class EditBranchRouteArgs {
   const EditBranchRouteArgs({required this.model});
 
   final _i77.BranchModel model;
+}
+
+class PackagesPaymentRoute extends _i1.PageRouteInfo<PackagesPaymentRouteArgs> {
+  PackagesPaymentRoute(
+      {required String userId,
+      required String cost,
+      required int type,
+      required String advertId})
+      : super(name,
+            path: '/packages-payment',
+            args: PackagesPaymentRouteArgs(
+                userId: userId, cost: cost, type: type, advertId: advertId));
+
+  static const String name = 'PackagesPaymentRoute';
+}
+
+class PackagesPaymentRouteArgs {
+  const PackagesPaymentRouteArgs(
+      {required this.userId,
+      required this.cost,
+      required this.type,
+      required this.advertId});
+
+  final String userId;
+
+  final String cost;
+
+  final int type;
+
+  final String advertId;
 }

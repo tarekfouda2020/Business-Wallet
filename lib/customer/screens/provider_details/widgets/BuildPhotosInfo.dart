@@ -41,9 +41,10 @@ class BuildPhotosInfo extends StatelessWidget {
                             horizontal: 10, vertical: 5),
                         child: CachedImage(
                           url: products![index],
-                          haveRadius: false,
+                          haveRadius: true,
                           height: 70,
                           width: 120,
+                          borderRadius: BorderRadius.circular(5),
                           borderColor: MyColors.greyWhite,
                         ),
                       ),

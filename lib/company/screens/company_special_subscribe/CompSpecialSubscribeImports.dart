@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/dots/AddSpecialSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
 import 'package:base_flutter/company/screens/company_special_subscribe/tabs/first_step_special/FirstStepSpecialImports.dart';
 import 'package:base_flutter/company/screens/company_special_subscribe/tabs/first_step_special/widgets/FisrtStepSpecialWidgetImports.dart';
-import 'package:base_flutter/company/screens/company_special_subscribe/tabs/fourth_step_special/FourthStepSpecialImports.dart';
 import 'package:base_flutter/company/screens/company_special_subscribe/tabs/second_step_special/SecondStepSpecialImports.dart';
 import 'package:base_flutter/company/screens/company_special_subscribe/tabs/third_step_special/ThirdStepSpecialImports.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
@@ -15,10 +15,12 @@ import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/constants/Inputs/custom_dropDown/CustomDropDown.dart';
 import 'package:base_flutter/general/constants/ModaLs/ModalHelper.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/AdaptivePicker.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
 part 'CompSpecialSubscribe.dart';
 part 'CompSpecialSubscribeData.dart';

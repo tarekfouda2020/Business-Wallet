@@ -11,12 +11,11 @@ class FourthStep extends StatefulWidget {
 }
 
 class _FourthStepState extends State<FourthStep> {
-  late FourthStepData fourthStepData ;
-
+  late FourthStepData fourthStepData;
 
   @override
   void initState() {
-    fourthStepData=widget.companySubscribeData.fourthStepData;
+    fourthStepData = widget.companySubscribeData.fourthStepData;
     super.initState();
   }
 
@@ -33,41 +32,49 @@ class _FourthStepState extends State<FourthStep> {
           BuildStepper(
             step4: true,
           ),
-          BuildPaymentText(),
-          BlocBuilder<GenericCubit, GenericState>(
-            bloc: fourthStepData.paymentCubit,
-            builder: (context, state) {
-              return Column(
-                children: [
-                  BuildPaymentItem(
-                    title: "fdfdfd",
-                    value: 0,
-                    selected: state.data,
-                    onChange: fourthStepData.paymentCubit.onUpdateData,
-                  ),
-                  BuildPaymentItem(
-                    title: "fdfdfd",
-                    value: 1,
-                    selected: state.data,
-                    onChange: fourthStepData.paymentCubit.onUpdateData,
-                  ),
-                  BuildPaymentItem(
-                    title: "fdfdfd",
-                    value: 2,
-                    selected: state.data,
-                    onChange: fourthStepData.paymentCubit.onUpdateData,
-                  ),
-                ],
-              );
-            },
-          ),
+          BuildPaymentText(widget.companySubscribeData),
+          // BlocBuilder<GenericCubit, GenericState>(
+          //   bloc: fourthStepData.paymentCubit,
+          //   builder: (context, state) {
+          //     return Column(
+          //       children: [
+          //         BuildPaymentItem(
+          //           title: "الدفع ماستر كارد/ فيزا ",
+          //           value: 0,
+          //           selected: state.data,
+          //           onChange: fourthStepData.paymentCubit.onUpdateData,
+          //         ),
+          //         BuildPaymentItem(
+          //           title: "الدفع مدي",
+          //           value: 1,
+          //           selected: state.data,
+          //           onChange: fourthStepData.paymentCubit.onUpdateData,
+          //         ),
+          //         // BuildPaymentItem(
+          //         //   title: "fdfdfd",
+          //         //   value: 2,
+          //         //   selected: state.data,
+          //         //   onChange: fourthStepData.paymentCubit.onUpdateData,
+          //         // ),
+          //       ],
+          //     );
+          //   },
+          // ),
           DefaultButton(
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-            title: "تأكيد",
-            onTap: () => Navigator.of(context).pop(),
+            title: "دفع",
+            onTap: () => widget.companySubscribeData.navToPayment(
+                userId: widget.companySubscribeData.addSubscribeModel.userId
+                    .toString(),
+                cost: widget.companySubscribeData.addSubscribeModel.price
+                    .toString(),
+                type: 1,
+                advertId:
+                    widget.companySubscribeData.idCubit.state.data.toString(),
+                context: context),
           ),
           DefaultButton(
             color: MyColors.white,

@@ -4,7 +4,6 @@ class CompOpinionSubscribeData {
   late final PageController controller;
   final FirstStepOpinionData firstStepOpinionData = new FirstStepOpinionData();
 
-
   final GenericCubit<int> subscribeCubit = new GenericCubit(0);
   final GlobalKey<FormState> secFormKey = new GlobalKey<FormState>();
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
@@ -92,7 +91,8 @@ class CompOpinionSubscribeData {
   }
 
   void onSubscribe(BuildContext context) {
-    if (formKey.currentState!.validate()&&questionFormKey.currentState!.validate()) {
+    if (formKey.currentState!.validate() &&
+        questionFormKey.currentState!.validate()) {
       if (imageCubit.state.data.isEmpty && videosCubit.state.data.isEmpty) {
         if (addOpinionQuestionCubit.state.data.isEmpty) {
           return LoadingDialog.showCustomToast(
@@ -268,8 +268,8 @@ class CompOpinionSubscribeData {
   }
 
   void getExtraCostSubscribe(BuildContext context, int price) async {
-    var data = await CompanyRepository(context)
-        .getExtraCostSubscribe(int.parse(Utils.convertDigitsToLatin(views.text)), price);
+    var data = await CompanyRepository(context).getExtraCostSubscribe(
+        int.parse(Utils.convertDigitsToLatin(views.text)), price);
     costViewCubit.onUpdateData(data);
     baseCost = data?.item1 ?? 0;
 
@@ -288,8 +288,11 @@ class CompOpinionSubscribeData {
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
-      int len = interestCubit.state.data.where((element) => element.selected).toList().length;
-      if (len==0) {
+      int len = interestCubit.state.data
+          .where((element) => element.selected)
+          .toList()
+          .length;
+      if (len == 0) {
         LoadingDialog.showCustomToast("من فضلك ادخل العملاء المهتمين");
         return;
       }
@@ -301,7 +304,7 @@ class CompOpinionSubscribeData {
         LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
         return;
       }
-      if (costCubit.state.data==null||costViewCubit.state.data==null) {
+      if (costCubit.state.data == null || costViewCubit.state.data == null) {
         LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
         return;
       }
@@ -342,9 +345,20 @@ class CompOpinionSubscribeData {
   }
 
   void savePdf(BuildContext context) async {
-    var data = await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
+    var data =
+        await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
     if (data != null) {
       Utils.launchURL(url: data);
     }
+  }
+
+  void navToPayment(
+      {required String userId,
+      required String cost,
+      required int type,
+      required String advertId,
+      required BuildContext context}) {
+    AutoRouter.of(context).push(PackagesPaymentRoute(
+        userId: userId, type: type, advertId: advertId, cost: cost));
   }
 }

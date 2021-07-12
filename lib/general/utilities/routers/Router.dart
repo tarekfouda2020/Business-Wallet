@@ -78,7 +78,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompanyPoints),
     AdaptiveRoute(page: AllBranches),
 
-    CustomRoute(page: CompanySubscribe,
+    CustomRoute(
+      page: CompanySubscribe,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
@@ -90,7 +91,8 @@ part of 'RouterImports.dart';
     AdaptiveRoute(page: CompAccountReconciliation),
     AdaptiveRoute(page: CompanyStatisticsRate),
     AdaptiveRoute(page: CompanyBarcode),
-    CustomRoute(page: CompBrochureSubscribe,
+    CustomRoute(
+      page: CompBrochureSubscribe,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
@@ -101,12 +103,14 @@ part of 'RouterImports.dart';
 
     AdaptiveRoute(page: SecondStep),
 
-    CustomRoute(page: CompSpecialSubscribe,
+    CustomRoute(
+      page: CompSpecialSubscribe,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
     ),
-    CustomRoute(page: CompOpinionSubscribe,
+    CustomRoute(
+      page: CompOpinionSubscribe,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,
@@ -119,6 +123,12 @@ part of 'RouterImports.dart';
     ),
     CustomRoute(
       page: EditBranch,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+      durationInMilliseconds: 500,
+      reverseDurationInMilliseconds: 500,
+    ),
+    CustomRoute(
+      page: PackagesPayment,
       transitionsBuilder: TransitionsBuilders.fadeIn,
       durationInMilliseconds: 500,
       reverseDurationInMilliseconds: 500,

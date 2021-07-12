@@ -29,11 +29,30 @@ class _FourthStepOpinionState extends State<FourthStepOpinion> {
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            title: "التالي",
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            title: "دفع",
+            onTap: () => widget.compOpinionSubscribeData.navToPayment(
+                userId: widget
+                    .compOpinionSubscribeData.addOpinionSubscribeModel.userId
+                    .toString(),
+                cost: widget
+                    .compOpinionSubscribeData.addOpinionSubscribeModel.price
+                    .toString(),
+                type: 3,
+                advertId: widget.compOpinionSubscribeData.idCubit.state.data
+                    .toString(),
+                context: context),
+          ),
+          DefaultButton(
+            color: MyColors.primary,
+            textColor: MyColors.blackOpacity,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            title: "السابق",
             onTap: () => Navigator.of(context).pop(),
           )
         ],
       ),
-    );  }
+    );
+  }
 }

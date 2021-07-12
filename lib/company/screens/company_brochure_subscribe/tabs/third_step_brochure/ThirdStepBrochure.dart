@@ -30,9 +30,25 @@ class _ThirdStepBrochureState extends State<ThirdStepBrochure> {
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            title: "التالي",
-            onTap: () => Navigator.of(context).pop(),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            title: "دفع",
+            onTap: () => widget.compBrochureSubscribeData.navToPayment(
+                userId:
+                    context.read<UserCubit>().state.model.companyModel!.userId,
+                cost: widget.compBrochureSubscribeData.finalCostCubit.state.data
+                    .toString(),
+                type: 4,
+                advertId: widget.compBrochureSubscribeData.idCubit.state.data
+                    .toString(),
+                context: context),
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.compBrochureSubscribeData.moveBack(),
           )
         ],
       ),

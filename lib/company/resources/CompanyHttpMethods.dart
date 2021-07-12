@@ -1,47 +1,19 @@
-import 'dart:ffi';
-import 'dart:io';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/barcode_model.dart';
 import 'package:base_flutter/company/models/branch_model.dart';
-import 'package:base_flutter/company/models/brochure_details_model.dart';
-import 'package:base_flutter/company/models/business_ads_details_model.dart';
-import 'package:base_flutter/company/models/comp_fav_details_model.dart';
-import 'package:base_flutter/company/models/comp_favorite_model.dart';
 import 'package:base_flutter/company/models/comp_filter_reconciliation_model.dart';
 import 'package:base_flutter/company/models/comp_interest_model.dart';
-import 'package:base_flutter/company/models/comp_invitation_model.dart';
-import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/company_model.dart';
-import 'package:base_flutter/company/models/cost_subscribe_model.dart';
 import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
-import 'package:base_flutter/company/models/dots/AddBrochureSubscribeModel.dart';
-import 'package:base_flutter/company/models/dots/AddOpinionSubscribeModel.dart';
-import 'package:base_flutter/company/models/dots/AddSpecialSubscribeModel.dart';
-import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
 import 'package:base_flutter/company/models/dots/comp_register_model.dart';
 import 'package:base_flutter/company/models/dots/drop_down_model.dart';
-
 import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
-import 'package:base_flutter/company/models/extra_cost_model.dart';
-import 'package:base_flutter/company/models/packages_model.dart';
-import 'package:base_flutter/company/models/product_ads_details_model.dart';
-import 'package:base_flutter/company/models/specific_ads_details_model.dart';
-import 'package:base_flutter/customer/models/Dtos/register_model.dart';
-import 'package:base_flutter/customer/models/auto_search_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/conversation_model.dart';
-import 'package:base_flutter/customer/models/customer_model.dart';
-import 'package:base_flutter/customer/models/follower_model.dart';
-import 'package:base_flutter/customer/models/investment_ads_model.dart';
-import 'package:base_flutter/customer/models/main_details_model.dart';
-import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/profile_comments_model.dart';
-import 'package:base_flutter/customer/models/specific_ads_model.dart';
-import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/customer/models/wallet_details_model.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
@@ -124,8 +96,8 @@ class CompanyHttpMethods {
       "user_id": userId,
       "lang": lang,
     };
-    var _data = await DioHelper(context: context).get(
-        url: "/Account/CompleteDataKaynaApi", body: body);
+    var _data = await DioHelper(context: context)
+        .get(url: "/Account/CompleteDataKaynaApi", body: body);
     if (_data != null) {
       AutoRouter.of(context)
           .push(CompanyRegisterInterestsRoute(userId: userId));
@@ -177,14 +149,15 @@ class CompanyHttpMethods {
       "lang": lang,
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/Account/SaveFieldsApi", body: body,showLoader: false);
+        .post(url: "/Account/SaveFieldsApi", body: body, showLoader: false);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data["data"]["UserData"]["interest"];
       user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
       context.read<UserCubit>().onUpdateUserData(user);
       await Utils.saveUserData(user);
-      AutoRouter.of(context).pop();
+      AutoRouter.of(context)
+          .pushAndPopUntil(LoginRoute(), predicate: (predicate) => false);
       return true;
     } else {
       return false;
@@ -218,8 +191,8 @@ class CompanyHttpMethods {
       "lang": lang,
       "user_id": "$userId",
     };
-    var _data = await DioHelper(context: context).get(
-        url: "/Account/EditInterstiesKayanApi", body: body);
+    var _data = await DioHelper(context: context)
+        .get(url: "/Account/EditInterstiesKayanApi", body: body);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data['data']["UserData"]["interest"];
@@ -514,7 +487,7 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<BranchModel>> getBranches(bool refresh,String userId) async {
+  Future<List<BranchModel>> getBranches(bool refresh, String userId) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
 
     Map<String, dynamic> body = {

@@ -6,7 +6,6 @@ class CompanySubscribeData {
   final SecondStepData secondStepData = new SecondStepData();
   final FourthStepData fourthStepData = new FourthStepData();
 
-
   final GenericCubit<int> subscribeCubit = new GenericCubit(0);
   final AddSubscribeModel addSubscribeModel = new AddSubscribeModel();
   double baseCost = 0;
@@ -234,19 +233,22 @@ class CompanySubscribeData {
 
   void getCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context).getCostSubscribe(
-        int.parse(Utils.convertDigitsToLatin(views.text)),
-        addSubscribeModel.images?.length??0,
-        addSubscribeModel.videos == [] ? 0 : addSubscribeModel.videos?.length??0,
-        durationCubit.state.data);
+        int.parse(Utils.convertDigitsToLatin(
+            views.text.trim().isEmpty ? "0" : views.text)),
+        addSubscribeModel.images?.length ?? 0,
+        addSubscribeModel.videos == []
+            ? 0
+            : addSubscribeModel.videos?.length ?? 0,
+        (durationCubit.state.data ~/ 10).toInt());
     baseCost = data?.item1 ?? 0;
     costCubit.onUpdateData(data);
-    costChangeCubit.onUpdateData(data?.item1??0);
-    costViewChangeCubit.onUpdateData(data?.item3??0);
+    costChangeCubit.onUpdateData(data?.item1 ?? 0);
+    costViewChangeCubit.onUpdateData(data?.item3 ?? 0);
   }
 
   void getExtraCostSubscribe(BuildContext context, int price) async {
     var data = await CompanyRepository(context)
-        .getExtraCostSubscribe(int.parse(views.text), price);
+        .getExtraCostSubscribe(costCubit.state.data?.item2.toInt() ?? 0, price);
     costViewCubit.onUpdateData(data);
     baseCost = data?.item1 ?? 0;
 
@@ -261,8 +263,11 @@ class CompanySubscribeData {
 
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
-      int len = interestCubit.state.data.where((element) => element.selected).toList().length;
-      if (len==0) {
+      int len = interestCubit.state.data
+          .where((element) => element.selected)
+          .toList()
+          .length;
+      if (len == 0) {
         LoadingDialog.showCustomToast("من فضلك ادخل العملاء المهتمين");
         return;
       }
@@ -270,10 +275,10 @@ class CompanySubscribeData {
         LoadingDialog.showCustomToast("يجب ألا يقل عدد المشاهدات عن 500");
         return;
       }
-      if (value.text.isEmpty) {
-        LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
-        return;
-      }
+      // if (value.text.isEmpty) {
+      //   LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
+      //   return;
+      // }
       btnKey.currentState!.animateForward();
       addSubscribeModel.countView = int.parse(views.text);
       addSubscribeModel.durationSec = durationCubit.state.data;
@@ -297,7 +302,9 @@ class CompanySubscribeData {
       addSubscribeModel.mainPoints = costCubit.state.data?.item3.toInt();
 
       addSubscribeModel.addedPoints = costViewCubit.state.data?.item2.toInt();
-      addSubscribeModel.price = int.parse(value.text);
+      addSubscribeModel.price = value.text.trim().isEmpty
+          ? costChangeCubit.state.data.toInt()
+          : int.parse(value.text);
       addSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;
       var data =
@@ -318,5 +325,15 @@ class CompanySubscribeData {
     if (data != null) {
       Utils.launchURL(url: data);
     }
+  }
+
+  void navToPayment(
+      {required String userId,
+      required String cost,
+      required int type,
+      required String advertId,
+      required BuildContext context}) {
+    AutoRouter.of(context).push(PackagesPaymentRoute(
+        userId: userId, type: type, advertId: advertId, cost: cost));
   }
 }

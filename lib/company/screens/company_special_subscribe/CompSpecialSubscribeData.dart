@@ -114,11 +114,11 @@ class CompSpecialSubscribeData {
       addSpecialSubscribeModel.interests = interestCubit.state.data
           .where((element) => element.selected && element.id != 0)
           .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
-      addSpecialSubscribeModel.interestsNames=interestCubit.state.data
+      addSpecialSubscribeModel.interestsNames = interestCubit.state.data
           .where((element) => element.selected && element.id != 0)
           .fold("", (prev, e) => "$prev" + "${e.name}" + ",");
       addSpecialSubscribeModel.fkCity = regionModel?.id.toString();
-      addSpecialSubscribeModel.fkCityName=regionModel?.name;
+      addSpecialSubscribeModel.fkCityName = regionModel?.name;
       addSpecialSubscribeModel.dayShow = daysModel?.id.toString();
       addSpecialSubscribeModel.cost = baseCostCubit.state.data;
       addSpecialSubscribeModel.age = "30-1";
@@ -134,9 +134,20 @@ class CompSpecialSubscribeData {
   }
 
   void savePdf(BuildContext context) async {
-    var data = await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
+    var data =
+        await CompanyRepository(context).saveSpecificPdf(idCubit.state.data);
     if (data != null) {
       Utils.launchURL(url: data);
     }
+  }
+
+  void navToPayment(
+      {required String userId,
+      required String cost,
+      required int type,
+      required String advertId,
+      required BuildContext context}) {
+    AutoRouter.of(context).push(PackagesPaymentRoute(
+        userId: userId, type: type, advertId: advertId, cost: cost));
   }
 }

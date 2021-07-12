@@ -13,7 +13,6 @@ import 'package:base_flutter/company/screens/company_edit_activity/CompanyEditAc
 import 'package:base_flutter/company/screens/company_edit_profile/CompanyEditProfileImports.dart';
 import 'package:base_flutter/company/screens/company_fav_details/CompanyFavDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_home/CompanyHomeImports.dart';
-import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/CompanySearchImports.dart';
 import 'package:base_flutter/company/screens/company_interests/CompanyInterestsImports.dart';
 import 'package:base_flutter/company/screens/company_main_details/CompanyMainDetailsImports.dart';
 import 'package:base_flutter/company/screens/company_opinion_subscribe/CompOpinionSubscribeImports.dart';
@@ -35,9 +34,9 @@ import 'package:base_flutter/company/screens/company_wallet/CompanyWalletImports
 import 'package:base_flutter/company/screens/company_wallet_numb/CompanyWalletNumbImports.dart';
 import 'package:base_flutter/company/screens/edit_branch/EditBranchImports.dart';
 import 'package:base_flutter/company/screens/location_address/LocationAddressImports.dart';
+import 'package:base_flutter/company/screens/packages_payment/PackagesPaymentImports.dart';
 import 'package:base_flutter/customer/screens/Home/HomeImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/profile/ProfileImports.dart';
-import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/search/SearchImports.dart';
 import 'package:base_flutter/customer/screens/account_reconciliation/AccountReconciliationImports.dart';
 import 'package:base_flutter/customer/screens/app_info/AppInfoImports.dart';
 import 'package:base_flutter/customer/screens/chat/ChatImports.dart';
@@ -73,7 +72,5 @@ import 'package:base_flutter/general/screens/splash/SplashImports.dart';
 import 'package:base_flutter/general/screens/successfully_active/SuccessfullyActiveImports.dart';
 import 'package:base_flutter/general/screens/terms/TermsImports.dart';
 import 'package:base_flutter/general/screens/welcome_page/WelcomePageImports.dart';
-import 'package:flutter/cupertino.dart';
-
 
 part 'Router.dart';

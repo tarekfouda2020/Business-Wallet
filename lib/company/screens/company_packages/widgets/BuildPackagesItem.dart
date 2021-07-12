@@ -4,12 +4,13 @@ class BuildPackagesItem extends StatelessWidget {
   final PackagesModel packagesModel;
   final CompanyPackagesData companyPackagesData;
 
-  const BuildPackagesItem({required this.packagesModel,required this.companyPackagesData});
+  const BuildPackagesItem(
+      {required this.packagesModel, required this.companyPackagesData});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 320,
+      height: 335,
       width: MediaQuery.of(context).size.width * .45,
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -39,7 +40,6 @@ class BuildPackagesItem extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,16 +65,16 @@ class BuildPackagesItem extends StatelessWidget {
                 ),
                 MyText(
                   title:
-                  "${packagesModel.start}: ${packagesModel.price} ${packagesModel.data}",
+                      "${packagesModel.start}: ${packagesModel.price} ${packagesModel.data}",
                   size: 9.5,
                   color: MyColors.offWhite,
                 ),
               ],
             ),
           ),
-
           InkWell(
-            onTap: () =>companyPackagesData.navigate(context, packagesModel.type),
+            onTap: () =>
+                companyPackagesData.navigate(context, packagesModel.type),
             child: Container(
               width: MediaQuery.of(context).size.width,
               alignment: Alignment.center,

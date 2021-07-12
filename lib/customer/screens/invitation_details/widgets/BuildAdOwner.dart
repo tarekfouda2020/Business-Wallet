@@ -13,7 +13,7 @@ class BuildAdOwner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
           InkWell(
@@ -42,9 +42,11 @@ class BuildAdOwner extends StatelessWidget {
                       SizedBox(
                         width: 5,
                       ),
-                      MyText(
-                        title: kayanOwnerModel.addressKayan,
-                        size: 9,
+                      Expanded(
+                        child: MyText(
+                          title: kayanOwnerModel.addressKayan,
+                          size: 9,
+                        ),
                       ),
                     ],
                   )

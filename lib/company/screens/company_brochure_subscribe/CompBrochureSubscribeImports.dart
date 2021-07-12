@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/brochure_details_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
 import 'package:base_flutter/company/models/dots/AddBrochureSubscribeModel.dart';
@@ -16,8 +17,10 @@ import 'package:base_flutter/general/constants/CustomButtonAnimation.dart';
 import 'package:base_flutter/general/constants/Inputs/custom_dropDown/CustomDropDown.dart';
 import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/constants/MyColors.dart';
+import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 part 'CompBrochureSubscribe.dart';
 part 'CompBrochureSubscribeData.dart';

@@ -30,9 +30,26 @@ class _ThirdStepSpecialState extends State<ThirdStepSpecial> {
             color: MyColors.primary,
             textColor: MyColors.blackOpacity,
             borderRadius: BorderRadius.circular(30),
-            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-            title: "التالي",
-            onTap: () => Navigator.of(context).pop(),
+            margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            title: "دفع",
+            onTap: () => widget.compSpecialSubscribeData.navToPayment(
+                userId: widget
+                    .compSpecialSubscribeData.addSpecialSubscribeModel.userId!,
+                cost: widget
+                    .compSpecialSubscribeData.addSpecialSubscribeModel.cost
+                    .toString(),
+                type: 2,
+                advertId: widget.compSpecialSubscribeData.idCubit.state.data
+                    .toString(),
+                context: context),
+          ),
+          DefaultButton(
+            color: MyColors.white,
+            textColor: MyColors.primary,
+            borderRadius: BorderRadius.circular(30),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            title: "السابق",
+            onTap: () => widget.compSpecialSubscribeData.moveBack(),
           )
         ],
       ),

@@ -152,6 +152,32 @@ class Utils {
     }
   }
 
+  static void launchMap(
+      {required String address,
+      required double lat,
+      required double lng}) async {
+    var url = '';
+    var urlAppleMaps = '';
+    if (Platform.isAndroid) {
+      url = "https://www.google.com/maps/search/?api=1&query=$lat,$lng";
+    } else {
+      urlAppleMaps = 'https://maps.apple.com/?q=$lat,$lng';
+      if (await canLaunch(urlAppleMaps)) {
+        await launch(urlAppleMaps);
+      } else {
+        throw 'Could not launch $urlAppleMaps';
+      }
+    }
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else if (await canLaunch(urlAppleMaps)) {
+      await launch(urlAppleMaps);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   static void launchWhatsApp(phone) async {
     String message = 'مرحبا بك';
     if (phone.startsWith("00966")) {
@@ -302,7 +328,7 @@ class Utils {
       {required String lat,
       required String lng,
       required BuildContext context}) async {
-    if(lat=="0")return;
+    if (lat == "0") return;
     try {
       final coords = Coords(double.parse(lat), double.parse(lng));
       final title = "Destination";
@@ -369,24 +395,23 @@ class Utils {
 
   static Future<String> getAddress(LatLng latLng, BuildContext context) async {
     final coordinates = new Coordinates(latLng.latitude, latLng.longitude);
-    try{
+    try {
       List<Address>? addresses =
-      await Geocoder.local.findAddressesFromCoordinates(coordinates);
+          await Geocoder.local.findAddressesFromCoordinates(coordinates);
       var first = addresses.first;
       print("${first.featureName} : ${first.addressLine}");
       return first.addressLine;
-    }catch(e){
+    } catch (e) {
       return "";
     }
-
   }
 
-  static double determineDistance(double zoom){
-    if (zoom>=12) {
+  static double determineDistance(double zoom) {
+    if (zoom >= 12) {
       return 1;
-    } else if (zoom>=8) {
+    } else if (zoom >= 8) {
       return 5;
-    } else if (zoom>=6) {
+    } else if (zoom >= 6) {
       return 10;
     }
     return 15;

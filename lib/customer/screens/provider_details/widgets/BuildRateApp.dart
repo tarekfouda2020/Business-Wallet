@@ -27,7 +27,8 @@ class BuildRateApp extends StatelessWidget {
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(vertical: 15),
                 child: RatingBar.builder(
-                  initialRating: state.data.toDouble(),
+                  initialRating:
+                      detailsModel?.myRate.toDouble() ?? state.data.toDouble(),
                   minRating: 0,
                   direction: Axis.horizontal,
                   allowHalfRating: false,

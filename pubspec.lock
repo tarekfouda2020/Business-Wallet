@@ -28,7 +28,7 @@ packages:
       name: animations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   archive:
     dependency: transitive
     description:
@@ -126,7 +126,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.5"
+    version: "2.0.6"
   build_runner_core:
     dependency: transitive
     description:
@@ -547,7 +547,7 @@ packages:
       name: flutter_typeahead
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.3"
+    version: "3.2.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -1250,7 +1250,7 @@ packages:
       name: video_player
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.10"
   video_player_platform_interface:
     dependency: transitive
     description:

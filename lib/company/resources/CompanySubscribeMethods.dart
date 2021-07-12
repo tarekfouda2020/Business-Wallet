@@ -12,6 +12,7 @@ import 'package:base_flutter/general/utilities/dio_helper/DioImports.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 class CompanySubscribeMethods {
   final BuildContext context;
 
@@ -36,6 +37,7 @@ class CompanySubscribeMethods {
       return [];
     }
   }
+
   Future<CostSubscribeModel?> getCostSubscribe(
       int countView, int countImage, int countVideo, int time) async {
     Map<String, dynamic> body = {
@@ -54,6 +56,7 @@ class CompanySubscribeMethods {
       return null;
     }
   }
+
   Future<ExtraCostModel?> getExtraCostSubscribe(int cost, int price) async {
     Map<String, dynamic> body = {
       "cost": cost,
@@ -77,7 +80,7 @@ class CompanySubscribeMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/Plans/AccountFinalCost", body: body);
     if (_data != null) {
-      return _data["data"]['FinalCost'];
+      return _data["data"]['FinalCost'].toDouble();
     } else {
       return null;
     }
@@ -101,6 +104,7 @@ class CompanySubscribeMethods {
       return null;
     }
   }
+
   Future<BrochureDetailsModel?> getBrochureDetails() async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -131,6 +135,7 @@ class CompanySubscribeMethods {
       return null;
     }
   }
+
   Future<ExtraCostModel?> getExtraBrochureCost(int cost, int price) async {
     Map<String, dynamic> body = {
       "cost": cost,
@@ -146,7 +151,6 @@ class CompanySubscribeMethods {
       return null;
     }
   }
-
 
   Future<int?> addSubscribe(AddSubscribeModel model) async {
     var _data = await DioHelper(context: context).post(

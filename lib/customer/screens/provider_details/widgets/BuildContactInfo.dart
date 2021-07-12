@@ -91,16 +91,26 @@ class BuildContactInfo extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(vertical: 20),
-                      child: BuildContactWidget(
-                        title: "العنوان",
-                        detail: detailsModel!.address == ""
-                            ? "لا يوجد"
-                            : detailsModel!.address,
-                        icon: Icons.location_on,
-                        iconColor: Colors.red,
-                        allLocation: false,
+                    InkWell(
+                      onTap: () {
+                        if (detailsModel!.address != "") {
+                          Utils.launchMap(
+                              lat: double.parse(detailsModel!.lat),
+                              lng: double.parse(detailsModel!.lng),
+                              address: detailsModel!.address);
+                        }
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        child: BuildContactWidget(
+                          title: "العنوان",
+                          detail: detailsModel!.address == ""
+                              ? "لا يوجد"
+                              : detailsModel?.address ?? "لا يوجد",
+                          icon: Icons.location_on,
+                          iconColor: Colors.red,
+                          allLocation: false,
+                        ),
                       ),
                     ),
                     BuildImageMap(

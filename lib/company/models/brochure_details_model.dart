@@ -1,5 +1,4 @@
 import 'package:base_flutter/company/models/comp_service_model.dart';
-import 'package:base_flutter/company/models/dots/drop_down_image_model.dart';
 import 'package:base_flutter/company/models/dots/image_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -31,7 +30,9 @@ class BrochureDetailsModel {
   String nameService;
   @JsonKey(name: 'name_product')
   String nameProduct;
+  @JsonKey(nullable: true)
   List<CompServiceModel> services;
+  @JsonKey(nullable: true)
   List<ImageModel> images;
 
   BrochureDetailsModel(
