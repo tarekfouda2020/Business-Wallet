@@ -75,8 +75,9 @@ class BuildMainHeader extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: search),
-          )
+                child: search,
+            ),
+          ),
         ],
       ),
     );

@@ -7,7 +7,11 @@ import 'package:base_flutter/customer/screens/Home/tabs/favorites/tabs/favorites
 import 'package:base_flutter/customer/screens/Home/tabs/favorites/widgets/FavWidgetsImports.dart';
 import 'package:base_flutter/customer/screens/Home/tabs/switch_page/tabs/main_page/widgets/MainPageWidgetsImports.dart';
 import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.dart';
+import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
+import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'tabs/map_screen/MapScreenImports.dart';
 

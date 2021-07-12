@@ -10,18 +10,19 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
-  final MapScreenData mapScreenData = new MapScreenData();
+  late MapScreenData mapScreenData;
 
   @override
   void initState() {
     super.initState();
+    mapScreenData = widget.searchData.mapScreenData;
     mapScreenData.getCurrentLocation(context,widget.searchData);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 60),
+      padding: EdgeInsets.only(bottom: Platform.isIOS? 100:60),
       child: BlocBuilder<GenericCubit<List<Marker>>, GenericState<List<Marker>>>(
         bloc: mapScreenData.markersCubit,
         builder: (_, state) {

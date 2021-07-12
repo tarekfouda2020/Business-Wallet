@@ -11,8 +11,16 @@ class Search extends StatefulWidget {
   _SearchState createState() => _SearchState();
 }
 
-class _SearchState extends State<Search> {
+class _SearchState extends State<Search> with TickerProviderStateMixin {
   final SearchData searchData = SearchData();
+
+
+  @override
+  void initState() {
+    super.initState();
+    searchData.tabController = new TabController(length: 2, vsync: this);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +36,7 @@ class _SearchState extends State<Search> {
             BuildSearchChangeView(searchData: searchData),
             Flexible(
               child: TabBarView(
+                controller: searchData.tabController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   SearchView(searchData: searchData),

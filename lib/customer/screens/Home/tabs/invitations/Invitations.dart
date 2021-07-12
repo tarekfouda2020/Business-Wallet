@@ -5,8 +5,16 @@ class Invitations extends StatefulWidget {
   _InvitationsState createState() => _InvitationsState();
 }
 
-class _InvitationsState extends State<Invitations> {
+class _InvitationsState extends State<Invitations> with TickerProviderStateMixin {
   final InvitationsData invitationsData = new InvitationsData();
+
+
+  @override
+  void initState() {
+    super.initState();
+    invitationsData.tabController = new TabController(length: 2, vsync: this);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +27,10 @@ class _InvitationsState extends State<Invitations> {
         ),
         body: Column(
           children: [
-            BuildChangeView(),
+            BuildChangeView(tabController: invitationsData.tabController,),
             Flexible(
               child: TabBarView(
+                controller: invitationsData.tabController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   InvitationView(invitationsData: invitationsData),

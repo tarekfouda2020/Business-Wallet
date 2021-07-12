@@ -6,15 +6,14 @@ class MapScreenData{
   Completer<GoogleMapController> mapController = Completer();
   late double lat, lng , zoom;
   List<FavoriteModel> mainData=[];
-  void fetchPage(BuildContext context,FavoritesData favoritesData) async {
+  Future<void> fetchPage(BuildContext context,FavoritesData favoritesData) async {
     mainData = await favoritesData.fetchMapPage(context, refresh: false);
    setMarkerWidgets(context);
    setTimer(context);
   }
 
   getCurrentLocation(BuildContext context,FavoritesData favoritesData)async{
-    // var loc = await Utils.getCurrentLocation();
-    var loc ;
+    var loc = await Utils.getCurrentLocation();
     lat=loc?.latitude??24.76006327315991;
     lng=loc?.longitude??46.67399099468996;
     zoom = 10;

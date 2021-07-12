@@ -42,6 +42,7 @@ class _BuildSearchChangeViewState extends State<BuildSearchChangeView> {
             child: Container(
               width: 100,
               child: TabBar(
+                controller: widget.searchData.tabController,
                 indicatorColor: MyColors.darken.withOpacity(.1),
                 tabs: [
                   Tab(

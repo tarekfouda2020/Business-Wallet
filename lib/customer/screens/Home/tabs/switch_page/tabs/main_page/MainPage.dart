@@ -9,8 +9,15 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   final MainPageData mainPageData = new MainPageData();
+
+
+  @override
+  void initState() {
+    super.initState();
+    mainPageData.tabController = new TabController(length: 2, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +30,10 @@ class _MainPageState extends State<MainPage> {
         searchOnTap: widget.onTap,
         body: Column(
           children: [
-            BuildChangeView(),
+            BuildChangeView(tabController: mainPageData.tabController,),
             Flexible(
               child: TabBarView(
+                controller: mainPageData.tabController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   BuildMainPageView(mainPageData: mainPageData),

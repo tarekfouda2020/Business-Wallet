@@ -10,6 +10,8 @@ class FavoritesView extends StatefulWidget {
 }
 
 class _FavoritesViewState extends State<FavoritesView> {
+  final FavoritesData favoritesData = new FavoritesData();
+
   @override
   void initState() {
     widget.favoritesData.fetchPage(1, context, refresh: false);
@@ -21,18 +23,24 @@ class _FavoritesViewState extends State<FavoritesView> {
 
   @override
   Widget build(BuildContext context) {
-    return PagedListView<int, FavoriteModel>(
-      physics: BouncingScrollPhysics(
-        parent: AlwaysScrollableScrollPhysics(),
-      ),
-      pagingController: widget.favoritesData.pagingController,
-      builderDelegate: PagedChildBuilderDelegate<FavoriteModel>(
-        noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
-        itemBuilder: (context, item, index) => BuildFavoritesItem(
-          favoriteModel: item,
-          checkInvite: false,
+    return Column(
+      children: [
+        BuildChangeView2(
+          onTap: (tab)=>widget.favoritesData.pagesCubit.onUpdateData(tab),
         ),
-      ),
+        Flexible(
+          child: PagedListView<int, FavoriteModel>(
+            pagingController: widget.favoritesData.pagingController,
+            builderDelegate: PagedChildBuilderDelegate<FavoriteModel>(
+              noItemsFoundIndicatorBuilder: (context) => BuildNoItemFound(),
+              itemBuilder: (context, item, index) => BuildFavoritesItem(
+                favoriteModel: item,
+                checkInvite: false,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

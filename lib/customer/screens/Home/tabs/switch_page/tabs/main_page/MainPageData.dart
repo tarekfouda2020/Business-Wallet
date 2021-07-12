@@ -3,12 +3,15 @@ part of 'MainPageImports.dart';
 class MainPageData {
   final PagingController<int, MainModel> pagingController =
       PagingController(firstPageKey: 1);
+  late TabController tabController ;
+  final MapScreenData mapScreenData = new MapScreenData();
+
   int pageSize = 10;
   int cityId = 0;
   int interestId = 0;
   int filterId = 0;
 
-  void fetchPage(int pageIndex, BuildContext context,
+  Future<void> fetchPage(int pageIndex, BuildContext context,
       {bool refresh = true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
         .getMainFiltered(pageIndex, cityId, interestId, filterId,refresh);
@@ -54,6 +57,16 @@ class MainPageData {
     return data;
   }
 
+  refreshCurrentPage(BuildContext context, MainPageData mainPageData)async{
+    if (tabController.index==0) {
+      pagingController.refresh();
+    }else{
+      LoadingDialog.showLoadingDialog();
+      await mapScreenData.fetchPage(context, mainPageData);
+      EasyLoading.dismiss();
+    }
+
+  }
 
 
 }

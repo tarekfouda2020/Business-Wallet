@@ -6,15 +6,14 @@ class MapScreenData{
   Completer<GoogleMapController> mapController = Completer();
   late double lat, lng , zoom;
   List<InvitationModel> mainData=[];
-  void fetchPage(BuildContext context,InvitationsData invitationsData) async {
+  Future<void> fetchPage(BuildContext context,InvitationsData invitationsData) async {
     mainData = await invitationsData.fetchMapPage(context, refresh: false);
    setMarkerWidgets(context);
    setTimer(context);
   }
 
   getCurrentLocation(BuildContext context,InvitationsData invitationsData)async{
-    // var loc = await Utils.getCurrentLocation();
-    var loc ;
+    var loc = await Utils.getCurrentLocation();
     lat=loc?.latitude??24.76006327315991;
     lng=loc?.longitude??46.67399099468996;
     zoom = 10;

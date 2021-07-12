@@ -3,6 +3,8 @@ part of 'SearchImports.dart';
 class SearchData {
   final TextEditingController search = TextEditingController();
   final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
+  final MapScreenData mapScreenData = new MapScreenData();
+  late TabController tabController ;
 
   Future<List<AutoSearchModel>> fetchAutoSearch(BuildContext context,String word) async {
     var autoSearch = await CustomerRepository(context).getAutoSearch(word);
@@ -63,6 +65,15 @@ class SearchData {
     return data;
   }
 
+  refreshCurrentPage(BuildContext context, SearchData searchData)async{
+    if (tabController.index==0) {
+      pagingController.refresh();
+    }else{
+      LoadingDialog.showLoadingDialog();
+      await mapScreenData.fetchPage(context, searchData);
+      EasyLoading.dismiss();
+    }
 
+  }
 
 }

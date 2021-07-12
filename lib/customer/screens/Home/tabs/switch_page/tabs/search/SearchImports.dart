@@ -8,8 +8,10 @@ import 'package:base_flutter/customer/screens/Home/widgets/HomeWidgetsImports.da
 import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/blocks/lang_cubit/lang_cubit.dart';
 import 'package:base_flutter/general/blocks/user_cubit/user_cubit.dart';
+import 'package:base_flutter/general/constants/ModaLs/LoadingDialog.dart';
 import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'tabs/map_screen/MapScreenImports.dart';
 import 'tabs/search_view/SearchViewImports.dart';

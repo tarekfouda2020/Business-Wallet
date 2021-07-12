@@ -9,28 +9,35 @@ class _FavoritesState extends State<Favorites> {
   final FavoritesData favoritesData = new FavoritesData();
 
   @override
+  void initState() {
+    super.initState();
+    favoritesData.initPagesData(favoritesData);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: HomeScaffold(
-        title: "مفضلتي",
-        search: BuildFavSearch(
-          favoritesData: favoritesData,
-        ),
-        body: Column(
-          children: [
-            BuildChangeView(),
-            Flexible(
-              child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  FavoritesView(favoritesData: favoritesData),
-                  MapScreen(favoritesData: favoritesData),
-                ],
-              ),
-            ),
-          ],
-        ),
+    return HomeScaffold(
+      title: "مفضلتي",
+      search: BuildFavSearch(
+        favoritesData: favoritesData,
+      ),
+      body: BlocBuilder<GenericCubit<int>, GenericState<int>>(
+        bloc: favoritesData.pagesCubit,
+        builder: (_, state) {
+          return AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            reverseDuration: Duration(milliseconds: 300),
+            child: favoritesData.data[state.data],
+            transitionBuilder: (child, animation) {
+              return FadeTransition(
+                child: child,
+                opacity: animation,
+              );
+            },
+            switchInCurve: Curves.easeIn,
+            switchOutCurve: Curves.easeInOut,
+          );
+        },
       ),
     );
   }

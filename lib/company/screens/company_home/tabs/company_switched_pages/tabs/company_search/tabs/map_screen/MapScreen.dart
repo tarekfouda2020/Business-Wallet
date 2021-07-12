@@ -21,7 +21,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 60),
+      padding: EdgeInsets.only(bottom: Platform.isIOS? 100:60),
       child: BlocBuilder<GenericCubit<List<Marker>>, GenericState<List<Marker>>>(
         bloc: mapScreenData.markersCubit,
         builder: (_, state) {

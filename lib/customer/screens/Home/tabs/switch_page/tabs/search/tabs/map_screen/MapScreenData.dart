@@ -6,7 +6,7 @@ class MapScreenData{
   Completer<GoogleMapController> mapController = Completer();
   late double lat, lng , zoom;
   List<MainModel> mainData=[];
-  void fetchPage(BuildContext context,SearchData searchData) async {
+  Future<void> fetchPage(BuildContext context,SearchData searchData) async {
     mainData = await searchData.fetchMapData(context, lat, lng, zoom);
    setMarkerWidgets(context);
    setTimer(context);

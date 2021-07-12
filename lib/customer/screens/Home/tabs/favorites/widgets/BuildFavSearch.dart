@@ -45,9 +45,7 @@ class BuildFavSearch extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {
-            favoritesData.pagingController.refresh();
-          },
+          onTap: () =>favoritesData.refreshCurrentPage(context, favoritesData),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

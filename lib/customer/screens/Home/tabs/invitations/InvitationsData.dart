@@ -5,6 +5,10 @@ class InvitationsData {
 
   final PagingController<int, InvitationModel> pagingController =
       PagingController(firstPageKey: 1);
+  late TabController tabController ;
+  final MapScreenData mapScreenData = new MapScreenData();
+
+
   late List<InvitationModel> invitationData;
   int pageSize = 10;
 
@@ -35,6 +39,14 @@ class InvitationsData {
     return data;
   }
 
-
+  refreshCurrentPage(BuildContext context, InvitationsData invitationsData)async {
+    if (tabController.index == 0) {
+      pagingController.refresh();
+    } else {
+      LoadingDialog.showLoadingDialog();
+      await mapScreenData.fetchPage(context, invitationsData);
+      EasyLoading.dismiss();
+    }
+  }
 
 }

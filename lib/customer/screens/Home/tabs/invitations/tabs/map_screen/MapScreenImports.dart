@@ -10,6 +10,7 @@ import 'package:base_flutter/general/blocks/generic_cubit/generic_cubit.dart';
 import 'package:base_flutter/general/constants/MapStyle.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/utilities/utils_functions/MarkerGenerator.dart';
+import 'package:base_flutter/general/utilities/utils_functions/UtilsImports.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'widgets/MapScreenWidgetImports.dart';
 import 'package:flutter/material.dart';

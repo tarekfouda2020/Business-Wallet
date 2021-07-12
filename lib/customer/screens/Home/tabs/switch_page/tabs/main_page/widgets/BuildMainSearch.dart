@@ -42,7 +42,7 @@ class BuildMainSearch extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: ()=>mainPageData.pagingController.refresh(),
+          onTap: ()=>mainPageData.refreshCurrentPage(context,mainPageData),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
