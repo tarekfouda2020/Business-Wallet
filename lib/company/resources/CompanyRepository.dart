@@ -12,10 +12,10 @@ import 'package:base_flutter/company/models/comp_invitation_model.dart';
 import 'package:base_flutter/company/models/comp_statistics_details_model.dart';
 import 'package:base_flutter/company/models/comp_wallet_model.dart';
 import 'package:base_flutter/company/models/cost_subscribe_model.dart';
+import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/AddBrochureSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/AddOpinionSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/AddSpecialSubscribeModel.dart';
-import 'package:base_flutter/company/models/dots/AddBranchModel.dart';
 import 'package:base_flutter/company/models/dots/AddSubscribeModel.dart';
 import 'package:base_flutter/company/models/dots/SendBrochureModel.dart';
 import 'package:base_flutter/company/models/dots/UpdateCompanyProfile.dart';
@@ -42,7 +42,6 @@ import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/profile_comments_model.dart';
 import 'package:base_flutter/customer/models/specific_ads_model.dart';
 import 'package:base_flutter/customer/models/wallet_details_model.dart';
-
 import 'package:flutter/material.dart';
 
 class CompanyRepository {
@@ -297,9 +296,11 @@ class CompanyRepository {
 
   Future<bool> addBrochureSubscribe(AddBrochureSubscribeModel model) async =>
       _companySubscribeMethods.addBrochureSubscribe(model);
+  Future<bool> removeBrochureImage(int id) =>
+      _companySubscribeMethods.removeBrochureImage(id);
 
-  Future<List<BranchModel>> getBranches(bool refresh,String userId) =>
-      _companyHttpMethods.getBranches(refresh,userId);
+  Future<List<BranchModel>> getBranches(bool refresh, String userId) =>
+      _companyHttpMethods.getBranches(refresh, userId);
 
   Future<BranchModel?> addBranch(AddBranchModel model) =>
       _companyHttpMethods.addBranch(model);

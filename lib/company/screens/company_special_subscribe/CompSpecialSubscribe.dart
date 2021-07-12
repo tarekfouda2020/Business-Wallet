@@ -13,6 +13,7 @@ class _CompSpecialSubscribeState extends State<CompSpecialSubscribe> {
   void initState() {
     super.initState();
     compSpecialSubscribeData.controller = new PageController(initialPage: 0);
+    compSpecialSubscribeData.fetchData(context);
   }
 
   @override

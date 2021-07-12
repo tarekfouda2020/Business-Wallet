@@ -51,6 +51,12 @@ class CompSpecialSubscribeData {
 
   int? subFieldId;
 
+  fetchData(BuildContext context) {
+    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
+      interestCubit.onUpdateData(data);
+    });
+  }
+
   void onDeletePeopleInterest(
       BuildContext context, DropDownSelected? model, int index) {
     if (model != null) {
@@ -84,9 +90,6 @@ class CompSpecialSubscribeData {
 
   showInterestDialog(
       BuildContext context, CompSpecialSubscribeData subscribeData) {
-    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
-      interestCubit.onUpdateData(data);
-    });
     ModalHelper.showModal(
       context: context,
       title: "تحديد العملاء المهتمين",

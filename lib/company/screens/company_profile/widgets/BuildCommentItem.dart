@@ -31,15 +31,13 @@ class BuildCommentItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  MyText(
+                    title: commentModel.ownerName!,
+                    size: 9,
+                    color: MyColors.greyWhite.withOpacity(.9),
+                  ),
                   Row(
                     children: [
-                      Expanded(
-                        child: MyText(
-                          title: commentModel.ownerName!,
-                          size: 9,
-                          color: MyColors.greyWhite.withOpacity(.9),
-                        ),
-                      ),
                       RatingBar.builder(
                         itemCount: 5,
                         allowHalfRating: true,
@@ -62,7 +60,7 @@ class BuildCommentItem extends StatelessWidget {
                         color: MyColors.greyWhite.withOpacity(.9),
                       ),
                       SizedBox(
-                        width: 30,
+                        width: 25,
                       ),
                       MyText(
                         title: commentModel.date!.toString(),

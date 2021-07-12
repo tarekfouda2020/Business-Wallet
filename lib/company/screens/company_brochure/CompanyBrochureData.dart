@@ -23,6 +23,28 @@ class CompanyBrochureData {
 
   final GenericCubit<List<AddBrochureServiceModel>>
       addBrochureServiceModelCubit = new GenericCubit([]);
+  final GenericCubit<BrochureDetailsModel?> brochureDataCubit =
+      new GenericCubit(null);
+
+  void fetchBrochureData(BuildContext context) async {
+    var data = await CompanyRepository(context).getBrochureDetails();
+    brochureDataCubit.onUpdateData(data);
+    phone.text = brochureDataCubit.state.data?.phone ?? "";
+    email.text = brochureDataCubit.state.data?.email ?? "";
+    desc.text = brochureDataCubit.state.data?.details ?? "";
+    fileName.text = brochureDataCubit.state.data?.file ?? "";
+    service.text = brochureDataCubit.state.data?.nameService ?? "";
+    image.text = brochureDataCubit.state.data?.nameProduct ?? "";
+    if (brochureDataCubit.state.data!.services.length > 0) {
+      for (int i = 0; i < brochureDataCubit.state.data!.services.length; i++) {
+        addService();
+        addBrochureServiceModelCubit.state.data[i].serviceName.text =
+            brochureDataCubit.state.data!.services[i].name ?? "";
+        addBrochureServiceModelCubit.state.data[i].servicePrice.text =
+            brochureDataCubit.state.data!.services[i].price ?? "";
+      }
+    }
+  }
 
   addService() {
     addBrochureServiceModelCubit.state.data.add(
@@ -51,6 +73,17 @@ class CompanyBrochureData {
   removeImage(File file) async {
     imageCubit.state.data.remove(file);
     imageCubit.onUpdateData(imageCubit.state.data);
+  }
+
+  removeImageNetwork(int index, int id, BuildContext context) async {
+    final removed = await CompanyRepository(context).removeBrochureImage(id);
+    if (removed) {
+      print("asdasd ${brochureDataCubit.state.data!.images.length}");
+      brochureDataCubit.state.data!.images.removeAt(index);
+      print("asdasd ${brochureDataCubit.state.data!.images.length}");
+      brochureDataCubit.onUpdateData(brochureDataCubit.state.data);
+      imageCubit.onUpdateData(imageCubit.state.data);
+    }
   }
 
   setFile() async {
