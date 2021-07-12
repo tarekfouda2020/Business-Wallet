@@ -10,7 +10,14 @@ class FirstStepOpinion extends StatefulWidget {
 }
 
 class _FirstStepOpinionState extends State<FirstStepOpinion> {
-  final FirstStepOpinionData firstStepOpinionData = new FirstStepOpinionData();
+  late FirstStepOpinionData firstStepOpinionData ;
+
+
+  @override
+  void initState() {
+    firstStepOpinionData = widget.compOpinionSubscribeData.firstStepOpinionData;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

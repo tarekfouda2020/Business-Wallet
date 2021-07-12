@@ -15,7 +15,11 @@ class _CompanySubscribeState extends State<CompanySubscribe> {
   @override
   void initState() {
     super.initState();
+    companySubscribeData.duration.text="10";
     companySubscribeData.controller = new PageController(initialPage: 0);
+    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
+      companySubscribeData.interestCubit.onUpdateData(data);
+    });
   }
 
   @override

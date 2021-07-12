@@ -107,7 +107,7 @@ class CompBrochureSubscribeData {
 
   void getCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context)
-        .getCostBrochureSubscribe(int.parse(brochure.text));
+        .getCostBrochureSubscribe(int.parse(Utils.convertDigitsToLatin(brochure.text)));
     baseCost = data?.item1 ?? 0;
     costCubit.onUpdateData(data);
     costChangeCubit.onUpdateData(data!.item1);
@@ -138,6 +138,20 @@ class CompBrochureSubscribeData {
 
   void onBrochureSubscribe(BuildContext context) async {
     if (formKey.currentState!.validate()) {
+      if (subFieldCubit.state.data.length==0) {
+        LoadingDialog.showSimpleToast("من فضلك ادخل الانشطة الفرعية");
+        return;
+      }
+
+      if (extraCost.text.trim().isEmpty) {
+        LoadingDialog.showSimpleToast("من فضلك ادخل المبلغ");
+        return;
+      }
+
+      if (costCubit.state.data==null) {
+        LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
+        return;
+      }
       btnKey.currentState!.animateForward();
       AddBrochureSubscribeModel addBrochureSubscribeModel =
           new AddBrochureSubscribeModel(

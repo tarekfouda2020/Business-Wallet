@@ -14,13 +14,13 @@ class BuildOpinionForm extends StatelessWidget {
         children: [
           BuildFormText(text: "نص اختياري"),
           RichTextFiled(
-            hint: "اسم الاعلان",
+            hint: "ادخل النص",
             max: 2,
             controller: compOpinionSubscribeData.msg,
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
-            validate: (value) => value!.validateEmpty(context),
+            validate: (value) => value!.noValidate(),
           ),
           BuildOpinionImages(compOpinionSubscribeData: compOpinionSubscribeData),
           BuildOpinionVideos(compOpinionSubscribeData: compOpinionSubscribeData),

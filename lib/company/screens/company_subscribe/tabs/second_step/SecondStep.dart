@@ -11,7 +11,14 @@ class SecondStep extends StatefulWidget {
 }
 
 class _SecondStepState extends State<SecondStep> {
-  final SecondStepData secondStepData = new SecondStepData();
+  late SecondStepData secondStepData;
+
+  @override
+  void initState() {
+    secondStepData = widget.companySubscribeData.secondStepData;
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {

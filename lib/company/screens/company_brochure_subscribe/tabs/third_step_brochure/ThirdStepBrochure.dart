@@ -32,7 +32,7 @@ class _ThirdStepBrochureState extends State<ThirdStepBrochure> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.compBrochureSubscribeData.moveNext(),
+            onTap: () => Navigator.of(context).pop(),
           )
         ],
       ),

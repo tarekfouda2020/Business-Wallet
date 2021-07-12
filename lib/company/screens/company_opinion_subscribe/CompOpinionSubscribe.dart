@@ -12,7 +12,11 @@ class _CompOpinionSubscribeState extends State<CompOpinionSubscribe> {
   @override
   void initState() {
     super.initState();
+    compOpinionSubscribeData.duration.text="10";
     compOpinionSubscribeData.controller = new PageController(initialPage: 0);
+    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
+      compOpinionSubscribeData.interestCubit.onUpdateData(data);
+    });
   }
 
   @override

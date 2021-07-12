@@ -11,7 +11,14 @@ class FourthStep extends StatefulWidget {
 }
 
 class _FourthStepState extends State<FourthStep> {
-  final FourthStepData fourthStepData = new FourthStepData();
+  late FourthStepData fourthStepData ;
+
+
+  @override
+  void initState() {
+    fourthStepData=widget.companySubscribeData.fourthStepData;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +67,7 @@ class _FourthStepState extends State<FourthStep> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
             title: "تأكيد",
-            onTap: () => widget.companySubscribeData.moveNext,
+            onTap: () => Navigator.of(context).pop(),
           ),
           DefaultButton(
             color: MyColors.white,

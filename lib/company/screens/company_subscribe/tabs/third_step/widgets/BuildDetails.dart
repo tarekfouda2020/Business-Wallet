@@ -93,7 +93,7 @@ class BuildDetails extends StatelessWidget {
             children: [
               BuildReviewItem(
                 title: "الاشخاص مهتمين ب",
-                desc: companySubscribeData.addSubscribeModel.interests,
+                desc: companySubscribeData.addSubscribeModel.interestsNames,
               ),
             ],
           ),

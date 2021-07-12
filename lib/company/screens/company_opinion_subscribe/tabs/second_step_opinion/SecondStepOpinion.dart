@@ -10,6 +10,7 @@ class SecondStepOpinion extends StatefulWidget {
 }
 
 class _SecondStepOpinionState extends State<SecondStepOpinion> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

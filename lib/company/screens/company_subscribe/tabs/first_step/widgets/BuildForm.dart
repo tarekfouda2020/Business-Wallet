@@ -30,7 +30,7 @@ class BuildForm extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             action: TextInputAction.next,
             type: TextInputType.emailAddress,
-            validate: (value) => value!.validateEmpty(context),
+            validate: (value) => value!.noValidate(),
           ),
           BuildAddFile(companySubscribeData: companySubscribeData),
           Visibility(

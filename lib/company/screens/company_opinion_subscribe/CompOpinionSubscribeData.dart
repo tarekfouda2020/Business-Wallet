@@ -2,9 +2,14 @@ part of 'CompOpinionSubscribeImports.dart';
 
 class CompOpinionSubscribeData {
   late final PageController controller;
+  final FirstStepOpinionData firstStepOpinionData = new FirstStepOpinionData();
+
+
   final GenericCubit<int> subscribeCubit = new GenericCubit(0);
   final GlobalKey<FormState> secFormKey = new GlobalKey<FormState>();
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+  final GlobalKey<FormState> questionFormKey = new GlobalKey<FormState>();
+
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
   double baseCost = 0;
@@ -87,7 +92,7 @@ class CompOpinionSubscribeData {
   }
 
   void onSubscribe(BuildContext context) {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()&&questionFormKey.currentState!.validate()) {
       if (imageCubit.state.data.isEmpty && videosCubit.state.data.isEmpty) {
         if (addOpinionQuestionCubit.state.data.isEmpty) {
           return LoadingDialog.showCustomToast(
@@ -189,8 +194,9 @@ class CompOpinionSubscribeData {
 
   onItemChanged(int id, int index) {
     if (id == 0) {
+      var value = interestCubit.state.data[index].selected;
       var data = interestCubit.state.data.map((e) {
-        e.selected = true;
+        e.selected = !value;
         return e;
       }).toList();
       interestCubit.onUpdateData(data);
@@ -203,9 +209,6 @@ class CompOpinionSubscribeData {
 
   showInterestDialog(
       BuildContext context, CompOpinionSubscribeData subscribeData) {
-    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
-      interestCubit.onUpdateData(data);
-    });
     ModalHelper.showModal(
       context: context,
       title: "تحديد العملاء المهتمين",
@@ -254,7 +257,7 @@ class CompOpinionSubscribeData {
 
   void getCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context).getOpinionSubscribeCost(
-        int.parse(views.text),
+        int.parse(Utils.convertDigitsToLatin(views.text)),
         addOpinionSubscribeModel.adsImages!.length,
         addOpinionSubscribeModel.adsVideo!.length,
         addOpinionQuestionCubit.state.data.length);
@@ -266,7 +269,7 @@ class CompOpinionSubscribeData {
 
   void getExtraCostSubscribe(BuildContext context, int price) async {
     var data = await CompanyRepository(context)
-        .getExtraCostSubscribe(int.parse(views.text), price);
+        .getExtraCostSubscribe(int.parse(Utils.convertDigitsToLatin(views.text)), price);
     costViewCubit.onUpdateData(data);
     baseCost = data?.item1 ?? 0;
 
@@ -285,6 +288,23 @@ class CompOpinionSubscribeData {
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
       btnKey.currentState!.animateForward();
+      int len = interestCubit.state.data.where((element) => element.selected).toList().length;
+      if (len==0) {
+        LoadingDialog.showCustomToast("من فضلك ادخل العملاء المهتمين");
+        return;
+      }
+      if (int.parse(views.text) < 500) {
+        LoadingDialog.showCustomToast("يجب ألا يقل عدد المشاهدات عن 500");
+        return;
+      }
+      if (value.text.isEmpty) {
+        LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
+        return;
+      }
+      if (costCubit.state.data==null||costViewCubit.state.data==null) {
+        LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
+        return;
+      }
       addOpinionSubscribeModel.countWatch = views.text;
       addOpinionSubscribeModel.timeStart = dateCubit.state.data;
       addOpinionSubscribeModel.fkCity = regionModel?.id.toString();

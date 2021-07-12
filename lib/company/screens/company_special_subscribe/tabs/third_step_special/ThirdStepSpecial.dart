@@ -32,7 +32,7 @@ class _ThirdStepSpecialState extends State<ThirdStepSpecial> {
             borderRadius: BorderRadius.circular(30),
             margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
             title: "التالي",
-            onTap: () => widget.compSpecialSubscribeData.moveNext(),
+            onTap: () => Navigator.of(context).pop(),
           )
         ],
       ),

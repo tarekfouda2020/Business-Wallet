@@ -2,6 +2,11 @@ part of 'CompanySubscribeImports.dart';
 
 class CompanySubscribeData {
   late final PageController controller;
+  final FirstStepData firstStepData = new FirstStepData();
+  final SecondStepData secondStepData = new SecondStepData();
+  final FourthStepData fourthStepData = new FourthStepData();
+
+
   final GenericCubit<int> subscribeCubit = new GenericCubit(0);
   final AddSubscribeModel addSubscribeModel = new AddSubscribeModel();
   double baseCost = 0;
@@ -167,8 +172,9 @@ class CompanySubscribeData {
 
   onItemChanged(int id, int index) {
     if (id == 0) {
+      var value = interestCubit.state.data[index].selected;
       var data = interestCubit.state.data.map((e) {
-        e.selected = true;
+        e.selected = !value;
         return e;
       }).toList();
       interestCubit.onUpdateData(data);
@@ -180,9 +186,6 @@ class CompanySubscribeData {
   }
 
   showInterestDialog(BuildContext context, CompanySubscribeData subscribeData) {
-    CompanyRepository(context).getPeopleInterests(refresh: false).then((data) {
-      interestCubit.onUpdateData(data);
-    });
     ModalHelper.showModal(
       context: context,
       title: "تحديد العملاء المهتمين",
@@ -231,14 +234,14 @@ class CompanySubscribeData {
 
   void getCostSubscribe(BuildContext context) async {
     var data = await CompanyRepository(context).getCostSubscribe(
-        int.parse(views.text),
-        addSubscribeModel.images!.length,
-        addSubscribeModel.videos == [] ? 0 : addSubscribeModel.videos!.length,
+        int.parse(Utils.convertDigitsToLatin(views.text)),
+        addSubscribeModel.images?.length??0,
+        addSubscribeModel.videos == [] ? 0 : addSubscribeModel.videos?.length??0,
         durationCubit.state.data);
     baseCost = data?.item1 ?? 0;
     costCubit.onUpdateData(data);
-    costChangeCubit.onUpdateData(data!.item1);
-    costViewChangeCubit.onUpdateData(data.item3);
+    costChangeCubit.onUpdateData(data?.item1??0);
+    costViewChangeCubit.onUpdateData(data?.item3??0);
   }
 
   void getExtraCostSubscribe(BuildContext context, int price) async {
@@ -258,11 +261,20 @@ class CompanySubscribeData {
 
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
-      btnKey.currentState!.animateForward();
-      if (addSubscribeModel.countView! < 500) {
+      int len = interestCubit.state.data.where((element) => element.selected).toList().length;
+      if (len==0) {
+        LoadingDialog.showCustomToast("من فضلك ادخل العملاء المهتمين");
+        return;
+      }
+      if (int.parse(views.text) < 500) {
         LoadingDialog.showCustomToast("يجب ألا يقل عدد المشاهدات عن 500");
         return;
       }
+      if (value.text.isEmpty) {
+        LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
+        return;
+      }
+      btnKey.currentState!.animateForward();
       addSubscribeModel.countView = int.parse(views.text);
       addSubscribeModel.durationSec = durationCubit.state.data;
       addSubscribeModel.startTime = dateCubit.state.data;
@@ -281,10 +293,10 @@ class CompanySubscribeData {
       addSubscribeModel.ageGroup = ageCubit.state.data;
       addSubscribeModel.averageIncome = incomeCubit.state.data;
       addSubscribeModel.mainCost = costCubit.state.data!.item1.toInt();
-      addSubscribeModel.addedCost = costViewCubit.state.data!.item1.toInt();
-      addSubscribeModel.mainPoints = costCubit.state.data!.item3.toInt();
+      addSubscribeModel.addedCost = costViewCubit.state.data?.item1.toInt();
+      addSubscribeModel.mainPoints = costCubit.state.data?.item3.toInt();
 
-      addSubscribeModel.addedPoints = costViewCubit.state.data!.item2.toInt();
+      addSubscribeModel.addedPoints = costViewCubit.state.data?.item2.toInt();
       addSubscribeModel.price = int.parse(value.text);
       addSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;
@@ -299,10 +311,6 @@ class CompanySubscribeData {
       moveNext();
     }
   }
-
-//end second page
-
-//third page
 
   void savePdf(BuildContext context) async {
     var data =

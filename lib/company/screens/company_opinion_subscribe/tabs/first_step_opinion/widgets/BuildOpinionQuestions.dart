@@ -34,16 +34,19 @@ class BuildOpinionQuestions extends StatelessWidget {
             GenericState<List<AddOpinionQuestionsModel>>>(
           bloc: compOpinionSubscribeData.addOpinionQuestionCubit,
           builder: (_, state) {
-            return Column(
-              children: List.generate(
-                state.data.length,
-                (index) {
-                  return BuildQuestionItem(
-                    compOpinionSubscribeData: compOpinionSubscribeData,
-                    index: index,
-                    model: state.data[index],
-                  );
-                },
+            return Form(
+              key: compOpinionSubscribeData.questionFormKey,
+              child: Column(
+                children: List.generate(
+                  state.data.length,
+                  (index) {
+                    return BuildQuestionItem(
+                      compOpinionSubscribeData: compOpinionSubscribeData,
+                      index: index,
+                      model: state.data[index],
+                    );
+                  },
+                ),
               ),
             );
           },
