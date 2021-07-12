@@ -16,7 +16,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    mapScreenData.getCurrentLocation(context,widget.mainPageData);
+    // mapScreenData.getCurrentLocation(context,widget.mainPageData);
   }
 
   @override
