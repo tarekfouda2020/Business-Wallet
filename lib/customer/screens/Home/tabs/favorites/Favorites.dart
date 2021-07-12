@@ -17,6 +17,7 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
+      scaffold: favoritesData.scaffold,
       title: "مفضلتي",
       search: BuildFavSearch(
         favoritesData: favoritesData,

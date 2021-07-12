@@ -1,6 +1,7 @@
 part of 'CompanyFavoriteImports.dart';
 
 class CompanyFavoriteData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, CompFavoriteModel> pagingController =
       PagingController(firstPageKey: 1);
   int pageSize = 10;

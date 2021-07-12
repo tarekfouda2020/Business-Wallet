@@ -24,6 +24,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: mainPageData.scaffold,
         search: BuildMainSearch(
           mainPageData: mainPageData,
         ),
@@ -36,7 +37,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 controller: mainPageData.tabController,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  BuildMainPageView(mainPageData: mainPageData),
+                  BuildMainPageView(mainPageData: mainPageData, scaffold: mainPageData.scaffold,),
                   MapScreen(mainPageData: mainPageData),
                 ],
               ),

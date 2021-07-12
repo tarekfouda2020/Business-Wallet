@@ -12,9 +12,10 @@ class InvitationView extends StatefulWidget {
 class _InvitationViewState extends State<InvitationView> {
   @override
   void initState() {
-    widget.invitationsData.fetchPage(1, context, refresh: false);
+    BuildContext cxt = widget.invitationsData.scaffold.currentContext!;
+    widget.invitationsData.fetchPage(1, cxt, refresh: false);
     widget.invitationsData.pagingController.addPageRequestListener((pageKey) {
-      widget.invitationsData.fetchPage(pageKey, context);
+      widget.invitationsData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

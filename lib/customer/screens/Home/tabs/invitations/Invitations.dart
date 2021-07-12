@@ -21,6 +21,7 @@ class _InvitationsState extends State<Invitations> with TickerProviderStateMixin
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: invitationsData.scaffold,
         title: "دعوة تجارية",
         search: BuildInvSearch(
           invitationsData: invitationsData,

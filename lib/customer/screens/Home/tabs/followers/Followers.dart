@@ -20,6 +20,7 @@ class _FollowersState extends State<Followers> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
+      scaffold: followersData.scaffold,
       title: "متابعتي",
       search: BuildFollowersSearch(
         followersData: followersData,

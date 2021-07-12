@@ -1,6 +1,7 @@
 part of 'SearchImports.dart';
 
 class SearchData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final TextEditingController search = TextEditingController();
   final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
   final MapScreenData mapScreenData = new MapScreenData();

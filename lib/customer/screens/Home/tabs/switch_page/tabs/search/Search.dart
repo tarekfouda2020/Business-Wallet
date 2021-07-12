@@ -27,6 +27,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: searchData.scaffold,
         search: BuildSearchDrops(
           searchData: searchData,
         ),

@@ -1,6 +1,7 @@
 part of 'FavoritesImports.dart';
 
 class FavoritesData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, FavoriteModel> pagingController =
       PagingController(firstPageKey: 1);
   final MapScreenData mapScreenData = new MapScreenData();

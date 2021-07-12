@@ -12,10 +12,10 @@ class CompSearchMenu extends StatefulWidget {
 class _CompSearchMenuState extends State<CompSearchMenu> {
   @override
   void initState() {
-    widget.companySearchData..fetchPage(1, context, refresh: false);
-
+    BuildContext cxt = widget.companySearchData.scaffold.currentContext!;
+    widget.companySearchData.fetchPage(1, cxt, refresh: false);
     widget.companySearchData.pagingController.addPageRequestListener((pageKey) {
-      widget.companySearchData.fetchPage(pageKey, context);
+      widget.companySearchData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

@@ -1,6 +1,7 @@
 part of 'CompanyInvitationImports.dart';
 
 class CompanyInvitationData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, CompInvitationModel> pagingController =
       PagingController(firstPageKey: 1);
   late List<CompInvitationModel> invitationData;

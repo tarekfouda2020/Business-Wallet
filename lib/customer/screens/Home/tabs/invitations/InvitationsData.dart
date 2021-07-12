@@ -2,7 +2,7 @@ part of 'InvitationsImports.dart';
 
 class InvitationsData {
   String filterId = "M";
-
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, InvitationModel> pagingController =
       PagingController(firstPageKey: 1);
   late TabController tabController ;

@@ -2,8 +2,8 @@ part of 'MainViewImports.dart';
 
 class BuildMainPageView extends StatefulWidget {
   final MainPageData mainPageData;
-
-  const BuildMainPageView({required this.mainPageData});
+  final GlobalKey<ScaffoldState> scaffold;
+  const BuildMainPageView({required this.mainPageData, required this.scaffold});
 
   @override
   _BuildMainPageViewState createState() => _BuildMainPageViewState();
@@ -12,9 +12,9 @@ class BuildMainPageView extends StatefulWidget {
 class _BuildMainPageViewState extends State<BuildMainPageView> {
   @override
   void initState() {
-    widget.mainPageData.fetchPage(1, context, refresh: false);
+    widget.mainPageData.fetchPage(1, widget.scaffold.currentContext!, refresh: false);
     widget.mainPageData.pagingController.addPageRequestListener((pageKey) {
-      widget.mainPageData.fetchPage(pageKey, context);
+      widget.mainPageData.fetchPage(pageKey, widget.scaffold.currentContext!);
     });
     super.initState();
   }
