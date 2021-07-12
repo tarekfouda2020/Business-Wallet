@@ -18,11 +18,11 @@ class MapScreenData {
     lat = loc?.latitude ?? 24.76006327315991;
     lng = loc?.longitude ?? 46.67399099468996;
     zoom = 10;
-    final GoogleMapController controller = await mapController.future;
+    final Completer<GoogleMapController> controller = Completer();
+    fetchPage(context, mainPageData);
     final CameraPosition position =
         CameraPosition(target: LatLng(lat, lng), zoom: zoom);
-    controller.animateCamera(CameraUpdate.newCameraPosition(position));
-    fetchPage(context, mainPageData);
+    // controller.complete(CameraUpdate.newCameraPosition(position));
   }
 
   void onMapCreated(GoogleMapController controller) {
