@@ -20,7 +20,7 @@ class BuildUserInfo extends StatelessWidget {
                 shape: BoxShape.circle),
             padding: const EdgeInsets.all(5),
             child: CachedImage(
-              url:company!.img!,
+              url: company!.img!,
               width: 55,
               height: 55,
               haveRadius: false,

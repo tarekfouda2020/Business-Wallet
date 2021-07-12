@@ -31,55 +31,101 @@ class BuildAddImage extends StatelessWidget {
                   size: 35,
                 ),
                 onPressed: companyBrochureData.setImage,
-
               ),
             )
           ],
         ),
-        BlocBuilder<GenericCubit<List<File>>,
-            GenericState<List<File>>>(
+        BlocBuilder<GenericCubit<List<File>>, GenericState<List<File>>>(
           bloc: companyBrochureData.imageCubit,
           builder: (_, fileState) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin:const EdgeInsets.symmetric(vertical: 10),
-                  child: Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    alignment: WrapAlignment.start,
-                    children: [
-                      ...fileState.data.map(
-                            (e) => Container(
-                          alignment: Alignment.topLeft,
-                          width: 100,
-                          height: 100,
-                          child: InkWell(
-                            onTap: () =>
-                                companyBrochureData.removeImage(e),
-                            child: Icon(
-                              Icons.cancel,
-                              size: 30,
-                              color: MyColors.primary,
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: MyColors.grey, width: 1),
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: FileImage(e),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
+            if (fileState.data.length == 0) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      alignment: WrapAlignment.start,
+                      children: List.generate(
+                          companyBrochureData
+                              .brochureDataCubit.state.data!.images.length,
+                          (index) => Container(
+                                alignment: Alignment.topLeft,
+                                width: 100,
+                                height: 100,
+                                child: CachedImage(
+                                  width: 100,
+                                  height: 100,
+                                  url: companyBrochureData.brochureDataCubit
+                                      .state.data!.images[index].img,
+                                  child: InkWell(
+                                    onTap: () =>
+                                        companyBrochureData.removeImageNetwork(
+                                            index,
+                                            companyBrochureData
+                                                .brochureDataCubit
+                                                .state
+                                                .data!
+                                                .images[index]
+                                                .id,
+                                            context),
+                                    child: Icon(
+                                      Icons.cancel,
+                                      size: 30,
+                                      color: MyColors.primary,
+                                    ),
+                                  ),
+                                  borderColor: MyColors.grey,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              )),
+                    ),
                   ),
-                ),
-              ],
-            );
+                ],
+              );
+            } else {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      alignment: WrapAlignment.start,
+                      children: [
+                        ...fileState.data.map(
+                          (e) => Container(
+                            alignment: Alignment.topLeft,
+                            width: 100,
+                            height: 100,
+                            child: InkWell(
+                              onTap: () => companyBrochureData.removeImage(e),
+                              child: Icon(
+                                Icons.cancel,
+                                size: 30,
+                                color: MyColors.primary,
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: MyColors.grey, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: FileImage(e),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }
           },
         ),
       ],

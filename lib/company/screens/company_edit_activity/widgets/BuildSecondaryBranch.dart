@@ -47,10 +47,13 @@ class BuildSecondaryBranch extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          MyText(
-                            title: "${e.name}",
-                            size: 11,
-                            color: MyColors.white,
+                          Expanded(
+                            child: MyText(
+                              title: "${e.name}",
+                              size: 11,
+                              overflow: TextOverflow.ellipsis,
+                              color: MyColors.white,
+                            ),
                           ),
                           IconButton(
                             onPressed: () =>

@@ -198,4 +198,17 @@ class CompanySubscribeMethods {
       return false;
     }
   }
+
+  Future<bool> removeBrochureImage(int id) async {
+    final String lang = context.read<LangCubit>().state.locale.languageCode;
+    var _data = await DioHelper(context: context).post(
+        url: '/Plans/RemoveBusiness_Card_Img',
+        body: {"id": id, "lang": lang},
+        showLoader: true);
+    if (_data != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

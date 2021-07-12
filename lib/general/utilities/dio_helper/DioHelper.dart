@@ -8,14 +8,14 @@ class DioHelper {
   final baseUrl = "https://trainingbus.ip4s.com";
   final String _branch = "6";
 
-  DioHelper({this.forceRefresh = true,required this.context}){
+  DioHelper({this.forceRefresh = true, required this.context}) {
     _dio = Dio(
       BaseOptions(
           baseUrl: baseUrl,
           contentType: "application/x-www-form-urlencoded; charset=utf-8"),
     )
       ..interceptors.add(_getCacheManager().interceptor)
-      ..interceptors.add(LogInterceptor(responseBody: true,requestBody: true));
+      ..interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
   }
 
   DioCacheManager _getCacheManager() {
@@ -34,7 +34,8 @@ class DioHelper {
     );
   }
 
-  Future<dynamic> get({required String url, required Map<String, dynamic> body}) async {
+  Future<dynamic> get(
+      {required String url, required Map<String, dynamic> body}) async {
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
@@ -49,7 +50,9 @@ class DioHelper {
         LoadingDialog.showToastNotification(data["msg"].toString());
       }
     } on DioError catch (e) {
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 401 ||
+          e.response?.statusCode == 301 ||
+          e.response?.statusCode == 302) {
         logout();
       } else {
         LoadingDialog.showToastNotification(tr(context, "chickNet"));
@@ -58,21 +61,28 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> post({required String url,required Map<String, dynamic> body,bool showLoader = true}) async {
+  Future<dynamic> post(
+      {required String url,
+      required Map<String, dynamic> body,
+      bool showLoader = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     // body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
     try {
       var response =
-      await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
+          await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      LoadingDialog.showToastNotification(response.data["msg"].toString());
+      if (response.data["msg"] != null) {
+        LoadingDialog.showToastNotification(response.data["msg"].toString());
+      }
       if (response.data["key"] == 1) return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 401 ||
+          e.response?.statusCode == 301 ||
+          e.response?.statusCode == 302) {
         logout();
       } else {
         LoadingDialog.showToastNotification(tr(context, "chickNet"));
@@ -82,20 +92,26 @@ class DioHelper {
     return null;
   }
 
-  Future<dynamic> externalPost({required String url,required Map<String, dynamic> body,bool showLoader = true,bool showMsg = true}) async {
+  Future<dynamic> externalPost(
+      {required String url,
+      required Map<String, dynamic> body,
+      bool showLoader = true,
+      bool showMsg = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
     try {
       var response =
-      await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
+          await _dio.post("$baseUrl$url", data: FormData.fromMap(body));
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
       return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 401 ||
+          e.response?.statusCode == 301 ||
+          e.response?.statusCode == 302) {
         logout();
       } else {
         LoadingDialog.showToastNotification(tr(context, "chickNet"));
@@ -104,8 +120,12 @@ class DioHelper {
 
     return null;
   }
+
   Future<dynamic> uploadFile(
-      {required String url, required Map<String, dynamic> body,bool showLoader = true,bool showMsg = true}) async {
+      {required String url,
+      required Map<String, dynamic> body,
+      bool showLoader = true,
+      bool showMsg = true}) async {
     if (showLoader) LoadingDialog.showLoadingDialog();
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
@@ -145,11 +165,14 @@ class DioHelper {
       var response = await _dio.post("$baseUrl$url", data: formData);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      if (showMsg)LoadingDialog.showToastNotification(response.data["msg"].toString());
+      if (showMsg)
+        LoadingDialog.showToastNotification(response.data["msg"].toString());
       if (response.data["key"] == 1) return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 401 ||
+          e.response?.statusCode == 301 ||
+          e.response?.statusCode == 302) {
         logout();
       } else {
         LoadingDialog.showToastNotification(tr(context, "chickNet"));
@@ -203,7 +226,9 @@ class DioHelper {
       if (response.data["key"] == 1) return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();
-      if (e.response?.statusCode == 401 || e.response?.statusCode == 301|| e.response?.statusCode == 302) {
+      if (e.response?.statusCode == 401 ||
+          e.response?.statusCode == 301 ||
+          e.response?.statusCode == 302) {
         tokenExpired();
       } else {
         LoadingDialog.showToastNotification("تأكد من الاتصال بالانترنت");

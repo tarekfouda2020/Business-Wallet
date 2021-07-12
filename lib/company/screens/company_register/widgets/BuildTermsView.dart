@@ -20,22 +20,24 @@ class BuildTermsView extends StatelessWidget {
                 onChanged: (val) =>
                     companyRegisterData.termCubit.onUpdateData(!state.data),
               ),
-              InkWell(
-                onTap: () => AutoRouter.of(context).push(TermsRoute()),
-                child: Row(
-                  children: [
-                    MyText(
-                      title: "بالتسجيل في النظام فانت توافق علي",
-                      color: MyColors.white,
-                      size: 11,
-                    ),
-                    MyText(
-                      title: "الشروط والاحكام",
-                      color: MyColors.primary,
-                      decoration: TextDecoration.underline,
-                      size: 11,
-                    ),
-                  ],
+              Expanded(
+                child: InkWell(
+                  onTap: () => AutoRouter.of(context).push(TermsRoute()),
+                  child: Row(
+                    children: [
+                      MyText(
+                        title: "بالتسجيل في النظام فانت توافق علي",
+                        color: MyColors.white,
+                        size: 9,
+                      ),
+                      MyText(
+                        title: "الشروط والاحكام",
+                        color: MyColors.primary,
+                        decoration: TextDecoration.underline,
+                        size: 9,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
