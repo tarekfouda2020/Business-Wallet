@@ -7,14 +7,14 @@ class ImportantData {
       new GenericCubit([]);
   final GenericCubit<IntroModel?> introCubit = new GenericCubit(null);
 
-  void fetchData(BuildContext context,String userId) async {
+  void fetchData(BuildContext context, String userId) async {
     var data = await CustomerRepository(context).getInterest(userId);
     data.insert(0, UserInterestModel(id: 0, name: "الكل", choose: false));
     interestCubit.onUpdateData(data);
   }
 
   void fetchIntro(BuildContext context, {bool refresh = true}) async {
-   var data= await GeneralRepository(context).getIntro(refresh: refresh);
+    var data = await GeneralRepository(context).getIntro(refresh: refresh);
     introCubit.onUpdateData(data);
   }
 
@@ -33,7 +33,7 @@ class ImportantData {
     interestCubit.onUpdateData(interestCubit.state.data);
   }
 
-  saveImportantData(BuildContext context,String userId) async {
+  saveImportantData(BuildContext context, String userId) async {
     String ids = interestCubit.state.data
         .where((element) => element.choose && element.id != 0)
         .fold("", (prev, e) => "$prev" + "${e.id}" + ",");
@@ -41,7 +41,8 @@ class ImportantData {
       return LoadingDialog.showSimpleToast("حدد اهتمامتك");
     } else {
       btnKey.currentState!.animateForward();
-      await CustomerRepository(context).saveInterest(ids,userId);
+      final String id = ids.substring(0, ids.length - 1);
+      await CustomerRepository(context).saveInterest(id, userId);
       btnKey.currentState!.animateReverse();
     }
   }

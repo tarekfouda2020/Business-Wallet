@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:base_flutter/company/models/company_model.dart';
 import 'package:base_flutter/customer/blocs/Invist_count_cubit/invist_count_cubit.dart';
@@ -20,7 +21,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-
 
 class GeneralHttpMethods {
   final BuildContext context;
@@ -48,7 +48,7 @@ class GeneralHttpMethods {
       var step = _data["step"];
       var userId = _data["data"]["UserData"]["user_id"];
       if (type == 2) {
-        if (status == 2) {
+        if (status == 2 || status == null) {
           await Utils.setDeviceId("$_token");
           UserModel user = new UserModel();
           user.deviceId = _token;
@@ -215,7 +215,9 @@ class GeneralHttpMethods {
     String lang = context.read<LangCubit>().state.locale.languageCode;
     Map<String, dynamic> body = {"lang": lang, "user_id": userId};
     var _data = await DioHelper(context: context).post(
-        url: "/Account/ResendCodeKayanApi", body: body, );
+      url: "/Account/ResendCodeKayanApi",
+      body: body,
+    );
     return (_data != null);
   }
 
