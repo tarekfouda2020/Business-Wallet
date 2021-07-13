@@ -1,5 +1,6 @@
 part of 'CompanyFollowersImports.dart';
 class CompanyFollowersData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, FollowerModel> pagingController =
   PagingController(firstPageKey: 1);
   late List<FollowerModel> followerData;

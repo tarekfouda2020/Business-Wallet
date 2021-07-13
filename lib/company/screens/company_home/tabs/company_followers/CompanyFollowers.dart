@@ -20,6 +20,7 @@ class _CompanyFollowersState extends State<CompanyFollowers> {
   @override
   Widget build(BuildContext context) {
     return HomeScaffold(
+      scaffold: companyFollowersData.scaffold,
       title: "متابعتي",
       search: BuildSelectedTabView(
         companyFollowersData: companyFollowersData,

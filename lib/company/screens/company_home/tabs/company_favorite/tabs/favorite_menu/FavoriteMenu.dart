@@ -12,10 +12,11 @@ class FavoriteMenu extends StatefulWidget {
 class _FavoriteMenuState extends State<FavoriteMenu> {
   @override
   void initState() {
-    widget.companyFavoriteData.fetchPage(1, context,refresh: false);
+    BuildContext cxt = widget.companyFavoriteData.scaffold.currentContext!;
+    widget.companyFavoriteData.fetchPage(1, cxt,refresh: false);
     widget.companyFavoriteData.pagingController
         .addPageRequestListener((pageKey) {
-      widget.companyFavoriteData.fetchPage(pageKey, context);
+      widget.companyFavoriteData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

@@ -17,6 +17,7 @@ class _CompanySearchState extends State<CompanySearch> {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: companySearchData.scaffold,
         search: BuildSelectedTabView(
           companySearchData: companySearchData,
         ),

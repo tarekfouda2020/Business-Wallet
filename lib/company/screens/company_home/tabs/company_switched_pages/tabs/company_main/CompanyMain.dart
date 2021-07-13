@@ -18,6 +18,7 @@ class _CompanyMainState extends State<CompanyMain> {
       length: 2,
       initialIndex: 0,
       child: HomeScaffold(
+        scaffold: companyMainData.scaffold,
         search: BuildSelectedTabView(companyMainData: companyMainData),
         searchOnTap: widget.onTap,
         body: Column(

@@ -1,6 +1,7 @@
 part of 'CompanyMainImports.dart';
 
 class CompanyMainData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, MainModel> pagingController =
   PagingController(firstPageKey: 1);
   int pageSize = 10;

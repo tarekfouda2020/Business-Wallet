@@ -5,11 +5,13 @@ class HomeScaffold extends StatelessWidget {
   final Widget search;
   final Widget body;
   final Function() ?searchOnTap;
-  const HomeScaffold({this.title, required this.search, required this.body, this.searchOnTap});
+  final GlobalKey<ScaffoldState> scaffold;
+  const HomeScaffold({this.title, required this.search, required this.body, this.searchOnTap, required this.scaffold});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffold,
       backgroundColor: MyColors.darken,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(200),

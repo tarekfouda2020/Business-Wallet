@@ -12,10 +12,11 @@ class SearchView extends StatefulWidget {
 class _SearchViewState extends State<SearchView> {
   @override
   void initState() {
-    widget.searchData.fetchPage(1, context, refresh: false);
+    BuildContext cxt = widget.searchData.scaffold.currentContext!;
+    widget.searchData.fetchPage(1, cxt, refresh: false);
 
     widget.searchData.pagingController.addPageRequestListener((pageKey) {
-      widget.searchData.fetchPage(pageKey, context);
+      widget.searchData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

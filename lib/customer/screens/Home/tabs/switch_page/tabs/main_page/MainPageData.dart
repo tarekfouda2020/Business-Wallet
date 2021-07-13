@@ -1,6 +1,7 @@
 part of 'MainPageImports.dart';
 
 class MainPageData {
+  final GlobalKey<ScaffoldState> scaffold = new GlobalKey();
   final PagingController<int, MainModel> pagingController =
       PagingController(firstPageKey: 1);
   late TabController tabController ;

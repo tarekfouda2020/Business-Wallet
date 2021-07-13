@@ -14,6 +14,7 @@ class _CompanyInvitationState extends State<CompanyInvitation> {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: companyInvitationData.scaffold,
         title: "دعوة تجارية",
         search: BuildMenuView(
           companyInvitationData: companyInvitationData,

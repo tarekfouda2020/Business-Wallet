@@ -12,10 +12,11 @@ class InvitationMenu extends StatefulWidget {
 class _InvitationMenuState extends State<InvitationMenu> {
   @override
   void initState() {
-    widget.companyInvitationData.fetchPage(1, context, refresh: false);
+    BuildContext cxt = widget.companyInvitationData.scaffold.currentContext!;
+    widget.companyInvitationData.fetchPage(1, cxt, refresh: false);
     widget.companyInvitationData.pagingController
         .addPageRequestListener((pageKey) {
-      widget.companyInvitationData.fetchPage(pageKey, context);
+      widget.companyInvitationData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

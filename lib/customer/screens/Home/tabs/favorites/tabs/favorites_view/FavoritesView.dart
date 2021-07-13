@@ -14,9 +14,10 @@ class _FavoritesViewState extends State<FavoritesView> {
 
   @override
   void initState() {
-    widget.favoritesData.fetchPage(1, context, refresh: false);
+    BuildContext cxt = widget.favoritesData.scaffold.currentContext!;
+    widget.favoritesData.fetchPage(1, cxt, refresh: false);
     widget.favoritesData.pagingController.addPageRequestListener((pageKey) {
-      widget.favoritesData.fetchPage(pageKey, context);
+      widget.favoritesData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

@@ -12,9 +12,10 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   @override
   void initState() {
-    widget.companyMainData.fetchPage(1, context, refresh: false);
+    BuildContext cxt = widget.companyMainData.scaffold.currentContext!;
+    widget.companyMainData.fetchPage(1, cxt, refresh: false);
     widget.companyMainData.pagingController.addPageRequestListener((pageKey) {
-      widget.companyMainData.fetchPage(pageKey, context);
+      widget.companyMainData.fetchPage(pageKey, cxt);
     });
     super.initState();
   }

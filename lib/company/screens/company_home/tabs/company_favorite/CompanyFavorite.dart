@@ -13,6 +13,7 @@ class _CompanyFavoriteState extends State<CompanyFavorite> {
     return DefaultTabController(
       length: 2,
       child: HomeScaffold(
+        scaffold: companyFavoriteData.scaffold,
         title: "مفضلتي",
         search: BuildSelectedTabView(companyFavoriteData: companyFavoriteData,),
         body: Column(
