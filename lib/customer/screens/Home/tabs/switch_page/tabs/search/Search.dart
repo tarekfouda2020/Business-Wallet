@@ -1,7 +1,5 @@
 part of 'SearchImports.dart';
 
-
-
 class Search extends StatefulWidget {
   final Function()? onTap;
 
@@ -14,13 +12,11 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> with TickerProviderStateMixin {
   final SearchData searchData = SearchData();
 
-
   @override
   void initState() {
     super.initState();
     searchData.tabController = new TabController(length: 2, vsync: this);
   }
-
 
   @override
   Widget build(BuildContext context) {

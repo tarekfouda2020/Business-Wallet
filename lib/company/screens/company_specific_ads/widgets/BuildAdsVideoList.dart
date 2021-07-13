@@ -12,8 +12,10 @@ class BuildAdsVideoList extends StatelessWidget {
       child: Column(
         children: List.generate(videos.length, (index) {
           return InkWell(
-            onTap: () => AutoRouter.of(context)
-                .push(VideoPageRoute(link: videos[index])),
+            onTap: () => AutoRouter.of(context).push(VideoPageRoute(
+              link: videos[index],
+              file: false,
+            )),
             child: Container(
               height: 150,
               width: MediaQuery.of(context).size.width,

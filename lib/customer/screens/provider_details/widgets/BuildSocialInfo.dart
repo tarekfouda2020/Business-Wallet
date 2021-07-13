@@ -36,14 +36,14 @@ class BuildSocialInfo extends StatelessWidget {
                     ),
                     BuildSocialItem(
                       image: Res.facebook,
-                      onTap: () => Utils.launchWhatsApp(
-                        detailsModel!.faceBook,
+                      onTap: () => Utils.launchURL(
+                        url: detailsModel!.faceBook,
                       ),
                     ),
                     BuildSocialItem(
                       image: Res.twitter,
-                      onTap: () => Utils.launchWhatsApp(
-                        detailsModel!.twitter,
+                      onTap: () => Utils.launchURL(
+                        url: detailsModel!.twitter,
                       ),
                     ),
                   ],

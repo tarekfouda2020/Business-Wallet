@@ -22,7 +22,7 @@ class BuildQuestionItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
-            title: title,
+            title: title ?? "",
             size: 12,
             color: MyColors.primary,
           ),

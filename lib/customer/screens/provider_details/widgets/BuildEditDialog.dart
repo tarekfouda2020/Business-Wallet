@@ -13,10 +13,11 @@ class BuildEditDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 300,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: ListView(
+        // mainAxisSize: MainAxisSize.min,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           MyText(
             title: "تعديل التعليق",
@@ -26,18 +27,21 @@ class BuildEditDialog extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          RichTextFiled(
-            hint: "الرسالة",
-            max: 3,
-            fillColor: MyColors.greyWhite,
-            controller: providerDetailsData.newComment,
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            action: TextInputAction.done,
-            validate: (value) => value!.validateEmpty(context),
+          Form(
+            key: providerDetailsData.formKey,
+            child: RichTextFiled(
+              hint: "الرسالة",
+              max: 3,
+              fillColor: MyColors.greyWhite,
+              controller: providerDetailsData.newComment,
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              action: TextInputAction.done,
+              validate: (value) => value!.validateEmpty(context),
+            ),
           ),
           LoadingButton(
             btnKey: providerDetailsData.btnKey,
-            title: "ابلاغ",
+            title: "تعديل",
             color: MyColors.primary,
             onTap: () =>
                 providerDetailsData.editComment(context, commentId, kayanId),

@@ -105,6 +105,19 @@ class BuildCommentsInfo extends StatelessWidget {
                                 enabled: true,
                                 onSelected: (int value) {
                                   if (value == 0) {
+                                    final String userId = context
+                                        .read<UserCubit>()
+                                        .state
+                                        .model
+                                        .customerModel!
+                                        .userId;
+                                    if (userId !=
+                                        commentModel![index].ownerId) {
+                                      return LoadingDialog.showCustomToast(
+                                          "لا يمكن التعليق علي غير تعليقك");
+                                    }
+                                    providerDetailsData.newComment.text =
+                                        commentModel![index].text;
                                     providerDetailsData.showEditDialog(
                                         context,
                                         providerDetailsData,
@@ -203,6 +216,4 @@ class BuildCommentsInfo extends StatelessWidget {
       },
     );
   }
-
-
 }

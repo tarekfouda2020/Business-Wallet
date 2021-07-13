@@ -39,8 +39,7 @@ class BuildAddFile extends StatelessWidget {
           bloc: companySubscribeData.fileCubit,
           builder: (_, fileState) {
             if (fileState.data == null) {
-              return Container(
-              );
+              return Container();
             } else {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,10 +49,12 @@ class BuildAddFile extends StatelessWidget {
                         vertical: 15, horizontal: 10),
                     child: Row(
                       children: [
-                        MyText(
-                          title: fileState.data!.path.split("/").last,
-                          size: 13,
-                          color: MyColors.white,
+                        Expanded(
+                          child: MyText(
+                            title: fileState.data!.path.split("/").last,
+                            size: 13,
+                            color: MyColors.white,
+                          ),
                         ),
                         InkWell(
                           onTap: companySubscribeData.removeFile,

@@ -4,8 +4,10 @@
 // AutoRouteGenerator
 // **************************************************************************
 
+import 'dart:io' as _i77;
+
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:base_flutter/company/models/branch_model.dart' as _i77;
+import 'package:base_flutter/company/models/branch_model.dart' as _i78;
 import 'package:base_flutter/company/models/dots/LocationModel.dart' as _i9;
 import 'package:base_flutter/company/screens/all_branches/AllBranchesImports.dart'
     as _i57;
@@ -378,7 +380,8 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<VideoPageRouteArgs>();
-          return _i40.VideoPage(link: args.link);
+          return _i40.VideoPage(
+              link: args.link, file: args.file, video: args.video);
         }),
     ChatRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -1118,16 +1121,23 @@ class WalletHelpRoute extends _i1.PageRouteInfo {
 }
 
 class VideoPageRoute extends _i1.PageRouteInfo<VideoPageRouteArgs> {
-  VideoPageRoute({required String link})
-      : super(name, path: '/video-page', args: VideoPageRouteArgs(link: link));
+  VideoPageRoute({required String link, required bool file, _i77.File? video})
+      : super(name,
+            path: '/video-page',
+            args: VideoPageRouteArgs(link: link, file: file, video: video));
 
   static const String name = 'VideoPageRoute';
 }
 
 class VideoPageRouteArgs {
-  const VideoPageRouteArgs({required this.link});
+  const VideoPageRouteArgs(
+      {required this.link, required this.file, this.video});
 
   final String link;
+
+  final bool file;
+
+  final _i77.File? video;
 }
 
 class ChatRoute extends _i1.PageRouteInfo<ChatRouteArgs> {
@@ -1521,7 +1531,7 @@ class CompanyBranchesRoute extends _i1.PageRouteInfo {
 }
 
 class EditBranchRoute extends _i1.PageRouteInfo<EditBranchRouteArgs> {
-  EditBranchRoute({required _i77.BranchModel model})
+  EditBranchRoute({required _i78.BranchModel model})
       : super(name,
             path: '/edit-branch', args: EditBranchRouteArgs(model: model));
 
@@ -1531,7 +1541,7 @@ class EditBranchRoute extends _i1.PageRouteInfo<EditBranchRouteArgs> {
 class EditBranchRouteArgs {
   const EditBranchRouteArgs({required this.model});
 
-  final _i77.BranchModel model;
+  final _i78.BranchModel model;
 }
 
 class PackagesPaymentRoute extends _i1.PageRouteInfo<PackagesPaymentRouteArgs> {

@@ -47,14 +47,17 @@ class BuildAddComment extends StatelessWidget {
                 },
               ),
               Expanded(
-                child: LabelTextField(
-                  hint: "تعليق",
-                  controller: invitationDetailsData.comment,
-                  validate: (value) => value!.validateEmpty(context),
-                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                  minHeight: 30,
-                  maxHeight: 40,
-                  borderColor: MyColors.grey,
+                child: Form(
+                  key: invitationDetailsData.formKey,
+                  child: LabelTextField(
+                    hint: "تعليق",
+                    controller: invitationDetailsData.comment,
+                    validate: (value) => value!.validateEmpty(context),
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    minHeight: 30,
+                    maxHeight: 40,
+                    borderColor: MyColors.grey,
+                  ),
                 ),
               ),
               IconButton(

@@ -9,26 +9,28 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 class AdaptivePicker {
   static datePicker(
       {required BuildContext context,
-        required Function(DateTime? date) onConfirm,
-        required String title,
-        DateTime? initial,
-        DateTime? minDate}) async {
+      required Function(DateTime? date) onConfirm,
+      required String title,
+      DateTime? initial,
+      DateTime? minDate,
+      DateTime? maxDate}) async {
     if (Platform.isIOS) {
-      _iosDatePicker(context, onConfirm, title, initial: initial, minDate: minDate);
+      _iosDatePicker(context, onConfirm, title,
+          initial: initial, minDate: minDate, maxDate: maxDate);
     } else {
       _androidDatePicker(context, onConfirm,
-          initial: initial, minDate: minDate);
+          initial: initial, minDate: minDate, maxDate: maxDate);
     }
   }
 
   static _androidDatePicker(
       BuildContext context, Function(DateTime? date) onConfirm,
-      {DateTime? initial, DateTime? minDate}) {
+      {DateTime? initial, DateTime? minDate, DateTime? maxDate}) {
     showRoundedDatePicker(
         context: context,
         initialDate: initial ?? DateTime.now(),
         firstDate: minDate ?? DateTime.now().add(Duration(days: -1)),
-        lastDate: DateTime(2050),
+        lastDate: maxDate ?? DateTime(2050),
         borderRadius: 16,
         height: 300,
         theme: ThemeData.light().copyWith(
@@ -40,18 +42,19 @@ class AdaptivePicker {
   }
 
   static _iosDatePicker(
-      BuildContext context, Function(DateTime? date) onConfirm,String title,
-      {DateTime? initial, DateTime? minDate}) {
+      BuildContext context, Function(DateTime? date) onConfirm, String title,
+      {DateTime? initial, DateTime? minDate, DateTime? maxDate}) {
     _bottomSheet(
       context: context,
-      child: cupertinoDatePicker(context,onConfirm, title, initial: initial, minDate: minDate),
+      child: cupertinoDatePicker(context, onConfirm, title,
+          initial: initial, minDate: minDate, maxDate: maxDate),
     );
   }
 
-  static Widget cupertinoDatePicker(BuildContext context,
-      Function(DateTime? date) onConfirm,String title,
-      {DateTime? initial, DateTime? minDate}) {
-    DateTime _date=DateTime.now();
+  static Widget cupertinoDatePicker(
+      BuildContext context, Function(DateTime? date) onConfirm, String title,
+      {DateTime? initial, DateTime? minDate, DateTime? maxDate}) {
+    DateTime _date = DateTime.now();
     return Container(
       height: 260,
       child: Column(
@@ -61,17 +64,24 @@ class AdaptivePicker {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MyText(title: title, color: MyColors.blackOpacity, size: 14,fontWeight: FontWeight.w500,),
+                MyText(
+                  title: title,
+                  color: MyColors.blackOpacity,
+                  size: 14,
+                  fontWeight: FontWeight.w500,
+                ),
                 ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     onConfirm(_date);
                     Navigator.of(context).pop();
                   },
-                  child: MyText(title: "Done",size: 14,color: MyColors.primary,),
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      primary: MyColors.white
+                  child: MyText(
+                    title: "Done",
+                    size: 14,
+                    color: MyColors.primary,
                   ),
+                  style: ElevatedButton.styleFrom(
+                      elevation: 0, primary: MyColors.white),
                 ),
               ],
             ),
@@ -79,9 +89,10 @@ class AdaptivePicker {
           Flexible(
             child: CupertinoDatePicker(
               initialDateTime: initial ?? DateTime.now(),
-              onDateTimeChanged: (date){
-                _date=date;
+              onDateTimeChanged: (date) {
+                _date = date;
               },
+              maximumDate: maxDate ?? DateTime(2050),
               minimumDate: minDate ?? DateTime.now().add(Duration(days: -1)),
               mode: CupertinoDatePickerMode.date,
             ),
@@ -92,10 +103,11 @@ class AdaptivePicker {
   }
 
   static timePicker(
-      {required BuildContext context,required String title,
-        required Function(DateTime? date) onConfirm}) async {
+      {required BuildContext context,
+      required String title,
+      required Function(DateTime? date) onConfirm}) async {
     if (Platform.isIOS) {
-      _iosTimePicker(context,title, onConfirm);
+      _iosTimePicker(context, title, onConfirm);
     } else {
       _androidTimePicker(context, onConfirm);
     }
@@ -115,12 +127,13 @@ class AdaptivePicker {
       BuildContext context, String title, Function(DateTime? date) onConfirm) {
     _bottomSheet(
       context: context,
-      child: cupertinoTimePicker(context,title,onConfirm),
+      child: cupertinoTimePicker(context, title, onConfirm),
     );
   }
 
-  static Widget cupertinoTimePicker(BuildContext context,String title,Function(DateTime? date) onConfirm) {
-    DateTime _date=DateTime.now();
+  static Widget cupertinoTimePicker(
+      BuildContext context, String title, Function(DateTime? date) onConfirm) {
+    DateTime _date = DateTime.now();
     return Container(
       height: 260,
       child: Column(
@@ -130,19 +143,26 @@ class AdaptivePicker {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MyText(title: title, color: MyColors.blackOpacity, size: 14,fontWeight: FontWeight.w500,),
+                MyText(
+                  title: title,
+                  color: MyColors.blackOpacity,
+                  size: 14,
+                  fontWeight: FontWeight.w500,
+                ),
                 SizedBox(
                   height: 35,
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () {
                       onConfirm(_date);
                       Navigator.of(context).pop();
                     },
-                    child: MyText(title: "Done",size: 14,color: MyColors.primary,),
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        primary: MyColors.white
+                    child: MyText(
+                      title: "Done",
+                      size: 14,
+                      color: MyColors.primary,
                     ),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0, primary: MyColors.white),
                   ),
                 )
               ],
@@ -150,12 +170,11 @@ class AdaptivePicker {
           ),
           Flexible(
               child: CupertinoDatePicker(
-                onDateTimeChanged: (date){
-                  _date=date;
-                },
-                mode: CupertinoDatePickerMode.time,
-              )
-          ),
+            onDateTimeChanged: (date) {
+              _date = date;
+            },
+            mode: CupertinoDatePickerMode.time,
+          )),
         ],
       ),
     );

@@ -65,19 +65,18 @@ class EditProfileData {
     email.text = user.email!;
     phone.text = user.phoneNumber!;
     cityId = CitiesModel(fkCountry: 3, id: user.fkCity!, name: user.cityName!);
-    genderCubit.onUpdateData(user.genderUser??"");
-    dateCubit.onUpdateData(user.birthDateUser??"");
-    livingCubit.onUpdateData(user.accommodationType??"");
-    educationCubit.onUpdateData(user.educationLevel??"");
-    familyCubit.onUpdateData(user.numFamily??"");
-    incomeCubit.onUpdateData(user.averageIncomePerYear??"");
-    gender.text= user.genderUser=="f"?"انثي":"ذكر";
-    birthDate.text= user.birthDateUser??"";
-    living.text= user.accommodationType??"";
-    educationLevel.text= user.educationLevel??"";
-    familyMembers.text= user.numFamily??"";
-    averageSalary.text= user.averageIncomePerYear??"";
-
+    genderCubit.onUpdateData(user.genderUser ?? "");
+    dateCubit.onUpdateData(user.birthDateUser ?? "");
+    livingCubit.onUpdateData(user.accommodationType ?? "");
+    educationCubit.onUpdateData(user.educationLevel ?? "");
+    familyCubit.onUpdateData(user.numFamily ?? "");
+    incomeCubit.onUpdateData(user.averageIncomePerYear ?? "");
+    gender.text = user.genderUser == "f" ? "انثي" : "ذكر";
+    birthDate.text = user.birthDateUser ?? "";
+    living.text = user.accommodationType ?? "";
+    educationLevel.text = user.educationLevel ?? "";
+    familyMembers.text = user.numFamily ?? "";
+    averageSalary.text = user.averageIncomePerYear ?? "";
   }
 
   setImage() async {
@@ -92,6 +91,8 @@ class EditProfileData {
     AdaptivePicker.datePicker(
       title: "",
       minDate: DateTime(1800),
+      initial: DateTime.now().subtract(Duration(days: 365)),
+      maxDate: DateTime.now().subtract(Duration(days: 365)),
       context: context,
       onConfirm: (date) {
         if (date != null) {

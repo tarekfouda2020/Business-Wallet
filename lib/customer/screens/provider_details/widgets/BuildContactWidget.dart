@@ -29,7 +29,7 @@ class BuildContactWidget extends StatelessWidget {
           color: MyColors.greyWhite.withOpacity(.9),
         ),
         InkWell(
-          onTap:onTap,
+          onTap: onTap,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -44,10 +44,12 @@ class BuildContactWidget extends StatelessWidget {
                   SizedBox(
                     width: 3,
                   ),
-                  MyText(
-                    title: detail,
-                    size: 10,
-                    color: MyColors.grey,
+                  Expanded(
+                    child: MyText(
+                      title: detail,
+                      size: 10,
+                      color: MyColors.grey,
+                    ),
                   ),
                 ],
               ),
@@ -55,7 +57,8 @@ class BuildContactWidget extends StatelessWidget {
                 visible: allLocation,
                 child: Container(),
                 replacement: InkWell(
-                  onTap: ()=>AutoRouter.of(context).push(AllBranchesRoute(userId: userId)),
+                  onTap: () => AutoRouter.of(context)
+                      .push(AllBranchesRoute(userId: userId)),
                   child: MyText(
                     title: "(مشاهدة جميع المواقع)",
                     size: 11,

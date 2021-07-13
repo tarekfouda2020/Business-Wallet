@@ -11,12 +11,13 @@ class BuildDownloadFile extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 5),
       child: Row(
         children: [
-          MyText(
-            title: adsDetailsModel.typeFile,
-            color: MyColors.white,
-            size: 11,
+          Expanded(
+            child: MyText(
+              title: adsDetailsModel.typeFile,
+              color: MyColors.white,
+              size: 11,
+            ),
           ),
-          Spacer(),
           InkWell(
             onTap: () => Utils.launchURL(url: adsDetailsModel.catalog),
             child: Container(

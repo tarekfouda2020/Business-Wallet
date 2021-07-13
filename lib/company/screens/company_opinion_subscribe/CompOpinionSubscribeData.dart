@@ -103,7 +103,7 @@ class CompOpinionSubscribeData {
       }
       var questions = addOpinionQuestionCubit.state.data
           .map((e) => {
-                "question_name": "${e.questionNameController.text}",
+                "quetion_name": "${e.questionNameController.text}",
                 "ans": e.answersNameController.map((e) => e.text).toList(),
               })
           .toList();

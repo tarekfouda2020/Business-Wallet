@@ -2,7 +2,7 @@ part of 'InvDetailsWidgetsImports.dart';
 
 class BuildInvAnimation extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
-  final AdsDetailsModel adsDetailsModel;
+  final AdsDetailsModel? adsDetailsModel;
 
   const BuildInvAnimation(
       {required this.invitationDetailsData, required this.adsDetailsModel});
@@ -34,8 +34,7 @@ class BuildInvAnimation extends StatelessWidget {
                       width: 35,
                     ),
                     MyText(
-                      title:
-                          "${adsDetailsModel.pointsForEachUser}  هللة",
+                      title: "${adsDetailsModel?.pointsForEachUser}  هللة",
                       color: MyColors.white,
                       alien: TextAlign.center,
                       overflow: TextOverflow.ellipsis,

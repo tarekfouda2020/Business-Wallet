@@ -12,8 +12,9 @@ class FavoriteDetailsData {
   final GenericCubit<InvestmentAdsModel?> investmentAdsCubit =
       new GenericCubit(null);
 
-  void fetchData(BuildContext context, int adsId,{bool refresh=true}) async {
-    var data = await CustomerRepository(context).getInvestmentAds(adsId,refresh);
+  void fetchData(BuildContext context, int adsId, {bool refresh = true}) async {
+    var data =
+        await CustomerRepository(context).getInvestmentAds(adsId, refresh);
     investmentAdsCubit.onUpdateData(data);
     allQuestionCubit.onUpdateData(data!.questions);
   }
@@ -27,10 +28,14 @@ class FavoriteDetailsData {
             })
         .toList();
     btnKey.currentState!.animateForward();
+    if (answers.length == allQuestionCubit.state.data.length) {
+      await CustomerRepository(context)
+          .answerQuestion(json.encode(answers), adsId)
+          .then((value) => updateInvestmentAds(context, adsId));
+    } else {
+      LoadingDialog.showSimpleToast("من فضلك اجب عن الاسئلة");
+    }
 
-    await CustomerRepository(context)
-        .answerQuestion(json.encode(answers), adsId)
-        .then((value) => updateInvestmentAds(context, adsId));
     btnKey.currentState!.animateReverse();
   }
 

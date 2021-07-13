@@ -18,13 +18,16 @@ class BuildVideosView extends StatelessWidget {
         Column(
           children: List.generate(
             companySubscribeData.addSubscribeModel.videos!.length,
-                (index) {
+            (index) {
               return InkWell(
                 onTap: () => AutoRouter.of(context).push(
                   VideoPageRoute(
-                    link: companySubscribeData.addSubscribeModel.videos![index]
-                        .toString(),
-                  ),
+                      link: companySubscribeData
+                          .addSubscribeModel.videos![index]
+                          .toString(),
+                      file: true,
+                      video: companySubscribeData
+                          .addSubscribeModel.videos![index]),
                 ),
                 child: Container(
                   height: 150,

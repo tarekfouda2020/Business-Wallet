@@ -78,18 +78,21 @@ class ProviderDetailsData {
   }
 
   void editComment(BuildContext context, int commentId, String kayanId) async {
-    await CustomerRepository(context)
-        .editComment(commentId, newComment.text)
-        .then((value) {
-      fetchData(context, kayanId);
-      newComment.clear();
-      AutoRouter.of(context).pop();
-    });
+    if (formKey.currentState!.validate()) {
+      await CustomerRepository(context)
+          .editComment(commentId, newComment.text)
+          .then((value) {
+        fetchData(context, kayanId);
+        newComment.clear();
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 
   void reportComment(BuildContext context, int commentId, String kayanId,
       String ownerId) async {
-    var userId = context.read<UserCubit>().state.model.customerModel!.userId;
+    final String userId =
+        context.read<UserCubit>().state.model.customerModel!.userId;
     if (ownerId == userId) {
       return LoadingDialog.showCustomToast("لا يمكن ابلاغ عن تعليقك");
     } else {

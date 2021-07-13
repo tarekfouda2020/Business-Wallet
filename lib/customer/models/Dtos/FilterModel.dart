@@ -20,11 +20,11 @@ class FilterModel {
   static List<FilterModel> get invitationFilters => [
         FilterModel(id: "M", name: "الأعلى تقييم"),
         FilterModel(id: "S", name: "الأقل تقييم"),
-        FilterModel(id: "H", name: "الأعلى  ربحا"),
+        // FilterModel(id: "H", name: "الأعلى  ربحا"),
       ];
   static List<FilterModel> get mainSearchFilters => [
-    FilterModel(id: "1", name: "الأعلى تقييم"),
-    FilterModel(id: "2", name: "الأقل تقييم"),
-    FilterModel(id: "3", name: "الأقرب"),
-  ];
+        FilterModel(id: "1", name: "الأعلى تقييم"),
+        FilterModel(id: "2", name: "الأقل تقييم"),
+        FilterModel(id: "3", name: "الأقرب"),
+      ];
 }

@@ -20,7 +20,8 @@ class BuildInvSearch extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: ()=>invitationsData.refreshCurrentPage(context, invitationsData),
+          onTap: () =>
+              invitationsData.refreshCurrentPage(context, invitationsData),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

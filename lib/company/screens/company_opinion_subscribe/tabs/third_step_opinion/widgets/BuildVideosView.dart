@@ -1,4 +1,5 @@
 part of 'ThirdStepOpinionWidgetsImports.dart';
+
 class BuildVideosView extends StatelessWidget {
   final CompOpinionSubscribeData companySubscribeData;
 
@@ -17,13 +18,16 @@ class BuildVideosView extends StatelessWidget {
         Column(
           children: List.generate(
             companySubscribeData.addOpinionSubscribeModel.adsVideo!.length,
-                (index) {
+            (index) {
               return InkWell(
                 onTap: () => AutoRouter.of(context).push(
                   VideoPageRoute(
-                    link: companySubscribeData.addOpinionSubscribeModel.adsVideo![index]
-                        .toString(),
-                  ),
+                      link: companySubscribeData
+                          .addOpinionSubscribeModel.adsVideo![index]
+                          .toString(),
+                      file: true,
+                      video: companySubscribeData
+                          .addOpinionSubscribeModel.adsVideo![index]),
                 ),
                 child: Container(
                   height: 150,

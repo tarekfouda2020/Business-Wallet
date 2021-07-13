@@ -21,8 +21,7 @@ class BuildEditDialog extends StatelessWidget {
         return Container(
           height: 350,
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: ListView(
             children: [
               MyText(
                 title: "تعديل التعليق",
@@ -70,7 +69,7 @@ class BuildEditDialog extends StatelessWidget {
               ),
               LoadingButton(
                 btnKey: commentsData.btnKey,
-                title: "ابلاغ",
+                title: "تعديل",
                 color: MyColors.primary,
                 onTap: () =>
                     commentsData.editComment(context, kayanId, commentId),

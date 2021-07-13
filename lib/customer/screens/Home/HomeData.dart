@@ -50,6 +50,7 @@ class HomeData {
   void initController(TickerProvider tickerProvider, int index) {
     tabController = TabController(length: 5, vsync: tickerProvider);
     tabController.index = index;
+    onChangePage(index);
   }
 
   Future<bool> onBackPressed() async {

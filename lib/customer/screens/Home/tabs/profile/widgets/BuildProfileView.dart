@@ -3,7 +3,8 @@ part of 'ProfileWidgetsImports.dart';
 class BuildProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var customer= context.read<UserCubit>().state.model.customerModel;
+    final CustomerModel? customer =
+        context.read<UserCubit>().state.model.customerModel;
     return Flexible(
       child: ListView(
         padding: const EdgeInsets.only(top: 15, bottom: 60),
@@ -36,7 +37,12 @@ class BuildProfileView extends StatelessWidget {
           BuildProfileItem(
             title: "مشاركة التطبيق",
             icon: Icons.share,
-            onTap: (){},
+            onTap: () => Platform.isIOS
+                ? Utils.launchURL(
+                    url: "https://apps.apple.com/us/app/id1524605659")
+                : Utils.launchURL(
+                    url:
+                        "https://play.google.com/store/apps/details?id=com.sa.aait.shopping.shopping"),
           ),
           BuildProfileItem(
             title: "معلومات التطبيق",

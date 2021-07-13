@@ -110,7 +110,7 @@ class BuildFavoritesItem extends StatelessWidget {
                     ),
                     MyText(
                       title:
-                          "الربح :  ${checkInvite ? invitationModel!.numPoint : favoriteModel!.numPoint}",
+                          "الربح :  ${checkInvite ? invitationModel!.numPoint.toStringAsFixed(2) : favoriteModel!.numPoint.toStringAsFixed(2)}",
                       size: 9,
                       color: MyColors.white,
                     ),

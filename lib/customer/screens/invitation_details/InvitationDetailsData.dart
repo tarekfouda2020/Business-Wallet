@@ -1,6 +1,7 @@
 part of 'InvitationDetailsImports.dart';
 
 class InvitationDetailsData {
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   late AnimationController controller;
   late Animation<double> animation;
   Timer? timer;
@@ -105,6 +106,9 @@ class InvitationDetailsData {
   }
 
   void specificAdsComment(BuildContext context, int adsId) async {
+    if (comment.text.trim().isEmpty) {
+      return LoadingDialog.showSimpleToast("من فضلك ادخل التعليق");
+    }
     await CustomerRepository(context)
         .specificAdsComment(adsId, comment.text, imageCubit.state.data, "1")
         .then((value) {

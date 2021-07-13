@@ -42,7 +42,7 @@ class _HomeState extends State<Home>
         initialIndex: widget.index,
         length: 5,
         child: Scaffold(
-          extendBody: true,
+          extendBody: false,
           floatingActionButton: BuildFloatingButton(homeData),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,

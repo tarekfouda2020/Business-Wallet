@@ -27,7 +27,7 @@ class _CompanyHomeState extends State<CompanyHome>
         initialIndex: widget.index,
         length: 5,
         child: Scaffold(
-          extendBody: true,
+          extendBody: false,
           key: companyHomeData.scaffold,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,

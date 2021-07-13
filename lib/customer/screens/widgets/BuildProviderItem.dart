@@ -23,7 +23,11 @@ class BuildProviderItem extends StatelessWidget {
       child: CachedImage(
         url: checkFollow ? followerModel!.background : mainModel!.backgroundImg,
         alignment: Alignment.bottomCenter,
-        borderColor: MyColors.greyWhite,
+        borderColor: checkFollow
+            ? MyColors.greyWhite
+            : mainModel!.hasAds == 1
+                ? MyColors.primary
+                : MyColors.grey,
         borderRadius: BorderRadius.circular(10),
         fit: BoxFit.fill,
         colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),

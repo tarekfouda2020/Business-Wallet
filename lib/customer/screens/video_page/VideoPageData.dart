@@ -1,22 +1,19 @@
 part of 'VideoPageImports.dart';
-class VideoPageData{
 
+class VideoPageData {
   GenericCubit<ChewieController?> chiweCubit = new GenericCubit(null);
 
- late VideoPlayerController videoPlayerController;
- late ChewieController chewieController;
+  late VideoPlayerController videoPlayerController;
+  late ChewieController chewieController;
 
-  initVideoLink(String link)async{
-    videoPlayerController = VideoPlayerController.network(link);
+  initVideoLink(String link) async {
+    videoPlayerController = VideoPlayerController.file(File(link));
     await videoPlayerController.initialize();
     chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      autoPlay: true,
-      looping: false,
-      showControlsOnInitialize: true
-
-    );
+        videoPlayerController: videoPlayerController,
+        autoPlay: true,
+        looping: false,
+        showControlsOnInitialize: true);
     chiweCubit.onUpdateData(chewieController);
   }
-
 }

@@ -57,14 +57,17 @@ class CustomerDetailsMethods {
       "userId": userId,
       "lang": lang
     };
-    var _data = await DioHelper(context: context)
-        .get(url: "/InvestmentInvitation/SaveAnswersApi", body: body);
+    var _data = await DioHelper(context: context).post(
+        url: "/InvestmentInvitation/SaveAnswersApi",
+        body: body,
+        showLoader: false);
     if (_data != null) {
       return true;
     } else {
       return false;
     }
   }
+
   Future<bool> getSpecificAdsPoint(
       String type, int points, int adsId, String adsType) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -86,6 +89,7 @@ class CustomerDetailsMethods {
       return false;
     }
   }
+
   Future<bool> addFollow(String kayanId) async {
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -104,14 +108,14 @@ class CustomerDetailsMethods {
     }
   }
 
-  Future<SpecificAdsModel?> getSpecificAds(int adsId,bool refresh) async {
+  Future<SpecificAdsModel?> getSpecificAds(int adsId, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
 
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
-    var _data = await DioHelper(context: context,forceRefresh: refresh).get(
+    var _data = await DioHelper(context: context, forceRefresh: refresh).get(
         url:
-        "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
+            "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
         body: body);
     if (_data != null) {
       return SpecificAdsModel.fromJson(_data);
@@ -127,7 +131,7 @@ class CustomerDetailsMethods {
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
     var _data = await DioHelper(context: context).get(
         url:
-        "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
+            "/InvestmentInvitation/UpdateAnnouncement_sent_specific_categoryApi",
         body: body);
     if (_data != null) {
       return true;
@@ -243,7 +247,7 @@ class CustomerDetailsMethods {
     }
   }
 
-  Future<MainDetailsModel?> getMainDetails(String id,bool refresh) async {
+  Future<MainDetailsModel?> getMainDetails(String id, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
 
@@ -253,7 +257,7 @@ class CustomerDetailsMethods {
       "from_home": 0,
       "lang": lang
     };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/User/KayanDetailsApi", body: body);
     if (_data != null) {
       return MainDetailsModel.fromJson(_data);
@@ -261,6 +265,7 @@ class CustomerDetailsMethods {
       return MainDetailsModel();
     }
   }
+
   Future<bool> addLike(String kayanId) async {
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -318,6 +323,4 @@ class CustomerDetailsMethods {
       return false;
     }
   }
-
-
 }

@@ -33,9 +33,13 @@ class CompAccountReconciliationData {
       }
       btnKey.currentState!.animateForward();
 
-      await CompanyRepository(context).reconciliationBank(
+      final bool finished = await CompanyRepository(context).reconciliationBank(
           cost, point, name.text, bankId.toString(), wallet.text);
       btnKey.currentState!.animateReverse();
+      if (finished) {
+        AutoRouter.of(context).pushAndPopUntil(CompanyHomeRoute(index: 3),
+            predicate: (predicate) => false);
+      }
     }
   }
 }

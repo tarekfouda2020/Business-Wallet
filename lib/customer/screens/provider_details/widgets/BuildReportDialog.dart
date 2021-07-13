@@ -15,12 +15,13 @@ class BuildReportDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 300,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
       child: Form(
         key: providerDetailsData.formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
+          // mainAxisSize: MainAxisSize.min,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             MyText(
               title: "ابلاغ عن تعليق",

@@ -5,15 +5,19 @@ class SearchData {
   final TextEditingController search = TextEditingController();
   final GenericCubit<String?> searchUpdateCubit = new GenericCubit(null);
   final MapScreenData mapScreenData = new MapScreenData();
-  late TabController tabController ;
+  late TabController tabController;
 
-  Future<List<AutoSearchModel>> fetchAutoSearch(BuildContext context,String word) async {
+  Future<List<AutoSearchModel>> fetchAutoSearch(
+      BuildContext context, String word) async {
+    print("word $word");
     var autoSearch = await CustomerRepository(context).getAutoSearch(word);
     return autoSearch;
   }
 
-  void onSelectModel(BuildContext context,AutoSearchModel model) {
+  void onSelectModel(BuildContext context, AutoSearchModel model) {
     FocusScope.of(context).requestFocus(FocusNode());
+    print("onSelectModel ${model.name}");
+    search.text = model.name;
     searchUpdateCubit.onUpdateData(model.name);
     pagingController.refresh();
   }
@@ -25,12 +29,13 @@ class SearchData {
   int filterId = 0;
   int pageSize = 10;
 
-  void fetchPage(int pageIndex, BuildContext context, {bool refresh=true}) async {
+  void fetchPage(int pageIndex, BuildContext context,
+      {bool refresh = true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
-        .getMainSearched(pageIndex, filterId, fieldId, search.text,refresh);
+        .getMainSearched(pageIndex, filterId, fieldId, search.text, refresh);
     final isLastPage = mainData.length < pageSize;
-    if (pageIndex==1) {
-      pagingController.itemList=[];
+    if (pageIndex == 1) {
+      pagingController.itemList = [];
     }
     if (isLastPage) {
       pagingController.appendLastPage(mainData);
@@ -48,10 +53,11 @@ class SearchData {
     if (model != null) filterId = int.parse(model.id);
   }
 
-  Future<List<MainModel>> fetchMapData(BuildContext context,double lat,double lng , double zoom) async {
+  Future<List<MainModel>> fetchMapData(
+      BuildContext context, double lat, double lng, double zoom) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
-    MapFilterModel model =new MapFilterModel(
+    MapFilterModel model = new MapFilterModel(
       lang: lang,
       userId: userId,
       id: fieldId.toString(),
@@ -62,19 +68,18 @@ class SearchData {
       text: search.text,
       distance: Utils.determineDistance(zoom).toString(),
     );
-    List<MainModel> data = await CustomerRepository(context).getMapProviders(model);
+    List<MainModel> data =
+        await CustomerRepository(context).getMapProviders(model);
     return data;
   }
 
-  refreshCurrentPage(BuildContext context, SearchData searchData)async{
-    if (tabController.index==0) {
+  refreshCurrentPage(BuildContext context, SearchData searchData) async {
+    if (tabController.index == 0) {
       pagingController.refresh();
-    }else{
+    } else {
       LoadingDialog.showLoadingDialog();
       await mapScreenData.fetchPage(context, searchData);
       EasyLoading.dismiss();
     }
-
   }
-
 }

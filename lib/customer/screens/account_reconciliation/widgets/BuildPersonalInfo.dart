@@ -143,7 +143,7 @@ class BuildPersonalInfo extends StatelessWidget {
                           height: 5,
                         ),
                         MyText(
-                          title: reconciliationDataModel.address,
+                          title: reconciliationDataModel.address ?? "",
                           size: 10,
                           color: MyColors.grey,
                         ),

@@ -11,7 +11,8 @@ class BuildVideoList extends StatelessWidget {
       child: Column(
         children: List.generate(videos.length, (index) {
           return InkWell(
-            onTap: ()=> AutoRouter.of(context).push(VideoPageRoute(link: videos[index])),
+            onTap: () => AutoRouter.of(context)
+                .push(VideoPageRoute(link: videos[index], file: false)),
             child: Container(
               height: 150,
               width: MediaQuery.of(context).size.width,
@@ -22,7 +23,11 @@ class BuildVideoList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: MyColors.greyWhite),
               ),
-              child: Icon(Icons.play_circle_fill,size: 35,color: MyColors.white,),
+              child: Icon(
+                Icons.play_circle_fill,
+                size: 35,
+                color: MyColors.white,
+              ),
             ),
           );
         }),
@@ -30,4 +35,3 @@ class BuildVideoList extends StatelessWidget {
     );
   }
 }
-

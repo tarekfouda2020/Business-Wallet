@@ -21,8 +21,8 @@ class AccountReconciliationData {
 
   void fetchData(BuildContext context, double cost, double costMun,
       {bool refresh = true}) async {
-    var data =
-        await CustomerRepository(context).getReconciliation(cost, costMun,refresh);
+    var data = await CustomerRepository(context)
+        .getReconciliation(cost, costMun, refresh);
     reconciliationCubit.onUpdateData(data);
   }
 
@@ -35,9 +35,14 @@ class AccountReconciliationData {
       }
       btnKey.currentState!.animateForward();
 
-      await CustomerRepository(context).reconciliationBank(
-          cost, point, name.text, bankId.toString(), wallet.text);
+      final bool finished = await CustomerRepository(context)
+          .reconciliationBank(
+              cost, point, name.text, bankId.toString(), wallet.text);
       btnKey.currentState!.animateReverse();
+      if (finished) {
+        AutoRouter.of(context).pushAndPopUntil(HomeRoute(index: 3),
+            predicate: (predicate) => false);
+      }
     }
   }
 }

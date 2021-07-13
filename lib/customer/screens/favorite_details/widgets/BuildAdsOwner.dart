@@ -45,7 +45,7 @@ class BuildAdsOwner extends StatelessWidget {
                         width: 5,
                       ),
                       MyText(
-                        title: kayanOwnerModel.addressKayan,
+                        title: kayanOwnerModel.addressKayan ?? "",
                         size: 9,
                       ),
                     ],

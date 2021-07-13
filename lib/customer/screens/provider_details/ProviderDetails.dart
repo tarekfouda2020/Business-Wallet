@@ -76,6 +76,9 @@ class _ProviderDetailsState extends State<ProviderDetails> {
                   providerDetailsData: providerDetailsData,
                   detailsModel: state.data!.details,
                 ),
+                BuildCommentField(
+                  providerDetailsData: providerDetailsData,
+                )
               ],
             );
           } else {
@@ -85,9 +88,9 @@ class _ProviderDetailsState extends State<ProviderDetails> {
           }
         },
       ),
-      bottomNavigationBar: BuildCommentField(
-        providerDetailsData: providerDetailsData,
-      ),
+      // bottomNavigationBar: BuildCommentField(
+      //   providerDetailsData: providerDetailsData,
+      // ),
     );
   }
 }

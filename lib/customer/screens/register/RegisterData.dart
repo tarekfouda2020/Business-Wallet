@@ -40,6 +40,8 @@ class RegisterData {
     AdaptivePicker.datePicker(
       title: "",
       minDate: DateTime(1800),
+      initial: DateTime.now().subtract(Duration(days: 365)),
+      maxDate: DateTime.now().subtract(Duration(days: 365)),
       context: context,
       onConfirm: (date) {
         if (date != null) {

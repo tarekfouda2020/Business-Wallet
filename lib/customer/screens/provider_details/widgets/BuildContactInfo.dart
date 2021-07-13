@@ -31,63 +31,70 @@ class BuildContactInfo extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            BuildContactWidget(
-                              title: "رقم الجوال",
-                              detail: detailsModel!.phone == ""
-                                  ? "لا يوجد"
-                                  : detailsModel!.phone,
-                              icon: Icons.phone_in_talk,
-                              iconColor: Colors.green,
-                              onTap: () =>
-                                  Utils.callPhone(phone: detailsModel!.phone),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            BuildContactWidget(
-                              title: "البريد الالكتروني",
-                              detail: detailsModel!.email == ""
-                                  ? "لا يوجد"
-                                  : detailsModel!.email,
-                              icon: Icons.mail_sharp,
-                              iconColor: Colors.yellow,
-                              onTap: () => Utils.sendMail(detailsModel!.email),
-                            ),
-                          ],
+                        Container(
+                          width: MediaQuery.of(context).size.width * .45,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BuildContactWidget(
+                                title: "رقم الجوال",
+                                detail: detailsModel!.phone == ""
+                                    ? "لا يوجد"
+                                    : detailsModel!.phone,
+                                icon: Icons.phone_in_talk,
+                                iconColor: Colors.green,
+                                onTap: () =>
+                                    Utils.callPhone(phone: detailsModel!.phone),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              BuildContactWidget(
+                                title: "البريد الالكتروني",
+                                detail: detailsModel!.email == ""
+                                    ? "لا يوجد"
+                                    : detailsModel!.email,
+                                icon: Icons.mail_sharp,
+                                iconColor: Colors.yellow,
+                                onTap: () =>
+                                    Utils.sendMail(detailsModel!.email),
+                              ),
+                            ],
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            BuildContactWidget(
-                              title: "رابط المنشأة",
-                              detail: detailsModel!.website == ""
-                                  ? "لا يوجد"
-                                  : detailsModel!.website,
-                              icon: Icons.language,
-                              iconColor: Colors.blue,
-                              onTap: () =>
-                                  Utils.launchURL(url: detailsModel!.website),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            BuildContactWidget(
-                              title: "اجراء محادثة",
-                              detail: "اجراء محادثة",
-                              icon: Icons.message,
-                              iconColor: Colors.yellow,
-                              onTap: () => AutoRouter.of(context).push(
-                                ChatRoute(
-                                  senderId: senderId,
-                                  receiverName: detailsModel!.kayanName,
-                                  receiverId: detailsModel!.kayanId,
+                        Container(
+                          width: MediaQuery.of(context).size.width * .45,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BuildContactWidget(
+                                title: "رابط المنشأة",
+                                detail: detailsModel!.website == ""
+                                    ? "لا يوجد"
+                                    : detailsModel!.website,
+                                icon: Icons.language,
+                                iconColor: Colors.blue,
+                                onTap: () =>
+                                    Utils.launchURL(url: detailsModel!.website),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              BuildContactWidget(
+                                title: "اجراء محادثة",
+                                detail: "اجراء محادثة",
+                                icon: Icons.message,
+                                iconColor: Colors.yellow,
+                                onTap: () => AutoRouter.of(context).push(
+                                  ChatRoute(
+                                    senderId: senderId,
+                                    receiverName: detailsModel!.kayanName,
+                                    receiverId: detailsModel!.kayanId,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),

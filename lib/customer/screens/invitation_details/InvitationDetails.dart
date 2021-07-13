@@ -87,13 +87,19 @@ class _InvitationDetailsState extends State<InvitationDetails>
                     alignment: Alignment.bottomRight,
                     children: [
                       BuildInvAppBar(),
-                      BuildInvAnimation(
-                        invitationDetailsData: invitationDetailsData,
-                        adsDetailsModel: state.data!.previewAds,
+                      Visibility(
+                        visible: widget.checkInvite,
+                        child: BuildInvAnimation(
+                          invitationDetailsData: invitationDetailsData,
+                          adsDetailsModel: state.data?.previewAds,
+                        ),
                       ),
-                      BuildAnimationDetails(
-                        invitationDetailsData: invitationDetailsData,
-                        adsDetailsModel: state.data!.previewAds,
+                      Visibility(
+                        visible: widget.checkInvite,
+                        child: BuildAnimationDetails(
+                          invitationDetailsData: invitationDetailsData,
+                          adsDetailsModel: state.data!.previewAds,
+                        ),
                       )
                     ],
                   ),
@@ -115,17 +121,9 @@ class _InvitationDetailsState extends State<InvitationDetails>
                         desc: state.data!.previewAds.advertDescription,
                       ),
                       BuildInvTitle(title: "الصور"),
-                      Visibility(
-                        visible: state.data!.previewAds.images.isEmpty,
-                        child: Center(
-                          child: MyText(
-                            title: "لا يوجد صور",
-                          ),
-                        ),
-                        replacement: BuildInvSwiper(
-                          images: state.data!.previewAds.images,
-                          adsDetailsModel: state.data!.previewAds,
-                        ),
+                      BuildInvSwiper(
+                        images: state.data!.previewAds.images,
+                        adsDetailsModel: state.data!.previewAds,
                       ),
                       BuildInvTitle(title: "الفيديوهات"),
                       Visibility(
@@ -152,7 +150,10 @@ class _InvitationDetailsState extends State<InvitationDetails>
                       BuildRateApp(
                         invitationDetailsData: invitationDetailsData,
                         adsDetailsModel: state.data!.previewAds,
-                      )
+                      ),
+                      BuildAddComment(
+                        invitationDetailsData: invitationDetailsData,
+                      ),
                     ],
                   ),
                 ),
@@ -165,9 +166,9 @@ class _InvitationDetailsState extends State<InvitationDetails>
           }
         },
       ),
-      bottomNavigationBar: BuildAddComment(
-        invitationDetailsData: invitationDetailsData,
-      ),
+      // bottomNavigationBar: BuildAddComment(
+      //   invitationDetailsData: invitationDetailsData,
+      // ),
     );
   }
 
