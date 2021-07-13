@@ -94,12 +94,12 @@ class CompOpinionSubscribeData {
     if (formKey.currentState!.validate() &&
         questionFormKey.currentState!.validate()) {
       if (imageCubit.state.data.isEmpty && videosCubit.state.data.isEmpty) {
-        if (addOpinionQuestionCubit.state.data.isEmpty) {
-          return LoadingDialog.showCustomToast(
-              "من فضلك ادخل علي الاقل سؤال وجواب ");
-        }
         return LoadingDialog.showCustomToast(
             "من فضلك ادخل علي الاقل صورة او فيديو ");
+      }
+      if (addOpinionQuestionCubit.state.data.isEmpty) {
+        return LoadingDialog.showCustomToast(
+            "من فضلك ادخل علي الاقل سؤال وجواب ");
       }
       var questions = addOpinionQuestionCubit.state.data
           .map((e) => {
@@ -287,7 +287,6 @@ class CompOpinionSubscribeData {
 
   void onSecSubscribe(BuildContext context) async {
     if (secFormKey.currentState!.validate()) {
-      btnKey.currentState!.animateForward();
       int len = interestCubit.state.data
           .where((element) => element.selected)
           .toList()
@@ -308,6 +307,7 @@ class CompOpinionSubscribeData {
         LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
         return;
       }
+      btnKey.currentState!.animateForward();
       addOpinionSubscribeModel.countWatch = views.text;
       addOpinionSubscribeModel.timeStart = dateCubit.state.data;
       addOpinionSubscribeModel.fkCity = regionModel?.id.toString();
@@ -327,11 +327,11 @@ class CompOpinionSubscribeData {
       addOpinionSubscribeModel.mainCost =
           costCubit.state.data!.item1.toString();
       addOpinionSubscribeModel.addedCost =
-          costViewCubit.state.data!.item1.toString();
+          costViewCubit.state.data?.item1.toString() ?? "";
       addOpinionSubscribeModel.mainPoints =
           costCubit.state.data!.item3.toString();
       addOpinionSubscribeModel.addedPoints =
-          costViewCubit.state.data!.item2.toString();
+          costViewCubit.state.data?.item2.toString() ?? "";
       addOpinionSubscribeModel.price = value.text;
       addOpinionSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;

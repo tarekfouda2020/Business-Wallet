@@ -48,8 +48,6 @@ class CompanyEditProfileData {
   final TextEditingController facebook = new TextEditingController();
   final TextEditingController google = new TextEditingController();
 
-
-
   final TextEditingController image = new TextEditingController();
   final TextEditingController file = new TextEditingController();
 
@@ -107,10 +105,10 @@ class CompanyEditProfileData {
       fileCubit.onUpdateData(file);
     }
   }
+
   removeFile() async {
     fileCubit.onUpdateData(null);
   }
-
 
   addCertificate() async {
     var image = await Utils.getImages();
@@ -152,7 +150,7 @@ class CompanyEditProfileData {
     user.onUpdateUserData(user.state.model);
   }
 
-  changeInterestItem(int index,bool value){
+  changeInterestItem(int index, bool value) {
     interestCubit.state.data[index].selected = value;
     interestCubit.onUpdateData(interestCubit.state.data);
   }
@@ -164,27 +162,29 @@ class CompanyEditProfileData {
     email.text = company.email!;
     cityId =
         CitiesModel(fkCountry: 3, id: company.fkCity!, name: company.cityName!);
-    compName.text = company.kayanName??"";
-    compPhone.text = company.phoneKayan??"";
-    compEmail.text = company.emailKayan??"";
-    compLocation.text = company.address??"";
-    compWebsite.text = company.website??"";
-    desc.text = company.description??"";
-    whatsApp.text = company.whats??"";
-    instagram.text = company.instgram??"";
-    twitter.text = company.twitter??"";
+    compName.text = company.kayanName ?? "";
+    compPhone.text = company.phoneKayan ?? "";
+    compEmail.text = company.emailKayan ?? "";
+    compLocation.text = company.address ?? "";
+    compWebsite.text = company.website ?? "";
+    desc.text = company.description ?? "";
+    whatsApp.text = company.whats ?? "";
+    instagram.text = company.instgram ?? "";
+    twitter.text = company.twitter ?? "";
     facebook.text = company.facebook!;
-    google.text = company.google??"";
-    compLocation.text = company.address??"";
-    lat=company.lat??"";
-    lng=company.lng??"";
-    showDescCubit.onUpdateData(company.showDescription??true);
-    showBranchCubit.onUpdateData(company.showBranch??true);
-    showImagesCubit.onUpdateData(company.showImgKayan??true);
-    showFilesCubit.onUpdateData(company.showPdfKayan??true);
-    showCertificateCubit.onUpdateData(company.showAccreditationKayan??true);
-    showPartnerCubit.onUpdateData(company.showPartnersKayan??true);
-    interestCubit.onUpdateData(company.interests??[]);
+    google.text = company.google ?? "";
+    compLocation.text = company.address ?? "";
+    lat = company.lat ?? "";
+    lng = company.lng ?? "";
+    showDescCubit.onUpdateData(company.showDescription ?? true);
+    showBranchCubit.onUpdateData(company.showBranch ?? true);
+    showImagesCubit.onUpdateData(company.showImgKayan ?? true);
+    showFilesCubit.onUpdateData(company.showPdfKayan ?? true);
+    showCertificateCubit.onUpdateData(company.showAccreditationKayan ?? true);
+    showPartnerCubit.onUpdateData(company.showPartnersKayan ?? true);
+    interestCubit.onUpdateData(company.interests ?? []);
+    locCubit.onLocationUpdated(LocationModel(
+        company.lat ?? "0", company.lng ?? "0", company.address ?? ""));
   }
 
   void updateCompanyData(BuildContext context) async {
@@ -225,13 +225,15 @@ class CompanyEditProfileData {
         showPartnerKayan: showPartnerCubit.state.data,
         showPdfKayan: showFilesCubit.state.data,
         showBranch: showBranchCubit.state.data,
-        interests: interestCubit.state.data.where((e) => e.selected).fold("", (prev, element) => "$prev"+"${element.id},"),
+        interests: interestCubit.state.data
+            .where((e) => e.selected)
+            .fold("", (prev, element) => "$prev" + "${element.id},"),
         // branch: "",
         userId: user!.userId,
         img: imageCubit.state.data,
         lang: context.read<LangCubit>().state.locale.languageCode,
       );
-      var result =  await CompanyRepository(context).updateCompanyData(model);
+      var result = await CompanyRepository(context).updateCompanyData(model);
       btnKey.currentState!.animateReverse();
       if (result) {
         Navigator.of(context).pop();
