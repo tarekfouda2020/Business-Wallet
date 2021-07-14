@@ -59,35 +59,6 @@ class BuildCommentItem extends StatelessWidget {
                         size: 9,
                         color: MyColors.greyWhite.withOpacity(.9),
                       ),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      MyText(
-                        title: commentModel.date!.toString(),
-                        size: 9,
-                        color: MyColors.greyWhite.withOpacity(.9),
-                      ),
-                      PopupMenuButton(
-                        color: Colors.white,
-                        elevation: 20,
-                        icon: Icon(
-                          Icons.info,
-                          color: MyColors.grey,
-                        ),
-                        enabled: true,
-                        onSelected: (int value) {
-                          buildReportComment(context, commentModel.commentId!);
-                        },
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            child: MyText(
-                              title: "ابلاغ",
-                              color: MyColors.black,
-                            ),
-                            value: 0,
-                          ),
-                        ],
-                      )
                     ],
                   ),
                   MyText(
@@ -95,9 +66,50 @@ class BuildCommentItem extends StatelessWidget {
                     size: 9,
                     color: MyColors.greyWhite.withOpacity(.9),
                   ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  MyText(
+                    title: commentModel.date!.toString(),
+                    size: 9,
+                    color: MyColors.greyWhite.withOpacity(.9),
+                  ),
                 ],
               ),
             ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              PopupMenuButton(
+                color: Colors.white,
+                elevation: 20,
+                icon: Icon(
+                  Icons.info,
+                  color: MyColors.grey,
+                ),
+                enabled: true,
+                onSelected: (int value) {
+                  buildReportComment(context, commentModel.commentId!);
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: MyText(
+                      title: "ابلاغ",
+                      color: MyColors.black,
+                    ),
+                    value: 0,
+                  ),
+                ],
+              ),
+              CachedImage(
+                url: commentModel.commentImg!,
+                haveRadius: false,
+                boxShape: BoxShape.circle,
+                width: 50,
+                height: 50,
+              ),
+            ],
           )
         ],
       ),
@@ -105,48 +117,88 @@ class BuildCommentItem extends StatelessWidget {
   }
 
   void buildReportComment(BuildContext context, int commentId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyText(
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: MyText(
                 title: "ابلاغ عن تعليق",
                 color: MyColors.primary,
                 size: 14,
               ),
-              SizedBox(
-                height: 15,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
               ),
-              RichTextFiled(
-                hint: "الرسالة",
-                max: 3,
-                fillColor: MyColors.greyWhite,
-                controller: companyProfileData.report,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                action: TextInputAction.done,
-                validate: (value) => value!.validateEmpty(context),
+              content: Form(
+                key: companyProfileData.formKey,
+                child: RichTextFiled(
+                  hint: "الرسالة",
+                  max: 3,
+                  fillColor: MyColors.greyWhite,
+                  controller: companyProfileData.report,
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  action: TextInputAction.done,
+                  validate: (value) => value!.validateEmpty(context),
+                ),
               ),
-              LoadingButton(
-                btnKey: companyProfileData.btnKey,
-                title: "ابلاغ",
-                color: MyColors.primary,
-                onTap: () => companyProfileData.reportComment(
-                    context, commentId, commentModel.fkOwnerComment!),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+              actions: [
+                LoadingButton(
+                  btnKey: companyProfileData.btnKey,
+                  title: "ابلاغ",
+                  color: MyColors.primary,
+                  onTap: () => companyProfileData.reportComment(
+                      context, commentId, commentModel.fkOwnerComment!),
+                ),
+              ],
+            ));
+    // showModalBottomSheet(
+    //   isScrollControlled: true,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.vertical(
+    //       top: Radius.circular(25),
+    //     ),
+    //   ),
+    //   enableDrag: true,
+    //   context: context,
+    //   builder: (BuildContext context) {
+    //     return Container(
+    //       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+    //       child: ListView(
+    //         // mainAxisSize: MainAxisSize.min,
+    //         // crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: [
+    //           MyText(
+    //             title: "ابلاغ عن تعليق",
+    //             color: MyColors.primary,
+    //             size: 14,
+    //           ),
+    //           SizedBox(
+    //             height: 15,
+    //           ),
+    //           Form(
+    //             key: companyProfileData.formKey,
+    //             child: RichTextFiled(
+    //               hint: "الرسالة",
+    //               max: 3,
+    //               fillColor: MyColors.greyWhite,
+    //               controller: companyProfileData.report,
+    //               margin: const EdgeInsets.symmetric(horizontal: 16),
+    //               action: TextInputAction.done,
+    //               validate: (value) => value!.validateEmpty(context),
+    //             ),
+    //           ),
+    //           LoadingButton(
+    //             btnKey: companyProfileData.btnKey,
+    //             title: "ابلاغ",
+    //             color: MyColors.primary,
+    //             onTap: () => companyProfileData.reportComment(
+    //                 context, commentId, commentModel.fkOwnerComment!),
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }

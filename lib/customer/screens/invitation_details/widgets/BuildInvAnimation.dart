@@ -3,7 +3,6 @@ part of 'InvDetailsWidgetsImports.dart';
 class BuildInvAnimation extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
   final AdsDetailsModel? adsDetailsModel;
-
   const BuildInvAnimation(
       {required this.invitationDetailsData, required this.adsDetailsModel});
 

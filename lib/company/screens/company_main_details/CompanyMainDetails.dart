@@ -76,7 +76,10 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
                 BuildRateCompany(
                   companyMainDetailsData: companyMainDetailsData,
                   detailsModel: state.data!.details,
-                )
+                ),
+                BuildCommentButton(
+                  companyMainDetailsData: companyMainDetailsData,
+                ),
               ],
             );
           } else {
@@ -86,9 +89,7 @@ class _CompanyMainDetailsState extends State<CompanyMainDetails> {
           }
         },
       ),
-      bottomNavigationBar: BuildCommentButton(
-        companyMainDetailsData: companyMainDetailsData,
-      ),
+      // bottomNavigationBar:
     );
   }
 }

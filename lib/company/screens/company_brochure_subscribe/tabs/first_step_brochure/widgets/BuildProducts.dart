@@ -1,7 +1,7 @@
 part of 'FirstStepBrochureWidgetsImports.dart';
 
 class BuildProducts extends StatelessWidget {
-  final List<ImageModel> images;
+  final List<ImageModel>? images;
 
   const BuildProducts({required this.images});
 
@@ -11,7 +11,7 @@ class BuildProducts extends StatelessWidget {
       children: [
         BuildAdsItem(title: "اهم المنتجات"),
         Visibility(
-          visible: images.isEmpty,
+          visible: images == null || images?.length == 0,
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 15),
             alignment: Alignment.center,
@@ -25,7 +25,7 @@ class BuildProducts extends StatelessWidget {
             height: 90,
             margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             child: ListView.builder(
-              itemCount: images.length,
+              itemCount: images?.length ?? 0,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
@@ -33,7 +33,7 @@ class BuildProducts extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   child: CachedImage(
                     borderColor: MyColors.greyWhite,
-                    url: images[index].img,
+                    url: images![index].img,
                     width: 90,
                     borderRadius: BorderRadius.circular(10),
                   ),

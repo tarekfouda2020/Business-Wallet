@@ -1,8 +1,9 @@
 part of 'ThirdStepWidgetsImports.dart';
-class BuildButtonList extends StatelessWidget {
-final CompanySubscribeData companySubscribeData;
 
-  const BuildButtonList({required this.companySubscribeData}) ;
+class BuildButtonList extends StatelessWidget {
+  final CompanySubscribeData companySubscribeData;
+
+  const BuildButtonList({required this.companySubscribeData});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +22,7 @@ final CompanySubscribeData companySubscribeData;
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           borderRadius: BorderRadius.circular(30),
           title: "التالي",
-          onTap: () => companySubscribeData.moveNext(),
+          onTap: () => companySubscribeData.moveNext(context),
         ),
         DefaultButton(
           color: MyColors.white,

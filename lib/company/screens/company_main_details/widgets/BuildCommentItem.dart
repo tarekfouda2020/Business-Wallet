@@ -80,6 +80,7 @@ class BuildCommentItem extends StatelessWidget {
                 enabled: true,
                 onSelected: (int value) {
                   if (value == 0) {
+                    companyMainDetailsData.newComment.text = commentModel!.text;
                     buildEditComment(context, commentModel!.commentId);
                   } else if (value == 1) {
                     buildReportComment(context, commentModel!.commentId);
@@ -150,94 +151,156 @@ class BuildCommentItem extends StatelessWidget {
   }
 
   void buildReportComment(BuildContext context, int commentId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyText(
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: MyText(
                 title: "ابلاغ عن تعليق",
                 color: MyColors.primary,
                 size: 14,
               ),
-              SizedBox(
-                height: 15,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
               ),
-              RichTextFiled(
-                hint: "الرسالة",
-                max: 3,
-                fillColor: MyColors.greyWhite,
-                controller: companyMainDetailsData.report,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                action: TextInputAction.done,
-                validate: (value) => value!.validateEmpty(context),
+              content: Form(
+                key: companyMainDetailsData.formKey,
+                child: RichTextFiled(
+                  hint: "الرسالة",
+                  max: 3,
+                  fillColor: MyColors.greyWhite,
+                  controller: companyMainDetailsData.report,
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  action: TextInputAction.done,
+                  validate: (value) => value!.validateEmpty(context),
+                ),
               ),
-              LoadingButton(
-                btnKey: companyMainDetailsData.btnKey,
-                title: "ابلاغ",
-                color: MyColors.primary,
-                onTap: () => companyMainDetailsData.reportComment(
-                    context, commentId, kayanId),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+              actions: [
+                LoadingButton(
+                  btnKey: companyMainDetailsData.btnKey,
+                  title: "ابلاغ",
+                  color: MyColors.primary,
+                  onTap: () => companyMainDetailsData.reportComment(
+                      context, commentId, kayanId),
+                ),
+              ],
+            ));
+    // showModalBottomSheet(
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.vertical(
+    //       top: Radius.circular(25),
+    //     ),
+    //   ),
+    //   context: context,
+    //   builder: (BuildContext context) {
+    //     return Container(
+    //       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+    //       child: Column(
+    //         mainAxisSize: MainAxisSize.min,
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: [
+    //           MyText(
+    //             title: "ابلاغ عن تعليق",
+    //             color: MyColors.primary,
+    //             size: 14,
+    //           ),
+    //           SizedBox(
+    //             height: 15,
+    //           ),
+    //           RichTextFiled(
+    //             hint: "الرسالة",
+    //             max: 3,
+    //             fillColor: MyColors.greyWhite,
+    //             controller: companyMainDetailsData.report,
+    //             margin: const EdgeInsets.symmetric(horizontal: 16),
+    //             action: TextInputAction.done,
+    //             validate: (value) => value!.validateEmpty(context),
+    //           ),
+    //           LoadingButton(
+    //             btnKey: companyMainDetailsData.btnKey,
+    //             title: "ابلاغ",
+    //             color: MyColors.primary,
+    //             onTap: () => companyMainDetailsData.reportComment(
+    //                 context, commentId, kayanId),
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 
   void buildEditComment(BuildContext context, int commentId) {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(25),
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyText(
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: MyText(
                 title: "تعديل التعليق",
                 color: MyColors.primary,
                 size: 14,
               ),
-              SizedBox(
-                height: 15,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
               ),
-              RichTextFiled(
-                hint: "الرسالة",
-                max: 3,
-                fillColor: MyColors.greyWhite,
-                controller: companyMainDetailsData.newComment,
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                action: TextInputAction.done,
-                validate: (value) => value!.validateEmpty(context),
+              content: Form(
+                key: companyMainDetailsData.formKey,
+                child: RichTextFiled(
+                  hint: "الرسالة",
+                  max: 3,
+                  fillColor: MyColors.greyWhite,
+                  controller: companyMainDetailsData.newComment,
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  action: TextInputAction.done,
+                  validate: (value) => value!.validateEmpty(context),
+                ),
               ),
-              LoadingButton(
-                btnKey: companyMainDetailsData.btnKey,
-                title: "ابلاغ",
-                color: MyColors.primary,
-                onTap: () => companyMainDetailsData.editComment(
-                    context, commentId, kayanId),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+              actions: [
+                LoadingButton(
+                  btnKey: companyMainDetailsData.btnKey,
+                  title: "تعديل",
+                  color: MyColors.primary,
+                  onTap: () => companyMainDetailsData.editComment(
+                      context, commentId, kayanId),
+                ),
+              ],
+            ));
+    // showModalBottomSheet(
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.vertical(
+    //       top: Radius.circular(25),
+    //     ),
+    //   ),
+    //   context: context,
+    //   builder: (BuildContext context) {
+    //     return Container(
+    //       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+    //       child: Column(
+    //         mainAxisSize: MainAxisSize.min,
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: [
+    //           MyText(
+    //             title: "تعديل التعليق",
+    //             color: MyColors.primary,
+    //             size: 14,
+    //           ),
+    //           SizedBox(
+    //             height: 15,
+    //           ),
+    //
+    //           LoadingButton(
+    //             btnKey: companyMainDetailsData.btnKey,
+    //             title: "ابلاغ",
+    //             color: MyColors.primary,
+    //             onTap: () => companyMainDetailsData.editComment(
+    //                 context, commentId, kayanId),
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }

@@ -83,7 +83,8 @@ class CompanyEditProfileData {
   addImage() async {
     var image = await Utils.getImages();
     if (image != null) {
-      addImgCubit.onUpdateData(image);
+      addImgCubit.state.data.addAll(image);
+      addImgCubit.onUpdateData(addImgCubit.state.data);
     }
   }
 
@@ -113,7 +114,8 @@ class CompanyEditProfileData {
   addCertificate() async {
     var image = await Utils.getImages();
     if (image != null) {
-      certificateCubit.onUpdateData(image);
+      certificateCubit.state.data.addAll(image);
+      certificateCubit.onUpdateData(certificateCubit.state.data);
     }
   }
 
@@ -133,7 +135,8 @@ class CompanyEditProfileData {
   addPartner() async {
     var image = await Utils.getImages();
     if (image != null) {
-      partnerCubit.onUpdateData(image);
+      partnerCubit.state.data.addAll(image);
+      partnerCubit.onUpdateData(partnerCubit.state.data);
     }
   }
 

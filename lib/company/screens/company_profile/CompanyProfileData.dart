@@ -1,10 +1,10 @@
 part of 'CompanyProfileImport.dart';
 
 class CompanyProfileData {
-
   final GlobalKey<CustomButtonState> btnKey =
-  new GlobalKey<CustomButtonState>();
-  final TextEditingController report= new TextEditingController();
+      new GlobalKey<CustomButtonState>();
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
+  final TextEditingController report = new TextEditingController();
   final GenericCubit<bool> contactDropCubit = new GenericCubit(false);
   final GenericCubit<bool> socialDropCubit = new GenericCubit(false);
   final GenericCubit<bool> interestDropCubit = new GenericCubit(false);
@@ -16,11 +16,13 @@ class CompanyProfileData {
 
   void reportComment(
       BuildContext context, int commentId, String kayanId) async {
-    await CompanyRepository(context)
-        .reportComment(commentId, kayanId, report.text)
-        .then((value) {
-      report.clear();
-      AutoRouter.of(context).pop();
-    });
+    if (formKey.currentState!.validate()) {
+      await CompanyRepository(context)
+          .reportComment(commentId, kayanId, report.text)
+          .then((value) {
+        report.clear();
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 }

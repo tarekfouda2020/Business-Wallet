@@ -8,7 +8,7 @@ class BuildSecForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Form(
         key: companySubscribeData.secFormKey,
         child: Column(
@@ -31,7 +31,6 @@ class BuildSecForm extends StatelessWidget {
                           action: TextInputAction.done,
                           type: TextInputType.number,
                           onChange: (value) {
-
                             companySubscribeData.getCostSubscribe(context);
                           },
                           validate: (value) => value!.validateEmpty(context),
@@ -58,7 +57,8 @@ class BuildSecForm extends StatelessWidget {
                             return InkWellTextField(
                               icon: Icon(Icons.arrow_drop_down),
                               controller: companySubscribeData.duration,
-                              validate: (value) => value!.validateEmpty(context),
+                              validate: (value) =>
+                                  value!.validateEmpty(context),
                               margin: const EdgeInsets.symmetric(vertical: 10),
                               onTab: () {
                                 DownBottomSheet(
@@ -108,7 +108,7 @@ class BuildSecForm extends StatelessWidget {
               onChange: companySubscribeData.changeRegion,
               useName: true,
               finData: (filter) async =>
-              await CompanyRepository(context).getCompCities(3),
+                  await CompanyRepository(context).getCompCities(3),
             ),
             BuildFormText(text: "تحديد العملاء المهتمين ب"),
             InkWellTextField(
@@ -131,7 +131,7 @@ class BuildSecForm extends StatelessWidget {
                     runAlignment: WrapAlignment.start,
                     children: List.generate(
                       state.data.length,
-                          (index) {
+                      (index) {
                         return Visibility(
                           visible: state.data[index].selected,
                           child: Container(
@@ -152,8 +152,8 @@ class BuildSecForm extends StatelessWidget {
                                   color: MyColors.white,
                                 ),
                                 IconButton(
-                                  onPressed: () =>
-                                      companySubscribeData.onDeletePeopleInterest(
+                                  onPressed: () => companySubscribeData
+                                      .onDeletePeopleInterest(
                                           context, state.data[index], index),
                                   icon: Icon(
                                     MdiIcons.closeCircle,
@@ -188,7 +188,7 @@ class BuildSecForm extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
                     context: context,
-                    title: '',
+                    title: 'الجنس',
                     onTab: (name, id) =>
                         companySubscribeData.selectType(id, context),
                     data: GenderModel().genders,
@@ -213,11 +213,11 @@ class BuildSecForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'السكن',
-                      onTab: (name, id) =>
-                          companySubscribeData.selectLiving(id, context),
-                      data: LivingModel().living)
+                          context: context,
+                          title: 'السكن',
+                          onTab: (name, id) =>
+                              companySubscribeData.selectLiving(id, context),
+                          data: LivingModel().living)
                       .show(),
                   hint: 'السكن',
                 );
@@ -239,11 +239,11 @@ class BuildSecForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'مستوي التعليم',
-                      onTab: (name, id) =>
-                          companySubscribeData.selectEducation(id, context),
-                      data: EducationModel().education)
+                          context: context,
+                          title: 'مستوي التعليم',
+                          onTab: (name, id) =>
+                              companySubscribeData.selectEducation(id, context),
+                          data: EducationModel().education)
                       .show(),
                   hint: 'مستوي التعليم',
                 );
@@ -265,11 +265,11 @@ class BuildSecForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'افراد الاسره',
-                      onTab: (name, id) =>
-                          companySubscribeData.selectFamily(id, context),
-                      data: FamilyMemberModel().family)
+                          context: context,
+                          title: 'افراد الاسره',
+                          onTab: (name, id) =>
+                              companySubscribeData.selectFamily(id, context),
+                          data: FamilyMemberModel().family)
                       .show(),
                   hint: 'افراد الاسره',
                 );
@@ -280,7 +280,7 @@ class BuildSecForm extends StatelessWidget {
               bloc: companySubscribeData.ageCubit,
               listener: (_, state) {
                 companySubscribeData.age.text =
-                AgeModel().age.firstWhere((e) => e.id == state.data).name!;
+                    AgeModel().age.firstWhere((e) => e.id == state.data).name!;
               },
               builder: (_, state) {
                 return InkWellTextField(
@@ -289,11 +289,11 @@ class BuildSecForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'الفئة العمرية',
-                      onTab: (name, id) =>
-                          companySubscribeData.selectAge(id, context),
-                      data: AgeModel().age)
+                          context: context,
+                          title: 'الفئة العمرية',
+                          onTab: (name, id) =>
+                              companySubscribeData.selectAge(id, context),
+                          data: AgeModel().age)
                       .show(),
                   hint: 'الفئة العمرية',
                 );
@@ -315,11 +315,11 @@ class BuildSecForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'متوسط الدخل في الشهر',
-                      onTab: (name, id) =>
-                          companySubscribeData.selectIncome(id, context),
-                      data: IncomeModel().income)
+                          context: context,
+                          title: 'متوسط الدخل في الشهر',
+                          onTab: (name, id) =>
+                              companySubscribeData.selectIncome(id, context),
+                          data: IncomeModel().income)
                       .show(),
                   hint: 'متوسط الدخل في الشهر',
                 );

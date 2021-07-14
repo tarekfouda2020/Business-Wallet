@@ -94,12 +94,10 @@ class _InvitationDetailsState extends State<InvitationDetails>
                           adsDetailsModel: state.data?.previewAds,
                         ),
                       ),
-                      Visibility(
-                        visible: widget.checkInvite,
-                        child: BuildAnimationDetails(
-                          invitationDetailsData: invitationDetailsData,
-                          adsDetailsModel: state.data!.previewAds,
-                        ),
+                      BuildAnimationDetails(
+                        checkInvite: widget.checkInvite,
+                        invitationDetailsData: invitationDetailsData,
+                        adsDetailsModel: state.data!.previewAds,
                       )
                     ],
                   ),

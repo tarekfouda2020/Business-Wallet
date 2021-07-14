@@ -12,7 +12,8 @@ class CompSpecialSubscribeData {
 
   final GenericCubit<double> baseCostCubit = new GenericCubit(0.0);
 
-  void moveNext() {
+  void moveNext(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
     controller.nextPage(
         duration: Duration(milliseconds: 500), curve: Curves.easeOut);
   }
@@ -76,8 +77,9 @@ class CompSpecialSubscribeData {
 
   onItemChanged(int id, int index) {
     if (id == 0) {
+      var value = interestCubit.state.data[index].selected;
       var data = interestCubit.state.data.map((e) {
-        e.selected = true;
+        e.selected = !value;
         return e;
       }).toList();
       interestCubit.onUpdateData(data);
@@ -109,8 +111,6 @@ class CompSpecialSubscribeData {
 
   void onSpecialSubscribe(BuildContext context) async {
     if (formKey.currentState!.validate()) {
-      btnKey.currentState!.animateForward();
-
       addSpecialSubscribeModel.userId =
           context.read<UserCubit>().state.model.companyModel!.userId;
       addSpecialSubscribeModel.startTime = dateCubit.state.data;
@@ -127,12 +127,16 @@ class CompSpecialSubscribeData {
       addSpecialSubscribeModel.age = "30-1";
       addSpecialSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;
-
+      if (addSpecialSubscribeModel.interestsNames?.length == 0) {
+        LoadingDialog.showSimpleToast("من فضلك ادخل الإهتمامات");
+        return;
+      }
+      btnKey.currentState!.animateForward();
       var data = await CompanyRepository(context)
           .addSpecialSubscribe(addSpecialSubscribeModel);
       btnKey.currentState!.animateReverse();
       idCubit.onUpdateData(data!);
-      moveNext();
+      moveNext(context);
     }
   }
 

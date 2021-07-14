@@ -3,9 +3,12 @@ part of 'InvDetailsWidgetsImports.dart';
 class BuildAnimationDetails extends StatelessWidget {
   final InvitationDetailsData invitationDetailsData;
   final AdsDetailsModel adsDetailsModel;
+  final bool checkInvite;
 
   const BuildAnimationDetails(
-      {required this.invitationDetailsData, required this.adsDetailsModel});
+      {required this.invitationDetailsData,
+      required this.adsDetailsModel,
+      required this.checkInvite});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,9 @@ class BuildAnimationDetails extends StatelessWidget {
                   BoxDecoration(shape: BoxShape.circle, color: MyColors.darken),
               child: CircularStepProgressIndicator(
                 totalSteps: 40,
-                currentStep: invitationDetailsData.animation.value.toInt(),
+                currentStep: !checkInvite
+                    ? 40
+                    : invitationDetailsData.animation.value.toInt(),
                 stepSize: 7,
                 selectedColor: MyColors.primary,
                 unselectedColor: MyColors.greyWhite,

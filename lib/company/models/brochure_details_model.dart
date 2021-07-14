@@ -31,9 +31,9 @@ class BrochureDetailsModel {
   @JsonKey(name: 'name_product')
   String nameProduct;
   @JsonKey(nullable: true)
-  List<CompServiceModel> services;
+  List<CompServiceModel>? services;
   @JsonKey(nullable: true)
-  List<ImageModel> images;
+  List<ImageModel>? images;
 
   BrochureDetailsModel(
       {required this.userId,

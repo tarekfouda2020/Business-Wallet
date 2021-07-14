@@ -19,6 +19,7 @@ class Res {
   static const String twitter = "assets/images/twitter.png";
   static const String vedioImg = "assets/images/vedioImg.png";
   static const String wha = "assets/images/wha.png";
+  static const String instaa = "assets/images/instaa.png";
   static const String ar = "assets/lang/ar.json";
   static const String en = "assets/lang/en.json";
 }

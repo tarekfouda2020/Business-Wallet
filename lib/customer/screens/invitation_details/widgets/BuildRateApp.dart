@@ -5,7 +5,7 @@ class BuildRateApp extends StatelessWidget {
   final AdsDetailsModel adsDetailsModel;
 
   const BuildRateApp(
-      {required this.invitationDetailsData,required this.adsDetailsModel});
+      {required this.invitationDetailsData, required this.adsDetailsModel});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BuildRateApp extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           MyText(
-            title: "قيم المنشأة",
+            title: "قيم الإعلان",
             size: 14,
           ),
           SizedBox(
@@ -40,8 +40,9 @@ class BuildRateApp extends StatelessWidget {
                     Icons.star,
                     color: Colors.amber,
                   ),
-                  onRatingUpdate: (rating) => invitationDetailsData
-                      .specificAdsRate(context, adsDetailsModel.id,rating.toInt()),
+                  onRatingUpdate: (rating) =>
+                      invitationDetailsData.specificAdsRate(
+                          context, adsDetailsModel.id, rating.toInt()),
                 ),
               );
             },

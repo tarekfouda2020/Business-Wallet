@@ -49,8 +49,9 @@ class BuildAddImage extends StatelessWidget {
                       runSpacing: 10,
                       alignment: WrapAlignment.start,
                       children: List.generate(
-                          companyBrochureData
-                              .brochureDataCubit.state.data!.images.length,
+                          companyBrochureData.brochureDataCubit.state.data!
+                                  .images?.length ??
+                              0,
                           (index) => Container(
                                 alignment: Alignment.topLeft,
                                 width: 100,
@@ -59,7 +60,7 @@ class BuildAddImage extends StatelessWidget {
                                   width: 100,
                                   height: 100,
                                   url: companyBrochureData.brochureDataCubit
-                                      .state.data!.images[index].img,
+                                      .state.data!.images![index].img,
                                   child: InkWell(
                                     onTap: () =>
                                         companyBrochureData.removeImageNetwork(
@@ -68,7 +69,7 @@ class BuildAddImage extends StatelessWidget {
                                                 .brochureDataCubit
                                                 .state
                                                 .data!
-                                                .images[index]
+                                                .images![index]
                                                 .id,
                                             context),
                                     child: Icon(

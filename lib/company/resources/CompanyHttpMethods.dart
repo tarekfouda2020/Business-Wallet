@@ -156,8 +156,9 @@ class CompanyHttpMethods {
       user.companyModel = CompanyModel.fromJson(_data["data"]["UserData"]);
       context.read<UserCubit>().onUpdateUserData(user);
       await Utils.saveUserData(user);
-      AutoRouter.of(context).pushAndPopUntil(CompanyHomeRoute(index: 2),
-          predicate: (predicate) => false);
+      // AutoRouter.of(context).pushAndPopUntil(CompanyHomeRoute(index: 2),
+      //     predicate: (predicate) => false);
+      AutoRouter.of(context).pop();
       return true;
     } else {
       return false;

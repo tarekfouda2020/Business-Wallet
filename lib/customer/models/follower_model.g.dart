@@ -12,7 +12,7 @@ FollowerModel _$FollowerModelFromJson(Map<String, dynamic> json) {
     name: json['Name'] as String,
     background: json['Background'] as String,
     img: json['Img'] as String,
-    rate: (json['Rate'] as num).toDouble(),
+    rate: (json['Rate'] as num?)?.toDouble() ?? 0,
     count: json['Count'] as int,
     numberEdit: json['NumberEdit'] as int,
   );

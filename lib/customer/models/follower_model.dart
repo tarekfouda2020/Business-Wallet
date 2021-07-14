@@ -12,7 +12,7 @@ class FollowerModel {
   String background;
   @JsonKey(name: 'Img')
   String img;
-  @JsonKey(name: 'Rate')
+  @JsonKey(name: 'Rate', defaultValue: 0, includeIfNull: true)
   double rate;
   @JsonKey(name: 'Count')
   int count;

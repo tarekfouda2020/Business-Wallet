@@ -106,16 +106,19 @@ class InvitationDetailsData {
   }
 
   void specificAdsComment(BuildContext context, int adsId) async {
+    FocusScope.of(context).requestFocus(FocusNode());
     if (comment.text.trim().isEmpty) {
       return LoadingDialog.showSimpleToast("من فضلك ادخل التعليق");
     }
-    await CustomerRepository(context)
-        .specificAdsComment(adsId, comment.text, imageCubit.state.data, "1")
-        .then((value) {
+    bool added = await CustomerRepository(context)
+        .specificAdsComment(adsId, comment.text, imageCubit.state.data, "1");
+
+    if (added) {
+      LoadingDialog.showSimpleToast("تم إضافة التعليق بنجاح");
       comment.clear();
       imageCubit.onUpdateData(null);
       fetchData(context, adsId);
-    });
+    }
   }
 
   void deleteComment(BuildContext context, int commentId) async {

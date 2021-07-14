@@ -46,6 +46,12 @@ class BuildSocialInfo extends StatelessWidget {
                         url: detailsModel!.twitter,
                       ),
                     ),
+                    BuildSocialItem(
+                      image: Res.instaa,
+                      onTap: () => Utils.launchURL(
+                        url: detailsModel!.instagram,
+                      ),
+                    ),
                   ],
                 ),
               ),

@@ -18,7 +18,8 @@ class CompBrochureSubscribeData {
   final GenericCubit<double> costChangeCubit = new GenericCubit(0.0);
   final GenericCubit<double> costViewChangeCubit = new GenericCubit(0.0);
 
-  void moveNext() {
+  void moveNext(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
     controller.nextPage(
         duration: Duration(milliseconds: 500), curve: Curves.easeOut);
   }
@@ -41,7 +42,7 @@ class CompBrochureSubscribeData {
     if (id == 0) {
       return LoadingDialog.showCustomToast("من فضلك ادخل بيانات البروشور اولا");
     } else {
-      moveNext();
+      moveNext(context);
     }
   }
 
@@ -129,7 +130,7 @@ class CompBrochureSubscribeData {
     var data = await CompanyRepository(context).finalCost(baseCost);
     if (data != null) {
       finalCostCubit.onUpdateData(data);
-      moveNext();
+      moveNext(context);
     }
   }
 
@@ -144,15 +145,15 @@ class CompBrochureSubscribeData {
         return;
       }
 
-      if (extraCost.text.trim().isEmpty) {
-        LoadingDialog.showSimpleToast("من فضلك ادخل المبلغ");
-        return;
-      }
-
-      if (costCubit.state.data == null) {
-        LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
-        return;
-      }
+      // if (extraCost.text.trim().isEmpty) {
+      //   LoadingDialog.showSimpleToast("من فضلك ادخل المبلغ");
+      //   return;
+      // }
+      //
+      // if (costCubit.state.data == null) {
+      //   LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
+      //   return;
+      // }
       btnKey.currentState!.animateForward();
       AddBrochureSubscribeModel addBrochureSubscribeModel =
           new AddBrochureSubscribeModel(
@@ -167,9 +168,9 @@ class CompBrochureSubscribeData {
             .where((element) => element.id != 0)
             .fold("", (prev, e) => "$prev" + "${e.id}" + ","),
         mainCost: costCubit.state.data!.item1.toString(),
-        addedCost: costViewCubit.state.data!.item1.toString(),
+        addedCost: costViewCubit.state.data?.item1.toString() ?? "0",
         mainPoints: costCubit.state.data!.item3.toString(),
-        addedPoints: costViewCubit.state.data!.item2.toString(),
+        addedPoints: costViewCubit.state.data?.item2.toString() ?? "0",
         lang: context.read<LangCubit>().state.locale.languageCode,
       );
 

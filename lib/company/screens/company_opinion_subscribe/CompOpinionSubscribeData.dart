@@ -16,7 +16,8 @@ class CompOpinionSubscribeData {
   final AddOpinionSubscribeModel addOpinionSubscribeModel =
       new AddOpinionSubscribeModel();
 
-  void moveNext() {
+  void moveNext(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
     controller.nextPage(
         duration: Duration(milliseconds: 500), curve: Curves.easeOut);
   }
@@ -38,7 +39,8 @@ class CompOpinionSubscribeData {
   setImage() async {
     var image = await Utils.getImages();
     if (image.length > 0) {
-      imageCubit.onUpdateData(image);
+      imageCubit.state.data.addAll(image);
+      imageCubit.onUpdateData(imageCubit.state.data);
     }
   }
 
@@ -50,7 +52,8 @@ class CompOpinionSubscribeData {
   setVideos() async {
     var videos = await Utils.getVideos();
     if (videos.length > 0) {
-      videosCubit.onUpdateData(videos);
+      videosCubit.state.data.addAll(videos);
+      videosCubit.onUpdateData(videosCubit.state.data);
     }
   }
 
@@ -114,7 +117,7 @@ class CompOpinionSubscribeData {
       addOpinionSubscribeModel.adsImages = imageCubit.state.data;
       addOpinionSubscribeModel.adsVideo = videosCubit.state.data;
       addOpinionSubscribeModel.questions = json.encode(questions);
-      moveNext();
+      moveNext(context);
     }
   }
 
@@ -278,10 +281,12 @@ class CompOpinionSubscribeData {
   }
 
   void getFinalCostSubscribe(BuildContext context) async {
-    var data = await CompanyRepository(context).finalCost(baseCost);
-    finalCostCubit.onUpdateData(data);
-    if (data != null) {
-      onSecSubscribe(context);
+    if (secFormKey.currentState!.validate()) {
+      var data = await CompanyRepository(context).finalCost(baseCost);
+      finalCostCubit.onUpdateData(data);
+      if (data != null) {
+        onSecSubscribe(context);
+      }
     }
   }
 
@@ -299,14 +304,15 @@ class CompOpinionSubscribeData {
         LoadingDialog.showCustomToast("يجب ألا يقل عدد المشاهدات عن 500");
         return;
       }
-      if (value.text.isEmpty) {
-        LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
-        return;
-      }
-      if (costCubit.state.data == null || costViewCubit.state.data == null) {
-        LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
-        return;
-      }
+      // if (value.text.isEmpty) {
+      //   LoadingDialog.showCustomToast("من فضلك ادخل المبلغ");
+      //   return;
+      // }
+      // if (costCubit.state.data == null || costViewCubit.state.data == null) {
+      //   LoadingDialog.showSimpleToast("جاري عمل بعض الحسابات");
+      //   return;
+      // }
+      print("base $baseCost");
       btnKey.currentState!.animateForward();
       addOpinionSubscribeModel.countWatch = views.text;
       addOpinionSubscribeModel.timeStart = dateCubit.state.data;
@@ -327,12 +333,13 @@ class CompOpinionSubscribeData {
       addOpinionSubscribeModel.mainCost =
           costCubit.state.data!.item1.toString();
       addOpinionSubscribeModel.addedCost =
-          costViewCubit.state.data?.item1.toString() ?? "";
+          costViewCubit.state.data?.item1.toString() ?? "0";
       addOpinionSubscribeModel.mainPoints =
           costCubit.state.data!.item3.toString();
       addOpinionSubscribeModel.addedPoints =
-          costViewCubit.state.data?.item2.toString() ?? "";
-      addOpinionSubscribeModel.price = value.text;
+          costViewCubit.state.data?.item2.toString() ?? "0";
+      addOpinionSubscribeModel.price =
+          value.text.trim().isEmpty ? baseCost.toString() : value.text;
       addOpinionSubscribeModel.lang =
           context.read<LangCubit>().state.locale.languageCode;
       var data = await CompanyRepository(context)
@@ -340,7 +347,7 @@ class CompOpinionSubscribeData {
       btnKey.currentState!.animateReverse();
 
       idCubit.onUpdateData(data!);
-      moveNext();
+      moveNext(context);
     }
   }
 

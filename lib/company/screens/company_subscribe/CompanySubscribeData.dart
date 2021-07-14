@@ -14,7 +14,8 @@ class CompanySubscribeData {
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   final GlobalKey<FormState> secFormKey = new GlobalKey<FormState>();
 
-  void moveNext() {
+  void moveNext(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
     controller.nextPage(
         duration: Duration(milliseconds: 500), curve: Curves.easeOut);
   }
@@ -52,7 +53,8 @@ class CompanySubscribeData {
   setImage() async {
     var image = await Utils.getImages();
     if (image.length > 0) {
-      imageCubit.onUpdateData(image);
+      imageCubit.state.data.addAll(image);
+      imageCubit.onUpdateData(imageCubit.state.data);
     }
   }
 
@@ -64,7 +66,8 @@ class CompanySubscribeData {
   setVideos() async {
     var videos = await Utils.getVideos();
     if (videos.length > 0) {
-      videosCubit.onUpdateData(videos);
+      videosCubit.state.data.addAll(videos);
+      videosCubit.onUpdateData(videosCubit.state.data);
     }
   }
 
@@ -89,7 +92,7 @@ class CompanySubscribeData {
       addSubscribeModel.pdf = fileCubit.state.data ?? null;
       addSubscribeModel.images = imageCubit.state.data;
       addSubscribeModel.videos = videosCubit.state.data;
-      moveNext();
+      moveNext(context);
     }
   }
 
@@ -315,7 +318,7 @@ class CompanySubscribeData {
       btnKey.currentState!.animateReverse();
 
       idCubit.onUpdateData(data!);
-      moveNext();
+      moveNext(context);
     }
   }
 

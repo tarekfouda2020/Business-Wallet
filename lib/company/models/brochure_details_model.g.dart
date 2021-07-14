@@ -20,11 +20,11 @@ BrochureDetailsModel _$BrochureDetailsModelFromJson(Map<String, dynamic> json) {
     fkkyan: json['fkkyan'] as String,
     nameService: json['name_service'] as String,
     nameProduct: json['name_product'] as String,
-    services: (json['services'] as List<dynamic>)
-        .map((e) => CompServiceModel.fromJson(e as Map<String, dynamic>))
+    services: (json['services'] as List<dynamic>?)
+        ?.map((e) => CompServiceModel.fromJson(e as Map<String, dynamic>))
         .toList(),
-    images: (json['images'] as List<dynamic>)
-        .map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
+    images: (json['images'] as List<dynamic>?)
+        ?.map((e) => ImageModel.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }

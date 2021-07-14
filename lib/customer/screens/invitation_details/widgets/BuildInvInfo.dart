@@ -111,9 +111,11 @@ class BuildInvInfo extends StatelessWidget {
                     color: MyColors.primary,
                   ),
                 ),
-                MyText(
-                  title: kayanOwnerModel.addressKayan,
-                  size: 9,
+                Expanded(
+                  child: MyText(
+                    title: kayanOwnerModel.addressKayan,
+                    size: 9,
+                  ),
                 )
               ],
             ),

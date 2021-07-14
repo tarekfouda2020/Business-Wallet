@@ -35,13 +35,13 @@ class CompanyBrochureData {
     fileName.text = brochureDataCubit.state.data?.file ?? "";
     service.text = brochureDataCubit.state.data?.nameService ?? "";
     image.text = brochureDataCubit.state.data?.nameProduct ?? "";
-    if (brochureDataCubit.state.data!.services.length > 0) {
-      for (int i = 0; i < brochureDataCubit.state.data!.services.length; i++) {
+    if (brochureDataCubit.state.data!.services!.length > 0) {
+      for (int i = 0; i < brochureDataCubit.state.data!.services!.length; i++) {
         addService();
         addBrochureServiceModelCubit.state.data[i].serviceName.text =
-            brochureDataCubit.state.data!.services[i].name ?? "";
+            brochureDataCubit.state.data!.services![i].name ?? "";
         addBrochureServiceModelCubit.state.data[i].servicePrice.text =
-            brochureDataCubit.state.data!.services[i].price ?? "";
+            brochureDataCubit.state.data!.services![i].price ?? "";
       }
     }
   }
@@ -66,7 +66,8 @@ class CompanyBrochureData {
   setImage() async {
     var image = await Utils.getImages();
     if (image.length > 0) {
-      imageCubit.onUpdateData(image);
+      imageCubit.state.data.addAll(image);
+      imageCubit.onUpdateData(imageCubit.state.data);
     }
   }
 
@@ -78,9 +79,9 @@ class CompanyBrochureData {
   removeImageNetwork(int index, int id, BuildContext context) async {
     final removed = await CompanyRepository(context).removeBrochureImage(id);
     if (removed) {
-      print("asdasd ${brochureDataCubit.state.data!.images.length}");
-      brochureDataCubit.state.data!.images.removeAt(index);
-      print("asdasd ${brochureDataCubit.state.data!.images.length}");
+      print("asdasd ${brochureDataCubit.state.data!.images!.length}");
+      brochureDataCubit.state.data!.images!.removeAt(index);
+      print("asdasd ${brochureDataCubit.state.data!.images!.length}");
       brochureDataCubit.onUpdateData(brochureDataCubit.state.data);
       imageCubit.onUpdateData(imageCubit.state.data);
     }

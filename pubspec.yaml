@@ -129,6 +129,7 @@ flutter:
     - assets/images/twitter.png
     - assets/images/vedioImg.png
     - assets/images/wha.png
+    - assets/images/instaa.png
     - assets/lang/ar.json
     - assets/lang/en.json
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -153,7 +153,7 @@ class CompanySubscribeMethods {
   }
 
   Future<int?> addSubscribe(AddSubscribeModel model) async {
-    var _data = await DioHelper(context: context).post(
+    var _data = await DioHelper(context: context).uploadFile(
       url: '/Plans/Announcementsentspecificcategory',
       body: model.toJson(),
       showLoader: false,

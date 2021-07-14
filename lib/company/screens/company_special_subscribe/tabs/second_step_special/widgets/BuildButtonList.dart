@@ -23,7 +23,7 @@ class BuildButtonList extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           title: "التالي",
-          onTap: () => compSpecialSubscribeData.moveNext(),
+          onTap: () => compSpecialSubscribeData.moveNext(context),
         ),
         DefaultButton(
           color: MyColors.white,

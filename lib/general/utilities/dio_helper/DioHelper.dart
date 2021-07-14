@@ -166,8 +166,9 @@ class DioHelper {
       var response = await _dio.post("$baseUrl$url", data: formData);
       print("response ${response.statusCode}");
       if (showLoader) EasyLoading.dismiss();
-      if (showMsg)
+      if (showMsg) if (response.data["msg"] != null) {
         LoadingDialog.showToastNotification(response.data["msg"].toString());
+      }
       if (response.data["key"] == 1) return response.data;
     } on DioError catch (e) {
       if (showLoader) EasyLoading.dismiss();

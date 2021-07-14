@@ -8,7 +8,7 @@ class BuildSecOpinionForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=> FocusScope.of(context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Form(
         key: compOpinionSubscribeData.secFormKey,
         child: Column(
@@ -30,8 +30,8 @@ class BuildSecOpinionForm extends StatelessWidget {
                               vertical: 5, horizontal: 5),
                           action: TextInputAction.done,
                           type: TextInputType.number,
-                          onChange: (value) =>
-                              compOpinionSubscribeData.getCostSubscribe(context),
+                          onChange: (value) => compOpinionSubscribeData
+                              .getCostSubscribe(context),
                           validate: (value) => value!.validateEmpty(context),
                         ),
                       ],
@@ -47,17 +47,18 @@ class BuildSecOpinionForm extends StatelessWidget {
                           bloc: compOpinionSubscribeData.durationCubit,
                           listener: (_, state) {
                             compOpinionSubscribeData.duration.text =
-                            DurationModel()
-                                .duration
-                                .firstWhere((e) => e.id == state.data)
-                                .name!;
+                                DurationModel()
+                                    .duration
+                                    .firstWhere((e) => e.id == state.data)
+                                    .name!;
                             compOpinionSubscribeData.getCostSubscribe(context);
                           },
                           builder: (_, state) {
                             return InkWellTextField(
                               icon: Icon(Icons.arrow_drop_down),
                               controller: compOpinionSubscribeData.duration,
-                              validate: (value) => value!.validateEmpty(context),
+                              validate: (value) =>
+                                  value!.validateEmpty(context),
                               margin: const EdgeInsets.symmetric(vertical: 10),
                               onTab: () {
                                 DownBottomSheet(
@@ -107,7 +108,7 @@ class BuildSecOpinionForm extends StatelessWidget {
               onChange: compOpinionSubscribeData.changeRegion,
               useName: true,
               finData: (filter) async =>
-              await CompanyRepository(context).getCompCities(3),
+                  await CompanyRepository(context).getCompCities(3),
             ),
             BuildFormText(text: "تحديد العملاء المهتمين ب"),
             InkWellTextField(
@@ -130,7 +131,7 @@ class BuildSecOpinionForm extends StatelessWidget {
                     runAlignment: WrapAlignment.start,
                     children: List.generate(
                       state.data.length,
-                          (index) {
+                      (index) {
                         return Visibility(
                           visible: state.data[index].selected,
                           child: Container(
@@ -153,7 +154,7 @@ class BuildSecOpinionForm extends StatelessWidget {
                                 IconButton(
                                   onPressed: () => compOpinionSubscribeData
                                       .onDeletePeopleInterest(
-                                      context, state.data[index], index),
+                                          context, state.data[index], index),
                                   icon: Icon(
                                     MdiIcons.closeCircle,
                                     size: 23,
@@ -187,7 +188,7 @@ class BuildSecOpinionForm extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
                     context: context,
-                    title: '',
+                    title: 'الجنس',
                     onTab: (name, id) =>
                         compOpinionSubscribeData.selectType(id, context),
                     data: GenderModel().genders,
@@ -212,11 +213,11 @@ class BuildSecOpinionForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'السكن',
-                      onTab: (name, id) =>
-                          compOpinionSubscribeData.selectLiving(id, context),
-                      data: LivingModel().living)
+                          context: context,
+                          title: 'السكن',
+                          onTab: (name, id) => compOpinionSubscribeData
+                              .selectLiving(id, context),
+                          data: LivingModel().living)
                       .show(),
                   hint: 'السكن',
                 );
@@ -238,11 +239,11 @@ class BuildSecOpinionForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'مستوي التعليم',
-                      onTab: (name, id) => compOpinionSubscribeData
-                          .selectEducation(id, context),
-                      data: EducationModel().education)
+                          context: context,
+                          title: 'مستوي التعليم',
+                          onTab: (name, id) => compOpinionSubscribeData
+                              .selectEducation(id, context),
+                          data: EducationModel().education)
                       .show(),
                   hint: 'مستوي التعليم',
                 );
@@ -252,10 +253,11 @@ class BuildSecOpinionForm extends StatelessWidget {
             BlocConsumer<GenericCubit<String>, GenericState<String>>(
               bloc: compOpinionSubscribeData.familyCubit,
               listener: (_, state) {
-                compOpinionSubscribeData.familyMembers.text = FamilyMemberModel()
-                    .family
-                    .firstWhere((e) => e.id == state.data)
-                    .name!;
+                compOpinionSubscribeData.familyMembers.text =
+                    FamilyMemberModel()
+                        .family
+                        .firstWhere((e) => e.id == state.data)
+                        .name!;
               },
               builder: (_, state) {
                 return InkWellTextField(
@@ -264,11 +266,11 @@ class BuildSecOpinionForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'افراد الاسره',
-                      onTab: (name, id) =>
-                          compOpinionSubscribeData.selectFamily(id, context),
-                      data: FamilyMemberModel().family)
+                          context: context,
+                          title: 'افراد الاسره',
+                          onTab: (name, id) => compOpinionSubscribeData
+                              .selectFamily(id, context),
+                          data: FamilyMemberModel().family)
                       .show(),
                   hint: 'افراد الاسره',
                 );
@@ -279,7 +281,7 @@ class BuildSecOpinionForm extends StatelessWidget {
               bloc: compOpinionSubscribeData.ageCubit,
               listener: (_, state) {
                 compOpinionSubscribeData.age.text =
-                AgeModel().age.firstWhere((e) => e.id == state.data).name!;
+                    AgeModel().age.firstWhere((e) => e.id == state.data).name!;
               },
               builder: (_, state) {
                 return InkWellTextField(
@@ -288,11 +290,11 @@ class BuildSecOpinionForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'الفئة العمرية',
-                      onTab: (name, id) =>
-                          compOpinionSubscribeData.selectAge(id, context),
-                      data: AgeModel().age)
+                          context: context,
+                          title: 'الفئة العمرية',
+                          onTab: (name, id) =>
+                              compOpinionSubscribeData.selectAge(id, context),
+                          data: AgeModel().age)
                       .show(),
                   hint: 'الفئة العمرية',
                 );
@@ -314,11 +316,11 @@ class BuildSecOpinionForm extends StatelessWidget {
                   validate: (value) => value!.validateEmpty(context),
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   onTab: () => DownBottomSheet(
-                      context: context,
-                      title: 'متوسط الدخل في الشهر',
-                      onTab: (name, id) =>
-                          compOpinionSubscribeData.selectIncome(id, context),
-                      data: IncomeModel().income)
+                          context: context,
+                          title: 'متوسط الدخل في الشهر',
+                          onTab: (name, id) => compOpinionSubscribeData
+                              .selectIncome(id, context),
+                          data: IncomeModel().income)
                       .show(),
                   hint: 'متوسط الدخل في الشهر',
                 );

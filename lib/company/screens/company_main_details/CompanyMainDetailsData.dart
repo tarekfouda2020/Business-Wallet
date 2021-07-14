@@ -2,6 +2,7 @@ part of 'CompanyMainDetailsImports.dart';
 
 class CompanyMainDetailsData {
   final GenericCubit<int> menuCubit = new GenericCubit(0);
+  final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
 
   final GlobalKey<CustomButtonState> btnKey =
       new GlobalKey<CustomButtonState>();
@@ -82,23 +83,27 @@ class CompanyMainDetailsData {
   }
 
   void editComment(BuildContext context, int commentId, String kayanId) async {
-    await CompanyRepository(context)
-        .editComment(commentId, newComment.text)
-        .then((value) {
-      fetchData(context, kayanId);
-      newComment.clear();
-      AutoRouter.of(context).pop();
-    });
+    if (formKey.currentState!.validate()) {
+      await CompanyRepository(context)
+          .editComment(commentId, newComment.text)
+          .then((value) {
+        fetchData(context, kayanId);
+        newComment.clear();
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 
   void reportComment(
       BuildContext context, int commentId, String kayanId) async {
-    await CompanyRepository(context)
-        .reportComment(commentId, kayanId, report.text)
-        .then((value) {
-      fetchData(context, kayanId);
-      report.clear();
-      AutoRouter.of(context).pop();
-    });
+    if (formKey.currentState!.validate()) {
+      await CompanyRepository(context)
+          .reportComment(commentId, kayanId, report.text)
+          .then((value) {
+        fetchData(context, kayanId);
+        report.clear();
+        AutoRouter.of(context).pop();
+      });
+    }
   }
 }
