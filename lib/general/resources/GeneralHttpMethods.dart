@@ -40,7 +40,7 @@ class GeneralHttpMethods {
       "device_type": Platform.isIOS ? "ios" : "android",
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/Account/LoginUserApi", body: body, showLoader: false);
+        .post(url: "/Account/LoginUserApiV1", body: body, showLoader: false);
     if (_data != null) {
       var type = _data["data"]["UserData"]["type_user"];
       var interest = _data["data"]["UserData"]["interest"];
@@ -152,7 +152,7 @@ class GeneralHttpMethods {
       "lang": lang,
     };
     var _data = await DioHelper(context: context).post(
-        url: "/Account/CheckCodeForgetPasswordApi",
+        url: "/Account/CheckCodeForgetPasswordApiV1",
         body: body,
         showLoader: false);
     if (_data != null) {
@@ -298,7 +298,7 @@ class GeneralHttpMethods {
 
     Map<String, dynamic> body = {"lang": lang};
     var _data = await DioHelper(context: context)
-        .get(url: "/Plans/GetSocail", body: body);
+        .get(url: "/Plans/GetSocailV1", body: body);
     if (_data != null) {
       return SocialModel.fromJson(_data["socail"]);
     } else {

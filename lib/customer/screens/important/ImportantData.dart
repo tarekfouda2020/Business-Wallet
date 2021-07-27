@@ -41,8 +41,8 @@ class ImportantData {
       return LoadingDialog.showSimpleToast("حدد اهتمامتك");
     } else {
       btnKey.currentState!.animateForward();
-      final String id = ids.substring(0, ids.length - 1);
-      await CustomerRepository(context).saveInterest(id, userId);
+      // final String id = ids.substring(0, ids.length - 1);
+      await CustomerRepository(context).saveInterest(ids, userId);
       btnKey.currentState!.animateReverse();
     }
   }

@@ -193,7 +193,7 @@ class CompanyHttpMethods {
       "user_id": "$userId",
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/Account/EditInterstiesKayanApi", body: body);
+        .get(url: "/Account/EditInterstiesKayanApiV1", body: body);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data['data']["UserData"]["interest"];
@@ -300,7 +300,7 @@ class CompanyHttpMethods {
       "Marketing_points": points,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/Plans/UpdateMainPockect", body: body);
+        .get(url: "/Plans/UpdateMainPockectV1", body: body);
     if (_data != null) {
       return true;
     } else {
@@ -316,7 +316,7 @@ class CompanyHttpMethods {
       "user_id": userId,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/Plans/DetailsWallet", body: body);
+        .get(url: "/Plans/DetailsWalletV1", body: body);
     if (_data != null) {
       return List<WalletDetailsModel>.from(
           _data["data"].map((e) => WalletDetailsModel.fromJson(e)));
@@ -450,7 +450,7 @@ class CompanyHttpMethods {
       "user_id": userId,
     };
     var _data = await DioHelper(context: context)
-        .post(url: '/Account/RemoveImages', body: body);
+        .post(url: '/Account/RemoveImagesV1', body: body);
     if (_data != null) {
       return true;
     } else {

@@ -181,8 +181,9 @@ class CustomerRepository {
   Future<List<ConversationModel>> getConversation(bool refresh) =>
       _customerHttpMethods.getConversation(refresh);
 
-  Future<List<MessageModel>> getChatMessages(String sender , String receiver, int pageNumber) =>
-      _customerHttpMethods.getChatMessages(sender,receiver,pageNumber);
+  Future<List<MessageModel>> getChatMessages(
+          String sender, String receiver, int pageNumber) =>
+      _customerHttpMethods.getChatMessages(sender, receiver, pageNumber);
 
   Future<bool> sendMessage(String sender, String receiver, String msg) =>
       _customerHttpMethods.sendMessage(sender, receiver, msg);

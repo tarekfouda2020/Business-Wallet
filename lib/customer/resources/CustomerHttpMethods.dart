@@ -97,7 +97,7 @@ class CustomerHttpMethods {
       "user_id": userId,
     };
     var _data = await DioHelper(context: context)
-        .get(url: "/Account/GetAllInterestApi", body: body);
+        .get(url: "/Account/GetAllInterestApiV1", body: body);
     if (_data != null) {
       return List<UserInterestModel>.from(
           _data['interests'].map((e) => UserInterestModel.fromJson(e)));
@@ -113,7 +113,7 @@ class CustomerHttpMethods {
       "UserId": "$userId",
     };
     var _data = await DioHelper(context: context)
-        .post(url: "/Account/SaveInterestApi", body: body, showLoader: false);
+        .post(url: "/Account/SaveInterestApiV1", body: body, showLoader: false);
     if (_data != null) {
       UserModel user = context.read<UserCubit>().state.model;
       user.interest = _data["UserData"]["interest"];
@@ -222,7 +222,7 @@ class CustomerHttpMethods {
 
   Future<bool> updateCustomerData(UpdateCustomerModel model) async {
     var _data = await DioHelper(context: context).uploadFile(
-      url: '/Account/EditProfileApi',
+      url: '/Account/EditProfileApiV1',
       body: model.toJson(),
       showLoader: false,
     );
@@ -277,7 +277,7 @@ class CustomerHttpMethods {
       "userId": userId,
     };
     var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/WalletUser/DetailsWalletApi", body: body);
+        .get(url: "/WalletUser/DetailsWalletApiV1", body: body);
     if (_data != null) {
       return List<WalletDetailsModel>.from(
           _data['details'].map((e) => WalletDetailsModel.fromJson(e)));

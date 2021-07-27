@@ -23,7 +23,7 @@ class CompanyHomeMethods {
 
     Map<String, dynamic> body = {"lang": lang, "word": word};
     var _data = await DioHelper(context: context)
-        .get(url: "/User/AutoSearchApi", body: body);
+        .get(url: "/User/AutoSearchApiV1", body: body);
     if (_data != null) {
       return List<AutoSearchModel>.from(
           _data['kayans'].map((e) => AutoSearchModel.fromJson(e)));
@@ -57,7 +57,7 @@ class CompanyHomeMethods {
       "page_number": pageIndex
     };
     var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/Account/FilterSearchKayanApi", body: body);
+        .get(url: "/Account/FilterSearchKayanApiV1", body: body);
     if (_data != null) {
       return List<MainModel>.from(
           _data['Kayans'].map((e) => MainModel.fromJson(e)));
@@ -80,7 +80,7 @@ class CompanyHomeMethods {
       "page_number": pageIndex
     };
     var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/Plans/IndexKayan", body: body);
+        .get(url: "/Plans/IndexKayanV1", body: body);
     if (_data != null) {
       return List<MainModel>.from(
           _data['data']['Kayans'].map((e) => MainModel.fromJson(e)));
@@ -125,7 +125,7 @@ class CompanyHomeMethods {
       "page_number": pageIndex
     };
     var _data = await DioHelper(context: context, forceRefresh: refresh)
-        .get(url: "/Plans/MyFollow", body: body);
+        .get(url: "/Plans/MyFollowV1", body: body);
     if (_data != null) {
       return List<FollowerModel>.from(
           _data['follows'].map((e) => FollowerModel.fromJson(e)));

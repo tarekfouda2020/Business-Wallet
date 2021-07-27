@@ -43,7 +43,7 @@ class CompanyStatisticsMethods {
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
     var _data = await DioHelper(context: context,forceRefresh: refresh).get(
         url:
-        "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApi",
+        "/InvestmentInvitation/PreviewAnnouncement_sent_specific_categoryApiV1",
         body: body);
     if (_data != null) {
       return SpecificAdsModel.fromJson(_data);
@@ -116,7 +116,7 @@ class CompanyStatisticsMethods {
 
     Map<String, dynamic> body = {"Id": adsId, "userId": userId, "lang": lang};
     var _data = await DioHelper(context: context,forceRefresh: refresh).get(
-        url: "/InvestmentInvitation/PreviewAnnouncement_service_evaluationApi",
+        url: "/InvestmentInvitation/PreviewAnnouncement_service_evaluationApiV1",
         body: body);
     if (_data != null) {
       return InvestmentAdsModel.fromJson(_data);

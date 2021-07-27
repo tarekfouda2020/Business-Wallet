@@ -5,8 +5,7 @@ class DioHelper {
   late DioCacheManager _manager;
   BuildContext context;
   final bool forceRefresh;
-  final baseUrl = "https://trainingbus.ip4s.com";
-  // final baseUrl = "https://trainingbus.ip4s.com";
+  final baseUrl = "https://bwallet.com.sa";
   final String _branch = "6";
 
   DioHelper({this.forceRefresh = true, required this.context}) {
