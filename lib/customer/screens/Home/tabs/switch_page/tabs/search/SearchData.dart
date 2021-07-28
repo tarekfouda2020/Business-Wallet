@@ -27,12 +27,14 @@ class SearchData {
 
   int fieldId = 0;
   int filterId = 0;
+  int subFieldId = 0;
+
   int pageSize = 10;
 
   void fetchPage(int pageIndex, BuildContext context,
       {bool refresh = true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
-        .getMainSearched(pageIndex, filterId, fieldId, search.text, refresh);
+        .getMainSearched(pageIndex, filterId, fieldId,subFieldId, search.text, refresh);
     final isLastPage = mainData.length < pageSize;
     if (pageIndex == 1) {
       pagingController.itemList = [];
@@ -47,6 +49,9 @@ class SearchData {
 
   void onSelectField(FieldDropDownModel? model) {
     if (model != null) fieldId = model.fieldId!;
+  }
+  void onSelectSubField(DropDownSelected? model) {
+    if (model != null) subFieldId = model.id;
   }
 
   void selectType(FilterModel? model) {

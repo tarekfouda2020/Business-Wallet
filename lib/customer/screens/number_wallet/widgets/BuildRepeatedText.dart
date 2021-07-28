@@ -1,5 +1,8 @@
 part of'NumberWalletWidgetsImports.dart';
 class BuildRepeatedText extends StatelessWidget {
+  final String title;
+
+  const BuildRepeatedText({required this.title});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,8 +20,8 @@ class BuildRepeatedText extends StatelessWidget {
           SizedBox(width: 5,),
           Expanded(
             child: MyText(
-              title: "كسب ١٠٠ ريال مقابل حث المنشأت التجاريه علي التسجيل في الدليل باستخدام رقم المحفظه",
-              size: 10,
+              title: title,
+              size: 11,
               color: MyColors.greyWhite.withOpacity(0.8),
             ),
           ),

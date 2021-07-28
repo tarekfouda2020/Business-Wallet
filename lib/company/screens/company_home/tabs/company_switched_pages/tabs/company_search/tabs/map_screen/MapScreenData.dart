@@ -36,10 +36,11 @@ class MapScreenData {
     bitmaps.asMap().forEach((i, bmp) {
       final model = mainData[i];
       markersList.add(Marker(
-          onTap: () => navigate(context, false, mainModel: model),
-          markerId: MarkerId(model.kayanName),
-          position: LatLng(double.parse(model.lat), double.parse(model.lng)),
-          icon: BitmapDescriptor.fromBytes(bmp)));
+        onTap: () => navigate(context, false, mainModel: model),
+        markerId: MarkerId(model.kayanName),
+        position: LatLng(double.parse(model.lat), double.parse(model.lng)),
+        icon: BitmapDescriptor.fromBytes(bmp),
+      ));
     });
     return markersList;
   }

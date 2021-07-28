@@ -12,6 +12,7 @@ class FirstStepBrochure extends StatefulWidget {
 class _FirstStepBrochureState extends State<FirstStepBrochure> {
   @override
   void initState() {
+    widget.compBrochureSubscribeData.fetchBrochureData(context, refresh: false);
     widget.compBrochureSubscribeData.fetchBrochureData(context);
     super.initState();
   }

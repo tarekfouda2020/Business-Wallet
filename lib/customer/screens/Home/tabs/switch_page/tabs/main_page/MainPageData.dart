@@ -9,13 +9,14 @@ class MainPageData {
 
   int pageSize = 10;
   int cityId = 0;
-  int interestId = 0;
+  // int interestId = 0;
   int filterId = 0;
+  int fieldId = 0;
 
   Future<void> fetchPage(int pageIndex, BuildContext context,
       {bool refresh = true}) async {
     List<MainModel> mainData = await CustomerRepository(context)
-        .getMainFiltered(pageIndex, cityId, interestId, filterId,refresh);
+        .getMainFiltered(pageIndex, cityId, fieldId, filterId,refresh);
     final isLastPage = mainData.length < pageSize;
     if (pageIndex==1) {
       pagingController.itemList=[];
@@ -32,12 +33,15 @@ class MainPageData {
     if (model != null) cityId = model.id;
   }
 
-  void onSelectInterest(UserInterestModel? model) {
-    if (model != null) interestId = model.id;
-  }
+  // void onSelectInterest(UserInterestModel? model) {
+  //   if (model != null) interestId = model.id;
+  // }
 
   void selectType(FilterModel? model) {
     if (model != null) filterId = int.parse(model.id);
+  }
+  void onSelectField(FieldDropDownModel? model) {
+    if (model != null) fieldId = model.fieldId!;
   }
 
   Future<List<MainModel>> fetchMapData(BuildContext context,double lat,double lng , double zoom) async {
@@ -47,7 +51,7 @@ class MainPageData {
       lang: lang,
       userId: userId,
       cityId: cityId.toString(),
-      interests: interestId.toString(),
+      interests: fieldId.toString(),
       topRate: filterId.toString(),
       lat: lat.toString(),
       lng: lng.toString(),

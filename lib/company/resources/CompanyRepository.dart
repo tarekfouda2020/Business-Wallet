@@ -95,9 +95,9 @@ class CompanyRepository {
       _companyHomeMethods.getMapProviders(model);
 
   Future<List<MainModel>> getMainSearch(int pageIndex, int searchId,
-          int fieldId, String text, bool refresh) =>
+          int fieldId,int subFieldId, String text, bool refresh) =>
       _companyHomeMethods.getMainSearch(
-          pageIndex, searchId, fieldId, text, refresh);
+          pageIndex, searchId, fieldId,subFieldId, text, refresh);
 
   Future<List<FollowerModel>> getFollowersFiltered(int pageIndex, int cityId,
           int interestId, int filterId, bool refresh) =>
@@ -181,8 +181,8 @@ class CompanyRepository {
   Future<bool> updateWallet(int points) =>
       _companyHttpMethods.updateWallet(points);
 
-  Future<List<WalletDetailsModel>> getWalletDetails() =>
-      _companyHttpMethods.getWalletDetails();
+  Future<List<WalletDetailsModel>> getWalletDetails(bool refresh) =>
+      _companyHttpMethods.getWalletDetails(refresh);
 
   Future<bool> shareWalletPoint(String type, double package) =>
       _companyHttpMethods.shareWalletPoint(type, package);
@@ -271,8 +271,8 @@ class CompanyRepository {
   Future<BusinessAdsDetailsModel?> getMainAdsDetails(int id, bool refresh) =>
       _companyStatisticsMethods.getMainAdsDetails(id, refresh);
 
-  Future<BrochureDetailsModel?> getBrochureDetails() =>
-      _companySubscribeMethods.getBrochureDetails();
+  Future<BrochureDetailsModel?> getBrochureDetails(bool refresh) =>
+      _companySubscribeMethods.getBrochureDetails(refresh);
 
   Future<CostSubscribeModel?> getCostBrochureSubscribe(int brochureNum) =>
       _companySubscribeMethods.getCostBrochureSubscribe(brochureNum);

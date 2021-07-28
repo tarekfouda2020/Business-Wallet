@@ -12,20 +12,28 @@ class _CompanyAccountState extends State<CompanyAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.darken,
-      appBar: BuildAppBar(
-        companyAccountData: companyAccountData,
+      appBar: DefaultAppBar(
+        title: "حسابي",
+        showLeading: false,
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+      body: Column(
         children: [
-          BuildAccountDrop(companyAccountData: companyAccountData),
-          BuildPublicDrop(companyAccountData: companyAccountData),
-          BuildAccountItem(
-            title: "تواصل معنا",
-            iconData: Icons.phone_in_talk_outlined,
-            page: ContactUs(),
+          BuildProfileCard(),
+          Flexible(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              children: [
+                BuildAccountDrop(companyAccountData: companyAccountData),
+                BuildPublicDrop(companyAccountData: companyAccountData),
+                BuildAccountItem(
+                  title: "تواصل معنا",
+                  iconData: Icons.phone_in_talk_outlined,
+                  page: ContactUs(),
+                ),
+                BuildLogout()
+              ],
+            ),
           ),
-          BuildLogout()
         ],
       ),
     );

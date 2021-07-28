@@ -7,8 +7,10 @@ class CompanyBrochure extends StatefulWidget {
 
 class _CompanyBrochureState extends State<CompanyBrochure> {
   final CompanyBrochureData companyBrochureData = new CompanyBrochureData();
+
   @override
   void initState() {
+    companyBrochureData.fetchBrochureData(context, refresh: false);
     companyBrochureData.fetchBrochureData(context);
     super.initState();
   }

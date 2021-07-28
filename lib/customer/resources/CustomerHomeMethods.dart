@@ -148,7 +148,7 @@ class CustomerHomeMethods {
   }
 
   Future<List<MainModel>> getMainSearched(int pageIndex, int searchId,
-      int fieldId, String text, bool refresh) async {
+      int fieldId,int subFieldId, String text, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
 
@@ -157,6 +157,7 @@ class CustomerHomeMethods {
       "userId": userId,
       "SearchId": searchId,
       "id": fieldId,
+      "subFieldId":subFieldId,
       "text": text,
       "page_index": pageIndex
     };

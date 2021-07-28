@@ -1,3 +1,4 @@
+import 'package:base_flutter/company/models/dots/drop_down_selected.dart';
 import 'package:base_flutter/company/resources/CompanyRepository.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/CompSwitchedPageImports.dart';
 import 'package:base_flutter/company/screens/company_home/tabs/company_switched_pages/tabs/company_search/tabs/comp_search_menu/CompSearchMenuImports.dart';

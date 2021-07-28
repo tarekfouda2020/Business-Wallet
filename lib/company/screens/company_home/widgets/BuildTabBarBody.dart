@@ -28,7 +28,7 @@ class BuildTabBarBody extends StatelessWidget {
           gapLocation: GapLocation.center,
           leftCornerRadius: 0,
           rightCornerRadius: 0,
-          height: 65,
+          height: Platform.isIOS? 75 :  65,
           splashColor: MyColors.primary,
           onTap: (index) => companyHomeData.animateTabsPages(index, context),
         );

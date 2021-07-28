@@ -14,10 +14,20 @@ class BuildDesc extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: MyText(
-            title:desc,
-            size: 11,
-            color: MyColors.grey,
+          child: Visibility(
+            visible: desc=="",
+            replacement: MyText(
+              title:desc,
+              size: 11,
+              color: MyColors.grey,
+            ),
+            child: Center(
+              child: MyText(
+                title: "لا يوجد وصف ",
+                size: 12,
+                color: MyColors.white,
+              ),
+            ),
           ),
         )
       ],

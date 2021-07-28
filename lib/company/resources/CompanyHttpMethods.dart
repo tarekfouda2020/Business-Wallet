@@ -308,14 +308,14 @@ class CompanyHttpMethods {
     }
   }
 
-  Future<List<WalletDetailsModel>> getWalletDetails() async {
+  Future<List<WalletDetailsModel>> getWalletDetails(bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     Map<String, dynamic> body = {
       "lang": lang,
       "user_id": userId,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/DetailsWalletV1", body: body);
     if (_data != null) {
       return List<WalletDetailsModel>.from(

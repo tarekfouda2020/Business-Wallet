@@ -23,13 +23,15 @@ class CompanySearchData {
       PagingController(firstPageKey: 1);
 
   int fieldId = 0;
+  int subFieldId = 0;
+
   int filterId = 0;
   int pageSize = 10;
 
   void fetchPage(int pageIndex, BuildContext context,
       {bool refresh = true}) async {
     List<MainModel> mainData = await CompanyRepository(context)
-        .getMainSearch(pageIndex, filterId, fieldId, search.text, refresh);
+        .getMainSearch(pageIndex, filterId, fieldId,subFieldId, search.text, refresh);
     final isLastPage = mainData.length < pageSize;
     if (isLastPage) {
       pagingController.appendLastPage(mainData);
@@ -41,6 +43,9 @@ class CompanySearchData {
 
   void onSelectField(FieldDropDownModel? model) {
     if (model != null) fieldId = model.fieldId!;
+  }
+  void onSelectSubField(DropDownSelected? model) {
+    if (model != null) subFieldId = model.id;
   }
 
   void selectType(FilterModel? model) {

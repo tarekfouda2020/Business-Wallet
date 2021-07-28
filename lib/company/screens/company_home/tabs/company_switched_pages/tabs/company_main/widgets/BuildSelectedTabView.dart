@@ -3,7 +3,8 @@ part of 'CompMainWidgetsImports.dart';
 class BuildSelectedTabView extends StatelessWidget {
   final CompanyMainData companyMainData;
 
-  const BuildSelectedTabView({required this.companyMainData}) ;
+  const BuildSelectedTabView({required this.companyMainData});
+
   @override
   Widget build(BuildContext context) {
     String userId = context.read<UserCubit>().state.model.companyModel!.userId;
@@ -16,20 +17,34 @@ class BuildSelectedTabView extends StatelessWidget {
             validate: (CitiesModel value) => value.validateDropDown(context),
             useName: true,
             finData: (filter) async =>
-            await CompanyRepository(context).getCompCities(3),
-            onChange: (CitiesModel value) => companyMainData.onSelectCities(value),
+                await CompanyRepository(context).getCompCities(3),
+            onChange: (CitiesModel value) =>
+                companyMainData.onSelectCities(value),
           ),
         ),
         Flexible(
-          child: FutureBottomSheet<UserInterestModel>(
-            label: "الاهتمامات",
-            validate: (UserInterestModel value) => value.validateDropDown(context),
+          child: FutureBottomSheet<FieldDropDownModel>(
+            label: "المجال الرئيسي",
+            validate: (FieldDropDownModel value) =>
+                value.validateDropDown(context),
             useName: true,
             finData: (filter) async =>
-            await CustomerRepository(context).getInterest(userId),
-            onChange: (UserInterestModel value) => companyMainData.onSelectInterest(value),
+                await CustomerRepository(context).getFields(),
+            onChange: (FieldDropDownModel value) =>
+                companyMainData.onSelectField(value),
           ),
         ),
+
+        // Flexible(
+        //   child: FutureBottomSheet<UserInterestModel>(
+        //     label: "الاهتمامات",
+        //     validate: (UserInterestModel value) => value.validateDropDown(context),
+        //     useName: true,
+        //     finData: (filter) async =>
+        //     await CustomerRepository(context).getInterest(userId),
+        //     onChange: (UserInterestModel value) => companyMainData.onSelectInterest(value),
+        //   ),
+        // ),
         Flexible(
           child: FutureBottomSheet<FilterModel>(
             label: "أخرى",
@@ -40,7 +55,7 @@ class BuildSelectedTabView extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: ()=>companyMainData.pagingController.refresh(),
+          onTap: () => companyMainData.pagingController.refresh(),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

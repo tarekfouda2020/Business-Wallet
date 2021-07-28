@@ -22,14 +22,26 @@ class BuildMainSearch extends StatelessWidget {
             onChange: (CitiesModel value) => mainPageData.onSelectCities(value),
           ),
         ),
+        // Flexible(
+        //   child: FutureBottomSheet<UserInterestModel>(
+        //     label: "الاهتمامات",
+        //     validate: (UserInterestModel value) => value.validateDropDown(context),
+        //     useName: true,
+        //     finData: (filter) async =>
+        //         await CustomerRepository(context).getInterest(userId),
+        //     onChange: (UserInterestModel value) => mainPageData.onSelectInterest(value),
+        //   ),
+        // ),
         Flexible(
-          child: FutureBottomSheet<UserInterestModel>(
-            label: "الاهتمامات",
-            validate: (UserInterestModel value) => value.validateDropDown(context),
+          child: FutureBottomSheet<FieldDropDownModel>(
+            label: "المجال الرئيسي",
+            validate: (FieldDropDownModel value) =>
+                value.validateDropDown(context),
             useName: true,
             finData: (filter) async =>
-                await CustomerRepository(context).getInterest(userId),
-            onChange: (UserInterestModel value) => mainPageData.onSelectInterest(value),
+                await CustomerRepository(context).getFields(),
+            onChange: (FieldDropDownModel value) =>
+                mainPageData.onSelectField(value),
           ),
         ),
         Flexible(
@@ -42,7 +54,7 @@ class BuildMainSearch extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: ()=>mainPageData.refreshCurrentPage(context,mainPageData),
+          onTap: () => mainPageData.refreshCurrentPage(context, mainPageData),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

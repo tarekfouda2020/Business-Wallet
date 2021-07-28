@@ -26,8 +26,8 @@ class CompanyBrochureData {
   final GenericCubit<BrochureDetailsModel?> brochureDataCubit =
       new GenericCubit(null);
 
-  void fetchBrochureData(BuildContext context) async {
-    var data = await CompanyRepository(context).getBrochureDetails();
+  void fetchBrochureData(BuildContext context, {bool refresh = true}) async {
+    var data = await CompanyRepository(context).getBrochureDetails(refresh);
     brochureDataCubit.onUpdateData(data);
     phone.text = brochureDataCubit.state.data?.phone ?? "";
     email.text = brochureDataCubit.state.data?.email ?? "";

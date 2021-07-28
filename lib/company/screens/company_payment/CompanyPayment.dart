@@ -111,16 +111,16 @@ class _CompanyPaymentState extends State<CompanyPayment> {
           });
         },
       ),
-      bottomNavigationBar: IconButton(
-        icon: Icon(
-          Icons.assignment,
-          color: MyColors.primary,
-          size: 50,
-        ),
-        onPressed: () => AutoRouter.of(context).push(
-          CompanyRegisterCommercialRoute(userId: widget.userId),
-        ),
-      ),
+      // bottomNavigationBar: IconButton(
+      //   icon: Icon(
+      //     Icons.assignment,
+      //     color: MyColors.primary,
+      //     size: 50,
+      //   ),
+      //   onPressed: () => AutoRouter.of(context).push(
+      //     CompanyRegisterCommercialRoute(userId: widget.userId),
+      //   ),
+      // ),
     );
   }
 

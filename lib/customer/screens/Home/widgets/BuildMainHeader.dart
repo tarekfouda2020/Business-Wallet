@@ -10,13 +10,13 @@ class BuildMainHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160,
+      height: 180,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
           AppBar(
             flexibleSpace: Container(
-              height: 130,
+              height: 150,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -34,21 +34,34 @@ class BuildMainHeader extends StatelessWidget {
                 children: [
                   title == null
                       ? IconButton(
-                    onPressed: searchOnTap,
-                    icon: Icon(
-                      Icons.search,
-                      size: 30,
-                      color: MyColors.white,
-                    ),
-                  )
+                          onPressed: searchOnTap,
+                          icon: Icon(
+                            Icons.search,
+                            size: 30,
+                            color: MyColors.white,
+                          ),
+                        )
                       : MyText(
-                    title: title ?? "",
-                    size: 14,
-                    color: MyColors.white,
-                  ),
-                  Image.asset(
-                    Res.logo,
-                    height: 40,
+                          title: title ?? "",
+                          size: 14,
+                          color: MyColors.white,
+                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 45),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Res.logo,
+                          height: 40,
+                        ),
+                        MyText(
+                          title: "الدليل التجاري الافضل",
+                          size: 7,
+                          color: MyColors.primary,
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -62,20 +75,20 @@ class BuildMainHeader extends StatelessWidget {
             right: 0,
             left: 0,
             child: Container(
-                height: 55,
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  color: MyColors.secondary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: MyColors.black,
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: search,
+              height: 55,
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: MyColors.secondary,
+                boxShadow: [
+                  BoxShadow(
+                    color: MyColors.black,
+                  )
+                ],
+                borderRadius: BorderRadius.circular(30),
+              ),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              child: search,
             ),
           ),
         ],

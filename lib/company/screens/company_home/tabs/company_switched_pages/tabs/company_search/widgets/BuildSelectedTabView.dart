@@ -14,7 +14,7 @@ class BuildSelectedTabView extends StatelessWidget {
         children: [
           Flexible(
             child: FutureBottomSheet<FieldDropDownModel>(
-              label: "الكل",
+              label: "المجال الرئيسي",
               validate: (FieldDropDownModel value) =>
                   value.validateDropDown(context),
               useName: true,
@@ -25,12 +25,25 @@ class BuildSelectedTabView extends StatelessWidget {
             ),
           ),
           Flexible(
+            child: FutureBottomSheet<DropDownSelected>(
+              label: "المجال الفرعي",
+              validate: (DropDownSelected value) =>
+                  value.validateDropDown(context),
+              useName: true,
+              finData: (filter) async => await CompanyRepository(context)
+                  .getSubField(companySearchData.fieldId),
+              onChange: (DropDownSelected value) =>
+                  companySearchData.onSelectSubField(value),
+            ),
+          ),
+          Flexible(
             child: FutureBottomSheet<FilterModel>(
               label: "صنف حسب",
               validate: (FilterModel value) => value.validateDropDown(context),
               useName: true,
               data: FilterModel.mainSearchFilters,
-              onChange: (FilterModel value) => companySearchData.selectType(value),
+              onChange: (FilterModel value) =>
+                  companySearchData.selectType(value),
             ),
           ),
           InkWell(

@@ -6,12 +6,13 @@ class CompanyMainData {
   PagingController(firstPageKey: 1);
   int pageSize = 10;
   int cityId = 0;
-  int interestId = 0;
+  // int interestId = 0;
   int filterId = 0;
+  int fieldId = 0;
 
   void fetchPage(int pageIndex, BuildContext context,{bool refresh = true}) async {
     List<MainModel> mainData = await CompanyRepository(context)
-        .getMain(pageIndex,cityId,interestId,filterId,refresh);
+        .getMain(pageIndex,cityId,fieldId,filterId,refresh);
     final isLastPage = mainData.length < pageSize;
     if (pageIndex==1) {
       pagingController.itemList=[];
@@ -28,9 +29,13 @@ class CompanyMainData {
     if (model != null) cityId = model.id;
   }
 
-  void onSelectInterest(UserInterestModel? model) {
-    if (model != null) interestId = model.id;
+  void onSelectField(FieldDropDownModel? model) {
+    if (model != null) fieldId = model.fieldId!;
   }
+
+  // void onSelectInterest(UserInterestModel? model) {
+  //   if (model != null) interestId = model.id;
+  // }
 
   void selectType(FilterModel? model) {
     if (model != null) filterId = int.parse(model.id);
@@ -43,7 +48,7 @@ class CompanyMainData {
       lang: lang,
       userId: userId,
       cityId: cityId.toString(),
-      interests: interestId.toString(),
+      interests: fieldId.toString(),
       topRate: filterId.toString(),
       type: "0",
       lat: lat.toString(),

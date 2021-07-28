@@ -3,6 +3,7 @@ import 'package:base_flutter/company/screens/company_home/tabs/company_switched_
 import 'package:base_flutter/company/widgets/BuildHeaderDrop.dart';
 import 'package:base_flutter/company/widgets/BuildTopHeader.dart';
 import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
+import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
 import 'package:base_flutter/customer/resources/CustomerRepository.dart';

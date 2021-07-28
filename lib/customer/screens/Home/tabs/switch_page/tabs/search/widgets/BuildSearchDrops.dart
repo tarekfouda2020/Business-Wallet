@@ -14,7 +14,7 @@ class BuildSearchDrops extends StatelessWidget {
         children: [
           Flexible(
             child: FutureBottomSheet<FieldDropDownModel>(
-              label: "الكل",
+              label: "المجال الرئيسي",
               validate: (FieldDropDownModel value) =>
                   value.validateDropDown(context),
               useName: true,
@@ -22,6 +22,18 @@ class BuildSearchDrops extends StatelessWidget {
                   await CustomerRepository(context).getFields(),
               onChange: (FieldDropDownModel value) =>
                   searchData.onSelectField(value),
+            ),
+          ),
+          Flexible(
+            child: FutureBottomSheet<DropDownSelected>(
+              label: "المجال الفرعي",
+              validate: (DropDownSelected value) =>
+                  value.validateDropDown(context),
+              useName: true,
+              finData: (filter) async => await CompanyRepository(context)
+                  .getSubField(searchData.fieldId),
+              onChange: (DropDownSelected value) =>
+                  searchData.onSelectSubField(value),
             ),
           ),
           Flexible(

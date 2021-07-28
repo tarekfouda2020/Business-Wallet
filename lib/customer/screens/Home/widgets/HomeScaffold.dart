@@ -14,7 +14,7 @@ class HomeScaffold extends StatelessWidget {
       key: scaffold,
       backgroundColor: MyColors.darken,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200),
+        preferredSize: Size.fromHeight(230),
         child: BuildMainHeader(
           title: title,
           search: search,

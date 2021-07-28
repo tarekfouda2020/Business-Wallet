@@ -69,9 +69,9 @@ class CustomerRepository {
       _customerHomeMethods.getMapProviders(model);
 
   Future<List<MainModel>> getMainSearched(int pageIndex, int searchId,
-          int fieldId, String text, bool refresh) =>
+          int fieldId,int subFieldId, String text, bool refresh) =>
       _customerHomeMethods.getMainSearched(
-          pageIndex, searchId, fieldId, text, refresh);
+          pageIndex, searchId, fieldId,subFieldId, text, refresh);
 
   Future<MainDetailsModel?> getMainDetails(String id, bool refresh) =>
       _customerDetailsMethods.getMainDetails(id, refresh);

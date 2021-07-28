@@ -371,6 +371,7 @@ class Utils {
       BuildContext context, LocationCubit locCubit) async {
     FocusScope.of(context).requestFocus(FocusNode());
     LoadingDialog.showLoadingDialog();
+    // var current;
     var current = await Utils.getCurrentLocation();
     LocationModel? locationModel = locCubit.state.model;
     if (current != null) {

@@ -26,7 +26,7 @@ class BuildTabBarItem extends StatelessWidget {
           Icon(
             companyHomeData.tabs[index].iconData,
             color: color,
-            size: 25,
+            size: 30,
           ),
           MyText(
             title: companyHomeData.tabs[index].title ?? "",

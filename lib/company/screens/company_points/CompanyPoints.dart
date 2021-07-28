@@ -10,6 +10,7 @@ class _CompanyPointsState extends State<CompanyPoints> {
 
   @override
   void initState() {
+    companyPointsData.fetchData(context, refresh: false);
     companyPointsData.fetchData(context);
     super.initState();
   }
@@ -30,13 +31,14 @@ class _CompanyPointsState extends State<CompanyPoints> {
             builder: (_, state) {
               if (state is GenericUpdateState) {
                 if (state.data.isEmpty) {
-                  return Container(
-                    alignment: Alignment.center,
-                    // margin: const EdgeInsets.symmetric(vertical: 200),
-                    child: MyText(
-                      title: "لا يوجد تفاصيل",
-                      size: 13,
-                      color: MyColors.white,
+                  return Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: MyText(
+                        title: "لا يوجد تفاصيل",
+                        size: 13,
+                        color: MyColors.primary,
+                      ),
                     ),
                   );
                 } else {

@@ -44,7 +44,7 @@ class CompanyHomeMethods {
   }
 
   Future<List<MainModel>> getMainSearch(int pageIndex, int searchId,
-      int fieldId, String text, bool refresh) async {
+      int fieldId,int subFieldId, String text, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
 
@@ -53,6 +53,7 @@ class CompanyHomeMethods {
       "userId": userId,
       "SearchId": searchId,
       "id": fieldId,
+      "subFieldId":subFieldId,
       "text": text,
       "page_number": pageIndex
     };

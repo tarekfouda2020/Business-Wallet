@@ -1,4 +1,5 @@
 part of'NumberWalletWidgetsImports.dart';
+
 class BuildNumberWalletText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,11 @@ class BuildNumberWalletText extends StatelessWidget {
           color: MyColors.greyWhite.withOpacity(0.8),
         ),
         SizedBox(height: 10,),
-        BuildRepeatedText(),
-        BuildRepeatedText(),
-        BuildRepeatedText(),
+        BuildRepeatedText(
+            title: "كسب ١٠٠ ريال مقابل حث المنشأت التجاريه علي التسجيل في الدليل باستخدام رقم المحفظة.",
+            ),
+        BuildRepeatedText(title: "كسب مبالغ تبدأ من 30 هللة وحتي 500 ريال مقابل مشاهدة الاعلانات والمشاركة في استطلاعات الرأي.",),
+        BuildRepeatedText(title: "تحويل رصيد المحفظة الي حسابك البنكي أو الي مستخدم أخر.",),
       ],
     );
   }

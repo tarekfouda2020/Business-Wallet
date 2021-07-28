@@ -105,12 +105,12 @@ class CompanySubscribeMethods {
     }
   }
 
-  Future<BrochureDetailsModel?> getBrochureDetails() async {
+  Future<BrochureDetailsModel?> getBrochureDetails(bool refresh) async {
     var userId = context.read<UserCubit>().state.model.companyModel!.userId;
     var lang = context.read<LangCubit>().state.locale.languageCode;
 
     Map<String, dynamic> body = {"user_id": userId, "lang": lang};
-    var _data = await DioHelper(context: context).get(
+    var _data = await DioHelper(context: context,forceRefresh: refresh).get(
       url: '/Plans/GetDataCard',
       body: body,
     );

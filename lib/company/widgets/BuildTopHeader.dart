@@ -44,10 +44,24 @@ class BuildTopHeader extends StatelessWidget {
               onPressed: onTap,
             ),
           ),
-          Image.asset(
-            Res.logo,
-            height: 40,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  Res.logo,
+                  height: 40,
+                ),
+                MyText(
+                  title: "الدليل التجاري الافضل",
+                  size: 7,
+                  color: MyColors.primary,
+                )
+              ],
+            ),
           ),
+
         ],
       ),
     );

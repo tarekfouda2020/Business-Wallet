@@ -1,5 +1,6 @@
 import 'package:base_flutter/customer/models/Dtos/FilterModel.dart';
 import 'package:base_flutter/customer/models/Dtos/MapFilterModel.dart';
+import 'package:base_flutter/customer/models/Dtos/field_drop_down_model.dart';
 import 'package:base_flutter/customer/models/cities_model.dart';
 import 'package:base_flutter/customer/models/main_model.dart';
 import 'package:base_flutter/customer/models/user_interest_model.dart';
