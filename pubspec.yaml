@@ -114,6 +114,7 @@ flutter:
     - assets/images/bg.png
     - assets/images/bgheader.png
     - assets/images/facebook.png
+    - assets/images/instaa.png
     - assets/images/logo.png
     - assets/images/marker.png
     - assets/images/noun_mapp.png
@@ -126,10 +127,10 @@ flutter:
     - assets/images/onProv3.png
     - assets/images/onUser4.png
     - assets/images/pic.jpg
+    - assets/images/placeholder.png
     - assets/images/twitter.png
     - assets/images/vedioImg.png
     - assets/images/wha.png
-    - assets/images/instaa.png
     - assets/lang/ar.json
     - assets/lang/en.json
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,9 +5,9 @@ class EducationModel {
   EducationModel({this.id, this.name});
 
   List<EducationModel> get education => [
-    EducationModel(id: "ثانوي", name: "ثانوي"),
-    EducationModel(id: "دبلوم", name: "دبلوم"),
-    EducationModel(id: "جامعى", name: "جامعى"),
-
-  ];
+        EducationModel(id: "الكل", name: "الكل"),
+        EducationModel(id: "ثانوي", name: "ثانوي"),
+        EducationModel(id: "دبلوم", name: "دبلوم"),
+        EducationModel(id: "جامعى", name: "جامعى"),
+      ];
 }

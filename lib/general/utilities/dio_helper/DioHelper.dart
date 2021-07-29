@@ -35,7 +35,11 @@ class DioHelper {
   }
 
   Future<dynamic> get(
-      {required String url, required Map<String, dynamic> body}) async {
+      {required String url,
+      required Map<String, dynamic> body,
+      bool showLoader = false}) async {
+    if (showLoader) LoadingDialog.showLoadingDialog();
+
     body.addAll({"branchId": _branch});
     _printRequestBody(body);
     _dio.options.headers = await _getHeader();
@@ -43,6 +47,8 @@ class DioHelper {
       var response = await _dio.post("$baseUrl$url",
           data: FormData.fromMap(body), options: _buildCacheOptions(body));
       print("response ${response.statusCode}");
+      if (showLoader) EasyLoading.dismiss();
+
       var data = response.data;
       if (data["key"] == 1) {
         return data;
@@ -50,6 +56,8 @@ class DioHelper {
         LoadingDialog.showToastNotification(data["msg"].toString());
       }
     } on DioError catch (e) {
+      if (showLoader) EasyLoading.dismiss();
+
       if (e.response?.statusCode == 401 ||
           e.response?.statusCode == 301 ||
           e.response?.statusCode == 302) {

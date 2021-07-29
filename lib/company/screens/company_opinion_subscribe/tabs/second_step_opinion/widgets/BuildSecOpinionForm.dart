@@ -172,7 +172,7 @@ class BuildSecOpinionForm extends StatelessWidget {
               ),
             ),
             BuildFormText(text: "الجنس"),
-            BlocConsumer<GenericCubit<int>, GenericState<int>>(
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
               bloc: compOpinionSubscribeData.genderCubit,
               listener: (_, state) {
                 compOpinionSubscribeData.gender.text = GenderModel()

@@ -15,7 +15,7 @@ class CompInvitationModel {
   @JsonKey(name: 'fk_kayan')
   String fkKayan;
   @JsonKey(name: 'num_point')
-  int numPoint;
+  double numPoint;
   @JsonKey(name: 'type')
   int type;
   @JsonKey(name: 'name')

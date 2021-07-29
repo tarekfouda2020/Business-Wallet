@@ -16,10 +16,10 @@ typedef bool DropdownSearchCompareFn<T>(T item, T? selectedItem);
 typedef Widget DropdownSearchBuilder<T>(
     BuildContext context, T? selectedItem, String itemAsString);
 typedef Widget DropdownSearchPopupItemBuilder<T>(
-    BuildContext context,
-    T item,
-    bool isSelected,
-    );
+  BuildContext context,
+  T item,
+  bool isSelected,
+);
 typedef bool DropdownSearchPopupItemEnabled<T>(T item);
 typedef Widget ErrorBuilder<T>(
     BuildContext context, String? searchEntry, dynamic exception);
@@ -294,12 +294,17 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
         Expanded(
             child: widget.dropdownBuilder != null
                 ? widget.dropdownBuilder!(
-              context,
-              data,
-              _selectedItemAsString(data,),
-            )
-                : Text(_selectedItemAsString(data), style: widget.style,textAlign: widget.textAlign??TextAlign.start,)
-        ),
+                    context,
+                    data,
+                    _selectedItemAsString(
+                      data,
+                    ),
+                  )
+                : Text(
+                    _selectedItemAsString(data),
+                    style: widget.style,
+                    textAlign: widget.textAlign ?? TextAlign.start,
+                  )),
         if (!widget.showAsSuffixIcons) _manageTrailingIcons(data),
       ],
     );
@@ -326,9 +331,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                     (widget.dropdownBuilder == null ||
                         widget.dropdownBuilderSupportsNullItem),
                 isFocused: isFocused,
-                textAlign: widget.textAlign??TextAlign.start,
+                textAlign: widget.textAlign ?? TextAlign.start,
                 decoration: _manageDropdownDecoration(state, value),
-
                 child: _defaultSelectItemWidget(value),
               );
             });
@@ -339,17 +343,16 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
   ///manage dropdownSearch field decoration
   InputDecoration _manageDropdownDecoration(FormFieldState state, T? data) {
     return (widget.dropdownSearchDecoration ??
-        InputDecoration(
-            contentPadding: EdgeInsets.zero,
-            border: OutlineInputBorder()))
+            InputDecoration(
+                contentPadding: EdgeInsets.zero, border: OutlineInputBorder()))
         .applyDefaults(Theme.of(state.context).inputDecorationTheme)
         .copyWith(
-        enabled: widget.enabled,
-        labelText: widget.label,
-        hintText: widget.hint,
-        suffixIcon:
-        widget.showAsSuffixIcons ? _manageTrailingIcons(data) : null,
-        errorText: state.errorText);
+            enabled: widget.enabled,
+            labelText: widget.label,
+            hintText: widget.hint,
+            suffixIcon:
+                widget.showAsSuffixIcons ? _manageTrailingIcons(data) : null,
+            errorText: state.errorText);
   }
 
   ///function that return the String value of an object
@@ -375,24 +378,27 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
         if (data != null && widget.showClearButton == true)
           widget.clearButtonBuilder != null
               ? GestureDetector(
-            onTap: clearButtonPressed,
-            child: widget.clearButtonBuilder!(context),
-          )
+                  onTap: clearButtonPressed,
+                  child: widget.clearButtonBuilder!(context),
+                )
               : InkWell(
-            child: widget.clearButton ?? const Icon(Icons.clear, size: 25),
-            onTap: clearButtonPressed,
-          ),
-        SizedBox(width: widget.showClearButton?10:0,),
+                  child:
+                      widget.clearButton ?? const Icon(Icons.clear, size: 25),
+                  onTap: clearButtonPressed,
+                ),
+        SizedBox(
+          width: widget.showClearButton ? 10 : 0,
+        ),
         widget.dropdownButtonBuilder != null
             ? GestureDetector(
-          onTap: dropdownButtonPressed,
-          child: widget.dropdownButtonBuilder!(context),
-        )
+                onTap: dropdownButtonPressed,
+                child: widget.dropdownButtonBuilder!(context),
+              )
             : InkWell(
-          child: widget.dropDownButton ??
-              const Icon(Icons.arrow_drop_down, size: 25),
-          onTap: dropdownButtonPressed,
-        ),
+                child: widget.dropDownButton ??
+                    const Icon(Icons.arrow_drop_down, size: 20),
+                onTap: dropdownButtonPressed,
+              ),
       ],
     );
   }
@@ -435,7 +441,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     final RenderBox popupButtonObject = context.findRenderObject() as RenderBox;
     // Get the render object of the overlay used in `Navigator` / `MaterialApp`, i.e. screen size reference
     final RenderBox overlay =
-    Overlay.of(context)!.context.findRenderObject() as RenderBox;
+        Overlay.of(context)!.context.findRenderObject() as RenderBox;
     // Calculate the show-up area for the dropdown using button's size & position based on the `overlay` used as the coordinate space.
     final RelativeRect position = RelativeRect.fromSize(
       Rect.fromPoints(
@@ -476,7 +482,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       filterFn: widget.filterFn,
       items: widget.items,
       onFind: widget.onFind,
-      style: widget.itemStyle?? widget.style,
+      style: widget.itemStyle ?? widget.style,
       showSearchBox: widget.showSearchBox,
       itemBuilder: widget.popupItemBuilder,
       selectedValue: data,
@@ -491,7 +497,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       dialogMaxWidth: widget.dialogMaxWidth,
       itemDisabled: widget.popupItemDisabled,
       searchBoxController:
-      widget.searchBoxController ?? TextEditingController(),
+          widget.searchBoxController ?? TextEditingController(),
       searchDelay: widget.searchDelay,
       showFavoriteItems: widget.showFavoriteItems,
       favoriteItems: widget.favoriteItems,

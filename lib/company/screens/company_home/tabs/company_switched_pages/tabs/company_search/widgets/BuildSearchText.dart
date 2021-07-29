@@ -13,7 +13,7 @@ class BuildSearchText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 7,
+            flex: 6,
             child: BlocConsumer<GenericCubit, GenericState>(
               bloc: companySearchData.searchUpdateCubit,
               listener: (_, state) {

@@ -13,7 +13,7 @@ CompInvitationModel _$CompInvitationModelFromJson(Map<String, dynamic> json) {
     fkCity: json['fk_city'] as int,
     fkIntrest: json['fk_intrest'] as int,
     fkKayan: json['fk_kayan'] as String,
-    numPoint: json['num_point'] as int,
+    numPoint: (json['num_point'] as num).toDouble(),
     type: json['type'] as int,
     name: json['name'] as String,
     category: json['categry'] as String,

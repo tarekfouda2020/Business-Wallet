@@ -124,7 +124,7 @@ class CompOpinionSubscribeData {
   //second page
 
   final GenericCubit<String> dateCubit = GenericCubit("");
-  final GenericCubit<int> genderCubit = new GenericCubit(1);
+  final GenericCubit<String> genderCubit = new GenericCubit("A");
   final GenericCubit<int> durationCubit = new GenericCubit(10);
 
   final GenericCubit<CostSubscribeModel?> costCubit = new GenericCubit(null);
@@ -133,12 +133,12 @@ class CompOpinionSubscribeData {
 
   final GenericCubit<double> costChangeCubit = new GenericCubit(0.0);
   final GenericCubit<double> costViewChangeCubit = new GenericCubit(0.0);
-  final GenericCubit<String> incomeCubit = new GenericCubit("1-10000");
-  final GenericCubit<String> livingCubit = new GenericCubit("سكن مشترك");
-  final GenericCubit<String> ageCubit = new GenericCubit("1-30");
+  final GenericCubit<String> incomeCubit = new GenericCubit("الكل");
+  final GenericCubit<String> livingCubit = new GenericCubit("الكل");
+  final GenericCubit<String> ageCubit = new GenericCubit("الكل");
 
-  final GenericCubit<String> familyCubit = new GenericCubit("1-4");
-  final GenericCubit<String> educationCubit = new GenericCubit("ثانوي");
+  final GenericCubit<String> familyCubit = new GenericCubit("الكل");
+  final GenericCubit<String> educationCubit = new GenericCubit("الكل");
   final GenericCubit<List<DropDownSelected>> interestCubit =
       new GenericCubit([]);
 
@@ -224,7 +224,7 @@ class CompOpinionSubscribeData {
   }
 
   void selectType(String id, BuildContext context) {
-    genderCubit.onUpdateData(int.parse(id));
+    genderCubit.onUpdateData(id);
     Navigator.of(context).pop();
   }
 

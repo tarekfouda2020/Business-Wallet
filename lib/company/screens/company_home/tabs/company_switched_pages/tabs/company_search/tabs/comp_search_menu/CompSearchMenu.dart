@@ -25,7 +25,7 @@ class _CompSearchMenuState extends State<CompSearchMenu> {
     return Container(
       alignment: Alignment.topCenter,
       child: PagedGridView<int, MainModel>(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         showNewPageProgressIndicatorAsGridChild: false,
         showNewPageErrorIndicatorAsGridChild: false,
         showNoMoreItemsIndicatorAsGridChild: false,

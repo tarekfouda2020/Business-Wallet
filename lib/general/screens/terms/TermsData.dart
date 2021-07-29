@@ -5,8 +5,8 @@ class TermsData {
 
   final GenericCubit<String> termsCubit = new GenericCubit("");
 
-  void fetchData(BuildContext context)async {
-    var data = await GeneralRepository(context).terms();
+  void fetchData(BuildContext context,{bool refresh=true})async {
+    var data = await GeneralRepository(context).terms(refresh);
     termsCubit.onUpdateData("$data");
   }
 

@@ -4,8 +4,8 @@ class AboutData{
 
   final GenericCubit<String> aboutCubit = new GenericCubit("");
 
-  void fetchData(BuildContext context)async {
-    var data = await GeneralRepository(context).aboutApp();
+  void fetchData(BuildContext context,{bool refresh= true})async {
+    var data = await GeneralRepository(context).aboutApp(refresh);
     aboutCubit.onUpdateData("$data");
   }
 }

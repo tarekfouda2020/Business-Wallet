@@ -172,7 +172,7 @@ class BuildSecForm extends StatelessWidget {
               ),
             ),
             BuildFormText(text: "الجنس"),
-            BlocConsumer<GenericCubit<int>, GenericState<int>>(
+            BlocConsumer<GenericCubit<String>, GenericState<String>>(
               bloc: companySubscribeData.genderCubit,
               listener: (_, state) {
                 companySubscribeData.gender.text = GenderModel()

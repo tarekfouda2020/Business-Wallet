@@ -101,7 +101,7 @@ class CompanySubscribeData {
 //second page
 
   final GenericCubit<String> dateCubit = GenericCubit("");
-  final GenericCubit<int> genderCubit = new GenericCubit(1);
+  final GenericCubit<String> genderCubit = new GenericCubit("A");
   final GenericCubit<int> durationCubit = new GenericCubit(10);
 
   final GenericCubit<CostSubscribeModel?> costCubit = new GenericCubit(null);
@@ -110,12 +110,12 @@ class CompanySubscribeData {
 
   final GenericCubit<double> costChangeCubit = new GenericCubit(0.0);
   final GenericCubit<double> costViewChangeCubit = new GenericCubit(0.0);
-  final GenericCubit<String> incomeCubit = new GenericCubit("1-10000");
-  final GenericCubit<String> livingCubit = new GenericCubit("سكن مشترك");
-  final GenericCubit<String> ageCubit = new GenericCubit("1-30");
+  final GenericCubit<String> incomeCubit = new GenericCubit("الكل");
+  final GenericCubit<String> livingCubit = new GenericCubit("الكل");
+  final GenericCubit<String> ageCubit = new GenericCubit("الكل");
 
-  final GenericCubit<String> familyCubit = new GenericCubit("1-4");
-  final GenericCubit<String> educationCubit = new GenericCubit("ثانوي");
+  final GenericCubit<String> familyCubit = new GenericCubit("الكل");
+  final GenericCubit<String> educationCubit = new GenericCubit("الكل");
   final GenericCubit<List<DropDownSelected>> interestCubit =
       new GenericCubit([]);
 
@@ -200,7 +200,7 @@ class CompanySubscribeData {
   }
 
   void selectType(String id, BuildContext context) {
-    genderCubit.onUpdateData(int.parse(id));
+    genderCubit.onUpdateData(id);
     Navigator.of(context).pop();
   }
 
@@ -294,7 +294,7 @@ class CompanySubscribeData {
       addSubscribeModel.interestsNames = interestCubit.state.data
           .where((element) => element.selected && element.id != 0)
           .fold("", (prev, e) => "$prev" + "${e.name}" + ",");
-      addSubscribeModel.gender = genderCubit.state.data == 1 ? "M" : "F";
+      addSubscribeModel.gender = genderCubit.state.data;
       addSubscribeModel.accommodation = livingCubit.state.data;
       addSubscribeModel.education = educationCubit.state.data;
       addSubscribeModel.numberFamily = familyCubit.state.data;

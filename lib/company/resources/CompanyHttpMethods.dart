@@ -60,8 +60,10 @@ class CompanyHttpMethods {
     var _data = await DioHelper(context: context)
         .get(url: "/Plans/GetAllCities", body: body);
     if (_data != null) {
-      return List<CitiesModel>.from(
+      var data = List<CitiesModel>.from(
           _data['cities'].map((e) => CitiesModel.fromJson(e)));
+      data.insert(0, CitiesModel(id: 1000, name: "الكل", fkCountry: 3));
+      return data;
     } else {
       return [];
     }
@@ -315,7 +317,7 @@ class CompanyHttpMethods {
       "lang": lang,
       "user_id": userId,
     };
-    var _data = await DioHelper(context: context,forceRefresh: refresh)
+    var _data = await DioHelper(context: context, forceRefresh: refresh)
         .get(url: "/Plans/DetailsWalletV1", body: body);
     if (_data != null) {
       return List<WalletDetailsModel>.from(

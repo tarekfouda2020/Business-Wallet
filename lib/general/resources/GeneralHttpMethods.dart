@@ -221,11 +221,11 @@ class GeneralHttpMethods {
     return (_data != null);
   }
 
-  Future<String?> aboutApp() async {
+  Future<String?> aboutApp(bool refresh) async {
     Map<String, dynamic> body = {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/GetAbout", body: body);
     if (_data != null) {
       return _data["about"];
@@ -234,11 +234,11 @@ class GeneralHttpMethods {
     }
   }
 
-  Future<String?> terms() async {
+  Future<String?> terms(bool refresh) async {
     Map<String, dynamic> body = {
       "lang": context.read<LangCubit>().state.locale.languageCode,
     };
-    var _data = await DioHelper(context: context)
+    var _data = await DioHelper(context: context,forceRefresh: refresh)
         .get(url: "/Plans/GetCondition", body: body);
     if (_data != null) {
       return _data["condition"];

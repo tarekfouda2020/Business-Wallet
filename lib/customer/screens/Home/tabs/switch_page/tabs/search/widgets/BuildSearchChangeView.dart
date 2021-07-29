@@ -10,7 +10,6 @@ class BuildSearchChangeView extends StatefulWidget {
 }
 
 class _BuildSearchChangeViewState extends State<BuildSearchChangeView> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,11 +18,12 @@ class _BuildSearchChangeViewState extends State<BuildSearchChangeView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 7,
+            flex: 6,
             child: BlocConsumer<GenericCubit, GenericState>(
               bloc: widget.searchData.searchUpdateCubit,
-              listener: (_,state){
-                if(state.data!=null)widget.searchData.search.text=state.data;
+              listener: (_, state) {
+                if (state.data != null)
+                  widget.searchData.search.text = state.data;
               },
               builder: (context, state) {
                 return AutoCompleteField<AutoSearchModel>(
@@ -65,6 +65,4 @@ class _BuildSearchChangeViewState extends State<BuildSearchChangeView> {
       ),
     );
   }
-
 }
-

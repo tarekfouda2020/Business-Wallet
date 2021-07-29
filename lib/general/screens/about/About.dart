@@ -1,6 +1,5 @@
 part of 'AboutImports.dart';
 
-
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -9,6 +8,8 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> with AboutData {
   @override
   void initState() {
+    fetchData(context, refresh: false);
+
     fetchData(context);
     super.initState();
   }
@@ -18,12 +19,12 @@ class _AboutState extends State<About> with AboutData {
     return Scaffold(
       backgroundColor: MyColors.darken,
       appBar: DefaultAppBar(title: 'عن التطبيق'),
-      body: BlocBuilder<GenericCubit<String>,GenericState<String>>(
+      body: BlocBuilder<GenericCubit<String>, GenericState<String>>(
         bloc: aboutCubit,
-        builder: (_,state){
-          if(state is GenericUpdateState){
+        builder: (_, state) {
+          if (state is GenericUpdateState) {
             return BuildAboutView(text: state.data);
-          }else{
+          } else {
             return Center(
               child: LoadingDialog.showLoadingView(),
             );

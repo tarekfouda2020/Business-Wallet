@@ -90,6 +90,7 @@ class CustomerHomeMethods {
       return [];
     }
   }
+
   Future<List<MainModel>> getMainFiltered(int pageIndex, int cityId,
       int interestId, int filterId, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
@@ -123,8 +124,13 @@ class CustomerHomeMethods {
   }
 
   Future<List<MainModel>> getMapProviders(MapFilterModel model) async {
-    var _data = await DioHelper(context: context)
-        .get(url: "/User/IndexAndSearchApi", body: model.toJson());
+    var _data = await DioHelper(
+      context: context,
+    ).get(
+      url: "/User/IndexAndSearchApi",
+      body: model.toJson(),
+      showLoader: true
+    );
     if (_data != null) {
       return List<MainModel>.from(
           _data['Kayans'].map((e) => MainModel.fromJson(e)));
@@ -148,7 +154,7 @@ class CustomerHomeMethods {
   }
 
   Future<List<MainModel>> getMainSearched(int pageIndex, int searchId,
-      int fieldId,int subFieldId, String text, bool refresh) async {
+      int fieldId, int subFieldId, String text, bool refresh) async {
     var lang = context.read<LangCubit>().state.locale.languageCode;
     var userId = context.read<UserCubit>().state.model.customerModel!.userId;
 
@@ -157,7 +163,7 @@ class CustomerHomeMethods {
       "userId": userId,
       "SearchId": searchId,
       "id": fieldId,
-      "subFieldId":subFieldId,
+      "subFieldId": subFieldId,
       "text": text,
       "page_index": pageIndex
     };
@@ -170,5 +176,4 @@ class CustomerHomeMethods {
       return [];
     }
   }
-
 }

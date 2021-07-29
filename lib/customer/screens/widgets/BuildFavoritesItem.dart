@@ -5,6 +5,7 @@ import 'package:base_flutter/general/constants/MyColors.dart';
 import 'package:base_flutter/general/utilities/routers/RouterImports.gr.dart';
 import 'package:base_flutter/general/widgets/CachedImage.dart';
 import 'package:base_flutter/general/widgets/MyText.dart';
+import 'package:base_flutter/res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -23,100 +24,202 @@ class BuildFavoritesItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         padding: EdgeInsets.zero,
-        child: CachedImage(
-          url: checkInvite
-              ? invitationModel!.img
-              : favoriteModel!.imgAnnouncement,
-          height: 200,
-          haveBorder: false,
-          alignment: Alignment.bottomCenter,
-          borderColor: MyColors.greyWhite,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          fit: BoxFit.fill,
-          colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
-          child: Container(
-            height: 85,
-            margin: EdgeInsets.zero,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: MyColors.black,
+        child: Visibility(
+          visible: invitationModel!.img !=
+              "https://bwallet.com.sa/Content/Images/Advirtisment/",
+          child: CachedImage(
+            url: checkInvite
+                ? invitationModel!.img
+                : favoriteModel!.imgAnnouncement,
+            height: 200,
+            haveBorder: false,
+            alignment: Alignment.bottomCenter,
+            borderColor: MyColors.greyWhite,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            fit: BoxFit.fill,
+            colorFilter: ColorFilter.mode(Colors.black26, BlendMode.darken),
+            child: Container(
+              height: 85,
+              margin: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: MyColors.black,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MyText(
+                          title: checkInvite
+                              ? invitationModel!.name
+                              : favoriteModel!.favoriteDetailsModel.nameKayan,
+                          size: 9,
+                          color: MyColors.white,
+                        ),
+                        MyText(
+                          title:
+                              "التصنيف : ${checkInvite ? invitationModel!.category : favoriteModel!.favoriteDetailsModel.mainField}",
+                          size: 9,
+                          color: MyColors.white,
+                          // overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
+                      Row(
+                        children: [
+                          RatingBar.builder(
+                            itemCount: 5,
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            onRatingUpdate: (double val) {},
+                            unratedColor: MyColors.white,
+                            itemSize: 12,
+                            itemPadding:
+                                const EdgeInsets.symmetric(vertical: 7),
+                            initialRating: checkInvite
+                                ? invitationModel!.rate.toDouble()
+                                : favoriteModel!.rateSp.toDouble(),
+                            itemBuilder: (_, index) {
+                              return Icon(
+                                Icons.star,
+                                color: MyColors.primary,
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          MyText(
+                            title:
+                                " ( ${checkInvite ? invitationModel!.rate : favoriteModel!.count.toString()})",
+                            size: 10,
+                            color: MyColors.white,
+                          ),
+                        ],
+                      ),
                       MyText(
-                        title: checkInvite
-                            ? invitationModel!.name
-                            : favoriteModel!.favoriteDetailsModel.nameKayan,
+                        title:
+                            "التاريخ :  ${checkInvite ? invitationModel!.date : favoriteModel!.date}",
                         size: 9,
                         color: MyColors.white,
                       ),
                       MyText(
                         title:
-                            "التصنيف : ${checkInvite ? invitationModel!.category : favoriteModel!.favoriteDetailsModel.mainField}",
+                            "الربح :  ${checkInvite ? invitationModel!.numPoint.toStringAsFixed(2) : favoriteModel!.numPoint.toStringAsFixed(2)}",
                         size: 9,
                         color: MyColors.white,
-                        // overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
+                ],
+              ),
+            ),
+          ),
+          replacement: Container(
+            alignment: Alignment.bottomCenter,
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                colorFilter:
+                    ColorFilter.mode(Colors.white10, BlendMode.lighten),
+                image: AssetImage(
+                  Res.placeholder,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
+              ),
+            ),
+            child: Container(
+              height: 85,
+              margin: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: MyColors.black,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        RatingBar.builder(
-                          itemCount: 5,
-                          allowHalfRating: true,
-                          ignoreGestures: true,
-                          onRatingUpdate: (double val) {},
-                          unratedColor: MyColors.white,
-                          itemSize: 12,
-                          itemPadding: const EdgeInsets.symmetric(vertical: 7),
-                          initialRating: checkInvite
-                              ? invitationModel!.rate.toDouble()
-                              : favoriteModel!.rateSp.toDouble(),
-                          itemBuilder: (_, index) {
-                            return Icon(
-                              Icons.star,
-                              color: MyColors.primary,
-                            );
-                          },
-                        ),
-                        SizedBox(
-                          width: 10,
+                        MyText(
+                          title: checkInvite
+                              ? invitationModel!.name
+                              : favoriteModel!.favoriteDetailsModel.nameKayan,
+                          size: 9,
+                          color: MyColors.white,
                         ),
                         MyText(
                           title:
-                              " ( ${checkInvite ? invitationModel!.rate : favoriteModel!.count.toString()})",
-                          size: 10,
+                              "التصنيف : ${checkInvite ? invitationModel!.category : favoriteModel!.favoriteDetailsModel.mainField}",
+                          size: 9,
                           color: MyColors.white,
+                          // overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
-                    MyText(
-                      title:
-                          "التاريخ :  ${checkInvite ? invitationModel!.date : favoriteModel!.date}",
-                      size: 9,
-                      color: MyColors.white,
-                    ),
-                    MyText(
-                      title:
-                          "الربح :  ${checkInvite ? invitationModel!.numPoint.toStringAsFixed(2) : favoriteModel!.numPoint.toStringAsFixed(2)}",
-                      size: 9,
-                      color: MyColors.white,
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Row(
+                        children: [
+                          RatingBar.builder(
+                            itemCount: 5,
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            onRatingUpdate: (double val) {},
+                            unratedColor: MyColors.white,
+                            itemSize: 12,
+                            itemPadding:
+                                const EdgeInsets.symmetric(vertical: 7),
+                            initialRating: checkInvite
+                                ? invitationModel!.rate.toDouble()
+                                : favoriteModel!.rateSp.toDouble(),
+                            itemBuilder: (_, index) {
+                              return Icon(
+                                Icons.star,
+                                color: MyColors.primary,
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          MyText(
+                            title:
+                                " ( ${checkInvite ? invitationModel!.rate : favoriteModel!.count.toString()})",
+                            size: 10,
+                            color: MyColors.white,
+                          ),
+                        ],
+                      ),
+                      MyText(
+                        title:
+                            "التاريخ :  ${checkInvite ? invitationModel!.date : favoriteModel!.date}",
+                        size: 9,
+                        color: MyColors.white,
+                      ),
+                      MyText(
+                        title:
+                            "الربح :  ${checkInvite ? invitationModel!.numPoint.toStringAsFixed(2) : favoriteModel!.numPoint.toStringAsFixed(2)}",
+                        size: 9,
+                        color: MyColors.white,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

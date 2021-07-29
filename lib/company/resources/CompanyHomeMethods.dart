@@ -19,7 +19,11 @@ class CompanyHomeMethods {
   CompanyHomeMethods(this.context);
 
   Future<List<AutoSearchModel>> getAutoSearch(String word) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
 
     Map<String, dynamic> body = {"lang": lang, "word": word};
     var _data = await DioHelper(context: context)
@@ -34,7 +38,9 @@ class CompanyHomeMethods {
 
   Future<List<MainModel>> getMapProviders(MapFilterModel model) async {
     var _data = await DioHelper(context: context)
-        .get(url: "/Plans/IndexAndSearchApi", body: model.toJson());
+        .get(url: "/Plans/IndexAndSearchApi",
+        body: model.toJson(),
+        showLoader: true);
     if (_data != null) {
       return List<MainModel>.from(
           _data['Kayans'].map((e) => MainModel.fromJson(e)));
@@ -44,16 +50,25 @@ class CompanyHomeMethods {
   }
 
   Future<List<MainModel>> getMainSearch(int pageIndex, int searchId,
-      int fieldId,int subFieldId, String text, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+      int fieldId, int subFieldId, String text, bool refresh) async {
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
+    var userId = context
+        .read<UserCubit>()
+        .state
+        .model
+        .companyModel!
+        .userId;
 
     Map<String, dynamic> body = {
       "lang": lang,
       "userId": userId,
       "SearchId": searchId,
       "id": fieldId,
-      "subFieldId":subFieldId,
+      "subFieldId": subFieldId,
       "text": text,
       "page_number": pageIndex
     };
@@ -69,8 +84,17 @@ class CompanyHomeMethods {
 
   Future<List<MainModel>> getMain(int pageIndex, int cityId, int interestId,
       int filterId, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
+    var userId = context
+        .read<UserCubit>()
+        .state
+        .model
+        .companyModel!
+        .userId;
 
     Map<String, dynamic> body = {
       "lang": lang,
@@ -90,10 +114,19 @@ class CompanyHomeMethods {
     }
   }
 
-  Future<List<CompInvitationModel>> getInvitationData(
-      int pageIndex, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+  Future<List<CompInvitationModel>> getInvitationData(int pageIndex,
+      bool refresh) async {
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
+    var userId = context
+        .read<UserCubit>()
+        .state
+        .model
+        .companyModel!
+        .userId;
     Map<String, dynamic> body = {
       "lang": lang,
       "user_id": userId,
@@ -114,8 +147,17 @@ class CompanyHomeMethods {
 
   Future<List<FollowerModel>> getFollowersFiltered(int pageIndex, int cityId,
       int interestId, int filterId, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
+    var userId = context
+        .read<UserCubit>()
+        .state
+        .model
+        .companyModel!
+        .userId;
 
     Map<String, dynamic> body = {
       "lang": lang,
@@ -135,10 +177,19 @@ class CompanyHomeMethods {
     }
   }
 
-  Future<List<CompFavoriteModel>> getFavoriteData(
-      int pageIndex, int fkCity, fkInterest, bool refresh) async {
-    var lang = context.read<LangCubit>().state.locale.languageCode;
-    var userId = context.read<UserCubit>().state.model.companyModel!.userId;
+  Future<List<CompFavoriteModel>> getFavoriteData(int pageIndex, int fkCity,
+      fkInterest, bool refresh) async {
+    var lang = context
+        .read<LangCubit>()
+        .state
+        .locale
+        .languageCode;
+    var userId = context
+        .read<UserCubit>()
+        .state
+        .model
+        .companyModel!
+        .userId;
     Map<String, dynamic> body = {
       "lang": lang,
       "user_id": userId,

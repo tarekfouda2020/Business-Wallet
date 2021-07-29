@@ -16,7 +16,8 @@ class CompanyEditActivityData {
     mainFieldId = DropDownModel(
         id: company!.mainFiled!.id, name: company.mainFiled!.name);
     subFieldCubit.onUpdateData(company.sub!
-        .map((e) => DropDownSelected(id: int.parse(e.id??"0"),name: e.name??"",selected: true))
+        .map((e) => DropDownSelected(
+            id: int.parse(e.id ?? "0"), name: e.name ?? "", selected: true))
         .toList());
   }
 
@@ -38,22 +39,21 @@ class CompanyEditActivityData {
         subFieldCubit.state.data.addAll(all);
         subFieldCubit.onUpdateData(subFieldCubit.state.data);
       } else {
-        // subFieldCubit.state.data.where((e) => e.id == model.id);
-        //
-        // subFieldId = model;
-        // if (subFieldCubit.state.data == subFieldId) {
-        //   return LoadingDialog.showSimpleToast(
-        //       "لا يمكن اختيار نفس النشاط الفرعي");
-        // }
-        subFieldId = model;
-        subFieldCubit.state.data.add(model);
-        subFieldCubit.onUpdateData(subFieldCubit.state.data);
+        var exist =
+            subFieldCubit.state.data.where((e) => e.id == model.id).toList();
+        if (exist.length > 0) {
+          return LoadingDialog.showSimpleToast(
+              "لا يمكن اختيار نفس النشاط الفرعي");
+        } else {
+          subFieldId = model;
+          subFieldCubit.state.data.add(model);
+          subFieldCubit.onUpdateData(subFieldCubit.state.data);
+        }
       }
     }
   }
 
-  void removeExistSub(
-      BuildContext context, DropDownStringModel model) async {
+  void removeExistSub(BuildContext context, DropDownStringModel model) async {
     await CompanyRepository(context).removeImage(int.parse(model.id!), 4);
     var user = context.read<UserCubit>();
     user.state.model.companyModel!.sub!.remove(model);

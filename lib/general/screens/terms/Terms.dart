@@ -1,15 +1,15 @@
 part of 'TermsImports.dart';
 
-
 class Terms extends StatefulWidget {
   @override
   _TermsState createState() => _TermsState();
 }
 
 class _TermsState extends State<Terms> with TermsData {
-
   @override
   void initState() {
+    fetchData(context, refresh: false);
+
     fetchData(context);
     super.initState();
   }
@@ -19,12 +19,12 @@ class _TermsState extends State<Terms> with TermsData {
     return Scaffold(
       backgroundColor: MyColors.darken,
       appBar: DefaultAppBar(title: 'الشروط والاحكام'),
-      body: BlocBuilder<GenericCubit<String>,GenericState<String>>(
+      body: BlocBuilder<GenericCubit<String>, GenericState<String>>(
         bloc: termsCubit,
-        builder: (_,state){
-          if(state is GenericUpdateState){
+        builder: (_, state) {
+          if (state is GenericUpdateState) {
             return BuildTermsView(text: state.data);
-          }else{
+          } else {
             return Center(
               child: LoadingDialog.showLoadingView(),
             );
@@ -32,6 +32,5 @@ class _TermsState extends State<Terms> with TermsData {
         },
       ),
     );
-
   }
 }
